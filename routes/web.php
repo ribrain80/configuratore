@@ -14,3 +14,65 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'm50'], function () { 
+
+	Route::get('step1', function () {
+	    return view('m50.step1');
+	});
+
+	Route::get('step2', function () {
+	    return view('m50.step2');
+	});
+
+	Route::get('step3', function () {
+	    return view('m50.step3');
+	});
+
+	Route::get('step4', function () {
+	    return view('m50.step4');
+	});
+
+	Route::get('step5', function () {
+	    return view('m50.step5');
+	});
+
+	Route::get('step6', function () {
+	    return view('m50.step6');
+	});
+});
+
+Route::group(['prefix' => 'split'], function () { 
+
+	Route::get('step1/{locale}', function ( $locale ) {
+		App::setLocale($locale);
+	    return view('split.step1');
+	});
+
+	Route::get('step2/{locale}', function ( $locale ) {
+		App::setLocale($locale);
+	    return view('split.step2');
+	});
+
+	Route::get('step3/{locale}', function ( $locale ) {
+		App::setLocale($locale);
+	    return view('split.step3');
+	});
+
+	Route::get('step4/{locale}', function ( $locale ) {
+		App::setLocale($locale);
+	    return view('split.step4');
+	});
+
+	Route::get('step5/{locale}', function ( $locale ) {
+		App::setLocale($locale);
+	    return view('split.step5');
+	});
+
+	Route::get('step6/{locale}', function ( $locale ) {
+		App::setLocale($locale);
+	    return view('split.step6');
+	});
+});
+
+
