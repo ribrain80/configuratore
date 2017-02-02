@@ -44,35 +44,13 @@ Route::group(['prefix' => 'm50'], function () {
 
 Route::group(['prefix' => 'split'], function () { 
 
-	Route::get('step1/{locale}', function ( $locale ) {
-		App::setLocale($locale);
-	    return view('split.step1');
-	});
+	Route::get('step1', array( 'as' => 'split.step1', 'uses' => 'SplitController@step1' ) );
 
-	Route::get('step2/{locale}', function ( $locale ) {
-		App::setLocale($locale);
-	    return view('split.step2');
-	});
+	Route::get('step2', array( 'as' => 'split.step2', 'uses' => 'SplitController@step2' ) );
 
-	Route::get('step3/{locale}', function ( $locale ) {
-		App::setLocale($locale);
-	    return view('split.step3');
-	});
+	Route::post('step3', array( 'as' => 'split.step3', 'uses' => 'SplitController@step3' ) );
 
-	Route::get('step4/{locale}', function ( $locale ) {
-		App::setLocale($locale);
+	Route::get('step4', array( 'as' => 'split.step4' ), function ( ) {
 	    return view('split.step4');
 	});
-
-	Route::get('step5/{locale}', function ( $locale ) {
-		App::setLocale($locale);
-	    return view('split.step5');
-	});
-
-	Route::get('step6/{locale}', function ( $locale ) {
-		App::setLocale($locale);
-	    return view('split.step6');
-	});
 });
-
-

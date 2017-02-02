@@ -1,0 +1,14 @@
+{ "token":
+    {
+        "Benvenuti nel configuratore":"Benvenuti nel configuratore",
+        "chooselanguage" : "Scegli la lingua",
+        "intro" : "Descrizione del processo",
+        "newconfiguration" : "Nuova configurazione",
+        "oldconfiguration" : "Carica configurazione salvata",
+        "drawertype" : "Tipo di cassetto",
+        "drawertype_box" : "LineaBox",
+        "drawertype_wood" : "Cassetto in legno",
+        "drawertype_metallic" : "Spondine metalliche",
+        "next" : "Avanti"
+    }
+}

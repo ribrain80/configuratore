@@ -8,5 +8,6 @@ return [
     "drawertype" => "Tipologia cassetto",
     "drawertype_box" => "LineaBox",
     "drawertype_wood" => "Cassetto Legno",
-    "drawertype_metallic" => "Spondine metalliche"
+    "drawertype_metallic" => "Spondine metalliche",
+    "next" => "Avanti"
 ];
