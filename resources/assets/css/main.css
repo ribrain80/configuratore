@@ -1,7 +1,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 div {
@@ -15,4 +15,17 @@ div {
 
 .bg-success { 
 	background-color: #dff0d8!important;
+}
+
+.languageselector li{
+	display: inline-block;
+}
+
+.languageselector li a.active{
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.languageselector li+li:before{
+	content: " | ";
 }

@@ -8,10 +8,15 @@
 		<script src="{{ asset('js/app.js') }}"></script>
 		<script>
 			var lang = new Lang();
-			lang.dynamic('en', '{{ asset("js/lang/en.json") }}');
+			//TODO: USARE UN VETTORE DI INIZIALIZZAZIONE
+            @foreach(config("languages") as $isoCode=>$langName)
+            	@if($isoCode!="it")
+            		lang.dynamic('{{$isoCode}}', '{{ asset("js/lang/en.json") }}');
+            	@endif
+            @endforeach
 			lang.init({
 			    defaultLang: 'it',
-			    currentLang: 'it'
+                allowCookieOverride: true
 			});
 		</script>
 		@yield( "page-related-js" )
@@ -19,11 +24,19 @@
 	<body>
 		<div class="container">
 			<h3 lang="it">Benvenuti nel configuratore</h3>
-			<div>
-			<a href="#en" onclick="window.lang.change('en'); return false;">English</a> | <a href="#it" onclick="window.lang.change('it'); return false;">Italiano</a>
-			</div>
+			@include('shared.languageselector')
 			@yield( "content" )
 		</div>
-		
+		<script>
+			//TODO: METTERE BENE STA ROBBA dentro un file
+            $( document ).ready(function() {
+               $('.langlink').on('click',function (e) {
+                   $('li a.active').removeClass('active');
+                   $(this).addClass("active");
+				   window.lang.change($(this).data("langcode"))
+				   e.preventDefault();
+               })
+            });
+		</script>
 	</body>
 </html>
