@@ -25,6 +25,9 @@ elixir(function(mix) {
 
     mix.webpack('app.js');
 
+    mix.copy('./resources/assets/js/lang/**', 'public/js/lang' );
+    mix.copy('./resources/assets/js/split/**', 'public/js/split' );
+
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
