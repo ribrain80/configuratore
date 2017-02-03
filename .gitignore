@@ -6,6 +6,6 @@
 /resources/assets/bower
 /public/build/*
 /storage/*
-/public/css/
-/public/fonts/
-/public/js/
+/public/css/*
+/public/fonts/*
+/public/js/*
