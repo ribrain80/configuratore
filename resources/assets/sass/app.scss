@@ -6,4 +6,47 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "bootstrap";
+
+
+//App Specific css
+@mixin inline-block() {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+div {
+  padding: 3px;
+  margin: 2px;
+}
+
+.panel {
+  cursor: pointer;
+}
+
+.bg-success {
+  background-color: #dff0d8!important;
+}
+
+.languageselector li {
+  display: inline-block;
+}
+
+.languageselector li+li:before {
+  content: " | "
+}
+
+.languageselector li a.active{
+  font-weight: bolder;
+  text-decoration: underline;
+}
+

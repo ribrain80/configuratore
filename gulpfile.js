@@ -14,24 +14,19 @@ const elixir = require('laravel-elixir');
  */
 
 
-elixir((mix) => {
+var paths = {
+    'jquery': './vendor/bower_components/jquery/',
+    'bootstrap': './vendor/bower_components/bootstrap-sass-official/assets/',
+    'lang': './vendor/bower_components/jquery-lang-js/js/'
+}
 
-    /*mix.sass('app.scss')
-       .webpack('app.js');*/
-
-	mix.scripts([
-	    './resources/assets/bower/jquery/dist/jquery.js',
-	    './resources/assets/bower/jquery-lang-js/js/jquery-lang.js',
-	    './resources/assets/bower/js-cookie/src/js.cookie.js',
-	    './resources/assets/bower/bootstrap/dist/js/bootstrap.js',
-	    './resources/assets/bower/two.js/build/two.min.js'
-	], 'public/js/vendor.js' ).version('js/vendor.js');
-
-	mix.scripts('./resources/assets/js/lang/en.json', 'public/js/lang/en.json' );
-	mix.scripts('./resources/assets/js/split/step1.js', 'public/js/split/step1.js' );
-
-	mix.styles([
-        'main.css'
-    ]).version( 'css/all.css');
-
+elixir(function(mix) {
+    mix.sass("app.scss", 'public/css/', {includePaths: [paths.bootstrap + 'stylesheets/']})
+        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
+        .scripts([
+            paths.jquery + "dist/jquery.js",
+            paths.bootstrap + "javascripts/bootstrap.js",
+            paths.lang + "js.cookie.js",
+            paths.lang + "jquery-lang.js"
+        ], 'public/js/app.js', './');
 });
