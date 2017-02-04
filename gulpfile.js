@@ -31,8 +31,8 @@ elixir(function(mix) {
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
-            paths.jquery + "dist/jquery.js",
-            paths.bootstrap + "javascripts/bootstrap.js",
+            //paths.jquery + "dist/jquery.js",
+            //paths.bootstrap + "javascripts/bootstrap.js",
             paths.lang + "js.cookie.js",
             paths.lang + "jquery-lang.js",
             paths.two + "two.js"
