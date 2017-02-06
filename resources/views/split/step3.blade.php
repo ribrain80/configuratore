@@ -5,7 +5,7 @@
 	<h2 lang="it">Dimensioni cassetto</h2>
 	
 	<form action='{{ route( "split.step4" ) }}' method="POST" v-on:submit.prevent="checkChoice" id="drawertypes">
-		
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 		<div class="row" id="drawer_dimensions">
 			<div class="col-lg-8"> 
 				<div class="row">
