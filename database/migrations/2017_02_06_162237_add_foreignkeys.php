@@ -40,6 +40,21 @@ class AddForeignkeys extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('drawerbridge', function($table) {
+            $table->dropForeign('drawerbridge_drawer_foreign');
+            $table->dropForeign('drawerbridge_bridge_foreign');
+            $table->dropForeign('drawerbridge_color_foreign');
+        });
+
+        Schema::table('drawerdivider', function($table) {
+            $table->dropForeign('drawerdivider_drawer_foreign');
+            $table->dropForeign('drawerdivider_divider_foreign');
+            $table->dropForeign('drawerdivider_color_foreign');
+        });
+
+        Schema::table('drawers', function($table) {
+            $table->dropForeign('drawers_drawertypes_id_foreign');
+            $table->dropForeign('drawers_edgecolor_foreign');
+        });
     }
 }
