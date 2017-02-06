@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $height
  * @property string $created_at
  * @property string $updated_at
- * @property Drawerdivider[] $drawerdividers
+ * @property Drawerbridge[] $drawerbridges
  */
-class Divider extends Model
+class Bridge extends Model
 {
     /**
      * @var array
@@ -23,8 +23,8 @@ class Divider extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function drawerdividers()
+    public function drawerbridges()
     {
-        return $this->hasMany('App\Drawerdivider', 'divider');
+        return $this->hasMany('App\Drawerbridge', 'bridge');
     }
 }
