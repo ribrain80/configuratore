@@ -35,7 +35,6 @@ class CreateDrawersTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('drawertypes_id');
         Schema::dropIfExists('drawers');
     }
 }
