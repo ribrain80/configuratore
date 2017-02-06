@@ -17,12 +17,9 @@ class CreateDrawerbridgeTable extends Migration
             $table->increments('id');
             $table->integer('drawer')->unsigned();
             $table->integer('bridge')->unsigned();
-            $table->integer('x');
-            $table->integer('y');
-            $table->timestamps();
-
-            $table->foreign('drawer')->references('id')->on('drawers');
-            $table->foreign('bridge')->references('id')->on('bridges');
+            $table->float('x');
+            $table->float('y');
+            $table->integer('color')->nullable()->unsigned();
         });
     }
 

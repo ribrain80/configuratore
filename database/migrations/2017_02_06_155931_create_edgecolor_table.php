@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDrawerdividerTable extends Migration
+class CreateEdgecolorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateDrawerdividerTable extends Migration
      */
     public function up()
     {
-        Schema::create('drawerdivider', function (Blueprint $table) {
+        Schema::create('edgecolor', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('drawer')->unsigned();
-            $table->integer('divider')->unsigned();
-            $table->float('x');
-            $table->float('y');
-            $table->integer('color')->nullable()->unsigned();
-
-
-
+            $table->string("name");
+            $table->string("hex");
+            $table->string("ral");
         });
     }
 
@@ -33,6 +28,6 @@ class CreateDrawerdividerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drawerdivider');
+        Schema::dropIfExists('edgecolor');
     }
 }

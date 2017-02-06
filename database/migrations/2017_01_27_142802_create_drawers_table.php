@@ -20,12 +20,11 @@ class CreateDrawersTable extends Migration
             $table->integer('height')->nullable();
             $table->integer('side_num')->nullable();
             $table->integer('drawertypes_id')->unsigned()->nullable();
+            $table->integer('edgecolor')->unsigned()->nullable();
             $table->timestamps();
         });
 
-       Schema::table('drawers', function($table) {
-            $table->foreign('drawertypes_id')->references('id')->on('drawertypes');
-       });        
+
     }
 
     /**
