@@ -44,7 +44,7 @@ class SplitController extends Controller
         
         $drawer = Drawer::find( $request->input('drawerID') );
         $drawerType = DrawerType::find( $request->input('typeID') );
-        $drawer->drawertypes()->associate( $drawerType );
+        $drawer->drawertype()->associate( $drawerType );
         $drawer->save();
         return view( 'split.step3', [ "locale" => $request->input('locale'), "drawerID" => $request->input('drawerID') ] );
     }    
