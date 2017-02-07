@@ -15,7 +15,8 @@ var step2 = new Vue({
         hor_line_rect: {},
         vert_text_rect: {},
         vert_line_rect: {},
-        drawer_text: {}
+        drawer_text: {},
+        board_text: {}
     },
 
     methods: {
@@ -56,7 +57,7 @@ var step2 = new Vue({
             this.vert_text_rect.rotation = Math.PI/2;
 
             // # Rectangle ( Shoulder )
-            this.shoulder = this.two.makeRectangle(100,  220, 100, 30);
+            this.shoulder = this.two.makeRectangle(70, 200, 100, 30);
             this.shoulder.linewidth = 2;
             this.shoulder.stroke = '#999999';
 
@@ -85,7 +86,7 @@ var step2 = new Vue({
             this.hor_line_rect.stroke = '#222';
 
             // # Width text ( drawer )
-            this.hor_text_rect = this.two.makeText( parseInt( this.width ), this.hor_line_rect.getBoundingClientRect().width/2 + 15, 15, 'normal' );
+            this.hor_text_rect = this.two.makeText( parseInt( this.width ) + " cm", this.hor_line_rect.getBoundingClientRect().width/2 + 15, 15, 'normal' );
             this.hor_text_rect.size = 12;
             this.hor_text_rect.stroke = "#222";
             this.hor_text_rect.family = "Raleway";
