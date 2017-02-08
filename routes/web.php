@@ -53,4 +53,6 @@ Route::group(['prefix' => 'split'], function () {
 	Route::get('step4', array( 'as' => 'split.step4' ), function ( ) {
 	    return view('split.step4');
 	});
+
+    Route::get('pdf', array( 'as' => 'split.pdf', 'uses' => 'PDFController@out' ) );
 });
