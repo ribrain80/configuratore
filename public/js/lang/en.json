@@ -12,6 +12,9 @@
         "Avanti" : "Next",
         "Attenzione!": "Warning!",
         "E' necessario selezionare una tipologia di cassetto": "You must choose a ddrawer type",
-        "Dimensioni cassetto": "Drawer dimensions"
+        "Dimensioni cassetto": "Drawer dimensions",
+        "Profondità interna cassetto": "Length",
+        "Larghezza interna cassetto": "Width",
+        "Altezza interna sponda:": "Height"
     }
 }

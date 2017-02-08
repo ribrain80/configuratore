@@ -1,13 +1,16 @@
-
 var step2 = new Vue({
 
     el: '#drawer_dimensions',
 
     data: {
 
+        canvas_width: 0,
+        canvas_height: 0,
+
         length: 100,
         width: 100,
         depth: 10,
+
         two: {},
         shouder: {},
         rect: {},
@@ -26,17 +29,18 @@ var step2 = new Vue({
             // # Canvas element
             var elem = document.getElementById('animation');
 
+
             // # TWO Instance
             this.two = new Two({ width: 300, height: 300, autostart: true }).appendTo(elem);
 
             // # Rectangle ( drawer )
-            this.rect = this.two.makeRectangle(50, 100, 100, 100);
+            this.rect = this.two.makeRectangle( 50, 100, 100, 100 );
             this.rect.linewidth = 7;
             this.rect.stroke = '#999999';
             this.rect.translation.x += 20;
 
             // # Width line ( drawer )
-            this.hor_line_rect = this.two.makeLine(18, 30, 120, 30);
+            this.hor_line_rect = this.two.makeLine( 18, 30, 120, 30 );
             this.hor_line_rect.stroke = '#222';
 
             // # Width text ( drawer )
@@ -92,6 +96,7 @@ var step2 = new Vue({
             this.hor_text_rect.family = "Raleway";
 
             var rect_rightmost = this.rect.getBoundingClientRect().left + this.rect.getBoundingClientRect().width + 20;
+            var rect_bottomomost = this.rect.getBoundingClientRect().bottom + 20;
 
             // # Length line ( drawer )
             this.vert_line_rect = this.two.makeLine(rect_rightmost, 50, rect_rightmost, 150);
@@ -108,11 +113,16 @@ var step2 = new Vue({
             this.drawer_text.size = 12;
             this.drawer_text.stroke = "#222";
             this.drawer_text.family = "Raleway";
+
+            this.updateShoulder();
         },
 
         updateShoulder: function() {
+
+            var rect_bottomomost = this.rect.getBoundingClientRect().bottom + 20;
+
             this.two.remove( this.shoulder );
-            this.shoulder = this.two.makeRectangle(100, 220, this.length, this.depth);
+            this.shoulder = this.two.makeRectangle(this.rect.getBoundingClientRect().left + ( this.rect.getBoundingClientRect().width/2 ), rect_bottomomost + ( parseInt( this.depth ) ) / 2, this.length, this.depth);
             this.shoulder.linewidth = 2;
             this.shoulder.stroke = '#999999';
 
@@ -121,7 +131,18 @@ var step2 = new Vue({
     },
 
     mounted() {
+        var elem = document.getElementById('animation');
+        console.log( "ready");
+        console.log( $( elem ).height() );
         this.inittwo()
     }
 
 });
+
+/*
+ window.onload = function() {
+ console.log( "win load");
+ var elem = document.getElementById('animation');
+ console.log( $( elem ).height() );
+ }
+ */
