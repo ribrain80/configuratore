@@ -23,10 +23,13 @@
 	<body>
 		<div class="container">
 			<h3 lang="it">Benvenuti nel configuratore</h3>
-			@include('shared.languageselector')
+			<languageselector></languageselector>
 			@yield( "content" )
 		</div>
 		<script>
+            const languageselector = new Vue({
+                el: '.container'
+            });
 			//TODO: METTERE BENE STA ROBBA dentro un file
             $( document ).ready(function() {
                $('.langlink').on('click',function (e) {
@@ -35,6 +38,7 @@
 				   window.lang.change($(this).data("langcode"))
 				   e.preventDefault();
                })
+
             });
 		</script>
 	</body>

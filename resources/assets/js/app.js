@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 
+Vue.component('languageselector', require('./components/languageselector.vue'));
