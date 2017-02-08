@@ -23,12 +23,13 @@
 	<body>
 		<div class="container">
 			<h3 lang="it">Benvenuti nel configuratore</h3>
-			<languageselector></languageselector>
+			<div id="languages"><languageselector></languageselector></div>
+
 			@yield( "content" )
 		</div>
 		<script>
             const languageselector = new Vue({
-                el: '.container'
+                el: '#languages'
             });
 			//TODO: METTERE BENE STA ROBBA dentro un file
             $( document ).ready(function() {
