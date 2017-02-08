@@ -9,6 +9,7 @@
         "drawertype_box" : "LineaBox",
         "drawertype_wood" : "Cassetto in legno",
         "drawertype_metallic" : "Spondine metalliche",
-        "next" : "Avanti"
+        "next" : "Avanti",
+
     }
 }
