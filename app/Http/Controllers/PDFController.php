@@ -24,7 +24,7 @@ class PDFController extends Controller
         $pdf = new \FPDI();
 
         // get the page count
-        $pageCount = $pdf->setSourceFile( base_path() . '/resources/pdf/Split_flusso.pdf');
+        $pageCount = $pdf->setSourceFile( resource_path('pdf/Split_flusso.pdf') );
         $style4 = array('L' => 0,
                 'T' => array('width' => 0.25, 'cap' => 'butt', 'join' => 'miter', 'dash' => '20,10', 'phase' => 10, 'color' => array(255, 255, 255)),
                 'R' => array('width' => 0.50, 'cap' => 'round', 'join' => 'miter', 'dash' => 0, 'color' => array(255, 255, 255)),
