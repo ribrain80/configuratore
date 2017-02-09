@@ -1,6 +1,7 @@
 <template>
     <ul class="languageselector">
-        <li><a class="langlink" href="#_" data-langcode="it">Italiano</a></li>
-        <li><a class="langlink" href="#_" data-langcode="en">English</a></li>
+        <li v-for="language in $parent.languages">
+            <a v-bind:class="{ active: (language.code==$parent.activeLanguage) }" class="langlink" href="#_" @click="$parent.changeLanguage(language.code)"> {{ language.label }} </a>
+        </li>
     </ul>
 </template>
