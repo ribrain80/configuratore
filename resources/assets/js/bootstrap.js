@@ -18,6 +18,9 @@ require('bootstrap-sass');
 
 window.Vue = require('vue');
 require('vue-resource');
+window.VueCookie = require('vue-cookie');
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of

@@ -34,5 +34,6 @@ var languageselector = new Vue({
     },
     mounted() {
         this.initlang();
+        this.activeLanguage=this.$cookie.get('langCookie');;
     }
 });
