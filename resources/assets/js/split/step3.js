@@ -4,7 +4,10 @@ var step2 = new Vue({
 
     data: {
 
+        // # Container element
         container: {},
+
+        // # Config vars
         config: {
             rect_stroke: '#999999',
             rect_linewidth: 7,
@@ -15,31 +18,43 @@ var step2 = new Vue({
             font_weight: 'normal',
             drawer_text: 'Cassetto',
             shoulder_stroke: '#999999',
-            shoulder_linewidth: 7
+            shoulder_linewidth: 7,
+            shoulder_text: "Sponda"
         },
 
+        // # Container dimensions
         canvas_width: 0,
         canvas_height: 0,
 
+        // # Data bound
         length: 100,
         width: 100,
-        depth: 10,
+        depth: 20,
 
+        // # Two instance
         two: {},
-        shouder: {},
+        
+        // # Rect objects
         rect: {},
-        hor_text_rect: "",
         hor_line_rect: {},
+        hor_text_rect: "",
         vert_text_rect: {},
         vert_line_rect: {},
         drawer_text: {},
-        board_text: {}
+
+        // # Shoulder objects
+        shoulder: {},
+        hor_line_shoulder: {},
+        hor_text_shoulder: "",
+        vert_text_shoulder: {},
+        vert_line_shoulder: {},
+        shoulder_text: {}
     },
 
     methods: {
 
         /**
-         * Inits the two object container and every shape needed in its initial state
+         * Inits the Two object container and every shape needed in its initial state
          * @return {[void]}
          */
         inittwo: function () {
@@ -54,19 +69,125 @@ var step2 = new Vue({
             this.makeRectWidthInfoLine( 18, 30, 120, 30 );
 
             // # Width text ( drawer )
-            this.makeRectWidthInfoText( "100", 70, 15 );
+            this.makeRectWidthInfoText( 70, 15 );
 
             // # Length line ( drawer )
             this.makeRectLengthInfoLine( 140, 50, 140, 150 );
 
             // # Length text ( drawer )
-            this.makeRectLengthInfoText( "100", 160, 100 );
+            this.makeRectLengthInfoText( 160, 100 );
+
+            // # Drawer label
+            this.makeDrawerLabel( 70, 100 );
 
             // # Rectangle ( Shoulder )
             this.makeShoulder( 70, 200, 100, 30 );
 
-            // # Drawer label
-            this.makeDrawerLabel( 70, 100 );
+            // # Width line ( shoulder )
+            this.makeShoulderWidthInfoLine( 17, 230, 124, 230 );
+
+            // # Width text ( shoulder )
+            this.makeShoulderWidthInfoText( 75, 240 );
+
+            // # Length line ( shoulder )
+            this.makeShoulderLengthInfoLine( 140, 180, 140, 217 );
+
+            // # Length text ( shoulder )
+            this.makeShoulderLengthInfoText( 160, 200 );            
+
+            // # Shoulder label
+            this.makeShoulderLabel( 70, 200 );
+        },
+
+        /**
+         * [makeShoulderWidthInfoLine description]
+         * @param  {[type]} x1 [description]
+         * @param  {[type]} y1 [description]
+         * @param  {[type]} x2 [description]
+         * @param  {[type]} y2 [description]
+         * @return {[type]}    [description]
+         */
+        makeShoulderWidthInfoLine: function( x1, y1, x2, y2 ) {
+
+            this.hor_line_shoulder = this.two.makeLine( x1, 
+                                                        y1, 
+                                                        x2, 
+                                                        y2 ).stroke = this.config.line_stroke;  
+        },
+
+        /**
+         * [makeShoulderWidthInfoText description]
+         * @param  {[type]} x [description]
+         * @param  {[type]} y [description]
+         * @return {[type]}   [description]
+         */
+        makeShoulderWidthInfoText: function( x, y ) {
+
+            this.hor_text_shoulder = this.two.makeText( this.length + " cm", 
+                                                        x, 
+                                                        y, 
+                                                        this.config.font_weight );
+
+            this.hor_text_shoulder.size = this.config.font_size;
+            this.hor_text_shoulder.stroke = this.config.text_stroke;
+            this.hor_text_shoulder.family = this.config.font_family; 
+        },
+
+        /**
+         * [makeShoulderLengthInfoLine description]
+         * @param  {[type]} x1 [description]
+         * @param  {[type]} y1 [description]
+         * @param  {[type]} x2 [description]
+         * @param  {[type]} y2 [description]
+         * @return {[type]}    [description]
+         */
+        makeShoulderLengthInfoLine: function( x1, y1, x2, y2 ) {
+
+            // # Length line ( drawer )
+            this.vert_line_shoulder = this.two.makeLine( x1, 
+                                                         y1, 
+                                                         x2, 
+                                                         y2 );
+
+            this.vert_line_shoulder.stroke = this.config.line_stroke;
+        },
+
+        /**
+         * [makeShoulderLengthInfoText description]
+         * @param  {[type]} x [description]
+         * @param  {[type]} y [description]
+         * @return {[type]}   [description]
+         */
+        makeShoulderLengthInfoText: function( x, y ) {
+
+            // # Length text ( drawer )
+            this.vert_text_shoulder = this.two.makeText( this.depth + " cm", 
+                                                         x, 
+                                                         y,
+                                                         this.config.font_weight );
+
+            this.vert_text_shoulder.size = this.config.font_size;
+            this.vert_text_shoulder.stroke = this.config.text_stroke;
+            this.vert_text_shoulder.family = this.config.font_family;
+            this.vert_text_shoulder.rotation = Math.PI/2;
+        },     
+
+        /**
+         * [makeShoulderLabel description]
+         * @param  {[type]} x [description]
+         * @param  {[type]} y [description]
+         * @return {[type]}   [description]
+         */
+        makeShoulderLabel: function( x, y ) {
+
+            this.shoulder_text = this.two.makeText( this.config.shoulder_text,
+                                                    x, 
+                                                    y, 
+                                                    this.config.font_weight );
+
+            this.shoulder_text.size = this.config.font_size;
+            this.shoulder_text.stroke = this.config.text_stroke;
+            this.shoulder_text.family = this.config.font_family;
         },
 
         /**
@@ -108,15 +229,14 @@ var step2 = new Vue({
 
         /**
          * [makeRectWidthInfoText description]
-         * @param  {[type]} text [description]
-         * @param  {[type]} x    [description]
-         * @param  {[type]} y    [description]
-         * @return {[type]}      [description]
+         * @param  {[type]} x [description]
+         * @param  {[type]} y [description]
+         * @return {[type]}   [description]
          */
-        makeRectWidthInfoText: function( text, x, y ) {
+        makeRectWidthInfoText: function( x, y ) {
            
             // # Width text ( drawer )
-            this.hor_text_rect = this.two.makeText( text + " cm", x, y, this.config.font_weight );
+            this.hor_text_rect = this.two.makeText( this.width + " cm", x, y, this.config.font_weight );
             this.hor_text_rect.size = this.config.font_size;
             this.hor_text_rect.stroke = this.config.text_stroke;
             this.hor_text_rect.family = this.config.font_family; 
@@ -139,15 +259,14 @@ var step2 = new Vue({
 
         /**
          * [makeRectLengthInfoText description]
-         * @param  {[type]} text [description]
-         * @param  {[type]} x    [description]
-         * @param  {[type]} y    [description]
-         * @return {[type]}      [description]
+         * @param  {[type]} x [description]
+         * @param  {[type]} y [description]
+         * @return {[type]}   [description]
          */
-        makeRectLengthInfoText: function( text, x, y ) {
+        makeRectLengthInfoText: function( x, y ) {
             
             // # Length text ( drawer )
-            this.vert_text_rect = this.two.makeText( text + " cm", x, y, this.config.font_weight );
+            this.vert_text_rect = this.two.makeText( this.length + " cm", x, y, this.config.font_weight );
             this.vert_text_rect.size = this.config.font_size;
             this.vert_text_rect.stroke = this.config.text_stroke;
             this.vert_text_rect.family = this.config.font_family;
@@ -156,7 +275,7 @@ var step2 = new Vue({
 
         /**
          * [makeShoulder description]
-         * @param  {[type]} x      [description]
+         * @param  {[type]} x      [jdej3io]
          * @param  {[type]} y      [description]
          * @param  {[type]} width  [description]
          * @param  {[type]} length [description]
@@ -184,13 +303,13 @@ var step2 = new Vue({
         },
 
         /**
-         * [updateDrawer description]
-         * @return {[type]} [description]
+         * Updates Drawer related objects on data change
+         * @return {[void]}
          */
         updateDrawer: function() {
 
-            // Remove to redraw
-            this.two.remove( [ this.rect, this.hor_line_rect, this.hor_text_rect, this.drawer_text, this.vert_line_rect, this.vert_text_rect ] );
+            // # Remove to redraw
+            this.two.clear();
 
             // # Drawer
             this.makeRect( this.width / 2, 100, this.width, this.length, 20, 50 + parseInt( this.length ) / 2 );
@@ -223,13 +342,13 @@ var step2 = new Vue({
             this.makeRectWidthInfoLine( rect_leftmost, 30, rect_rightmost, 30 );
 
             // # Width text ( drawer )
-            this.makeRectWidthInfoText( this.width, ( rect_width / 2 ) + rect_leftmost, 15 );
+            this.makeRectWidthInfoText( ( rect_width / 2 ) + rect_leftmost, 15 );
 
             // # Length line ( drawer )
             this.makeRectLengthInfoLine( rect_rightmost + 20, rect_topmost, rect_rightmost + 20, rect_bottomomost );
 
             // # Length text ( drawer )
-            this.makeRectLengthInfoText( this.length, rect_rightmost + 30,  ( rect_height / 2 ) + rect_topmost );
+            this.makeRectLengthInfoText( rect_rightmost + 30,  ( rect_height / 2 ) + rect_topmost );
 
             // # Drawer label text
             this.makeDrawerLabel( rect_width/2 + rect_leftmost, rect_height/2 + rect_topmost );
@@ -239,23 +358,67 @@ var step2 = new Vue({
         },
 
         /**
-         * [updateShoulder description]
-         * @param  {[type]} rect_bounding_client_rect [description]
-         * @return {[type]}                           [description]
+         * Updates Shoulder objects on data change
+         * @return {[type]} [description]
          */
-        updateShoulder: function(  ) {
+        updateShoulder: function() {
+
+            // # Remove to redraw
+            this.two.remove( [ this.shoulder, this.vert_text_shoulder, 
+                               this.vert_line_shoulder, this.hor_text_shoulder, 
+                               this.hor_line_shoulder, this.shoulder_text ]);
 
             var rect_bounding_client_rect = this.rect.getBoundingClientRect();
 
-            // # Remove before redraw
-            this.two.remove( this.shoulder );
-
-            console.log( rect_bounding_client_rect.left + parseInt( this.length ) );
             // # Shoulder redraw                
-            this.makeShoulder(  rect_bounding_client_rect.left + ( parseInt( this.length ) / 2 ) - 7, 
+            this.makeShoulder(  rect_bounding_client_rect.left + ( parseInt( this.length ) / 2 ) + 5, 
                                 rect_bounding_client_rect.bottom + 40 + ( parseInt( this.depth ) ) / 2, 
                                 this.length, 
                                 this.depth);
+
+            // # Get drawer dimensions
+            var shoulder_bounding_client_rect = this.shoulder.getBoundingClientRect();
+
+            // # Rightmost point
+            var shoulder_rightmost = shoulder_bounding_client_rect.right;
+
+            // # Topmost point
+            var shoulder_topmost = shoulder_bounding_client_rect.top;
+
+            // # Bottommost point
+            var shoulder_bottomomost = shoulder_bounding_client_rect.bottom;
+
+            // # Bottommost point
+            var shoulder_leftmost = shoulder_bounding_client_rect.left;
+
+            // # Drawer current width
+            var shoulder_width = shoulder_bounding_client_rect.width;
+
+            // # Drawer current height
+            var shoulder_height = shoulder_bounding_client_rect.height;
+
+            // # Width line ( shoulder )
+            this.makeShoulderWidthInfoLine( shoulder_leftmost, 
+                                            shoulder_bottomomost + 20, 
+                                            shoulder_rightmost,
+                                            shoulder_bottomomost + 20 );
+
+            // # Width text ( shoulder )
+            this.makeShoulderWidthInfoText( shoulder_width/2 + 20,
+                                            shoulder_bottomomost + 30 );
+
+            // # Length line ( shoulder )
+            this.makeShoulderLengthInfoLine( shoulder_rightmost + 10, 
+                                             shoulder_topmost, 
+                                             shoulder_rightmost + 10, 
+                                             shoulder_bottomomost );
+
+            // # Length text ( shoulder )
+            this.makeShoulderLengthInfoText( shoulder_rightmost + 30, 
+                                           ( shoulder_height / 2 ) + shoulder_topmost  );            
+
+            // # Shoulder label
+            this.makeShoulderLabel(  shoulder_width/2 + shoulder_leftmost, shoulder_height/2 + shoulder_topmost );
 
         },
 

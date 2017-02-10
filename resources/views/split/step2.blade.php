@@ -5,13 +5,11 @@
 	<h2 lang="it">Tipologia di cassetto</h2>
 
 	<form action='{{ route( "split.step3" ) }}' method="POST" v-on:submit.prevent="checkChoice" id="drawertypes">
-		
 		<div class="row" v-show="showAlert">
 			<div class="col-lg-12 alert alert-warning alert-dismissible fade in" id="alert" lang="it">
 				<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> E' necessario selezionare una tipologia di cassetto 
 			</div>
 		</div>
-
 		<div class="row">
 			
 			@foreach( $drawerTypes as $type ) 

@@ -35,4 +35,5 @@ elixir(function(mix) {
             paths.lang + "jquery-lang.js",
             paths.two + "two.js"
         ], 'public/js/vendor.js', './');
+
 });
