@@ -110,6 +110,10 @@ var Step3 = new Vue({
             this.makeShoulderLabel( 70, 200 );
         },
 
+        /**
+         * [widthOutOfRange description]
+         * @return {[type]} [description]
+         */
         widthOutOfRange: function() {
       
             if( parseInt( this.width ) > 200 ) {
@@ -122,6 +126,10 @@ var Step3 = new Vue({
             return false;
         },
 
+        /**
+         * [lengthOutOfRange description]
+         * @return {[type]} [description]
+         */
         lengthOutOfRange: function() {
       
             if( parseInt( this.length ) > 200 ) {
@@ -134,6 +142,10 @@ var Step3 = new Vue({
             return false;
         },
 
+        /**
+         * [depthOutOfRange description]
+         * @return {[type]} [description]
+         */
         depthOutOfRange: function() {
       
             if( parseInt( this.depth ) > 40 ) {
@@ -144,7 +156,24 @@ var Step3 = new Vue({
             
             this.depthOOR = false;
             return false;
-        },                
+        },    
+
+        /**
+         * [checkChoice description]
+         * @return {[type]} [description]
+         */
+        checkChoice: function() {
+
+            if( !this.width || !this.length || !this.depth ) {
+                this.showAlert = true;
+                this.alert_message = "Tutti i campi devono essere compilati";
+                this.two.clear();
+                return false;
+            }
+
+            this.showAlert = false;
+            document.forms[ 0 ].submit();
+        },         
 
         /**
          * [makeShoulderWidthInfoLine description]
@@ -357,12 +386,14 @@ var Step3 = new Vue({
          */
         updateDrawer: function() {
 
+            // # Clean up if any previous error stills
+            this.showAlert = false;
+
+            // # Check Out of Bound
             if( this.widthOutOfRange() || this.lengthOutOfRange() || this.depthOutOfRange() ) {
                  this.showAlert = true;
                  return false;
             }
-
-            this.showAlert = false;
 
             // # Remove to redraw
             this.two.clear();
