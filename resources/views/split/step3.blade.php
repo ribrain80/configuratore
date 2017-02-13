@@ -4,14 +4,20 @@
 
 	<h2 lang="it">Dimensioni cassetto</h2>
 	
-	<form action='{{ route( "split.step4" ) }}' method="POST" @submit.prevent="checkChoice" id="drawertypes">
+	<form action='{{ route( "split.step4" ) }}' method="POST" @submit.prevent="checkChoice" id="drawer_dimensions">
 		
-		<div class="row" id="drawer_dimensions">
+		<div class="row" v-show="showAlert">
+			<div class="col-lg-12 alert alert-danger alert-dismissible fade in" id="alert" lang="it">
+				<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Attenzione!</strong> @{{ alert_message }} 
+			</div>
+		</div>
+
+		<div class="row">
 
 			<div class="col-lg-4"> 
 				<div class="row">
 
-					<div class="input-group input-group-md col-lg-12">
+					<div class="input-group input-group-md col-lg-12" v-bind:class="{ 'has-error': widthOOR }">
 					  <span class="input-group-addon" id="basic-addon3" lang="it">Larghezza interna cassetto</span>
 					  <input type="text" class="form-control" id="length" aria-describedby="basic-addon3" v-model="width" @keyup="updateDrawer" autocomplete="off">
 					</div>
@@ -20,7 +26,7 @@
 
 				<div class="row">
 
-					<div class="input-group input-group-md col-lg-12">
+					<div class="input-group input-group-md col-lg-12" v-bind:class="{ 'has-error': lengthOOR }">
 					  <span class="input-group-addon" id="basic-addon3" lang="it">Profondità interna cassetto</span>
 					  <input type="text" class="form-control" id="width" aria-describedby="basic-addon3" v-model="length" @keyup="updateDrawer" autocomplete="off">
 					</div>
@@ -29,9 +35,9 @@
 
 				<div class="row">
 
-					<div class="input-group input-group-md col-lg-12">
+					<div class="input-group input-group-md col-lg-12" v-bind:class="{ 'has-error': depthOOR }">
 					  <span class="input-group-addon" id="basic-addon3" lang="it">Altezza interna sponda</span>
-					  <input type="text" class="form-control" id="depth" aria-describedby="basic-addon3" v-model="depth" @keyup="updateShoulder" autocomplete="off">
+					  <input type="text" class="form-control" id="depth" aria-describedby="basic-addon3" v-model="depth" @keyup="updateDrawer" autocomplete="off">
 					</div>						
 
 				</div>
@@ -53,3 +59,4 @@
 
 	
 @endsection
+ 

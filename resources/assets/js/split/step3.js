@@ -1,4 +1,4 @@
-var step2 = new Vue({
+var Step3 = new Vue({
 
     el: '#drawer_dimensions',
 
@@ -31,6 +31,10 @@ var step2 = new Vue({
         width: 100,
         depth: 20,
 
+        widthOOR: false,
+        lengthOOR: false,
+        depthOOR: false, 
+
         // # Two instance
         two: {},
         
@@ -48,7 +52,11 @@ var step2 = new Vue({
         hor_text_shoulder: "",
         vert_text_shoulder: {},
         vert_line_shoulder: {},
-        shoulder_text: {}
+        shoulder_text: {},
+
+        // # Alert message
+        showAlert: false,
+        alert_message : ""
     },
 
     methods: {
@@ -58,6 +66,9 @@ var step2 = new Vue({
          * @return {[void]}
          */
         inittwo: function () {
+
+            // # Container init
+            this.container = document.getElementById('animation');
 
             // # TWO Instance
             this.two = new Two({ width: 300, height: 300, autostart: true }).appendTo( this.container );
@@ -99,6 +110,42 @@ var step2 = new Vue({
             this.makeShoulderLabel( 70, 200 );
         },
 
+        widthOutOfRange: function() {
+      
+            if( parseInt( this.width ) > 200 ) {
+                this.widthOOR = true;
+                this.alert_message = "La larghezza indicata supera il valore consentito";
+                return true;
+            }
+            
+            this.widthOOR = false;
+            return false;
+        },
+
+        lengthOutOfRange: function() {
+      
+            if( parseInt( this.length ) > 200 ) {
+                this.lengthOOR = true;
+                this.alert_message = "La lunghezza indicata supera il valore consentito";
+                return true;
+            }
+            
+            this.lengthOOR = false;
+            return false;
+        },
+
+        depthOutOfRange: function() {
+      
+            if( parseInt( this.depth ) > 40 ) {
+                this.depthOOR = true;
+                this.alert_message = "L'altezza indicata per la sponda supera il valore consentito";
+                return true;
+            }
+            
+            this.depthOOR = false;
+            return false;
+        },                
+
         /**
          * [makeShoulderWidthInfoLine description]
          * @param  {[type]} x1 [description]
@@ -112,7 +159,9 @@ var step2 = new Vue({
             this.hor_line_shoulder = this.two.makeLine( x1, 
                                                         y1, 
                                                         x2, 
-                                                        y2 ).stroke = this.config.line_stroke;  
+                                                        y2 );
+                                                        
+            this.hor_line_shoulder.stroke = this.config.line_stroke;  
         },
 
         /**
@@ -308,6 +357,13 @@ var step2 = new Vue({
          */
         updateDrawer: function() {
 
+            if( this.widthOutOfRange() || this.lengthOutOfRange() || this.depthOutOfRange() ) {
+                 this.showAlert = true;
+                 return false;
+            }
+
+            this.showAlert = false;
+
             // # Remove to redraw
             this.two.clear();
 
@@ -364,9 +420,10 @@ var step2 = new Vue({
         updateShoulder: function() {
 
             // # Remove to redraw
-            this.two.remove( [ this.shoulder, this.vert_text_shoulder, 
+            /*this.two.remove( [ this.shoulder, this.vert_text_shoulder, 
                                this.vert_line_shoulder, this.hor_text_shoulder, 
                                this.hor_line_shoulder, this.shoulder_text ]);
+                               */
 
             var rect_bounding_client_rect = this.rect.getBoundingClientRect();
 
@@ -425,11 +482,6 @@ var step2 = new Vue({
     },
 
     mounted() { // # Window onload eq
-
-        // # Canvas element init
-        this.container = document.getElementById('animation');
-        //console.log( "ready");
-        //console.log( $( elem ).height() );
         this.inittwo()
     }
 
