@@ -17,33 +17,20 @@
                         <span class="icon-bar">
                         </span>
                     </button>
-                    <a class="navbar-brand" href="#">
-                        Split
-                    </a>
+				      <a class="navbar-brand" href="#">
+				        <img alt="Brand" src="{{ asset('/images/salice.jpg') }}">
+				      </a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#">
-                                Settings
+                                Login
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Help
-                            </a>
-                        </li>
+                       
                     </ul>
-                    <form class="navbar-form navbar-right">
-                        <input class="form-control" placeholder="Search..." type="text">
-                        </input>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -80,9 +67,6 @@
                     </ul>
                 </div>
                 <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
-                    <h1 class="page-header" lang="it">
-                         Benvenuti nel configuratore
-                    </h1>
                     <div class="row placeholders">
                         <languageselector></languageselector>
                         <div class="row">

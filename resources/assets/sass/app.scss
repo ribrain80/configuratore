@@ -18,7 +18,7 @@
   *display: inline;
 }
 
-* {
+.navbar {
   border-radius: 0 !important;
 }
 
@@ -89,6 +89,11 @@ body {
   border: 0;
 }
 
+.navbar-brand {
+  padding: 3px 20px!important;
+}
+
+
 /*
  * Sidebar
  */
@@ -154,15 +159,16 @@ body {
  */
 
 .placeholders {
-  margin-bottom: 30px;
-  text-align: center;
 }
+
 .placeholders h4 {
   margin-bottom: 0;
 }
+
 .placeholder {
   margin-bottom: 20px;
 }
+
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
