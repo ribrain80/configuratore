@@ -21,17 +21,16 @@
 				        <img alt="Brand" src="{{ asset('/images/salice.jpg') }}">
 				      </a>
                 </div>
-                <div class="navbar-collapse collapse">
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">
-                                Login
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Scelta lingua <span class="caret"></span></a>
+                      <languageselector></languageselector>
+                    </li>                  
+                    <li><a href="#">Login</a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
             </div>
         </nav>
         <div class="container-fluid">
@@ -46,7 +45,7 @@
                 </div>
                 <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
                     <div class="row">
-                        <languageselector></languageselector>
+                        
                         <div class="row">
                             @yield( "content" )
                         </div>
