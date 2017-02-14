@@ -2,7 +2,7 @@
     <head>
         @include('shared.masterHead')
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".scrollspy" data-offset="70">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -21,7 +21,7 @@
 				        <img alt="Brand" src="{{ asset('/images/salice.jpg') }}">
 				      </a>
                 </div>
-                <div class="navbar-collapse collapse" id="navbar">
+                <div class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -36,38 +36,16 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-2 col-md-1 sidebar">
-
-                        <div class="row placeholders">
-           					 <div class="col-xs-6 col-sm-3 placeholder">
-	                            <a href="#">
-									<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="100" height="100" class="img-responsive" alt="Generic placeholder thumbnail">
-	                            </a>
-                            </div>
-                        </div>
-                        <div class="row placeholders">
-           					 <div class="col-xs-6 col-sm-3 placeholder">
-	                            <a href="#">
-									<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="100" height="100" class="img-responsive" alt="Generic placeholder thumbnail">
-	                                <span class="sr-only">
-	                                    (current)
-	                                </span>
-	                            </a>
-                            </div>
-                        </div>
-                        <div class="row placeholders">
-           					 <div class="col-xs-6 col-sm-3 placeholder">
-	                            <a href="#">
-									<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="100" height="100" class="img-responsive" alt="Generic placeholder thumbnail">
-
-	                            </a>
-                            </div>
-                        </div>
-
+                <div class="col-sm-2 col-md-1 scrollspy">
+                    <ul class="nav hidden-xs hidden-sm" data-spy="affix" id="nav">
+                        <li><a href="#step1">Step1</a></li>
+                        <li><a href="#step2">Step2</a></li>
+                        <li><a href="#step3">Step3</a></li>
+                        <li><a href="#step4">Step4</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
-                    <div class="row placeholders">
+                    <div class="row">
                         <languageselector></languageselector>
                         <div class="row">
                             @yield( "content" )
@@ -76,6 +54,17 @@
                 </div>
             </div>
         </div>
+        <script>
+
+        $( function() {
+            $('#nav').affix({
+                offset: {
+                    top: $('#nav').offset().top
+                }
+            });
+        });
+
+        </script>
         @include('shared.jsfooter')
     </body>
 </html>

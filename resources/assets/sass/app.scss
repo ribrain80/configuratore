@@ -18,9 +18,11 @@
   *display: inline;
 }
 
+/*
 .navbar {
   border-radius: 0 !important;
 }
+*/
 
 body {
   padding: 0;
@@ -59,121 +61,71 @@ div {
   height: 300px;
 }
 
+// # Scroll
 
-// SIDEBAR
-
-/*
- * Base structure
- */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+    margin-top: 50px;/* make room for the nav bar */
+    position: relative;
 }
 
+// # Scrollspy
 
-/*
- * Global add-ons
- */
-
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+.nav .active {
+  font-weight: bold;
+  background: #72bcd4;
 }
 
-/*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-.navbar-fixed-top {
-  border: 0;
-}
-
-.navbar-brand {
-  padding: 3px 20px!important;
-}
-
-
-/*
- * Sidebar
- */
-
-/* Hide for mobile, show later */
-.sidebar {
+.nav .nav {
   display: none;
 }
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-  }
+
+.nav .active .nav {
+  display: block;
 }
 
-/* Sidebar navigation */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
+.nav .nav a {
+  font-weight: normal;
+  font-size: .85em;
 }
 
+.nav .nav span {
+  margin: 0 5px 0 2px;
+}
+
+.nav .nav .active a,
+.nav .nav .active:hover a,
+.nav .nav .active:focus a {
+  font-weight: bold;
+  padding-left: 30px;
+  border-left: 5px solid black;
+}
+
+.nav .nav .active span,
+.nav .nav .active:hover span,
+.nav .nav .active:focus span {
+  display: none;
+}
+
+
+
+
+// # affix
 
 /*
- * Main content
- */
-
-.main {
-  padding: 20px;
+@media (min-width: 1200px) {
+  .affix {
+    width: 120px;
+  }         
 }
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
+
+.affix-bottom {
+  position: absolute;
+  width: 80px;
+}
+
+@media (min-width: 1200px) {
+  .affix-bottom {
+    width: 120px;
   }
 }
-.main .page-header {
-  margin-top: 0;
-}
-
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-}
-
-.placeholders h4 {
-  margin-bottom: 0;
-}
-
-.placeholder {
-  margin-bottom: 20px;
-}
-
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-
-
-// END SIDEBAR
-
+*/
