@@ -3,7 +3,8 @@ var step4 = new Vue({
     el: 'step4',
 
     data: {
-        dividers:[]
+        dividers:[],
+        selected:[]
     },
 
     methods: {
@@ -13,6 +14,9 @@ var step4 = new Vue({
             }, response => {
 
             });
+        },
+        pushDivider: function (id) {
+            this.selected.push(id);
         }
     },
 

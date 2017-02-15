@@ -31,4 +31,17 @@
         <script src="{{ asset('js/split/step4.js') }}"></script>
         @endpush
     </section>
+
+    <!--PORCHERIA -->
+    @push('jsfooter')
+    <script>
+        console.log(step2.selected);
+        var Configuration = {
+
+            data: {
+            }
+        };
+    </script>
+    @endpush
+
 @endsection

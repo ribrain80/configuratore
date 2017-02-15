@@ -1,12 +1,12 @@
 var splitcreate = new Vue({
     el: 'step2',
-    data: {
+    data: function() {return {
         drawerId:'',
         nextStepRoute:'',
         selected:'',
         hasError:false,
         types:[],
-    },
+    }},
 
     methods: {
 
