@@ -4,7 +4,7 @@
 <head>
     @include('shared.masterHead')
 </head>
-<body data-spy="scroll" data-target=".scrollspy"  data-offset="70px">
+<body data-spy="scroll" data-target=".scrollspy"  data-offset="70">
 <nav role="navigation" class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
