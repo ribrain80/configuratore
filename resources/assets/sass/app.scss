@@ -18,21 +18,28 @@
   *display: inline;
 }
 
-/*
+
 .navbar {
   border-radius: 0 !important;
 }
-*/
+
+.navbar-brand {
+    padding-top: 0px!important;
+    padding-right: 0px!important;
+    padding-bottom: 0px!important;
+    padding-left: 0px!important;
+    height: 60px!important;
+}
+
+.navbar-header div {
+  padding:0px!important;
+  margin: 0px!important;
+}
 
 body {
   padding: 0;
   margin: 0;
   font-size: 14px;
-}
-
-div {
-  padding: 3px;
-  margin: 2px;
 }
 
 .panel {
@@ -64,7 +71,7 @@ div {
 // # Scroll
 
 body {
-    margin-top: 50px;/* make room for the nav bar */
+    margin-top: 60px;/* make room for the nav bar */
     position: relative;
 }
 

@@ -17,9 +17,9 @@
                         <span class="icon-bar">
                         </span>
                     </button>
-				      <a class="navbar-brand" href="#">
-				        <img alt="Brand" src="{{ asset('/images/salice.jpg') }}">
-				      </a>
+		
+				    <img alt="Brand" class="navbar-brand" src="{{ asset('/images/salice.jpg') }}">
+
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
