@@ -1,4 +1,4 @@
-@extends( "split.master" )
+@extends( "split.master_old" )
 
 @section( "page-related-js" )
 	<script src="{{ asset('/js/split/step1.js') }}"></script>

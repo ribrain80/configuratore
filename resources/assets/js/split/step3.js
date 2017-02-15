@@ -1,6 +1,6 @@
 var Step3 = new Vue({
 
-    el: '#drawer_dimensions',
+    el: 'step3',
 
     data: {
 
@@ -513,6 +513,7 @@ var Step3 = new Vue({
     },
 
     mounted() { // # Window onload eq
+        console.log("Step3 mounted")
         this.inittwo()
     }
 

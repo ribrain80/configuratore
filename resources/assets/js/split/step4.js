@@ -1,6 +1,6 @@
-var step2 = new Vue({
+var step4 = new Vue({
 
-    el: '#drawer_dimensions',
+    el: 'step4',
 
     data: {
 
