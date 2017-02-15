@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Divider;
 use App\Drawer;
 use App\Drawertype;
 use Illuminate\Http\Request;
@@ -11,6 +12,11 @@ class ApiController extends Controller
     public function actionDrawersType() {
         return response()->json(Drawertype::all(['id','description'])->toArray());
     }
+
+    public function actionDividers() {
+        return response()->json(Divider::all(['id','width','lenght','height'])->toArray());
+    }
+
 
     /*
     public function actionListDrawer() {

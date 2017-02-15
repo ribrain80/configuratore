@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(DrawerTableSeeder::class);
         $this->call(DrawertypesTableSeeder::class);
+        $this->call(DividerSeeder::class);
     }
 }

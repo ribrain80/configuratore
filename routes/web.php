@@ -48,10 +48,14 @@ Route::group(['prefix' => 'split'], function () {
 
     //API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
+    Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
+
     //ONE PAGE
     Route::get('/onepage', ['as'=>'split.onepage','uses'=>function () {
         return view('split.onepage');
     }]);
+
+
     Route::get('/load',['as'=>'split.load','uses'=>function() {
         throw new \Symfony\Component\HttpKernel\Exception\HttpException('403','Non implementata');
     }]);
