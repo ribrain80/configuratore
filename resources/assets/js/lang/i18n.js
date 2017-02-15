@@ -9,7 +9,12 @@ var languageselector = new Vue({
         activeLanguage:'',
         languages:[
             {label:'Italiano ',code:'it'},
-            {label:'English ',code:'en'}
+            {label:'English ',code:'en'},
+            {label:'Español ',code:'es'},
+            {label:'Français ',code:'fr'},
+            {label:'Português ',code:'pt'},
+            {label:'Deutsch ',code:'de'},
+            {label:'中国 ',code:'zh'},
         ]
     },
     methods: {

@@ -4,7 +4,7 @@ var splitcreate = new Vue({
         drawerId:'',
         nextStepRoute:'',
         selected:'',
-        hasError:true,
+        hasError:false,
         types:[],
     },
 
