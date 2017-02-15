@@ -71,7 +71,7 @@ var Step3 = new Vue({
             this.container = document.getElementById('animation');
 
             // # TWO Instance
-            this.two = new Two({ width: 300, height: 300, autostart: true }).appendTo( this.container );
+            this.two = new Two({ autostart: true }).appendTo( this.container );
 
             // # Drawer
             this.makeRect( 50, 100, 100, 100, 20, 0 );

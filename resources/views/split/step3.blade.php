@@ -7,8 +7,8 @@
 	<form action='{{ route( "split.step4" ) }}' method="POST" @submit.prevent="checkChoice" id="drawer_dimensions">
 		
 		<div class="row" v-show="showAlert">
-			<div class="col-lg-12 alert alert-danger alert-dismissible fade in" id="alert" lang="it">
-				<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Attenzione!</strong> @{{ alert_message }} 
+			<div class="col-lg-12 alert alert-danger alert-dismissible fade in" id="alert">
+				<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione! @{{ alert_message }} </strong>
 			</div>
 		</div>
 

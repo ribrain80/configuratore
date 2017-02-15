@@ -10,11 +10,13 @@
         "Cassetto in legno" : "Wood drawer",
         "Spondine metalliche" : "Metallic",
         "Avanti" : "Next",
-        "Attenzione!": "Warning!",
-        "E' necessario selezionare una tipologia di cassetto": "You must choose a ddrawer type",
+        "E' necessario selezionare una tipologia di cassetto": "You must select a drawer type",
         "Dimensioni cassetto": "Drawer dimensions",
         "Profondità interna cassetto": "Length",
         "Larghezza interna cassetto": "Width",
-        "Altezza interna sponda": "Height"
+        "Altezza interna sponda": "Height",
+        "Attenzione! La larghezza indicata supera il valore consentito": "Warning: width out of allowed range",
+        "Attenzione! La lunghezza indicata supera il valore consentito": "Warning: length out of allowed range",
+        "Attenzione! L'altezza indicata per la sponda supera il valore consentito": "Warning: edge height out of allowed range"
     }
 }

@@ -50,10 +50,17 @@ body {
   background-color: #dff0d8!important;
 }
 
-// # Scroll
+.languageselector li {
+  display: inline-block;
+}
 
-body {
+.languageselector li+li:before {
+  content: "  | "
+}
 
+.languageselector li a.active{
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 
