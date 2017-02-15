@@ -1,15 +1,12 @@
-var splitcreate = new Vue({
+var step2 = new Vue({
     el: 'step2',
-    data: function() {return {
-        drawerId:'',
-        nextStepRoute:'',
-        selected:'',
+    data: {
+        selected:0,
         hasError:false,
         types:[],
-    }},
+    },
 
     methods: {
-
         initTypes: function () {
             this.$http.get('/split/drawerstypes').then(response => {
                 this.types=response.body;

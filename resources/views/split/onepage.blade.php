@@ -35,10 +35,16 @@
     <!--PORCHERIA -->
     @push('jsfooter')
     <script>
-        console.log(step2.selected);
         var Configuration = {
-
             data: {
+                drawertype:step2.selected,
+                dimensions: {
+                    width:step3.width,
+                    depth:step3.depth,
+                    length:step3.length
+                },
+                dividers:step4.selected,
+                bridges:[]
             }
         };
     </script>

@@ -1,4 +1,4 @@
-var Step3 = new Vue({
+var step3 = new Vue({
 
     el: 'step3',
 
