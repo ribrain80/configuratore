@@ -11,29 +11,20 @@
         </div>
     </section>
     <section>
-        <!-- STEP 2 -->
         <step2></step2>
-        @push('jsfooter')
-        <script src="{{ asset('js/split/step2.js') }}"></script>
-        @endpush
     </section>
     <section>
-        <!-- STEP 3 -->
         <step3></step3>
-        @push('jsfooter')
-        <script src="{{ asset('js/split/step3.js') }}"></script>
-        @endpush
     </section>
     <section>
-        <!-- STEP 3 -->
         <step4></step4>
-        @push('jsfooter')
-        <script src="{{ asset('js/split/step4.js') }}"></script>
-        @endpush
     </section>
 
     <!--PORCHERIA -->
     @push('jsfooter')
+    <script src="{{ asset('js/split/step2.js') }}"></script>
+    <script src="{{ asset('js/split/step3.js') }}"></script>
+    <script src="{{ asset('js/split/step4.js') }}"></script>
     <script>
         var Configuration = {
             data: {

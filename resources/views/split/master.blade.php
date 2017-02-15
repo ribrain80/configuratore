@@ -3,16 +3,13 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ elixir('js/vendor.js') }}"></script>
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
-    @yield( "page-related-js" )
 </head>
 
-<body data-spy="scroll" data-target=".scrollspy"  data-offset="70">
+<body data-spy="scroll" data-target=".scrollspy" data-offset="60">
 <nav role="navigation" class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,9 +57,12 @@
     <script src="{{asset('js/lang/i18n.js')}}"></script>
     @stack('jsfooter')
     <script>
+        var shiftWindow = function() { scrollBy(0, -$('body').data('offset')) };
+        if (location.hash) shiftWindow();
+        window.addEventListener("hashchange", shiftWindow);
         var h = document.body.clientHeight;
-        var hn = $('.navbar').outerHeight();
-        $('section').innerHeight(h-hn);
+        var hn = $('nav').outerHeight();
+        $('section').outerHeight(h-hn-30);
     </script>
 </body>
 </html>                                		
