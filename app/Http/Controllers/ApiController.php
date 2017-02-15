@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Divider;
-use App\Drawer;
 use App\Drawertype;
 use Illuminate\Http\Request;
 

@@ -24,4 +24,11 @@
         <script src="{{ asset('js/split/step3.js') }}"></script>
         @endpush
     </section>
+    <section>
+        <!-- STEP 3 -->
+        <step4></step4>
+        @push('jsfooter')
+        <script src="{{ asset('js/split/step4.js') }}"></script>
+        @endpush
+    </section>
 @endsection
