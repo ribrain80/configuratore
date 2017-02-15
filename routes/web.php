@@ -52,6 +52,9 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('/onepage', ['as'=>'split.onepage','uses'=>function () {
         return view('split.onepage');
     }]);
+    Route::get('/load',['as'=>'split.load','uses'=>function() {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException('403','Non implementata');
+    }]);
     Route::get('pdf', array( 'as' => 'split.pdf', 'uses' => 'PDFController@out' ) );
 
     //PAGES --DEPRECATED
