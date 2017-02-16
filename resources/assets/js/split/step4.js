@@ -8,6 +8,7 @@ var step4 = new Vue({
     },
 
     methods: {
+
         initDividers: function () {
             this.$http.get('/split/dividers').then(response => {
                 this.dividers=response.body;
@@ -15,8 +16,19 @@ var step4 = new Vue({
 
             });
         },
-        pushDivider: function (id) {
-            this.selected.push(id);
+        
+        pushDivider: function ( event ) {
+
+            var id = event.target.id;
+            var id_index = $.inArray( id, this.selected );
+
+            if(  id_index != -1 ) {
+                this.selected.splice( id_index, 1 );
+                return;
+            } 
+
+            this.selected.push( id );
+            console.log( this.selected );
         }
     },
 
