@@ -16,7 +16,7 @@ var step4 = new Vue({
 
             });
         },
-        
+
         pushDivider: function ( event ) {
 
             var id = event.target.id;
@@ -29,6 +29,13 @@ var step4 = new Vue({
 
             this.selected.push( id );
             console.log( this.selected );
+        }
+    },
+
+    watch: {
+        // whenever question changes, this function will run
+        selected: function (val) {
+            Configuration.dividers = val;
         }
     },
 

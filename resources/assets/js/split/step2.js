@@ -6,17 +6,24 @@ var step2 = new Vue({
         types:[],
     },
 
+    watch: {
+        // whenever question changes, this function will run
+        selected: function (val) {
+            Configuration.drawerstypes = val;
+        }
+    },
+
     methods: {
         initTypes: function () {
             this.$http.get('/split/drawerstypes').then(response => {
-                this.types=response.body;
+                this.types = response.body;
             }, response => {
                 this.hasError=true;
             });
         },
         setType: function (type) {
-            this.selected=type;
-            this.hasError=false;
+            this.selected = type;
+            this.hasError = false;
         }
     },
     mounted() {

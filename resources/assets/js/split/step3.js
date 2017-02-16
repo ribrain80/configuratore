@@ -512,6 +512,23 @@ var step3 = new Vue({
 
     },
 
+    watch: {
+
+        width: function (val) {
+            console.log( val );
+            Configuration.dimensions.width = val;
+        },
+
+        length: function (val) {
+            CConfiguration.dimensions.length = val;
+        },
+
+        depth: function (val) {
+            Configuration.dimensions.depth = val;
+        }
+
+    },
+
     mounted() { // # Window onload eq
         console.log("Step3 mounted")
         this.inittwo()

@@ -29,20 +29,7 @@
     <script src="{{ asset('js/split/step3.js') }}"></script>
     <script src="{{ asset('js/split/step4.js') }}"></script>
     <script src="{{ asset('js/split/step5.js') }}"></script>
-    <script>
-        var Configuration = {
-            data: {
-                drawertype:step2.selected,
-                dimensions: {
-                    width:step3.width,
-                    depth:step3.depth,
-                    length:step3.length
-                },
-                dividers:step4.selected,
-                bridges:[]
-            }
-        };
-    </script>
+    <script src="{{ asset('js/split/Configuration.js') }}"></script>
     @endpush
 
 @endsection
