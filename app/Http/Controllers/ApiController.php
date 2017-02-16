@@ -19,6 +19,8 @@ class ApiController extends Controller
     }
 
     public function actionSavedrawer(Request $request) {
+        return json_encode(['status'=>'ko','id'=>-1]);
+
         //1 Recupero del json
         $data = $request->json()->all();
         //2 Inizializzo l'oggetto (sia save che update)

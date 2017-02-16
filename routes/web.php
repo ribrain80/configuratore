@@ -50,7 +50,7 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
 
-    Route::get('savedrawer',['as'=>'split.api.savedrawer','uses'=>'ApiController@actionSavedrawer']);
+    Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'ApiController@actionSavedrawer']);
 
     //ONE PAGE
     Route::get('/onepage', ['as'=>'split.onepage','uses'=>function () {
