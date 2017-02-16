@@ -42,13 +42,13 @@ class Drawer extends Model
         return $this->belongsTo('App\Edgecolor', 'edgecolor');
     }
 
-    /**TODO
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    /*public function drawerbridges()
+    public function drawerbridges()
     {
-        return $this->hasMany('App\Drawerbridge', 'drawer');
-    }*/
+        return $this->belongsToMany('App\Bridge', 'drawerbridge','drawer','bridge');
+    }
 
 
     /**

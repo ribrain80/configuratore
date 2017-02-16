@@ -21,10 +21,10 @@ class Bridge extends Model
     protected $fillable = ['width', 'lenght', 'height', 'created_at', 'updated_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function drawerbridges()
     {
-        return $this->hasMany('App\Drawerbridge', 'bridge');
+        return $this->belongsToMany('Drawer', 'drawerbridge','bridge','drawer');
     }
 }
