@@ -8,5 +8,12 @@ var Configuration = {
         length:0
     },
     dividers:[],
-    bridges:[]
+    bridges:[],
+    pdf: {
+    	brochure: false,
+    	summary: false,
+    	email: '',
+    	send: false,
+    	download: false
+    }
 }
