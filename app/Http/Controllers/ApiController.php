@@ -20,31 +20,28 @@ class ApiController extends Controller
     }
 
     public function actionSavedrawer(Request $request) {
-
-        Log::info( $request );
-        exit;
-        return json_encode(['status'=>'ko','id'=>-1]);
-
+        //TODO: Usare una transazione!!!
         //1 Recupero del json
         $data = $request->json()->all();
         //2 Inizializzo l'oggetto (sia save che update)
-        $id = (isset($data->drawerId))?$data>drawerId:null;
-        $drawer = $this->loadDrawerById($id);
+        $drawer = $this->loadDrawerById($data['drawerId']);
         //3 Aggiorno i campi di model (fake)
-        $drawer->lenght=100;
-        $drawer->width=100;
-        $drawer->height=10;
-        $drawer->drawertypes_id=1;
-        //4 Gestisco i dividers ....
-        $dividers = [1=>['x'=>0.0,'y'=>0.0]];
-        $drawer->save();
+        $drawer->lenght=(int)$data['dimensions']['length'];
+        $drawer->width=(int)$data['dimensions']['width'];
+        $drawer->height=(int)$data['dimensions']['depth'];
+        $drawer->drawertypes_id=$data['drawertype'];
+        $saved=$drawer->save();
+        //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
+        //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
+        $dividers=[];
+        foreach ($data['dividers'] as $divider) {
+            $dividers[$divider]=['x'=>0.0,'y'=>0.0];
+        }
         $drawer->drawerdividers()->sync($dividers);
-        //5 Gestisco i bridges
+        //5 TODO: Gestisco i bridges
         $bridges = [];
-        //2 Salvataggio
-        $saved = $drawer->save();
 
-        //3 Ritorno un oggetto in json con l'id del cassetto salvato in db
+        //6 Ritorno un oggetto in json con l'id del cassetto salvato in db
         $out = [];
         if ($saved) {
             $out['status']='ok';
