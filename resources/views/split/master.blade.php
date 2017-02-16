@@ -47,6 +47,7 @@
                 <li><a href="#step2">Step2</a></li>
                 <li><a href="#step3">Step3</a></li>
                 <li><a href="#step4">Step4</a></li>
+                <li><a href="#step5">Final Step</a></li>
             </ul>
         </div>
         <div class="col-sm-10 col-md-11" id="maincontent">

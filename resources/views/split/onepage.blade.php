@@ -19,12 +19,16 @@
     <section>
         <step4></step4>
     </section>
+    <section>
+        <step5></step5>
+    </section>
 
     <!--PORCHERIA -->
     @push('jsfooter')
     <script src="{{ asset('js/split/step2.js') }}"></script>
     <script src="{{ asset('js/split/step3.js') }}"></script>
     <script src="{{ asset('js/split/step4.js') }}"></script>
+    <script src="{{ asset('js/split/step5.js') }}"></script>
     <script>
         var Configuration = {
             data: {

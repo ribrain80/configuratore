@@ -17,3 +17,4 @@ Vue.component('languageselector', require('./components/languageselector.vue'));
 Vue.component('step2', require('./components/step2.vue'));
 Vue.component('step3', require('./components/step3.vue'));
 Vue.component('step4', require('./components/step4.vue'));
+Vue.component('step5', require('./components/step5.vue'));
