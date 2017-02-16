@@ -16,11 +16,11 @@ class CreateDrawersTable extends Migration
         Schema::create('drawers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('width')->nullable();
-            $table->integer('lenght')->nullable();
-            $table->integer('height')->nullable();
+            $table->integer('length')->nullable();
+            $table->integer('depth')->nullable();
             $table->integer('side_num')->nullable();
             $table->integer('drawertypes_id')->unsigned()->nullable();
-            $table->integer('edgecolor')->unsigned()->nullable();
+            $table->integer('edgecolor_id')->unsigned()->nullable();
             $table->timestamps();
         });
 

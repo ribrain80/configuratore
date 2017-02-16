@@ -26,16 +26,16 @@ class ApiController extends Controller
         //2 Inizializzo l'oggetto (sia save che update)
         $drawer = $this->loadDrawerById($data['drawerId']);
         //3 Aggiorno i campi di model (fake)
-        $drawer->lenght=(int)$data['dimensions']['length'];
+        $drawer->length=(int)$data['dimensions']['length'];
         $drawer->width=(int)$data['dimensions']['width'];
-        $drawer->height=(int)$data['dimensions']['depth'];
+        $drawer->depth=(int)$data['dimensions']['depth'];
         $drawer->drawertypes_id=$data['drawertype'];
         $saved=$drawer->save();
         //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
         //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
         $dividers=[];
         foreach ($data['dividers'] as $divider) {
-            $dividers[$divider]=['x'=>0.0,'y'=>0.0];
+            $dividers[$divider]=['x'=>0,'y'=>0];
         }
         $drawer->drawerdividers()->sync($dividers);
         //5 TODO: Gestisco i bridges

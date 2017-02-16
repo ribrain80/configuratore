@@ -16,18 +16,18 @@ class AddForeignkeys extends Migration
         //Drawers foreigns
         Schema::table('drawers', function($table) {
             $table->foreign('drawertypes_id')->references('id')->on('drawertypes');
-            $table->foreign('edgecolor')->references('id')->on('edgecolor');
+            $table->foreign('edgecolor_id')->references('id')->on('edgecolor');
         });
         //Drawer-divider foreigns
         Schema::table('drawerdivider', function($table) {
-            $table->foreign('drawer')->references('id')->on('drawers');
-            $table->foreign('divider')->references('id')->on('dividers');
+            $table->foreign('drawer')->references('id')->on('drawers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('divider')->references('id')->on('dividers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('color')->references('id')->on('detailcolor');
         });
         //Drawer-bridge foreigns
         Schema::table('drawerbridge', function($table) {
-            $table->foreign('drawer')->references('id')->on('drawers');
-            $table->foreign('bridge')->references('id')->on('bridges');
+            $table->foreign('drawer')->references('id')->on('drawers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('bridge')->references('id')->on('bridges')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('color')->references('id')->on('detailcolor');
         });
 

@@ -25,6 +25,7 @@ class Divider extends Model
      */
     public function drawerdividers()
     {
-        return $this->belongsToMany('App/Drawers', 'drawerdivider','divider','drawer');
+        return $this->belongsToMany('App/Drawers', 'drawerdivider','divider','drawer')
+            ->withPivot(['x','y']);
     }
 }

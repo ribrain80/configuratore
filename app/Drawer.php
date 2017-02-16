@@ -7,24 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property integer $id
  * @property integer $drawertypes_id
- * @property integer $edgecolor
+ * @property integer $edgecolor_id
  * @property integer $width
- * @property integer $lenght
- * @property integer $height
+ * @property integer $length
+ * @property integer depth
  * @property integer $side_num
  * @property string $created_at
  * @property string $updated_at
  * @property Drawertype $drawertype
  * @property Edgecolor $edgecolor
- * @property Drawerbridge[] $drawerbridges
- * @property Drawerdivider[] $drawerdividers
  */
 class Drawer extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['drawertypes_id', 'edgecolor', 'width', 'lenght', 'height', 'side_num', 'created_at', 'updated_at'];
+    protected $fillable = ['drawertypes_id', 'edgecolor_id', 'width', 'length', 'depth', 'side_num', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -39,7 +37,7 @@ class Drawer extends Model
      */
     public function edgecolor()
     {
-        return $this->belongsTo('App\Edgecolor', 'edgecolor');
+        return $this->belongsTo('App\Edgecolor', 'edgecolor_id');
     }
 
     /**
@@ -47,7 +45,8 @@ class Drawer extends Model
      */
     public function drawerbridges()
     {
-        return $this->belongsToMany('App\Bridge', 'drawerbridge','drawer','bridge');
+        return $this->belongsToMany('App\Bridge', 'drawerbridge','drawer','bridge')
+            ->withPivot(['x','y']);
     }
 
 
@@ -56,6 +55,7 @@ class Drawer extends Model
      */
     public function drawerdividers()
     {
-        return $this->belongsToMany('App\Divider', 'drawerdivider','drawer','divider');
+        return $this->belongsToMany('App\Divider', 'drawerdivider','drawer','divider')
+            ->withPivot(['x','y']);
     }
 }

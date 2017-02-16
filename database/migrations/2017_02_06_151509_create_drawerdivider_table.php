@@ -17,8 +17,8 @@ class CreateDrawerdividerTable extends Migration
             $table->increments('id');
             $table->integer('drawer')->unsigned();
             $table->integer('divider')->unsigned();
-            $table->float('x');
-            $table->float('y');
+            $table->integer('x')->unsigned();
+            $table->integer('y')->unsigned();
             $table->integer('color')->nullable()->unsigned();
 
 

@@ -18,11 +18,11 @@ class PdfDrawer extends Drawer
         $out = [];
         $out['dimensions'] = [
             'width'=>$drawer->width,
-            'length'=>$drawer->lenght,
-            'depth'=>$drawer->height,
+            'length'=>$drawer->length,
+            'depth'=>$drawer->depth,
         ];
         $out['id']=$id;
-        $out['label']='('.$drawer->width.'x'.$drawer->lenght.'x'.$drawer->height.')';
+        $out['label']='('.$drawer->width.'x'.$drawer->length.'x'.$drawer->depth.')';
         $out['type']=$drawer->drawertypes_id;
         $out['dividers']=[];
         foreach ($drawer->drawerdividers as $divider) {
