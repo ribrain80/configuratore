@@ -28,7 +28,6 @@ var step4 = new Vue({
             } 
 
             this.selected.push( id );
-            console.log( this.selected );
         }
     },
 

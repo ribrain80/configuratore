@@ -7,6 +7,7 @@ use App\Drawer;
 use App\Drawers;
 use App\Drawertype;
 use Illuminate\Http\Request;
+use Log;
 
 class ApiController extends Controller
 {
@@ -19,6 +20,9 @@ class ApiController extends Controller
     }
 
     public function actionSavedrawer(Request $request) {
+
+        Log::info( $request );
+        exit;
         return json_encode(['status'=>'ko','id'=>-1]);
 
         //1 Recupero del json

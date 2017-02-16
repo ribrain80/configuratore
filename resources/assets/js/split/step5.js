@@ -7,7 +7,14 @@ var step5 = new Vue({
     },
 
     methods: {
-       
+
+       savedrawer: function() {
+            this.$http.post( '/split/savedrawer', Configuration ).then( response => {
+            console.log( "success" );
+          }, response => {
+            console.log( "something went wrong" );
+          });
+       }
     },
 
     mounted() { // # Window onload eq

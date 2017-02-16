@@ -9,7 +9,7 @@ var step2 = new Vue({
     watch: {
         // whenever question changes, this function will run
         selected: function (val) {
-            Configuration.drawerstypes = val;
+            Configuration.drawertype = val;
         }
     },
 

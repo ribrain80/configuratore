@@ -515,12 +515,11 @@ var step3 = new Vue({
     watch: {
 
         width: function (val) {
-            console.log( val );
             Configuration.dimensions.width = val;
         },
 
         length: function (val) {
-            CConfiguration.dimensions.length = val;
+            Configuration.dimensions.length = val;
         },
 
         depth: function (val) {

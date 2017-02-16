@@ -1,5 +1,6 @@
 var Configuration = {
 
+	drawerId: '',
     drawertype:0,
     dimensions: {
         width:0,

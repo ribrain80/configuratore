@@ -4,7 +4,7 @@
             <h2 lang="it">Step finale</h2>
         </div>
         <div class="col-lg-3">
-            <button class="btn btn-default">Crea PDF</button>
+            <button class="btn btn-default" @click="$parent.savedrawer()">Crea PDF ( Salva )</button>
         </div>
     </div>
 </template>
