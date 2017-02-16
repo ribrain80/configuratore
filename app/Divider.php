@@ -21,10 +21,10 @@ class Divider extends Model
     protected $fillable = ['width', 'lenght', 'height', 'created_at', 'updated_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function drawerdividers()
     {
-        return $this->hasMany('App\Drawerdivider', 'divider');
+        return $this->belongsToMany('App/Drawers', 'drawerdivider','divider','drawer');
     }
 }

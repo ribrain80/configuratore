@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Divider;
 use App\Drawer;
+use App\Drawers;
 use App\Drawertype;
 use Illuminate\Http\Request;
 
@@ -21,18 +22,19 @@ class ApiController extends Controller
         //1 Recupero del json
         $data = $request->json()->all();
         //2 Inizializzo l'oggetto (sia save che update)
-        $drawer = $this->loadDrawerById($data->drawerId);
+        $id = (isset($data->drawerId))?$data>drawerId:null;
+        $drawer = $this->loadDrawerById($id);
         //3 Aggiorno i campi di model (fake)
         $drawer->lenght=100;
         $drawer->width=100;
         $drawer->height=10;
         $drawer->drawertypes_id=1;
         //4 Gestisco i dividers ....
-        $dividers = [1,2,3];
+        $dividers = [1=>['x'=>0.0,'y'=>0.0]];
+        $drawer->save();
         $drawer->drawerdividers()->sync($dividers);
         //5 Gestisco i bridges
         $bridges = [];
-        $drawer->drawerbridges()->sync($bridges);
         //2 Salvataggio
         $saved = $drawer->save();
 
@@ -40,7 +42,7 @@ class ApiController extends Controller
         $out = [];
         if ($saved) {
             $out['status']='ok';
-            $out['id']=$saved->id;
+            $out['id']=$drawer->id;
         } else {
             $out['status']='ko';
             $out['id']=-1;
