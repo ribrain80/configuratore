@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +31,7 @@ class DetailColor extends Model
      */
     public function drawerbridges()
     {
-        return $this->hasMany('App\Drawerbridge', 'color');
+        return $this->hasMany('App\Models\Drawerbridge', 'color');
     }
 
     /**
@@ -39,6 +39,6 @@ class DetailColor extends Model
      */
     public function drawerdividers()
     {
-        return $this->hasMany('App\Drawerdivider', 'color');
+        return $this->hasMany('App\Models\Drawerdivider', 'color');
     }
 }

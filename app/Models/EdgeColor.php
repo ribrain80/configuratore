@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,6 +30,6 @@ class EdgeColor extends Model
      */
     public function drawers()
     {
-        return $this->hasMany('App\Drawer', 'edgecolor');
+        return $this->hasMany('App\Models\Drawer', 'edgecolor');
     }
 }

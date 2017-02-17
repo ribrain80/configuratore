@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +25,7 @@ class Divider extends Model
      */
     public function drawerdividers()
     {
-        return $this->belongsToMany('App/Drawers', 'drawerdivider','divider','drawer')
+        return $this->belongsToMany('App\Models\Drawers', 'drawerdivider','divider','drawer')
             ->withPivot(['x','y']);
     }
 }

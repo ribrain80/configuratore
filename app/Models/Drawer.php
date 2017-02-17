@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,7 +29,7 @@ class Drawer extends Model
      */
     public function drawertype()
     {
-        return $this->belongsTo('App\Drawertype', 'drawertypes_id');
+        return $this->belongsTo('App\Models\Drawertype', 'drawertypes_id');
     }
 
     /**
@@ -37,7 +37,7 @@ class Drawer extends Model
      */
     public function edgecolor()
     {
-        return $this->belongsTo('App\Edgecolor', 'edgecolor_id');
+        return $this->belongsTo('App\Models\Edgecolor', 'edgecolor_id');
     }
 
     /**
@@ -45,7 +45,7 @@ class Drawer extends Model
      */
     public function drawerbridges()
     {
-        return $this->belongsToMany('App\Bridge', 'drawerbridge','drawer','bridge')
+        return $this->belongsToMany('App\Models\Bridge', 'drawerbridge','drawer','bridge')
             ->withPivot(['x','y']);
     }
 
@@ -55,7 +55,7 @@ class Drawer extends Model
      */
     public function drawerdividers()
     {
-        return $this->belongsToMany('App\Divider', 'drawerdivider','drawer','divider')
+        return $this->belongsToMany('App\Models\Divider', 'drawerdivider','drawer','divider')
             ->withPivot(['x','y']);
     }
 }

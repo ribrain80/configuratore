@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +25,7 @@ class Bridge extends Model
      */
     public function drawerbridges()
     {
-        return $this->belongsToMany('Drawer', 'drawerbridge','bridge','drawer')
+        return $this->belongsToMany('App\Models\Drawer', 'drawerbridge','bridge','drawer')
             ->withPivot(['x','y']);
     }
 }

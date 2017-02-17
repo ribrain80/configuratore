@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Divider;
-use App\Drawer;
-use App\Drawers;
-use App\Drawertype;
+use App\Models\Divider;
+use App\Models\Drawer;
+use App\Models\Drawers;
+use App\Models\Drawertype;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Log;

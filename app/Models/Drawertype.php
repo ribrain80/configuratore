@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,6 @@ class Drawertype extends Model
 {
     public function drawer()
     {
-        return $this->hasMany('App\Drawer');
+        return $this->hasMany('App\Models\Drawer');
     }    
 }

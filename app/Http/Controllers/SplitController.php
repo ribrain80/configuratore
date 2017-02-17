@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Log;
-use App\Drawer;
-use App\DrawerType;
+use App\Models\Drawer;
+use App\Models\Drawertype;
 
 class SplitController extends Controller
 {
