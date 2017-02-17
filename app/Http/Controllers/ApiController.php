@@ -7,6 +7,7 @@ use App\Drawer;
 use App\Drawers;
 use App\Drawertype;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Log;
 
 class ApiController extends Controller
@@ -30,16 +31,25 @@ class ApiController extends Controller
         $drawer->width=(int)$data['dimensions']['width'];
         $drawer->depth=(int)$data['dimensions']['depth'];
         $drawer->drawertypes_id=$data['drawertype'];
-        $saved=$drawer->save();
-        //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
-        //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
-        $dividers=[];
-        foreach ($data['dividers'] as $divider) {
-            $dividers[$divider]=['x'=>0,'y'=>0];
+        $saved = false;
+        $error = "";
+        try {
+            $saved=$drawer->saveOrFail();
+            //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
+            //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
+            $dividers=[];
+            foreach ($data['dividers'] as $divider) {
+                $dividers[$divider]=['x'=>0,'y'=>0];
+            }
+            $drawer->drawerdividers()->sync($dividers);
+            //5 TODO: Gestisco i bridges
+            $bridges = [];
+        } catch (\Exception $ex) {
+           // throw new ValidationException("Not Valid Data");
+            $error=$ex->getMessage();
         }
-        $drawer->drawerdividers()->sync($dividers);
-        //5 TODO: Gestisco i bridges
-        $bridges = [];
+
+
 
         //6 Ritorno un oggetto in json con l'id del cassetto salvato in db
         $out = [];
@@ -51,7 +61,7 @@ class ApiController extends Controller
             $out['id']=-1;
         }
 
-        return response()->json($out);
+        return response()->json($out,($saved)?200:400);
     }
 
 
