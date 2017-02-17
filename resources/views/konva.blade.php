@@ -43,6 +43,25 @@
     var rectX = stage.getWidth()/2;
     var rectY = stage.getHeight()/2 ;
 
+
+    var bridge = new Konva.Rect({
+        x: 0,
+        y: 0,
+        width: 20,
+        height: height,
+        fill: 'brown',
+        stroke: 'black',
+        strokeWidth: 1,
+        draggable: true,
+        dragBoundFunc: function(pos) {
+            return {
+                x: pos.x,
+                y: this.getAbsolutePosition().y
+            }
+        }
+    });
+
+
     var box = new Konva.Rect({
         x: rectX,
         y: rectY,
@@ -83,6 +102,7 @@
 
     layer.add(box);
     layer.add(box1);
+    layer.add(bridge);
     stage.add(layer);
 
     $('#texta').html(stage.toJSON());
