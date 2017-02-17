@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -8,16 +7,18 @@ class CreateEdgecolorTable extends Migration
 {
     /**
      * Run the migrations.
+     * @table edgecolor
      *
      * @return void
      */
     public function up()
     {
         Schema::create('edgecolor', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string("name");
-            $table->string("hex");
-            $table->string("ral");
+            $table->string('name');
+            $table->string('hex');
+            $table->string('ral');
         });
     }
 
@@ -26,8 +27,8 @@ class CreateEdgecolorTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('edgecolor');
-    }
+     public function down()
+     {
+       Schema::dropIfExists('edgecolor');
+     }
 }

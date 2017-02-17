@@ -13,64 +13,64 @@ class DividerSeeder extends Seeder
     {
         $dividers = [
             [
-                'height' => 445,
+                'depth' => 445,
                 'width' => 100,
-                'lenght' => 200,
+                'length' => 200,
             ],
             [
-                'height' => 445,
+                'depth' => 445,
                 'width' => 100,
-                'lenght' => 267,
+                'length' => 267,
             ],
             [
-                'height' => 445,
+                'depth' => 445,
                 'width' => 100,
-                'lenght' => 317,
+                'length' => 317,
             ],
             [
-                'height' => 445,
+                'depth' => 445,
                 'width' => 100,
-                'lenght' => 367,
+                'length' => 367,
             ],
             [
-                'height' => 445,
+                'depth' => 445,
                 'width' => 150,
-                'lenght' => 367,
+                'length' => 367,
             ],
             [
-                'height' => 445,
+                'depth' => 445,
                 'width' => 150,
-                'lenght' => 417,
+                'length' => 417,
             ],
             [
-                'height' => 705,
+                'depth' => 705,
                 'width' => 100,
-                'lenght' => 300,
+                'length' => 300,
             ],
             [
-                'height' => 705,
+                'depth' => 705,
                 'width' => 150,
-                'lenght' => 300,
+                'length' => 300,
             ],
             [
-                'height' => 705,
+                'depth' => 705,
                 'width' => 150,
-                'lenght' => 267,
+                'length' => 267,
             ],
             [
-                'height' => 705,
+                'depth' => 705,
                 'width' => 150,
-                'lenght' => 317,
+                'length' => 317,
             ],
             [
-                'height' => 705,
+                'depth' => 705,
                 'width' => 150,
-                'lenght' => 367,
+                'length' => 367,
             ],
             [
-                'height' => 705,
+                'depth' => 705,
                 'width' => 150,
-                'lenght' => 467,
+                'length' => 467,
             ],
         ];
         DB::table('dividers')->insert($dividers);

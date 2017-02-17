@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -8,17 +7,19 @@ class CreateDividersTable extends Migration
 {
     /**
      * Run the migrations.
+     * @table dividers
      *
      * @return void
      */
     public function up()
     {
         Schema::create('dividers', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('width')->nullable();
-            $table->integer('lenght')->nullable();
-            $table->integer('height')->nullable();
-            $table->timestamps();
+            $table->integer('width')->nullable()->default(null);
+            $table->integer('length')->nullable()->default(null);
+            $table->integer('depth')->nullable()->default(null);
+            $table->nullableTimestamps();
         });
     }
 
@@ -27,8 +28,8 @@ class CreateDividersTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('dividers');
-    }
+     public function down()
+     {
+       Schema::dropIfExists('dividers');
+     }
 }
