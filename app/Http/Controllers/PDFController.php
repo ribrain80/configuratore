@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Log;
-use App\Drawer;
-use App\DrawerType;
+use App\Models\Drawer;
+use App\Models\DrawerType;
 
 class PDFController extends Controller
 {
@@ -57,7 +57,7 @@ class PDFController extends Controller
         }
 
         // Output the new PDF
-        $pdf->Output();        
+        $pdf->Output();
 
 
 

@@ -7,7 +7,6 @@ use App\Models\Drawer;
 use App\Models\Drawers;
 use App\Models\Drawertype;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 use Log;
 
 class ApiController extends Controller
@@ -17,7 +16,7 @@ class ApiController extends Controller
     }
 
     public function actionDividers() {
-        return response()->json(Divider::all(['id','width','lenght','height'])->toArray());
+        return response()->json(Divider::all(['id','width','length','depth'])->toArray());
     }
 
     public function actionSavedrawer(Request $request) {
@@ -45,11 +44,8 @@ class ApiController extends Controller
             //5 TODO: Gestisco i bridges
             $bridges = [];
         } catch (\Exception $ex) {
-           // throw new ValidationException("Not Valid Data");
             $error=$ex->getMessage();
         }
-
-
 
         //6 Ritorno un oggetto in json con l'id del cassetto salvato in db
         $out = [];
@@ -76,28 +72,5 @@ class ApiController extends Controller
     }
 
 
-    /*
-    public function actionListDrawer() {
-        return response()->json(Drawer::all()->toArray());
-    }
-
-
-    public function actionGetDrawer($id) {
-        $model= Drawer::findOrFail($id);
-        return response()->json($model);
-
-    }
-
-    public function actionSaveDrawer(Request $request) {
-        //TODO: Validazione !!!!
-        $model = new Drawer();
-        $model->drawertypes_id=$request->input("type");
-        $model->width=$request->input("width");
-        $model->height=$request->input("depth");
-        $model->lenght=$request->input("length");
-        $model->save();
-        //TODO: Migliorare output
-        return response()->json($model->id);
-    }*/
 
 }

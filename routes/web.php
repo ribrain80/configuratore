@@ -79,3 +79,6 @@ Route::group(['prefix' => 'split'], function () {
 
 
 });
+
+//Rotte per studio/test
+Route::get('send',['as'=>'testmail','uses'=>'TmpController@actionSendMail']);

@@ -9,12 +9,12 @@
 namespace App\Models;
 
 
-class PdfDrawer extends Drawer
+class PdfDrawer
 {
     public static function getDrawerInfo($id) {
         //1 Recupero il cassetto
         /** @var Drawer $drawer  */
-        $drawer = parent::findOrFail($id);
+        $drawer = Drawer::findOrFail($id);
         $out = [];
         $out['dimensions'] = [
             'width'=>$drawer->width,
@@ -27,9 +27,9 @@ class PdfDrawer extends Drawer
         $out['dividers']=[];
         foreach ($drawer->drawerdividers as $divider) {
             $cur['id'] = $divider->divider;
-            $cur['x'] = $divider->x;
-            $cur['y'] = $divider->y;
-            $cur['label'] = $divider->x . "x" . $divider->y;
+            $cur['x'] = "".$divider->x;
+            $cur['y'] = "".$divider->y;
+            $cur['label'] = $divider->width . "x" . $divider->length."x".$divider->depth;
             $out['dividers'][]=$cur;
         }
 
