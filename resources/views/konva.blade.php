@@ -3,6 +3,10 @@
 <html>
 <head>
     <script src="https://cdn.rawgit.com/konvajs/konva/1.4.0/konva.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <title>Konva  Drag and Drop Demo</title>
     <style>
@@ -21,6 +25,10 @@
 <body>
 <h2 style="width: 100%;text-align: center">TEST KONVA PER GIOCARE COI QUADRATI!!</h2>
 <div id="container"></div>
+<br><hr><br>
+<button id="test">stampa json scena</button>
+<div style="width: 100%" id="texta"></div>
+
 <script>
     var width = window.innerWidth;
     var height = window.innerHeight/2;
@@ -33,14 +41,14 @@
 
     var layer = new Konva.Layer();
     var rectX = stage.getWidth()/2;
-    var rectY = stage.getHeight() / 2 ;
+    var rectY = stage.getHeight()/2 ;
 
     var box = new Konva.Rect({
         x: rectX,
         y: rectY,
         width: 100,
         height: 100,
-        fill: '#00D2FF',
+        fill: 'blue',
         stroke: 'black',
         strokeWidth: 1,
         draggable: true
@@ -51,7 +59,7 @@
         y: rectY-150,
         width: 100,
         height: 100,
-        fill: '#D200FF',
+        fill: 'red',
         stroke: 'black',
         strokeWidth: 1,
         draggable: true
@@ -76,6 +84,11 @@
     layer.add(box);
     layer.add(box1);
     stage.add(layer);
+
+    $('#texta').html(stage.toJSON());
+    $('#test').on('click', function () {
+        $('#texta').html(stage.toJSON())
+    });
 </script>
 
 </body>
