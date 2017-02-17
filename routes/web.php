@@ -45,6 +45,12 @@ Route::group(['prefix' => 'm50'], function () {
 });
 
 Route::group(['prefix' => 'split'], function () {
+    //PARCO GIOCHI
+    //Rotta per fare dei test con konvajs per inserimento inserti e bridges
+    Route::get('konva',['as'=>'konva','uses'=>function () {
+        return view('konva');
+    }]);
+
 
     //API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
