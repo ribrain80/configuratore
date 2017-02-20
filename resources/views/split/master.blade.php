@@ -24,7 +24,7 @@
     </style>
 </head>
 
-<body data-spy="scroll" data-target=".scrollspy" data-offset="60">
+<body data-spy="scroll" data-target=".scrollspy" data-offset="70">
 
 <div class="cover"></div>
 
@@ -78,16 +78,34 @@
     <script src="{{asset('js/lang/i18n.js')}}"></script>
     @stack('jsfooter')
     <script>
-        var shiftWindow = function() { scrollBy(0, -$('body').data('offset')) };
+        /*var shiftWindow = function() { scrollBy(0, -$('body').data('offset')) };
         if (location.hash) shiftWindow();
-        window.addEventListener("hashchange", shiftWindow);
+        window.addEventListener("hashchange", shiftWindow);*/
         var h = document.body.clientHeight;
         var hn = $('nav').outerHeight();
-        $('section').outerHeight(h-hn-30);
+        $('section').outerHeight(h-hn+20);
 
         Pace.on("done", function(){
             $(".cover").fadeOut(2000);
         });
+
+        var navOffset = $('.navbar').height();
+
+        $('.scrollspy li a').click(function(event) {
+            var href = $(this).attr('href');
+
+            // Don't let the browser scroll, but still update the current address
+            // in the browser.
+            event.preventDefault();
+            window.location.hash = href;
+
+            // Explicitly scroll to where the browser thinks the element
+            // is, but apply the offset.
+            $(href)[0].scrollIntoView();
+            window.scrollBy(0, -navOffset);
+        });
+
+
     </script>
 </body>
 </html>                                		
