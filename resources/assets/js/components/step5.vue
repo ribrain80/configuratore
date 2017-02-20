@@ -8,7 +8,7 @@
 
 		<div class="checkbox col-lg-12">
 			<label>
-				<input type="checkbox" @click="$parent.addBrochure2PDF( $event )" /> Brochure
+				<input type="checkbox" v-model="$parent.brochure" /> Brochure
 			</label>
 		</div>
 
@@ -22,11 +22,11 @@
 			<label>
 				<input type="text" v-model="$parent.email" /> Indirizzo email 
 			</label>
-			<button class="btn btn-default" id="email" @click="$parent.savedrawer( $event )">Invia via email</button>
+			<button class="btn btn-danger" id="email" @click="$parent.savedrawer( $event )">Invia via email</button>
 		</div>
 
 		<div class="col-lg-12">	
-			<button class="btn btn-default" id="download" @click="$parent.savedrawer( $event )">Scarica</button>	
+			<button class="btn btn-danger" id="download" @click="$parent.savedrawer( $event )">Scarica</button>	
 		</div>		
 
     </div>

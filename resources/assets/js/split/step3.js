@@ -19,7 +19,14 @@ var step3 = new Vue({
             drawer_text: 'Cassetto',
             shoulder_stroke: '#999999',
             shoulder_linewidth: 7,
-            shoulder_text: "Sponda"
+            shoulder_text: "Sponda",
+            rect_width_upper_limit: 1800,
+            rect_height_upper_limit: 1800,
+            shoulder_height_upper_limit: 700,
+            rect_width_lower_limit: 500,
+            rect_height_lower_limit: 500,
+            shoulder_height_lower_limit: 100, 
+            measure_label: "mm",      
         },
 
         // # Container dimensions
@@ -27,9 +34,9 @@ var step3 = new Vue({
         canvas_height: 0,
 
         // # Data bound
-        length: 100,
-        width: 100,
-        depth: 20,
+        length: 1000,
+        width: 1000,
+        depth: 200,
 
         widthOOR: false,
         lengthOOR: false,
@@ -74,7 +81,7 @@ var step3 = new Vue({
             this.two = new Two({ autostart: true }).appendTo( this.container );
 
             // # Drawer
-            this.makeRect( 50, 100, 100, 100, 20, 0 );
+            this.makeRect( 50, 100, this.mm2Pixel( 1000 ), this.mm2Pixel( 1000 ), 20, 0 );
             
             // # Width line ( drawer )
             this.makeRectWidthInfoLine( 18, 30, 120, 30 );
@@ -92,7 +99,7 @@ var step3 = new Vue({
             this.makeDrawerLabel( 70, 100 );
 
             // # Rectangle ( Shoulder )
-            this.makeShoulder( 70, 200, 100, 30 );
+            this.makeShoulder( 70, 200, 1000, 300 );
 
             // # Width line ( shoulder )
             this.makeShoulderWidthInfoLine( 17, 230, 124, 230 );
@@ -111,16 +118,36 @@ var step3 = new Vue({
         },
 
         /**
+         * [mm2Pixel description]
+         * @param  {[type]} mm [description]
+         * @return {[type]}    [description]
+         */
+        mm2Pixel: function ( mm ) {
+            
+            try {
+                return Math.ceil( parseInt( mm ) / 10 );
+            } catch ( e ) {
+                return 100;
+            }   
+        },
+
+        /**
          * [widthOutOfRange description]
          * @return {[type]} [description]
          */
         widthOutOfRange: function() {
       
-            if( parseInt( this.width ) > 200 ) {
+            if( parseInt( this.width ) > this.config.rect_width_upper_limit ) {
                 this.widthOOR = true;
-                this.alert_message = "La larghezza indicata supera il valore consentito";
+                this.alert_message = "La larghezza indicata è superiore al valore massimo consentito";
                 return true;
             }
+
+            if( parseInt( this.width ) < this.config.rect_width_lower_limit ) {
+                this.widthOOR = true;
+                this.alert_message = "La larghezza indicata è inferiore al valore minimo consentito";
+                return true;
+            }            
             
             this.widthOOR = false;
             return false;
@@ -132,11 +159,17 @@ var step3 = new Vue({
          */
         lengthOutOfRange: function() {
       
-            if( parseInt( this.length ) > 200 ) {
+            if( parseInt( this.length ) > this.config.rect_height_upper_limit ) {
                 this.lengthOOR = true;
-                this.alert_message = "La lunghezza indicata supera il valore consentito";
+                this.alert_message = "La lunghezza indicata è superiore al valore massimo consentito";
                 return true;
             }
+
+            if( parseInt( this.length ) < this.config.rect_height_lower_limit ) {
+                this.lengthOOR = true;
+                this.alert_message = "La lunghezza indicata è inferiore al valore minimo consentito";
+                return true;
+            }            
             
             this.lengthOOR = false;
             return false;
@@ -148,11 +181,17 @@ var step3 = new Vue({
          */
         depthOutOfRange: function() {
       
-            if( parseInt( this.depth ) > 40 ) {
+            if( parseInt( this.depth ) > this.config.shoulder_height_upper_limit ) {
                 this.depthOOR = true;
-                this.alert_message = "L'altezza indicata per la sponda supera il valore consentito";
+                this.alert_message = "L'altezza della sponda indicata supera il valore massimo consentito";
                 return true;
             }
+
+            if( parseInt( this.depth ) < this.config.shoulder_height_lower_limit ) {
+                this.depthOOR = true;
+                this.alert_message = "L'altezza della sponda indicata è inferiore al valore minimo consentito";
+                return true;
+            }            
             
             this.depthOOR = false;
             return false;
@@ -167,12 +206,17 @@ var step3 = new Vue({
             if( !this.width || !this.length || !this.depth ) {
                 this.showAlert = true;
                 this.alert_message = "Tutti i campi devono essere compilati";
-                this.two.clear();
                 return false;
             }
 
+            // # Check Out of Bound
+            if( this.widthOutOfRange() || this.lengthOutOfRange() || this.depthOutOfRange() ) {
+                 this.showAlert = true;
+                 return false;
+            }
+
             this.showAlert = false;
-            document.forms[ 0 ].submit();
+            return true;
         },         
 
         /**
@@ -201,7 +245,7 @@ var step3 = new Vue({
          */
         makeShoulderWidthInfoText: function( x, y ) {
 
-            this.hor_text_shoulder = this.two.makeText( this.length + " cm", 
+            this.hor_text_shoulder = this.two.makeText( this.length + " " +  this.config.measure_label, 
                                                         x, 
                                                         y, 
                                                         this.config.font_weight );
@@ -239,7 +283,7 @@ var step3 = new Vue({
         makeShoulderLengthInfoText: function( x, y ) {
 
             // # Length text ( drawer )
-            this.vert_text_shoulder = this.two.makeText( this.depth + " cm", 
+            this.vert_text_shoulder = this.two.makeText( this.depth + " " + this.config.measure_label, 
                                                          x, 
                                                          y,
                                                          this.config.font_weight );
@@ -314,7 +358,7 @@ var step3 = new Vue({
         makeRectWidthInfoText: function( x, y ) {
            
             // # Width text ( drawer )
-            this.hor_text_rect = this.two.makeText( this.width + " cm", x, y, this.config.font_weight );
+            this.hor_text_rect = this.two.makeText( this.width + " " + this.config.measure_label, x, y, this.config.font_weight );
             this.hor_text_rect.size = this.config.font_size;
             this.hor_text_rect.stroke = this.config.text_stroke;
             this.hor_text_rect.family = this.config.font_family; 
@@ -344,7 +388,7 @@ var step3 = new Vue({
         makeRectLengthInfoText: function( x, y ) {
             
             // # Length text ( drawer )
-            this.vert_text_rect = this.two.makeText( this.length + " cm", x, y, this.config.font_weight );
+            this.vert_text_rect = this.two.makeText( this.length + " " + this.config.measure_label, x, y, this.config.font_weight );
             this.vert_text_rect.size = this.config.font_size;
             this.vert_text_rect.stroke = this.config.text_stroke;
             this.vert_text_rect.family = this.config.font_family;
@@ -361,7 +405,7 @@ var step3 = new Vue({
          */
         makeShoulder: function( x, y, width, length ) {
 
-            this.shoulder = this.two.makeRectangle( x, y, width, length );
+            this.shoulder = this.two.makeRectangle( x, y, this.mm2Pixel( width ), this.mm2Pixel( length ) );
             this.shoulder.linewidth = this.config.shoulder_linewidth;
             this.shoulder.stroke = this.config.shoulder_stroke;
         },
@@ -386,20 +430,24 @@ var step3 = new Vue({
          */
         updateDrawer: function() {
 
+            // # Skip when there are less than 3 digit
+            if( this.width.length < 3 || this.length.length < 3 || this.depth.length < 1 ) {
+                return;
+            }
+
+            // # dimensions check
+            if( ! this.checkChoice() ) {
+                return false;
+            }
+
             // # Clean up if any previous error stills
             this.showAlert = false;
-
-            // # Check Out of Bound
-            if( this.widthOutOfRange() || this.lengthOutOfRange() || this.depthOutOfRange() ) {
-                 this.showAlert = true;
-                 return false;
-            }
 
             // # Remove to redraw
             this.two.clear();
 
             // # Drawer
-            this.makeRect( this.width / 2, 100, this.width, this.length, 20, 50 + parseInt( this.length ) / 2 );
+            this.makeRect( this.mm2Pixel( this.width ) / 2, 100, this.mm2Pixel( this.width ), this.mm2Pixel( this.length ), 20, 50 + this.mm2Pixel( this.length ) / 2 );
 
             // # Get width line dimensions
             var width_line_bounding_client_rect = this.hor_line_rect.getBoundingClientRect();
@@ -459,8 +507,8 @@ var step3 = new Vue({
             var rect_bounding_client_rect = this.rect.getBoundingClientRect();
 
             // # Shoulder redraw                
-            this.makeShoulder(  rect_bounding_client_rect.left + ( parseInt( this.length ) / 2 ) + 5, 
-                                rect_bounding_client_rect.bottom + 40 + ( parseInt( this.depth ) ) / 2, 
+            this.makeShoulder(  rect_bounding_client_rect.left + ( this.mm2Pixel( this.length ) / 2 ) + 5, 
+                                rect_bounding_client_rect.bottom + 40 + ( this.mm2Pixel( this.depth ) ) / 2, 
                                 this.length, 
                                 this.depth);
 
@@ -492,7 +540,7 @@ var step3 = new Vue({
                                             shoulder_bottomomost + 20 );
 
             // # Width text ( shoulder )
-            this.makeShoulderWidthInfoText( shoulder_width/2 + 20,
+            this.makeShoulderWidthInfoText( parseInt( shoulder_width ) / 2 + 20,
                                             shoulder_bottomomost + 30 );
 
             // # Length line ( shoulder )

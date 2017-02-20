@@ -9,6 +9,7 @@ var step5 = new Vue({
     },
     methods: {
         savedrawer: function() {
+          
             if (event.target.id == "email") {
                 this.send = true;
                 this.download = false;
@@ -17,8 +18,7 @@ var step5 = new Vue({
                 this.send = false;
                 this.download = true;
             }
-            console.log(Configuration);
-            return false;
+
             this.$http.post('/split/savedrawer', Configuration).then(response => {
                 console.log("success");
             }, response => {

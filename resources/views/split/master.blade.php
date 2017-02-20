@@ -4,12 +4,30 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ elixir('js/vendor.js') }}"></script>
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
+    <style>
+        
+    .cover {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1999;
+        background:#fff;
+        opacity: .8;
+    }
+
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".scrollspy" data-offset="60">
+
+<div class="cover"></div>
+
 <nav role="navigation" class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -55,6 +73,8 @@
         </div>
     </div>
 </div>
+
+
     <script src="{{asset('js/lang/i18n.js')}}"></script>
     @stack('jsfooter')
     <script>
@@ -64,6 +84,10 @@
         var h = document.body.clientHeight;
         var hn = $('nav').outerHeight();
         $('section').outerHeight(h-hn-30);
+
+        Pace.on("done", function(){
+            $(".cover").fadeOut(2000);
+        });
     </script>
 </body>
 </html>                                		

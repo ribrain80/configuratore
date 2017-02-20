@@ -1,8 +1,11 @@
 var step2 = new Vue({
+
     el: 'step2',
+
     data: {
         selected:0,
         hasError:false,
+        choice: true,
         types:[],
     },
 
@@ -18,12 +21,12 @@ var step2 = new Vue({
             this.$http.get('/split/drawerstypes').then(response => {
                 this.types = response.body;
             }, response => {
-                this.hasError=true;
+                this.hasError = true;
             });
         },
         setType: function (type) {
             this.selected = type;
-            this.hasError = false;
+            this.choice = false;
         }
     },
     mounted() {
