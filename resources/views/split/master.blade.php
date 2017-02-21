@@ -104,10 +104,6 @@
             $(href)[0].scrollIntoView();
             window.scrollBy(0, -navOffset);
         });
-
-        
-
-
     </script>
 </body>
 </html>                                		
