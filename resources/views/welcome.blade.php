@@ -76,7 +76,6 @@
                 <div class="links">
                     <a href="{{route('split.onepage')}}">Split</a>
                     <a href="/m50/step1">M50</a>
-                    <a href="{{route('split.pdf')}}" target="_blank">TEST PDF</a>
                 </div>
             </div>
         </div>

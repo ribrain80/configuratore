@@ -30,7 +30,7 @@ class SplitDrawerController extends Controller
         sleep(10);
         $data = $request->json()->all();
         $output = $this->save($data);
-        return response()->json($output, ($output['id' != -1]) ? 200 : 400);
+        return response()->json($output, ($output['id'] != -1) ? 200 : 400);
     }
 
     /**
@@ -42,8 +42,8 @@ class SplitDrawerController extends Controller
     public function actionSend(Request $request)
     {
         $data = $request->json()->all();
-        $id=1;
-        $brochure=false;
+        $id=$data['drawerId'];
+        $brochure=$data['brochure'];
         Mail::send('tmp.send', ['title' => "ABC", 'content' => "CONTENT TODO"], function ($message,$id,$brochure) {
             $message->from('giuseppe.liberati.1977@gmail.com', 'Configuratore split salice');
             $message->to('giuseppe.liberati.1977@gmail.com');
