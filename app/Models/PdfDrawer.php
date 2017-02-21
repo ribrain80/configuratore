@@ -9,6 +9,8 @@
 namespace App\Models;
 
 
+use LynX39\LaraPdfMerger\PDFManage;
+
 class PdfDrawer
 {
     public static function getDrawerInfo($id) {
@@ -36,6 +38,16 @@ class PdfDrawer
         }
 
         return $out;
+    }
+
+    public static function genPDF($id,$brochure=false) {
+        $data = static::getDrawerInfo($id); //ORA INUTILE MA DOVREBBE SERVIRE PER GENERARE IL NOSTRO PDF
+        $pdf = new PDFManage();
+        if ($brochure) {
+            $pdf->addPDF(resource_path('pdf/brochure.pdf' ));
+        }
+        $pdf->addPDF(resource_path('pdf/empty.pdf' ));
+        return $pdf;
     }
 
 
