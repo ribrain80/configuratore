@@ -13,6 +13,12 @@ use LynX39\LaraPdfMerger\PDFManage;
 
 class PdfDrawer
 {
+    /**
+     * Metodo di supporto che genera un array con tutte le informazioni per popolare il pdf del cassetto
+     * @todo: Aggiungere sezione bridges
+     * @param $id
+     * @return array
+     */
     public static function getDrawerInfo($id) {
         //1 Recupero il cassetto
         /** @var Drawer $drawer  */
@@ -40,6 +46,12 @@ class PdfDrawer
         return $out;
     }
 
+    /**
+     * Funzione che genera il pdf partendo dall'id del cassetto e vi prepone la brochure se $brochure==true
+     * @param $id identificativo del cassetto
+     * @param bool $brochure flag su presenza della brochure nel pdf
+     * @return PDFManage
+     */
     public static function genPDF($id,$brochure=false) {
         $data = static::getDrawerInfo($id); //ORA INUTILE MA DOVREBBE SERVIRE PER GENERARE IL NOSTRO PDF
         $pdf = new PDFManage();

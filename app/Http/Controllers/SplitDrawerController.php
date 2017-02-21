@@ -11,10 +11,20 @@ namespace App\Http\Controllers;
 use App\Models\Drawer;
 use App\Models\PdfDrawer;
 use Illuminate\Http\Request;
-use LynX39\LaraPdfMerger\PDFManage;
 
+
+/**
+ * Controller per la gestione delle operazioni sui cassetti
+ * Class SplitDrawerController
+ * @package App\Http\Controllers
+ */
 class SplitDrawerController extends Controller
 {
+    /**
+     * Save/Update di un cassetto
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function actionSave(Request $request)
     {
         $data = $request->json()->all();
@@ -22,8 +32,15 @@ class SplitDrawerController extends Controller
         return response()->json($output, ($output['id' != -1]) ? 200 : 400);
     }
 
+    /**
+     * Invia una mail contenente un cassetto (PDF ALLEGATO)
+     * @todo Recuperare id/brochre da request, testare invio mail, preparare view per la mail
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function actionSend(Request $request)
     {
+        $data = $request->json()->all();
         $id=1;
         $brochure=false;
         Mail::send('tmp.send', ['title' => "ABC", 'content' => "CONTENT TODO"], function ($message,$id,$brochure) {
@@ -32,20 +49,27 @@ class SplitDrawerController extends Controller
             $message->subject("Il tuo cassetto");
             $message->attachData(PdfDrawer::genPDF($id,$brochure)->merge('string'),"cassetto-split-$id-.pdf");
             //Add a subject
-
-
         });
 
-        $data = $request->json()->all();
-        $output = $this->save($data);
         return response()->json("DUMMY-SENT", 200);
     }
 
+    /**
+     * Permette il download del pdf di un cassetto
+     * @param $id
+     * @param bool $brochure
+     * @return \LynX39\LaraPdfMerger\PDF
+     */
     public function actionPdf($id, $brochure = false)
     {
         return PdfDrawer::genPDF($id, $brochure)->merge();
     }
 
+    /**
+     * Esegue il salvataggio/update di un cassetto
+     * @param $data
+     * @return array
+     */
     private function save($data)
     {
         //2 Inizializzo l'oggetto (sia save che update)
@@ -85,6 +109,11 @@ class SplitDrawerController extends Controller
         return $out;
     }
 
+    /**
+     * Carica un Cassetto dal DB, Se parametro $id==null allora torna un nuovo oggetto Drawer
+     * @param null $id
+     * @return Drawer|null
+     */
     private function loadModel($id = null)
     {
         $drawer = null;
