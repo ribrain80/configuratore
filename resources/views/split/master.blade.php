@@ -61,11 +61,11 @@
     <div class="row">
         <div class="col-sm-2 col-md-1 scrollspy" >
             <ul class="nav hidden-xs hidden-sm affix-top" data-spy="affix" data-offset="70px" id="nav">
-                <li><a href="#step1">Step1</a></li>
-                <li><a href="#step2">Step2</a></li>
-                <li><a href="#step3">Step3</a></li>
-                <li><a href="#step4">Step4</a></li>
-                <li><a href="#step5">Final Step</a></li>
+                <li><a href="#step1" class="inpagenav">Step1</a></li>
+                <li><a href="#step2" class="inpagenav">Step2</a></li>
+                <li><a href="#step3" class="inpagenav">Step3</a></li>
+                <li><a href="#step4" class="inpagenav">Step4</a></li>
+                <li><a href="#step5" class="inpagenav">Final Step</a></li>
             </ul>
         </div>
         <div class="col-sm-10 col-md-11" id="maincontent">
@@ -83,7 +83,7 @@
         window.addEventListener("hashchange", shiftWindow);*/
         var h = document.body.clientHeight;
         var hn = $('nav').outerHeight();
-        $('section').outerHeight(h-hn+20);
+        $('section').outerHeight(h-hn);
 
         Pace.on("done", function(){
             $(".cover").fadeOut(2000);
@@ -91,7 +91,7 @@
 
         var navOffset = $('.navbar').height();
 
-        $('.scrollspy li a').click(function(event) {
+        $('a.inpagenav').click(function(event) {
             var href = $(this).attr('href');
 
             // Don't let the browser scroll, but still update the current address
@@ -104,6 +104,8 @@
             $(href)[0].scrollIntoView();
             window.scrollBy(0, -navOffset);
         });
+
+        
 
 
     </script>

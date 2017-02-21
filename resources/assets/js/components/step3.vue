@@ -31,7 +31,7 @@
             <div class="col-lg-12" id="animation"></div>
         </div>
         <div class="col-lg-12" >
-            <a href="#step4" class="btn btn-danger" lang="it">Avanti</a>
+            <a href="#step4" class="btn btn-danger inpagenav" lang="it">Avanti</a>
         </div>
     </div>
 </template>

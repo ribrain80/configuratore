@@ -11,7 +11,7 @@
         </div>
 
         <div class="col-lg-12" >
-            <a href="#step5" class="btn btn-danger" lang="it">Avanti</a>
+            <a href="#step5" class="btn btn-danger inpagenav" lang="it">Avanti</a>
         </div>
     </div>
 </template>
