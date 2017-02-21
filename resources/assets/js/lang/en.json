@@ -1,8 +1,8 @@
 { "token":
     {
-        "Benvenuti nel configuratore":"Welcome to the configuration app",
+        "Benvenuti nel configuratore Split": "Welcome to the Split configurator page",
         "Scelta lingua" : "Choose your language",
-        "Descrizione del processo" : "Description of the process will be here",
+        "Descrizione del prodotto" : "Product description",
         "Nuova configurazione" : "New Configuration",
         "Carica configurazione salvata in precedenza" : "Load a previously saved configuration",
         "Tipologia di cassetto" : "Drawer Type",
@@ -10,13 +10,29 @@
         "Cassetto in legno" : "Wood drawer",
         "Spondine metalliche" : "Metallic",
         "Avanti" : "Next",
-        "E' necessario selezionare una tipologia di cassetto": "You must select a drawer type",
+        "Attenzione!": "Warning!",
+        "è obbligatorio selezionare una tipologia di cassetto": "you must select a drawer type",
+        "impossibile caricare le tipologie, si prega di riprovare più tardi": "unable lo load drawer types, please try later",
         "Dimensioni cassetto": "Drawer dimensions",
-        "Profondità interna cassetto": "Length",
-        "Larghezza interna cassetto": "Width",
-        "Altezza interna sponda": "Height",
-        "Attenzione! La larghezza indicata supera il valore consentito": "Warning: width out of allowed range",
-        "Attenzione! La lunghezza indicata supera il valore consentito": "Warning: length out of allowed range",
-        "Attenzione! L'altezza indicata per la sponda supera il valore consentito": "Warning: edge height out of allowed range"
+        "tutti i campi sono obbligatori ed espressi in millimetri, la larghezza deve essere compresa tra 500 e 1800, la lunghezza tra 500 e 1800, l'altezza sponda tra 100 e 700": "All dimensions are required: width valid range is between 500 and 1800, length between 500 and 1800, edge height between 100 and 700",
+        "Profondità interna cassetto": "Drawer Length",
+        "Larghezza interna cassetto": "Drawer Width",
+        "Altezza interna sponda": "Internal Edge Height",
+        "la larghezza indicata supera il valore consentito": "width out of allowed range",
+        "la lunghezza indicata supera il valore consentito": "length out of allowed range",
+        "l'altezza indicata per la sponda supera il valore consentito": "edge height out of allowed range",
+        "Step finale": "Final step",
+        "Selezione inserti": "Dividers selection",
+        "Brochure": "Brochure",
+        "Riepilogo": "Summary",
+        "Indirizzo email": "Email address",
+        "Invia via email": "Send email",
+        "Scarica": "Download",
+        "Oppure": "Otherwise",
+        "è necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo": "you must at least one between Brochure and Summary",
+        "è necessario indicare un indirizzo email per la spedizione": "you must specify an email address for the delivery to happen",
+        "l'email indicata non è valida": "not a valid email",
+        "impossibile completare l'operazione, si prega di riprovare più tardi": "unable to complete operation, please try later"
+
     }
 }

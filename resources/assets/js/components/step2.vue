@@ -14,7 +14,7 @@
 
         <div class="col-lg-12" v-show="$parent.hasError">
             <div class="alert alert-warning alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> Impossibile caricare le tipologie, si prega di riprovare più tardi
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> impossibile caricare le tipologie, si prega di riprovare più tardi
             </div>
         </div>        
 

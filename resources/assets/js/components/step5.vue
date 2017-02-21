@@ -13,31 +13,31 @@
         </div>
 
 		<div class="checkbox col-lg-12">
-			<label>
+			<label lang="it">
 				<input type="checkbox" v-model="$parent.brochure" /> Brochure
 			</label>
 		</div>
 
 		<div class="checkbox col-lg-12">
-			<label>
+			<label lang="it">
 				<input type="checkbox" v-model="$parent.summary" /> Riepilogo
 			</label>
 		</div>
 
 		<div class="col-lg-12">
-			<label>
+			<label lang="it">
 				<input type="text" v-model="$parent.email" /> Indirizzo email 
 			</label>
 		</div>
 		<div class="col-lg-12">
-			<button class="btn btn-danger" id="email" @click="$parent.savedrawer( $event )">Invia via email</button>
+			<button class="btn btn-danger" id="email" @click="$parent.savedrawer( $event )" lang="it">Invia via email</button>
 		</div>
-		<div class="col-lg-12">
+		<div class="col-lg-12" lang="it">
 			Oppure 
 		</div>
 
 		<div class="col-lg-12">	
-			<button class="btn btn-danger" id="download" @click="$parent.savedrawer( $event )">Scarica</button>	
+			<button class="btn btn-danger" id="download" @click="$parent.savedrawer( $event )" lang="it">Scarica</button>	
 		</div>		
 
     </div>

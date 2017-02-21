@@ -18,7 +18,7 @@ var step5 = new Vue({
             
             if( this.brochure === false && this.summary == false ) {
                 this.has_error = true;
-                this.alert_message = "E' necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo";
+                this.alert_message = "è necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo";
                 return false;
             }
 
@@ -27,7 +27,7 @@ var step5 = new Vue({
                 if( this.email.length === 0 ) {
                     console.log( "IN" );
                     this.has_error = true;
-                    this.alert_message = "E' necessario indicare un indirizzo email per la spedizione";
+                    this.alert_message = "è necessario indicare un indirizzo email per la spedizione";
                     return false;
                 }
 
@@ -50,7 +50,7 @@ var step5 = new Vue({
             this.$http.post( '/split/savedrawer', Configuration).then( response => {
                 console.log("success");
             }, response => {
-                this.alert_message = "Impossibile completare l'operazione, si prega di riprovare più tardi";
+                this.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
                 this.has_error = true;
             });
         },

@@ -61,11 +61,11 @@
     <div class="row">
         <div class="col-sm-2 col-md-1 scrollspy" >
             <ul class="nav hidden-xs hidden-sm affix-top" data-spy="affix" data-offset="70px" id="nav">
-                <li><a href="#step1" class="inpagenav">Step1</a></li>
-                <li><a href="#step2" class="inpagenav">Step2</a></li>
-                <li><a href="#step3" class="inpagenav">Step3</a></li>
-                <li><a href="#step4" class="inpagenav">Step4</a></li>
-                <li><a href="#step5" class="inpagenav">Final Step</a></li>
+                <li><a href="#step1" class="inpagenav" lang="it">Step1</a></li>
+                <li><a href="#step2" class="inpagenav" lang="it">Step2</a></li>
+                <li><a href="#step3" class="inpagenav" lang="it">Step3</a></li>
+                <li><a href="#step4" class="inpagenav" lang="it">Step4</a></li>
+                <li><a href="#step5" class="inpagenav" lang="it">Step finale</a></li>
             </ul>
         </div>
         <div class="col-sm-10 col-md-11" id="maincontent">
