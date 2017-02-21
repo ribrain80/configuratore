@@ -11,11 +11,17 @@ use Log;
 
 class ApiController extends Controller
 {
+
     public function actionDrawersType() {
         return response()->json(Drawertype::all(['id','description'])->toArray());
     }
     public function actionDividers() {
-        return response()->json(Divider::all(['id','width','length','depth'])->toArray());
+        $grouped = [];
+        foreach (Divider::all(['id','width','length','depth'])->sortBy("depth") as $curDivider) {
+            $curDivider['label']=$curDivider['width']."x".$curDivider['length']."x".$curDivider['depth'];
+            $grouped['Elem h-'.$curDivider['depth']][]=$curDivider;
+        }
+        return response()->json($grouped);
     }
     public function actionBridges() {
         //TODO: Rename fields
