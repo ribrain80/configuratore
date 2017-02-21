@@ -54,7 +54,7 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('bridges',['as'=>'split.api.bridges','uses'=>'ApiController@actionBridges']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     Route::post('send',['as'=>'split.api.senddrawer','uses'=>'SplitDrawerController@actionPdf']);
-    Route::get('pdf/{id}',['as'=>'split.api.pdfdrawer','uses'=>'SplitDrawerController@actionPdf']);
+    Route::get('pdf/{id}/{brochure?}',['as'=>'split.api.pdfdrawer','uses'=>'SplitDrawerController@actionPdf']);
 
 
 

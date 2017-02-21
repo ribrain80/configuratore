@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Models\Drawer;
 use App\Models\PdfDrawer;
 use Illuminate\Http\Request;
+use LynX39\LaraPdfMerger\PDFManage;
 
 class SplitDrawerController extends Controller
 {
@@ -26,9 +27,13 @@ class SplitDrawerController extends Controller
         return response()->json("DUMMY-SENT",200);
     }
 
-    public function actionPdf($id) {
+    public function actionPdf($id,$brochure=false) {
         $data = PdfDrawer::getDrawerInfo($id);
-        return response()->json($data,200);
+        $pdf = new PDFManage();
+        if ($brochure) {
+            $pdf->addPDF(resource_path('pdf/brochure.pdf' ));
+        }
+        $pdf->addPDF(resource_path('pdf/empty.pdf' ))->merge();
     }
 
 
