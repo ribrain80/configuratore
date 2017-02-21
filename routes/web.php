@@ -45,39 +45,25 @@ Route::group(['prefix' => 'm50'], function () {
 });
 
 Route::group(['prefix' => 'split'], function () {
-    //PARCO GIOCHI
-    //Rotta per fare dei test con konvajs per inserimento inserti e bridges
-    Route::get('konva',['as'=>'konva','uses'=>function () {
-        return view('konva');
-    }]);
-
-
+    //PAGE APPLICATION
+    Route::get('/onepage', ['as'=>'split.onepage','uses'=>function () {return view('split.onepage');}]);
     //API
+    Route::get('configs',['as'=>'split.api.config', 'uses'=>'ApiController@actionConfig']);
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
+    Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
+    Route::post('send',['as'=>'split.api.senddrawer','uses'=>'SplitDrawerController@actionPdf']);
+    Route::post('pdf',['as'=>'split.api.pdfdrawer','uses'=>'SplitDrawerController@actionPdf']);
 
-    Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'ApiController@actionSavedrawer']);
 
-    //ONE PAGE
-    Route::get('/onepage', ['as'=>'split.onepage','uses'=>function () {
-        return view('split.onepage');
-    }]);
 
 
 
     Route::get('/load',['as'=>'split.load','uses'=>function() {
         throw new \Symfony\Component\HttpKernel\Exception\HttpException('403','Non implementata');
     }]);
+
     Route::get('pdf', array( 'as' => 'split.pdf', 'uses' => 'PDFController@out' ) );
-
-    //PAGES --DEPRECATED
-	Route::get('step1', array( 'as' => 'split.step1', 'uses' => 'SplitController@step1' ) );
-	Route::get('step2', array( 'as' => 'split.step2', 'uses' => 'SplitController@step2' ) );
-	Route::post('step3', array( 'as' => 'split.step3', 'uses' => 'SplitController@step3' ) );
-	Route::post('step4',  array( 'as' => 'split.step4', 'uses' => 'SplitController@step4' ) );
-	Route::get('step5',  array( 'as' => 'split.step5', 'uses' => 'SplitController@step5' ) );
-
-
 });
 
 //Rotte per studio/test
