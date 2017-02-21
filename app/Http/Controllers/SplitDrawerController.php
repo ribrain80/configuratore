@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Drawer;
+use App\Models\PdfDrawer;
 use Illuminate\Http\Request;
 
 class SplitDrawerController extends Controller
@@ -22,19 +23,18 @@ class SplitDrawerController extends Controller
     public function actionSend(Request $request) {
         $data = $request->json()->all();
         $output = $this->save($data);
-        return response()->json("DUMMY",200);
+        return response()->json("DUMMY-SENT",200);
     }
 
-    public function actionPdf(Request $request) {
-        $data = $request->json()->all();
-        $output = $this->save($data);
-        return response()->json("DUMMY",200);
+    public function actionPdf($id) {
+        $data = PdfDrawer::getDrawerInfo($id);
+        return response()->json($data,200);
     }
 
 
     private function save($data) {
         //2 Inizializzo l'oggetto (sia save che update)
-        $drawer = $this->loadDrawerById($data['drawerId']);
+        $drawer = $this->loadModel($data['drawerId']);
         //3 Aggiorno i campi di model (fake)
         $drawer->length=(int)$data['dimensions']['length'];
         $drawer->width=(int)$data['dimensions']['width'];
@@ -70,7 +70,7 @@ class SplitDrawerController extends Controller
         return $out;
     }
 
-    private function loadDrawerById($id=null) {
+    private function loadModel($id=null) {
         $drawer = null;
         if (!$id) {
             $drawer =  new Drawer();

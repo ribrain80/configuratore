@@ -21,14 +21,16 @@ class PdfDrawer
             'length'=>$drawer->length,
             'depth'=>$drawer->depth,
         ];
-        $out['id']=$id;
+        $out['id']=$drawer->id;
         $out['label']='('.$drawer->width.'x'.$drawer->length.'x'.$drawer->depth.')';
         $out['type']=$drawer->drawertypes_id;
         $out['dividers']=[];
         foreach ($drawer->drawerdividers as $divider) {
-            $cur['id'] = $divider->divider;
-            $cur['x'] = "".$divider->x;
-            $cur['y'] = "".$divider->y;
+            $cur['id'] = $divider->pivot->divider;
+            $cur['x'] = $divider->pivot->x;
+            $cur['y'] = $divider->pivot->y;
+            $cur['texture'] = "".$divider->pivot->texture;
+            $cur['color'] = "".$divider->pivot->color;
             $cur['label'] = $divider->width . "x" . $divider->length."x".$divider->depth;
             $out['dividers'][]=$cur;
         }

@@ -24,9 +24,10 @@ class ApiController extends Controller
 
     public function actionConfig() {
         $out['urls']['dividers']=route('split.api.drawerstypes');
+        $out['urls']['bridges']=route('split.api.bridges');
         $out['urls']['save']=route('split.api.savedrawer');
         $out['urls']['send']=route('split.api.senddrawer');
-        $out['urls']['pdf']=route('split.api.pdfdrawer');
+       // $out['urls']['pdf']=route('split.api.pdfdrawer');
 
         return response()->json($out);
     }

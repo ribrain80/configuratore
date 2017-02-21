@@ -56,6 +56,6 @@ class Drawer extends Model
     public function drawerdividers()
     {
         return $this->belongsToMany('App\Models\Divider', 'drawerdivider','drawer','divider')
-            ->withPivot(['x','y']);
+            ->withPivot(['color','texture','divider','x','y']);
     }
 }
