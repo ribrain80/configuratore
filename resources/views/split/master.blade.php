@@ -85,6 +85,10 @@
         var hn = $('nav').outerHeight();
         $('section').outerHeight(h-hn);
 
+        Pace.on("start", function(){
+            $(".cover").show();
+        });
+
         Pace.on("done", function(){
             $(".cover").fadeOut(2000);
         });

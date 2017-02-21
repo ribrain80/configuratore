@@ -47,11 +47,15 @@ var step5 = new Vue({
                 this.download = true;
             }
 
-            this.$http.post( '/split/savedrawer', Configuration).then( response => {
-                console.log("success");
-            }, response => {
-                this.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
-                this.has_error = true;
+            var self = this;
+            
+            Pace.track( function() {
+                self.$http.post( '/split/savedrawer', Configuration).then( response => {
+                    console.log("success");
+                }, response => {
+                    self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
+                    self.has_error = true;
+                });
             });
         },
 
