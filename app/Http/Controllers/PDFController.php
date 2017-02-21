@@ -20,11 +20,18 @@ class PDFController extends Controller
     public function out()
     {
         class_exists('TCPDF', true);
+        
         // initiate FPDI
-        $pdf = new \FPDI();
+        //$pdf = new \FPDI();
 
         // get the page count
-        $pageCount = $pdf->setSourceFile( resource_path('pdf/Split_flusso.pdf') );
+        //$pageCount = $pdf->setSourceFile( resource_path('pdf/brochure.pdf' ) );
+
+        $merge = new \FPDF_Merge();
+        $merge->add(resource_path('pdf/Split_flusso.pdf' ) );
+        $merge->add(resource_path('pdf/brochure.pdf' ) );
+        $merge->output();
+        /*
         $style4 = array('L' => 0,
                 'T' => array('width' => 0.25, 'cap' => 'butt', 'join' => 'miter', 'dash' => '20,10', 'phase' => 10, 'color' => array(255, 255, 255)),
                 'R' => array('width' => 0.50, 'cap' => 'round', 'join' => 'miter', 'dash' => 0, 'color' => array(255, 255, 255)),
@@ -55,9 +62,10 @@ class PDFController extends Controller
             $pdf->SetXY(5, 5);
             $pdf->Write(8, 'Qui ci mettiamo i valori presi da DB');
         }
+        */
 
         // Output the new PDF
-        $pdf->Output();
+        //$pdf->Output();
 
 
 

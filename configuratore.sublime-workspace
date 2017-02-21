@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"pa",
+				"pace"
+			],
+			[
+				"le",
+				"Length"
+			],
+			[
+				"sholu",
+				"shoulder_height"
+			],
+			[
+				"mm",
+				"mm2Pixel"
+			],
+			[
+				"sho",
+				"shoulder_height_upper_limit"
+			],
+			[
+				"rect_h",
+				"rect_height_upper_limit"
+			],
+			[
+				"rect",
+				"rect_width_upper_limit"
+			],
+			[
 				"wi",
 				"width"
 			],
@@ -50,10 +78,6 @@
 			[
 				"rect_bo",
 				"rect_bounding_client_rect"
-			],
-			[
-				"rect",
-				"rect_stroke"
 			],
 			[
 				"rect_",
@@ -131,62 +155,24 @@
 			"file": "resources/views/split/onepage.blade.php",
 			"settings":
 			{
-				"buffer_size": 3265,
+				"buffer_size": 756,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<template>\n\n    <div class=\"row\" id=\"step5\">\n\n        <div class=\"col-lg-12\">\n            <h2 lang=\"it\">Step finale</h2>\n        </div>\n\n\t\t<div class=\"checkbox col-lg-12\">\n\t\t\t<label>\n\t\t\t\t<input type=\"checkbox\" v-model=\"$parent.brochure\" /> Brochure\n\t\t\t</label>\n\t\t</div>\n\n\t\t<div class=\"checkbox col-lg-12\">\n\t\t\t<label>\n\t\t\t\t<input type=\"checkbox\" v-model=\"$parent.summary\" /> Riepilogo\n\t\t\t</label>\n\t\t</div>\n\n\t\t<div class=\"col-lg-12\">\n\t\t\t<label>\n\t\t\t\t<input type=\"text\" v-model=\"$parent.email\" /> Indirizzo email \n\t\t\t</label>\n\t\t\t<button class=\"btn btn-default\" id=\"email\" @click=\"$parent.savedrawer( $event )\">Invia via email</button>\n\t\t</div>\n\n\t\t<div class=\"col-lg-12\">\t\n\t\t\t<button class=\"btn btn-default\" id=\"download\" @click=\"$parent.savedrawer( $event )\">Scarica</button>\t\n\t\t</div>\t\t\n\n    </div>\n\n</template>",
-			"file": "resources/assets/js/components/step5.vue",
-			"file_size": 856,
-			"file_write_time": 131317325422973002,
+			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 807,
+				"buffer_size": 2488,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/assets/js/split/step5.js",
+			"file": "app/Http/Controllers/PDFController.php",
 			"settings":
 			{
-				"buffer_size": 1335,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/split/step4.js",
-			"settings":
-			{
-				"buffer_size": 933,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/split/Configuration.js",
-			"settings":
-			{
-				"buffer_size": 282,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/split/step2.js",
-			"settings":
-			{
-				"buffer_size": 778,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step2.vue",
-			"settings":
-			{
-				"buffer_size": 1265,
+				"buffer_size": 2200,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -251,46 +237,54 @@
 	[
 		"/C/Users/brambillari/Code/configuratore",
 		"/C/Users/brambillari/Code/configuratore/app",
+		"/C/Users/brambillari/Code/configuratore/public",
+		"/C/Users/brambillari/Code/configuratore/public/js",
 		"/C/Users/brambillari/Code/configuratore/resources",
 		"/C/Users/brambillari/Code/configuratore/resources/assets",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/css",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/lang",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/sass",
 		"/C/Users/brambillari/Code/configuratore/resources/views",
-		"/C/Users/brambillari/Code/configuratore/storage",
-		"/C/Users/brambillari/Code/configuratore/storage/logs"
+		"/C/Users/brambillari/Code/configuratore/storage/logs",
+		"/C/Users/brambillari/Code/configuratore/vendor",
+		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/bootstrap-sass-official",
+		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/PACE",
+		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/PACE/themes/black"
 	],
 	"file_history":
 	[
-		"/C/Users/brambillari/Code/configuratore/public/js/split/Configuration.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step2.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step3.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/Configuration.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step4.js",
+		"/C/Users/brambillari/Code/configuratore/resources/views/split/master.blade.php",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step5.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step5.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step4.js",
+		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step3.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step1.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step1.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/app.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/Configuration.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step2.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
+		"/C/Users/brambillari/Code/configuratore/public/css/pace-theme-loading-bar.css",
+		"/C/Users/brambillari/Code/configuratore/public/js/split/Configuration.js",
 		"/C/Users/brambillari/Code/configuratore/routes/web.php",
 		"/C/Users/brambillari/Code/configuratore/app/Http/Controllers/ApiController.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step5.js",
 		"/C/Users/brambillari/Code/configuratore/storage/logs/laravel-2017-02-16.log",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/views/split/master.blade.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/app.js",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/step3.blade.php",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/lang/en.json",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
 		"/C/Users/brambillari/Code/configuratore/database/seeds/DividerSeeder.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/languageselector.vue",
-		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
 		"/C/Users/brambillari/Code/configuratore/public/js/vendor.js",
 		"/C/Users/brambillari/Code/configuratore/resources/views/shared/jsfooter.blade.php",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/lang/i18n.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/sass/app.scss",
 		"/C/Users/brambillari/Code/configuratore/resources/views/shared/masterHead.blade.php",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/step1.blade.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/step1.js",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/step2.blade.php",
 		"/C/Users/brambillari/Code/configuratore/config/languages.php",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/step4.blade.php",
@@ -341,7 +335,7 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 43.0
 	},
 	"find_in_files":
 	{
@@ -355,6 +349,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pace",
+			"depthOutOfRange",
+			"console",
+			"checkChoice",
+			"makeRect",
+			"makerect",
+			"console",
+			"makeShoulderWidthInfoText",
+			"makeRect",
+			"this.measure_label",
+			"measure_label",
+			"mm2Pixel",
+			"makeRect",
+			"cm",
 			"consol",
 			"#animatio",
 			"animation",
@@ -382,6 +390,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"this.config.measure_label"
 		],
 		"reverse": false,
 		"show_context": false,
@@ -392,7 +401,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -401,15 +410,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3265,
+						"buffer_size": 756,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2964,
-								2964
+								45,
+								45
 							]
 						],
 						"settings":
@@ -421,8 +430,8 @@
 								{
 									"1":
 									[
-										2971,
-										2972
+										44,
+										45
 									]
 								},
 								"icon":
@@ -437,8 +446,8 @@
 								{
 									"1":
 									[
-										2951,
-										2952
+										34,
+										35
 									]
 								},
 								"unmatched":
@@ -447,61 +456,61 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_tag_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
@@ -512,484 +521,126 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "resources/assets/js/components/step5.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 807,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								235,
-								235
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "resources/assets/js/split/step5.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1335,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								434,
-								434
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										486,
-										487
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										399,
-										400
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "resources/assets/js/split/step4.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 933,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								652,
-								657
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										929,
-										930
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										20,
-										21
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/assets/js/split/Configuration.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 282,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								273,
-								273
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										278,
-										279
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										174,
-										175
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "resources/assets/js/split/step2.js",
+					"buffer": 1,
+					"file": "routes/web.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 778,
+						"buffer_size": 2488,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								670,
-								670
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1020.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/PDFController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								532
 							]
 						],
 						"settings":
@@ -1001,8 +652,8 @@
 								{
 									"1":
 									[
-										680,
-										681
+										2196,
+										2197
 									]
 								},
 								"icon":
@@ -1017,8 +668,8 @@
 								{
 									"1":
 									[
-										604,
-										605
+										388,
+										389
 									]
 								},
 								"unmatched":
@@ -1037,166 +688,61 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 52.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "resources/assets/js/components/step2.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1265,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								193,
-								193
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1241,7 +787,7 @@
 	"project": "configuratore.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1250,6 +796,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pdfcontr",
+				"app\\Http\\Controllers\\PDFController.php"
+			],
+			[
+				"web.php",
+				"routes\\web.php"
+			],
+			[
+				"master",
+				"resources\\views\\split\\master.blade.php"
+			],
 			[
 				"configuration",
 				"resources\\assets\\js\\split\\Configuration.js"
@@ -1341,10 +899,6 @@
 			[
 				"app",
 				"config\\app.php"
-			],
-			[
-				"web.php",
-				"routes\\web.php"
 			]
 		],
 		"width": 0.0
@@ -1379,7 +933,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 503.0,
+	"side_bar_width": 292.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
