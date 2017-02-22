@@ -28,6 +28,10 @@ var step4 = new Vue({
             } 
 
             this.selected.push( id );
+        },
+
+        genHref:function (val) {
+            return "#elem"+val;
         }
     },
 

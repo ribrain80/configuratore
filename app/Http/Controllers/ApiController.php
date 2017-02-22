@@ -19,9 +19,9 @@ class ApiController extends Controller
         $grouped = [];
         foreach (Divider::all(['id','width','length','depth'])->sortBy("depth") as $curDivider) {
             $curDivider['label']=$curDivider['width']."x".$curDivider['length']."x".$curDivider['depth'];
-            $grouped['Elem h-'.$curDivider['depth']][]=$curDivider;
+            $grouped[$curDivider['depth']][]=$curDivider;
         }
-        return response()->json($grouped);
+        return response()->json(['dividersCategories'=>array_keys($grouped),'dividers'=>$grouped]);
     }
     public function actionBridges() {
         //TODO: Rename fields
