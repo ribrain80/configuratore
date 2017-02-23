@@ -42,7 +42,6 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a lang="it" id="newone" href='{{route('split.onepage')}}'>Nuova configurazione</a></li>
-                <li><a lang="it" id="oldone" href='{{route('split.load')}}'>Carica configurazione salvata in precedenza</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
