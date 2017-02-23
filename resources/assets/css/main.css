@@ -29,3 +29,46 @@ div {
 .languageselector li+li:before{
 	content: " | ";
 }
+
+#container {
+  position:relative;
+}
+.box {
+  position:absolute;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 20px;
+  color: white;
+  border-radius:10px;
+  border: 2px solid black;
+}
+#box1 {
+	background-color: red;
+  top:0px;
+}
+#box2 {
+	background-color: blue;
+  top:88px;
+}
+#box3 {
+  background-color:green;
+  top:176px;
+}
+a {
+  color: white;
+}
+.highlight {
+  border: 4px solid yellow;
+  width: 196px;
+  height: 76px;
+  line-height: 76px;
+}
+code {
+  color: white;
+  font-size:1.2em;
+}
+p {
+  margin-top: 8px;
+}

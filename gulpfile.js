@@ -39,7 +39,10 @@ elixir(function(mix) {
             paths.lang + "js.cookie.js",
             paths.lang + "jquery-lang.js",
             paths.two + "two.js",
-            paths.pace + "pace.min.js"
+            paths.pace + "pace.min.js",
+            paths.greensock + "TweenMax.min.js",
+            paths.greensock + "jquery.gsap.min.js",
+            paths.greensock + "utils/Draggable.min.js"
         ], 'public/js/vendor.js', './');
 
 });
