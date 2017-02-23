@@ -18,7 +18,7 @@
         background:#fff;
         opacity: .8;
     }
-    li a.inpagenav {
+    .scrollspy li a.inpagenav {
         width: 30px;
         height: 30px;
         text-align: center;
@@ -29,7 +29,7 @@
         color:orangered;
         font-weight: bold;
     }
-    .nav .active {
+    .scrollspy .nav .active {
         width: 30px;
         height: 30px;
         text-align: center;
@@ -46,7 +46,7 @@
         color:#fff;
     }
 
-    .nav .active a {
+    .scrollspy .nav .active a {
         color:#fff !important;
     }
 
