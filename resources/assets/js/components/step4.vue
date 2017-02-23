@@ -9,6 +9,7 @@
               <div id="box2" class="box">box2</div>
               <div id="box3" class="box">box3</div>
             </div>
+
         </div>
         <div class="col-lg-12">
             <ul class="nav nav-tabs">
