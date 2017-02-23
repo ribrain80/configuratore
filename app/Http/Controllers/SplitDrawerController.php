@@ -102,7 +102,7 @@ class SplitDrawerController extends Controller
         if ($saved) {
             $out['status'] = 'ok';
             $out['id'] = $drawer->id;
-            $out['pdfpath']= route('split.api.pdfdrawer',['id'=>$drawer->id,'brochure'=>$data['pdf']['brochure']]);
+            $out['pdfpath']= route('split.export.topdf',['id'=>$drawer->id,'brochure'=>$data['pdf']['brochure']]);
         } else {
             $out['status'] = 'ko';
             $out['error'] = $error;

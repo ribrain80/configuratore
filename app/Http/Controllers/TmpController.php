@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PdfDrawer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use PDF;
 
 class TmpController extends Controller
 {
@@ -67,4 +68,11 @@ class TmpController extends Controller
 
         });
     }
+
+    public function actionSnappy() {
+        return $pdf = PDF::loadView('welcome', [])->inline("test");
+    }
+
+
+
 }
