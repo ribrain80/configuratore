@@ -18,6 +18,32 @@
         background:#fff;
         opacity: .8;
     }
+    li a.inpagenav {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 4px 0;
+        font-size: 16px;
+        line-height: 1.42;
+        border-radius: 15px;
+    }
+    .nav .active {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-weight: bold;
+        color:#fff;
+        font-size: 16px;
+        line-height: 1.42;
+        border-radius: 15px;
+        background: orangered;
+    }
+
+    .nav .active a {
+        color:#fff !important;
+    }
+
+
 
     </style>
 </head>
@@ -57,12 +83,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2 col-md-1 scrollspy" >
-            <ul class="nav hidden-xs hidden-sm affix-top" data-spy="affix" data-offset="70px" id="nav">
-                <li><a href="#step1" class="inpagenav" lang="it">Step1</a></li>
-                <li><a href="#step2" class="inpagenav" lang="it">Step2</a></li>
-                <li><a href="#step3" class="inpagenav" lang="it">Step3</a></li>
-                <li><a href="#step4" class="inpagenav" lang="it">Step4</a></li>
-                <li><a href="#step5" class="inpagenav" lang="it">Step finale</a></li>
+            <ul class="nav hidden-xs affix-top" data-spy="affix" data-offset="70px" id="nav">
+                <li><a href="#step1" class="inpagenav" lang="it">1</a></li>
+                <li><a href="#step2" class="inpagenav" lang="it">2</a></li>
+                <li><a href="#step3" class="inpagenav" lang="it">3</a></li>
+                <li><a href="#step4" class="inpagenav" lang="it">4</a></li>
+                <li><a href="#step5" class="inpagenav" lang="it">5</a></li>
             </ul>
         </div>
         <div class="col-sm-10 col-md-11" id="maincontent">
