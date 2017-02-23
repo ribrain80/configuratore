@@ -39,6 +39,10 @@ var step5 = new Vue({
 
                 this.send = true;
                 this.download = false;
+
+                this.has_error=true;
+                this.alert_message="Funzionalità non testabile in homestead";
+                return false;
             }
 
 
@@ -51,7 +55,8 @@ var step5 = new Vue({
             
             Pace.track( function() {
                 self.$http.post( '/split/savedrawer', Configuration).then( response => {
-                    console.log("success");
+                    self.has_error = false;
+                    window.open(response.body.pdfpath,'_blank');
                 }, response => {
                     self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
                     self.has_error = true;
