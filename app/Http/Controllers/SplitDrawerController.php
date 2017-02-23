@@ -27,43 +27,10 @@ class SplitDrawerController extends Controller
      */
     public function actionSave(Request $request)
     {
-        sleep(10);
+        sleep(5);
         $data = $request->json()->all();
         $output = $this->save($data);
         return response()->json($output, ($output['id'] != -1) ? 200 : 400);
-    }
-
-    /**
-     * Invia una mail contenente un cassetto (PDF ALLEGATO)
-     * @todo Recuperare id/brochre da request, testare invio mail, preparare view per la mail
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function actionSend(Request $request)
-    {
-        $data = $request->json()->all();
-        $id=$data['drawerId'];
-        $brochure=$data['brochure'];
-        Mail::send('tmp.send', ['title' => "ABC", 'content' => "CONTENT TODO"], function ($message,$id,$brochure) {
-            $message->from('giuseppe.liberati.1977@gmail.com', 'Configuratore split salice');
-            $message->to('giuseppe.liberati.1977@gmail.com');
-            $message->subject("Il tuo cassetto");
-            $message->attachData(PdfDrawer::genPDF($id,$brochure)->merge('string'),"cassetto-split-$id-.pdf");
-            //Add a subject
-        });
-
-        return response()->json("DUMMY-SENT", 200);
-    }
-
-    /**
-     * Permette il download del pdf di un cassetto
-     * @param $id
-     * @param bool $brochure
-     * @return \LynX39\LaraPdfMerger\PDF
-     */
-    public function actionPdf($id, $brochure = false)
-    {
-        return PdfDrawer::genPDF($id, $brochure)->merge();
     }
 
     /**

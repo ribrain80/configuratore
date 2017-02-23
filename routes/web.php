@@ -45,33 +45,18 @@ Route::group(['prefix' => 'm50'], function () {
 });
 
 Route::group(['prefix' => 'split'], function () {
-    //PAGE APPLICATION
-    Route::get('/onepage', ['as'=>'split.onepage','uses'=>function () {return view('split.onepage');}]);
+    //SPLIT APPLICATION
+    Route::get('/onepage', ['as'=>'split.onepage','uses'=>'SplitController@actionApplication']);
+    Route::get('/load',['as'=>'split.load','uses'=>'SplitController@actionLoad']);
     //API
     Route::get('configs',['as'=>'split.api.config', 'uses'=>'ApiController@actionConfig']);
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
     Route::get('bridges',['as'=>'split.api.bridges','uses'=>'ApiController@actionBridges']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
-    Route::post('send',['as'=>'split.api.senddrawer','uses'=>'SplitDrawerController@actionPdf']);
-    Route::get('pdf/{id}/{brochure?}',['as'=>'split.api.pdfdrawer','uses'=>'SplitDrawerController@actionPdf']);
-
-    Route::get('topdf/header',['as'=>'split.pdf.header',function (){
-        return view('split.pdf.header');
-    }]);
-    Route::get('topdf/footer',['as'=>'split.pdf.footer',function (){
-        return view('split.pdf.footer');
-    }]);
+    //EXPORT TO PDF
+    Route::get('topdf/header',['as'=>'split.pdf.header',function (){return view('split.pdf.header');}]);
+    Route::get('topdf/footer',['as'=>'split.pdf.footer',function (){return view('split.pdf.footer');}]);
     Route::get('topdf/{id}/{brochure?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
-
-
-
-
-
-
-    Route::get('/load',['as'=>'split.load','uses'=>function() {
-        throw new \Symfony\Component\HttpKernel\Exception\HttpException('403','Non implementata');
-    }]);
-
 });
 
