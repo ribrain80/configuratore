@@ -26,6 +26,8 @@
         font-size: 16px;
         line-height: 1.42;
         border-radius: 15px;
+        color:orangered;
+        font-weight: bold;
     }
     .nav .active {
         width: 30px;
@@ -37,6 +39,11 @@
         line-height: 1.42;
         border-radius: 15px;
         background: orangered;
+    }
+
+    li a.inpagenav:hover {
+        background: orangered !important;
+        color:#fff;
     }
 
     .nav .active a {
