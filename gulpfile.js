@@ -19,7 +19,7 @@ var paths = {
     'bootstrap': './vendor/bower_components/bootstrap-sass-official/assets/',
     'lang': './vendor/bower_components/jquery-lang-js/js/',
     'two': './vendor/bower_components/two.js/build/',
-    'greensock': '/vendor/bower_components/gsap/src/minified/',
+    'greensock': '/vendor/bower_components/gsap/src/uncompressed/',
     'pace': './vendor/bower_components/PACE/'
 };
 
@@ -35,14 +35,14 @@ elixir(function(mix) {
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
-            paths.jquery + "jquery.min.js",
+           // paths.jquery + "jquery.min.js",
             paths.lang + "js.cookie.js",
             paths.lang + "jquery-lang.js",
             paths.two + "two.js",
             paths.pace + "pace.min.js",
-            paths.greensock + "TweenMax.min.js",
-            paths.greensock + "jquery.gsap.min.js",
-            paths.greensock + "utils/Draggable.min.js"
+            paths.greensock + "TweenMax.js",
+            paths.greensock + "utils/Draggable.js",
+            paths.greensock + "jquery.gsap.js"
         ], 'public/js/vendor.js', './');
 
 });
