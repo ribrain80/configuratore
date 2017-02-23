@@ -21,17 +21,15 @@ class ExportController extends Controller
         $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
         $drawerPdf->loadView('split.pdf.riepilogo', ['drawer'=>PdfDrawer::getDrawerInfo($id)]);
 
-        if (!$brochure) {
-            return $drawerPdf->inline("drawer.pdf");
-        } else {
-            $pdf = new PDFManage();
-            $pdf->addPDF(resource_path('pdf/brochure.pdf' ));
-            //SALVO TEMPORANEAMENTE IL FILE
-            $temp = tempnam(sys_get_temp_dir(), 'drawer_'.$id);
-            $drawerPdf->save($temp,true);
-            //FINE SALVATAGGIO
-            $pdf->addPDF($temp);
-            $pdf->merge();
-        }
+        $openingFile = ($brochure)?resource_path('pdf/brochure.pdf' ):resource_path('pdf/cover.pdf');
+
+        $pdf = new PDFManage();
+        $pdf->addPDF($openingFile);
+        //SALVO TEMPORANEAMENTE IL FILE
+        $temp = tempnam(sys_get_temp_dir(), 'drawer_'.$id);
+        $drawerPdf->save($temp,true);
+        //FINE SALVATAGGIO
+        $pdf->addPDF($temp);
+        $pdf->merge();
     }
 }
