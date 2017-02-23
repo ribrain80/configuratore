@@ -7,7 +7,14 @@ return array(
         'enabled' => true,
         'binary'  => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
         'timeout' => false,
-        'options' => array(),
+        'options' => [
+            'margin-top'    => 0,
+            'margin-right'  => 0,
+            'margin-bottom' => 14,
+            'margin-left'   => 0,
+            'header-spacing'=> 0,
+            'page-size'=>'A4'
+        ],
         'env'     => array(),
     ),
     'image' => array(

@@ -11,11 +11,16 @@ namespace App\Http\Controllers;
 use App\Models\PdfDrawer;
 use LynX39\LaraPdfMerger\PDFManage;
 use PDF;
+use App;
 
 class ExportController extends Controller
 {
     public function actionRiepilogo($id,$brochure=false) {
-        $drawerPdf = PDF::loadView('split.pdf.riepilogo', ['drawer'=>PdfDrawer::getDrawerInfo($id)]);
+        $drawerPdf = App::make('snappy.pdf.wrapper');
+        $drawerPdf->setOption('header-html',route('split.pdf.header',[],true));
+        $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
+        $drawerPdf->loadView('split.pdf.riepilogo', ['drawer'=>PdfDrawer::getDrawerInfo($id)]);
+
         if (!$brochure) {
             return $drawerPdf->inline("drawer.pdf");
         } else {

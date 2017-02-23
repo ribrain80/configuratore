@@ -1,9 +1,15 @@
-
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-
+        <style>
+            .container {
+                padding-bottom: 50px;
+                padding-top: 50px;
+            }
+            .keeptogether {page-break-inside:avoid;margin-top: 150px}
+        </style>
     </head>
     <body>
         <div class="container">
@@ -81,15 +87,13 @@
                     </table>
                 </div>
             </div>
-            <pagebreak/>
-            <div class="row">
+            <div class="row keeptogether" style="">
                 <div class="col-xs-12">
                     <h4>PIANTA</h4>
                     <img src="http://placehold.it/1200?text=Pianta" class="img-responsive"/>
                 </div>
             </div>
-            <pagebreak/>
-            <div class="row">
+            <div class="row keeptogether">
                 <div class="col-xs-12">
                     <h4>RENDERING</h4>
                     <img src="http://placehold.it/1200?text=Rendering" class="img-responsive"/>

@@ -56,9 +56,14 @@ Route::group(['prefix' => 'split'], function () {
     Route::post('send',['as'=>'split.api.senddrawer','uses'=>'SplitDrawerController@actionPdf']);
     Route::get('pdf/{id}/{brochure?}',['as'=>'split.api.pdfdrawer','uses'=>'SplitDrawerController@actionPdf']);
 
+    Route::get('topdf/header',['as'=>'split.pdf.header',function (){
+        return view('split.pdf.header');
+    }]);
+    Route::get('topdf/footer',['as'=>'split.pdf.footer',function (){
+        return view('split.pdf.footer');
+    }]);
     Route::get('topdf/{id}/{brochure?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
 
-    Route::get('snappy',['uses'=>'TmpController@actionSnappy']);
 
 
 
