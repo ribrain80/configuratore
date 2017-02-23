@@ -179,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Anouar\Fpdf\FpdfServiceProvider::class,
         LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
@@ -232,6 +233,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Fpdf'    => Anouar\Fpdf\Facades\Fpdf::class,
         'PdfMerger' => LynX39\LaraPdfMerger\Facades\PdfMerger::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ],
 
 ];
