@@ -32,7 +32,12 @@ var step4 = new Vue({
 
         genHref:function (val) {
             return "#elem"+val;
+        },
+
+        getDividerByCat: function(val) {
+            return this.dividers.dividers[val];
         }
+
     },
 
     watch: {
