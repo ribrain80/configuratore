@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <h2 lang="it">Selezione inserti</h2>
         </div>
-        <div class="row">
+        <div class="col-lg-12">
             <div id="container">
               <div id="box1" class="box">box1</div>
               <div id="box2" class="box">box2</div>
@@ -11,7 +11,7 @@
             </div>
 
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="elementmenu">
             <ul class="nav nav-tabs">
                 <li  :class="{active: !index}" v-for="(cat,index) in $parent.dividers.dividersCategories">
                     <a data-toggle="tab" :href="$parent.genHref(cat)"> Elem h-{{cat}}</a>
