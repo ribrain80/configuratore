@@ -11,14 +11,19 @@ use Log;
 class SplitController extends Controller
 {
     /**
+     * Punto di accesso all'applicazione Split
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function actionApplication() {
         return view('split.onepage');
     }
 
+    /**
+     * @todo: Da implementare
+     * Servirà per il load dei cassetti
+     */
     public function actionLoad(){
-        throw new \Symfony\Component\HttpKernel\Exception\HttpException('403','Non implementata');
+        abort('403','Non Implementata');
     }
 
 }
