@@ -21,7 +21,11 @@ class ExportController extends Controller
         } else {
             $pdf = new PDFManage();
             $pdf->addPDF(resource_path('pdf/brochure.pdf' ));
-            $pdf->addPDF(resource_path($drawerPdf->output() ));
+            //SALVO TEMPORANEAMENTE IL FILE
+            $temp = tempnam(sys_get_temp_dir(), 'drawer_'.$id);
+            $drawerPdf->save($temp,true);
+            //FINE SALVATAGGIO
+            $pdf->addPDF($temp);
             $pdf->merge();
         }
     }
