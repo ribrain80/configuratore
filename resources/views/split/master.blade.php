@@ -59,11 +59,11 @@
 
 <div class="cover"></div>
 
-<!-- Modal -->
+<!-- New configration alert Modal -->
 <div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header alert-danger">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel" lang="it">Attenzione</h4>
       </div>
@@ -73,6 +73,23 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
         <button type="button" class="btn btn-primary" onclick="window.location.reload();">Continua</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Generic error Modal -->
+<div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert-danger">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" lang="it">Attenzione</h4>
+      </div>
+      <div class="modal-body" lang="it" id="generic-alert-message">  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok!</button>
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@ var step2 = new Vue({
     },
 
     methods: {
+
         initTypes: function () {
             this.$http.get('/split/drawerstypes').then(response => {
                 this.types = response.body;
@@ -24,12 +25,24 @@ var step2 = new Vue({
                 this.hasError = true;
             });
         },
+
         setType: function (type) {
             this.selected = type;
             this.choice = false;
         },
+
         check: function() {
-            return true;
+
+            console.log( this.selected );
+
+            if( this.selected == 0 ) {
+                $( "#error-modal" ).find('.modal-body').text( "Non hai scelto la tipologia" );
+                $( '#error-modal' ).modal();
+                return false;
+            } else {
+                $("html, body").delay( 1000 ).animate({scrollTop: $('#step3').offset().top }, 1000 ); 
+            }
+           
         }
     },
     mounted() {
