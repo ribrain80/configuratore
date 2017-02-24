@@ -40,7 +40,8 @@ var step4 = new Vue({
 
         check: function() {
 
-            if( this.dividers.length == 0 ) {
+            if( this.selected.length == 0 ) {
+                console.log( "in" );
                 $( "#error-modal" ).find('.modal-body').text( "Devi selezionare almeno un divisorio" );
                 $( '#error-modal' ).modal();
                 Commons.movesmoothlyTo( "#step4"); 

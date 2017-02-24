@@ -4,7 +4,7 @@ var step5 = new Vue({
 
     data: {
         brochure: false,
-        summary: false,
+        summary: true,
         email: '',
         send: false,
         download: false,
@@ -19,9 +19,23 @@ var step5 = new Vue({
             if( Configuration.drawertype < 1 ) {
                 this.has_error = true;
                 this.alert_message = "Non hai selezionato la tipologia del cassetto";
-                $("html, body").delay(2000).animate({scrollTop: $('#step2').offset().top }, 3000);
+                Commons.movesmoothlyTo( "#step2" );
                 return false;
             }
+
+            if( !Configuration.dimensions.width || !Configuration.dimensions.length || !Configuration.dimensions.depth) {
+                this.has_error = true;
+                this.alert_message = "Controlla le dimensioni del cassetto";
+                Commons.movesmoothlyTo( "#step3" );
+                return false;
+            }
+
+            if( Configuration.dividers.length ) {
+                this.has_error = true;
+                this.alert_message = "Non hai scelto alcun divisorio";
+                Commons.movesmoothlyTo( "#step4" );
+                return false;
+            }            
 
             if( this.brochure === false && this.summary == false ) {
                 this.has_error = true;

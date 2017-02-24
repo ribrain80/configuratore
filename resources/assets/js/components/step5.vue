@@ -20,7 +20,7 @@
 
 		<div class="checkbox col-lg-12">
 			<label lang="it">
-				<input type="checkbox" v-model="$parent.summary" /> Riepilogo
+				<input type="checkbox" v-model="$parent.summary" :disabled="true"/> Riepilogo
 			</label>
 		</div>
 
