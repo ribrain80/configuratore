@@ -12,9 +12,10 @@ class DrawertypesTableSeeder extends Seeder
     public function run()
     {
         DB::table('drawertypes')->insert([
-        	['description' => "LineaBox"],
-        	['description' => "Cassetto in legno"],
-        	['description' => "Spondine metalliche"]
+        	['category' => "LineaBox", 'description' => "LineaBox 4 lati"],
+        	['category' => "LineaBox", 'description' => "LineaBox 3 lati"],
+        	['category' => "LineaBox", 'description' => "LineaBox 2 lati"],
+        	['category' => "Cassetto", 'description' => "Cassetto"],
         ]);
     }
 }

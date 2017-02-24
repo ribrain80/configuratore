@@ -13,7 +13,11 @@ class ApiController extends Controller
 {
 
     public function actionDrawersType() {
-        return response()->json(Drawertype::all(['id','description'])->toArray());
+        $grouped = [];
+        foreach (Drawertype::all(['id','description','category'])->sortBy('category') as $type) {
+            $grouped[$type['category']][]=$type;
+        }
+        return response()->json($grouped);
     }
     public function actionDividers() {
         $grouped = [];

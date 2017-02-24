@@ -17,6 +17,11 @@ class CreateDrawertypesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('description')->nullable()->default(null);
+            $table->string('category', 45)->nullable()->default(null);
+            $table->tinyInteger('sponda_front')->nullable()->default('0');
+            $table->tinyInteger('sponda_back')->nullable()->default('0');
+            $table->tinyInteger('sponda_left')->nullable()->default('0');
+            $table->string('sponda_right', 45)->nullable()->default('0');
             $table->nullableTimestamps();
         });
     }
@@ -26,8 +31,8 @@ class CreateDrawertypesTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists('drawertypes');
-     }
+    public function down()
+    {
+        Schema::dropIfExists('drawertypes');
+    }
 }
