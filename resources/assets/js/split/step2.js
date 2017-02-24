@@ -55,7 +55,7 @@ var step2 = new Vue({
                 $( '#error-modal' ).modal();
                 return false;
             } else {
-                $("html, body").delay( 1000 ).animate({scrollTop: $('#step3').offset().top }, 1000 ); 
+               Commons.movesmoothlyTo( "#step3"); 
             }
            
         }

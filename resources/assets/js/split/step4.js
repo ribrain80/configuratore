@@ -36,7 +36,19 @@ var step4 = new Vue({
 
         getDividerByCat: function(val) {
             return this.dividers.dividers[val];
-        }
+        },
+
+        check: function() {
+
+            if( this.dividers.length == 0 ) {
+                $( "#error-modal" ).find('.modal-body').text( "Devi selezionare almeno un divisorio" );
+                $( '#error-modal' ).modal();
+                Commons.movesmoothlyTo( "#step4"); 
+                return false;  
+            } else {
+                Commons.movesmoothlyTo( "#step5"); 
+            }
+        }, 
 
     },
 

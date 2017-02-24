@@ -11,7 +11,9 @@ var step2 = new Vue({
     },
 
     methods: {
-
+        check: function() {
+            Commons.movesmoothlyTo( "#step2"); 
+        }
     },
 
     mounted() {

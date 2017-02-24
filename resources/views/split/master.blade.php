@@ -139,8 +139,6 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ elixir('js/vendor.js') }}"></script>
-    <script src="{{asset('js/lang/i18n.js')}}"></script>
-    <script src="{{asset('js/split/newconfiguration.js')}}"></script>
     @stack('jsfooter')
     <script>
         /*var shiftWindow = function() { scrollBy(0, -$('body').data('offset')) };

@@ -558,6 +558,18 @@ var step3 = new Vue({
 
         },
 
+        check: function() {
+
+            if( !this.checkChoice() ) {
+                $( "#error-modal" ).find('.modal-body').text( "Controlla i valori inseriti" );
+                $( '#error-modal' ).modal();
+                Commons.movesmoothlyTo( "#step3"); 
+                return false;  
+            } else {
+                Commons.movesmoothlyTo( "#step4"); 
+            }
+        },        
+
     },
 
     watch: {
