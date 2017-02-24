@@ -54,7 +54,7 @@ var step4 = new Vue({
 
         //see http://www.greensock.com/draggable/ for more details.
 
-        var droppables = $(".box");
+        /*var droppables = $(".box");
         console.log(droppables);
 
         //the overlapThreshold can be a percentage ("50%", for example, would only trigger when 50% or more of the surface area of either element overlaps) or a number of pixels (20 would only trigger when 20 pixels or more overlap), or 0 will trigger when any part of the two elements overlap.
@@ -80,13 +80,13 @@ var step4 = new Vue({
                      $(droppables[i]).removeClass("highlight");
                     }
                    
-                   /* ALTERNATE TEST: you can use the static Draggable.hitTest() method for even more flexibility, like passing in a mouse event to see if the mouse is overlapping with the element...
+                   ALTERNATE TEST: you can use the static Draggable.hitTest() method for even more flexibility, like passing in a mouse event to see if the mouse is overlapping with the element...
                    if (Draggable.hitTest(droppables[i], e) && droppables[i] !== this.target) {
                      $(droppables[i]).addClass("highlight");
                    } else {
                      $(droppables[i]).removeClass("highlight");
                    }
-                   */
+                   
                 }
           },
           onDragEnd:function(e) {
@@ -98,7 +98,7 @@ var step4 = new Vue({
                     }
                 }
             }
-        });
+        });*/
     }
 
 });

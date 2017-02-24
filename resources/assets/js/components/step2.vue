@@ -25,7 +25,7 @@
         </div>
 
         <div class="col-lg-12" >
-            <a href="#step3" class="btn btn-danger inpagenav" lang="it">Avanti</a>
+            <a href="#step3" class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="$parent.check">Avanti</a>
         </div>
     </div>
     

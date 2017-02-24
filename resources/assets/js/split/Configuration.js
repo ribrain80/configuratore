@@ -3,9 +3,9 @@ var Configuration = {
 	drawerId: '',
     drawertype:0,
     dimensions: {
-        width:0,
-        depth:0,
-        length:0
+        width:1000,
+        depth:200,
+        length:1000
     },
     dividers:[],
     bridges:[],

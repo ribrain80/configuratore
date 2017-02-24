@@ -4,11 +4,14 @@
             <h2 lang="it">Selezione inserti</h2>
         </div>
         <div class="col-lg-12">
-            <div id="container">
+
+        <!--    <div id="container">
               <div id="box1" class="box">box1</div>
               <div id="box2" class="box">box2</div>
               <div id="box3" class="box">box3</div>
             </div>
+
+            -->
 
         </div>
         <div class="col-lg-12" id="elementmenu">

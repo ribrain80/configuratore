@@ -59,6 +59,25 @@
 
 <div class="cover"></div>
 
+<!-- Modal -->
+<div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" lang="it">Attenzione</h4>
+      </div>
+      <div class="modal-body" lang="it">
+        Se clicchi su continua i dati inseriti andranno persi.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.reload();">Continua</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <nav role="navigation" class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,10 +92,7 @@
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a lang="it" id="newone" href='{{route('split.onepage')}}'>Nuova configurazione</a></li>
-
-            </ul>
+            <newconfiguration></newconfiguration>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Scelta lingua <span class="caret"></span></a>
@@ -107,6 +123,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ elixir('js/vendor.js') }}"></script>
     <script src="{{asset('js/lang/i18n.js')}}"></script>
+    <script src="{{asset('js/split/newconfiguration.js')}}"></script>
     @stack('jsfooter')
     <script>
         /*var shiftWindow = function() { scrollBy(0, -$('body').data('offset')) };

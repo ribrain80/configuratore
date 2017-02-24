@@ -27,6 +27,9 @@ var step2 = new Vue({
         setType: function (type) {
             this.selected = type;
             this.choice = false;
+        },
+        check: function() {
+            return true;
         }
     },
     mounted() {

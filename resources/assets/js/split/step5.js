@@ -16,6 +16,13 @@ var step5 = new Vue({
 
         savedrawer: function() {
             
+            if( Configuration.drawertype < 1 ) {
+                this.has_error = true;
+                this.alert_message = "Non hai selezionato la tipologia del cassetto";
+                $("html, body").delay(2000).animate({scrollTop: $('#step2').offset().top }, 3000);
+                return false;
+            }
+
             if( this.brochure === false && this.summary == false ) {
                 this.has_error = true;
                 this.alert_message = "è necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo";
@@ -52,7 +59,7 @@ var step5 = new Vue({
             }
 
             var self = this;
-            
+
             Pace.track( function() {
                 self.$http.post( '/split/savedrawer', Configuration).then( response => {
                     self.has_error = false;
