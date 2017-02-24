@@ -6,7 +6,7 @@ var step2 = new Vue({
         selected:0,
         hasError:false,
         choice: true,
-        types:[],
+        types:[]
     },
 
     watch: {
@@ -28,7 +28,22 @@ var step2 = new Vue({
 
         setType: function (type) {
             this.selected = type;
-            this.choice = false;
+            if (type>0) {
+                this.choice = false;
+            } else {
+                this.choice = true;
+            }
+        },
+
+        openCategory: function (catId) {
+            //Resetto le scelte
+            this.selected=0;
+            this.choice=true;
+            //Nascondo tutte le category
+            $('.drawerlist').hide();
+            //Mostro solo quella con quell'id (animazione per ora non mi importa)
+            $('#'+catId).toggle();
+
         },
 
         check: function() {
