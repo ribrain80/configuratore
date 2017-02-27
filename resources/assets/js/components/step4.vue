@@ -5,13 +5,18 @@
         </div>
         <div class="col-lg-12">
 
-        <!--    <div id="container">
-              <div id="box1" class="box">box1</div>
-              <div id="box2" class="box">box2</div>
-              <div id="box3" class="box">box3</div>
+        <div class="grid-stack">
+            <div class="grid-stack-item"
+                data-gs-x="0" data-gs-y="0"
+                data-gs-width="4" data-gs-height="2">
+                    <div class="grid-stack-item-content"></div>
             </div>
-
-            -->
+            <div class="grid-stack-item"
+                data-gs-x="4" data-gs-y="0"
+                data-gs-width="4" data-gs-height="4">
+                    <div class="grid-stack-item-content"></div>
+            </div>
+        </div>
 
         </div>
         <div class="col-lg-12" id="elementmenu">

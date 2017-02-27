@@ -16,10 +16,12 @@ require('laravel-elixir-vue-2');
 
 var paths = {
     'jquery': './vendor/bower_components/jQuery/dist/',
+    'jqueryui': './vendor/bower_components/jquery-ui/',
     'bootstrap': './vendor/bower_components/bootstrap-sass-official/assets/',
     'lang': './vendor/bower_components/jquery-lang-js/js/',
     'two': './vendor/bower_components/two.js/build/',
-    'greensock': '/vendor/bower_components/gsap/src/uncompressed/',
+    'lodash': './vendor/bower_components/lodash/dist/',
+    'gridstack': './vendor/bower_components/gridstack/dist/',
     'pace': './vendor/bower_components/PACE/'
 };
 
@@ -30,19 +32,19 @@ elixir(function(mix) {
     mix.copy('./resources/assets/js/lang/**', 'public/js/lang' );
     mix.copy('./resources/assets/js/split/**', 'public/js/split' );
     mix.copy('./resources/images', 'public/images');
-    mix.copy( paths.pace + 'themes/black/**', 'public/css')
+    mix.copy( paths.pace + 'themes/black/**', 'public/css');
+    mix.copy( paths.gridstack + 'gridstack.min.css', 'public/css')
 
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
-           // paths.jquery + "jquery.min.js",
+            paths.jqueryui + "jquery-ui.min.js",
             paths.lang + "js.cookie.js",
             paths.lang + "jquery-lang.js",
             paths.two + "two.js",
             paths.pace + "pace.min.js",
-            paths.greensock + "TweenMax.js",
-            paths.greensock + "utils/Draggable.js",
-            paths.greensock + "jquery.gsap.js"
+            paths.lodash + "lodash.min.js",
+            paths.gridstack + "gridstack.min.js",
         ], 'public/js/vendor.js', './');
 
 });

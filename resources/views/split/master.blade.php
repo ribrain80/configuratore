@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/gridstack.min.css') }}">
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
     <style>
         
