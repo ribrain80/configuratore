@@ -27,9 +27,24 @@
             </ul>
             <div class="tab-content">
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $parent.dividers.dividersCategories">
-                    <div class="checkbox" v-for="divider in $parent.getDividerByCat(cat)">
-                        <label><input type="checkbox" value="" :id="divider.id" @click="$parent.pushDivider( $event )">({{divider.width}} x {{divider.length}})</label>
+                    <div class="row" style="margin-top: 22px">
+                        <div class="col-lg-4"  v-for="divider in $parent.getDividerByCat(cat)">
+                            <div class="panel panel-default" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H">
+                                <div class="media">
+                                    <div class="media-left">
+                                            <img class="media-object" src="http://placehold.it/200x100">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"></h4>
+                                        ({{divider.width}} x {{divider.length}})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <div class="checkbox" v-for="divider in $parent.getDividerByCat(cat)">
+                        <label><input type="checkbox" value="" :id="divider.id" @click="$parent.pushDivider( $event )">(</label>
+                    </div>-->
                 </div>
             </div>
         </div>
