@@ -58,5 +58,12 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('topdf/header',['as'=>'split.pdf.header',function (){return view('split.pdf.header');}]);
     Route::get('topdf/footer',['as'=>'split.pdf.footer',function (){return view('split.pdf.footer');}]);
     Route::get('topdf/{id}/{brochure?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
+
+
+    //TEST
+    Route::get("3d",['as'=>'3d','uses'=>function(){
+        return view('split.test.3d');
+    }]);
+
 });
 

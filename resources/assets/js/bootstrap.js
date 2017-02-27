@@ -35,6 +35,8 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
+window.THREE=require('three');
+window.THREE.TrackballControls = require('three-trackballcontrols');
 
 
 
