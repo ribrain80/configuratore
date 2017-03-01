@@ -1,6 +1,7 @@
 var Configuration = {
 
 	drawerId: '',
+    lineabox: false,
     drawertype:0,
     dimensions: {
         width:1000,

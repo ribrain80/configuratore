@@ -65,13 +65,6 @@ var step4 = new Vue({
         console.log("Step4 mounted!");
         this.initDividers();
 
-        var options = {
-            cellHeight: 80,
-            verticalMargin: 10
-        };
-        $('.grid-stack').gridstack(options);
-        console.log("Grid mounted!")
-
         //see http://www.greensock.com/draggable/ for more details.
 
         /*var droppables = $(".box");

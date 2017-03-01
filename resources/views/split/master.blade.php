@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/gridstack.min.css') }}">
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
     <style>
-        
+
     .cover {
         position: fixed;
         left: 0px;
@@ -57,7 +56,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".scrollspy" data-offset="70">
-
+<a class="btn btn-lg btn-danger" data-toggle="popover" title="Gallery" data-content="And here's some amazing content. It's very engaging. Right?">Gallery</a>
 <div class="cover"></div>
 
 <!-- New configration alert Modal -->
@@ -128,8 +127,10 @@
                 <li><a href="#step1" class="inpagenav" lang="it">1</a></li>
                 <li><a href="#step2" class="inpagenav" lang="it">2</a></li>
                 <li><a href="#step3" class="inpagenav" lang="it">3</a></li>
+                <li><a href="#step-ponte" class="inpagenav" lang="it">Ponte</a></li>
                 <li><a href="#step4" class="inpagenav" lang="it">4</a></li>
                 <li><a href="#step5" class="inpagenav" lang="it">5</a></li>
+                <li></li>
             </ul>
         </div>
         <div class="col-sm-10 col-md-11" id="maincontent">
@@ -171,7 +172,10 @@
             // is, but apply the offset.
             $(href)[0].scrollIntoView();
             window.scrollBy(0, -navOffset);
+
         });
+
+        $("[data-toggle=popover]").popover();
     </script>
 </body>
 </html>                                		

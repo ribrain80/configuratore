@@ -4,21 +4,9 @@
             <h2 lang="it">Selezione inserti</h2>
         </div>
         <div class="col-lg-12">
-
-        <div class="grid-stack">
-            <div class="grid-stack-item"
-                data-gs-x="0" data-gs-y="0"
-                data-gs-width="4" data-gs-height="2">
-                    <div class="grid-stack-item-content"></div>
-            </div>
-            <div class="grid-stack-item"
-                data-gs-x="4" data-gs-y="0"
-                data-gs-width="4" data-gs-height="4">
-                    <div class="grid-stack-item-content"></div>
-            </div>
+                campo giochi  
         </div>
 
-        </div>
         <div class="col-lg-12" id="elementmenu">
             <ul class="nav nav-tabs">
                 <li  :class="{active: !index}" v-for="(cat,index) in $parent.dividers.dividersCategories">
@@ -29,7 +17,7 @@
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $parent.dividers.dividersCategories">
                     <div class="row" style="margin-top: 22px">
                         <div class="col-lg-4"  v-for="divider in $parent.getDividerByCat(cat)">
-                            <div class="panel panel-default" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H">
+                            <div class="panel panel-default gridstack-draggable" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H">
                                 <div class="media">
                                     <div class="media-left">
                                             <img class="media-object" src="http://placehold.it/200x100">

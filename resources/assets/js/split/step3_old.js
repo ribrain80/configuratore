@@ -38,17 +38,14 @@ var step3 = new Vue({
 
             // # Lineabox shoulder fixed measures ( height ) 
             lineabox_shoulders_height: [
-                { text: 77, value: 77, selected: true },
-                { text: 104, value: 104, selected: false },
-                { text: 180, value: 180, selected: false }
+                { text: 77, value: 77 },
+                { text: 104, value: 104 },
+                { text: 180, value: 180 }
             ],
 
             // # Bridge related limits
             maxSuitableWidth4Bridge: 1200,
-            widthNotSuitable4Bridge: false,
-
-            // # Pixel Multiplier
-            ratio: 2
+            widthNotSuitable4Bridge: false
         },
 
         // # Lineabox flag ( from previous step watch )
@@ -103,57 +100,67 @@ var step3 = new Vue({
             this.two = new Two({ autostart: true }).appendTo( this.container );
 
             // # Drawer
-            this.makeRect( 80, 110, this.mm2Pixel( this.width ), this.mm2Pixel( this.length ), 20, 0 );
+            this.makeRect( 50, 80, this.mm2Pixel( this.width ), this.mm2Pixel( this.length ), 20, 0 );
+            
+            // # Width line ( drawer )
+            //this.makeRectWidthInfoLine( 18, 30, 120, 30 );
 
             // # Get drawer dimensions
-            var rectObj = this.rect.getBoundingClientRect();
+            var rect_bounding_client_rect = this.rect.getBoundingClientRect();
+
+            // # Rightmost point
+            var rect_rightmost = rect_bounding_client_rect.right;
+
+            // # Topmost point
+            var rect_topmost = rect_bounding_client_rect.top;
+
+            // # Bottommost point
+            var rect_bottomomost = rect_bounding_client_rect.bottom;
+
+            // # Bottommost point
+            var rect_leftmost = rect_bounding_client_rect.left;
+
+            // # Drawer current width
+            var rect_width = rect_bounding_client_rect.width;
+
+            // # Drawer current height
+            var rect_height = rect_bounding_client_rect.height;
 
             // # Width line ( drawer )
-            this.makeRectWidthInfoLine( rectObj.left, 30, rectObj.right, 30 );
+            this.makeRectWidthInfoLine( rect_leftmost, 30, rect_rightmost, 30 );
 
             // # Width text ( drawer )
-            this.makeRectWidthInfoText( ( rectObj.width / 2 ) + rectObj.left, 15 );
+            //this.makeRectWidthInfoText( 70, 15 );
 
+            // # Width text ( drawer )
+            this.makeRectWidthInfoText( ( rect_width / 2 ) + rect_leftmost, 15 );
+            
             // # Length line ( drawer )
-            this.makeRectLengthInfoLine( rectObj.right + 20, rectObj.top, rectObj.right + 20, rectObj.bottom );
+            this.makeRectLengthInfoLine( 140, 50, 140, 150 );
 
             // # Length text ( drawer )
-            this.makeRectLengthInfoText( rectObj.right + 30,  ( rectObj.height / 2 ) + rectObj.top );
+            this.makeRectLengthInfoText( 160, 100 );
 
-            // # Drawer label text
-            this.makeDrawerLabel( rectObj.width / 2 + rectObj.left, rectObj.height / 2 + rectObj.top );
+            // # Drawer label
+            this.makeDrawerLabel( 70, 100 );
 
-            // # Shoulder redraw                
-            this.makeShoulder(  rectObj.left + ( this.mm2Pixel( this.length ) / 2 ) + 5, 
-                                rectObj.bottom + 40 + ( this.mm2Pixel( this.depth ) ) / 2, 
-                                this.length, 
-                                this.depth );
-
-            // # Get drawer dimensions
-            var shoulderObj = this.shoulder.getBoundingClientRect();
+            // # Rectangle ( Shoulder )
+            this.makeShoulder( 70, 200, this.length, this.depth );
 
             // # Width line ( shoulder )
-            this.makeShoulderWidthInfoLine( shoulderObj.left, 
-                                            shoulderObj.bottom + 20, 
-                                            shoulderObj.right,
-                                            shoulderObj.bottom + 20 );
+            this.makeShoulderWidthInfoLine( 17, 230, 124, 230 );
 
             // # Width text ( shoulder )
-            this.makeShoulderWidthInfoText( parseInt( shoulderObj.width ) / 2 + 20,
-                                            shoulderObj.bottom + 30 );
+            this.makeShoulderWidthInfoText( 75, 240 );
 
             // # Length line ( shoulder )
-            this.makeShoulderLengthInfoLine( shoulderObj.right + 20, 
-                                             shoulderObj.top, 
-                                             shoulderObj.right + 20, 
-                                             shoulderObj.bottom );
+            this.makeShoulderLengthInfoLine( 140, 180, 140, 217 );
 
             // # Length text ( shoulder )
-            this.makeShoulderLengthInfoText( shoulderObj.right + 30, 
-                                           ( shoulderObj.height / 2 ) + shoulderObj.top  );            
+            this.makeShoulderLengthInfoText( 160, 200 );            
 
             // # Shoulder label
-            this.makeShoulderLabel(  shoulderObj.width / 2 + shoulderObj.left, shoulderObj.height / 2 + shoulderObj.top );
+            this.makeShoulderLabel( 70, 200 );
         },
 
         /**
@@ -164,7 +171,7 @@ var step3 = new Vue({
         mm2Pixel: function ( mm ) {
             
             try {
-                return Math.ceil( parseInt( mm ) / 10 ) * this.config.ratio;
+                return Math.ceil( parseInt( mm ) / 10 );
             } catch ( e ) {
                 return 100;
             }   
@@ -265,6 +272,10 @@ var step3 = new Vue({
             // # Check Out of Bound
             if( this.widthOutOfRange() || this.lengthOutOfRange() || this.depthOutOfRange() ) {
                  return false;
+            }
+
+            if( this.widthIsNotSuitable4Bridge ) {
+
             }
 
             return true;
@@ -492,9 +503,11 @@ var step3 = new Vue({
             }
 
             if( this.widthIsNotSuitable4Bridge() ) {
+                console.log( "in" );
                 $( "#error-modal" ).find('.modal-body').text( "La larghezza inserita non permetterà l'inserimento di un elemento ponte" );
                 $( '#error-modal' ).modal();
             }
+
 
             // # Clean up if any previous error stills
             this.widthOOR = false; this.lengthOOR = false; this.depthOOR = false;
@@ -509,22 +522,40 @@ var step3 = new Vue({
             var width_line_bounding_client_rect = this.hor_line_rect.getBoundingClientRect();
 
             // # Get drawer dimensions
-            var rectObj = this.rect.getBoundingClientRect();
+            var rect_bounding_client_rect = this.rect.getBoundingClientRect();
+
+            // # Rightmost point
+            var rect_rightmost = rect_bounding_client_rect.right;
+
+            // # Topmost point
+            var rect_topmost = rect_bounding_client_rect.top;
+
+            // # Bottommost point
+            var rect_bottomomost = rect_bounding_client_rect.bottom;
+
+            // # Bottommost point
+            var rect_leftmost = rect_bounding_client_rect.left;
+
+            // # Drawer current width
+            var rect_width = rect_bounding_client_rect.width;
+
+            // # Drawer current height
+            var rect_height = rect_bounding_client_rect.height;
 
             // # Width line ( drawer )
-            this.makeRectWidthInfoLine( rectObj.left, 30, rectObj.right, 30 );
+            this.makeRectWidthInfoLine( rect_leftmost, 30, rect_rightmost, 30 );
 
             // # Width text ( drawer )
-            this.makeRectWidthInfoText( ( rectObj.width / 2 ) + rectObj.left, 15 );
+            this.makeRectWidthInfoText( ( rect_width / 2 ) + rect_leftmost, 15 );
 
             // # Length line ( drawer )
-            this.makeRectLengthInfoLine( rectObj.right + 20, rectObj.top, rectObj.right + 20, rectObj.bottom );
+            this.makeRectLengthInfoLine( rect_rightmost + 20, rect_topmost, rect_rightmost + 20, rect_bottomomost );
 
             // # Length text ( drawer )
-            this.makeRectLengthInfoText( rectObj.right + 30,  ( rectObj.height / 2 ) + rectObj.top );
+            this.makeRectLengthInfoText( rect_rightmost + 30,  ( rect_height / 2 ) + rect_topmost );
 
             // # Drawer label text
-            this.makeDrawerLabel( rectObj.width / 2 + rectObj.left, rectObj.height / 2 + rectObj.top );
+            this.makeDrawerLabel( rect_width/2 + rect_leftmost, rect_height/2 + rect_topmost );
 
             // # Update shoulder cause length is a dimension also there
             this.updateShoulder();
@@ -536,55 +567,70 @@ var step3 = new Vue({
          */
         updateShoulder: function() {
 
-            var rectObj = this.rect.getBoundingClientRect();
+            var rect_bounding_client_rect = this.rect.getBoundingClientRect();
 
             // # Shoulder redraw                
-            this.makeShoulder(  rectObj.left + ( this.mm2Pixel( this.length ) / 2 ) + 5, 
-                                rectObj.bottom + 40 + ( this.mm2Pixel( this.depth ) ) / 2, 
+            this.makeShoulder(  rect_bounding_client_rect.left + ( this.mm2Pixel( this.length ) / 2 ) + 5, 
+                                rect_bounding_client_rect.bottom + 40 + ( this.mm2Pixel( this.depth ) ) / 2, 
                                 this.length, 
                                 this.depth);
 
             // # Get drawer dimensions
-            var shoulderObj = this.shoulder.getBoundingClientRect();
+            var shoulder_bounding_client_rect = this.shoulder.getBoundingClientRect();
+
+            // # Rightmost point
+            var shoulder_rightmost = shoulder_bounding_client_rect.right;
+
+            // # Topmost point
+            var shoulder_topmost = shoulder_bounding_client_rect.top;
+
+            // # Bottommost point
+            var shoulder_bottomomost = shoulder_bounding_client_rect.bottom;
+
+            // # Bottommost point
+            var shoulder_leftmost = shoulder_bounding_client_rect.left;
+
+            // # Drawer current width
+            var shoulder_width = shoulder_bounding_client_rect.width;
+
+            // # Drawer current height
+            var shoulder_height = shoulder_bounding_client_rect.height;
 
             // # Width line ( shoulder )
-            this.makeShoulderWidthInfoLine( shoulderObj.left, 
-                                            shoulderObj.bottom + 20, 
-                                            shoulderObj.right,
-                                            shoulderObj.bottom + 20 );
+            this.makeShoulderWidthInfoLine( shoulder_leftmost, 
+                                            shoulder_bottomomost + 20, 
+                                            shoulder_rightmost,
+                                            shoulder_bottomomost + 20 );
 
             // # Width text ( shoulder )
-            this.makeShoulderWidthInfoText( parseInt( shoulderObj.width ) / 2 + 20,
-                                            shoulderObj.bottom + 30 );
+            this.makeShoulderWidthInfoText( parseInt( shoulder_width ) / 2 + 20,
+                                            shoulder_bottomomost + 30 );
 
             // # Length line ( shoulder )
-            this.makeShoulderLengthInfoLine( shoulderObj.right + 20, 
-                                             shoulderObj.top, 
-                                             shoulderObj.right + 20, 
-                                             shoulderObj.bottom );
+            this.makeShoulderLengthInfoLine( shoulder_rightmost + 10, 
+                                             shoulder_topmost, 
+                                             shoulder_rightmost + 10, 
+                                             shoulder_bottomomost );
 
             // # Length text ( shoulder )
-            this.makeShoulderLengthInfoText( shoulderObj.right + 30, 
-                                           ( shoulderObj.height / 2 ) + shoulderObj.top  );            
+            this.makeShoulderLengthInfoText( shoulder_rightmost + 30, 
+                                           ( shoulder_height / 2 ) + shoulder_topmost  );            
 
             // # Shoulder label
-            this.makeShoulderLabel(  shoulderObj.width / 2 + shoulderObj.left, shoulderObj.height / 2 + shoulderObj.top );
+            this.makeShoulderLabel(  shoulder_width/2 + shoulder_leftmost, shoulder_height/2 + shoulder_topmost );
 
         },
 
         check: function() {
 
             if( !this.checkChoice() ) {
-
                 $( "#error-modal" ).find('.modal-body').text( "Controlla i valori inseriti" );
                 $( '#error-modal' ).modal();
                 Commons.movesmoothlyTo( "#step3"); 
                 return false;  
-
+            } else {
+                Commons.movesmoothlyTo( "#step-ponte"); 
             }
-            
-            Commons.movesmoothlyTo( "#step-ponte"); 
-
         },        
 
     },
@@ -601,7 +647,6 @@ var step3 = new Vue({
 
         depth: function (val) {
             Configuration.dimensions.depth = val;
-            this.updateDrawer();
         }
 
     },

@@ -6,13 +6,28 @@ var step2 = new Vue({
         selected:0,
         hasError:false,
         choice: true,
-        types:[]
+        types:[],
+        lineabox: false
     },
 
     watch: {
-        // whenever question changes, this function will run
+        // whenever selected changes, this function will run
         selected: function (val) {
+
             Configuration.drawertype = val;
+            console.log( "VALORE " + val );
+            if( val == 4 ) {
+                console.log( "cassetto" );
+                this.lineabox = false;
+                return;
+            }
+
+            this.lineabox = true;
+            step3.$data.depth = 77;
+        },
+
+        lineabox: function( val ) {
+            step3.$data.lineabox = val;
         }
     },
 
@@ -48,8 +63,6 @@ var step2 = new Vue({
 
         check: function() {
 
-            console.log( this.selected );
-
             if( this.selected == 0 ) {
                 $( "#error-modal" ).find('.modal-body').text( "Non hai scelto la tipologia" );
                 $( '#error-modal' ).modal();
@@ -60,6 +73,7 @@ var step2 = new Vue({
            
         }
     },
+
     mounted() {
         console.log("Step2 Mounted!")
         this.initTypes();

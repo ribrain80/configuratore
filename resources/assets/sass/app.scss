@@ -8,7 +8,6 @@
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 
-
 //App Specific css
 @mixin inline-block() {
   display: -moz-inline-stack;
@@ -16,6 +15,14 @@
   vertical-align: top;
   zoom: 1;
   *display: inline;
+}
+
+.ok {
+  color: green;  
+}
+
+.has_error {
+  color: #ff0000!important;
 }
 
 
