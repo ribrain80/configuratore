@@ -9,16 +9,21 @@ var Configuration = {
         length:1000
     },
     dividers:[],
+    bridge_supports_chosen: [{},{}],
+    /*
+    support obj { id, width, height, pos }
+     */
+    }
     /*
     * {
-    *   orientation:"",
     *   bridges:[
-    *      {type:num,color:color_id},
+    *      {id:num,color:color_id, orientation: "H"},
     *      ....
     *   ]
     * }
     * */
-    bridges:[],
+    bridges:[{}, {}],
+    edges: [],
     pdf: {
     	brochure: false,
     	summary: false,

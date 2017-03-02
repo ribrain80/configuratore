@@ -4,13 +4,13 @@ var stepponte = new Vue({
 
     data: {
         has_bridge: false,
-        bridge_orientation: "H",
-        bridge_height: 0,
-        side_height: 0,
-        selected:[],
-        hasError:false,
-        choice: true,
-        bridges:[]
+        bridge_orientation: "",
+        bridge_selected:[],
+        //hasError:false,
+        //choice: true,
+        bridges_types:[],
+        bridge_supports: [],
+        widthNotSuitable4Bridge: false
     },
 
     watch: {
@@ -18,17 +18,50 @@ var stepponte = new Vue({
     },
 
     methods: {
+
         initBridges: function () {
             this.$http.get('/split/bridges').then(response => {
-                this.bridges = response.body;
+                this.bridges_types = response.body;
             }, response => {
                 this.hasError = true;
             });
         },
 
         setOrientation: function (val) {
+
           this.bridge_orientation=val;
-          this.selected=[]; //Svuoto i bridge selezionati
+
+          // # switch todo Vertical
+          switch( Configuration.drawertype ) {
+
+            // # cassetto
+            case 4:
+                /*var bridge_supportR = { width: Configuration.width, height: 100, length: 100, pos: "R" };
+                var bridge_supportL = { width: 100, height: 100, length: 100, pos: "L" };
+                Configuration.edges.push();
+                
+                Configuration.width -= 12;
+                */
+
+            break;
+
+            // lineabox 2 lati
+            case 3:
+            break;
+
+            // # lineabox 3 e 4 lati
+            default:
+            break;
+
+          }
+
+          this.bridge_selected=[]; //Svuoto i bridge selezionati
+        },
+
+        selectBridgeType: function( bridge ) {
+            this.has_bridge = true;
+            bridge.length = bridge_orientation == "H" ? Configuration.width : Configuration.length;
+            this.bridge_selected.push( bridge );
         },
 
         check: function() {

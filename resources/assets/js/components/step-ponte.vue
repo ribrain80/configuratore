@@ -6,9 +6,9 @@
             <h2 lang="it">Scelta del ponte</h2>
         </div>
         <!-- BLOCCO ALERTS -->
-        <div class="col-lg-12" v-if="$parent.choice">
-            <div class="alert alert-warning alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> è obbligatorio ....
+        <div class="col-lg-12" v-if="$parent.showAlert">
+            <div class="alert alert-danger alert-dismissible fade in" id="alert" lang="it">
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>Attenzione!</strong> {{ $parent.alert_message }}
             </div>
         </div>
 
@@ -17,15 +17,8 @@
                 <div class="col-lg-4">
                     <h4 class="">Orientamento Ponti</h4>
 
-                    <div class="form-group" style="display: none">
-                        <select v-model="$parent.bridge_orientation">
-                            <option lang="it"  value="H" >Orizzontale</option>
-                            <option lang="it" value="V">Veriticale</option>
-                        </select>
-                    </div>
-
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" v-show="!$parent.widthNotSuitable4Bridge">
                             <div class="panel panel-default" :class="{ 'bg-success': ('H'==$parent.bridge_orientation)}">
                                 <div class="panel-body" @click="$parent.setOrientation('H')" lang="it">Orizzontale</div>
                             </div>
@@ -36,12 +29,15 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div v-if="$parent.bridge_orientation.length">
+                        <h4 class="">Tipologie Ponti</h4>
 
-                    <h4 class="">Tipologie Ponti</h4>
-                    <div class="row" v-for="bridge in $parent.bridges">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default" >
-                                <div class="panel-body"  lang="it">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                        <div class="row" v-for="bridge in $parent.bridges_types">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default" :class="{ 'bg-success': ('H'==$parent.bridge_orientation)}">
+                                    <div class="panel-body"  lang="it" @click="$parent.selectBridgeType( bridge )">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                                </div>
                             </div>
                         </div>
                     </div>

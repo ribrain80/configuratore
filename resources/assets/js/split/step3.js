@@ -45,11 +45,13 @@ var step3 = new Vue({
 
             // # Bridge related limits
             maxSuitableWidth4Bridge: 1200,
-            widthNotSuitable4Bridge: false,
 
             // # Pixel Multiplier
             ratio: 2
         },
+
+        // # check on drawer max width allowed for H bridges
+        widthNotSuitable4Bridge: false,
 
         // # Lineabox flag ( from previous step watch )
         lineabox: false,
@@ -618,6 +620,11 @@ var step3 = new Vue({
         depth: function (val) {
             Configuration.dimensions.depth = val;
             this.updateDrawer();
+        },
+
+        widthNotSuitable4Bridge: function( val ) {
+            console.log( "changed");
+            stepponte.$data.widthNotSuitable4Bridge = val;
         }
 
     },
