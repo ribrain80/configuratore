@@ -16,9 +16,9 @@ class CreateDividersTable extends Migration
         Schema::create('dividers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('width')->nullable()->default(null);
-            $table->integer('length')->nullable()->default(null);
-            $table->integer('depth')->nullable()->default(null);
+            $table->double('width')->nullable()->default(null);
+            $table->double('length')->nullable()->default(null);
+            $table->double('depth')->nullable()->default(null);
             $table->nullableTimestamps();
         });
     }

@@ -16,10 +16,13 @@ class CreateDrawersTable extends Migration
         Schema::create('drawers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('width')->nullable()->default(null);
-            $table->integer('length')->nullable()->default(null);
-            $table->integer('depth')->nullable()->default(null);
-            $table->integer('side_num')->nullable()->default(null);
+            $table->double('width')->nullable()->default(null);
+            $table->double('length')->nullable()->default(null);
+            $table->double('depth')->nullable()->default(null);
+            $table->tinyInteger('sponda_front')->nullable()->default('0');
+            $table->tinyInteger('sponda_back')->nullable()->default('0');
+            $table->tinyInteger('sponda_left')->nullable()->default('0');
+            $table->string('sponda_right', 45)->nullable()->default('0');
             $table->unsignedInteger('drawertypes_id')->nullable()->default(null);
             $table->unsignedInteger('edgecolor_id')->nullable()->default(null);
             $table->nullableTimestamps();
