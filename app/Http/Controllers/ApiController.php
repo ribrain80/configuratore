@@ -21,7 +21,7 @@ class ApiController extends Controller
     }
     public function actionDividers() {
         $grouped = [];
-        foreach (Divider::all(['id','width','length','depth'])->sortBy("depth") as $curDivider) {
+        foreach (Divider::all(['id','sku','width','length','depth'])->sortBy("depth") as $curDivider) {
             $curDivider['label']=$curDivider['width']."x".$curDivider['length']."x".$curDivider['depth'];
             $grouped[$curDivider['depth']][]=$curDivider;
         }
@@ -29,7 +29,7 @@ class ApiController extends Controller
     }
     public function actionBridges() {
         //TODO: Rename fields
-        return response()->json(Bridge::all(['id','width','lenght','height'])->toArray());
+        return response()->json(Bridge::all(['id','sku','width','depth'])->toArray());
     }
 
     public function actionConfig() {
