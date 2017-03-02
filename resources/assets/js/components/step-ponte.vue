@@ -39,8 +39,10 @@
 
                     <h4 class="">Tipologie Ponti</h4>
                     <div class="row" v-for="bridge in $parent.bridges">
-                        <div class="panel panel-default" >
-                            <div class="panel-body"  lang="it">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                        <div class="col-lg-12">
+                            <div class="panel panel-default" >
+                                <div class="panel-body"  lang="it">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                            </div>
                         </div>
                     </div>
 
