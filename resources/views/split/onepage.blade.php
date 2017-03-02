@@ -11,7 +11,7 @@
         <step3></step3>
     </section>
     <section>
-        <step-ponte></step-ponte>
+        <stepponte></stepponte>
     </section>    
     <section>
         <step4></step4>

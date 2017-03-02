@@ -124,7 +124,7 @@
         <div class="col-sm-2 col-md-1 scrollspy" >
             <ul class="nav hidden-xs affix-top" data-spy="affix" data-offset="70px" id="nav">
                 <li style="padding-bottom: 10px;padding-top: 10px">
-                    <a class="btn btn-lg btn-danger" data-toggle="popover" title="Gallery" data-content="And here's some amazing content. It's very engaging. Right?">Gallery</a>
+                    <a class="btn btn-lg btn-danger" data-toggle="popover" title="Gallery" data-content="And here's some amazing content. It's very engaging. Right?">G</a>
                 </li>
                 <li><a href="#step1" class="inpagenav" lang="it">1</a></li>
                 <li><a href="#step2" class="inpagenav" lang="it">2</a></li>

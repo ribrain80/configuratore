@@ -17,7 +17,7 @@ Vue.component('languageselector', require('./components/languageselector.vue'));
 Vue.component('newconfiguration', require('./components/newconfiguration.vue'));
 Vue.component('step1', require('./components/step1.vue'));
 Vue.component('step2', require('./components/step2.vue'));
-Vue.component('step-ponte', require('./components/step-ponte.vue'));
+Vue.component('stepponte', require('./components/step-ponte.vue'));
 Vue.component('step3', require('./components/step3.vue'));
 Vue.component('step4', require('./components/step4.vue'));
 Vue.component('step5', require('./components/step5.vue'));

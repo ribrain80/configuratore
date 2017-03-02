@@ -1,6 +1,6 @@
 var stepponte = new Vue({
 
-    el: 'step-ponte',
+    el: 'stepponte',
 
     data: {
         has_bridge: false,
