@@ -582,8 +582,24 @@ var step3 = new Vue({
                 return false;  
 
             }
+
+            // # Cassetto
+            if( Configuration.drawertype == 4 ) {
+
+                if( this.depth > 70 ) {
+                    Commons.movesmoothlyTo( "#step-ponte"); 
+                    return false;
+                }
+                Commons.movesmoothlyTo( "#step4"); 
+            }
+
+            if( this.depth > 77 ) {
+                Commons.movesmoothlyTo( "#step-ponte"); 
+                return false;
+            }
             
-            Commons.movesmoothlyTo( "#step-ponte"); 
+            Commons.movesmoothlyTo( "#step4"); 
+
 
         },        
 
