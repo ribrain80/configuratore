@@ -109,12 +109,7 @@
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <newconfiguration></newconfiguration>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Scelta lingua <span class="caret"></span></a>
-                    <languageselector></languageselector>
-                </li>
-            </ul>
+            <languageselector></languageselector>
         </div>
     </div>
 </nav>
