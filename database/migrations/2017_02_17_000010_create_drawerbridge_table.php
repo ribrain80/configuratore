@@ -18,8 +18,7 @@ class CreateDrawerbridgeTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('drawer');
             $table->unsignedInteger('bridge');
-            $table->unsignedInteger('x');
-            $table->unsignedInteger('y');
+            $table->enum('orientation',['H','V']);
             $table->unsignedInteger('color')->nullable()->default(null);
 
 

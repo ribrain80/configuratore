@@ -16,9 +16,9 @@ class CreateBridgesTable extends Migration
         Schema::create('bridges', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('width')->nullable()->default(null);
-            $table->integer('lenght')->nullable()->default(null);
-            $table->integer('height')->nullable()->default(null);
+            $table->string('sku',50)->nullable()->default(null);
+            $table->double('width')->nullable()->default(null);
+            $table->double('depth')->nullable()->default(null);
             $table->nullableTimestamps();
         });
     }
