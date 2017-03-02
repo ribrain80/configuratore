@@ -19,15 +19,9 @@ var step4 = new Vue({
 
         pushDivider: function ( event ) {
 
-            var id = event.target.id;
-            var id_index = $.inArray( id, this.selected );
-
-            if(  id_index != -1 ) {
-                this.selected.splice( id_index, 1 );
-                return;
-            } 
-
+            var id = $( event.target ).data( "id" );
             this.selected.push( id );
+            
         },
 
         genHref:function (val) {
@@ -42,7 +36,7 @@ var step4 = new Vue({
 
             if( this.selected.length == 0 ) {
                 console.log( "in" );
-                $( "#error-modal" ).find('.modal-body').text( "Devi selezionare almeno un divisorio" );
+                $( "#error-modal" ).find( '.modal-body' ).text( "Devi selezionare almeno un divisorio" );
                 $( '#error-modal' ).modal();
                 Commons.movesmoothlyTo( "#step4"); 
                 return false;  

@@ -16,13 +16,13 @@
             <div class="tab-content">
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $parent.dividers.dividersCategories">
                     <div class="row" style="margin-top: 22px">
-                        <div class="col-lg-4"  v-for="divider in $parent.getDividerByCat(cat)">
-                            <div class="panel panel-default gridstack-draggable" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H">
+                        <div class="col-lg-4" v-for="divider in $parent.getDividerByCat(cat)">
+                            <div class="panel panel-default" >
                                 <div class="media">
                                     <div class="media-left">
                                             <img class="media-object" src="http://placehold.it/200x100">
                                     </div>
-                                    <div class="media-body">
+                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="$parent.pushDivider( $event )" :data-id="divider.id">
                                         <h4 class="media-heading"></h4>
                                         ({{divider.width}} x {{divider.length}})
                                     </div>
