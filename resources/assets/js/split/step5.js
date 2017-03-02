@@ -30,7 +30,7 @@ var step5 = new Vue({
                 return false;
             }
 
-            if( Configuration.dividers.length ) {
+            if( !Configuration.dividers.length ) {
                 this.has_error = true;
                 this.alert_message = "Non hai scelto alcun divisorio";
                 Commons.movesmoothlyTo( "#step4" );
