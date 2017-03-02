@@ -26,13 +26,13 @@
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="panel panel-default" >
-                                <div class="panel-body"  lang="it">Orizzontale</div>
+                            <div class="panel panel-default" :class="{ 'bg-success': ('H'==$parent.bridge_orientation)}">
+                                <div class="panel-body" @click="$parent.setOrientation('H')" lang="it">Orizzontale</div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="panel panel-default" >
-                                <div class="panel-body"  lang="it">Verticale</div>
+                            <div class="panel panel-default" :class="{ 'bg-success': ('V'==$parent.bridge_orientation)}" >
+                                <div class="panel-body" @click="$parent.setOrientation('V')" lang="it">Verticale</div>
                             </div>
                         </div>
                     </div>

@@ -26,6 +26,11 @@ var stepponte = new Vue({
             });
         },
 
+        setOrientation: function (val) {
+          this.bridge_orientation=val;
+          this.selected=[]; //Svuoto i bridge selezionati
+        },
+
         check: function() {
 
             /*
