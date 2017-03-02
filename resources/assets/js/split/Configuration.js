@@ -9,6 +9,15 @@ var Configuration = {
         length:1000
     },
     dividers:[],
+    /*
+    * {
+    *   orientation:"",
+    *   bridges:[
+    *      {type:num,color:color_id},
+    *      ....
+    *   ]
+    * }
+    * */
     bridges:[],
     pdf: {
     	brochure: false,
