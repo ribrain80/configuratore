@@ -25,6 +25,11 @@ var stepponte = new Vue({
             }, response => {
                 this.hasError = true;
             });
+            this.$http.get('/split/supports').then(response => {
+                this.bridge_supports = response.body;
+            }, response => {
+                this.hasError = true;
+            });
         },
 
         setOrientation: function (val) {
