@@ -53,6 +53,7 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
     Route::get('bridges',['as'=>'split.api.bridges','uses'=>'ApiController@actionBridges']);
+    Route::get('supports',['as'=>'split.api.bridges','uses'=>'ApiController@actionSupports']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     //EXPORT TO PDF
     Route::get('topdf/header',['as'=>'split.pdf.header',function (){return view('split.pdf.header');}]);

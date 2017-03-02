@@ -6,6 +6,7 @@ use App\Models\Bridge;
 use App\Models\Divider;
 use App\Models\Drawer;
 use App\Models\Drawertype;
+use App\Models\Support;
 use Illuminate\Http\Request;
 use Log;
 
@@ -27,6 +28,11 @@ class ApiController extends Controller
         }
         return response()->json(['dividersCategories'=>array_keys($grouped),'dividers'=>$grouped]);
     }
+
+    public function actionSupports() {
+        return response()->json(Support::all()->toArray());
+    }
+
     public function actionBridges() {
         //TODO: Rename fields
         return response()->json(Bridge::all(['id','sku','width','depth'])->toArray());
