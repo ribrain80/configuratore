@@ -12,6 +12,44 @@
             </div>
         </div>
 
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4 class="">Orientamento Ponti</h4>
+
+                    <div class="form-group" style="display: none">
+                        <select v-model="$parent.bridge_orientation">
+                            <option lang="it"  value="H" >Orizzontale</option>
+                            <option lang="it" value="V">Veriticale</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default" >
+                                <div class="panel-body"  lang="it">Orizzontale</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default" >
+                                <div class="panel-body"  lang="it">Verticale</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="">Tipologie Ponti</h4>
+                    <div class="row" v-for="bridge in $parent.bridges">
+                        <div class="panel panel-default" >
+                            <div class="panel-body"  lang="it">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <h4 class="">Ponti Selezionati</h4>
+                </div>
+            </div>
+        </div>
 
         <!-- PULSANTE DI INVIO -->
         <div class="col-lg-12" >

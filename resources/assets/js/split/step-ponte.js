@@ -7,9 +7,10 @@ var stepponte = new Vue({
         bridge_orientation: "H",
         bridge_height: 0,
         side_height: 0,
-        selected:0,
+        selected:[],
         hasError:false,
-        choice: true
+        choice: true,
+        bridges:[]
     },
 
     watch: {
@@ -17,7 +18,13 @@ var stepponte = new Vue({
     },
 
     methods: {
-
+        initBridges: function () {
+            this.$http.get('/split/bridges').then(response => {
+                this.bridges = response.body;
+            }, response => {
+                this.hasError = true;
+            });
+        },
 
         check: function() {
 
@@ -38,5 +45,6 @@ var stepponte = new Vue({
     },
     mounted() {
         console.log("Step ponte Mounted!")
+        this.initBridges();
     }
 });
