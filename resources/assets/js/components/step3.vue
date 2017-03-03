@@ -19,7 +19,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-7 control-label" lang="it">Larghezza interna cassetto</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="length" aria-describedby="basic-addon1" v-model="$parent.width" @keyup="$parent.updateDrawer" autocomplete="off" v-bind:class="{ 'has_error': $parent.widthOOR, 'ok': !$parent.widthOOR }">
+                  <input type="text" class="form-control" id="length" aria-describedby="basic-addon1" v-model="$parent.width" @keyup="$parent.updateDrawer" @blur="$parent.widthIsNotSuitable4HBridge" autocomplete="off" v-bind:class="{ 'has_error': $parent.widthOOR, 'ok': !$parent.widthOOR }">
                   <span id="helpBlock" class="help-block" v-bind:class="{ 'has_error': $parent.widthOOR, 'ok': !$parent.widthOOR }">min {{ $parent.config.rect_width_lower_limit}} max {{ $parent.config.rect_width_upper_limit}}</span>
                 </div>
               </div>
@@ -34,18 +34,18 @@
               <div class="form-group" v-if="$parent.lineabox === false">
                 <label for="inputPassword3" class="col-sm-7 control-label" lang="it">Altezza interna sponda</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="depth" aria-describedby="basic-addon3" v-model="$parent.depth" @keyup="$parent.updateDrawer" autocomplete="off"  v-bind:class="{ 'has_error': $parent.depthOOR, 'ok': !$parent.depthOOR }">
-                  <span id="helpBlock" class="help-block" v-bind:class="{ 'has_error': $parent.depthOOR, 'ok': !$parent.depthOOR }">min {{ $parent.config.shoulder_height_lower_limit }} max {{ $parent.config.shoulder_height_upper_limit }}</span>
+                  <input type="text" class="form-control" id="depth" aria-describedby="basic-addon3" v-model="$parent.shoulder_height" @keyup="$parent.updateDrawer" @blur="$parent.shoulderHeightIsNotSuitable4Bridge" autocomplete="off"  v-bind:class="{ 'has_error': $parent.shoulder_height_OOR, 'ok': !$parent.shoulder_height_OOR }">
+                  <span id="helpBlock" class="help-block" v-bind:class="{ 'has_error': $parent.shoulder_height_OOR, 'ok': !$parent.shoulder_height_OOR }">min {{ $parent.config.shoulder_height_lower_limit }} max {{ $parent.config.shoulder_height_upper_limit }}</span>
                 </div>
               </div>
 
               <div class="form-group" v-else>
                 <label for="inputPassword3" class="col-sm-7 control-label" lang="it">Altezza interna sponda</label>
                 <div class="col-sm-5" id="depth">
-                    <select v-model="$parent.depth" @change="$parent.updateDrawer" v-bind:class="{ 'has_error': $parent.depthOOR, 'ok': !$parent.depthOOR }">
+                    <select v-model="$parent.shoulder_height" @change="$parent.updateDrawer" @blur="$parent.shoulderHeightIsNotSuitable4Bridge" v-bind:class="{ 'has_error': $parent.shoulder_height_OOR, 'ok': !$parent.shoulder_height_OOR }">
                         <option v-for="option in $parent.config.lineabox_shoulders_height" v-bind:value="option.value">{{option.text}}</option>
                     </select>
-                    <span id="helpBlock" class="help-block" v-bind:class="{ 'has_error': $parent.depthOOR, 'ok': !$parent.depthOOR }">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
+                    <span id="helpBlock" class="help-block" v-bind:class="{ 'has_error': $parent.shoulder_height_OOR, 'ok': !$parent.shoulder_height_OOR }">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
                 </div>
               </div>
 

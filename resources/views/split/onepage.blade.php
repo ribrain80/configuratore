@@ -21,6 +21,7 @@
     </section>
 
     @push('jsfooter')
+    <script src="{{ asset('js/split/bus.js') }}"></script>
     <script src="{{ asset('js/split/Commons.js') }}"></script>
     <script src="{{ asset('js/split/Configuration.js') }}"></script>
     <script src="{{ asset('js/split/step1.js') }}"></script>

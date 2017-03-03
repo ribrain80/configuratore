@@ -1,9 +1,17 @@
+/**
+ * Vue object managing drawer dimensions inputs
+ * Uses Two.js for graphic representation of the object ( drawer )
+ * @type {Vue}
+ */
 var step3 = new Vue({
 
     // # Bound element
     el: 'step3',
 
-    // # Object data
+    /**
+     * Object data
+     * @type {Object}
+     */
     data: {
 
         // # Container element
@@ -38,20 +46,26 @@ var step3 = new Vue({
 
             // # Lineabox shoulder fixed measures ( height ) 
             lineabox_shoulders_height: [
-                { text: 77, value: 77, selected: true },
-                { text: 104, value: 104, selected: false },
-                { text: 180, value: 180, selected: false }
+                { text: "77 - 45.5 effettivi", value: 45.5, selected: true },
+                { text: "104 - 71.5 effettivi", value: 71.5, selected: false },
+                { text: "180 - 89.5 effettivi", value: 89.5, selected: false }
             ],
 
             // # Bridge related limits
-            maxSuitableWidth4Bridge: 1200,
+            max_suitable_width_4_Hbridge: 1200,
+
+            // # Base scale factor
+            base_scale_factor: 10,
 
             // # Pixel Multiplier
-            ratio: 2
+            ratio: 3
         },
 
-        // # check on drawer max width allowed for H bridges
-        widthNotSuitable4Bridge: false,
+        // # drawer width must not exceed a value for a H bridge to be chosen
+        width_not_suitable_4Hbridge: false,
+
+        // # shoulder height must exceed a minimum value to allow for a bridge to be chosen
+        shoulder_height_not_suitable_4bridge: false,
 
         // # Lineabox flag ( from previous step watch )
         lineabox: false,
@@ -63,12 +77,12 @@ var step3 = new Vue({
         // # Data bound
         length: 600,
         width: 800,
-        depth: 100,
+        shoulder_height: 100,
 
         // # Out of range flags
-        widthOOR: false,
-        lengthOOR: false,
-        depthOOR: false, 
+        width_OOR: false,
+        length_OOR: false,
+        shoulder_height_OOR: false, 
 
         // # Two instance
         two: {},
@@ -94,19 +108,24 @@ var step3 = new Vue({
 
         /**
          * Inits the Two object container and every shape needed in its initial state
-         * @return {[void]}
+         * rectangle ( drawer ) is used as a reference for each other object drown
+         * @return {void}
          */
-        inittwo: function () {
+        initTwo: function () {
+
+            // # Define ratio
+            this.ratioComputer();
 
             // # Container init
             this.container = document.getElementById( 'animation' );
 
-            // # TWO Instance
-            this.two = new Two({ autostart: true }).appendTo( this.container );
+            // # TWO Instance, autostart means we do not have to reupdate the canvas each time there
+            // # is an update on a shape/path/text
+            this.two = new Two( { autostart: true } ).appendTo( this.container );
 
             // # Drawer
-            this.makeRect( 80, 110, this.mm2Pixel( this.width ), this.mm2Pixel( this.length ), 20, 0 );
-
+            this.makeRect( this.mm2Pixel( this.width ) / 2, 100, this.mm2Pixel( this.width ), this.mm2Pixel( this.length ), 20, 50 + this.mm2Pixel( this.length ) / 2 );
+            
             // # Get drawer dimensions
             var rectObj = this.rect.getBoundingClientRect();
 
@@ -127,9 +146,9 @@ var step3 = new Vue({
 
             // # Shoulder redraw                
             this.makeShoulder(  rectObj.left + ( this.mm2Pixel( this.length ) / 2 ) + 5, 
-                                rectObj.bottom + 40 + ( this.mm2Pixel( this.depth ) ) / 2, 
+                                rectObj.bottom + 40 + ( this.mm2Pixel( this.shoulder_height ) ) / 2, 
                                 this.length, 
-                                this.depth );
+                                this.shoulder_height );
 
             // # Get drawer dimensions
             var shoulderObj = this.shoulder.getBoundingClientRect();
@@ -159,228 +178,321 @@ var step3 = new Vue({
         },
 
         /**
-         * [mm2Pixel description]
-         * @param  {[type]} mm [description]
-         * @return {[type]}    [description]
+         * Computes the correct ratio based on container width
+         * @return {void}
+         */
+        ratioComputer: function() {
+
+            // # Container available width
+            var available_width = $( "#animation" ).width();
+
+            // # Ratio computed using max allowed rect width
+            var computed_ratio = ( available_width / this.config.rect_width_upper_limit );
+
+            // # Secure dimensions tuning
+            this.config.ratio = computed_ratio - ( computed_ratio / 4 );
+        },
+
+        /**
+         * Converts any real dimension into a suitable pixel rapresentation of it
+         * Conversion is based of a scale factor and a pixel ratio ( should be related to the device screen dimension )  
+         * @param  {double} mm input in millimeters
+         * @return {int}    computed ( adapted ) integer output
          */
         mm2Pixel: function ( mm ) {
             
             try {
-                return Math.ceil( parseInt( mm ) / 10 ) * this.config.ratio;
+                //return Math.floor(  ( mm / this.config.base_scale_factor ) * this.config.ratio );
+                return Math.floor(  mm  * this.config.ratio );
             } catch ( e ) {
-                return 100;
+                // # Use a suitable default value
+                return 250;
             }   
         },
 
         /**
-         * [widthOutOfRange description]
-         * @return {[type]} [description]
+         * Check width dimension limits and sets the related flag
+         * @return {bool} true if dimension is OOR
          */
         widthOutOfRange: function() {
-      
-            if( parseInt( this.width ) > this.config.rect_width_upper_limit ) {
-                this.widthOOR = true;
+            
+            // # Default value
+            this.width_OOR = true;
+            
+            // # Upper limit check
+            if( this.width > this.config.rect_width_upper_limit ) {
                 return true;
             }
 
-            if( parseInt( this.width ) < this.config.rect_width_lower_limit ) {
-                this.widthOOR = true;
+            // # Lower limit check
+            if( this.width < this.config.rect_width_lower_limit ) {
                 return true;
             }            
             
-            this.widthOOR = false;
-            return false;
-        },
+            // # In range
+            this.width_OOR = false;
 
-        widthIsNotSuitable4Bridge: function() {
-
-            if( parseInt( this.width ) > this.config.maxSuitableWidth4Bridge ) {
-                this.widthNotSuitable4Bridge = true;
-                return true;
-            }
-
-            this.widthNotSuitable4Bridge = false;
             return false;
         },
 
         /**
-         * [lengthOutOfRange description]
-         * @return {[type]} [description]
+         * Check if width dimension exceeds horizontal bridge max dimension limit
+         * @return {bool} true if dimension is OOR for the horizontal bridge to be available
+         */
+        widthIsNotSuitable4HBridge: function() {
+
+            // # Default value
+            this.width_not_suitable_4Hbridge = true;
+
+            // # Constraint check
+            if( this.width > this.config.max_suitable_width_4_Hbridge ) {
+                $( "#error-modal" ).find('.modal-body').text( "La larghezza inserita non permetterà l'inserimento di un elemento ponte" );
+                $( '#error-modal' ).modal();
+                return true;
+            }
+
+            // # Horizontal bridge will be available
+            this.width_not_suitable_4Hbridge = false;
+
+            return false;
+        },
+
+        /**
+         * Check if shoulder_height dimension exceeds horizontal bridge max dimension limit
+         * @return {bool} true if dimension is OOR for the horizontal bridge to be available
+         */
+        shoulderHeightIsNotSuitable4Bridge: function() {
+
+            // # Default value
+            this.shoulder_height_not_suitable_4bridge = true;
+
+            // # Drawer type check
+            // # If is a custom drawer
+            if( Configuration.drawertype == 4 ) {
+
+                // # Under 70 mm bridge is not allowed
+                if( this.shoulder_height < 70 ) {
+                    $( "#error-modal" ).find('.modal-body').text( "L'altezza inserita per la sponda interna non permetterà l'inserimento di un elemento ponte" );
+                    $( '#error-modal' ).modal();
+                    return true;
+                }
+
+                this.shoulder_height_not_suitable_4bridge = false;
+                return false;
+            }
+
+           // # Under 71.5 mm bridge is not allowed
+            if( this.shoulder_height < 71.5 ) {
+                $( "#error-modal" ).find('.modal-body').text( "L'altezza inserita per la sponda interna non permetterà l'inserimento di un elemento ponte" );
+                $( '#error-modal' ).modal();
+                return true;
+            }
+
+            // # Bridge will be available
+            this.shoulder_height_not_suitable_4bridge = false;
+
+            return false;
+        },        
+
+
+        /**
+         * Check length dimension limits and sets the related flag
+         * @return {bool} true if dimension is OOR
          */
         lengthOutOfRange: function() {
-      
-            if( parseInt( this.length ) > this.config.rect_height_upper_limit ) {
-                this.lengthOOR = true;
+            
+            // # Default value
+            this.length_OOR = true;
+
+            // # Upper limit check
+            if( this.length > this.config.rect_height_upper_limit ) {
                 return true;
             }
 
-            if( parseInt( this.length ) < this.config.rect_height_lower_limit ) {
-                this.lengthOOR = true;
+            // # Lower limit check
+            if( this.length < this.config.rect_height_lower_limit ) {
                 return true;
             }            
             
-            this.lengthOOR = false;
+            // # In range
+            this.length_OOR = false;
+
             return false;
         },
 
         /**
-         * [depthOutOfRange description]
-         * @return {[type]} [description]
+         * Check shoulder height dimension limits and sets the related flag
+         * @return {bool} true if dimension is OOR
          */
-        depthOutOfRange: function() {
-      
-            if( parseInt( this.depth ) > this.config.shoulder_height_upper_limit ) {
-                this.depthOOR = true;
+        shoulderHeightOutOfRange: function() {
+            
+            // # Default value
+            this.shoulder_height_OOR = true;
+
+            // # Upper limit check
+            if( this.shoulder_height > this.config.shoulder_height_upper_limit ) {
                 return true;
             }
 
-            if( parseInt( this.depth ) < this.config.shoulder_height_lower_limit ) {
-                this.depthOOR = true;
+            // # Lower limit check
+            if( this.shoulder_height < this.config.shoulder_height_lower_limit ) {
                 return true;
             }            
             
-            this.depthOOR = false;
+            // # In range
+            this.shoulder_height_OOR = false;
+
             return false;
         },    
 
         /**
-         * [checkChoice description]
-         * @return {[type]} [description]
+         * Check dimensions constraints
+         * @return {bool} true if all constraint are satisfied
          */
         checkChoice: function() {
 
+            // # Check width
             if( !this.width ) {
-                this.widthOOR = true;
+                this.width_OOR = true;
                 return false;
             }
 
+            // # Check length
             if( !this.length ) {
-                this.lengthOOR = true;
+                this.length_OOR = true;
                 return false;
             }
 
-            if( !this.depth ) {
-                this.depthOOR = true;
+            // # Check shoulder_height
+            if( !this.shoulder_height ) {
+                this.shoulder_height_OOR = true;
                 return false;
             }
 
-            // # Check Out of Bound
-            if( this.widthOutOfRange() || this.lengthOutOfRange() || this.depthOutOfRange() ) {
+            // # Check Out of Bounds
+            if( this.widthOutOfRange() || this.lengthOutOfRange() || this.shoulderHeightOutOfRange() ) {
                  return false;
             }
 
+            // # Dimensions inputs satisfied constraints
             return true;
         },         
 
         /**
-         * [makeShoulderWidthInfoLine description]
-         * @param  {[type]} x1 [description]
-         * @param  {[type]} y1 [description]
-         * @param  {[type]} x2 [description]
-         * @param  {[type]} y2 [description]
-         * @return {[type]}    [description]
+         * Draws shoulder width info ( upper ) line
+         * @param  {int} x1 x start coord
+         * @param  {int} y1 y start coord
+         * @param  {int} x2 x end coord
+         * @param  {int} y2 y end coord
+         * @return {void}
          */
         makeShoulderWidthInfoLine: function( x1, y1, x2, y2 ) {
 
-            this.hor_line_shoulder = this.two.makeLine( x1, 
-                                                        y1, 
-                                                        x2, 
-                                                        y2 );
-                                                        
+            // # Draw the line
+            this.hor_line_shoulder = this.two.makeLine( x1, y1, x2, y2 );
+            
+            // # Assign a stroke                                 
             this.hor_line_shoulder.stroke = this.config.line_stroke;  
         },
 
         /**
-         * [makeShoulderWidthInfoText description]
-         * @param  {[type]} x [description]
-         * @param  {[type]} y [description]
-         * @return {[type]}   [description]
+         * Draws shoulder width info ( upper ) text
+         * @param  {int} x x coord
+         * @param  {int} y y coord
+         * @return {void} 
          */
         makeShoulderWidthInfoText: function( x, y ) {
 
+            // # Draw the text
             this.hor_text_shoulder = this.two.makeText( this.length + " " +  this.config.measure_label, 
                                                         x, 
                                                         y, 
                                                         this.config.font_weight );
-
+            // # Text settings
             this.hor_text_shoulder.size = this.config.font_size;
             this.hor_text_shoulder.stroke = this.config.text_stroke;
             this.hor_text_shoulder.family = this.config.font_family; 
         },
 
         /**
-         * [makeShoulderLengthInfoLine description]
-         * @param  {[type]} x1 [description]
-         * @param  {[type]} y1 [description]
-         * @param  {[type]} x2 [description]
-         * @param  {[type]} y2 [description]
-         * @return {[type]}    [description]
+         * Draws shoulder length info ( right ) line
+         * @param  {int} x1 x start coord
+         * @param  {int} y1 y start coord
+         * @param  {int} x2 x end coord
+         * @param  {int} y2 y end coord
+         * @return {void}
          */
         makeShoulderLengthInfoLine: function( x1, y1, x2, y2 ) {
 
-            // # Length line ( drawer )
-            this.vert_line_shoulder = this.two.makeLine( x1, 
-                                                         y1, 
-                                                         x2, 
-                                                         y2 );
+            // # Draw the line
+            this.vert_line_shoulder = this.two.makeLine( x1, y1, x2, y2 );
 
+            // # Assign a stroke         
             this.vert_line_shoulder.stroke = this.config.line_stroke;
         },
 
         /**
-         * [makeShoulderLengthInfoText description]
-         * @param  {[type]} x [description]
-         * @param  {[type]} y [description]
-         * @return {[type]}   [description]
+         * Draws shoulder length info ( right ) text
+         * @param  {int} x x coord
+         * @param  {int} y y coord
+         * @return {void} 
          */
         makeShoulderLengthInfoText: function( x, y ) {
 
-            // # Length text ( drawer )
-            this.vert_text_shoulder = this.two.makeText( this.depth + " " + this.config.measure_label, 
+            // # Draw the text
+            this.vert_text_shoulder = this.two.makeText( this.shoulder_height + " " + this.config.measure_label, 
                                                          x, 
                                                          y,
                                                          this.config.font_weight );
 
+            // # Text settings
             this.vert_text_shoulder.size = this.config.font_size;
             this.vert_text_shoulder.stroke = this.config.text_stroke;
             this.vert_text_shoulder.family = this.config.font_family;
+
+            // # Rotate text 90 degrees clockwise
             this.vert_text_shoulder.rotation = Math.PI/2;
         },     
 
         /**
-         * [makeShoulderLabel description]
-         * @param  {[type]} x [description]
-         * @param  {[type]} y [description]
-         * @return {[type]}   [description]
+         * Draws the shoulder label
+         * @param  {int} x x coord
+         * @param  {int} y y coord
+         * @return {void} 
          */
         makeShoulderLabel: function( x, y ) {
 
+            // # Draw the text
             this.shoulder_text = this.two.makeText( this.config.shoulder_text,
                                                     x, 
                                                     y, 
                                                     this.config.font_weight );
-
+            // # Text settings
             this.shoulder_text.size = this.config.font_size;
             this.shoulder_text.stroke = this.config.text_stroke;
             this.shoulder_text.family = this.config.font_family;
         },
 
         /**
-         * [makeRect description]
-         * @param  {[type]} x             [description]
-         * @param  {[type]} y             [description]
-         * @param  {[type]} width         [description]
-         * @param  {[type]} length        [description]
-         * @param  {[type]} translation_x [description]
-         * @param  {[type]} translation_y [description]
-         * @return {[type]}               [description]
+         * Draws a rectangle ( Drawer )
+         * @param  {int} x             x coord
+         * @param  {int} y             y coord
+         * @param  {int} width         rect width
+         * @param  {int} length        rect length
+         * @param  {int} translation_x x translation
+         * @param  {int} translation_y y translation
+         * @return {void}
          */
         makeRect: function( x, y, width, length, translation_x, translation_y ) {
 
-            // # Rectangle ( drawer )
+            // # Draw the shape ( rectangle )
             this.rect = this.two.makeRectangle( x, y, width, length );
+
+            // # Shape settings
             this.rect.linewidth = this.config.rect_linewidth;
             this.rect.stroke = this.config.rect_stroke;
+
+            // # Translations
             this.rect.translation.x += translation_x;
             if( translation_y > 0 ) {
                 this.rect.translation.y = translation_y;
@@ -388,60 +500,68 @@ var step3 = new Vue({
         },
 
         /**
-         * [makeRectWidthInfoLine description]
-         * @param  {[type]} x1 [description]
-         * @param  {[type]} y1 [description]
-         * @param  {[type]} x2 [description]
-         * @param  {[type]} y2 [description]
-         * @return {[type]}    [description]
+         * Draws rect width info ( upper ) line
+         * @param  {int} x1 x start coord
+         * @param  {int} y1 y start coord
+         * @param  {int} x2 x end coord
+         * @param  {int} y2 y end coord
+         * @return {void}
          */
         makeRectWidthInfoLine: function( x1, y1, x2, y2 ) {
 
-            // # Width line ( drawer )
+            // # Draw the line
             this.hor_line_rect = this.two.makeLine( x1, y1, x2, y2 );
+
+            // # Assign a stroke
             this.hor_line_rect.stroke = this.config.line_stroke;           
         },
 
         /**
-         * [makeRectWidthInfoText description]
-         * @param  {[type]} x [description]
-         * @param  {[type]} y [description]
-         * @return {[type]}   [description]
+         * Draws rect width info ( upper ) text
+         * @param  {int} x x coord
+         * @param  {int} y y coord
+         * @return {void} 
          */
         makeRectWidthInfoText: function( x, y ) {
            
-            // # Width text ( drawer )
+            // # Draw the text
             this.hor_text_rect = this.two.makeText( this.width + " " + this.config.measure_label, x, y, this.config.font_weight );
+
+            // # Text settings
             this.hor_text_rect.size = this.config.font_size;
             this.hor_text_rect.stroke = this.config.text_stroke;
             this.hor_text_rect.family = this.config.font_family; 
         },
 
         /**
-         * [makeRectLengthInfoLine description]
-         * @param  {[type]} x1 [description]
-         * @param  {[type]} y1 [description]
-         * @param  {[type]} x2 [description]
-         * @param  {[type]} y2 [description]
-         * @return {[type]}    [description]
+         * Draws rect length info ( right ) line
+         * @param  {int} x1 x start coord
+         * @param  {int} y1 y start coord
+         * @param  {int} x2 x end coord
+         * @param  {int} y2 y end coord
+         * @return {void}
          */
         makeRectLengthInfoLine: function( x1, y1, x2, y2 ) {
             
-            // # Length line ( drawer )
+            // # Draw the line
             this.vert_line_rect = this.two.makeLine( x1, y1, x2, y2 );
+
+            // # Assign a stroke
             this.vert_line_rect.stroke = this.config.line_stroke;
         },
 
         /**
-         * [makeRectLengthInfoText description]
-         * @param  {[type]} x [description]
-         * @param  {[type]} y [description]
-         * @return {[type]}   [description]
+         * Draws rect length info ( right ) text
+         * @param  {int} x x coord
+         * @param  {int} y y coord
+         * @return {void} 
          */
         makeRectLengthInfoText: function( x, y ) {
             
-            // # Length text ( drawer )
+            // # Draw the text
             this.vert_text_rect = this.two.makeText( this.length + " " + this.config.measure_label, x, y, this.config.font_weight );
+
+            // # Text settings
             this.vert_text_rect.size = this.config.font_size;
             this.vert_text_rect.stroke = this.config.text_stroke;
             this.vert_text_rect.family = this.config.font_family;
@@ -449,57 +569,58 @@ var step3 = new Vue({
         },
 
         /**
-         * [makeShoulder description]
-         * @param  {[type]} x      [jdej3io]
-         * @param  {[type]} y      [description]
-         * @param  {[type]} width  [description]
-         * @param  {[type]} length [description]
-         * @return {[type]}        [description]
+         * Draws a rectangle ( Shoulder )
+         * @param  {int} x             x coord
+         * @param  {int} y             y coord
+         * @param  {int} width         rect width
+         * @param  {int} length        rect length
+         * @return {void}
          */
         makeShoulder: function( x, y, width, length ) {
 
+            // # Draw the shape ( rectangle )
             this.shoulder = this.two.makeRectangle( x, y, this.mm2Pixel( width ), this.mm2Pixel( length ) );
+
+            // # Shape settings
             this.shoulder.linewidth = this.config.shoulder_linewidth;
             this.shoulder.stroke = this.config.shoulder_stroke;
         },
 
         /**
-         * [makeDrawerLabel description]
-         * @param  {[type]} x [description]
-         * @param  {[type]} y [description]
-         * @return {[type]}   [description]
+         * Draws the drawer label
+         * @param  {int} x x coord
+         * @param  {int} y y coord
+         * @return {void} 
          */
         makeDrawerLabel: function( x, y ) {
 
+            // # Draw the text
             this.drawer_text = this.two.makeText( this.config.drawer_text, x, y, this.config.font_weight );
+
+            // # Text settings
             this.drawer_text.size = this.config.font_size;
             this.drawer_text.stroke = this.config.text_stroke;
             this.drawer_text.family = this.config.font_family;
         },
 
         /**
-         * Updates Drawer related objects on data change
-         * @return {[void]}
+         * Updates Drawer related objects on each dimension data change
+         * @return {void}
          */
         updateDrawer: function() {
 
-            // # Skip when there are less than 3 digit
-            /*if( this.width.length < 3 || this.length.length < 3 || this.depth.length < 1 ) {
+            // # Skip when there are less than ( x - 2 ) max digit
+            if( this.width.length < 2 || this.length.length < 2 || this.shoulder_height.length < 1 ) {
                 return;
-            }*/
+            }
 
             // # dimensions check
             if( ! this.checkChoice() ) {
                 return false;
             }
 
-            if( this.widthIsNotSuitable4Bridge() ) {
-                $( "#error-modal" ).find('.modal-body').text( "La larghezza inserita non permetterà l'inserimento di un elemento ponte" );
-                $( '#error-modal' ).modal();
-            }
-
             // # Clean up if any previous error stills
-            this.widthOOR = false; this.lengthOOR = false; this.depthOOR = false;
+            this.width_OOR = false; this.length_OOR = false; this.shoulder_height_OOR = false;
 
             // # Remove to redraw
             this.two.clear();
@@ -542,9 +663,9 @@ var step3 = new Vue({
 
             // # Shoulder redraw                
             this.makeShoulder(  rectObj.left + ( this.mm2Pixel( this.length ) / 2 ) + 5, 
-                                rectObj.bottom + 40 + ( this.mm2Pixel( this.depth ) ) / 2, 
+                                rectObj.bottom + 40 + ( this.mm2Pixel( this.shoulder_height ) ) / 2, 
                                 this.length, 
-                                this.depth);
+                                this.shoulder_height);
 
             // # Get drawer dimensions
             var shoulderObj = this.shoulder.getBoundingClientRect();
@@ -574,64 +695,120 @@ var step3 = new Vue({
 
         },
 
+        /**
+         * Final check ( "Next" button click )
+         * @return {bool} true if checks are ok
+         */
         check: function() {
 
+            // # Check inputs
             if( !this.checkChoice() ) {
 
+                // # Show error modal and move the user at the top of this step
                 $( "#error-modal" ).find('.modal-body').text( "Controlla i valori inseriti" );
                 $( '#error-modal' ).modal();
+
+                // # Back at the step beginning
                 Commons.movesmoothlyTo( "#step3"); 
+
                 return false;  
 
             }
 
-            // # Cassetto
+            // # Drawer type check
+            // # If is a custom drawer
             if( Configuration.drawertype == 4 ) {
 
-                if( this.depth > 70 ) {
+                // # Over 70 mm bridge is allowed, go to the bridge step
+                if( this.shoulder_height > 70 ) {
                     Commons.movesmoothlyTo( "#step-ponte"); 
                     return false;
                 }
+
+                // # Under 70 mm no bridge allowed, skip the bridge choice step
                 Commons.movesmoothlyTo( "#step4"); 
+                return true;
             }
 
-            if( this.depth > 77 ) {
+            // # Lineabox choice
+            if( this.shoulder_height > 45.5 ) { // 45.5 means choice: 77
+                // # bridge is allowed, go to the bridge step
                 Commons.movesmoothlyTo( "#step-ponte"); 
                 return false;
             }
             
+            // # no bridge allowed, skip the bridge choice step
             Commons.movesmoothlyTo( "#step4"); 
-
-
         },        
 
     },
 
+    /**
+     * Watch 4 data changes
+     * @type {Obj}
+     */
     watch: {
 
-        width: function (val) {
-            Configuration.dimensions.width = val;
+        /**
+         * Each time width changes update Configuration Object
+         * @param  {double} val value changed
+         * @return {void}
+         */
+        width: function ( val ) {
+
+            // # Update         
+            Configuration.dimensions.width = parseFloat( val );
         },
 
-        length: function (val) {
-            Configuration.dimensions.length = val;
+        /**
+         * Each time length changes update Configuration Object
+         * @param  {double} val value changed
+         * @return {void}
+         */        
+        length: function ( val ) {
+
+            // # Update            
+            Configuration.dimensions.length = parseFloat( val );
         },
 
-        depth: function (val) {
-            Configuration.dimensions.depth = val;
+        /**
+         * Each time shoulder_height changes update Configuration Object ( and update drawer )
+         * @param  {double} val value changed
+         * @return {void}
+         */
+        shoulder_height: function ( val ) {
+
+            // # Update
+            Configuration.dimensions.shoulder_height = parseFloat( val );
+
+            // # Redraw
             this.updateDrawer();
         },
 
-        widthNotSuitable4Bridge: function( val ) {
-            console.log( "changed");
-            stepponte.$data.widthNotSuitable4Bridge = val;
+        /**
+         * Each time width_not_suitable_4Hbridge changes broadcast the change to the next step
+         * @param  {bool} val value changed
+         * @return {void}
+         */
+        width_not_suitable_4Hbridge: function( val ) {
+
+            // # Broadcast
+            stepponte.$data.width_not_suitable_4Hbridge = val;
         }
 
     },
 
-    mounted() { // # Window onload eq
-        console.log("Step3 mounted");
-        this.inittwo();
+    /**
+     * Window onload eq 4 Vue
+     * @return {void}
+     */
+    mounted () { 
+
+        // # Log mount 
+        console.log( "Dimensions choice mounted" );
+
+        // # Init canvas
+        this.initTwo();
     }
 
 });

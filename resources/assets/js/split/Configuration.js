@@ -4,16 +4,16 @@ var Configuration = {
     lineabox: false,
     drawertype:0,
     dimensions: {
-        width:1000,
-        depth:200,
-        length:1000
+        width:800,
+        shoulder_height:100,
+        length:600
     },
     dividers:[],
-    bridge_supports_chosen: [{},{}],
+    bridge_supports_selected: [],
     /*
     support obj { id, width, height, pos }
      */
-    }
+    
     /*
     * {
     *   bridges:[
@@ -22,8 +22,7 @@ var Configuration = {
     *   ]
     * }
     * */
-    bridges:[{}, {}],
-    edges: [],
+    bridges_selected: [],
     pdf: {
     	brochure: false,
     	summary: false,

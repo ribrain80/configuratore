@@ -5,6 +5,7 @@
         <div class="col-lg-12">
             <h2 lang="it">Tipologia di cassetto</h2>
         </div>
+
         <!-- BLOCCO ALERTS -->
         <div class="col-lg-12" v-if="$parent.choice">
             <div class="alert alert-warning alert-dismissible fade in"  lang="it">
@@ -18,21 +19,14 @@
             </div>
         </div>
         <!-- FINE BLOCCO ALERTS -->
-        <!--
-        <div class="col-lg-3" v-for="type in $parent.types">
-            <div class="panel panel-default " :class="{ 'bg-success': (type.id==$parent.selected) }">
-                <div class="panel-body" @click="$parent.setType(type.id)" lang="it">{{type.description}}</div>
-            </div>
-        </div>
-        -->
 
         <div class="col-lg-3" v-for="(type,category) in $parent.types">
-            <div v-if="type.length==1">
+            <div v-if="type.length == 1">
                 <div class="panel panel-default" :class="{ 'bg-success': (type[0].id==$parent.selected) }">
                     <div class="panel-body" @click="$parent.setType(type[0].id)" lang="it">{{type[0].description}}</div>
                 </div>
             </div>
-            <div v-if="type.length>1">
+            <div v-if="type.length > 1">
                 <div class="panel panel-default">
                     <div class="panel-body" @click="$parent.openCategory(category)" lang="it">{{category}}</div>
                 </div>

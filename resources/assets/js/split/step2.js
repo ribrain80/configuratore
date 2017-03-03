@@ -1,81 +1,134 @@
+/**
+ * Vue object managing drawer type selection
+ * @type {Vue}
+ */
 var step2 = new Vue({
 
+    // # Bound element
     el: 'step2',
 
+    /**
+     * Object data
+     * @type {Object}
+     */   
     data: {
-        selected:0,
-        hasError:false,
+
+        // # Selected type
+        selected: 0,
+
+        // # Step has error flag
+        hasError: false,
+
+        // # Choice flag
         choice: true,
-        types:[],
+
+        // # Types available
+        types: [],
+
+        // # is one of the lineabox types available
         lineabox: false
-    },
-
-    watch: {
-        // whenever selected changes, this function will run
-        selected: function (val) {
-
-            Configuration.drawertype = val;
-            console.log( "VALORE " + val );
-            if( val == 4 ) {
-                console.log( "cassetto" );
-                this.lineabox = false;
-                return;
-            }
-
-            this.lineabox = true;
-            step3.$data.depth = 77;
-        },
-
-        lineabox: function( val ) {
-            step3.$data.lineabox = val;
-        }
     },
 
     methods: {
 
+        /**
+         * Calls the server and retrieve the types available
+         * @return {void}
+         */
         initTypes: function () {
-            this.$http.get('/split/drawerstypes').then(response => {
+
+            // # ajax call
+            this.$http.get( '/split/drawerstypes' ).then( response => {
+                // # types retrieved
                 this.types = response.body;
             }, response => {
+                // # something went wrong
                 this.hasError = true;
             });
         },
 
-        setType: function (type) {
+        /**
+         * Sets the type ( user choice )
+         * @param {int} type the drawer type chosen
+         */
+        setType: function ( type ) {
+
+            // # data set
             this.selected = type;
-            if (type>0) {
-                this.choice = false;
-            } else {
-                this.choice = true;
-            }
+
+            // # User choose one
+            this.choice = type > 0;
         },
 
-        openCategory: function (catId) {
-            //Resetto le scelte
-            this.selected=0;
-            this.choice=true;
-            //Nascondo tutte le category
-            $('.drawerlist').hide();
-            //Mostro solo quella con quell'id (animazione per ora non mi importa)
-            $('#'+catId).toggle();
+        openCategory: function ( catId ) {
 
+            // # Choice reset
+            this.selected = 0;
+            this.choice = false;
+
+            // # Hide all categories
+            $( '.drawerlist' ).hide();
+
+            // # Show only the one needed
+            $('#'+catId).toggle();
         },
 
         check: function() {
 
-            if( this.selected == 0 ) {
-                $( "#error-modal" ).find('.modal-body').text( "Non hai scelto la tipologia" );
-                $( '#error-modal' ).modal();
-                return false;
-            } else {
-               Commons.movesmoothlyTo( "#step3"); 
+            if( this.selected != 0 ) {
+                Commons.movesmoothlyTo( "#step3");
+                return true;
             }
-           
+
+            $( "#error-modal" ).find( '.modal-body' ).text( "Non hai scelto la tipologia" );
+            $( '#error-modal' ).modal();
+
+            return false; 
         }
     },
 
+    /**
+     * Watch 4 data changes
+     * @type {Obj}
+     */
+    watch: {
+
+        /**
+         * Each time selected changes update Configuration Object
+         * @param  {bool} val value changed
+         * @return {void}
+         */
+        selected: function ( val ) {
+
+            // # Update
+            Configuration.drawertype = parseInt( val );
+
+            // # 4 is the custom drawer
+            this.lineabox = val != 4;
+        },
+
+        /**
+         * Each time lineabox changes broadcast the change to the next step
+         * @param  {bool} val value changed
+         * @return {void}
+         */       
+        lineabox: function( val ) {
+
+            // # Broadcast
+            step3.$data.lineabox = val;
+        }
+    },
+
+    /**
+     * Window onload eq 4 Vue
+     * @return {void}
+     */    
     mounted() {
+
+        // # Log mount 
         console.log("Step2 Mounted!")
+
+        // # Init types
         this.initTypes();
     }
 });

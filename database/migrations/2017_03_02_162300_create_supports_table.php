@@ -15,7 +15,7 @@ class CreateSupportsTable extends Migration
     {
         Schema::create('supports', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('heigth');
+            $table->double('height');
         });
     }
 
