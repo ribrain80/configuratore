@@ -47,7 +47,7 @@
                     <h4 class="">Altezza di posizionamento</h4>
 
                     <div class="row" v-for="bridge_support in $parent.bridge_supports">
-                        <div class="col-lg-6" v-show="$parent.checkSupportCompatibility( bridge_support )">
+                        <div class="col-lg-5" v-show="$parent.checkSupportCompatibility( bridge_support )">
                             <div class="panel panel-default">
                                 <div class="panel-body" lang="it" :class="{ 'bg-success': bridge_support.id == $parent.bridge_supportID }" @click="$parent.selectBridgeSupportHeight( bridge_support )" >{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
                             </div>

@@ -76,31 +76,6 @@ var stepponte = new Vue({
           }
 
           this.bridge_orientation = val;
-
-          // # switch todo Vertical
-          switch( Configuration.drawertype ) {
-
-            // # cassetto
-            case 4:
-                /*var bridge_supportR = { width: Configuration.width, height: 100, length: 100, pos: "R" };
-                var bridge_supportL = { width: 100, height: 100, length: 100, pos: "L" };
-                Configuration.edges.push();
-                
-                Configuration.width -= 12;
-                */
-
-            break;
-
-            // lineabox 2 lati
-            case 3:
-            break;
-
-            // # lineabox 3 e 4 lati
-            default:
-            break;
-
-          }
-
           this.bridge_selected = []; //Svuoto i bridge selezionati
         },
 
@@ -130,8 +105,6 @@ var stepponte = new Vue({
                 
                 // # Custom drawer
                 case 4:
-
-                    console.log( bridge );
 
                     if( bridge.depth > 22.5 && parseInt( Configuration.dimensions.shoulder_height ) < 114 ) {
                         console.log( "Enter" );

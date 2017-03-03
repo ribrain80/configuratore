@@ -783,6 +783,9 @@ var step3 = new Vue({
 
             // # Redraw
             this.updateDrawer();
+
+            // # FIX ME
+            stepponte.initBridgesAndSupports();
         },
 
         /**
