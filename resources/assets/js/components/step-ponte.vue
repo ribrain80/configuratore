@@ -15,6 +15,10 @@
 
         <div class="col-lg-12">
 
+            <div class="row">
+               <span class="help-block">Vuoi inserire elementi ponte? orizzontali o verticali?</span>
+            </div>
+
             <h4 class="">Orientamento Ponti</h4>
 
             <div class="row">
@@ -32,11 +36,14 @@
 
         </div>
 
-        <div class="col-lg-12">           
+        <div class="col-lg-12"> 
+
             <div class="row">
                 
                 <div class="col-lg-5" v-show="$parent.bridge_orientation">   
-
+                    <div class="row">
+                       <span class="help-block" >A che altezza vuoi mettere i ponti?</span>
+                    </div> 
                     <h4 class="">Altezza di posizionamento</h4>
 
                     <div class="row" v-for="bridge_support in $parent.bridge_supports">
@@ -50,6 +57,11 @@
                 </div>  
 
                 <div class="col-lg-5" v-show="$parent.bridge_orientation">   
+
+                    <div class="row">
+                       <span class="help-block">seleziona l’altezza del ponte da inserire</span>
+                    </div> 
+
                     <h4 class="">Tipologie di ponte</h4>
 
                     <div v-if="$parent.bridge_orientation.length">
