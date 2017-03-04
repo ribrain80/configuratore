@@ -784,8 +784,9 @@ var step3 = new Vue({
             // # Redraw
             this.updateDrawer();
 
-            // # FIX ME
-            stepponte.initBridgesAndSupports();
+            // # RESETS bridge selections made
+            // # when shoulder height changes all the computed data must be reset
+            stepponte.$data.bridge_orientation = "";
         },
 
         /**

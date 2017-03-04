@@ -23,7 +23,7 @@ var step5 = new Vue({
                 return false;
             }
 
-            if( !Configuration.dimensions.width || !Configuration.dimensions.length || !Configuration.dimensions.depth) {
+            if( !Configuration.dimensions.width || !Configuration.dimensions.length || !Configuration.dimensions.shoulder_height) {
                 this.has_error = true;
                 this.alert_message = "Controlla le dimensioni del cassetto";
                 Commons.movesmoothlyTo( "#step3" );
@@ -75,6 +75,7 @@ var step5 = new Vue({
             var self = this;
 
             Pace.track( function() {
+                console.log( Configuration );
                 self.$http.post( '/split/savedrawer', Configuration).then( response => {
                     self.has_error = false;
                     window.open(response.body.pdfpath,'_blank');

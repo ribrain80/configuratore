@@ -17,7 +17,7 @@
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $parent.dividers.dividersCategories">
                     <div class="row" style="margin-top: 22px">
                         <div class="col-lg-4" v-for="divider in $parent.getDividerByCat(cat)">
-                            <div class="panel panel-default" >
+                            <div class="panel panel-default" :class="{ 'bg-success': $parent.isSelected( divider.id ) }">
                                 <div class="media">
                                     <div class="media-left">
                                             <img class="media-object" src="http://placehold.it/200x100">

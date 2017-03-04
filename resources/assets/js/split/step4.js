@@ -20,8 +20,17 @@ var step4 = new Vue({
         pushDivider: function ( event ) {
 
             var id = $( event.target ).data( "id" );
+            if(  $.inArray( id, this.selected ) != -1 ) {
+                this.selected.splice( $.inArray( id, this.selected), 1 );
+                return;
+            }
+            
             this.selected.push( id );
             
+        },
+
+        isSelected: function( id ) {
+            return $.inArray( id, this.selected ) != -1;
         },
 
         genHref:function (val) {

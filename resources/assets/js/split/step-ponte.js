@@ -71,12 +71,17 @@ var stepponte = new Vue({
 
             this.bridge_orientation = "";
             this.has_bridge = false;
-            return false;
-
+          } else {
+            this.has_bridge = true;
+            this.bridge_orientation = val;
           }
 
-          this.bridge_orientation = val;
-          this.bridge_selected = []; //Svuoto i bridge selezionati
+          // clean up
+          this.bridge_selected = []; 
+          this.bridge_support_selected = [];
+          this.bridge_supportID = 0;
+
+
         },
 
         checkSupportCompatibility: function( bridge_support ) {
@@ -121,6 +126,7 @@ var stepponte = new Vue({
 
         selectBridgeType: function( bridge ) {
 
+            this.bridge_selected = [];
             this.has_bridge = true;
             this.bridge_ID = bridge.id;
             bridge.length = this.bridge_orientation == "H" ? Configuration.width : Configuration.length;
@@ -130,9 +136,11 @@ var stepponte = new Vue({
 
         selectBridgeSupportHeight: function( bridge_support ) {
 
+            this.bridge_support_selected = [];
             this.bridge_supportID = bridge_support.id;
             bridge_support.orientation = this.bridge_orientation;
-            this.bridge_support_selected.push( bridge_support );
+            // # Push 2 of the same type
+            this.bridge_support_selected.push( bridge_support, bridge_support );
         },     
 
         check: function() {
@@ -161,6 +169,10 @@ var stepponte = new Vue({
 
         bridge_support_selected: function( val ) {
             Configuration.bridge_supports_selected = val;
+        },
+
+        bridge_orientation: function( val ) {
+             Configuration.bridge_orientation = val;
         }
 
     },

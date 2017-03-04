@@ -2,7 +2,7 @@ var Configuration = {
 
 	drawerId: '',
     lineabox: false,
-    drawertype:0,
+    drawertype: 0,
     dimensions: {
         width:800,
         shoulder_height:100,
@@ -23,9 +23,10 @@ var Configuration = {
     * }
     * */
     bridges_selected: [],
+    bridge_orientation: "",
     pdf: {
     	brochure: false,
-    	summary: false,
+    	summary: true,
     	email: '',
     	send: false,
     	download: false
