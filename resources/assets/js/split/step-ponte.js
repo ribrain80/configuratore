@@ -247,6 +247,24 @@ var stepponte = new Vue({
          */
         selectBridgeType: function( bridge ) {
 
+            // # Parse to float
+            var shoulder_height_int = parseFloat( Configuration.dimensions.shoulder_height );
+
+            if( Configuration.drawertype == 4 ) {
+                if( shoulder_height_int >= 114 && shoulder_height_int < 136.5 ) {
+
+                    if( this.bridge_supportID == 2 && bridge.id == 1 ) {
+                        // # Show error modal 
+                        $( "#error-modal" )
+                        .find('.modal-body')
+                        .text( "Impossibile selezionare questo elemento, l'altezza totale risulta maggiore di quella disponibile" );
+
+                        $( '#error-modal' ).modal();
+                        return false;
+                    }
+                }
+            }
+
             this.bridge_selected = [];
             this.bridge_ID = bridge.id;
             bridge.length = this.bridge_orientation == "H" ? Configuration.width : Configuration.length;
@@ -271,6 +289,7 @@ var stepponte = new Vue({
                     
                     // # Set support id
                     this.bridge_supportID = bridge_support.id;
+                    console.log( "choice is " + bridge_support.id );
 
                     // # Orientation is the one of the bridge
                     bridge_support.orientation = this.bridge_orientation;
