@@ -96,16 +96,18 @@ var stepponte = new Vue({
          */
         setOrientation: function (val) {
 
-          if( val == this.bridge_orientation ) {
-            this.bridge_orientation = "";
-          } else {
-            this.bridge_orientation = val;
-          }
+            if( val == this.bridge_orientation ) {
+                this.bridge_orientation = "";
+            } else {
+                this.bridge_orientation = val;
+            }
 
-          // clean up
-          this.bridge_selected = []; 
-          this.bridge_support_selected = [];
-          this.bridge_supportID = 0;
+            // clean up
+            this.bridge_support_selected = [];
+            this.bridge_selected = [];
+            this.bridge_ID = 0;
+            this.bridge_supportID = 0;
+            this.has_bridge = false;
         },
 
         /**
