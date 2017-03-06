@@ -64,7 +64,6 @@ var step2 = new Vue({
 
             // # Choice reset
             this.selected = 0;
-            this.choice = false;
 
             // # Hide all categories
             $( '.drawerlist' ).hide();
@@ -75,7 +74,8 @@ var step2 = new Vue({
 
         check: function() {
 
-            if( this.selected != 0 ) {
+            // # Check choice
+            if( this.choice ) {
                 Commons.movesmoothlyTo( "#step3");
                 return true;
             }
@@ -105,6 +105,9 @@ var step2 = new Vue({
 
             // # 4 is the custom drawer
             this.lineabox = val != 4;
+
+            // # Set a default value
+            step3.shoulder_height = 45.5;
         },
 
         /**
@@ -116,6 +119,7 @@ var step2 = new Vue({
 
             // # Broadcast
             step3.$data.lineabox = val;
+            Configuration.lineabox = val;
         }
     },
 

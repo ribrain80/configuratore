@@ -48,7 +48,7 @@ var step3 = new Vue({
             lineabox_shoulders_height: [
                 { text: "77 - 45.5 effettivi", value: 45.5, selected: true },
                 { text: "104 - 71.5 effettivi", value: 71.5, selected: false },
-                { text: "180 - 89.5 effettivi", value: 89.5, selected: false }
+                { text: "180 - 147.5 effettivi", value: 147.5, selected: false }
             ],
 
             // # Bridge related limits
@@ -712,7 +712,6 @@ var step3 = new Vue({
                 Commons.movesmoothlyTo( "#step3"); 
 
                 return false;  
-
             }
 
             // # Drawer type check
@@ -720,7 +719,8 @@ var step3 = new Vue({
             if( Configuration.drawertype == 4 ) {
 
                 // # Over 70 mm bridge is allowed, go to the bridge step
-                if( this.shoulder_height > 70 ) {
+                if( this.shoulder_height >= 70 ) {
+                    console.log( "in" );
                     Commons.movesmoothlyTo( "#step-ponte"); 
                     return false;
                 }
@@ -731,7 +731,7 @@ var step3 = new Vue({
             }
 
             // # Lineabox choice
-            if( this.shoulder_height > 45.5 ) { // 45.5 means choice: 77
+            if( this.shoulder_height >= 45.5 ) { // 45.5 means choice: 77
                 // # bridge is allowed, go to the bridge step
                 Commons.movesmoothlyTo( "#step-ponte"); 
                 return false;
@@ -785,8 +785,8 @@ var step3 = new Vue({
             this.updateDrawer();
 
             // # RESETS bridge selections made
-            // # when shoulder height changes all the computed data must be reset
-            stepponte.$data.bridge_orientation = "";
+            // # when shoulder height changes all the computed bridge data must be reset
+            stepponte.clearData();
         },
 
         /**
@@ -798,6 +798,12 @@ var step3 = new Vue({
 
             // # Broadcast
             stepponte.$data.width_not_suitable_4Hbridge = val;
+        },
+
+        shoulder_height_not_suitable_4bridge: function( val ) {
+
+            // # Broadcast
+            stepponte.$data.shoulder_height_not_suitable_4bridge = val;
         }
 
     },

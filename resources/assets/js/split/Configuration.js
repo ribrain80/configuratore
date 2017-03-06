@@ -9,6 +9,7 @@ var Configuration = {
         length:600
     },
     dividers:[],
+    has_bridge: false,
     bridge_supports_selected: [],
     /*
     support obj { id, width, height, pos }

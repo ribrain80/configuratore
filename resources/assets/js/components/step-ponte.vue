@@ -22,7 +22,7 @@
             <h4 class="">Orientamento Ponti</h4>
 
             <div class="row">
-                <div class="col-lg-6" v-show="!$parent.width_not_suitable_4bridge">
+                <div class="col-lg-6" v-show="$parent.checkOrientationCompatibility">
                     <div class="panel panel-default" :class="{ 'bg-success': ('H'==$parent.bridge_orientation)}">
                         <div class="panel-body" @click="$parent.setOrientation('H')" lang="it">Orizzontale</div>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="row" v-for="bridge_support in $parent.bridge_supports">
                         <div class="col-lg-5" v-show="$parent.checkSupportCompatibility( bridge_support )">
                             <div class="panel panel-default">
-                                <div class="panel-body" lang="it" :class="{ 'bg-success': bridge_support.id == $parent.bridge_supportID }" @click="$parent.selectBridgeSupportHeight( bridge_support )" >{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
+                                <div class="panel-body" lang="it" :class="{ 'bg-success': bridge_support.id == $parent.bridge_supportID }" @click="$parent.selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
                             </div>
                         </div>
                     </div>
@@ -66,10 +66,10 @@
 
                     <div v-if="$parent.bridge_orientation.length">
 
-                        <div class="row" v-for="bridge in $parent.bridges_types">
+                        <div class="row" v-for="bridge in $parent.bridge_types">
                             <div class="col-lg-6" v-show="$parent.checkBridgeCompatibility( bridge )">
                                 <div class="panel panel-default">
-                                    <div class="panel-body"  lang="it" :class="{ 'bg-success': bridge.id == $parent.bridge_ID }" @click="$parent.selectBridgeType( bridge )">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                                    <div class="panel-body"  lang="it" :class="{ 'bg-success': bridge.id == $parent.bridge_ID }" @click="$parent.selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
                                 </div>
                             </div>
                         </div>
