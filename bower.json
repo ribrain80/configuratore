@@ -20,6 +20,15 @@
     "bootstrap-sass-official": "~3.3.1",
     "PACE": "pace#^1.0.2",
     "jquery-ui": "^1.12.1",
-    "fabric.js": "fabric#^1.7.7"
+    "fabric.js": "fabric#^1.7.7",
+    "lightgallery": "^1.3.9",
+    "lg-thumbnail": "^1.0.3",
+    "lg-autoplay": "^1.0.2",
+    "lg-video": "^1.0.1",
+    "lg-fullscreen": "^1.0.1",
+    "lg-pager": "^1.0.2",
+    "lg-zoom": "^1.0.4",
+    "lg-hash": "^1.0.1",
+    "lg-share": "^1.0.2"
   }
 }
