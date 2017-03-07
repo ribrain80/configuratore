@@ -45,7 +45,7 @@ class SplitDrawerController extends Controller
         //3 Aggiorno i campi di model (fake)
         $drawer->length = (int)$data['dimensions']['length'];
         $drawer->width = (int)$data['dimensions']['width'];
-        $drawer->depth = (int)$data['dimensions']['depth'];
+        $drawer->depth = (int)$data['dimensions']['shoulder_height'];
         $drawer->drawertypes_id = $data['drawertype'];
         $saved = false;
         $error = "";

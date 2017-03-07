@@ -21,6 +21,9 @@ class ExportController extends Controller
         $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
         $drawerPdf->loadView('split.pdf.riepilogo', ['drawer'=>PdfDrawer::getDrawerInfo($id)]);
 
+        return $drawerPdf->inline();
+        /*
+        exit();
         $openingFile = ($brochure)?resource_path('pdf/brochure.pdf' ):resource_path('pdf/cover.pdf');
 
         $pdf = new PDFManage();
@@ -30,6 +33,6 @@ class ExportController extends Controller
         $drawerPdf->save($temp,true);
         //FINE SALVATAGGIO
         $pdf->addPDF($temp);
-        $pdf->merge();
+        $pdf->merge();*/
     }
 }
