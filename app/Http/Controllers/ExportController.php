@@ -18,7 +18,7 @@ class ExportController extends Controller
     public function actionRiepilogo($id,$brochure=false) {
         $drawerPdf = App::make('snappy.pdf.wrapper');
         $drawerPdf->setOption('header-html',route('split.pdf.header',[],true));
-        $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
+       // $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
         $drawerPdf->loadView('split.pdf.riepilogo', ['drawer'=>PdfDrawer::getDrawerInfo($id)]);
 
         return $drawerPdf->inline();
