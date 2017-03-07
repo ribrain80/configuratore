@@ -35,7 +35,7 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
-
+import {fabric} from 'fabric'
 
 
 /**
