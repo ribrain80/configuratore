@@ -63,5 +63,9 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('fabric',['uses'=>function () {
         return view('fabric');
     }]);
+
+    Route::get('/{catchall?}', function () {
+        return response()->view('split.onepage');
+    })->where('catchall', '(.*)');
 });
 

@@ -18,6 +18,8 @@ require('bootstrap-sass');
 
 window.Vue = require('vue');
 require('vue-resource');
+
+
 window.VueCookie = require('vue-cookie');
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
@@ -30,12 +32,11 @@ Vue.use(VueCookie);
 
 Vue.http.interceptors.push((request, next) => {
     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-
     next();
 });
 
 
-import {fabric} from 'fabric'
+//import {fabric} from 'fabric'
 
 
 /**
