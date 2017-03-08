@@ -8,9 +8,9 @@ return array(
         'binary'  => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
         'timeout' => false,
         'options' => [
-            'margin-top'    => 16,
+            'margin-top'    => 52,
             'margin-right'  => 0,
-            'margin-bottom' => 14,
+            'margin-bottom' => 0,
             'margin-left'   => 0,
             //'header-spacing'=> -16,
             'page-size'=>'A4'
