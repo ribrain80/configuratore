@@ -111,7 +111,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="push"></div>
+                <div class="row">
+                    <div class="col-xe-6"></div>
+                    <div class="col-xs-6" style="float: right">
+                        <?php
+                        QrCode::size(252);
+                        ?>
+                        {!! QrCode::generate('IL TESTO') !!}
+                    </div>
+                </div>
+
             </div>
 
         </div>

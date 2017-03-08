@@ -180,6 +180,7 @@ return [
         Anouar\Fpdf\FpdfServiceProvider::class,
         LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
@@ -235,6 +236,7 @@ return [
         'PdfMerger' => LynX39\LaraPdfMerger\Facades\PdfMerger::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];
