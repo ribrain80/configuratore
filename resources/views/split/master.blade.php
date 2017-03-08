@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/lightgallery.min.css') }}">
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
     <style>
 
@@ -118,9 +119,7 @@
     <div class="row">
         <div class="col-sm-2 col-md-1 scrollspy" >
             <ul class="nav hidden-xs affix-top" data-spy="affix" data-offset="70px" id="nav">
-                <li style="padding-bottom: 10px;padding-top: 10px">
-                    <a class="btn btn-lg btn-danger" data-toggle="popover" title="Gallery" data-content="And here's some amazing content. It's very engaging. Right?">G</a>
-                </li>
+                <li><a href="#" class="btn btn-lg btn-danger" id="gallery-trigger">Gallery</a></li>
                 <li><a href="#step1" class="inpagenav" lang="it">1</a></li>
                 <li><a href="#step2" class="inpagenav" lang="it">2</a></li>
                 <li><a href="#step3" class="inpagenav" lang="it">3</a></li>
@@ -172,7 +171,26 @@
 
         });
 
-        $("[data-toggle=popover]").popover();
+        $('#gallery-trigger').on('click', function() {
+         
+            $(this).lightGallery({
+                dynamic: true,
+                dynamicEl: [{
+                    "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                    'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                    'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+                }, {
+                    "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                    'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                    'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+                }, {
+                    "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                    'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                    'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+                }]
+            })
+         
+        });
     </script>
 </body>
 </html>                                		
