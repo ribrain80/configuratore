@@ -29,14 +29,14 @@
                 margin-top: 0;
                 min-height: 220px;
                 height: 220px;
-                border: 1px solid #000;
+                border: 1pt solid #000;
             }
 
             #box3d {
                 margin-top: 0;
                 min-height: 620px;
                 height: 620px;
-                border: 1px solid #000;
+                border: 1pt solid #000;
             }
 
             .boxelem h3 {
@@ -48,7 +48,7 @@
 
             .boxelem p {
                 width: 100%;
-                border-bottom: 1px solid #000000;
+                border-bottom: 1pt solid #000000;
             }
 
             .boxelem {

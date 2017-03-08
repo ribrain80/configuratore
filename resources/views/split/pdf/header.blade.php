@@ -23,13 +23,13 @@
             margin-right: 0;
         }
         .headertable thead {
-            border-bottom: 1px solid #000;
+            border-bottom: 0.25pt solid #000;
         }
         .headertable th {
             text-align: center;
             font-weight: bold;
             color: #000000;
-            border-right: 1px solid #000000;
+            border-right: 0.25pt solid #000000;
             min-height: 40px;
             height: 40px;
         }
@@ -42,7 +42,7 @@
             text-align: center;
             font-weight: bold;
             color: #000000;
-            border-right: 1px solid #000000;
+            border-right: 0.5pt solid #000000;
             min-height: 50px;
             height: 50px;
         }
