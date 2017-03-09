@@ -1,0 +1,110 @@
+/**RESETS*/
+body {
+    margin:0;
+    background: #dadada;
+    height: 100%;
+    min-height: 100%;
+}
+.wrap {
+    background: white;
+    /* min-height: 881px;
+     height: 881px;*/
+    margin-left: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.container-fluid {
+    padding:0;
+    margin:0;
+  /*  margin-top: 10px;*/
+}
+
+#hc {
+    margin:0;
+    padding: 0;
+}
+
+#hc img {
+    width: 100%;
+}
+
+#box2d {
+    margin-top: 0;
+    min-height: 220px;
+    height: 220px;
+    border: 1pt solid #000;
+}
+
+#box3d {
+    margin-top: 0;
+    min-height: 620px;
+    height: 620px;
+    border: 1pt solid #000;
+}
+
+.boxelem h3 {
+    color: black;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+}
+
+.boxelem p {
+    width: 100%;
+    border-bottom: 1pt solid #000000;
+}
+
+.boxelem {
+    page-break-inside: avoid;
+}
+
+.push{
+    height: 282px;
+    min-height: 282px;
+}
+
+.keeptogether {page-break-inside:avoid;}
+
+body {
+    margin:0;
+    background: #dadada;
+}
+.container-fluid {
+    padding:0;
+}
+.headertable {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.headertable thead {
+    border-bottom: 0.25pt solid #000;
+}
+.headertable th {
+    text-align: center;
+    font-weight: bold;
+    color: #000000;
+    border-right: 0.25pt solid #000000;
+    min-height: 40px;
+    height: 40px;
+}
+
+.headertable th:last-child {
+    border-right: none;
+}
+
+.headertable td {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #000000;
+    border-right: 0.5pt solid #000000;
+    min-height: 50px;
+    height: 50px;
+}
+
+.headertable td:last-child {
+    border-right: none;
+}

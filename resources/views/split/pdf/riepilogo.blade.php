@@ -1,68 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-        <style>
-            /**RESETS*/
-            body {
-                margin:0;
-                background: #dadada;
-                height: 100%;
-                min-height: 100%;
-            }
-            .wrap {
-                background: white;
-               /* min-height: 881px;
-                height: 881px;*/
-                margin-left: 5%;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            .container-fluid {
-                padding:0;
-                margin-top: 10px;
-            }
-
-            #box2d {
-                margin-top: 0;
-                min-height: 220px;
-                height: 220px;
-                border: 1pt solid #000;
-            }
-
-            #box3d {
-                margin-top: 0;
-                min-height: 620px;
-                height: 620px;
-                border: 1pt solid #000;
-            }
-
-            .boxelem h3 {
-                color: black;
-                text-transform: uppercase;
-                padding: 0;
-                margin: 0;
-            }
-
-            .boxelem p {
-                width: 100%;
-                border-bottom: 1pt solid #000000;
-            }
-
-            .boxelem {
-                page-break-inside: avoid;
-            }
-
-            .push{
-                height: 282px;
-                min-height: 282px;
-            }
-
-            .keeptogether {page-break-inside:avoid;}
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/pdf.css') }}">
     </head>
     <body>
     <div class="wrap">
