@@ -801,7 +801,7 @@ export default {
 
             // # Drawer type check
             // # If is a custom drawer
-            if( Configuration.drawertype == 4 ) {
+            if( this.$store.state.drawertype == 4 ) {
 
                 // # Over 70 mm bridge is allowed, go to the bridge step
                 if( this.$store.state.dimensions.shoulder_height >= 70 ) {

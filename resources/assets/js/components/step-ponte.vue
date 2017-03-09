@@ -1,7 +1,9 @@
 <template>
-
+    
+    <!-- Container -->
     <div class="row" id="step-ponte">
 
+        <!-- Title -->
         <div class="col-lg-12">
             <h2 lang="it">Scelta del ponte</h2>
         </div>
@@ -12,15 +14,19 @@
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>Attenzione!</strong> {{ alert_message }}
             </div>
         </div>
-
+        
+        <!-- Orientation section -->
         <div class="col-lg-12">
-
+            
+            <!-- Orientation description -->
             <div class="row">
                <span class="help-block">Vuoi inserire elementi ponte? orizzontali o verticali?</span>
             </div>
-
+            
+            <!-- Orientation title -->
             <h4 class="">Orientamento Ponti</h4>
-
+            
+            <!-- Orientation choice -->
             <div class="row">
                 <div class="col-lg-6" v-show="$store.state.is_suitable_width_4hbridge">
                     <div class="panel panel-default" :class="{ 'bg-success': ('H' == $store.state.bridge_orientation)}">
@@ -35,52 +41,59 @@
             </div>
 
         </div>
-
+        
+        <!-- Supports / bridges -->
         <div class="col-lg-12"> 
 
             <div class="row">
                 
+                <!-- Supports section -->
                 <div class="col-lg-5" v-show="$store.state.bridge_orientation.length">   
-                    <div class="row">
-                       <span class="help-block" >A che altezza vuoi mettere i ponti?</span>
-                    </div> 
-                    <h4 class="">Altezza di posizionamento</h4>
 
+                    <!-- Supports description -->
+                    <div class="row">
+                       <span class="help-block">A che altezza vuoi mettere i ponti?</span>
+                    </div> 
+
+                    <!-- Supports title -->
+                    <h4 class="">Altezza di posizionamento</h4>
+                    
+                    <!-- Support choice -->
                     <div class="row" v-for="bridge_support in bridge_supports">
                         <div class="col-lg-5" v-show="checkSupportCompatibility( bridge_support )">
                             <div class="panel panel-default">
-                                <div class="panel-body" lang="it" :class="{ 'bg-success': bridge_support.id == bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
+                                <div class="panel-body" lang="it" :class="{ 'bg-success': bridge_support.id == $store.state.bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
                             </div>
                         </div>
                     </div>
 
                 </div>  
-
-                <div class="col-lg-5" v-show="$store.state.bridge_orientation">   
-
+                
+                <!-- Bridges section -->
+                <div class="col-lg-5" v-show="$store.state.bridge_orientation.length">   
+                    
+                    <!-- Bridges description -->
                     <div class="row">
                        <span class="help-block">seleziona l’altezza del ponte da inserire</span>
                     </div> 
-
+                    
+                    <!-- Bridges title -->
                     <h4 class="">Tipologie di ponte</h4>
 
-                    <div v-if="$store.state.bridge_orientation.length">
-
-                        <div class="row" v-for="bridge in bridge_types">
-                            <div class="col-lg-6" v-show="checkBridgeCompatibility( bridge )">
-                                <div class="panel panel-default">
-                                    <div class="panel-body"  lang="it" :class="{ 'bg-success': bridge.id == bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
-                                </div>
+                    <!-- Bridges choice -->
+                    <div class="row" v-for="bridge in bridge_types">
+                        <div class="col-lg-6" v-show="checkBridgeCompatibility( bridge )">
+                            <div class="panel panel-default">
+                                <div class="panel-body"  lang="it" :class="{ 'bg-success': bridge.id == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
                             </div>
                         </div>
-
                     </div>
-                </div>              
 
+                </div>              
             </div>
         </div>
 
-        <!-- PULSANTE DI INVIO -->
+        <!-- Next button -->
         <div class="row">
             <div class="col-lg-12" >
                 <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</button>
@@ -106,24 +119,13 @@ export default {
 
       return {
 
-            // # has bridge flag
-            has_bridge: false,
-
             hasError: false,
             
             choice: true,
             
             bridge_types:[],
             
-            bridge_supports: [],
-
-            bridge_supportID: 0,
-
-            bridge_ID: 0,
-
-            bridge_selected:[],
-
-            bridge_support_selected: []
+            bridge_supports: []
         }
     },
 
@@ -135,22 +137,8 @@ export default {
          */
         clearData: function() {
 
-            console.log( "clearing bridge data" );
-
-            this.$store.commit( "setBridgeOrientation", "" );
-            this.bridge_support_selected = [];
-            this.bridge_selected = [];
-            this.bridge_ID = 0;
-            this.bridge_supportID = 0;
-            this.has_bridge = false;
-        },
-
-        /**
-         * Returns true if something has been added in this step
-         * @return {Boolean}
-         */
-        hasData: function() {
-            return this.bridge_orientation != "";
+            // # Commit mutation and clear step data
+            this.$store.commit( "clearBridgeData" );
         },
 
         /**
@@ -190,12 +178,8 @@ export default {
                 this.$store.commit( "setBridgeOrientation", val );
             }
 
-            // clean up
-            this.bridge_support_selected = [];
-            this.bridge_selected = [];
-            this.bridge_ID = 0;
-            this.bridge_supportID = 0;
-            this.has_bridge = false;
+            // # Commit mutation and clear step data
+            this.$store.commit( "clearBridgeData" );
         },
 
         /**
@@ -203,7 +187,7 @@ export default {
          * @return {[type]} [description]
          */
         checkOrientationCompatibility: function() {
-            return this.width_not_suitable_4bridge;
+            return this.$store.state.is_suitable_width_4hbridge;
         },
 
         /**
@@ -214,10 +198,10 @@ export default {
         checkSupportCompatibility: function( bridge_support ) {
 
             // # Parse to float
-            var shoulder_height_int = parseFloat( Configuration.dimensions.shoulder_height );
+            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
 
             // # Switch drawer type
-            switch( Configuration.drawertype ) {
+            switch( this.$store.state.drawertype ) {
                 
                 // # Custom drawer
                 case 4:
@@ -227,12 +211,12 @@ export default {
 
                         // # low support 
                         case 45.5:
-                            return shoulder_height_int >= 70;
+                            return shoulder_height_float >= 70;
                         break;
 
                         // # high support 
                         case 89.5:
-                            return shoulder_height_int >= 114;
+                            return shoulder_height_float >= 114;
                         break;
 
                     }
@@ -256,12 +240,12 @@ export default {
 
                         // # low support 
                         case 45.5:
-                            return shoulder_height_int >= 71.5;
+                            return shoulder_height_float >= 71.5;
                         break;
 
                         // # high support 
                         case 89.5:
-                            return shoulder_height_int >= 147.5;
+                            return shoulder_height_float >= 147.5;
                         break;
 
                     }                
@@ -279,10 +263,10 @@ export default {
         checkBridgeCompatibility: function(  bridge ) {
 
             // # Parse to float
-            var shoulder_height_int = parseFloat( Configuration.dimensions.shoulder_height );
+            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
             
             // # Switch drawer type
-            switch( Configuration.drawertype ) {
+            switch( this.$store.state.drawertype ) {
                 
                 // # Custom drawer
                 case 4:
@@ -292,12 +276,12 @@ export default {
 
                         // # low bridge
                         case 22.5:
-                            return shoulder_height_int >= 70;
+                            return shoulder_height_float >= 70;
                         break;
 
                         // # High bridge
                         case 48:
-                            return  shoulder_height_int >= 92.5 
+                            return  shoulder_height_float >= 92.5 
                         break;
                     }
 
@@ -314,12 +298,12 @@ export default {
 
                         // # low bridge
                         case 22.5:
-                            return shoulder_height_int >= 70;
+                            return shoulder_height_float >= 70;
                         break;
 
                         // # High bridge
                         case 48:
-                            return shoulder_height_int >= 92.5;
+                            return shoulder_height_float >= 92.5;
                         break;
                     }   
 
@@ -336,12 +320,14 @@ export default {
         selectBridgeType: function( bridge ) {
 
             // # Parse to float
-            var shoulder_height_int = parseFloat( Configuration.dimensions.shoulder_height );
+            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
 
-            if( Configuration.drawertype == 4 ) {
-                if( shoulder_height_int >= 114 && shoulder_height_int < 136.5 ) {
+            if( this.$store.state.drawertype == 4 ) {
 
-                    if( this.bridge_supportID == 2 && bridge.id == 1 ) {
+                if( shoulder_height_float >= 114 && shoulder_height_float < 136.5 ) {
+
+                    if( this.$store.state.bridge_supportID == 2 && bridge.id == 1 ) {
+                        
                         // # Show error modal 
                         $( "#error-modal" )
                         .find('.modal-body')
@@ -353,10 +339,14 @@ export default {
                 }
             }
 
-            this.bridge_selected = [];
-            this.bridge_ID = bridge.id;
-            bridge.length = this.bridge_orientation == "H" ? Configuration.width : Configuration.length;
-            this.bridge_selected.push( bridge );
+            this.$store.commit( "clearBridges" );
+            this.$store.commit( "setBridgeID", bridge.id );
+
+            bridge.length = this.$store.state.bridge_orientation == "H" ? 
+                            this.$store.state.dimensions.width : 
+                            this.$store.state.dimensions.length;
+
+            this.$store.commit( "pushBridge", bridge );
         },
 
         /**
@@ -367,46 +357,45 @@ export default {
         selectBridgeSupport: function( bridge_support ) {
 
             // # Clear selected containers
-            this.bridge_supportID = 0;
-            this.bridge_support_selected = [];
-            this.bridges_selected = [];
+            this.$store.commit( "clearBridgeData" );
             
-            switch( Configuration.drawertype ) {
+            switch( this.$store.state.drawertype ) {
 
                 case 4:
                     
                     // # Set support id
-                    this.bridge_supportID = bridge_support.id;
-                    console.log( "choice is " + bridge_support.id );
+                    this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
                     // # Orientation is the one of the bridge
-                    bridge_support.orientation = this.bridge_orientation;
+                    bridge_support.orientation = this.$store.state.bridge_orientation;
 
                     // # Push 2 of the same type
-                    this.bridge_support_selected.push( bridge_support, bridge_support );
+                    this.$store.commit( "pushBridgeSupport", bridge_support );
+                    this.$store.commit( "pushBridgeSupport", bridge_support );
 
                 break;
 
                 case 3: // # Lineabox 2 sides
 
-                    switch( this.bridge_orientation ) {
+                    switch( this.$store.state.bridge_orientation ) {
 
                         case "H":
                             // # Do nothing, supports are already embedded
                             // # Set support id
-                            this.bridge_supportID = bridge_support.id;
+                            this.$store.commit( "setBridgeSupportID", bridge_support.id );
                         break;
 
                         case "V": 
                             
                             // # Set support id
-                            this.bridge_supportID = bridge_support.id;
+                            this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
                             // # Orientation is the one of the bridge
-                            bridge_support.orientation = this.bridge_orientation;
+                            bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push 2 of the same type
-                            this.bridge_support_selected.push( bridge_support, bridge_support );
+                            this.$store.commit( "pushBridgeSupport", bridge_support );
+                            this.$store.commit( "pushBridgeSupport", bridge_support );
 
                         break;
                     }
@@ -417,24 +406,24 @@ export default {
                 case 2: // # Lineabox 3 sides
                 case 1: // # Lineabox 4 sides 
 
-                    switch( this.bridge_orientation ) {
+                    switch( this.$store.state.bridge_orientation ) {
 
                         case "H":
                             // # Do nothing, supports are already embedded
                             // # Set support id
-                            this.bridge_supportID = bridge_support.id;                             
+                            this.$store.commit( "setBridgeSupportID", bridge_support.id );                           
                         break;
 
                         case "V": 
                             
                             // # Set support id
-                            this.bridge_supportID = bridge_support.id;
+                            this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
                             // # Orientation is the one of the bridge
-                            bridge_support.orientation = this.bridge_orientation;
+                            bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push ONLY ONE  of the same type
-                            this.bridge_support_selected.push( bridge_support );
+                            this.$store.commit( "pushBridgeSupport", bridge_support );
 
                         break;
                     }
@@ -450,63 +439,29 @@ export default {
          */
         check: function() {
 
-          if( this.bridge_orientation != "" && ( this.bridges_selected == [] || this.bridge_support_selected == [] ) ) {
+            if( this.$store.state.bridge_orientation != "" && ( this.$store.state.bridges_selected == [] || this.$store.state.bridge_support_selected == [] ) ) {
 
                 // # Show error modal and move the user at the top of this step
-                $( "#error-modal" ).find('.modal-body').text( "I dati inseriti per il posizionamento dei ponti non sono completi" );
+                $( "#error-modal" )
+                .find('.modal-body')
+                .text( "I dati inseriti per il posizionamento dei ponti non sono completi" );
+
                 $( '#error-modal' ).modal();
+
                 return false;
-          } 
+            } 
 
-          // # Now we have a bridge selected
-          this.has_bridge = true;
-
-          // # take user to the next step
-          Commons.movesmoothlyTo( "#step4"); 
+            // # Now we have a bridge selected
+            this.$store.state.has_bridge = true;
+            
+            // # take user to the next step
+            this.$router.push({ path: '/split/step4' });
+            return true;
         }
-    },
-
-    watch: {
-
-        /**
-         * [bridge_selected description]
-         * @param  {[type]} val [description]
-         * @return {[type]}     [description]
-         */
-        bridge_selected: function( val ) {
-            Configuration.bridges_selected = val;
-        },
-
-        /**
-         * [bridge_support_selected description]
-         * @param  {[type]} val [description]
-         * @return {[type]}     [description]
-         */
-        bridge_support_selected: function( val ) {
-            Configuration.bridge_supports_selected = val;
-        },
-
-        /**
-         * [bridge_orientation description]
-         * @param  {[type]} val [description]
-         * @return {[type]}     [description]
-         */
-        bridge_orientation: function( val ) {
-             Configuration.bridge_orientation = val;
-        },
-
-        /**
-         * [has_bridge description]
-         * @param  {[type]}  val [description]
-         * @return {Boolean}     [description]
-         */
-        has_bridge: function( val ) {
-            Configuration.has_bridge = val;
-        }
-
     },
 
     mounted() {
+
         console.log( "Step ponte Mounted!" );
         this.initBridgesAndSupports();
     }

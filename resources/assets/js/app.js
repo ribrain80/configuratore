@@ -84,12 +84,48 @@ const store = new Vuex.Store({
 	     */
 	    bridge_orientation: "",
 
-	    dividers:[],
+	    /**
+	     * [has_bridge description]
+	     * @type {Boolean}
+	     */
 	    has_bridge: false,
+
+	    /**
+	     * [bridge_supportID description]
+	     * @type {Number}
+	     */
+	    bridge_supportID: 0,
+
+	    /**
+	     * [bridge_ID description]
+	     * @type {Number}
+	     */
+	    bridge_ID: 0,
+
+	    /**
+	     * [bridge_supports_selected description]
+	     * @type {Array}
+	     */
 	    bridge_supports_selected: [],
+
+	    /**
+	     * [bridges_selected description]
+	     * @type {Array}
+	     */
 	    bridges_selected: [],
 
+	   	/**
+	     * [dividers description]
+	     * @type {Array}
+	     */
+	    dividers_selected:[],
+
+	    /**
+	     * [pdf description]
+	     * @type {Object}
+	     */
 	    pdf: {
+
 	    	brochure: false,
 	    	summary: true,
 	    	email: '',
@@ -131,12 +167,78 @@ const store = new Vuex.Store({
 		},
 
 		isSuitableForHBridge: function( state, val ) {
+			console.log( "is_suitable_width_4hbridge changed to: " + val );
 			state.is_suitable_width_4hbridge = val;
 		},
 
 		isSuitableHeightForBridge: function( state, val ) {
+			console.log( "is_suitable_height_4bridge changed to: " + val );
 			state.is_suitable_height_4bridge = val;
-		}
+		},
+
+		hasBridge: function( state, val ) {
+			console.log( "has_bridge changed to: " + val );
+			state.has_bridge = val;
+		},
+
+		setBridgeSupportID: function( state, val ) {
+			console.log( "bridge_supportID changed to: " + val );
+			state.bridge_supportID = val;
+		},
+
+		setBridgeID: function( state, val ) {
+			console.log( "bridge_ID changed to: " + val );
+			state.bridge_ID = val;
+		},
+
+		pushBridgeSupport: function( state, obj ) {
+			console.log( "pushing support: " + obj );
+			state.bridge_supports_selected.push( obj );
+		},
+
+		removeBridgeSupport: function( state, val ) { /** TODO **/ },
+
+		clearBridgeSupports: function( state ) {
+			console.log( "Bridge supports cleanUp");
+			state.bridge_supports_selected = [];
+		},
+
+		pushBridge: function( state, obj ) {
+			console.log( "pushing bridge: " + obj );
+			state.bridges_selected.push( obj );
+		},
+
+		removeBridge: function( state, val ) { /** TODO **/ },
+
+		clearBridges: function( state ) {
+			console.log( "Bridges cleanUp");
+			state.bridges_selected = [];
+		},
+
+		clearBridgeData: function( state ) { 
+
+			console.log( "clearing bridge data" );
+
+            state.bridge_supports_selected = [];
+            state.bridges_selected = [];
+            state.bridge_ID = 0;
+            state.bridge_supportID = 0;
+            state.has_bridge = false;
+       	},
+
+       	manageDivider: function ( state, obj ) {
+
+       		console.log( "managing dividers" );
+
+            if(  $.inArray( obj.id, state.dividers_selected ) != -1 ) {
+            	console.log( "pulling out divider" );
+                state.dividers_selected.splice( $.inArray( obj.id, state.dividers_selected ), 1 );
+                return;
+            }
+            
+            console.log( "pushing in divider" );
+            state.dividers_selected.push( obj.id );
+       	},
 	}
 });
 
@@ -150,20 +252,29 @@ const step5 = Vue.component( 'step5', require('./components/step5.vue' ));
 
 // # Load others components
 const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );
-const newconfiguration = Vue.component( 'newconfiguration', require('./components/newconfiguration.vue' ) );
 
 // # Create and mount root instance.
 // # Make sure to inject the router.
 // # Route components will be rendered inside <router-view>.
 const App = new Vue({
 
+	/**
+	 * vuex store injection
+	 */
 	store,
 
+	/**
+	 * router injection
+	 */
 	router,
 
+	/**
+	 * Components ( children of this root instance )
+	 * @type {Object}
+	 */
 	components : {
-		/*languageselector,
-		newconfiguration,*/
+
+		languageselector,
 		step1,
 		step2,
 		step3,
@@ -172,8 +283,8 @@ const App = new Vue({
 		step5
 	},
 
-  data : {}
+  	data : {}
  
-}).$mount( '#app' )
+}).$mount( '#app' );
 
 
