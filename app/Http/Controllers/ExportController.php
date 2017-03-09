@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PdfDrawer;
+use Illuminate\Database\Eloquent\Collection;
 use LynX39\LaraPdfMerger\PDFManage;
 use PDF;
 use App;
@@ -17,10 +18,12 @@ class ExportController extends Controller
 {
     public function actionRiepilogo($id,$brochure=false) {
         $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
+        $dividers = $this->handleDividers($model->drawerdividers);
+
         $drawerPdf = App::make('snappy.pdf.wrapper');
         $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id],true));
        // $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
-        $drawerPdf->loadView('split.pdf.riepilogo', ['model'=>$model]);
+        $drawerPdf->loadView('split.pdf.riepilogo', ['model'=>$model,'dividers'=>$dividers]);
 
         return $drawerPdf->inline();
         /*
@@ -45,5 +48,26 @@ class ExportController extends Controller
     public function actionHeader($drawer) {
         $model = App\Models\Drawer::with(['drawertype','edgecolor'])->findOrFail($drawer);
         return view('split.pdf.header',['model'=>$model]);
+    }
+
+
+    private function handleDividers(Collection $dividers) {
+        $first = [];
+        $pages = [];
+        $cont=0;
+        foreach ($dividers as $divider) {
+            if ($cont < 4) {
+                $first[]=$divider;
+                $cont++;
+            } else {
+                $pages[]=$divider;
+            }
+        }
+        $pages = array_chunk($pages,6);
+
+        return [
+            'first'=>$first,
+            'pages'=>$pages
+        ];
     }
 }
