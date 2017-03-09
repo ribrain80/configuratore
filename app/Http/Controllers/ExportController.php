@@ -72,6 +72,16 @@ class ExportController extends Controller
         }
         $pages = array_chunk($pages,6);
 
+        //GESTIONE PAD CON null
+
+        $first = array_pad($first,4,null);
+
+        if (count($pages)) {
+            $tmp = array_pop($pages);
+            $tmp = array_pad($tmp,6,null);
+            $pages[]=$tmp;
+        }
+
         return [
             'first'=>$first,
             'pages'=>$pages
