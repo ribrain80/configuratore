@@ -148,8 +148,7 @@ export default {
 
             Pace.track( function() {
 
-            	console.log( self.$store.state );
-            	return false;
+
 
                 self.$http.post( '/split/savedrawer', self.$store.state ).then( response => {
                     self.has_error = false;

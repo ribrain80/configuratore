@@ -41,7 +41,7 @@ class SplitDrawerController extends Controller
     private function save($data)
     {
         //2 Inizializzo l'oggetto (sia save che update)
-        $drawer = $this->loadModel($data['drawerId']);
+        $drawer = $this->loadModel(isset($data['drawerId'])?$data['drawerId']:null);
         //3 Aggiorno i campi di model (fake)
         $drawer->length = (int)$data['dimensions']['length'];
         $drawer->width = (int)$data['dimensions']['width'];
@@ -54,7 +54,7 @@ class SplitDrawerController extends Controller
             //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
             //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
             $dividers = [];
-            foreach ($data['dividers'] as $divider) {
+            foreach ($data['dividers_selected'] as $divider) {
                 $dividers[$divider] = ['x' => 0, 'y' => 0];
             }
             $drawer->drawerdividers()->sync($dividers);
