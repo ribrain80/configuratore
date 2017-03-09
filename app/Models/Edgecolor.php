@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $ral
  * @property Drawer[] $drawers
  */
-class EdgeColor extends Model
+class Edgecolor extends Model
 {
     /**
      * The table associated with the model.

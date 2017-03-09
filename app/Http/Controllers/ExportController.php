@@ -16,10 +16,11 @@ use App;
 class ExportController extends Controller
 {
     public function actionRiepilogo($id,$brochure=false) {
+        $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
         $drawerPdf = App::make('snappy.pdf.wrapper');
-        $drawerPdf->setOption('header-html',route('split.pdf.header',[],true));
+        $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id],true));
        // $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
-        $drawerPdf->loadView('split.pdf.riepilogo', ['drawer'=>PdfDrawer::getDrawerInfo($id)]);
+        $drawerPdf->loadView('split.pdf.riepilogo', ['model'=>$model]);
 
         return $drawerPdf->inline();
         /*
@@ -34,5 +35,15 @@ class ExportController extends Controller
         //FINE SALVATAGGIO
         $pdf->addPDF($temp);
         $pdf->merge();*/
+    }
+
+    /**
+     * Azione che genera l'html per la costruzione del pdf
+     * @param $drawer
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function actionHeader($drawer) {
+        $model = App\Models\Drawer::with(['drawertype','edgecolor'])->findOrFail($drawer);
+        return view('split.pdf.header',['model'=>$model]);
     }
 }

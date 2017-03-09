@@ -46,7 +46,7 @@ class Drawer extends Model
     public function drawerbridges()
     {
         return $this->belongsToMany('App\Models\Bridge', 'drawerbridge','drawer','bridge')
-            ->withPivot(['x','y']);
+            ->withPivot(['orientation','color']);
     }
 
 

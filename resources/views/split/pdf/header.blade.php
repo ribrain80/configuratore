@@ -40,6 +40,7 @@
 
         .headertable td {
             text-align: center;
+            text-transform: uppercase;
             font-weight: bold;
             color: #000000;
             border-right: 0.5pt solid #000000;
@@ -86,11 +87,11 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>VALORE</td>
-                        <td>VALORE</td>
-                        <td>VALORE</td>
-                        <td>VALORE</td>
-                        <td>VALORE</td>
+                        <td>{{ $model->drawertype->description }}</td>
+                        <td>{{ $model->edgecolor ? $model->edgecolor:'n.d.' }}</td>
+                        <td>TODO</td>
+                        <td>TODO</td>
+                        <td>TODO</td>
                     </tr>
                     </tbody>
                 </table>
