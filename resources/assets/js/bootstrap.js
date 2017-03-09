@@ -1,3 +1,6 @@
+/**
+ * We'll load lodash 
+ */
 
 window._ = require('lodash');
 
@@ -7,8 +10,8 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
+window.$ = window.jQuery = require( 'jquery' );
+require( 'bootstrap-sass' );
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -16,13 +19,21 @@ require('bootstrap-sass');
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
-require('vue-resource');
+window.Vue = require( 'vue' );
 
+/**
+ * We'll require VueResource 
+ */
+require( 'vue-resource' );
+
+/**
+ * We'll load VueCookie 
+ */
 
 window.VueCookie = require('vue-cookie');
-// Tell Vue to use the plugin
-Vue.use(VueCookie);
+
+// # Tell Vue to use the plugin
+Vue.use( VueCookie );
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
@@ -36,7 +47,7 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
-//import {fabric} from 'fabric'
+import {fabric} from 'fabric'
 
 
 /**
