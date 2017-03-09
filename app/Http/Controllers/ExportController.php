@@ -18,7 +18,7 @@ class ExportController extends Controller
 {
     public function actionRiepilogo($id,$brochure=false) {
         $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
-        $dividers = $this->handleDividers($model->drawerdividers);
+        $dividers = $this->handleDividers($model->drawerdividers,$model->drawerbridges);
 
         $drawerPdf = App::make('snappy.pdf.wrapper');
         $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id],true));
@@ -51,16 +51,23 @@ class ExportController extends Controller
     }
 
 
-    private function handleDividers(Collection $dividers) {
+    private function handleDividers(Collection $dividers,Collection $bridges) {
+        $total = [];
+        foreach ($dividers as $cur) {
+            $total[]=$cur;
+        }
+        foreach ($bridges as $cur) {
+            $total[]=$cur;
+        }
         $first = [];
         $pages = [];
         $cont=0;
-        foreach ($dividers as $divider) {
+        foreach ($total as $elem) {
             if ($cont < 4) {
-                $first[]=$divider;
+                $first[]=$elem;
                 $cont++;
             } else {
-                $pages[]=$divider;
+                $pages[]=$elem;
             }
         }
         $pages = array_chunk($pages,6);

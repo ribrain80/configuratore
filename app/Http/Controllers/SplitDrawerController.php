@@ -58,8 +58,17 @@ class SplitDrawerController extends Controller
                 $dividers[$divider] = ['x' => 0, 'y' => 0];
             }
             $drawer->drawerdividers()->sync($dividers);
-            //5 TODO: Gestisco i bridges
+
+            //5 Gestisco i bridges
             $bridges = [];
+            foreach ($data['bridges_selected'] as $bridge) {
+                $bridges[$bridge['id']] = [
+                    'orientation' => $data['bridge_orientation'],
+                    'length' => $bridge['length'],
+                    // 'color' => 1,
+                ];
+            }
+            $drawer->drawerbridges()->sync($bridges);
         } catch (\Exception $ex) {
             $error = $ex->getMessage();
         }
