@@ -132,16 +132,6 @@ export default {
     methods: {
 
         /**
-         * Resets all data
-         * @return {void}
-         */
-        clearData: function() {
-
-            // # Commit mutation and clear step data
-            this.$store.commit( "clearBridgeData" );
-        },
-
-        /**
          * Calls the server and retrieve the bridges available
          * @return {void}
          */        
@@ -180,6 +170,7 @@ export default {
 
             // # Commit mutation and clear step data
             this.$store.commit( "clearBridgeData" );
+            this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } ); 
         },
 
         /**
@@ -365,18 +356,13 @@ export default {
          */
         selectBridgeSupport: function( bridge_support ) {
 
-            // # Clear selected containers
-            //this.$store.commit( "clearBridgeData" );
-            /*console.log( bridge_support.id );
-            console.log( this.$store.state.bridge_supportID );*/
-
             // # Manage unset
             if( bridge_support.id == this.$store.state.bridge_supportID ) {
 
                 // # Reset support id
                 this.$store.commit( "setBridgeSupportID", 0 );
                 this.$store.commit( "clearBridgeSupports" );
-                // this.$store.commit( "computeDimensionsOnSupportsChanges", { } );
+                this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } );
                 return;
             } 
             
@@ -393,7 +379,7 @@ export default {
                     // # Push 2 of the same type
                     this.$store.commit( "manageBridgeSupport", bridge_support );
                     this.$store.commit( "manageBridgeSupport", bridge_support );
-                    this.$store.commit( "computeDimensionsOnSupportsChanges" );
+                    this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
 
                 break;
 
@@ -418,7 +404,7 @@ export default {
                             // # Push 2 of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
                             this.$store.commit( "manageBridgeSupport", bridge_support );
-                            this.$store.commit( "computeDimensionsOnSupportsChanges" );
+                            this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
 
                         break;
                     }
@@ -447,7 +433,8 @@ export default {
 
                             // # Push ONLY ONE  of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
-                            this.$store.commit( "computeDimensionsOnSupportsChanges" );
+                            this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
+
 
                         break;
                     }

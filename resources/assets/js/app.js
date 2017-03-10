@@ -249,7 +249,15 @@ const store = new Vuex.Store({
 					switch( state.drawertype ) {
 
 						case 4:
-							state.dimensions.width -= 12;
+
+							if( obj.op == "clear" ) {
+								state.dimensions.width += 12;
+								console.log( "width enlarged by: " + 12 );
+							}
+							else{
+								state.dimensions.width -= 12;
+								console.log( "width reduced by: " + 12 );
+							}
 						break;
 
 						case 3: 
@@ -269,16 +277,28 @@ const store = new Vuex.Store({
 					switch( state.drawertype ) {
 
 						case 4:
-							state.dimensions.length -= 12;
-						break;
-
 						case 3: 
-							state.dimensions.length -= 12;
+
+							if( obj.op == "clear" ){
+								state.dimensions.length += 12;
+								console.log( "length enlarged by: " + 12 );
+							}
+							else{
+								state.dimensions.length -= 12;
+								console.log( "length reduced by: " + 12 );
+							}
 						break;
 
 						case 2:
 						case 1: 
-							state.dimensions.length -= 6;
+							if( obj.op == "clear" ){
+								state.dimensions.length += 6;
+								console.log( "length enlarged by: " + 6 );
+							}
+							else{
+								state.dimensions.length -= 6;
+								console.log( "length reduced by: " + 6 );
+							}
 						break;
 					}	
 

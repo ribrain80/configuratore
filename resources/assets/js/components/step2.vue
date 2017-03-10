@@ -125,6 +125,8 @@ export default {
             // # Data container updates
             this.$store.commit( "setDrawerType", type );
             this.$store.commit( "isLineaBox", type != 4 ); 
+            this.$store.commit( "clearBridgeData" ); 
+            this.$store.commit( "setBridgeOrientation", "" ); 
 
             // # Set a default 4 lineabox select
             if( type != 4 ) {
