@@ -376,6 +376,7 @@ export default {
                 // # Reset support id
                 this.$store.commit( "setBridgeSupportID", 0 );
                 this.$store.commit( "clearBridgeSupports" );
+                // this.$store.commit( "computeDimensionsOnSupportsChanges", { } );
                 return;
             } 
             

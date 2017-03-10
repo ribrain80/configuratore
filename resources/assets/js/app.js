@@ -240,7 +240,7 @@ const store = new Vuex.Store({
 			state.bridge_ID = val;
 		},
 
-		computeDimensionsOnSupportsChanges: function ( state ) {
+		computeDimensionsOnSupportsChanges: function ( state, obj ) {
 
 			switch( state.bridge_orientation ) {
 

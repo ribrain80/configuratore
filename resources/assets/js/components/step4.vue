@@ -49,7 +49,7 @@
         
         <!-- Next button -->
         <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</a>
+            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</button>
         </div>
 
     </div>
