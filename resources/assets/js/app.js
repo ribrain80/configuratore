@@ -240,6 +240,52 @@ const store = new Vuex.Store({
 			state.bridge_ID = val;
 		},
 
+		computeDimensionsOnSupportsChanges: function ( state ) {
+
+			switch( state.bridge_orientation ) {
+
+				case 'H':
+
+					switch( state.drawertype ) {
+
+						case 4:
+							state.dimensions.width -= 12;
+						break;
+
+						case 3: 
+							// do nothing
+						break;
+
+						case 2:
+						case 1: 
+							// do nothing
+						break;
+					}
+
+				break;
+
+				case 'V':
+
+					switch( state.drawertype ) {
+
+						case 4:
+							state.dimensions.length -= 12;
+						break;
+
+						case 3: 
+							state.dimensions.length -= 12;
+						break;
+
+						case 2:
+						case 1: 
+							state.dimensions.length -= 6;
+						break;
+					}	
+
+				break;
+			}
+		},
+
 		manageBridgeSupport: function( state, obj ) {
 
             console.log( "pushing in support" );
@@ -252,7 +298,7 @@ const store = new Vuex.Store({
 		},
 
 		manageBridge: function( state, obj ) {
-			
+
             console.log( "pushing in bridge" );
 			state.bridges_selected.push( obj );
 		},
@@ -263,6 +309,7 @@ const store = new Vuex.Store({
 			console.log( "Bridges cleanUp");
 			state.bridges_selected = [];
 		},
+
 
 		clearBridgeData: function( state ) { 
 

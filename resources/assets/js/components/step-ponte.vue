@@ -392,6 +392,7 @@ export default {
                     // # Push 2 of the same type
                     this.$store.commit( "manageBridgeSupport", bridge_support );
                     this.$store.commit( "manageBridgeSupport", bridge_support );
+                    this.$store.commit( "computeDimensionsOnSupportsChanges" );
 
                 break;
 
@@ -416,6 +417,7 @@ export default {
                             // # Push 2 of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
                             this.$store.commit( "manageBridgeSupport", bridge_support );
+                            this.$store.commit( "computeDimensionsOnSupportsChanges" );
 
                         break;
                     }
@@ -444,6 +446,7 @@ export default {
 
                             // # Push ONLY ONE  of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
+                            this.$store.commit( "computeDimensionsOnSupportsChanges" );
 
                         break;
                     }
