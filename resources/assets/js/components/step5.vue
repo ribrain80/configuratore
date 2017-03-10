@@ -138,7 +138,6 @@ export default {
                 return false;
             }
 
-
             if ( event.target.id == "download" ) {
                 this.$store.state.pdf.send = false;
                 this.$store.state.pdf.download = true;
@@ -147,8 +146,6 @@ export default {
             var self = this;
 
             Pace.track( function() {
-
-
 
                 self.$http.post( '/split/savedrawer', self.$store.state ).then( response => {
                     self.has_error = false;
@@ -165,6 +162,38 @@ export default {
             return pattern.test( this.$store.state.email );
         }
     },
+
+    beforeRouteEnter: (to, from, next) => {
+        
+        next( vm => {
+
+            if( !vm.$store.state.onecompleted ) {
+                 vm.$router.push({ path: '/split/step1' });
+                 return;
+            }
+
+            if( !vm.$store.state.twocompleted ) {
+                 vm.$router.push({ path: '/split/step2' });
+                 return;
+            }
+
+            if( !vm.$store.state.threecompleted ) {
+                 vm.$router.push({ path: '/split/step3' });
+                 return;
+            }
+
+            if( !vm.$store.state.bridgecompleted ) {
+                 vm.$router.push({ path: '/split/stepponte' });
+                 return;
+            }
+
+            if( !vm.$store.state.fourcompleted ) {
+                 vm.$router.push({ path: '/split/step4' });
+                 return;
+            }            
+
+        })
+    },    
 
     mounted () { // # Window onload eq
         console.log( "Step5 mounted!" );

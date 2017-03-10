@@ -70,7 +70,7 @@
                 </div>  
                 
                 <!-- Bridges section -->
-                <div class="col-lg-5" v-show="$store.state.bridge_orientation.length">   
+                <div class="col-lg-5" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">   
                     
                     <!-- Bridges description -->
                     <div class="row">
@@ -211,12 +211,12 @@ export default {
 
                         // # low support 
                         case 45.5:
-                            return shoulder_height_float >= 70;
+                            return shoulder_height_float >= 72;
                         break;
 
                         // # high support 
                         case 89.5:
-                            return shoulder_height_float >= 114;
+                            return shoulder_height_float >= 116;
                         break;
 
                     }
@@ -240,12 +240,12 @@ export default {
 
                         // # low support 
                         case 45.5:
-                            return shoulder_height_float >= 71.5;
+                            return shoulder_height_float >= 72;
                         break;
 
                         // # high support 
                         case 89.5:
-                            return shoulder_height_float >= 147.5;
+                            return shoulder_height_float >= 148;
                         break;
 
                     }                
@@ -276,12 +276,12 @@ export default {
 
                         // # low bridge
                         case 22.5:
-                            return shoulder_height_float >= 70;
+                            return shoulder_height_float >= 72;
                         break;
 
                         // # High bridge
                         case 48:
-                            return  shoulder_height_float >= 92.5 
+                            return  shoulder_height_float >= 94.5 
                         break;
                     }
 
@@ -298,12 +298,12 @@ export default {
 
                         // # low bridge
                         case 22.5:
-                            return shoulder_height_float >= 70;
+                            return shoulder_height_float >= 72;
                         break;
 
                         // # High bridge
                         case 48:
-                            return shoulder_height_float >= 92.5;
+                            return shoulder_height_float >= 94.5;
                         break;
                     }   
 
@@ -319,12 +319,18 @@ export default {
          */
         selectBridgeType: function( bridge ) {
 
+            if( bridge.id == this.$store.state.bridge_ID ) {
+                this.$store.commit( "manageBridge", bridge );
+                this.$store.commit( "setBridgeID", 0 );
+                return;
+            }
+
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
 
             if( this.$store.state.drawertype == 4 ) {
 
-                if( shoulder_height_float >= 114 && shoulder_height_float < 136.5 ) {
+                if( shoulder_height_float >= 116 && shoulder_height_float < 138.5 ) {
 
                     if( this.$store.state.bridge_supportID == 2 && bridge.id == 1 ) {
                         
@@ -346,7 +352,7 @@ export default {
                             this.$store.state.dimensions.width : 
                             this.$store.state.dimensions.length;
 
-            this.$store.commit( "pushBridge", bridge );
+            this.$store.commit( "manageBridge", bridge );
         },
 
         /**
@@ -358,6 +364,11 @@ export default {
 
             // # Clear selected containers
             this.$store.commit( "clearBridgeData" );
+
+            if( bridge_support.id == this.$store.state.bridge_supportID ) {
+                this.$store.commit( "manageBridgeSupport", bridge_support );
+                return;
+            }
             
             switch( this.$store.state.drawertype ) {
 
@@ -370,8 +381,8 @@ export default {
                     bridge_support.orientation = this.$store.state.bridge_orientation;
 
                     // # Push 2 of the same type
-                    this.$store.commit( "pushBridgeSupport", bridge_support );
-                    this.$store.commit( "pushBridgeSupport", bridge_support );
+                    this.$store.commit( "manageBridgeSupport", bridge_support );
+                    this.$store.commit( "manageBridgeSupport", bridge_support );
 
                 break;
 
@@ -394,8 +405,8 @@ export default {
                             bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push 2 of the same type
-                            this.$store.commit( "pushBridgeSupport", bridge_support );
-                            this.$store.commit( "pushBridgeSupport", bridge_support );
+                            this.$store.commit( "manageBridgeSupport", bridge_support );
+                            this.$store.commit( "manageBridgeSupport", bridge_support );
 
                         break;
                     }
@@ -423,7 +434,7 @@ export default {
                             bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push ONLY ONE  of the same type
-                            this.$store.commit( "pushBridgeSupport", bridge_support );
+                            this.$store.commit( "manageBridgeSupport", bridge_support );
 
                         break;
                     }
@@ -446,6 +457,9 @@ export default {
                 .find('.modal-body')
                 .text( "I dati inseriti per il posizionamento dei ponti non sono completi" );
 
+                // # Step Bridge has errors
+                this.$store.commit( "setBridgecompleted", false );
+
                 $( '#error-modal' ).modal();
 
                 return false;
@@ -454,11 +468,37 @@ export default {
             // # Now we have a bridge selected
             this.$store.state.has_bridge = true;
             
+             // # Step Bridge ok
+            this.$store.commit( "setBridgecompleted", true );
+
             // # take user to the next step
             this.$router.push({ path: '/split/step4' });
             return true;
         }
     },
+
+    beforeRouteEnter: (to, from, next) => {
+
+        next( vm => {
+
+
+            if( !vm.$store.state.onecompleted ) {
+                 vm.$router.push({ path: '/split/step1' });
+                 return;
+            }
+
+            if( !vm.$store.state.twocompleted ) {
+                 vm.$router.push({ path: '/split/step2' });
+                 return;
+            }
+
+            if( !vm.$store.state.threecompleted ) {
+                 vm.$router.push({ path: '/split/step3' });
+                 return;
+            }
+
+        })
+    },     
 
     mounted() {
 

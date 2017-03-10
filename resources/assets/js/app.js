@@ -131,7 +131,21 @@ const store = new Vuex.Store({
 	    	email: '',
 	    	send: false,
 	    	download: false
-	    }		
+	    },
+
+
+	    onecompleted: false,
+
+	    twocompleted: false,
+
+	    threecompleted: false,
+
+	    bridgecompleted: false,
+
+	    fourcompleted: false,
+
+	    fivecompleted: false
+
 	},
 
 	mutations: {
@@ -191,20 +205,36 @@ const store = new Vuex.Store({
 			state.bridge_ID = val;
 		},
 
-		pushBridgeSupport: function( state, obj ) {
-			console.log( "pushing support: " + obj );
+		manageBridgeSupport: function( state, obj ) {
+
+			console.log( "managing support: " + obj );
+
+            if(  $.inArray( obj.id, state.bridge_supports_selected ) != -1 ) {
+            	console.log( "pulling out support" );
+                state.bridge_supports_selected.splice( $.inArray( obj.id, state.bridge_supports_selected ), 1 );
+                return;
+            }
+
+            console.log( "pushing in support" );
 			state.bridge_supports_selected.push( obj );
 		},
-
-		removeBridgeSupport: function( state, val ) { /** TODO **/ },
 
 		clearBridgeSupports: function( state ) {
 			console.log( "Bridge supports cleanUp");
 			state.bridge_supports_selected = [];
 		},
 
-		pushBridge: function( state, obj ) {
-			console.log( "pushing bridge: " + obj );
+		manageBridge: function( state, obj ) {
+
+			console.log( "managing bridge: " + obj );
+
+            if(  $.inArray( obj.id, state.bridges_selected ) != -1 ) {
+            	console.log( "pulling out bridge" );
+                state.bridges_selected.splice( $.inArray( obj.id, state.bridges_selected ), 1 );
+                return;
+            }
+
+            console.log( "pushing in bridge" );
 			state.bridges_selected.push( obj );
 		},
 
@@ -239,8 +269,42 @@ const store = new Vuex.Store({
             console.log( "pushing in divider" );
             state.dividers_selected.push( obj.id );
        	},
+
+
+       	setOnecompleted: function( state, val ) {
+       		console.log( "onecompleted changed to: " + val );
+       		state.onecompleted = val;
+       	},
+
+	    setTwocompleted: function( state, val ) {
+	    	console.log( "twocompleted changed to: " + val );
+	    	state.twocompleted = val;
+       	},
+
+	    setThreecompleted: function( state, val ) {
+       		console.log( "threecompleted changed to: " + val );
+       		state.threecompleted = val;
+       	},
+
+	    setBridgecompleted: function( state, val ) {
+       		console.log( "bridgecompleted changed to: " + val );	    	
+       		state.bridgecompleted = val;
+       	},
+
+	    setFourcompleted: function( state, val ) {
+       		console.log( "fourcompleted changed to: " + val );	    	
+       		state.fourcompleted = val;
+       	},
+
+	    setFivecompleted: function( state, val ) {
+       		console.log( "fivecompleted changed to: " + val );	    	
+       		state.fivecompleted = val;
+       	},
 	}
 });
+
+// # Load others components
+const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );
 
 // # Load components ( NAV )
 const step1 = Vue.component( 'step1', require('./components/step1.vue' ));
@@ -250,8 +314,6 @@ const stepponte = Vue.component( 'stepponte', require('./components/step-ponte.v
 const step4 = Vue.component( 'step4', require('./components/step4.vue' ));
 const step5 = Vue.component( 'step5', require('./components/step5.vue' ));
 
-// # Load others components
-const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );
 
 // # Create and mount root instance.
 // # Make sure to inject the router.

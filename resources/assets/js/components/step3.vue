@@ -60,7 +60,7 @@
                 <div class="form-group" v-else v-bind:class="{ 'has-danger': shoulder_height_OOR, 'has-success': !shoulder_height_OOR }">
                   <label for="inputPassword3" class="col-sm-7 control-label" lang="it">Altezza interna sponda</label>
                   <div class="col-sm-5" id="depth">
-                      <select v-model="shoulder_height" @change="updateDrawer" @blur="isSuitableHeightForBridge">
+                      <select v-model="$store.state.dimensions.shoulder_height" @change="updateDrawer" @blur="isSuitableHeightForBridge">
                           <option v-for="option in config.lineabox_shoulders_height" :selected="option.selected ? 'selected' : ''" v-bind:value="option.value">{{option.text}}</option>
                       </select>
                       <span class="help-block">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
@@ -128,13 +128,13 @@ export default {
               shoulder_linewidth: 7,
               shoulder_text: "Sponda",
               shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: 45.5, 
+              shoulder_height_lower_limit: 45.4, 
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { text: "77 - 45.5 effettivi", value: 45.5, selected: true },
-                  { text: "104 - 71.5 effettivi", value: 71.5, selected: false },
-                  { text: "180 - 147.5 effettivi", value: 147.5, selected: false }
+                  { text: "77 - 45.4 effettivi", value: 45.4, selected: true },
+                  { text: "104 - 72 effettivi", value: 72, selected: false },
+                  { text: "180 - 148 effettivi", value: 148, selected: false }
               ],
 
               // # Bridge related limits
@@ -795,16 +795,22 @@ export default {
                 $( "#error-modal" ).find('.modal-body').text( "Controlla i valori inseriti" );
                 $( '#error-modal' ).modal();    
 
+                // # Step3 has errors
+                this.$store.commit( "setThreecompleted", false );
+
                 // # Stay here and fix it
                 return false;  
             }
+
+            // # Step3 is completed, everything's ok
+            this.$store.commit( "setThreecompleted", true );
 
             // # Drawer type check
             // # If is a custom drawer
             if( this.$store.state.drawertype == 4 ) {
 
                 // # Over 70 mm bridge is allowed, go to the bridge step
-                if( this.$store.state.dimensions.shoulder_height >= 70 ) {
+                if( this.$store.state.dimensions.shoulder_height >= 72 ) {
                     this.$router.push({ path: '/split/stepponte' });
                     return false;
                 }
@@ -815,7 +821,7 @@ export default {
             }
 
             // # Lineabox choice
-            if( this.$store.state.dimensions.shoulder_height >= 45.5 ) { // 45.5 means choice: 77
+            if( this.$store.state.dimensions.shoulder_height >= 45.4 ) { // 45.5 means choice: 77
                 // # bridge is allowed, go to the bridge step
                 this.$router.push({ path: '/split/stepponte' });
                 return false;
@@ -826,6 +832,21 @@ export default {
         },        
 
     },
+
+    beforeRouteEnter: (to, from, next) => {
+        next( vm => {
+
+            if( !vm.$store.state.onecompleted ) {
+                 vm.$router.push({ path: '/split/step1' });
+                 return;
+            }
+
+            if( !vm.$store.state.twocompleted ) {
+                 vm.$router.push({ path: '/split/step2' });
+                 return;
+            }
+        })
+    },     
 
     /**
      * Window onload eq 4 Vue

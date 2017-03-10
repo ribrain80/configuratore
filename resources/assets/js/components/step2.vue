@@ -9,7 +9,7 @@
         </div>
 
         <!-- Alerts: User Warning -->
-        <div class="col-lg-12" v-if="choice">
+        <div class="col-lg-12" v-if="!choice">
             <div class="alert alert-warning alert-dismissible fade in"  lang="it">
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> è obbligatorio selezionare una tipologia di cassetto
             </div>
@@ -79,12 +79,6 @@ export default {
             hasError: false,
 
             /**
-             * Choice flag
-             * @type {Boolean}
-             */
-            choice: true,
-
-            /**
              * Types available
              * @type {Array}
              */
@@ -120,12 +114,14 @@ export default {
          */
         setType: function ( type ) {
 
-            // # User choose one
-            this.choice = type > 0;
-
             // # Data container updates
             this.$store.commit( "setDrawerType", type );
-            this.$store.commit( "isLineaBox", type != 4 );            
+            this.$store.commit( "isLineaBox", type != 4 ); 
+
+            // # Set a default
+            if( type != 4 ) {
+                this.$store.commit( "setShoulderHeight", 45.4 );
+            }           
         },
 
         /**
@@ -142,7 +138,7 @@ export default {
             $( '.drawerlist' ).hide();
 
             // # Show only the one needed
-            $('#'+catId).toggle();
+            $( '#' + catId ).toggle();
         },
 
         /**
@@ -152,10 +148,18 @@ export default {
         check: function() {
 
             // # Check choice
-            if( this.choice ) {
+            if( this.$store.state.drawertype != 0 ) {
+
+                // # Step2 is completed, everything's ok
+                this.$store.commit( "setTwocompleted", true );
+
+                // # Push me to the next step
                 this.$router.push({ path: '/split/step3' });
                 return true;
             }
+
+            // # Step1 has errors
+            this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
             $( "#error-modal" ).find( '.modal-body' ).text( "Non hai scelto la tipologia" );
@@ -164,6 +168,16 @@ export default {
             return false; 
         }
     },
+
+    beforeRouteEnter: (to, from, next) => {
+        
+        next( vm => {
+
+            if( !vm.$store.state.onecompleted ) {
+                 vm.$router.push({ path: '/split/step1' });
+            }
+        })
+    }, 
 
     /**
      * Window onload eq 4 Vue

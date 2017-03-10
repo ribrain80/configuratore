@@ -31,6 +31,11 @@ export default {
          * @return {bool} true if checks are ok
          */
         check: function() {
+
+            // # Step1 is completed, everything's ok
+            this.$store.commit( "setOnecompleted", true );
+
+            // # Push me to the next step
         	this.$router.push({ path: '/split/step2' });
         }
     },
@@ -40,6 +45,7 @@ export default {
      * @return {void}
      */
     mounted () {
+
         // # Log mount 
         console.log( "Welcome/info page mounted" );
     }

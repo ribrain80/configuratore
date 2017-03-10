@@ -10,14 +10,23 @@ const step5 = (resolve) => require(['./components/step5.vue'], resolve);
 
 // # Route definitions
 export default new VueRouter({
+
     mode: 'history',
+
     base: __dirname,
-      routes: [
-        { path: '/split/step1', component: step1 },
-        { path: '/split/step2', component: step2 },
-        { path: '/split/step3', component: step3 },
-        { path: '/split/stepponte', component: stepponte },
-        { path: '/split/step4', component: step4 },
-        { path: '/split/step5', component: step5 },
-      ]
+
+	routes: [
+		{ 
+			path: '/split/step1', 
+			component: step1
+		},
+		{ 
+			path: '/split/step2', 
+		  	component: step2
+		},
+		{ path: '/split/step3', component: step3 },
+		{ path: '/split/stepponte', component: stepponte },
+		{ path: '/split/step4', component: step4 },
+		{ path: '/split/step5', component: step5 },
+	]
 });

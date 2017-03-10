@@ -26,6 +26,11 @@
 
         .submenu {
             cursor: pointer;
+            background-color: #e2e2e2;
+        }
+
+        .submenu > div {
+            /* border: 1px solid #dcdcdc; */
         }
 
     </style>
@@ -113,7 +118,7 @@
                                 <li><router-link to="/split/step1">1</router-link></li>
                                 <li><router-link to="/split/step2">2</router-link></li>
                                 <li><router-link to="/split/step3">3</router-link></li>
-                                <li><router-link to="/split/step-ponte">B</router-link></li>
+                                <li><router-link to="/split/stepponte">B</router-link></li>
                                 <li><router-link to="/split/step4">4</router-link></li>
                                 <li><router-link to="/split/step5">5</router-link></li>
                             </ul>
@@ -128,9 +133,10 @@
         </div>
 
     </div>
-
-    <script src="{{ asset('js/app.js') }}"></script>
+    
+    <script src="{{ elixir('js/app.js') }}"></script>
     <script src="{{ elixir('js/vendor.js') }}"></script>
+
         @stack('jsfooter')
         <script>
 

@@ -127,14 +127,47 @@ export default {
                 $( "#error-modal" ).find( '.modal-body' ).text( "Devi selezionare almeno un divisorio" );
                 $( '#error-modal' ).modal();
 
+                // # Step4 has errors
+                this.$store.commit( "setFourcompleted", false );
+
                 // # Stay here and fix it
                 return false;  
             } 
+
+            // # Step4 is completed, everything's ok
+            this.$store.commit( "setFourcompleted", true );
 
             // # Take the user to the next step
             this.$router.push({ path: '/split/step5' });
         }, 
     },
+
+    beforeRouteEnter: (to, from, next) => {
+        
+        next( vm => {
+
+            if( !vm.$store.state.onecompleted ) {
+                 vm.$router.push({ path: '/split/step1' });
+                 return;
+            }
+
+            if( !vm.$store.state.twocompleted ) {
+                 vm.$router.push({ path: '/split/step2' });
+                 return;
+            }
+
+            if( !vm.$store.state.threecompleted ) {
+                 vm.$router.push({ path: '/split/step3' });
+                 return;
+            }
+
+            if( !vm.$store.state.bridgecompleted ) {
+                 vm.$router.push({ path: '/split/stepponte' });
+                 return;
+            }
+
+        })
+    },     
 
     mounted () { // # Window onload eq
 
