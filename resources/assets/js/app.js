@@ -35,6 +35,13 @@ const store = new Vuex.Store({
 		 */
 		drawertype: 0,
 
+
+		/**
+		 * [bridge_category description]
+		 * @type {Number}
+		 */
+		drawer_type_category: 0,
+
 		/**
 		 * [is_lineabox description]
 		 * @type {Boolean}
@@ -133,17 +140,40 @@ const store = new Vuex.Store({
 	    	download: false
 	    },
 
-
+	    /**
+	     * [onecompleted description]
+	     * @type {Boolean}
+	     */
 	    onecompleted: false,
 
+	    /**
+	     * [twocompleted description]
+	     * @type {Boolean}
+	     */
 	    twocompleted: false,
 
+	    /**
+	     * [threecompleted description]
+	     * @type {Boolean}
+	     */
 	    threecompleted: false,
 
+	    /**
+	     * [bridgecompleted description]
+	     * @type {Boolean}
+	     */
 	    bridgecompleted: false,
 
+	    /**
+	     * [fourcompleted description]
+	     * @type {Boolean}
+	     */
 	    fourcompleted: false,
 
+	    /**
+	     * [fivecompleted description]
+	     * @type {Boolean}
+	     */
 	    fivecompleted: false
 
 	},
@@ -153,6 +183,11 @@ const store = new Vuex.Store({
 		setDrawerType: function( state, typeID ) {
 			console.log( "drawer type changed to: " + typeID );
 			state.drawertype = typeID;
+		},
+
+		setDrawerTypeCategory: function( state, val ) {
+			console.log( "type category set to: " + val );
+			state.drawer_type_category = val;
 		},
 
 		isLineaBox: function( state, val ) {
@@ -207,14 +242,6 @@ const store = new Vuex.Store({
 
 		manageBridgeSupport: function( state, obj ) {
 
-			console.log( "managing support: " + obj );
-
-            if(  $.inArray( obj.id, state.bridge_supports_selected ) != -1 ) {
-            	console.log( "pulling out support" );
-                state.bridge_supports_selected.splice( $.inArray( obj.id, state.bridge_supports_selected ), 1 );
-                return;
-            }
-
             console.log( "pushing in support" );
 			state.bridge_supports_selected.push( obj );
 		},
@@ -225,15 +252,7 @@ const store = new Vuex.Store({
 		},
 
 		manageBridge: function( state, obj ) {
-
-			console.log( "managing bridge: " + obj );
-
-            if(  $.inArray( obj.id, state.bridges_selected ) != -1 ) {
-            	console.log( "pulling out bridge" );
-                state.bridges_selected.splice( $.inArray( obj.id, state.bridges_selected ), 1 );
-                return;
-            }
-
+			
             console.log( "pushing in bridge" );
 			state.bridges_selected.push( obj );
 		},

@@ -319,9 +319,12 @@ export default {
          */
         selectBridgeType: function( bridge ) {
 
+            // # Manage unset
             if( bridge.id == this.$store.state.bridge_ID ) {
-                this.$store.commit( "manageBridge", bridge );
+
+                // # Reset bridge id
                 this.$store.commit( "setBridgeID", 0 );
+                this.$store.commit( "clearBridges" );
                 return;
             }
 
@@ -363,12 +366,18 @@ export default {
         selectBridgeSupport: function( bridge_support ) {
 
             // # Clear selected containers
-            this.$store.commit( "clearBridgeData" );
+            //this.$store.commit( "clearBridgeData" );
+            /*console.log( bridge_support.id );
+            console.log( this.$store.state.bridge_supportID );*/
 
+            // # Manage unset
             if( bridge_support.id == this.$store.state.bridge_supportID ) {
-                this.$store.commit( "manageBridgeSupport", bridge_support );
+
+                // # Reset support id
+                this.$store.commit( "setBridgeSupportID", 0 );
+                this.$store.commit( "clearBridgeSupports" );
                 return;
-            }
+            } 
             
             switch( this.$store.state.drawertype ) {
 
@@ -450,7 +459,7 @@ export default {
          */
         check: function() {
 
-            if( this.$store.state.bridge_orientation != "" && ( this.$store.state.bridges_selected == [] || this.$store.state.bridge_support_selected == [] ) ) {
+            if( this.$store.state.bridge_orientation != "" && ( this.$store.state.bridges_selected.length == 0 || this.$store.state.bridge_supports_selected.length == 0 ) ) {
 
                 // # Show error modal and move the user at the top of this step
                 $( "#error-modal" )

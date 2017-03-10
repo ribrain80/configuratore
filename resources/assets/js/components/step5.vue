@@ -8,13 +8,6 @@
             <h2 lang="it">Step finale</h2>
         </div>
 		
-		<!-- Alerts: User Warning -->
-		<div class="col-lg-12" v-show="has_error">
-            <div class="alert alert-danger alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> {{ alert_message }}
-            </div>
-        </div>
-		
 		<!-- Brochure -->
 		<div class="checkbox col-lg-12">
 			<label lang="it">
@@ -90,41 +83,35 @@ export default {
             
             this.has_error = true;
 
-            if( this.$store.state.drawertype < 1 ) {
-                this.alert_message = "Non hai selezionato la tipologia del cassetto";
-            	// # Take the user to the step to be fixed
-            	this.$router.push({ path: '/split/step2' });
-                return false;
-            }
-
-            if( !this.$store.state.dimensions.width || !this.$store.state.dimensions.length || !this.$store.state.dimensions.shoulder_height) {
-                this.alert_message = "Controlla le dimensioni del cassetto";
-            	// # Take the user to the step to be fixed
-            	this.$router.push({ path: '/split/step3' });
-                return false;
-            }
-
-            if( !this.$store.state.dividers_selected.length ) {
-                this.alert_message = "Non hai scelto alcun divisorio";
-            	// # Take the user to the step to be fixed
-            	this.$router.push({ path: '/split/step4' });
-                return false;
-            }            
-
             if( this.$store.state.pdf.brochure === false && this.$store.state.pdf.summary == false ) {
-                this.alert_message = "è necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo";
+
+            	$( "#error-modal" ).find( '.modal-body' ).text( "è necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo" );
+                $( '#error-modal' ).modal();
+
+                // # Step has errors
+                this.$store.commit( "setFivecompleted", false );
                 return false;
             }
 
             if ( event.target.id == "email" ) {
 
                 if( this.$store.state.pdf.email.length === 0 ) {
-                    this.alert_message = "è necessario indicare un indirizzo email per la spedizione";
+
+                	$( "#error-modal" ).find( '.modal-body' ).text( "è necessario indicare un indirizzo email per la spedizione" );
+	                $( '#error-modal' ).modal();
+
+	                // # Step has errors
+	                this.$store.commit( "setFivecompleted", false );
                     return false;
                 }
 
                 if( !this.validateEmail() ) {
-                    this.alert_message = "l'email indicata non è valida";
+
+                	$( "#error-modal" ).find( '.modal-body' ).text( "l'email indicata non è valida" );
+	                $( '#error-modal' ).modal();
+
+	                // # Step has errors
+	                this.$store.commit( "setFivecompleted", false );                	
                     return false;
                 }                
 
@@ -133,7 +120,12 @@ export default {
 
                 // # DEBUG
                 this.has_error = true;
-                this.alert_message = "Funzionalità non testabile in homestead";
+                
+            	$( "#error-modal" ).find( '.modal-body' ).text( "Funzionalità non testabile in homestead" );
+                $( '#error-modal' ).modal();
+
+                // # Step has errors
+                this.$store.commit( "setFivecompleted", false );                	          
 
                 return false;
             }

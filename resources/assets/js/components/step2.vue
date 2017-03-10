@@ -35,9 +35,9 @@
             <!-- Level 2 navigation -->
             <div v-else>
                 <div class="panel panel-default">
-                    <div class="panel-body" @click="openCategory( category )" lang="it">{{ category }}</div>
+                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )" lang="it">{{ category }}</div>
                 </div>
-                <div class="drawerlist" :id="category" style="display: none">
+                <div class="drawerlist" :id="category" v-show="$store.state.drawer_type_category == 1">
                     <div class="col-lg-12" v-for="ctype in type">
                         <div class="panel panel-default " :class="{ 'bg-success': ( ctype.id == $store.state.drawertype ) }">
                             <div class="panel-body" @click="setType( ctype.id )" lang="it">{{ ctype.description }}</div>
@@ -109,6 +109,14 @@ export default {
         },
 
         /**
+         * [setDrawerTypeCategory description]
+         * @param {[type]} cat [description]
+         */
+        setDrawerTypeCategory: function( cat ) {
+            this.$store.commit( "setDrawerTypeCategory", cat );
+        },
+
+        /**
          * Sets the type ( user choice )
          * @param {int} type the drawer type chosen
          */
@@ -118,27 +126,14 @@ export default {
             this.$store.commit( "setDrawerType", type );
             this.$store.commit( "isLineaBox", type != 4 ); 
 
-            // # Set a default
+            // # Set a default 4 lineabox select
             if( type != 4 ) {
-                this.$store.commit( "setShoulderHeight", 45.4 );
-            }           
-        },
-
-        /**
-         * [openCategory description]
-         * @param  {[type]} catId [description]
-         * @return {[type]}       [description]
-         */
-        openCategory: function ( catId ) {
-
-            // # Choice reset
-            this.$store.commit( "setDrawerType", 0 );
-
-            // # Hide all categories
-            $( '.drawerlist' ).hide();
-
-            // # Show only the one needed
-            $( '#' + catId ).toggle();
+                this.$store.commit( "setShoulderHeight", 72 );
+            }  else {
+                // # Step2 is completed, everything's ok
+                this.$store.commit( "setTwocompleted", true );
+                this.$store.commit( "setDrawerTypeCategory", 0 );
+            }         
         },
 
         /**
