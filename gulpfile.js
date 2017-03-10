@@ -40,7 +40,7 @@ elixir(function(mix) {
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
-            // paths.jquery + "jquery.min.js",
+            paths.jquery + "jquery.min.js",
             paths.lang + "js.cookie.js",
             paths.lang + "jquery-lang.js",
             paths.two + "two.js",

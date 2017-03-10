@@ -10,7 +10,8 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require( 'jquery' );
+// Dovendo Usare Plugins non compatibili con JQuery va messo nella vendor.js
+//window.$ = window.jQuery = require( 'jquery' );
 require( 'bootstrap-sass' );
 
 /**
@@ -48,6 +49,7 @@ Vue.http.interceptors.push((request, next) => {
 
 
 import {fabric} from 'fabric'
+
 
 
 /**
