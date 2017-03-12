@@ -42,17 +42,21 @@ export default {
     },
 
     methods: {
+        /**
+         * Change Gui Language
+         * After language choice set the cookie for persistence
+         * @param newLanguage
+         */
         changeLanguage: function (newLanguage) {
             console.log('ChangeLanguage to: '+newLanguage);
-            this.activeLanguage=newLanguage;
             this.$cookie.set('langCookie',newLanguage);
             this.$store.commit( "setLanguage", newLanguage );
         }
     },
     mounted() {
+        //Check if the choosed the language in other sessions
         let fromCookie = this.$cookie.get('langCookie');
         if (fromCookie) {
-            this.activeLanguage=fromCookie;
             this.$store.commit( "setLanguage", fromCookie );
         }
     }
