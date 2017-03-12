@@ -16,6 +16,7 @@ import VueRouter  from 'vue-router'
 import router     from './router'
 import Vue        from 'vue'
 import Vuex from 'vuex'
+import vuexI18n from 'vuex-i18n'
 
 // # Tell Vue to use these plugins
 Vue.use( Vuex );
@@ -26,6 +27,10 @@ Vue.use( VueRouter );
  * @type {Vuex}
  */
 const store = new Vuex.Store({
+
+	modules:{
+        i18n: vuexI18n.store
+	},
 
 	state: {
 
@@ -179,6 +184,11 @@ const store = new Vuex.Store({
 	},
 
 	mutations: {
+
+		setLanguage: function (locale) {
+			console.log("Change language");
+            modules.i18n.locale(locale);
+        },
 
 		setDrawerType: function( state, typeID ) {
 			console.log( "drawer type changed to: " + typeID );
@@ -388,6 +398,42 @@ const store = new Vuex.Store({
        	},
 	}
 });
+
+Vue.use(vuexI18n.plugin, store);
+
+const translationsEn = {
+    "step1.title": "Welcome to the Split configurator page",
+	"step2.warning":"you must select a drawer type",
+    'step2.error.tipologie':"Impossible to retive drawer types, come back later",
+    "step2.title":"Drawer type",
+	"Cassetto":"Drawer",
+    'LineaBox 4 lati':'LineaBox 4 sides',
+    'LineaBox 3 lati':'LineaBox 3 sides',
+    'LineaBox 2 lati':'LineaBox 2 sides',
+    "next": "Next",
+	"attenzione":"Attention! "
+
+};
+
+const translationsIt = {
+    "step1.title": "Benvenuti nel configuratore Split",
+    "step2.warning":"è obbligatorio selezionare una tipologia di cassetto",
+    'step2.error.tipologie':"Impossibile scaricare le tipologie di cassetto, riprovi più tardi",
+    "step2.title":"Tipologia di cassetto",
+    "Cassetto":"Cassetto",
+	'LineaBox 4 lati':'LineaBox 4 lati',
+    "next": "Avanti",
+    "attenzione":"Attenzione! "
+};
+
+// add translations directly to the application
+Vue.i18n.add('en', translationsEn);
+Vue.i18n.add('it', translationsIt);
+
+// set the start locale to use
+Vue.i18n.set('it');
+Vue.i18n.fallback('it')
+
 
 // # Load others components
 const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );

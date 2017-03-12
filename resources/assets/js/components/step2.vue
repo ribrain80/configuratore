@@ -5,20 +5,20 @@
         
         <!-- Title -->
         <div class="col-lg-12">
-            <h2 lang="it">Tipologia di cassetto</h2>
+            <h2 lang="it">{{ 'step2.title' | translate }}</h2>
         </div>
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12" v-if="!choice">
             <div class="alert alert-warning alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> è obbligatorio selezionare una tipologia di cassetto
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
             </div>
         </div>
         
         <!-- FIX ME Modal alerts: Error -->
         <div class="col-lg-12" v-if="hasError">
             <div class="alert alert-danger alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong lang="it">Attenzione!</strong> impossibile caricare le tipologie, si prega di riprovare più tardi
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong> {{ 'attenzione' | translate }}!</strong> {{ 'step2.error.tipologie' | translate }}
             </div>
         </div>
 
@@ -28,19 +28,19 @@
             <!-- Level 1 navigation -->
             <div v-if="type.length == 1">
                 <div class="panel panel-default" :class="{ 'bg-success': ( type[ 0 ].id == $store.state.drawertype ) }">
-                    <div class="panel-body" @click="setType( type[ 0 ].id )" lang="it">{{ type[ 0 ].description }}</div>
+                    <div class="panel-body" @click="setType( type[ 0 ].id )" lang="it">{{ type[ 0 ].description  | translate}}</div>
                 </div>
             </div>
             
             <!-- Level 2 navigation -->
             <div v-else>
                 <div class="panel panel-default">
-                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )" lang="it">{{ category }}</div>
+                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )" lang="it">{{ category | translate}}</div>
                 </div>
                 <div class="drawerlist" :id="category" v-show="$store.state.drawer_type_category == 1">
                     <div class="col-lg-12" v-for="ctype in type">
                         <div class="panel panel-default " :class="{ 'bg-success': ( ctype.id == $store.state.drawertype ) }">
-                            <div class="panel-body" @click="setType( ctype.id )" lang="it">{{ ctype.description }}</div>
+                            <div class="panel-body" @click="setType( ctype.id )" lang="it">{{ ctype.description | translate}}</div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
 
         <!-- Next button -->
         <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</button>
+            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">{{ 'next' | translate }}</button>
         </div>
 
     </div>
