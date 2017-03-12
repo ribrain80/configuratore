@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">{{ activeLanguage }} <span class="caret"></span></a>
+               aria-expanded="false">{{ $store.state.language }} <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
                 <li v-for="language in languages">
@@ -28,13 +28,7 @@ export default {
     data: function() { 
 
         return {
-
-            lang:{},
-
-            activeLanguage:'it',
-
             languages:[
-            
                 {label:'Italiano ',code:'it'},
                 {label:'English ',code:'en'},
                 {label:'Español ',code:'es'},
@@ -52,15 +46,14 @@ export default {
             console.log('ChangeLanguage to: '+newLanguage);
             this.activeLanguage=newLanguage;
             this.$cookie.set('langCookie',newLanguage);
-            Vue.i18n.set(newLanguage);
-           // $i18n.set('de');
+            this.$store.commit( "setLanguage", newLanguage );
         }
     },
     mounted() {
         let fromCookie = this.$cookie.get('langCookie');
         if (fromCookie) {
             this.activeLanguage=fromCookie;
-            Vue.i18n.set(fromCookie);
+            this.$store.commit( "setLanguage", fromCookie );
         }
     }
 }

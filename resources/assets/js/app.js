@@ -34,6 +34,12 @@ const store = new Vuex.Store({
 
 	state: {
 
+        /**
+		 * Linguagio dell'interfaccia grafica
+		 * @type: string
+         */
+		language:'it',
+
 		/**
 		 * [drawertype description]
 		 * @type {Number}
@@ -185,9 +191,10 @@ const store = new Vuex.Store({
 
 	mutations: {
 
-		setLanguage: function (locale) {
-			console.log("Change language");
-            modules.i18n.locale(locale);
+		setLanguage: function (state,locale) {
+			console.log("Setting language");
+            state.language=locale;
+            Vue.i18n.set(locale);
         },
 
 		setDrawerType: function( state, typeID ) {
