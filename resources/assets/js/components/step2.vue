@@ -83,6 +83,7 @@ export default {
              * @type {Array}
              */
             types: [],
+
         }
     },
 
@@ -125,6 +126,8 @@ export default {
             // # Data container updates
             this.$store.commit( "setDrawerType", type );
             this.$store.commit( "isLineaBox", type != 4 ); 
+
+            // # Clean up next step already insert data, eventually
             this.$store.commit( "clearBridgeData" ); 
             this.$store.commit( "setBridgeOrientation", "" ); 
 

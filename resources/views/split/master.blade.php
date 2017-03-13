@@ -33,6 +33,10 @@
             /* border: 1px solid #dcdcdc; */
         }
 
+        .checkbox label {
+            white-space: nowrap;
+        }
+
     </style>
 </head>
 

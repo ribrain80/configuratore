@@ -450,7 +450,8 @@ export default {
          */
         check: function() {
 
-            if( this.$store.state.bridge_orientation != "" && ( this.$store.state.bridges_selected.length == 0 || this.$store.state.bridge_supports_selected.length == 0 ) ) {
+            if( this.$store.state.bridge_orientation != "" && 
+              ( this.$store.state.bridge_supportID == 0 || this.$store.state.bridge_ID == 0 ) ) {
 
                 // # Show error modal and move the user at the top of this step
                 $( "#error-modal" )

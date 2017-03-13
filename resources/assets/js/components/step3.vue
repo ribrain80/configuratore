@@ -57,7 +57,26 @@
                 </div>
                 
                 <!-- Lineabox drawer -->
-                <div class="form-group" v-else v-bind:class="{ 'has-danger': shoulder_height_OOR, 'has-success': !shoulder_height_OOR }">
+                <div class="form-group" v-else>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                          <label class="control-label" lang="it">Altezza interna sponda</label>
+                        </div>
+                        <div v-for="option in config.lineabox_shoulders_height">
+                          <div class="col-lg-4">
+                              <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
+                                  <div class="panel-body" @click="setShoulderHeight( option.value )" lang="it" @blur="isSuitableHeightForBridge">{{option.text}}</div>
+                              </div>
+                          </div>
+                        </div>
+                        <span class="help-block">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
+
+                    </div>
+
+                </div>
+
+                <!--<div class="form-group" v-else v-bind:class="{ 'has-danger': shoulder_height_OOR, 'has-success': !shoulder_height_OOR }">
                   <label for="inputPassword3" class="col-sm-7 control-label" lang="it">Altezza interna sponda</label>
                   <div class="col-sm-5" id="depth">
                       <select v-model="$store.state.dimensions.shoulder_height" @change="updateDrawer" @blur="isSuitableHeightForBridge">
@@ -65,7 +84,7 @@
                       </select>
                       <span class="help-block">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
                   </div>
-                </div>
+                </div>-->
 
             </div>
         </div>
@@ -424,7 +443,16 @@ export default {
             this.shoulder_height_OOR = false;
 
             return false;
-        },    
+        },  
+
+        /**
+         * [setShoulderHeight description]
+         * @param {[type]} val [description]
+         */
+        setShoulderHeight: function( val ) {
+            this.$store.commit( "setShoulderHeight", val );
+            this.updateDrawer();
+        }, 
 
         /**
          * Check dimensions constraints

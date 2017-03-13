@@ -11,15 +11,13 @@
 		<!-- Brochure -->
 		<div class="checkbox col-lg-12">
 			<label lang="it">
-				<input type="checkbox" v-model="brochure" /> Brochure
+				<input type="checkbox" name="brochure" v-model="brochure" /> Brochure
 			</label>
 		</div>
 	
 		<!-- Summary -->
 		<div class="checkbox col-lg-12">
-			<label lang="it">
-				<input type="checkbox" v-model="summary" :disabled="true"/> Riepilogo
-			</label>
+			<label lang="it"><input type="checkbox" name="summary" v-model="summary" :disabled="true" :checked="checked"/> Riepilogo</label>
 		</div>
 	
 		<!-- Email -->
