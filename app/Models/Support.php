@@ -12,7 +12,7 @@ class Support extends Model
      */
     public function drawerdividers()
     {
-        return $this->belongsToMany('App\Models\Drawers', 'drawersupport','support','drawer')
+        return $this->belongsToMany('App\Models\Drawer', 'drawersupport','support','drawer')
             ->withPivot(['orientation','length']);
     }
 }
