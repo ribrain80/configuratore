@@ -58,4 +58,15 @@ class Drawer extends Model
         return $this->belongsToMany('App\Models\Divider', 'drawerdivider','drawer','divider')
             ->withPivot(['color','texture','divider','x','y']);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function drawersupports()
+    {
+        return $this->belongsToMany('App\Models\Supports', 'drawersupport','drawer','support')
+            ->withPivot(['orientation','length']);
+    }
+
+
 }
