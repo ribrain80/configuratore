@@ -417,8 +417,10 @@ const translationsEn = {
     'LineaBox 4 lati':'LineaBox 4 sides',
     'LineaBox 3 lati':'LineaBox 3 sides',
     'LineaBox 2 lati':'LineaBox 2 sides',
-    "next": "Next",
-	"attenzione":"Attention! "
+    "avanti": "Next",
+	"attenzione":"Attention! ",
+	"step1.product_description": "Product description",
+	"step3.shoulder_label": "Edge"
 
 };
 
@@ -429,8 +431,10 @@ const translationsIt = {
     "step2.title":"Tipologia di cassetto",
     "Cassetto":"Cassetto",
 	'LineaBox 4 lati':'LineaBox 4 lati',
-    "next": "Avanti",
-    "attenzione":"Attenzione! "
+    "avanti": "Avanti",
+    "attenzione":"Attenzione! ",
+    "step1.product_description": "Descrizione del prodotto",
+    "step3.shoulder_label": "Sponda"
 };
 
 // add translations directly to the application

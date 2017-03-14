@@ -96,7 +96,7 @@
         
         <!-- Next button -->
         <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</button>
+            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
     </div>
@@ -140,12 +140,12 @@ export default {
               rect_height_upper_limit: 900,
               rect_width_lower_limit: 102,
               rect_height_lower_limit: 240,
-              drawer_text: 'Cassetto',
+              drawer_text: Vue.i18n.translate("Cassetto"),
 
               // # Shoulder settings
               shoulder_stroke: '#999999',
               shoulder_linewidth: 7,
-              shoulder_text: "Sponda",
+              shoulder_text: Vue.i18n.translate("step3.shoulder_label"),
               shoulder_height_upper_limit: 250,
               shoulder_height_lower_limit: 45.4, 
 
