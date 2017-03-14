@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 20px">
                 @foreach($dividers['first'] as $divider)
                     @include('split.pdf.partials.elementblock',['element'=>$divider])
                 @endforeach
