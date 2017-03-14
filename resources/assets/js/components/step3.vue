@@ -68,7 +68,7 @@
                         <div v-for="option in config.lineabox_shoulders_height">
                           <div class="col-lg-4">
                               <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
-                                  <div class="panel-body" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}}</div>
+                                  <div class="panel-body" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}} <br>{{ 'step3.real' | translate}}</div>
                               </div>
                           </div>
                         </div>
@@ -143,9 +143,9 @@ export default {
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { text: "77 - 45.4 effettivi", value: 45.4, selected: true },
-                  { text: "104 - 72 effettivi", value: 72, selected: false },
-                  { text: "180 - 148 effettivi", value: 148, selected: false }
+                  { text: "77 - 45.4 ", value: 45.4, selected: true },
+                  { text: "104 - 72 " , value: 72, selected: false },
+                  { text: "180 - 148 " , value: 148, selected: false }
               ],
 
               // # Bridge related limits
@@ -331,7 +331,7 @@ export default {
             if( this.$store.state.dimensions.width > this.config.max_suitable_width_4_Hbridge ) {
                 
                 // # Show modal alert
-                $( "#error-modal" ).find('.modal-body').text( "La larghezza inserita non permetterà l'inserimento di un elemento ponte" );
+                $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate("step3.modal.too_large") );
                 $( '#error-modal' ).modal();
                 
                 // # Horizontal bridge will NOT be available
@@ -357,7 +357,7 @@ export default {
                 // # Under 70 mm bridge is not allowed
                 if( this.$store.state.dimensions.shoulder_height < 70 ) {
 
-                    $( "#error-modal" ).find('.modal-body').text( "L'altezza inserita per la sponda interna non permetterà l'inserimento di un elemento ponte" );
+                    $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                     $( '#error-modal' ).modal();
 
                     // # Bridge won't be available
@@ -373,7 +373,7 @@ export default {
             // # LineaBox drawers
             // # Under 71.5 mm bridge is not allowed
             if( this.$store.state.dimensions.shoulder_height < 71.5 ) {
-                $( "#error-modal" ).find('.modal-body').text( "L'altezza inserita per la sponda interna non permetterà l'inserimento di un elemento ponte" );
+                $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                 $( '#error-modal' ).modal();
                 
                 // # Bridge won't be available
@@ -812,7 +812,7 @@ export default {
             if( !this.checkChoice() ) {
 
                 // # Show error modal and move the user at the top of this step
-                $( "#error-modal" ).find('.modal-body').text( "Controlla i valori inseriti" );
+                $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate( "step3.modal.generic" ) );
                 $( '#error-modal' ).modal();    
 
                 // # Step3 has errors
