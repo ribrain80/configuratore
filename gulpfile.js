@@ -17,7 +17,6 @@ require('laravel-elixir-vue-2');
 var paths = {
     'jquery': './vendor/bower_components/jquery/dist/',
     'bootstrap': './vendor/bower_components/bootstrap-sass-official/assets/',
-    'lang': './vendor/bower_components/jquery-lang-js/js/',
     'two': './vendor/bower_components/two.js/build/',
     'pace': './vendor/bower_components/PACE/',
     'lightgallery': './vendor/bower_components/lightgallery/dist/',
@@ -28,8 +27,6 @@ elixir(function(mix) {
 
     mix.webpack('app.js');
 
-    mix.copy('./resources/assets/js/lang/**', 'public/js/lang' );
-    mix.copy('./resources/assets/js/split/**', 'public/js/split' );
     mix.copy('./resources/assets/css/pdf.css', 'public/css' );
     mix.copy('./resources/images', 'public/images');
     mix.copy( paths.pace + 'themes/black/**', 'public/css');
@@ -41,8 +38,6 @@ elixir(function(mix) {
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
             paths.jquery + "jquery.min.js",
-            paths.lang + "js.cookie.js",
-            paths.lang + "jquery-lang.js",
             paths.two + "two.js",
             paths.pace + "pace.min.js",
             paths.lightgallery + "js/lightgallery.min.js",
