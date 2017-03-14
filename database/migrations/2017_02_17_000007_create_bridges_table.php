@@ -17,6 +17,7 @@ class CreateBridgesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('sku',50)->nullable()->default(null);
+            $table->string('sku_short',50)->nullable()->default(null);
             $table->double('width')->nullable()->default(null);
             $table->double('depth')->nullable()->default(null);
             $table->nullableTimestamps();

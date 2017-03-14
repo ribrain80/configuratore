@@ -14,11 +14,13 @@ class BridgeSeeder extends Seeder
         $bridges = [
             [
                 'sku'=> 'BRG-1',
+                'sku_short'=> 'BRG-S-1',
                 'depth' => 48,
                 'width' => 107,
             ],
             [
                 'sku'=> 'BRG-2',
+                'sku_short'=> 'BRG-S-2',
                 'depth' => 22.5,
                 'width' => 107,
             ],

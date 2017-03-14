@@ -13,7 +13,7 @@ class SupportsSeeder extends Seeder
     {
         $supports = [
             [
-                'height'=>45.5
+                'height'=>45.4
             ],
             [
                 'height'=>89.5

@@ -69,6 +69,17 @@ class SplitDrawerController extends Controller
                 ];
             }
             $drawer->drawerbridges()->sync($bridges);
+            //6 Gestisco i supports
+            $supports = [];
+            foreach ($data['bridge_supports_selected'] as $support) {
+                $supports[$support['id']]  = [
+                    'orientation'=>$support['orientation'],
+                    'length'=>0 //TODO
+                ];
+            }
+            $drawer->drawersupports()->sync($supports);
+
+
         } catch (\Exception $ex) {
             $error = $ex->getMessage();
         }
