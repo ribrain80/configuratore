@@ -64,7 +64,7 @@ class Drawer extends Model
      */
     public function drawersupports()
     {
-        return $this->belongsToMany('App\Models\Supports', 'drawersupport','drawer','support')
+        return $this->belongsToMany('App\Models\Support', 'drawersupport','drawer','support')
             ->withPivot(['orientation','length']);
     }
 
