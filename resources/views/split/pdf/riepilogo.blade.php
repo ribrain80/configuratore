@@ -41,13 +41,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xe-6"></div>
-                <div class="col-xs-6" style="float: right;display: none">
-                    <?php
-                    QrCode::size(252);
-                    ?>
-                    {!! QrCode::generate('IL TESTO') !!}
+            <div class="row" style="margin-top: 50px">
+                <div class="col-xs-6 pull-right" style="">
+                    <img src="{{asset('images/qrcode.png')}}" class="img img-responsive">
+                    <div class="push"></div>
                 </div>
             </div>
 

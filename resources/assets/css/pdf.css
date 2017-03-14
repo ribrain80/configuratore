@@ -74,13 +74,8 @@ p {
 }
 
 .push{
-    height: 282px;
-    min-height: 282px;
-}
-
-body {
-    margin:0;
-    background: #dadada;
+    height: 126px;
+    min-height: 126px;
 }
 
 .headertable {
