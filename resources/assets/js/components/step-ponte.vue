@@ -5,13 +5,13 @@
 
         <!-- Title -->
         <div class="col-lg-12">
-            <h2 lang="it">Scelta del ponte</h2>
+            <h2>{{ "stepponte.title" | translate }}</h2>
         </div>
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12" v-if="showAlert">
-            <div class="alert alert-danger alert-dismissible fade in" id="alert" lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>Attenzione!</strong> {{ alert_message }}
+            <div class="alert alert-danger alert-dismissible fade in" id="alert" >
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
             </div>
         </div>
         
@@ -20,22 +20,22 @@
             
             <!-- Orientation description -->
             <div class="row">
-               <span class="help-block">Vuoi inserire elementi ponte? orizzontali o verticali?</span>
+               <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
             </div>
             
             <!-- Orientation title -->
-            <h4 class="">Orientamento Ponti</h4>
+            <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
             
             <!-- Orientation choice -->
             <div class="row">
                 <div class="col-lg-6" v-show="$store.state.is_suitable_width_4hbridge">
                     <div class="panel panel-default" :class="{ 'bg-success': ('H' == $store.state.bridge_orientation)}">
-                        <div class="panel-body" @click="setOrientation('H')" lang="it">Orizzontale</div>
+                        <div class="panel-body" @click="setOrientation('H')" >{{ 'horizontal' | translate }}</div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="panel panel-default" :class="{ 'bg-success': ('V' == $store.state.bridge_orientation)}" >
-                        <div class="panel-body" @click="setOrientation('V')" lang="it">Verticale</div>
+                        <div class="panel-body" @click="setOrientation('V')" >{{ 'vertical' | translate }}</div>
                     </div>
                 </div>
             </div>
@@ -52,17 +52,17 @@
 
                     <!-- Supports description -->
                     <div class="row">
-                       <span class="help-block">A che altezza vuoi mettere i ponti?</span>
+                       <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
                     </div> 
 
                     <!-- Supports title -->
-                    <h4 class="">Altezza di posizionamento</h4>
+                    <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
                     
                     <!-- Support choice -->
                     <div class="row" v-for="bridge_support in bridge_supports">
                         <div class="col-lg-5" v-show="checkSupportCompatibility( bridge_support )">
                             <div class="panel panel-default">
-                                <div class="panel-body" lang="it" :class="{ 'bg-success': bridge_support.id == $store.state.bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
+                                <div class="panel-body" :class="{ 'bg-success': bridge_support.id == $store.state.bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
                             </div>
                         </div>
                     </div>
@@ -74,17 +74,17 @@
                     
                     <!-- Bridges description -->
                     <div class="row">
-                       <span class="help-block">seleziona l’altezza del ponte da inserire</span>
+                       <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
                     </div> 
                     
                     <!-- Bridges title -->
-                    <h4 class="">Tipologie di ponte</h4>
+                    <h4 class="">{{ "stepponte.bridge_title" | translate  }}</h4>
 
                     <!-- Bridges choice -->
                     <div class="row" v-for="bridge in bridge_types">
                         <div class="col-lg-6" v-show="checkBridgeCompatibility( bridge )">
                             <div class="panel panel-default">
-                                <div class="panel-body"  lang="it" :class="{ 'bg-success': bridge.id == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                                <div class="panel-body"  :class="{ 'bg-success': bridge.id == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
         <!-- Next button -->
         <div class="row">
             <div class="col-lg-12" >
-                <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</button>
+                <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>
         </div>
 

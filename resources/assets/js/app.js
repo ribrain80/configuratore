@@ -419,8 +419,30 @@ const translationsEn = {
     'LineaBox 2 lati':'LineaBox 2 sides',
     "avanti": "Next",
 	"attenzione":"Attention! ",
-	"step1.product_description": "Product description",
-	"step3.shoulder_label": "Edge"
+	"step1.product_description_title": "Product description",
+	"step1.product_description_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then", 
+	"step3.title": "Drawer dimensions",
+	"step3.advice": "all fields are required and expressed in millimeters, width must be between {Rwll} and {Rwul}, length between {Rhll} and {Rhul}, edge height between {Shll} and {Shup}. Width > {maxw4b} will prevent an horizontal bridge to be placed in",
+	"step3.shoulder_label": "Edge",
+	"step3.drawer_width_label": "Drawer width",
+	"step3.drawer_length_label": "Drawer length",
+	"step3.drawer_edge_height_label": "Edge height",
+	"step3.edge_advice": "Lineabox drawer type has 3 fixed edge heights",
+	"stepponte.title": "Bridge choice",
+	"stepponte.orientation_description": "Would you like to place horizontal or vertical bridge elements?",
+	"stepponte.orientation_title": "Bridge orientation",
+	"horizontal": "Horizontal",
+	"vertical": "Vertical",
+	"stepponte.supports_description": "How high do you want to place the bridge?",
+	"stepponte.supports_title": "Positioning Height",
+	"stepponte.bridge_description": "Choose bridge height",
+	"stepponte.bridge_title": "Bridge types",
+	"step4.title": "Dividers choice",	
+	"step5.title": "Download configurazione",	
+	"step5.summary_label": "Summary",
+	"step5.email_label": "Email Address",
+	"step5.email_send": "Send email",
+	"step5.download": "Download"
 
 };
 
@@ -433,9 +455,32 @@ const translationsIt = {
 	'LineaBox 4 lati':'LineaBox 4 lati',
     "avanti": "Avanti",
     "attenzione":"Attenzione! ",
-    "step1.product_description": "Descrizione del prodotto",
-    "step3.shoulder_label": "Sponda"
+    "step1.product_description_title": "Descrizione del prodotto",
+    "step1.product_description_text": "In una terra lontana, dietro le montagne Parole, lontani dalle terre di Vocalia e Consonantia, vivono i testi casuali. Vivono isolati nella cittadina di Lettere, sulle coste del Semantico, un immenso oceano linguistico. Un piccolo ruscello chiamato Devoto Oli attraversa quei luoghi, rifornendoli di tutte le regolalie di cui hanno bisogno. È una terra paradismatica, un paese della cuccagna in cui golose porzioni di proposizioni arrostite volano in bocca a chi le desideri. Non una volta i testi casuali sono stati dominati dall’onnipotente Interpunzione, una vita davvero non ortografica. Un giorno però accadde che la piccola riga di un testo casuale, di nome Lorem ipsum, decise di andare a esplorare la vasta Grammatica. Il grande Oximox tentò di dissuaderla, poiché quel luogo pullulava di virgole spietate, punti interrogativi selvaggi e subdoli punti e virgola, ma il piccolo testo casuale non si fece certo fuorviare. Raccolse le sue sette maiuscole, fece scorrere la sua iniziale nella cintura, e si mise in cammino. Quando superò i primi colli dei monti Corsivi, si voltò a guardare un’ultima volta la skyline di Lettere, la sua città, la headline del villaggio Alfabeto e la subline della sua stessa strada, il vicolo Riga. Una domanda retorica",
+    "step3.title": "Dimensioni cassetto",
+    "step3.advice": "tutti i campi sono obbligatori ed espressi in millimetri, la larghezza deve essere compresa tra {Rwll} e {Rwul}, la lunghezza tra {Rhll} e {Rhul}, l'altezza sponda tra {Shll} e {Shup}. Larghezze superiori a {maxw4b} impediranno il posizionamento dell'elemento ponte orizzontale.",
+    "step3.shoulder_label": "Sponda",
+    "step3.drawer_width_label": "Larghezza interna cassetto",
+	"step3.drawer_length_label": "Profondità interna cassetto",
+	"step3.drawer_edge_height_label": "Altezza interna sponda",  
+	"step3.edge_advice": "Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda",
+	"stepponte.title": "Scelta del ponte",  
+	"stepponte.orientation_description": "Vuoi inserire elementi ponte? orizzontali o verticali?",
+	"stepponte.orientation_title": "Orientamento Ponti",
+	"horizontal": "Orizzontale",
+	"vertical": "Verticale",
+	"stepponte.supports_description": "A che altezza vuoi mettere i ponti?",
+	"stepponte.supports_title": "Altezza di posizionamento",	
+	"stepponte.bridge_description": "Seleziona l’altezza del ponte da inserire",
+	"stepponte.bridge_title": "Tipologie di ponte",	
+	"step4.title": "Gestione inserti",	
+	"step5.title": "Configuration download",
+	"step5.summary_label": "Riepilogo",
+	"step5.email_label": "Indirizzo email",
+	"step5.email_send": "Invia email",
+	"step5.download": "Scarica"
 };
+
 
 // add translations directly to the application
 Vue.i18n.add('en', translationsEn);

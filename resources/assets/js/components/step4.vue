@@ -5,7 +5,7 @@
         
         <!-- Title -->
         <div class="col-lg-12">
-            <h2 lang="it">Selezione inserti</h2>
+            <h2>{{  "step4.title" | translate }}</h2>
         </div>
         
         <!-- Canvas container -->
@@ -49,7 +49,7 @@
         
         <!-- Next button -->
         <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">Avanti</button>
+            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
     </div>

@@ -18,7 +18,7 @@
         <!-- FIX ME Modal alerts: Error -->
         <div class="col-lg-12" v-if="hasError">
             <div class="alert alert-danger alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong> {{ 'attenzione' | translate }}!</strong> {{ 'step2.error.tipologie' | translate }}
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong> {{ 'attenzione' | translate }}</strong> {{ 'step2.error.tipologie' | translate }}
             </div>
         </div>
 
@@ -50,7 +50,7 @@
 
         <!-- Next button -->
         <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">{{ 'next' | translate }}</button>
+            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
     </div>

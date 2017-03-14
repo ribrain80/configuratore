@@ -5,20 +5,22 @@
         
         <!-- Title -->
         <div class="col-lg-12">
-            <h2 lang="it">Dimensioni cassetto</h2>
+            <h2>{{ 'step3.title' | translate }}</h2>
         </div>
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12">
             <div class="alert alert-warning alert-dismissible fade in"  lang="it">
-                <!--<button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> --><strong lang="it">Attenzione!</strong> tutti i campi sono obbligatori ed espressi in millimetri, la larghezza deve essere compresa tra {{ config.rect_width_lower_limit}} e {{ config.rect_width_upper_limit}}, la lunghezza tra {{ config.rect_height_lower_limit }} e {{ config.rect_height_upper_limit }}, l'altezza sponda tra {{ config.shoulder_height_lower_limit }} e {{ config.shoulder_height_upper_limit }}. <br /> Larghezze superiori a {{ config.maxSuitableWidth4Bridge }} impediranno il posizionamento dell'elemento ponte orizzontale.
+                <!--<button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> --><strong lang="it">{{ 'attenzione' | translate }}</strong> 
+                {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_height_lower_limit, Rhul: config.rect_height_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: config.max_suitable_width_4_Hbridge } ) }} 
+
             </div>
         </div>
         
         <!-- Alerts: User Error -->
         <div class="col-lg-12" v-if="showAlert">
             <div class="alert alert-danger alert-dismissible fade in" id="alert" lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>Attenzione!</strong> {{ alert_message }}
+                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
             </div>
         </div>
         
@@ -30,7 +32,7 @@
                 
                 <!-- Width -->
                 <div v-bind:class="[ 'form-group', width_OOR ? 'has-danger' : 'has-success' ]">
-                  <label class="col-sm-7 control-label" lang="it">Larghezza interna cassetto</label>
+                  <label class="col-sm-7 control-label" lang="it">{{ 'step3.drawer_width_label' | translate }}</label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" id="length" aria-describedby="basic-addon1" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
                     <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
@@ -39,7 +41,7 @@
 
                 <!-- Length -->
                 <div class="form-group" v-bind:class="{ 'has-danger': length_OOR, 'has-success': !length_OOR }">
-                  <label class="col-sm-7 control-label" lang="it">Profondità interna cassetto</label>
+                  <label class="col-sm-7 control-label" lang="it">{{ 'step3.drawer_length_label' | translate }}</label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" id="width" aria-describedby="basic-addon2" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
                     <span class="help-block">min {{ config.rect_height_lower_limit }}  max {{ config.rect_height_upper_limit }}</span>
@@ -49,7 +51,7 @@
                 <!-- Shoulder height -->
                 <!-- Custom drawer -->
                 <div class="form-group" v-if="$store.state.is_lineabox === false" v-bind:class="{ 'has-danger': shoulder_height_OOR, 'has-success': !shoulder_height_OOR }">
-                  <label class="col-sm-7 control-label" lang="it">Altezza interna sponda</label>
+                  <label class="col-sm-7 control-label" lang="it">{{ 'step3.drawer_edge_height_label' | translate }}</label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" id="depth" aria-describedby="basic-addon3" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
                     <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
@@ -61,30 +63,20 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                          <label class="control-label" lang="it">Altezza interna sponda</label>
+                          <label class="control-label" lang="it">{{ 'step3.drawer_edge_height_label' | translate }}</label>
                         </div>
                         <div v-for="option in config.lineabox_shoulders_height">
                           <div class="col-lg-4">
                               <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
-                                  <div class="panel-body" @click="setShoulderHeight( option.value )" lang="it" @blur="isSuitableHeightForBridge">{{option.text}}</div>
+                                  <div class="panel-body" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}}</div>
                               </div>
                           </div>
                         </div>
-                        <span class="help-block">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
+                        <span class="help-block">{{ "step3.edge_advice" | translate }}</span>
 
                     </div>
 
                 </div>
-
-                <!--<div class="form-group" v-else v-bind:class="{ 'has-danger': shoulder_height_OOR, 'has-success': !shoulder_height_OOR }">
-                  <label for="inputPassword3" class="col-sm-7 control-label" lang="it">Altezza interna sponda</label>
-                  <div class="col-sm-5" id="depth">
-                      <select v-model="$store.state.dimensions.shoulder_height" @change="updateDrawer" @blur="isSuitableHeightForBridge">
-                          <option v-for="option in config.lineabox_shoulders_height" :selected="option.selected ? 'selected' : ''" v-bind:value="option.value">{{option.text}}</option>
-                      </select>
-                      <span class="help-block">Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda</span>
-                  </div>
-                </div>-->
 
             </div>
         </div>
@@ -96,7 +88,7 @@
         
         <!-- Next button -->
         <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" lang="it" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
     </div>

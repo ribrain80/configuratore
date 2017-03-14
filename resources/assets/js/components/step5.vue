@@ -5,40 +5,40 @@
 	
 		<!-- Title -->
         <div class="col-lg-12">
-            <h2 lang="it">Step finale</h2>
+            <h2>{{  "step5.title" | translate }}</h2>
         </div>
 		
 		<!-- Brochure -->
 		<div class="checkbox col-lg-12">
-			<label lang="it">
+			<label>
 				<input type="checkbox" name="brochure" v-model="brochure" /> Brochure
 			</label>
 		</div>
 	
 		<!-- Summary -->
 		<div class="checkbox col-lg-12">
-			<label lang="it"><input type="checkbox" name="summary" v-model="summary" :disabled="true" :checked="checked"/> Riepilogo</label>
+			<label><input type="checkbox" name="summary" v-model="summary" :disabled="true" :checked="checked"/> {{  "step5.summary_label" | translate }}</label>
 		</div>
 	
 		<!-- Email -->
 		<div class="col-lg-12">
-			<label lang="it">
-				<input type="text" v-model="email" /> Indirizzo email 
+			<label>
+				<input type="text" v-model="email" /> {{  "step5.email_label" | translate }}
 			</label>
 		</div>
 
 		<!-- Email send -->
 		<div class="col-lg-12">
-			<button class="btn btn-danger" id="email" @click="savedrawer( $event )" lang="it">Invia via email</button>
+			<button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{  "step5.email_send" | translate }}</button>
 		</div>
 
-		<div class="col-lg-12" lang="it">
+		<div class="col-lg-12">
 			Oppure 
 		</div>
 		
 		<!-- Download -->
 		<div class="col-lg-12">	
-			<button class="btn btn-danger" id="download" @click="savedrawer( $event )" lang="it">Scarica</button>	
+			<button class="btn btn-danger" id="download" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button>	
 		</div>		
 
     </div>
