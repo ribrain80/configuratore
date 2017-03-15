@@ -226,16 +226,36 @@ const store = new Vuex.Store({
 		},
 
 		setWidth: function( state, val ) {
+
+			if( isNaN( val ) ) {
+				console.log( "width dimension NaN changed to: " + 300 );
+                state.dimensions.width = 300;
+                return;
+            }
 			console.log( "width dimension changed to: " + val );
 			state.dimensions.width = parseFloat( val );
 		},
 
 		setLength: function( state, val ) {
+
+			if( isNaN( val ) ) {
+				console.log( "length dimension NaN changed to: " + 300 );
+                state.dimensions.length = 300;
+                return;
+            }		
+            	
 			console.log( "length dimension changed to: " + val );
 			state.dimensions.length = parseFloat( val );
 		},
 
 		setShoulderHeight: function( state, val ) {
+
+			if( isNaN( val ) ) {
+				console.log( "shoulder_height dimension NaN changed to: " + 100 );
+                state.dimensions.shoulder_height = 100;
+                return;
+            }
+
 			console.log( "shoulder height dimension changed to: " + parseFloat( val ) );
 			state.dimensions.shoulder_height = parseFloat( val );
 		},
@@ -376,6 +396,17 @@ const store = new Vuex.Store({
 			state.bridges_selected = [];
 		},
 
+		clearAllBridgeData: function( state ) {
+
+			console.log( "clearing all bridge data" );
+
+			state.bridge_orientation = '';
+			state.bridge_supports_selected = [];
+            state.bridges_selected = [];
+            state.bridge_ID = 0;
+            state.bridge_supportID = 0;
+            state.has_bridge = false;
+		},
 
 		clearBridgeData: function( state ) { 
 

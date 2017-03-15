@@ -2,6 +2,7 @@ export default {
     it:{
         "menu.newconf" : "Nuova conf.",
         "menu.gallery": "Gallery",
+        "back": "Indietro",     
         "step1.title": "Benvenuti nel configuratore Split",
         "step2.warning":"è obbligatorio selezionare una tipologia di cassetto",
         'step2.error.tipologie':"Impossibile scaricare le tipologie di cassetto, riprovi più tardi",
@@ -26,6 +27,7 @@ export default {
         "stepponte.title": "Scelta del ponte",
         "stepponte.orientation_description": "Vuoi inserire elementi ponte? orizzontali o verticali?",
         "stepponte.orientation_title": "Orientamento Ponti",
+        "stepponte.reset": "Reset delle scelte",
         "horizontal": "Orizzontale",
         "vertical": "Verticale",
         "stepponte.supports_description": "A che altezza vuoi mettere i ponti?",
@@ -43,7 +45,8 @@ export default {
     },
     en:{
         "menu.newconf" : "New conf.",
-        "menu.gallery": "Gallery",        
+        "menu.gallery": "Gallery",   
+        "back": "Back",     
         "step1.title": "Welcome to the Split configurator page",
         "step2.warning":"you must select a drawer type",
         'step2.error.tipologie':"Impossible to retrive drawer types, please come back later",
@@ -70,6 +73,7 @@ export default {
         "stepponte.title": "Bridge choice",
         "stepponte.orientation_description": "Would you like to place horizontal or vertical bridge elements?",
         "stepponte.orientation_title": "Bridge orientation",
+        "stepponte.reset": "Reset Choice",
         "horizontal": "Horizontal",
         "vertical": "Vertical",
         "stepponte.supports_description": "How high do you want to place the bridge?",

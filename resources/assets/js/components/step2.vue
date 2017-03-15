@@ -49,6 +49,7 @@
         <!-- Next button -->
         <div class="col-lg-12" >
             <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            <router-link to="/split/step1" tag="button">{{ 'back' | translate }}</router-link>
         </div>
 
     </div>

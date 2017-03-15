@@ -11,7 +11,7 @@
 		<!-- Brochure -->
 		<div class="checkbox col-lg-12">
 			<label>
-				<input type="checkbox" name="brochure" v-model="brochure" /> Brochure
+				<input type="checkbox" name="brochure" v-model="$store.state.pdf.brochure" /> Brochure
 			</label>
 		</div>
 	
@@ -23,7 +23,7 @@
 		<!-- Email -->
 		<div class="col-lg-12">
 			<label>
-				<input type="text" v-model="email" /> {{  "step5.email_label" | translate }}
+				<input type="text" name="email" v-model=" $store.state.pdf.email" /> {{  "step5.email_label" | translate }}
 			</label>
 		</div>
 
@@ -39,6 +39,7 @@
 		<!-- Download -->
 		<div class="col-lg-12">	
 			<button class="btn btn-danger" id="download" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button>	
+			<router-link to="/split/step4" tag="button">{{ 'back' | translate }}</router-link>
 		</div>		
 
     </div>
@@ -66,20 +67,12 @@ export default {
         	 * @type {String}
         	 */
 	        alert_message: '',
-
-	        /**
-	         * [has_error description]
-	         * @type {Boolean}
-	         */
-	        has_error: false
 	    }
     },
 
     methods: {
 
         savedrawer: function() {
-            
-            this.has_error = true;
 
             if( this.$store.state.pdf.brochure === false && this.$store.state.pdf.summary == false ) {
 
@@ -115,9 +108,6 @@ export default {
 
                 this.$store.state.pdf.send = true;
                 this.$store.state.pdf.download = false;
-
-                // # DEBUG
-                this.has_error = true;
                 
             	$( "#error-modal" ).find( '.modal-body' ).text( "Funzionalità non testabile in homestead" );
                 $( '#error-modal' ).modal();

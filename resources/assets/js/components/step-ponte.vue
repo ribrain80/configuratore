@@ -96,7 +96,9 @@
         <!-- Next button -->
         <div class="row">
             <div class="col-lg-12" >
+                <button class="btn btn-danger inpagenav" @click="resetData">{{ 'stepponte.reset' | translate }}</button>
                 <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+                <router-link to="/split/step3" tag="button">{{ 'back' | translate }}</router-link>
             </div>
         </div>
 
@@ -185,6 +187,14 @@ export default {
         },
 
         /**
+         * [resetData description]
+         * @return {[type]} [description]
+         */
+        resetData: function() {
+            this.$store.commit( "clearAllBridgeData" );
+        },
+
+        /**
          * [checkSupportCompatibility description]
          * @param  {[type]} bridge_support [description]
          * @return {[type]}                [description]
@@ -223,18 +233,12 @@ export default {
                 case 2: // # Lineabox 3 sides
                 case 1: // # Lineabox 4 sides
 
-                    // # FIX ME 
-                    // # Horizontal supports are already embedded
-                    /*if( this.bridge_orientation == "H" ) {
-                        return false;
-                    }*/
-
                     // # Switch support height
                     switch( bridge_support.height ) { 
 
                         // # low support 
                         case 45.4:
-                            return shoulder_height_float >= 72;
+                            return shoulder_height_float >= 72 && shoulder_height_float < 148;
                         break;
 
                         // # high support 

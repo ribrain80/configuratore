@@ -53,7 +53,7 @@
                 <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
                   <label class="col-sm-7 control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
+                    <input type="text" class="form-control" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
                     <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
                   </div>
                 </div>
@@ -89,6 +89,7 @@
         <!-- Next button -->
         <div class="col-lg-12" >
             <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            <router-link to="/split/step2" tag="button">{{ 'back' | translate }}</router-link>
         </div>
 
     </div>
@@ -445,14 +446,35 @@ export default {
          */
         setShoulderHeight: function( val ) {
             this.$store.commit( "setShoulderHeight", val );
+            this.$store.commit( "clearAllBridgeData" );
             this.updateDrawer();
         }, 
+
+        clearAllData: function() {
+          this.$store.commit( "clearAllBridgeData" );
+          this.updateDrawer();
+        },
 
         /**
          * Check dimensions constraints
          * @return {bool} true if all constraint are satisfied
          */
         checkChoice: function() {
+
+            if( isNaN( this.$store.state.dimensions.width ) ) {
+              this.$store.commit( "setWidth", 300 );
+              return false;
+            }
+
+            if( isNaN( this.$store.state.dimensions.length ) ) {
+              this.$store.commit( "setLength", 300 );
+              return false;
+            }
+
+            if( isNaN( this.$store.state.dimensions.shoulder_height ) ) {
+              this.$store.commit( "setShoulderHeight", 100 );
+              return false;
+            }                        
 
             // # Check width
             if( !this.$store.state.dimensions.width ) {
@@ -709,13 +731,6 @@ export default {
          */
         updateDrawer: function() {
 
-            // # Skip when there are less than ( x - 2 ) max digit
-            /*if( this.$store.state.dimensions.width.length < 2 || 
-                this.$store.state.dimensions.length.length < 2 || 
-                this.$store.state.dimensions.shoulder_height.length < 1 ) {
-                return;
-            }*/
-
             // # dimensions check
             if( ! this.checkChoice() ) {
                 return false;
@@ -865,7 +880,15 @@ export default {
                  return;
             }
         })
-    },     
+    },  
+
+    watch: {
+
+      shoulder_height: function() {
+          this.$store.commit( "clearAllBridgeData", val );
+      }
+
+    },  
 
     /**
      * Window onload eq 4 Vue
