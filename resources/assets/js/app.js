@@ -236,7 +236,7 @@ const store = new Vuex.Store({
 		},
 
 		setShoulderHeight: function( state, val ) {
-			console.log( "shoulder height dimension changed to: " + val );
+			console.log( "shoulder height dimension changed to: " + parseFloat( val ) );
 			state.dimensions.shoulder_height = parseFloat( val );
 		},
 

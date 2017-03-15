@@ -168,11 +168,6 @@ export default {
                  return;
             }
 
-            if( !vm.$store.state.bridgecompleted ) {
-                 vm.$router.push({ path: '/split/stepponte' });
-                 return;
-            }
-
         })
     },     
 

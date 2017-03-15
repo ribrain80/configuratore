@@ -16,17 +16,22 @@ class ApiController extends Controller
     public function actionDrawersType() {
         
         $grouped = [];
-        foreach (Drawertype::all(['id','description','category'])->sortBy('category') as $type) {
+        foreach (Drawertype::all(['id','description','category'])->sortBy(['category' => 'desc' ]) as $type) {
             $grouped[$type['category']][]=$type;
         }
         return response()->json($grouped);
     }
     public function actionDividers() {
+
+        // # 
         $grouped = [];
-        foreach (Divider::all(['id','sku','width','length','depth'])->sortBy("depth") as $curDivider) {
-            $curDivider['label']=$curDivider['width']."x".$curDivider['length']."x".$curDivider['depth'];
+
+        // # 
+        foreach ( Divider::all( ['id','sku','width','length','depth'] )->sortBy( "depth" ) as $curDivider ) {
+            $curDivider[ 'label' ] = $curDivider['width'] . "x" . $curDivider['length']."x".$curDivider['depth'];
             $grouped[$curDivider['depth']][]=$curDivider;
         }
+
         return response()->json(['dividersCategories'=>array_keys($grouped),'dividers'=>$grouped]);
     }
 

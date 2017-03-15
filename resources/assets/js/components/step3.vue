@@ -355,7 +355,7 @@ export default {
             if( Configuration.drawertype == 4 ) {
 
                 // # Under 70 mm bridge is not allowed
-                if( this.$store.state.dimensions.shoulder_height < 70 ) {
+                if( this.$store.state.dimensions.shoulder_height < 72 ) {
 
                     $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                     $( '#error-modal' ).modal();
@@ -372,7 +372,7 @@ export default {
 
             // # LineaBox drawers
             // # Under 71.5 mm bridge is not allowed
-            if( this.$store.state.dimensions.shoulder_height < 71.5 ) {
+            if( this.$store.state.dimensions.shoulder_height < 77 ) {
                 $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                 $( '#error-modal' ).modal();
                 
@@ -392,10 +392,6 @@ export default {
          * @return {bool} true if dimension is OOR
          */
         lengthOutOfRange: function() {
-
-          console.log( "checking length");
-          console.log( "length " + this.$store.state.dimensions.length);
-          console.log( "lower " + this.config.rect_length_upper_limit);
             
             // # Default value
             this.length_OOR = true;
@@ -832,19 +828,19 @@ export default {
             // # If is a custom drawer
             if( this.$store.state.drawertype == 4 ) {
 
-                // # Over 70 mm bridge is allowed, go to the bridge step
+                // # Over 72 mm bridge is allowed, go to the bridge step
                 if( this.$store.state.dimensions.shoulder_height >= 72 ) {
                     this.$router.push({ path: '/split/stepponte' });
-                    return false;
+                    return true;
                 }
 
-                // # Under 70 mm no bridge allowed, skip the bridge choice step
+                // # Under 72 mm no bridge allowed, skip the bridge choice step
                 this.$router.push({ path: '/split/step4' });
                 return true;
             }
 
             // # Lineabox choice
-            if( this.$store.state.dimensions.shoulder_height >= 45.4 ) { // 45.5 means choice: 77
+            if( this.$store.state.dimensions.shoulder_height > 45.4 ) { // 45.4 means choice: 77
                 // # bridge is allowed, go to the bridge step
                 this.$router.push({ path: '/split/stepponte' });
                 return false;
