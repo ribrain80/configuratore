@@ -17,7 +17,7 @@
 	
 		<!-- Summary -->
 		<div class="checkbox col-lg-12">
-			<label><input type="checkbox" name="summary" v-model="summary" :disabled="true" :checked="checked"/> {{  "step5.summary_label" | translate }}</label>
+			<label><input type="checkbox" name="summary" v-model="$store.state.pdf.summary" disabled="true" /> {{  "step5.summary_label" | translate }}</label>
 		</div>
 	
 		<!-- Email -->

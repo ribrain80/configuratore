@@ -201,7 +201,7 @@ export default {
                     switch( bridge_support.height ) { 
 
                         // # low support 
-                        case 45.5:
+                        case 45.4:
                             return shoulder_height_float >= 72;
                         break;
 
@@ -230,7 +230,7 @@ export default {
                     switch( bridge_support.height ) { 
 
                         // # low support 
-                        case 45.5:
+                        case 45.4:
                             return shoulder_height_float >= 72;
                         break;
 
@@ -319,32 +319,59 @@ export default {
                 return;
             }
 
+            // # Clean up
+            this.$store.commit( "clearBridges" );
+            
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
 
-            if( this.$store.state.drawertype == 4 ) {
+            switch( this.$store.state.drawertype ) {
 
-                if( shoulder_height_float >= 116 && shoulder_height_float < 138.5 ) {
+                case 4:
 
-                    if( this.$store.state.bridge_supportID == 2 && bridge.id == 1 ) {
-                        
-                        // # Show error modal 
-                        $( "#error-modal" )
-                        .find('.modal-body')
-                        .text( "Impossibile selezionare questo elemento, l'altezza totale risulta maggiore di quella disponibile" );
+                    if( shoulder_height_float >= 116 && shoulder_height_float < 138.5 ) {
 
-                        $( '#error-modal' ).modal();
-                        return false;
-                    }
-                }
+                        if( this.$store.state.bridge_supportID == 2 && bridge.id == 1 ) {
+                            
+                            // # Show error modal 
+                            $( "#error-modal" )
+                            .find('.modal-body')
+                            .text( "Impossibile selezionare questo elemento, l'altezza totale risulta maggiore di quella disponibile" );
+
+                            $( '#error-modal' ).modal();
+                            return false;
+                        }
+                    }  
+
+                    this.$store.commit( "setBridgeID", bridge.id );
+
+                    bridge.length = this.$store.state.bridge_orientation == "H" ? 
+                                    this.$store.state.dimensions.width + 12: 
+                                    this.$store.state.dimensions.length + 12;                    
+
+                break;
+
+                case 3:
+
+                    bridge.length = this.$store.state.bridge_orientation == "H" ? 
+                                    this.$store.state.dimensions.width : 
+                                    this.$store.state.dimensions.length + 12;    
+
+                    this.$store.commit( "setBridgeID", bridge.id );
+                break;
+
+                case 2:
+                case 1:
+
+                    bridge.length = this.$store.state.bridge_orientation == "H" ? 
+                                    this.$store.state.dimensions.width : 
+                                    this.$store.state.dimensions.length + 6;   
+
+                    this.$store.commit( "setBridgeID", bridge.id );
+                break;
+
+
             }
-
-            this.$store.commit( "clearBridges" );
-            this.$store.commit( "setBridgeID", bridge.id );
-
-            bridge.length = this.$store.state.bridge_orientation == "H" ? 
-                            this.$store.state.dimensions.width : 
-                            this.$store.state.dimensions.length;
 
             this.$store.commit( "manageBridge", bridge );
         },
@@ -365,6 +392,11 @@ export default {
                 this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } );
                 return;
             } 
+
+            // # Bridge support length is always the width or the height of the drawer
+            bridge_support.length = this.$store.state.bridge_orientation == "H" ? 
+                                    this.$store.state.dimensions.width : 
+                                    this.$store.state.dimensions.length;
             
             switch( this.$store.state.drawertype ) {
 
@@ -375,11 +407,12 @@ export default {
 
                     // # Orientation is the one of the bridge
                     bridge_support.orientation = this.$store.state.bridge_orientation;
+                    
+                    this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
 
                     // # Push 2 of the same type
                     this.$store.commit( "manageBridgeSupport", bridge_support );
                     this.$store.commit( "manageBridgeSupport", bridge_support );
-                    this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
 
                 break;
 

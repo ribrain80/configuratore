@@ -1,5 +1,7 @@
 export default {
     it:{
+        "menu.newconf" : "Nuova conf.",
+        "menu.gallery": "Gallery",
         "step1.title": "Benvenuti nel configuratore Split",
         "step2.warning":"è obbligatorio selezionare una tipologia di cassetto",
         'step2.error.tipologie':"Impossibile scaricare le tipologie di cassetto, riprovi più tardi",
@@ -38,6 +40,8 @@ export default {
         "step5.download": "Scarica"
     },
     en:{
+        "menu.newconf" : "New conf.",
+        "menu.gallery": "Gallery",        
         "step1.title": "Welcome to the Split configurator page",
         "step2.warning":"you must select a drawer type",
         'step2.error.tipologie':"Impossible to retive drawer types, come back later",

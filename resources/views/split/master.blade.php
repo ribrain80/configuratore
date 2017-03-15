@@ -109,10 +109,10 @@
                     
                     <div class="row submenu" style="font-size: 9px;">
                         <div class="col-sm-6">
-                            <a lang="it" data-toggle="modal" data-target="#new-conf-modal">Nuova Conf.</a>
+                            <a lang="it" data-toggle="modal" data-target="#new-conf-modal">@{{ "menu.newconf" | translate }}</a>
                         </div>
                         <div class="col-sm-6">
-                            <a lang="it" id="gallery-trigger">Gallery</a>
+                            <a lang="it" id="gallery-trigger">@{{ "menu.gallery" | translate }}</a>
                         </div>                        
                     </div>
                     
