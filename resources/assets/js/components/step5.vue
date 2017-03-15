@@ -107,21 +107,16 @@ export default {
                 }                
 
                 this.$store.state.pdf.send = true;
-                this.$store.state.pdf.download = false;
-                
-            	$( "#error-modal" ).find( '.modal-body' ).text( "Funzionalità non testabile in homestead" );
-                $( '#error-modal' ).modal();
-
-                // # Step has errors
-                this.$store.commit( "setFivecompleted", false );                	          
-
-                return false;
+                this.$store.state.pdf.download = false;        	          
             }
 
             if ( event.target.id == "download" ) {
                 this.$store.state.pdf.send = false;
                 this.$store.state.pdf.download = true;
             }
+            
+            // # Step has errors
+            this.$store.commit( "setFivecompleted", true );   
 
             // # Scope fix
             var self = this;
@@ -138,7 +133,7 @@ export default {
 
         validateEmail: function() {
             var pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return pattern.test( this.$store.state.email );
+            return pattern.test( this.$store.state.pdf.email );
         },
 
         /**
