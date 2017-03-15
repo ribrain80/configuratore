@@ -16,7 +16,8 @@ use App;
 
 class ExportController extends Controller
 {
-    public function actionRiepilogo($id,$brochure=false) {
+    public function actionRiepilogo($id,$brochure=false,$language='it') {
+        app()->setLocale($language);
         $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
         $dividers = $this->handleDividers($model->drawerdividers,$model->drawerbridges);
 

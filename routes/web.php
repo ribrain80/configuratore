@@ -58,7 +58,7 @@ Route::group(['prefix' => 'split'], function () {
     //EXPORT TO PDF
     Route::get('topdf/header/{drawer}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
     //Route::get('topdf/footer',['as'=>'split.pdf.footer',function (){return view('split.pdf.footer');}]);
-    Route::get('topdf/{id}/{brochure?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
+    Route::get('topdf/{id}/{brochure?}/{lang?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
     //FABRIC
     Route::get('fabric',['uses'=>function () {
         return view('fabric');
