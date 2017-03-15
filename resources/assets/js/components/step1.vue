@@ -1,14 +1,28 @@
 <template>
-    <div class="row" id="step1">
-        <div class="col-md-12">
-            <h3>{{ 'step1.title' | translate }}</h3>
-            <h4>{{ 'step1.product_description_title' | translate }}</h4>
-            <p>{{ 'step1.product_description_text' | translate }}</p>
-            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-        </div>
-    </div>
-</template>
 
+    <!-- Container -->
+    <div class="row" id="step1">
+        
+        <!-- Full width -->
+        <div class="col-md-12">
+
+            <!-- Page title -->
+            <h3>{{ 'step1.title' | translate }}</h3>
+
+            <!-- Product description -->
+            <h4>{{ 'step1.product_description_title' | translate }}</h4>
+
+            <!-- Text -->
+            <p>{{ 'step1.product_description_text' | translate }}</p>
+
+            <!-- Next button -->
+            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+
+        </div>
+
+    </div>
+
+</template>
 <script>
 
 /**
@@ -23,6 +37,10 @@ export default {
      */    
     data: function() { return {} },
 
+    /**
+     * Object methods
+     * @type {Object}
+     */
     methods: {
 
         /**
@@ -48,6 +66,5 @@ export default {
         // # Log mount 
         console.log( "Welcome/info page mounted" );
     }
-
 }
 </script>

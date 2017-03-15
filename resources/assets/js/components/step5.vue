@@ -133,16 +133,15 @@ export default {
                 this.$store.state.pdf.download = true;
             }
 
+            // # Scope fix
             var self = this;
 
             Pace.track( function() {
 
-                self.$http.post( '/split/savedrawer', self.$store.state ).then( response => {
-                    self.has_error = false;
+                self.$http.post( '/split/savedrawer', self.exportobj() ).then( response => {
                     window.open( response.body.pdfpath, '_blank' );
                 }, response => {
                     self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
-                    self.has_error = true;
                 });
             });
         },
@@ -150,6 +149,26 @@ export default {
         validateEmail: function() {
             var pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return pattern.test( this.$store.state.email );
+        },
+
+        /**
+         * [exportobj description]
+         * @return {[type]} [description]
+         */
+        exportobj: function() {
+
+        	let obj = {};
+        	let needed_props = [ 'pdf', 'dimensions', 'language', 'drawertype', 
+        						 'bridge_orientation', 'bridge_supportID', 'bridge_ID', 
+        						 'bridge_supports_selected', 'bridges_selected', 'dividers_selected' ];
+
+        	for( var property in this.$store.state ) {
+        		if( needed_props.indexOf( property ) != -1 ) {
+        			obj[ property ] = this.$store.state[ property ];
+        		}
+        	}
+
+        	return obj;
         }
     },
 

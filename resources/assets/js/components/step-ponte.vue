@@ -137,22 +137,25 @@ export default {
          */        
         initBridgesAndSupports: function () {
 
-            // # ajax call
-            this.$http.get( '/split/bridges' ).then( response => {
-                // # bridges retrieved
-                this.bridge_types = response.body;
-            }, response => {
-                // # something went wrong
-                this.hasError = true;
+            // # Scope fix
+            var self = this;
+
+            // # ajax calls
+            var bridgesJQXHR  = $.getJSON( '/split/bridges' );
+            var supportsJQXHR = $.getJSON( '/split/supports' );
+
+            // # Deferred promises handler
+            var promiseJQXHR = $.when( bridgesJQXHR, supportsJQXHR );
+            
+            // # Success
+            promiseJQXHR.done( function( bridge_response, support_response ) {
+               self.bridge_types = bridge_response[ 0 ];
+               self.bridge_supports = support_response[ 0 ];
             });
 
-            // # ajax call
-            this.$http.get( '/split/supports' ).then( response => {
-                // # bridge_supports retrieved
-                this.bridge_supports = response.body;
-            }, response => {
-                // # something went wrong
-                this.hasError = true;
+            // # Fail
+            promiseJQXHR.fail( function() {
+                self.$router.push({ path: '/split/500' });
             });
         },
 
@@ -346,16 +349,16 @@ export default {
                     this.$store.commit( "setBridgeID", bridge.id );
 
                     bridge.length = this.$store.state.bridge_orientation == "H" ? 
-                                    this.$store.state.dimensions.width + 12: 
-                                    this.$store.state.dimensions.length + 12;                    
+                                    this.$store.state.dimensions.width: 
+                                    this.$store.state.dimensions.length;                    
 
                 break;
 
-                case 3:
+                case 3:// Lineabox 2 sides
 
                     bridge.length = this.$store.state.bridge_orientation == "H" ? 
-                                    this.$store.state.dimensions.width : 
-                                    this.$store.state.dimensions.length + 12;    
+                                    this.$store.state.dimensions.width + 12: 
+                                    this.$store.state.dimensions.length;    
 
                     this.$store.commit( "setBridgeID", bridge.id );
                 break;
@@ -364,13 +367,12 @@ export default {
                 case 1:
 
                     bridge.length = this.$store.state.bridge_orientation == "H" ? 
-                                    this.$store.state.dimensions.width : 
+                                    this.$store.state.dimensions.width + 12: 
                                     this.$store.state.dimensions.length + 6;   
 
                     this.$store.commit( "setBridgeID", bridge.id );
+
                 break;
-
-
             }
 
             this.$store.commit( "manageBridge", bridge );
@@ -387,9 +389,9 @@ export default {
             if( bridge_support.id == this.$store.state.bridge_supportID ) {
 
                 // # Reset support id
+                this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } );
                 this.$store.commit( "setBridgeSupportID", 0 );
                 this.$store.commit( "clearBridgeSupports" );
-                this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } );
                 return;
             } 
 

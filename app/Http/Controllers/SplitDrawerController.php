@@ -27,7 +27,6 @@ class SplitDrawerController extends Controller
      */
     public function actionSave(Request $request)
     {
-        sleep(5);
         $data = $request->json()->all();
         $output = $this->save($data);
         return response()->json($output, ($output['id'] != -1) ? 200 : 400);

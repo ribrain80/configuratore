@@ -14,6 +14,7 @@ class ApiController extends Controller
 {
 
     public function actionDrawersType() {
+        
         $grouped = [];
         foreach (Drawertype::all(['id','description','category'])->sortBy('category') as $type) {
             $grouped[$type['category']][]=$type;

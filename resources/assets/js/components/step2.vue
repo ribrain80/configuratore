@@ -5,12 +5,12 @@
         
         <!-- Title -->
         <div class="col-lg-12">
-            <h2 lang="it">{{ 'step2.title' | translate }}</h2>
+            <h2 >{{ 'step2.title' | translate }}</h2>
         </div>
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12" v-if="$store.state.drawertype == 0">
-            <div class="alert alert-warning alert-dismissible fade in"  lang="it">
+            <div class="alert alert-warning alert-dismissible fade in">
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
             </div>
         </div>
@@ -21,22 +21,27 @@
             <!-- Level 1 navigation -->
             <div v-if="type.length == 1">
                 <div class="panel panel-default" :class="{ 'bg-success': ( type[ 0 ].id == $store.state.drawertype ) }">
-                    <div class="panel-body" @click="setType( type[ 0 ].id )" lang="it">{{ type[ 0 ].description  | translate}}</div>
+                    <div class="panel-body" @click="setType( type[ 0 ].id )">{{ type[ 0 ].description  | translate}}</div>
                 </div>
             </div>
             
             <!-- Level 2 navigation -->
             <div v-else>
+                
+                <!-- Category panel -->
                 <div class="panel panel-default">
-                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )" lang="it">{{ category | translate}}</div>
+                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )">{{ category | translate}}</div>
                 </div>
+                
+                <!-- Subcategories -->
                 <div class="drawerlist" :id="category" v-show="$store.state.drawer_type_category == 1">
                     <div class="col-lg-12" v-for="ctype in type">
                         <div class="panel panel-default " :class="{ 'bg-success': ( ctype.id == $store.state.drawertype ) }">
-                            <div class="panel-body" @click="setType( ctype.id )" lang="it">{{ ctype.description | translate}}</div>
+                            <div class="panel-body" @click="setType( ctype.id )">{{ ctype.description | translate}}</div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -70,12 +75,11 @@ export default {
              * @type {Array}
              */
             types: [],
-
         }
     },
 
     /**
-     * [methods description]
+     * Object methods
      * @type {Object}
      */
     methods: {
@@ -86,14 +90,20 @@ export default {
          */
         initTypes: function () {
 
+            // # Scope fix
+            var self = this;
+
             // # ajax call
-            this.$http.get( '/split/drawerstypes' ).then( response => {
-                // # types retrieved
-                this.types = response.body;
-            }, response => {
-                // # something went wrong
-                this.$router.push({ path: '/split/500' });
-                return true;                 
+            var jqxhr = $.getJSON( '/split/drawerstypes' );
+
+            // # Success
+            jqxhr.done( function( response ) {
+               self.types = response;
+            });
+
+            // # Fail
+            jqxhr.fail(function() {
+                self.$router.push({ path: '/split/500' });
             });
         },
 

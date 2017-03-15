@@ -93,13 +93,20 @@ export default {
          */
         initDividers: function () {
 
+            // # Scope fix
+            var self = this;
+
             // # ajax call
-            this.$http.get( '/split/dividers' ).then( response => {
-                // # dividers retrieved
-                this.dividers = response.body;
-            }, response => {
-                // # something went wrong
-                this.hasError = true;
+            var jqxhr = $.getJSON( '/split/dividers' );
+
+            // # Success
+            jqxhr.done( function( response ) {
+               self.dividers = response;
+            });
+
+            // # Fail
+            jqxhr.fail(function() {
+                self.$router.push({ path: '/split/500' });
             });
         },
 

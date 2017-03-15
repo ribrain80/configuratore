@@ -82,7 +82,19 @@ const store = new Vuex.Store({
 	         * [length description]
 	         * @type {Number}
 	         */
-	        length: 600
+	        length: 600,
+
+	        /**
+	         * [available_width description]
+	         * @type {Number}
+	         */
+	        delta_width: 0,
+
+	        /**
+	         * [available_length description]
+	         * @type {Number}
+	         */
+	        delta_length: 0,
 	    },
 
 	    /**
@@ -215,17 +227,17 @@ const store = new Vuex.Store({
 
 		setWidth: function( state, val ) {
 			console.log( "width dimension changed to: " + val );
-			state.dimensions.width = val;
+			state.dimensions.width = parseFloat( val );
 		},
 
 		setLength: function( state, val ) {
 			console.log( "length dimension changed to: " + val );
-			state.dimensions.length = val;
+			state.dimensions.length = parseFloat( val );
 		},
 
 		setShoulderHeight: function( state, val ) {
 			console.log( "shoulder height dimension changed to: " + val );
-			state.dimensions.shoulder_height = val;
+			state.dimensions.shoulder_height = parseFloat( val );
 		},
 
 		setBridgeOrientation: function( state, val ) {
@@ -269,12 +281,17 @@ const store = new Vuex.Store({
 						case 4:
 
 							if( obj.op == "clear" ) {
-								state.dimensions.width += 12;
-								console.log( "width enlarged by: " + 12 );
+								var supports_in = state.bridge_supports_selected.length;
+								if( 0 == supports_in ) {
+									console.log( "no changes to available width" );
+									return;
+								}
+								state.dimensions.delta_width += supports_in * 6;
+								console.log( "available width enlarged by: " + supports_in * 6 );
 							}
 							else{
-								state.dimensions.width -= 12;
-								console.log( "width reduced by: " + 12 );
+								state.dimensions.delta_width -= 12;
+								console.log( "available width reduced by: " + 12 );
 							}
 						break;
 
@@ -294,28 +311,39 @@ const store = new Vuex.Store({
 
 					switch( state.drawertype ) {
 
-						case 4:
-						case 3: 
+						case 4: // custom
+						case 3: // lineabox 2 sides
 
-							if( obj.op == "clear" ){
-								state.dimensions.length += 12;
-								console.log( "length enlarged by: " + 12 );
+							if( obj.op == "clear" ) {
+
+								var supports_in = state.bridge_supports_selected.length;
+								if( 0 == supports_in ) {
+									console.log( "no changes to available length" );
+									return;
+								}								
+								state.dimensions.delta_length += supports_in * 6;
+								console.log( "available length enlarged by: " + supports_in * 6 );
 							}
 							else{
-								state.dimensions.length -= 12;
-								console.log( "length reduced by: " + 12 );
+								state.dimensions.delta_length -= 12;
+								console.log( "available length reduced by: " + 12 );
 							}
 						break;
 
 						case 2:
 						case 1: 
-							if( obj.op == "clear" ){
-								state.dimensions.length += 6;
-								console.log( "length enlarged by: " + 6 );
+							if( obj.op == "clear" ) {
+								var supports_in = state.bridge_supports_selected.length;
+								if( 0 == supports_in ) {
+									console.log( "no changes to available length" );
+									return;
+								}
+								state.dimensions.delta_length += supports_in * 6;
+								console.log( "available length enlarged by: " + 6 );
 							}
 							else{
-								state.dimensions.length -= 6;
-								console.log( "length reduced by: " + 6 );
+								state.dimensions.delta_length -= 6;
+								console.log( "available length reduced by: " + 6 );
 							}
 						break;
 					}	

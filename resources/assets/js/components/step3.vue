@@ -10,16 +10,16 @@
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12">
-            <div class="alert alert-warning alert-dismissible fade in"  lang="it">
-                <!--<button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> --><strong lang="it">{{ 'attenzione' | translate }}</strong> 
-                {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_height_lower_limit, Rhul: config.rect_height_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: config.max_suitable_width_4_Hbridge } ) }} 
+            <div class="alert alert-warning alert-dismissible fade in" >
+                <!--<button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> --><strong>{{ 'attenzione' | translate }}</strong> 
+                {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: config.max_suitable_width_4_Hbridge } ) }} 
 
             </div>
         </div>
         
         <!-- Alerts: User Error -->
         <div class="col-lg-12" v-if="showAlert">
-            <div class="alert alert-danger alert-dismissible fade in" id="alert" lang="it">
+            <div class="alert alert-danger alert-dismissible fade in" id="alert">
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
             </div>
         </div>
@@ -31,29 +31,29 @@
             <div class="form-horizontal">
                 
                 <!-- Width -->
-                <div v-bind:class="[ 'form-group', width_OOR ? 'has-danger' : 'has-success' ]">
-                  <label class="col-sm-7 control-label" lang="it">{{ 'step3.drawer_width_label' | translate }}</label>
+                <div v-bind:class="[ 'form-group', width_OOR ? 'has-error' : 'has-success' ]">
+                  <label class="col-sm-7 control-label">{{ 'step3.drawer_width_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="length" aria-describedby="basic-addon1" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
+                    <input type="text" class="form-control" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
                     <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
                   </div>
                 </div>
 
                 <!-- Length -->
-                <div class="form-group" v-bind:class="{ 'has-danger': length_OOR, 'has-success': !length_OOR }">
-                  <label class="col-sm-7 control-label" lang="it">{{ 'step3.drawer_length_label' | translate }}</label>
+                <div v-bind:class="[ 'form-group', length_OOR ? 'has-error' : 'has-success' ]">
+                  <label class="col-sm-7 control-label">{{ 'step3.drawer_length_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="width" aria-describedby="basic-addon2" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
-                    <span class="help-block">min {{ config.rect_height_lower_limit }}  max {{ config.rect_height_upper_limit }}</span>
+                    <input type="text" class="form-control" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
+                    <span class="help-block">min {{ config.rect_length_lower_limit }} max {{ config.rect_length_upper_limit }}</span>
                   </div>
                 </div>
                   
                 <!-- Shoulder height -->
                 <!-- Custom drawer -->
-                <div class="form-group" v-if="$store.state.is_lineabox === false" v-bind:class="{ 'has-danger': shoulder_height_OOR, 'has-success': !shoulder_height_OOR }">
-                  <label class="col-sm-7 control-label" lang="it">{{ 'step3.drawer_edge_height_label' | translate }}</label>
+                <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
+                  <label class="col-sm-7 control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="depth" aria-describedby="basic-addon3" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
+                    <input type="text" class="form-control" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
                     <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
                   </div>
                 </div>
@@ -63,7 +63,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                          <label class="control-label" lang="it">{{ 'step3.drawer_edge_height_label' | translate }}</label>
+                          <label class="control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
                         </div>
                         <div v-for="option in config.lineabox_shoulders_height">
                           <div class="col-lg-4">
@@ -129,9 +129,9 @@ export default {
               rect_stroke: '#999999',
               rect_linewidth: 7,
               rect_width_upper_limit: 1800,
-              rect_height_upper_limit: 900,
+              rect_length_upper_limit: 900,
               rect_width_lower_limit: 102,
-              rect_height_lower_limit: 240,
+              rect_length_lower_limit: 240,
               drawer_text: Vue.i18n.translate("Cassetto"),
 
               // # Shoulder settings
@@ -392,22 +392,28 @@ export default {
          * @return {bool} true if dimension is OOR
          */
         lengthOutOfRange: function() {
+
+          console.log( "checking length");
+          console.log( "length " + this.$store.state.dimensions.length);
+          console.log( "lower " + this.config.rect_length_upper_limit);
             
             // # Default value
             this.length_OOR = true;
 
             // # Upper limit check
-            if( this.$store.state.dimensions.length > this.config.rect_height_upper_limit ) {
+            if( this.$store.state.dimensions.length > this.config.rect_length_upper_limit ) {
                 return true;
             }
 
             // # Lower limit check
-            if( this.$store.state.dimensions.length < this.config.rect_height_lower_limit ) {
+            if( this.$store.state.dimensions.length < this.config.rect_length_lower_limit ) {
                 return true;
             }            
             
             // # In range
             this.length_OOR = false;
+
+            console.log( "OOR " + this.length_OOR );
 
             return false;
         },
@@ -455,19 +461,16 @@ export default {
             // # Check width
             if( !this.$store.state.dimensions.width ) {
                 this.width_OOR = true;
-                return false;
             }
 
             // # Check length
             if( !this.$store.state.dimensions.length ) {
                 this.length_OOR = true;
-                return false;
             }
 
             // # Check shoulder_height
             if( !this.$store.state.dimensions.shoulder_height ) {
                 this.shoulder_height_OOR = true;
-                return false;
             }
 
             // # Check Out of Bounds
@@ -711,11 +714,11 @@ export default {
         updateDrawer: function() {
 
             // # Skip when there are less than ( x - 2 ) max digit
-            if( this.$store.state.dimensions.width.length < 2 || 
+            /*if( this.$store.state.dimensions.width.length < 2 || 
                 this.$store.state.dimensions.length.length < 2 || 
                 this.$store.state.dimensions.shoulder_height.length < 1 ) {
                 return;
-            }
+            }*/
 
             // # dimensions check
             if( ! this.checkChoice() ) {
