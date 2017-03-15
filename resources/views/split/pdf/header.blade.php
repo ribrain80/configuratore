@@ -24,7 +24,7 @@
                 <table class="headertable">
                     <thead>
                     <tr>
-                        <th>TIPOLOGIA<br/>CASSETTO</th>
+                        <th>{{ trans('pdf.header_type') }}</th>
                         <th>FINITURA<br/>SPONDE</th>
                         <th>FINITURA<br/>RETRO</th>
                         <th>FINITURA<br/>FONDO</th>
