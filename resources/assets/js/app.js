@@ -426,7 +426,7 @@ const step3 = Vue.component( 'step3', require('./components/step3.vue' ));
 const stepponte = Vue.component( 'stepponte', require('./components/step-ponte.vue' ));
 const step4 = Vue.component( 'step4', require('./components/step4.vue' ));
 const step5 = Vue.component( 'step5', require('./components/step5.vue' ));
-
+const error = Vue.component( 'error', require('./components/500.vue' ));
 
 // # Create and mount root instance.
 // # Make sure to inject the router.
@@ -455,7 +455,8 @@ const App = new Vue({
 		step3,
 		stepponte,
 		step4,
-		step5
+		step5,
+		error
 	},
 
   	data : {}

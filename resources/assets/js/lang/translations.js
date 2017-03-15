@@ -37,14 +37,16 @@ export default {
         "step5.summary_label": "Riepilogo",
         "step5.email_label": "Indirizzo email",
         "step5.email_send": "Invia email",
-        "step5.download": "Scarica"
+        "step5.download": "Scarica",
+        "500.title": "Errore",
+        "500.description": "Si è verificato un errore, si prega di riprovare più tardi",
     },
     en:{
         "menu.newconf" : "New conf.",
         "menu.gallery": "Gallery",        
         "step1.title": "Welcome to the Split configurator page",
         "step2.warning":"you must select a drawer type",
-        'step2.error.tipologie':"Impossible to retive drawer types, come back later",
+        'step2.error.tipologie':"Impossible to retrive drawer types, please come back later",
         "step2.title":"Drawer type",
         "Cassetto":"Drawer",
         'LineaBox 4 lati':'LineaBox 4 sides',
@@ -62,8 +64,8 @@ export default {
         "step3.drawer_edge_height_label": "Edge height",
         "step3.edge_advice": "Lineabox drawer type has 3 fixed edge heights",
         'step3.real': 'real',
-        'step3.modal.too_large': 'The inserted width not allow the insertion of a bridge element',
-        'step3.modal.not_enougth_high': "The height inserted to the inner bank will not allow the insertion of a bridge element",
+        'step3.modal.too_large': "The selected width won't allow an horizontal bridge element to be placed in",
+        'step3.modal.not_enougth_high': "The edge height inserted will prevent a bridge element to be placed",
         'step3.modal.generic': "Controlla i valori inseriti",
         "stepponte.title": "Bridge choice",
         "stepponte.orientation_description": "Would you like to place horizontal or vertical bridge elements?",
@@ -79,7 +81,9 @@ export default {
         "step5.summary_label": "Summary",
         "step5.email_label": "Email Address",
         "step5.email_send": "Send email",
-        "step5.download": "Download"
+        "step5.download": "Download",
+        "500.title": "Error",
+        "500.description": "Fatal error occurred, pleasy try again later",
     }
 };
 

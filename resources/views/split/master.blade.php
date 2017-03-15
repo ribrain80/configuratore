@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
@@ -51,11 +52,9 @@
         <div class="modal-content">
           <div class="modal-header alert-danger">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel" lang="it">Attenzione</h4>
+            <h4 class="modal-title" id="myModalLabel" >Attenzione</h4>
           </div>
-          <div class="modal-body" lang="it">
-            Se clicchi su continua i dati inseriti andranno persi.
-          </div>
+          <div class="modal-body" >Se clicchi su continua i dati inseriti andranno persi.</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
             <button type="button" class="btn btn-primary" onclick="window.location = location.protocol+'//'+location.host+'/split/step1'">Continua</button>
@@ -70,9 +69,9 @@
         <div class="modal-content">
           <div class="modal-header alert-danger">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel" lang="it">Attenzione</h4>
+            <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
           </div>
-          <div class="modal-body" lang="it" id="generic-alert-message">  
+          <div class="modal-body"  id="generic-alert-message">  
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Ok!</button>
@@ -109,10 +108,10 @@
                     
                     <div class="row submenu" style="font-size: 9px;">
                         <div class="col-sm-6">
-                            <a lang="it" data-toggle="modal" data-target="#new-conf-modal">@{{ "menu.newconf" | translate }}</a>
+                            <a  data-toggle="modal" data-target="#new-conf-modal">@{{ "menu.newconf" | translate }}</a>
                         </div>
                         <div class="col-sm-6">
-                            <a lang="it" id="gallery-trigger">@{{ "menu.gallery" | translate }}</a>
+                            <a  id="gallery-trigger">@{{ "menu.gallery" | translate }}</a>
                         </div>                        
                     </div>
                     

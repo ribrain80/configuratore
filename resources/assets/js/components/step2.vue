@@ -9,16 +9,9 @@
         </div>
 
         <!-- Alerts: User Warning -->
-        <div class="col-lg-12" v-if="!choice">
+        <div class="col-lg-12" v-if="$store.state.drawertype == 0">
             <div class="alert alert-warning alert-dismissible fade in"  lang="it">
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
-            </div>
-        </div>
-        
-        <!-- FIX ME Modal alerts: Error -->
-        <div class="col-lg-12" v-if="hasError">
-            <div class="alert alert-danger alert-dismissible fade in"  lang="it">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong> {{ 'attenzione' | translate }}</strong> {{ 'step2.error.tipologie' | translate }}
             </div>
         </div>
 
@@ -73,12 +66,6 @@ export default {
         return {
 
             /**
-             * Step has error flag
-             * @type {Boolean}
-             */
-            hasError: false,
-
-            /**
              * Types available
              * @type {Array}
              */
@@ -105,7 +92,8 @@ export default {
                 this.types = response.body;
             }, response => {
                 // # something went wrong
-                this.hasError = true;
+                this.$router.push({ path: '/split/500' });
+                return true;                 
             });
         },
 

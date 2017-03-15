@@ -7,6 +7,7 @@ const step3 = (resolve) => require(['./components/step3.vue'], resolve);
 const stepponte = (resolve) => require(['./components/step-ponte.vue'], resolve);
 const step4 = (resolve) => require(['./components/step4.vue'], resolve);
 const step5 = (resolve) => require(['./components/step5.vue'], resolve);
+const error = (resolve) => require(['./components/500.vue'], resolve);
 
 // # Route definitions
 export default new VueRouter({
@@ -24,9 +25,25 @@ export default new VueRouter({
 			path: '/split/step2', 
 		  	component: step2
 		},
-		{ path: '/split/step3', component: step3 },
-		{ path: '/split/stepponte', component: stepponte },
-		{ path: '/split/step4', component: step4 },
-		{ path: '/split/step5', component: step5 },
+		{ 
+			path: '/split/step3', 
+			component: step3 
+		},
+		{ 
+			path: '/split/stepponte', 
+			component: stepponte 
+		},
+		{ 
+			path: '/split/step4', 
+			component: step4 
+		},
+		{ 
+			path: '/split/step5', 
+			component: step5
+		},
+		{ 
+			path: '/split/500', 
+			component: error
+		},		
 	]
 });
