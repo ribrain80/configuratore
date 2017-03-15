@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Drawer;
 use App\Models\PdfDrawer;
+use Mail;
 use Illuminate\Http\Request;
 
 
@@ -83,7 +84,23 @@ class SplitDrawerController extends Controller
             $error = $ex->getMessage();
         }
 
-        //6 Ritorno un oggetto in json con l'id del cassetto salvato in db
+        //6 Gestisco Mail
+        if ($data['pdf']['send']) {
+           $dest = $data['pdf']['email'];
+            $drawerId = $drawer->id;
+            $brochure = $data['pdf']['brochure'];
+            $language = $data['language'];
+
+            Mail::send('split.mail.mail', [], function($message) use ($dest,$drawerId,$brochure,$language)
+            {
+                $message->to($dest)
+                    ->subject('Il suo cassetto!')
+                    ->attachData(file_get_contents(route('split.export.topdf',['id'=>$drawerId,'brochure'=>($brochure)?1:0,'lang'=>$language])),"cassetto.pdf")
+                ;
+            });
+        }
+
+        //7 Ritorno un oggetto in json con l'id del cassetto salvato in db
         $out = [];
         if ($saved) {
             $out['status'] = 'ok';
@@ -94,6 +111,9 @@ class SplitDrawerController extends Controller
             $out['error'] = $error;
             $out['id'] = -1;
         }
+
+
+
         return $out;
     }
 

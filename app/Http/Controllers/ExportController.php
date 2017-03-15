@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PdfDrawer;
 use Illuminate\Database\Eloquent\Collection;
-use LynX39\LaraPdfMerger\PDFManage;
+use LynX39\LaraPdfMerger\PdfManage;
 use PDF;
 use App;
 
@@ -23,22 +23,22 @@ class ExportController extends Controller
 
         $drawerPdf = App::make('snappy.pdf.wrapper');
         $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id],true));
-       // $drawerPdf->setOption('footer-html',route('split.pdf.footer',[],true));
         $drawerPdf->loadView('split.pdf.riepilogo', ['model'=>$model,'dividers'=>$dividers]);
 
-        return $drawerPdf->inline();
-        /*
-        exit();
-        $openingFile = ($brochure)?resource_path('pdf/brochure.pdf' ):resource_path('pdf/cover.pdf');
 
-        $pdf = new PDFManage();
+
+        if (!$brochure) {
+            return $drawerPdf->inline();
+        }
+        $openingFile = resource_path('pdf/brochure.pdf' );
+        $pdf = new PdfManage();
         $pdf->addPDF($openingFile);
         //SALVO TEMPORANEAMENTE IL FILE
         $temp = tempnam(sys_get_temp_dir(), 'drawer_'.$id);
         $drawerPdf->save($temp,true);
         //FINE SALVATAGGIO
         $pdf->addPDF($temp);
-        $pdf->merge();*/
+        $pdf->merge();
     }
 
     /**
