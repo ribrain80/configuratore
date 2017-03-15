@@ -74,7 +74,7 @@ class SplitDrawerController extends Controller
             foreach ($data['bridge_supports_selected'] as $support) {
                 $supports[$support['id']]  = [
                     'orientation'=>$support['orientation'],
-                    'length'=>0 //TODO
+                    'length'=> $support['length']
                 ];
             }
             $drawer->drawersupports()->sync($supports);
