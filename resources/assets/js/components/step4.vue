@@ -31,7 +31,7 @@
                             <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
                                 <div class="media" style="width: 100%">
                                     <div class="media-left" style="width: 20%">
-                                            <img class="media-object" :src="divider.image" style="margin-left: auto;height:100px ">
+                                            <img class="media-object img-thumbnail" :src="divider.image" style="height:100px ">
                                     </div>
                                     <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 80%">
                                         <h4 class="media-heading">{{divider.description}}</h4>
