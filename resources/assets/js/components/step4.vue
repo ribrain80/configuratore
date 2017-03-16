@@ -29,13 +29,16 @@
                     <div class="row" style="margin-top: 22px">
                         <div class="col-lg-4" v-for="divider in getDividerByCat(cat)">
                             <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
-                                <div class="media">
-                                    <div class="media-left">
-                                            <img class="media-object" src="http://placehold.it/200x100">
+                                <div class="media" style="width: 100%">
+                                    <div class="media-left" style="width: 40%">
+                                            <img class="media-object" :src="divider.image" style="margin-left: auto;height:100px ">
                                     </div>
-                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id">
-                                        <h4 class="media-heading"></h4>
-                                        ({{divider.width}} x {{divider.length}})
+                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 60%">
+                                        <h4 class="media-heading">{{divider.description}}</h4>
+                                        <b>Color:</b> {{divider.color}} <br>
+                                        <b>Border:</b> {{divider.border}} <br>
+                                        <b>Texture:</b> {{divider.texture}} <br>
+                                        <b>Dimension:</b> ({{divider.width}} x {{divider.length}})
                                     </div>
                                 </div>
                             </div>

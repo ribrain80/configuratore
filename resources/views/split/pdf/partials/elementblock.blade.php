@@ -8,11 +8,15 @@
         $w = $obj->width;
         $l = 0;
         $d = 0;
+        $texture = "";
+        $img_src="http://placehold.it/350x100";
 
         switch ($element['type']) {
             case 'divider':
                 $l = $obj->length;
                 $d = $obj->depth;
+                $texture = $obj->texture;
+                $img_src = asset($obj->image);
                 break;
             case 'bridge':
                 $l = $obj->pivot->length;
@@ -27,10 +31,11 @@
                 $l=0;
                 $d=0;
         }
-
         ?>
                 <h3>{{ $element['label'] }}</h3>
-                <img src="http://placehold.it/350x120" class="img-responsive">
+                <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
+                    <img src="{{$img_src}}" style="width: auto;height: 100px;margin-left: auto">
+                </div>
                 <p><b>NR</b> {{ $element['count'] }}</p>
                 <p><b>CODICE</b>  {{ $element['sku'] }}</p>
                 <p><b>DIMENSIONI (mm)</b>
@@ -40,10 +45,12 @@
                         <span class="{{ $element['type'] }}"> {{ $l }}</span> &times;
                         <span> {{ $d }}</span>
 
-                <p><b>FINITURA</b> TODO</p>
+                <p><b>FINITURA</b> {{ $texture }}</p>
         @else
                 <h3>&nbsp;</h3>
-                <img src="http://placehold.it/350x120" class="img-responsive">
+        <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
+                <img src="http://placehold.it/350x100" class="img-responsive">
+        </div>
                 <p><b>NR</b></p>
                 <p><b>CODICE</b></p>
                 <p><b>DIMENSIONI (mm)</b></p>
