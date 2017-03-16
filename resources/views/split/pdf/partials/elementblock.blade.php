@@ -1,5 +1,3 @@
-
-
 <div class="col-xs-6 boxelem">
         @if($element)
         <?php
@@ -34,7 +32,7 @@
         ?>
                 <h3>{{ $element['label'] }}</h3>
                 <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
-                    <img src="{{$img_src}}" style="width: auto;height: 100px;margin-left: auto">
+                    <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 5px auto;display: block">
                 </div>
                 <p><b>NR</b> {{ $element['count'] }}</p>
                 <p><b>CODICE</b>  {{ $element['sku'] }}</p>
@@ -49,7 +47,7 @@
         @else
                 <h3>&nbsp;</h3>
         <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
-                <img src="http://placehold.it/350x100" class="img-responsive">
+                <img src="http://placehold.it/350x100" class="img-responsive" style=" margin: 0 auto;">
         </div>
                 <p><b>NR</b></p>
                 <p><b>CODICE</b></p>
