@@ -49,7 +49,6 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('/onepage', ['as'=>'split.onepage','uses'=>'SplitController@actionApplication']);
     Route::get('/load',['as'=>'split.load','uses'=>'SplitController@actionLoad']);
     //API
-    Route::get('configs',['as'=>'split.api.config', 'uses'=>'ApiController@actionConfig']);
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
     Route::get('bridges',['as'=>'split.api.bridges','uses'=>'ApiController@actionBridges']);
