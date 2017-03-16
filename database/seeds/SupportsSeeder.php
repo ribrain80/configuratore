@@ -13,10 +13,12 @@ class SupportsSeeder extends Seeder
     {
         $supports = [
             [
-                'height'=>45.4
+                'height'=>45.4,
+                'sku'=>'SUP-1'
             ],
             [
-                'height'=>89.5
+                'height'=>89.5,
+                'sku'=>'SUP-2'
             ],
         ];
         DB::table('supports')->insert($supports);

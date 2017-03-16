@@ -62,7 +62,8 @@ class SplitDrawerController extends Controller
             //5 Gestisco i bridges
             $bridges = [];
             foreach ($data['bridges_selected'] as $bridge) {
-                $bridges[$bridge['id']] = [
+                $bridges[] = [
+                    'bridge'=>$bridge['id'],
                     'orientation' => $data['bridge_orientation'],
                     'length' => $bridge['length'],
                     // 'color' => 1,
@@ -72,7 +73,8 @@ class SplitDrawerController extends Controller
             //6 Gestisco i supports
             $supports = [];
             foreach ($data['bridge_supports_selected'] as $support) {
-                $supports[$support['id']]  = [
+                $supports[]  = [
+                    'support' => $support['id'],
                     'orientation'=>$support['orientation'],
                     'length'=> $support['length']
                 ];
