@@ -20,6 +20,7 @@ class CreateDividersTable extends Migration
             $table->double('width')->nullable()->default(null);
             $table->double('length')->nullable()->default(null);
             $table->double('depth')->nullable()->default(null);
+            $table->string('image')->nullable()->default(null);
             $table->nullableTimestamps();
         });
     }
