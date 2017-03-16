@@ -114,7 +114,7 @@ class ExportController extends Controller
             $allElements[]=$tmp;
         }
 
-        //TODO: Write migration for add sku to the support
+
         foreach ($supports->groupBy('sku') as $sku=>$curSupportsGroup) {
             $tmp['type'] = "support";
             $tmp['label'] = "Supporto";
