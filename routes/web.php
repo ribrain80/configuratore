@@ -45,9 +45,6 @@ Route::group(['prefix' => 'm50'], function () {
 });
 
 Route::group(['prefix' => 'split'], function () {
-    //SPLIT APPLICATION
-    Route::get('/onepage', ['as'=>'split.onepage','uses'=>'SplitController@actionApplication']);
-    Route::get('/load',['as'=>'split.load','uses'=>'SplitController@actionLoad']);
     //API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
@@ -56,7 +53,6 @@ Route::group(['prefix' => 'split'], function () {
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     //EXPORT TO PDF
     Route::get('topdf/header/{drawer}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
-    //Route::get('topdf/footer',['as'=>'split.pdf.footer',function (){return view('split.pdf.footer');}]);
     Route::get('topdf/{id}/{brochure?}/{lang?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
     //FABRIC
     Route::get('fabric',['uses'=>function () {
