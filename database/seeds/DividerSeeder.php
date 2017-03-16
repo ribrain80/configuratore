@@ -15,7 +15,7 @@ class DividerSeeder eXtends Seeder
         $dividers = [];
 
 
-        $csvFile = file(resource_path('data/dividers.csv'));
+        $csvFile = file(resource_path('data/dividers_reduced.csv'));
 
         foreach ($csvFile as $line) {
             $tmp = str_getcsv($line);

@@ -30,15 +30,26 @@
                         <div class="col-lg-4" v-for="divider in getDividerByCat(cat)">
                             <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
                                 <div class="media" style="width: 100%">
-                                    <div class="media-left" style="width: 40%">
+                                    <div class="media-left" style="width: 20%">
                                             <img class="media-object" :src="divider.image" style="margin-left: auto;height:100px ">
                                     </div>
-                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 60%">
+                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 80%">
                                         <h4 class="media-heading">{{divider.description}}</h4>
-                                        <b>Color:</b> {{divider.color}} <br>
-                                        <b>Border:</b> {{divider.border}} <br>
-                                        <b>Texture:</b> {{divider.texture}} <br>
-                                        <b>Dimension:</b> ({{divider.width}} x {{divider.length}})
+                                        <table border="0" calss="table" width="100%">
+                                            <tr>
+                                                <td><b>Color:</b></td>
+                                                <td>{{divider.color}}</td>
+                                                <td><b>Texture:</b></td>
+                                                <td>{{divider.texture}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Border:</b></td>
+                                                <td>{{divider.border}}</td>
+                                                <td><b>Dimension:</b></td>
+                                                <td>({{divider.width}} x {{divider.length}})</td>
+                                            </tr>
+                                        </table>
+
                                     </div>
                                 </div>
                             </div>
