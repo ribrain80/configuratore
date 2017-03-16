@@ -466,6 +466,7 @@ const store = new Vuex.Store({
 	}
 });
 
+//Warn Vue to use VuexI18n plugin with store
 Vue.use(vuexI18n.plugin, store);
 
 // Add to the applications all languages defined.
