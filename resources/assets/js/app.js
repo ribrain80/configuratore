@@ -467,11 +467,14 @@ const store = new Vuex.Store({
 });
 
 Vue.use(vuexI18n.plugin, store);
-// add translations directly to the application
-Vue.i18n.add('en', translations.en);
-Vue.i18n.add('it', translations.it);
+
+// Add to the applications all languages defined.
+$.each(translations,(code,terms)=>{Vue.i18n.add(code,terms);});
+
 // set the start locale to use
 Vue.i18n.set('it');
+
+// set the fallback locale to use
 Vue.i18n.fallback('it');
 
 
