@@ -39,7 +39,7 @@ class ExportController extends Controller
         $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
         
         //Handle all kind of dividers,bridges and supports
-        $elements = $this->handleElements($model->drawerdividers,$model->drawerbridges);
+        $elements = $this->handleElements($model->drawerdividers,$model->drawerbridges,$model->drawersupports);
 
         //Get a Pdf builder instance
         $drawerPdf = App::make('snappy.pdf.wrapper');
@@ -92,18 +92,43 @@ class ExportController extends Controller
      * @param Collection $bridges
      * @return array
      */
-    private function handleElements(Collection $dividers,Collection $bridges) {
-        $total = [];
-        foreach ($dividers as $cur) {
-            $total[]=$cur;
+    protected function handleElements(Collection $dividers, Collection $bridges, Collection $supports) {
+        $allElements = [];
+
+        //Handle dividers, group by sku then build
+        foreach ($dividers->groupBy('sku') as $sku=>$curDividerGroup) {
+            $tmp['type'] = "divider";
+            $tmp['label'] = "Contenitore";
+            $tmp['sku'] = $sku;
+            $tmp['count'] = count($curDividerGroup);
+            $tmp['item'] = $curDividerGroup[0];
+            $allElements[]=$tmp;
         }
-        foreach ($bridges as $cur) {
-            $total[]=$cur;
+
+        foreach ($bridges->groupBy('sku') as $sku=>$curBridgesGroup) {
+            $tmp['type'] = "bridge";
+            $tmp['label'] = "Elemento Ponte";
+            $tmp['sku'] = $sku;
+            $tmp['count'] = count($curBridgesGroup);
+            $tmp['item'] = $curBridgesGroup[0];
+            $allElements[]=$tmp;
         }
+
+        //TODO: Write migration for add sku to the support
+        foreach ($supports->groupBy('id') as $sku=>$curSupportsGroup) {
+            $tmp['type'] = "support";
+            $tmp['label'] = "Supporto";
+            $tmp['sku'] = $sku;
+            $tmp['count'] = count($curSupportsGroup);
+            $tmp['item'] = $curSupportsGroup[0];
+            $allElements[]=$tmp;
+        }
+
+
         $first = [];
         $pages = [];
         $cont=0;
-        foreach ($total as $elem) {
+        foreach ($allElements as $elem) {
             if ($cont < self::FIRST_PAGE_ITEMS_NUMBER) {
                 $first[]=$elem;
                 $cont++;

@@ -45,6 +45,7 @@ Route::group(['prefix' => 'm50'], function () {
 });
 
 Route::group(['prefix' => 'split'], function () {
+
     //API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);

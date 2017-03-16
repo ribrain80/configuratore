@@ -115,6 +115,10 @@ p {
     border-right: none;
 }
 
+.bridge{
+    color:red;
+}
+
 
 .keeptogether {page-break-inside:avoid;}
 
