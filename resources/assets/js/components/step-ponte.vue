@@ -501,6 +501,9 @@ export default {
                 this.$store.commit( "setBridgecompleted", false );
 
                 $( '#error-modal' ).modal();
+                
+                // # Now we have a bridge selected
+                this.$store.state.has_bridge = false;
 
                 return false;
             } 
