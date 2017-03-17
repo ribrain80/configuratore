@@ -21,7 +21,7 @@ export default {
         "step3.drawer_edge_height_label": "Altezza interna sponda",
         "step3.edge_advice": "Per il cassetto lineabox sono disponibili 3 altezze predefinite per la sponda",
         'step3.real': 'effettivi',
-        'step3.modal.too_large': 'La larghezza inserita non permetterà l\'inserimento di un elemento ponte',
+        'step3.modal.too_large': 'La larghezza inserita non permetterà l\'inserimento di un elemento ponte orizzontale',
         'step3.modal.not_enougth_high': "L'altezza inserita per la sponda interna non permetterà l'inserimento di un elemento ponte",
         'step3.modal.generic': "Controlla i valori inseriti",
         "stepponte.title": "Scelta del ponte",
