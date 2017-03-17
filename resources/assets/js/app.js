@@ -407,7 +407,7 @@ const store = new Vuex.Store({
             state.bridge_supportID = 0;
             state.has_bridge = false;
             state.dimensions.delta_width = 0;
-            staate.dimensions.delta_length = 0;
+            state.dimensions.delta_length = 0;
 		},
 
 		clearBridgeData: function( state ) { 
