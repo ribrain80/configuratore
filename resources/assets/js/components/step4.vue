@@ -20,8 +20,8 @@
                 <div class="col-lg-12" v-if="$store.state.has_bridge">
                     Ci sono {{ $store.state.bridges_selected.length }} ponti<br />
                     L'orientamento del ponte è: {{ $store.state.bridge_orientation }}<br />
-                    La larghezza reale disponibile è {{ $store.state.dimensions.width + $store.state.dimensions.delta_width }}<br />
-                    La lunghezza reale disponibile è {{ $store.state.dimensions.length + $store.state.dimensions.delta_length }}<br />
+                    La larghezza reale disponibile è {{ $store.state.dimensions.width + parseFloat( $store.state.dimensions.delta_width ) }}<br />
+                    La lunghezza reale disponibile è {{ $store.state.dimensions.length +  parseFloat( $store.state.dimensions.delta_length ) }}<br />
                     <button @click="addBridge()">Aggiungi un altro ponte ( stesso orientamento )</button>
                     <button @click="removeBridge()">Rimuovi un ponte</button>
                     <button @click="clearBridges()">Rimuovi tutti i ponti ( ! )</button>
@@ -29,8 +29,8 @@
 
                 <div class="col-lg-12" v-else>
                     Non ci sono ponti
-                    La larghezza reale disponibile è {{ $store.state.dimensions.width + $store.state.dimensions.delta_width }}<br />
-                    La lunghezza reale disponibile è {{ $store.state.dimensions.length + $store.state.dimensions.delta_length }}                
+                    La larghezza reale disponibile è {{ $store.state.dimensions.width +  parseFloat( $store.state.dimensions.delta_width ) }}<br />
+                    La lunghezza reale disponibile è {{ $store.state.dimensions.length +  parseFloat( $store.state.dimensions.delta_length ) }}                
                 </div>
             </div>
 
