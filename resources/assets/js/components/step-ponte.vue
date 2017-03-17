@@ -508,8 +508,13 @@ export default {
                 return false;
             } 
 
-            // # Now we have a bridge selected
-            this.$store.state.has_bridge = true;
+            if( this.$store.state.bridges_selected.length ) {
+                // # Now we have a bridge selected
+                this.$store.state.has_bridge = true;
+            } else {
+                // # Now we have a bridge selected
+                this.$store.state.has_bridge = false;
+            }
             
              // # Step Bridge ok
             this.$store.commit( "setBridgecompleted", true );

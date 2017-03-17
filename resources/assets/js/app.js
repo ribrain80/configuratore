@@ -405,9 +405,11 @@ const store = new Vuex.Store({
             state.bridges_selected = [];
             state.bridge_ID = 0;
             state.bridge_supportID = 0;
-            state.has_bridge = false;
+            state.has_bridge = 0;
             state.dimensions.delta_width = 0;
             state.dimensions.delta_length = 0;
+
+            console.log("has bridge changed to: " + state.has_bridge );
 		},
 
 		clearBridgeData: function( state ) { 

@@ -17,7 +17,8 @@
             
             <div class="row">
 
-                <div class="col-lg-12" v-if="$store.state.has_bridge">
+                <div class="col-lg-12" v-show="$store.state.has_bridge">
+                MM: {{ $store.state.has_bridge }}<br />
                     Ci sono {{ $store.state.bridges_selected.length }} ponti<br />
                     L'orientamento del ponte è: {{ $store.state.bridge_orientation }}<br />
                     La larghezza reale disponibile è {{ parseFloat( $store.state.dimensions.width ) + parseFloat( $store.state.dimensions.delta_width ) }}<br />
@@ -27,7 +28,7 @@
                     <button @click="clearBridges()">Rimuovi tutti i ponti ( ! )</button>
                 </div>
 
-                <div class="col-lg-12" v-else>
+                <div class="col-lg-12" v-show="!$store.state.has_bridge">
                     Non ci sono ponti
                     La larghezza reale disponibile è {{ parseFloat( $store.state.dimensions.width ) +  parseFloat( $store.state.dimensions.delta_width ) }}<br />
                     La lunghezza reale disponibile è {{ parseFloat( $store.state.dimensions.length ) +  parseFloat( $store.state.dimensions.delta_length ) }}                
@@ -177,6 +178,7 @@ export default {
         },
 
         clearBridges: function() {
+            console.log( this.$store.state.has_bridge );
             this.$store.commit( "clearAllBridgeData" );
         },
 
