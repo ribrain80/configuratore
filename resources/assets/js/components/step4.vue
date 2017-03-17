@@ -9,20 +9,48 @@
         </div>
         
         <!-- Canvas container -->
-        <div class="col-lg-12">
-            campo giochi  
+        <div class="col-lg-6 dragdrop-area">
+
+            <div class="row">
+                <div class="col-lg-12">2d Drag & Drop</div>
+            </div>
+            
+            <div class="row">
+
+                <div class="col-lg-12" v-if="$store.state.has_bridge">
+                    Ci sono {{ $store.state.bridges_selected.length }} ponti<br />
+                    L'orientamento del ponte è: {{ $store.state.bridge_orientation }}<br />
+                    La larghezza reale disponibile è {{ $store.state.dimensions.width + $store.state.dimensions.delta_width }}<br />
+                    La lunghezza reale disponibile è {{ $store.state.dimensions.length + $store.state.dimensions.delta_length }}<br />
+                    <button @click="addBridge()">Aggiungi un altro ponte ( stesso orientamento )</button>
+                    <button @click="removeBridge()">Rimuovi un ponte</button>
+                    <button @click="clearBridges()">Rimuovi tutti i ponti ( ! )</button>
+                </div>
+
+                <div class="col-lg-12" v-else>
+                    Non ci sono ponti
+                    La larghezza reale disponibile è {{ $store.state.dimensions.width + $store.state.dimensions.delta_width }}<br />
+                    La lunghezza reale disponibile è {{ $store.state.dimensions.length + $store.state.dimensions.delta_length }}                
+                </div>
+            </div>
+
         </div>
+
+        <!-- Canvas container -->
+        <div class="col-lg-6 dragdrop-area">
+            3D Model
+        </div>        
         
         <!-- Dividers container -->
         <div class="col-lg-12" id="elementmenu">
-
+            
             <!-- Tab title ( Nav ) -->
             <ul class="nav nav-tabs">
                 <li  :class="{active: !index}" v-for="(cat,index) in dividers.dividersCategories">
                     <a data-toggle="tab" :href="genHref(cat)"> Elem h-{{cat}}</a>
                 </li>
             </ul>
-
+            
             <!-- Tab contents -->
             <div class="tab-content">
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in dividers.dividersCategories">
@@ -133,6 +161,23 @@ export default {
 
         getDividerByCat: function( val ) {
             return this.dividers.dividers[ val ];
+        },
+
+        addBridge: function() {
+            this.$store.commit( "manageBridge", this.$store.state.bridges_selected[ 0 ] );
+        },
+
+        removeBridge: function() {
+            if( this.$store.state.bridges_selected.length > 1 ) {
+                this.$store.state.bridges_selected.pop();
+            } else {
+                this.clearBridges();
+            }
+            
+        },
+
+        clearBridges: function() {
+            this.$store.commit( "clearAllBridgeData" );
         },
 
         check: function() {

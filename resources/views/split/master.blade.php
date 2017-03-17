@@ -38,6 +38,11 @@
             white-space: nowrap;
         }
 
+        .dragdrop-area {
+            border: 1px solid #ddd;
+            height: 500px;
+        }
+
     </style>
 </head>
 
