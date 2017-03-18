@@ -1,5 +1,7 @@
 import VueRouter from 'vue-router'
+import Vue       from 'vue'
 
+Vue.use( VueRouter );
 // # Components lazy loading
 const step1 = (resolve) => require(['./components/step1.vue'], resolve);
 const step2 = (resolve) => require(['./components/step2.vue'], resolve);
