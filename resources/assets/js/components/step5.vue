@@ -124,6 +124,7 @@ export default {
             Pace.track( function() {
 
                 self.$http.post( '/split/savedrawer', self.exportobj() ).then( response => {
+                    this.$store.drawerId=response.body.drawerId;
                     window.open( response.body.pdfpath, '_blank' );
                 }, response => {
                     self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
