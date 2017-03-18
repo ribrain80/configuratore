@@ -91,21 +91,13 @@ export default {
          */
         initTypes: function () {
 
-            // # Scope fix
-            var self = this;
+           //Retrieve drawerstype from application
+           //this.$http.get() return a promise that we solve the then function
+           this.$http.get('/split/drawerstypes').then(
+                response => {this.types = response.body},   //success
+                () => {this.$router.push({ path: '/split/500' });} //fail
+            );
 
-            // # ajax call
-            var jqxhr = $.getJSON( '/split/drawerstypes' );
-
-            // # Success
-            jqxhr.done( function( response ) {
-               self.types = response;
-            });
-
-            // # Fail
-            jqxhr.fail(function() {
-                self.$router.push({ path: '/split/500' });
-            });
         },
 
         /**

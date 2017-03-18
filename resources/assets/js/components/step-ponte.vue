@@ -139,26 +139,23 @@ export default {
          */        
         initBridgesAndSupports: function () {
 
-            // # Scope fix
-            var self = this;
+            //Create an array of Promises
+            let promises = [
+                this.$http.get( '/split/bridges' ),
+                this.$http.get( '/split/supports' )
+            ];
 
-            // # ajax calls
-            var bridgesJQXHR  = $.getJSON( '/split/bridges' );
-            var supportsJQXHR = $.getJSON( '/split/supports' );
+            //Resolve all promises. If any of them fail push into the router '/split/500'
+            Promise.all(promises).then(
+                ([responseBridges,responseSupports]) => {
+                    this.bridge_types = responseBridges.body;
+                    this.bridge_supports = responseSupports.body;
+                }, //success
+                ()=> {
+                    this.$router.push({ path: '/split/500' });
+                }  //fail
+            );
 
-            // # Deferred promises handler
-            var promiseJQXHR = $.when( bridgesJQXHR, supportsJQXHR );
-            
-            // # Success
-            promiseJQXHR.done( function( bridge_response, support_response ) {
-               self.bridge_types = bridge_response[ 0 ];
-               self.bridge_supports = support_response[ 0 ];
-            });
-
-            // # Fail
-            promiseJQXHR.fail( function() {
-                self.$router.push({ path: '/split/500' });
-            });
         },
 
         /**

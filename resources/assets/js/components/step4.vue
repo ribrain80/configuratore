@@ -131,21 +131,12 @@ export default {
          */
         initDividers: function () {
 
-            // # Scope fix
-            var self = this;
-
-            // # ajax call
-            var jqxhr = $.getJSON( '/split/dividers' );
-
-            // # Success
-            jqxhr.done( function( response ) {
-               self.dividers = response;
-            });
-
-            // # Fail
-            jqxhr.fail(function() {
-                self.$router.push({ path: '/split/500' });
-            });
+            //Retrieve dividers list from application
+            //this.$http.get() return a promise that we solve using the then function
+            this.$http.get('/split/dividers').then(
+                response => {this.$store.dividers=response.body},  //success
+                () => {this.$router.push({ path: '/split/500' })}  //fail
+            );
         },
 
         pushDivider: function ( divider ) {
