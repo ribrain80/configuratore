@@ -25,12 +25,20 @@ const store = new Vuex.Store({
     mutations:mutations,
     
     getters: {
+        /**
+         * Return a subset of the store.state object
+         * @param state
+         * @returns {{}}
+         */
         exported: function (state) {
 
+            //Subset of the state properties that we need for save a drawer
+            //Use a subset reduce the bandwidth usage
             let needed_props = ['drawerId' ,'pdf', 'dimensions', 'language', 'drawertype',
                 'bridge_orientation', 'bridge_supportID', 'bridge_ID',
                 'bridge_supports_selected', 'bridges_selected', 'dividers_selected' ];
 
+            //return am object with a subset of the state object properties using the pick function from lodash libray
             return _.pick(state,needed_props);
 
         }
