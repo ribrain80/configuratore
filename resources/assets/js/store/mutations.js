@@ -1,26 +1,61 @@
 const  mutations = {
 
+    /**
+     * Description
+     * @method setLanguage
+     * @param {} state
+     * @param {} locale
+     * @return 
+     */
     setLanguage: function (state, locale) {
         console.log("Setting language");
         state.language = locale;
         Vue.i18n.set(locale);
     },
 
+    /**
+     * Description
+     * @method setDrawerType
+     * @param {} state
+     * @param {} typeID
+     * @return 
+     */
     setDrawerType: function (state, typeID) {
         console.log("drawer type changed to: " + typeID);
         state.drawertype = typeID;
     },
 
+    /**
+     * Description
+     * @method setDrawerTypeCategory
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setDrawerTypeCategory: function (state, val) {
         console.log("type category set to: " + val);
         state.drawer_type_category = val;
     },
 
+    /**
+     * Description
+     * @method isLineaBox
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     isLineaBox: function (state, val) {
         console.log("lineabox flag changed to: " + val);
         state.is_lineabox = val;
     },
 
+    /**
+     * Description
+     * @method setWidth
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setWidth: function (state, val) {
 
         if (isNaN(val)) {
@@ -32,6 +67,13 @@ const  mutations = {
         state.dimensions.width = parseFloat(val);
     },
 
+    /**
+     * Description
+     * @method setLength
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setLength: function (state, val) {
 
         if (isNaN(val)) {
@@ -44,6 +86,13 @@ const  mutations = {
         state.dimensions.length = parseFloat(val);
     },
 
+    /**
+     * Description
+     * @method setShoulderHeight
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setShoulderHeight: function (state, val) {
 
         if (isNaN(val)) {
@@ -56,36 +105,85 @@ const  mutations = {
         state.dimensions.shoulder_height = parseFloat(val);
     },
 
+    /**
+     * Description
+     * @method setBridgeOrientation
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setBridgeOrientation: function (state, val) {
         console.log("bridge orientation changed to: " + val);
         state.bridge_orientation = val;
     },
 
+    /**
+     * Description
+     * @method isSuitableForHBridge
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     isSuitableForHBridge: function (state, val) {
         console.log("is_suitable_width_4hbridge changed to: " + val);
         state.is_suitable_width_4hbridge = val;
     },
 
+    /**
+     * Description
+     * @method isSuitableHeightForBridge
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     isSuitableHeightForBridge: function (state, val) {
         console.log("is_suitable_height_4bridge changed to: " + val);
         state.is_suitable_height_4bridge = val;
     },
 
+    /**
+     * Description
+     * @method hasBridge
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     hasBridge: function (state, val) {
         console.log("has_bridge changed to: " + val);
         state.has_bridge = val;
     },
 
+    /**
+     * Description
+     * @method setBridgeSupportID
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setBridgeSupportID: function (state, val) {
         console.log("bridge_supportID changed to: " + val);
         state.bridge_supportID = val;
     },
 
+    /**
+     * Description
+     * @method setBridgeID
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setBridgeID: function (state, val) {
         console.log("bridge_ID changed to: " + val);
         state.bridge_ID = val;
     },
 
+    /**
+     * Description
+     * @method computeDimensionsOnSupportsChanges
+     * @param {} state
+     * @param {} obj
+     * @return 
+     */
     computeDimensionsOnSupportsChanges: function (state, obj) {
 
         switch (state.bridge_orientation) {
@@ -168,31 +266,70 @@ const  mutations = {
         }
     },
 
+    /**
+     * Description
+     * @method manageBridgeSupport
+     * @param {} state
+     * @param {} obj
+     * @return 
+     */
     manageBridgeSupport: function (state, obj) {
 
         console.log("pushing in support");
         state.bridge_supports_selected.push(obj);
     },
 
+    /**
+     * Description
+     * @method clearBridgeSupports
+     * @param {} state
+     * @return 
+     */
     clearBridgeSupports: function (state) {
         console.log("Bridge supports cleanUp");
         state.bridge_supports_selected = [];
     },
 
+    /**
+     * Description
+     * @method manageBridge
+     * @param {} state
+     * @param {} obj
+     * @return 
+     */
     manageBridge: function (state, obj) {
 
         console.log("pushing in bridge");
         state.bridges_selected.push(obj);
     },
 
+    /**
+     * Description
+     * @method removeBridge
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     removeBridge: function (state, val) { /** TODO **/
     },
 
+    /**
+     * Description
+     * @method clearBridges
+     * @param {} state
+     * @return 
+     */
     clearBridges: function (state) {
         console.log("Bridges cleanUp");
         state.bridges_selected = [];
     },
 
+    /**
+     * Description
+     * @method clearAllBridgeData
+     * @param {} state
+     * @return 
+     */
     clearAllBridgeData: function (state) {
 
         console.log("clearing all bridge data");
@@ -209,6 +346,12 @@ const  mutations = {
         console.log("has bridge changed to: " + state.has_bridge);
     },
 
+    /**
+     * Description
+     * @method clearBridgeData
+     * @param {} state
+     * @return 
+     */
     clearBridgeData: function (state) {
 
         console.log("clearing bridge data");
@@ -220,6 +363,13 @@ const  mutations = {
         state.has_bridge = false;
     },
 
+    /**
+     * Description
+     * @method manageDivider
+     * @param {} state
+     * @param {} obj
+     * @return 
+     */
     manageDivider: function (state, obj) {
 
         console.log("managing dividers");
@@ -235,31 +385,73 @@ const  mutations = {
     },
 
 
+    /**
+     * Description
+     * @method setOnecompleted
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setOnecompleted: function (state, val) {
         console.log("onecompleted changed to: " + val);
         state.onecompleted = val;
     },
 
+    /**
+     * Description
+     * @method setTwocompleted
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setTwocompleted: function (state, val) {
         console.log("twocompleted changed to: " + val);
         state.twocompleted = val;
     },
 
+    /**
+     * Description
+     * @method setThreecompleted
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setThreecompleted: function (state, val) {
         console.log("threecompleted changed to: " + val);
         state.threecompleted = val;
     },
 
+    /**
+     * Description
+     * @method setBridgecompleted
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setBridgecompleted: function (state, val) {
         console.log("bridgecompleted changed to: " + val);
         state.bridgecompleted = val;
     },
 
+    /**
+     * Description
+     * @method setFourcompleted
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setFourcompleted: function (state, val) {
         console.log("fourcompleted changed to: " + val);
         state.fourcompleted = val;
     },
 
+    /**
+     * Description
+     * @method setFivecompleted
+     * @param {} state
+     * @param {} val
+     * @return 
+     */
     setFivecompleted: function (state, val) {
         console.log("fivecompleted changed to: " + val);
         state.fivecompleted = val;

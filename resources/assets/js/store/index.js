@@ -27,8 +27,9 @@ const store = new Vuex.Store({
     getters: {
         /**
          * Return a subset of the store.state object
+         * @method exported
          * @param state
-         * @returns {{}}
+         * @return CallExpression
          */
         exported: function (state) {
 
