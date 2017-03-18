@@ -20,12 +20,10 @@ require( 'bootstrap-sass' );
  * and simple, leaving you to focus on building your next great project.
  */
 
+window.Axios = require ( 'axios');
+
 window.Vue = require( 'vue' );
 
-/**
- * We'll require VueResource 
- */
-require( 'vue-resource' );
 
 /**
  * We'll load VueCookie 
@@ -41,11 +39,11 @@ Vue.use( VueCookie );
  * the outgoing requests issued by this application. The CSRF middleware
  * included with Laravel will automatically verify the header's value.
  */
-
+/*
 Vue.http.interceptors.push((request, next) => {
     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
     next();
-});
+});*/
 
 
 import {fabric} from 'fabric'

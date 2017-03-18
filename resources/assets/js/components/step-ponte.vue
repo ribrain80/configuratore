@@ -141,15 +141,15 @@ export default {
 
             //Create an array of Promises
             let promises = [
-                this.$http.get( '/split/bridges' ),
-                this.$http.get( '/split/supports' )
+                Axios.get( '/split/bridges' ),
+                Axios.get( '/split/supports' )
             ];
 
             //Resolve all promises. If any of them fail push into the router '/split/500'
             Promise.all(promises).then(
                 ([responseBridges,responseSupports]) => {
-                    this.bridge_types = responseBridges.body;
-                    this.bridge_supports = responseSupports.body;
+                    this.bridge_types = responseBridges.data;
+                    this.bridge_supports = responseSupports.data;
                 }, //success
                 ()=> {
                     this.$router.push({ path: '/split/500' });

@@ -132,9 +132,11 @@ export default {
         initDividers: function () {
 
             //Retrieve dividers list from application
-            //this.$http.get() return a promise that we solve using the then function
-            this.$http.get('/split/dividers').then(
-                response => {this.$store.dividers=response.body},  //success
+            //Axios.get() return a promise that we solve using the then function
+            Axios.get('/split/dividers').then(
+                response => {
+                    this.dividers=response.data;
+                },  //success
                 () => {this.$router.push({ path: '/split/500' })}  //fail
             );
         },

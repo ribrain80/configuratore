@@ -123,9 +123,9 @@ export default {
 
             Pace.track( function() {
 
-                self.$http.post( '/split/savedrawer', self.$store.getters.exported ).then( response => {
-                    self.$store.state.drawerId=response.body.id;
-                    window.open( response.body.pdfpath, '_blank' );
+                Axios.post( '/split/savedrawer', self.$store.getters.exported ).then( response => {
+                    self.$store.state.drawerId=response.data.id;
+                    window.open( response.data.pdfpath, '_blank' );
                 }, response => {
                     self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
                 });

@@ -92,9 +92,9 @@ export default {
         initTypes: function () {
 
            //Retrieve drawerstype from application
-           //this.$http.get() return a promise that we solve the then function
-           this.$http.get('/split/drawerstypes').then(
-                response => {this.types = response.body},   //success
+           //Axios.get() return a promise that we solve the then function
+            Axios.get('/split/drawerstypes').then(
+                response => {this.types = response.data},   //success
                 () => {this.$router.push({ path: '/split/500' });} //fail
             );
 
