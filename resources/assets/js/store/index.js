@@ -27,7 +27,7 @@ const store = new Vuex.Store({
     state: {
 
         /**
-         * Linguagio dell'interfaccia grafica
+         * Application language
          * @type: string
          */
         language:'it',
