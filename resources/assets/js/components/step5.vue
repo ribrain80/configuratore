@@ -123,8 +123,8 @@ export default {
 
             Pace.track( function() {
 
-                self.$http.post( '/split/savedrawer', self.exportobj() ).then( response => {
-                    this.$store.drawerId=response.body.drawerId;
+                self.$http.post( '/split/savedrawer', self.$store.getters.exported ).then( response => {
+                    self.$store.state.drawerId=response.body.id;
                     window.open( response.body.pdfpath, '_blank' );
                 }, response => {
                     self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
@@ -137,25 +137,6 @@ export default {
             return pattern.test( this.$store.state.pdf.email );
         },
 
-        /**
-         * [exportobj description]
-         * @return {[type]} [description]
-         */
-        exportobj: function() {
-
-        	let obj = {};
-        	let needed_props = [ 'pdf', 'dimensions', 'language', 'drawertype', 
-        						 'bridge_orientation', 'bridge_supportID', 'bridge_ID', 
-        						 'bridge_supports_selected', 'bridges_selected', 'dividers_selected' ];
-
-        	for( var property in this.$store.state ) {
-        		if( needed_props.indexOf( property ) != -1 ) {
-        			obj[ property ] = this.$store.state[ property ];
-        		}
-        	}
-
-        	return obj;
-        }
     },
 
     beforeRouteEnter: (to, from, next) => {

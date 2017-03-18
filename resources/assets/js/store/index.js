@@ -23,6 +23,18 @@ const store = new Vuex.Store({
      * Inject mutations from mutations.js
      */
     mutations:mutations,
+    
+    getters: {
+        exported: function (state) {
+
+            let needed_props = ['drawerId' ,'pdf', 'dimensions', 'language', 'drawertype',
+                'bridge_orientation', 'bridge_supportID', 'bridge_ID',
+                'bridge_supports_selected', 'bridges_selected', 'dividers_selected' ];
+
+            return _.pick(state,needed_props);
+
+        }
+    },
 
     state: {
 
