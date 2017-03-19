@@ -47,14 +47,14 @@
             
             <!-- Tab title ( Nav ) -->
             <ul class="nav nav-tabs">
-                <li  :class="{active: !index}" v-for="(cat,index) in dividers.dividersCategories">
+                <li  :class="{active: !index}" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                     <a data-toggle="tab" :href="genHref(cat)"> Elem h-{{cat}}</a>
                 </li>
             </ul>
             
             <!-- Tab contents -->
             <div class="tab-content">
-                <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in dividers.dividersCategories">
+                <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                     <div class="row" style="margin-top: 22px">
                         <div class="col-lg-4" v-for="divider in getDividerByCat(cat)">
                             <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
@@ -115,31 +115,10 @@ export default {
 
         return {
 
-            /**
-             * [dividers description]
-             * @type {Array}
-             */
-            dividers: [],
         }
     },
 
     methods: {
-
-        /**
-         * [initDividers description]
-         * @return {[type]} [description]
-         */
-        initDividers: function () {
-
-            //Retrieve dividers list from application
-            //Axios.get() return a promise that we solve using the then function
-            Axios.get('/split/dividers').then(
-                response => {
-                    this.dividers=response.data;
-                },  //success
-                () => {this.$router.push({ path: '/split/500' })}  //fail
-            );
-        },
 
         pushDivider: function ( divider ) {
             this.$store.commit( "manageDivider", divider );
@@ -154,7 +133,7 @@ export default {
         },
 
         getDividerByCat: function( val ) {
-            return this.dividers.dividers[ val ];
+            return this.$store.state.dividerTypes.dividers[ val ];
         },
 
         addBridge: function() {
@@ -224,7 +203,7 @@ export default {
 
         console.log("Step4 mounted!");
 
-        this.initDividers();
+       // this.initDividers();
     }
 
 }

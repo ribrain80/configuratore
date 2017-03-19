@@ -59,7 +59,7 @@
                     <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
                     
                     <!-- Support choice -->
-                    <div class="row" v-for="bridge_support in bridge_supports">
+                    <div class="row" v-for="bridge_support in $store.state.supportTypes">
                         <div class="col-lg-5" v-show="checkSupportCompatibility( bridge_support )">
                             <div class="panel panel-default">
                                 <div class="panel-body" :class="{ 'bg-success': bridge_support.id == $store.state.bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
@@ -81,7 +81,7 @@
                     <h4 class="">{{ "stepponte.bridge_title" | translate  }}</h4>
 
                     <!-- Bridges choice -->
-                    <div class="row" v-for="bridge in bridge_types">
+                    <div class="row" v-for="bridge in $store.state.bridgeTypes">
                         <div class="col-lg-6" v-show="checkBridgeCompatibility( bridge )">
                             <div class="panel panel-default">
                                 <div class="panel-body"  :class="{ 'bg-success': bridge.id == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
@@ -124,39 +124,10 @@ export default {
             hasError: false,
             
             choice: true,
-            
-            bridge_types:[],
-            
-            bridge_supports: []
         }
     },
 
     methods: {
-
-        /**
-         * Calls the server and retrieve the bridges available
-         * @return {void}
-         */        
-        initBridgesAndSupports: function () {
-
-            //Create an array of Promises
-            let promises = [
-                Axios.get( '/split/bridges' ),
-                Axios.get( '/split/supports' )
-            ];
-
-            //Resolve all promises. If any of them fail push into the router '/split/500'
-            Promise.all(promises).then(
-                ([responseBridges,responseSupports]) => {
-                    this.bridge_types = responseBridges.data;
-                    this.bridge_supports = responseSupports.data;
-                }, //success
-                ()=> {
-                    this.$router.push({ path: '/split/500' });
-                }  //fail
-            );
-
-        },
 
         /**
          * [setOrientation description]
@@ -548,7 +519,7 @@ export default {
     mounted() {
 
         console.log( "Step ponte Mounted!" );
-        this.initBridgesAndSupports();
+
     }
 }
 </script>

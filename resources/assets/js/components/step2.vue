@@ -16,7 +16,7 @@
         </div>
 
         <!-- Drawer type choice -->
-        <div class="col-lg-3" v-for="( type,category ) in types">
+        <div class="col-lg-3" v-for="( type,category ) in $store.state.drawerTypes">
             
             <!-- Level 1 navigation -->
             <div v-if="type.length == 1">
@@ -71,11 +71,6 @@ export default {
 
         return {
 
-            /**
-             * Types available
-             * @type {Array}
-             */
-            types: [],
         }
     },
 
@@ -85,22 +80,7 @@ export default {
      */
     methods: {
 
-        /**
-         * Calls the server and retrieve the types available
-         * @return {void}
-         */
-        initTypes: function () {
-
-           //Retrieve drawerstype from application
-           //Axios.get() return a promise that we solve the then function
-            Axios.get('/split/drawerstypes').then(
-                response => {this.types = response.data},   //success
-                () => {this.$router.push({ path: '/split/500' });} //fail
-            );
-
-        },
-
-        /**
+         /**
          * [setDrawerTypeCategory description]
          * @param {[type]} cat [description]
          */
@@ -179,8 +159,6 @@ export default {
         // # Log mount 
         console.log( "Step2 Mounted!" );
 
-        // # Init types
-        this.initTypes();
     }
 }
 </script>

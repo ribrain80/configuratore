@@ -456,6 +456,23 @@ const  mutations = {
         console.log("fivecompleted changed to: " + val);
         state.fivecompleted = val;
     },
+
+    setDrawersTypes: function (state,val) {
+        state.drawerTypes = val;
+    },
+
+    setBridgesTypes: function (state,val) {
+        state.bridgeTypes = val;
+    },
+
+    setSupportsTypes: function (state,val) {
+        state.supportTypes = val;
+    },
+
+    setDividerTypes: function (state,val) {
+        state.dividerTypes = val;
+    }
+
 };
 
 export default mutations;

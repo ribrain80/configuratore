@@ -22,7 +22,37 @@ const store = new Vuex.Store({
     /**
      * Inject mutations from mutations.js
      */
-    mutations:mutations,
+    mutations: mutations,
+
+    actions: {
+        /**
+         * Init all App Elements from API
+         * @param commit
+         * @param context
+         */
+        initApp: function ({ commit },context) {
+
+            let promises = [
+                Axios.get( '/split/drawerstypes' ),
+                Axios.get( '/split/bridges' ),
+                Axios.get( '/split/supports' ),
+                Axios.get('/split/dividers')
+            ];
+
+            //Resolve all promises. If any of them fail push into the router '/split/500'
+            Promise.all(promises).then(
+                ([typesResponse,responseBridges,responseSupports,dividersResponse]) => {
+                    commit('setDrawersTypes',typesResponse.data);
+                    commit('setBridgesTypes',responseBridges.data);
+                    commit('setSupportsTypes',responseSupports.data);
+                    commit('setDividerTypes',dividersResponse.data);
+                }, //success
+                ()=> {
+                    context.$router.push({ path: '/split/500' });
+                }  //fail
+            );
+        }
+    },
     
     getters: {
         /**
@@ -46,6 +76,26 @@ const store = new Vuex.Store({
     },
 
     state: {
+
+        /**
+         * Types of drawers
+         */
+        drawerTypes:[],
+
+        /**
+         * Bridge types
+         */
+        bridgeTypes:[],
+
+        /**
+         * Bridge support types
+         */
+        supportTypes:[],
+
+        /**
+         * Divider types
+         */
+        dividerTypes:[],
 
         /**
          * Application language
