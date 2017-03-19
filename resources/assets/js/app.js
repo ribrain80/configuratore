@@ -59,7 +59,16 @@ const App = new Vue({
 		error
 	},
 
-  	data : {}
+  	data : {},
+
+    mounted () {
+
+        // # Log mount
+        console.log( "Application mounted" );
+
+        //Get all init values from Api
+        this.$store.dispatch('initApp',this.$router);
+    }
  
 }).$mount( '#app' );
 
