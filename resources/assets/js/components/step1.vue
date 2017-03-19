@@ -67,7 +67,7 @@ export default {
         console.log( "Welcome/info page mounted" );
 
         //Get all init values from Api
-        this.$store.dispatch('initApp');
+        this.$store.dispatch('initApp',this.$router);
     }
 }
 </script>

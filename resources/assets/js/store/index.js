@@ -48,7 +48,8 @@ const store = new Vuex.Store({
                     commit('setDividerTypes',dividersResponse.data);
                 }, //success
                 ()=> {
-                    context.$router.push({ path: '/split/500' });
+                    console.log("QUA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    context.push({ path: '/split/500' });
                 }  //fail
             );
         }
