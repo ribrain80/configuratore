@@ -1,64 +1,42 @@
 /**
- * We'll load lodash 
+ *  Loading lodash: usefull library for handling arrays and objects
  */
-
 window._ = require('lodash');
 
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
+ * Loading Jquery.
+ * We need to use Jquery plugins not compatible with webpack so we import jquery using vendor.js
  */
-
-// Dovendo Usare Plugins non compatibili con JQuery va messo nella vendor.js
 //window.$ = window.jQuery = require( 'jquery' );
+
+/**
+ * Load bootstrap js libs
+ */
 require( 'bootstrap-sass' );
 
 /**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
+ * Load Vue for data-bind
+ * @type {Vue}
  */
-
-window.Axios = require ( 'axios');
-
 window.Vue = require( 'vue' );
 
+/**
+ * Load Axios for handle ajax calls with ES6 promises
+ */
+window.Axios = require ( 'axios');
 
 /**
- * We'll load VueCookie 
+ * Load VueCookie for handle cookies inside Vue
  */
 
 window.VueCookie = require('vue-cookie');
 
-// # Tell Vue to use the plugin
+/**
+ * Inject Vue-cookie plugin in Vue
+ */
 Vue.use( VueCookie );
 
 /**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
+ * Load Fabric library. For step4 (2D and Drag&Drop)
  */
-/*
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-    next();
-});*/
-
-
 import {fabric} from 'fabric'
-
-
-
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-
-// import Echo from "laravel-echo"
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
