@@ -19,10 +19,5 @@
     <section>
         <step5></step5>
     </section>
-
-    @push('jsfooter')
-    <script src="{{ asset('js/split/Commons.js') }}"></script>
-    <script src="{{ asset('js/split/Configuration.js') }}"></script>
-    @endpush
-
+    
 @endsection
