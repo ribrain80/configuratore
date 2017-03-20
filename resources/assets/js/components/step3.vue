@@ -34,7 +34,7 @@
                 <div v-bind:class="[ 'form-group', width_OOR ? 'has-error' : 'has-success' ]">
                   <label class="col-sm-7 control-label">{{ 'step3.drawer_width_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
+                    <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
                     <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
                   </div>
                 </div>
@@ -43,7 +43,7 @@
                 <div v-bind:class="[ 'form-group', length_OOR ? 'has-error' : 'has-success' ]">
                   <label class="col-sm-7 control-label">{{ 'step3.drawer_length_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
+                    <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
                     <span class="help-block">min {{ config.rect_length_lower_limit }} max {{ config.rect_length_upper_limit }}</span>
                   </div>
                 </div>
@@ -53,7 +53,7 @@
                 <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
                   <label class="col-sm-7 control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
+                    <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
                     <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
                   </div>
                 </div>
@@ -68,7 +68,7 @@
                         <div v-for="option in config.lineabox_shoulders_height">
                           <div class="col-lg-4">
                               <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
-                                  <div class="panel-body" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}} <br>{{ 'step3.real' | translate}}</div>
+                                  <div class="panel-body" @focus.once="resetAdvice()" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}} <br>{{ 'step3.real' | translate}}</div>
                               </div>
                           </div>
                         </div>
@@ -133,12 +133,12 @@ export default {
               rect_length_upper_limit: 900,
               rect_width_lower_limit: 102,
               rect_length_lower_limit: 240,
-              drawer_text: Vue.i18n.translate("Cassetto"),
+              drawer_text: "Cassetto",
 
               // # Shoulder settings
               shoulder_stroke: '#999999',
               shoulder_linewidth: 7,
-              shoulder_text: Vue.i18n.translate("step3.shoulder_label"),
+              shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
               shoulder_height_lower_limit: 45.4, 
 
@@ -217,25 +217,19 @@ export default {
             var rectObj = this.rect.getBoundingClientRect();
 
             // # Width line ( drawer )
-            this.makeRectWidthInfoLine( rectObj.left, 30, rectObj.right, 30 );
+            this.makeRectWidthInfoLine( rectObj.left, rectObj.bottom + 20, rectObj.right, rectObj.bottom + 20 );
 
             // # Width text ( drawer )
-            this.makeRectWidthInfoText( ( rectObj.width / 2 ) + rectObj.left, 15 );
-
-            // # Length line ( drawer )
-            this.makeRectLengthInfoLine( rectObj.right + 20, rectObj.top, rectObj.right + 20, rectObj.bottom );
-
-            // # Length text ( drawer )
-            this.makeRectLengthInfoText( rectObj.right + 30,  ( rectObj.height / 2 ) + rectObj.top );
+            this.makeRectWidthInfoText( ( rectObj.width / 2 ) + rectObj.left, rectObj.bottom + 30 );
 
             // # Drawer label text
             this.makeDrawerLabel( rectObj.width / 2 + rectObj.left, rectObj.height / 2 + rectObj.top );
 
-            // # Shoulder redraw                
-            this.makeShoulder(  rectObj.left + ( this.mm2Pixel( this.$store.state.dimensions.length ) / 2 ) + 5, 
-                                rectObj.bottom + 40 + ( this.mm2Pixel( this.$store.state.dimensions.shoulder_height ) ) / 2, 
-                                this.$store.state.dimensions.length, 
-                                this.$store.state.dimensions.shoulder_height );
+            this.makeShoulder(  rectObj.right + 30, 
+                                50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2, 
+                                this.$store.state.dimensions.shoulder_height , 
+                                this.$store.state.dimensions.length
+                             );                                
 
             // # Get drawer dimensions
             var shoulderObj = this.shoulder.getBoundingClientRect();
@@ -247,7 +241,7 @@ export default {
                                             shoulderObj.bottom + 20 );
 
             // # Width text ( shoulder )
-            this.makeShoulderWidthInfoText( parseInt( shoulderObj.width ) / 2 + 20,
+            this.makeShoulderWidthInfoText( parseInt( shoulderObj.left ) + ( shoulderObj.width / 2 ) + 10,
                                             shoulderObj.bottom + 30 );
 
             // # Length line ( shoulder )
@@ -256,7 +250,7 @@ export default {
                                              shoulderObj.right + 20, 
                                              shoulderObj.bottom );
 
-            // # Length text ( shoulder )
+            // # Length text ( shoulder )rectObj.right + 30,  ( rectObj.height / 2 ) + rectObj.top
             this.makeShoulderLengthInfoText( shoulderObj.right + 30, 
                                            ( shoulderObj.height / 2 ) + shoulderObj.top  );            
 
@@ -277,7 +271,7 @@ export default {
             var computed_ratio = ( available_width / this.config.rect_width_upper_limit );
 
             // # Secure dimensions tuning
-            this.config.ratio = computed_ratio - ( computed_ratio / 4 );
+            this.config.ratio = parseFloat( computed_ratio - ( computed_ratio / 2.5 ) );
         },
 
         /**
@@ -353,7 +347,7 @@ export default {
 
             // # Drawer type check
             // # If is a custom drawer
-            if( Configuration.drawertype == 4 ) {
+            if( this.$store.state.drawertype == 4 ) {
 
                 // # Under 70 mm bridge is not allowed
                 if( this.$store.state.dimensions.shoulder_height < 72 ) {
@@ -410,8 +404,6 @@ export default {
             // # In range
             this.length_OOR = false;
 
-            console.log( "OOR " + this.length_OOR );
-
             return false;
         },
 
@@ -438,7 +430,23 @@ export default {
             this.shoulder_height_OOR = false;
 
             return false;
-        },  
+        }, 
+
+        /**
+         * [resetAdvice description]
+         * @return {[type]} [description]
+         */
+        resetAdvice: function() {
+
+              if( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) {
+                  
+                  // # Show modal alert
+                  $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate("resetadvice") );
+                  $( '#error-modal' ).modal();
+                  return false;
+              }
+
+        },
 
         /**
          * [setShoulderHeight description]
@@ -526,7 +534,7 @@ export default {
         makeShoulderWidthInfoText: function( x, y ) {
 
             // # Draw the text
-            this.hor_text_shoulder = this.two.makeText( this.$store.state.dimensions.length + " " +  this.config.measure_label, 
+            this.hor_text_shoulder = this.two.makeText( this.$store.state.dimensions.shoulder_height + " " +  this.config.measure_label, 
                                                         x, 
                                                         y, 
                                                         this.config.font_weight );
@@ -562,7 +570,7 @@ export default {
         makeShoulderLengthInfoText: function( x, y ) {
 
             // # Draw the text
-            this.vert_text_shoulder = this.two.makeText( this.$store.state.dimensions.shoulder_height + " " + this.config.measure_label, 
+            this.vert_text_shoulder = this.two.makeText( this.$store.state.dimensions.length + " " + this.config.measure_label, 
                                                          x, 
                                                          y,
                                                          this.config.font_weight );
@@ -585,7 +593,7 @@ export default {
         makeShoulderLabel: function( x, y ) {
 
             // # Draw the text
-            this.shoulder_text = this.two.makeText( this.config.shoulder_text,
+            this.shoulder_text = this.two.makeText( Vue.i18n.translate( this.config.shoulder_text ),
                                                     x, 
                                                     y, 
                                                     this.config.font_weight );
@@ -593,6 +601,9 @@ export default {
             this.shoulder_text.size = this.config.font_size;
             this.shoulder_text.stroke = this.config.text_stroke;
             this.shoulder_text.family = this.config.font_family;
+
+            // # Rotate text 90 degrees clockwise
+            this.shoulder_text.rotation = Math.PI/2;
         },
 
         /**
@@ -717,7 +728,7 @@ export default {
         makeDrawerLabel: function( x, y ) {
 
             // # Draw the text
-            this.drawer_text = this.two.makeText( this.config.drawer_text, x, y, this.config.font_weight );
+            this.drawer_text = this.two.makeText( Vue.i18n.translate( this.config.drawer_text ), x, y, this.config.font_weight );
 
             // # Text settings
             this.drawer_text.size = this.config.font_size;
@@ -756,16 +767,10 @@ export default {
             var rectObj = this.rect.getBoundingClientRect();
 
             // # Width line ( drawer )
-            this.makeRectWidthInfoLine( rectObj.left, 30, rectObj.right, 30 );
+            this.makeRectWidthInfoLine( rectObj.left, rectObj.bottom + 20, rectObj.right, rectObj.bottom + 20 );
 
             // # Width text ( drawer )
-            this.makeRectWidthInfoText( ( rectObj.width / 2 ) + rectObj.left, 15 );
-
-            // # Length line ( drawer )
-            this.makeRectLengthInfoLine( rectObj.right + 20, rectObj.top, rectObj.right + 20, rectObj.bottom );
-
-            // # Length text ( drawer )
-            this.makeRectLengthInfoText( rectObj.right + 30,  ( rectObj.height / 2 ) + rectObj.top );
+            this.makeRectWidthInfoText( ( rectObj.width / 2 ) + rectObj.left, rectObj.bottom + 30 );
 
             // # Drawer label text
             this.makeDrawerLabel( rectObj.width / 2 + rectObj.left, rectObj.height / 2 + rectObj.top );
@@ -783,10 +788,11 @@ export default {
             var rectObj = this.rect.getBoundingClientRect();
 
             // # Shoulder redraw                
-            this.makeShoulder(  rectObj.left + ( this.mm2Pixel( this.$store.state.dimensions.length ) / 2 ) + 5, 
-                                rectObj.bottom + 40 + ( this.mm2Pixel( this.$store.state.dimensions.shoulder_height ) ) / 2, 
-                                this.$store.state.dimensions.length, 
-                                this.$store.state.dimensions.shoulder_height);
+            this.makeShoulder(  rectObj.right + ( this.mm2Pixel( this.$store.state.dimensions.shoulder_height ) / 2 ) + 20, 
+                                50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2, 
+                                this.$store.state.dimensions.shoulder_height , 
+                                this.$store.state.dimensions.length
+                             );    
 
             // # Get drawer dimensions
             var shoulderObj = this.shoulder.getBoundingClientRect();
@@ -798,7 +804,7 @@ export default {
                                             shoulderObj.bottom + 20 );
 
             // # Width text ( shoulder )
-            this.makeShoulderWidthInfoText( parseInt( shoulderObj.width ) / 2 + 20,
+            this.makeShoulderWidthInfoText( parseInt( shoulderObj.left ) + ( shoulderObj.width / 2 ) + 10,
                                             shoulderObj.bottom + 30 );
 
             // # Length line ( shoulder )
@@ -807,9 +813,9 @@ export default {
                                              shoulderObj.right + 20, 
                                              shoulderObj.bottom );
 
-            // # Length text ( shoulder )
+            // # Length text ( shoulder )rectObj.right + 30,  ( rectObj.height / 2 ) + rectObj.top
             this.makeShoulderLengthInfoText( shoulderObj.right + 30, 
-                                           ( shoulderObj.height / 2 ) + shoulderObj.top  );            
+                                           ( shoulderObj.height / 2 ) + shoulderObj.top  );                 
 
             // # Shoulder label
             this.makeShoulderLabel(  shoulderObj.width / 2 + shoulderObj.left, shoulderObj.height / 2 + shoulderObj.top );
@@ -850,6 +856,7 @@ export default {
                 }
 
                 // # Under 72 mm no bridge allowed, skip the bridge choice step
+                this.$store.commit( "setBridgecompleted", true );
                 this.$router.push({ path: '/split/step4' });
                 return true;
             }
@@ -862,6 +869,7 @@ export default {
             }
             
             // # no bridge allowed, skip the bridge choice step
+            this.$store.commit( "setBridgecompleted", true );
             this.$router.push({ path: '/split/step4' });
         },        
 

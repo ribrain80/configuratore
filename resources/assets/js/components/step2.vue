@@ -110,7 +110,7 @@ export default {
                 this.$store.commit( "setTwocompleted", true );
                 this.$store.commit( "setDrawerTypeCategory", 0 );
             }         
-        },
+        },      
 
         /**
          * [check description]
@@ -158,6 +158,15 @@ export default {
 
         // # Log mount 
         console.log( "Step2 Mounted!" );
+
+        if( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) {
+          
+            // # Show modal alert
+            $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate( "resetadvice" ) );
+            $( '#error-modal' ).modal();
+
+            return false;
+        }        
 
     }
 }

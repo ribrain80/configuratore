@@ -10,35 +10,32 @@
 		
 		<!-- Brochure -->
 		<div class="checkbox col-lg-12">
-			<label>
-				<input type="checkbox" name="brochure" v-model="$store.state.pdf.brochure" /> Brochure
-			</label>
+			<label>Brochure</label>
+            <!-- $store.state.pdf.brochure -->
+            <button class="btn btn-danger" @click="downloadBrochure( $event )">{{ "step5.download" | translate }}</button> 
+            <hr />
 		</div>
 	
 		<!-- Summary -->
 		<div class="checkbox col-lg-12">
-			<label><input type="checkbox" name="summary" v-model="$store.state.pdf.summary" disabled="true" /> {{  "step5.summary_label" | translate }}</label>
+			<label>{{ "step5.summary_label" | translate }}</label>
+            <!-- $store.state.pdf.summary -->
+            <button class="btn btn-danger" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
+            <hr />
 		</div>
 	
 		<!-- Email -->
 		<div class="col-lg-12">
-			<label>
-				<input type="text" name="email" v-model=" $store.state.pdf.email" /> {{  "step5.email_label" | translate }}
-			</label>
-		</div>
-
-		<!-- Email send -->
-		<div class="col-lg-12">
-			<button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{  "step5.email_send" | translate }}</button>
-		</div>
-
-		<div class="col-lg-12">
-			Oppure 
+			<label style="font-weight: normal;">
+                <input type="text" name="email" v-model="$store.state.pdf.email" /> {{  "step5.email_label" | translate }}
+            </label>
+            <!-- $store.state.pdf.email -->
+            <button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
+            <hr />
 		</div>
 		
-		<!-- Download -->
+		<!-- Back -->
 		<div class="col-lg-12">	
-			<button class="btn btn-danger" id="download" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button>	
 			<router-link to="/split/step4" tag="button">{{ 'back' | translate }}</router-link>
 		</div>		
 
@@ -60,29 +57,16 @@ export default {
      */
     data: function() { 
 
-        return {
-
-        	/**
-        	 * [alert_message description]
-        	 * @type {String}
-        	 */
-	        alert_message: '',
-	    }
+        return {}
     },
 
     methods: {
 
+        downloadBrochure: function() {
+            // TODO
+        },
+
         savedrawer: function() {
-
-            if( this.$store.state.pdf.brochure === false && this.$store.state.pdf.summary == false ) {
-
-            	$( "#error-modal" ).find( '.modal-body' ).text( "è necessario scegliere almeno una delle opzioni tra Brochure e Riepilogo" );
-                $( '#error-modal' ).modal();
-
-                // # Step has errors
-                this.$store.commit( "setFivecompleted", false );
-                return false;
-            }
 
             if ( event.target.id == "email" ) {
 
@@ -124,10 +108,11 @@ export default {
             Pace.track( function() {
 
                 Axios.post( '/split/savedrawer', self.$store.getters.exported ).then( response => {
-                    self.$store.state.drawerId=response.data.id;
+                    self.$store.state.drawerId = response.data.id;
                     window.open( response.data.pdfpath, '_blank' );
+                    alert( "Operazione completata!" );
                 }, response => {
-                    self.alert_message = "impossibile completare l'operazione, si prega di riprovare più tardi";
+                    alert( "Si è verificato un errore!" );
                 });
             });
         },

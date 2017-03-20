@@ -36,7 +36,7 @@ const store = new Vuex.Store({
                 Axios.get( '/split/drawerstypes' ),
                 Axios.get( '/split/bridges' ),
                 Axios.get( '/split/supports' ),
-                Axios.get('/split/dividers')
+                Axios.get( '/split/dividers')
             ];
 
             //Resolve all promises. If any of them fail push into the router '/split/500'

@@ -2,8 +2,10 @@ export default {
     it:{
         "menu.newconf" : "Nuova conf.",
         "menu.gallery": "Gallery",
-        "back": "Indietro",     
+        "back": "Indietro", 
+        "resetadvice": "La modifica di questo valore implicherà la cancellazione dei dati inseriti negli step successivi ( supporti, ponti, divisori, colori )",    
         "step1.title": "Benvenuti nel configuratore Split",
+        "step2.resetadvice" : "La modifica della tipologia di cassetto implicherà la cancellazione dei dati inseriti negli step successivi ( supporti, ponti, divisori, colori )",
         "step2.warning":"è obbligatorio selezionare una tipologia di cassetto",
         'step2.error.tipologie':"Impossibile scaricare le tipologie di cassetto, riprovi più tardi",
         "step2.title":"Tipologia di cassetto",
@@ -47,7 +49,9 @@ export default {
     en:{
         "menu.newconf" : "New conf.",
         "menu.gallery": "Gallery",   
-        "back": "Back",     
+        "back": "Back", 
+        "resetadvice": "Change this value will reset all data inserted in the next steps ( supports, bridges, dividers, colors )",   
+        "step2.resetadvice" : "Changing drawer type will reset all data inserted in the next steps ( supports, bridges, dividers, colors )",         
         "step1.title": "Welcome to the Split configurator page",
         "step2.warning":"you must select a drawer type",
         'step2.error.tipologie':"Impossible to retrive drawer types, please come back later",
