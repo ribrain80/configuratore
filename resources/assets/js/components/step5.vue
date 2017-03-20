@@ -12,7 +12,7 @@
 		<div class="checkbox col-lg-12">
 			<label>Brochure</label>
             <!-- $store.state.pdf.brochure -->
-            <button class="btn btn-danger" @click="downloadBrochure( $event )">{{ "step5.download" | translate }}</button> 
+            <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
             <hr />
 		</div>
 	
@@ -109,8 +109,13 @@ export default {
 
                 Axios.post( '/split/savedrawer', self.$store.getters.exported ).then( response => {
                     self.$store.state.drawerId = response.data.id;
-                    window.open( response.data.pdfpath, '_blank' );
-                    alert( "Operazione completata!" );
+                    if (event.target.id!='email') {
+                        window.open( response.data.pdfpath, '_blank' );
+					} else {
+                        alert( "Email inviata!" );
+					}
+
+
                 }, response => {
                     alert( "Si è verificato un errore!" );
                 });

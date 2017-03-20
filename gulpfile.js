@@ -29,6 +29,7 @@ elixir(function(mix) {
 
     mix.copy('./resources/assets/css/pdf.css', 'public/css' );
     mix.copy('./resources/images', 'public/images');
+    mix.copy('./resources/pdf/brochure.pdf', 'public/pdf/brochure.pdf');
     mix.copy( paths.pace + 'themes/black/**', 'public/css');
     mix.copy( paths.lightgallery + 'css/lightgallery.min.css', 'public/css');
     mix.copy( paths.lightgallery + 'img/**', 'public/img');
