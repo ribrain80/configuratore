@@ -28,6 +28,7 @@ export default {
         "stepponte.orientation_description": "Vuoi inserire elementi ponte? orizzontali o verticali?",
         "stepponte.orientation_title": "Orientamento Ponti",
         "stepponte.reset": "Reset delle scelte",
+        "stepponte.bridge_support": 'Supporti Ponte',
         "horizontal": "Orizzontale",
         "vertical": "Verticale",
         "stepponte.supports_description": "A che altezza vuoi mettere i ponti?",
@@ -74,6 +75,7 @@ export default {
         "stepponte.orientation_description": "Would you like to place horizontal or vertical bridge elements?",
         "stepponte.orientation_title": "Bridge orientation",
         "stepponte.reset": "Reset Choice",
+        "stepponte.bridge_support": 'Bridge supports',
         "horizontal": "Horizontal",
         "vertical": "Vertical",
         "stepponte.supports_description": "How high do you want to place the bridge?",
@@ -81,13 +83,13 @@ export default {
         "stepponte.bridge_description": "Choose bridge height",
         "stepponte.bridge_title": "Bridge types",
         "step4.title": "Dividers choice",
-        "step5.title": "Download configurazione",
+        "step5.title": "Download configuration",
         "step5.summary_label": "Summary",
         "step5.email_label": "Email Address",
         "step5.email_send": "Send email",
         "step5.download": "Download",
         "500.title": "Error",
-        "500.description": "Fatal error occurred, pleasy try again later",
+        "500.description": "Fatal error occurred, please try again later",
     }
 };
 
