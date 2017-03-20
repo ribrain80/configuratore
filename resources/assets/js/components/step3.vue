@@ -13,7 +13,6 @@
             <div class="alert alert-warning alert-dismissible fade in" >
                 <!--<button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> --><strong>{{ 'attenzione' | translate }}</strong> 
                 {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: config.max_suitable_width_4_Hbridge } ) }} 
-
             </div>
         </div>
         
@@ -181,7 +180,10 @@ export default {
           hor_text_shoulder: "",
           vert_text_shoulder: {},
           vert_line_shoulder: {},
-          shoulder_text: {}
+          shoulder_text: {},
+
+          // # Advice
+          advice_accepted: false,
 
         }
     },
@@ -438,11 +440,14 @@ export default {
          */
         resetAdvice: function() {
 
-              if( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) {
+              if( !this.advice_accepted && ( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) ) {
                   
                   // # Show modal alert
                   $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate("resetadvice") );
                   $( '#error-modal' ).modal();
+
+                  this.advice_accepted = true;
+                  
                   return false;
               }
 
