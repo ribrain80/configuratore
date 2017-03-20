@@ -56,7 +56,7 @@
                     </div> 
 
                     <!-- Supports title -->
-                    <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
+                    <h4 class="">{{ 'stepponte.bridge_support' | translate }}</h4>
                     
                     <!-- Support choice -->
                     <div class="row" v-for="bridge_support in bridge_supports">
