@@ -96,6 +96,8 @@
 </template>
 
 <script>
+
+    import { mapGetters } from 'vuex'
 /**
  * Vue object managing drawer dimensions inputs
  * Uses Two.js for graphic representation of the object ( drawer )
@@ -139,7 +141,7 @@ export default {
               shoulder_linewidth: 7,
               shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, 
+              shoulder_height_lower_limit: this.lineabox_shoulder_height_LOW,
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
@@ -189,6 +191,13 @@ export default {
     },
 
     methods: {
+
+        /**
+         * Imported getters from store
+         */
+        ...mapGetters({
+            lineabox_shoulder_height_LOW:'actual_lineabox_shoulder_height_LOW' //Rename getter
+        }),
 
         /**
          * Inits the Two object container and every shape needed in its initial state

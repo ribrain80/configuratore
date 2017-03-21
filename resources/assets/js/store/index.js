@@ -73,6 +73,10 @@ const store = new Vuex.Store({
             //return am object with a subset of the state object properties using the pick function from lodash libray
             return _.pick(state,needed_props);
 
+        },
+
+        actual_lineabox_shoulder_height_LOW: function (state) {
+            return state.dimensions.actual_lineabox_shoulder_height_LOW;
         }
     },
 

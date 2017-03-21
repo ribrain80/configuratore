@@ -8,6 +8,7 @@
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 
+
 //App Specific css
 @mixin inline-block() {
   display: -moz-inline-stack;
@@ -112,26 +113,6 @@ body {
 
 
 
-// # affix
-
-/*
-@media (min-width: 1200px) {
-  .affix {
-    width: 120px;
-  }         
-}
-
-.affix-bottom {
-  position: absolute;
-  width: 80px;
-}
-
-@media (min-width: 1200px) {
-  .affix-bottom {
-    width: 120px;
-  }
-}
-*/
 
 #elementmenu {
   margin-top: 30px;
@@ -182,3 +163,42 @@ code {
 p {
   margin-top: 8px;
 }
+
+
+/*
+html, body, .container-fluid, .wrapper {
+  height: 100%;
+}
+
+.orange {
+  background-color: #f04f1a ;
+}
+
+
+.sidebar {
+  background-color: #eee;
+}
+
+.sidebar-elem {
+  height: 100px;
+}
+
+.nuovaconf {
+  background-color: #e7e7e7 ;
+
+}
+
+.logo {
+
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+  }
+}*/
