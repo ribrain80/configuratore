@@ -72,7 +72,6 @@
         data: function() {
 
             return {
-                test:true
             }
         },
 
