@@ -107,6 +107,10 @@
 </template>
 
 <script>
+
+// # Import map getters
+import { mapGetters } from 'vuex'
+
 /**
  * Vue object managing bridge / bridge support choice
  * @type {Vue}
@@ -116,18 +120,25 @@ export default {
     /**
      * Object data
      * @type {Object}
-     */
+     */  
     data: function() { 
-
-      return {
-
-            hasError: false,
-            
-            choice: true,
-        }
+        return {}
     },
 
+    /**
+     * Object methods
+     * @type {Object}
+     */
     methods: {
+
+        /**
+         * Import getters from store
+         */
+        ...mapGetters([
+            "actual_lineabox_shoulder_height_LOW", 
+            "actual_lineabox_shoulder_height_MID",
+            "actual_lineabox_shoulder_height_HIGH" 
+        ]),
 
         /**
          * [setOrientation description]
@@ -135,11 +146,10 @@ export default {
          */
         setOrientation: function (val) {
 
-            if( val == this.$store.state.bridge_orientation ) {
-                this.$store.commit( "setBridgeOrientation", "" );
-            } else {
-                this.$store.commit( "setBridgeOrientation", val );
-            }
+            // # on click: if orientation is the same toggle
+            val == this.$store.state.bridge_orientation ? 
+                   this.$store.commit( "setBridgeOrientation", "" ) : 
+                   this.$store.commit( "setBridgeOrientation", val );
 
             // # Commit mutation and clear step data
             this.$store.commit( "clearBridgeData" );
@@ -291,6 +301,7 @@ export default {
                 // # Reset bridge id
                 this.$store.commit( "setBridgeID", 0 );
                 this.$store.commit( "clearBridges" );
+
                 return;
             }
 
@@ -300,6 +311,7 @@ export default {
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
 
+            // # Switch drawer types
             switch( this.$store.state.drawertype ) {
 
                 case 4:
@@ -364,6 +376,7 @@ export default {
                 this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } );
                 this.$store.commit( "setBridgeSupportID", 0 );
                 this.$store.commit( "clearBridgeSupports" );
+
                 return;
             } 
 
@@ -470,56 +483,71 @@ export default {
 
                 $( '#error-modal' ).modal();
                 
-                // # Now we have a bridge selected
-                this.$store.state.has_bridge = false;
+                // # No bridge selected
+                this.$store.commit( "hasBridge", false );
 
                 return false;
             } 
 
-            if( this.$store.state.bridges_selected.length ) {
-                // # Now we have a bridge selected
-                this.$store.state.has_bridge = true;
-            } else {
-                // # Now we have a bridge selected
-                this.$store.state.has_bridge = false;
-            }
-            
-             // # Step Bridge ok
+            // # Check if user has selected a bridge and commit the related mutation
+            this.$store.commit( "hasBridge", this.$store.state.bridges_selected.length > 0 );
+
+            // # Step Bridge ok
             this.$store.commit( "setBridgecompleted", true );
 
             // # take user to the next step
-            this.$router.push({ path: '/split/step4' });
+            this.$router.push( { path: '/split/step4' } );
+
             return true;
         }
     },
 
-    beforeRouteEnter: (to, from, next) => {
+    /**
+     * Route guard: disallow route entering if previuos data has not been submitted
+     * 
+     * @param  {string}   to   [description]
+     * @param  {string}   from [description]
+     * @param  {string}   next [description]
+     * @return {void} 
+     */
+    beforeRouteEnter: ( to, from, next ) => {
 
         next( vm => {
 
-
+            // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
                  return;
             }
 
+            // # is Step 2 completed ?
             if( !vm.$store.state.twocompleted ) {
                  vm.$router.push({ path: '/split/step2' });
                  return;
             }
 
+            // # is Step 3 completed ?
             if( !vm.$store.state.threecompleted ) {
                  vm.$router.push({ path: '/split/step3' });
+                 return;
+            }
+
+            // # if shoulder height it's not enough go back
+            if( !vm.$store.state.is_suitable_width_4hbridge ) {
+                 vm.$router.go( -1 );
                  return;
             }
 
         })
     },     
 
+    /**
+     * Window onload eq 4 Vue
+     * @return {void}
+     */    
     mounted() {
 
         console.log( "Step ponte Mounted!" );
-
     }
 }
 </script>

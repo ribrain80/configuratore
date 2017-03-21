@@ -30,28 +30,35 @@ const store = new Vuex.Store({
          * @param commit
          * @param context
          */
-        initApp: function ({ commit },context) {
+        initApp: function ( { commit },context) {
 
-            let promises = [
-                Axios.get( '/split/drawerstypes' ),
-                Axios.get( '/split/bridges' ),
-                Axios.get( '/split/supports' ),
-                Axios.get( '/split/dividers')
-            ];
+            // # Let Pace track loading
+            Pace.track( function() {
+                
+                let promises = [
+                    Axios.get( '/split/drawerstypes' ),
+                    Axios.get( '/split/bridges' ),
+                    Axios.get( '/split/supports' ),
+                    Axios.get( '/split/dividers')
+                ];
 
-            //Resolve all promises. If any of them fail push into the router '/split/500'
-            Promise.all(promises).then(
-                ([typesResponse,responseBridges,responseSupports,dividersResponse]) => {
-                    commit('setDrawersTypes',typesResponse.data);
-                    commit('setBridgesTypes',responseBridges.data);
-                    commit('setSupportsTypes',responseSupports.data);
-                    commit('setDividerTypes',dividersResponse.data);
-                }, //success
-                ()=> {
-                    console.log("QUA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    context.push({ path: '/split/500' });
-                }  //fail
-            );
+                // # Resolve all promises. If any of them fail push into the router '/split/500'
+                Promise.all( promises ).then(
+
+                    ( [typesResponse,responseBridges,responseSupports,dividersResponse] ) => {
+
+                        // # Success
+                        commit( 'setDrawersTypes', typesResponse.data );
+                        commit( 'setBridgesTypes', responseBridges.data );
+                        commit( 'setSupportsTypes',responseSupports.data );
+                        commit( 'setDividerTypes', dividersResponse.data );
+                    }, 
+                    () => { 
+                        // # Fail
+                        context.push( { path: '/split/500' } );
+                    }  
+                );
+            });
         }
     },
     
@@ -75,14 +82,29 @@ const store = new Vuex.Store({
 
         },
 
+        /**
+         * [actual_lineabox_shoulder_height_LOW description]
+         * @param  {[type]} state [description]
+         * @return {[type]}       [description]
+         */
         actual_lineabox_shoulder_height_LOW: function (state) {
             return state.dimensions.actual_lineabox_shoulder_height_LOW;
         },
 
+        /**
+         * [actual_lineabox_shoulder_height_MID description]
+         * @param  {[type]} state [description]
+         * @return {[type]}       [description]
+         */
         actual_lineabox_shoulder_height_MID: function( state ) {
             return state.dimensions.actual_lineabox_shoulder_height_MID;
         },
 
+        /**
+         * [actual_lineabox_shoulder_height_HIGH description]
+         * @param  {[type]} state [description]
+         * @return {[type]}       [description]
+         */
         actual_lineabox_shoulder_height_HIGH: function( state ) {
             return state.dimensions.actual_lineabox_shoulder_height_HIGH;
         }

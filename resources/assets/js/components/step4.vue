@@ -112,48 +112,80 @@ export default {
      * @type {Object}
      */
     data: function() { 
-
-        return {
-
-        }
+        return {}
     },
 
     methods: {
 
+        /**
+         * [pushDivider description]
+         * @param  {[type]} divider [description]
+         * @return {[type]}         [description]
+         */
         pushDivider: function ( divider ) {
             this.$store.commit( "manageDivider", divider );
         },
 
+        /**
+         * [isSelected description]
+         * @param  {[type]}  id [description]
+         * @return {Boolean}    [description]
+         */
         isSelected: function( id ) {
             return $.inArray( id, this.$store.state.dividers_selected ) != -1;
         },
 
-        genHref:function ( val ) {
+        /**
+         * [genHref description]
+         * @param  {[type]} val [description]
+         * @return {[type]}     [description]
+         */
+        genHref: function ( val ) {
             return "#elem" + val;
         },
 
+        /**
+         * [getDividerByCat description]
+         * @param  {[type]} val [description]
+         * @return {[type]}     [description]
+         */
         getDividerByCat: function( val ) {
             return this.$store.state.dividerTypes.dividers[ val ];
         },
 
+        /**
+         * [addBridge description]
+         */
         addBridge: function() {
             this.$store.commit( "manageBridge", this.$store.state.bridges_selected[ 0 ] );
         },
 
+        /**
+         * [removeBridge description]
+         * @return {[type]} [description]
+         */
         removeBridge: function() {
+
             if( this.$store.state.bridges_selected.length > 1 ) {
                 this.$store.state.bridges_selected.pop();
             } else {
                 this.clearBridges();
-            }
-            
+            }  
         },
 
+        /**
+         * [clearBridges description]
+         * @return {[type]} [description]
+         */
         clearBridges: function() {
             console.log( this.$store.state.has_bridge );
             this.$store.commit( "clearAllBridgeData" );
         },
 
+        /**
+         * [check description]
+         * @return {[type]} [description]
+         */
         check: function() {
 
             // # Check
@@ -177,20 +209,31 @@ export default {
         }, 
     },
 
+    /**
+     * Route guard: disallow route entering if previuos data has not been submitted
+     * 
+     * @param  {string}   to   [description]
+     * @param  {string}   from [description]
+     * @param  {string}   next [description]
+     * @return {void} 
+     */
     beforeRouteEnter: (to, from, next) => {
         
         next( vm => {
 
+            // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
                  return;
             }
 
+            // # is Step 2 completed ?
             if( !vm.$store.state.twocompleted ) {
                  vm.$router.push({ path: '/split/step2' });
                  return;
             }
 
+            // # is Step 3 completed ?
             if( !vm.$store.state.threecompleted ) {
                  vm.$router.push({ path: '/split/step3' });
                  return;

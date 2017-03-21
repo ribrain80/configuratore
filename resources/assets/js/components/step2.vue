@@ -30,7 +30,7 @@
                 
                 <!-- Category panel -->
                 <div class="panel panel-default">
-                    <div class="panel-body" @click="setDrawerTypeCategory_( 1 )">{{ category | translate}}</div>
+                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )">{{ category | translate}}</div>
                 </div>
                 
                 <!-- Subcategories -->
@@ -93,7 +93,7 @@ export default {
          * @param {int} cat 
          * @private
          */
-        setDrawerTypeCategory_: function( cat ) {
+        setDrawerTypeCategory: function( cat ) {
             this.$store.commit( "setDrawerTypeCategory", cat );
         },
 
@@ -107,18 +107,22 @@ export default {
             this.$store.commit( "setDrawerType", type );
             this.$store.commit( "isLineaBox", type != 4 ); 
 
-            // # Clean up next step already insert data, eventually
-            this.$store.commit( "clearBridgeData" ); 
-            this.$store.commit( "setBridgeOrientation", "" ); 
+            // # Clean up next step already inserted data, eventually
+            this.$store.commit( "clearAllBridgeData" ); 
+
+            // # Step2 is completed, everything's ok
+            this.$store.commit( "setTwocompleted", true );
 
             // # Set a default 4 lineabox select
-            if( type != 4 ) {
+            // # Default is the lowest value
+            if( 4 != type ) {
                 this.$store.commit( "setShoulderHeight", this.actual_lineabox_shoulder_height_LOW() );
-            }  else {
-                // # Step2 is completed, everything's ok
-                this.$store.commit( "setTwocompleted", true );
-                this.$store.commit( "setDrawerTypeCategory", 0 );
-            }         
+                return;
+            } 
+
+            // # Custom drawer - category = 0
+            this.$store.commit( "setDrawerTypeCategory", 0 );
+                    
         },      
 
         /**
@@ -140,7 +144,7 @@ export default {
                 return true;
             }
 
-            // # Step1 has errors
+            // # Step2 has errors
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
@@ -164,7 +168,7 @@ export default {
         
         next( vm => {
 
-            // # Step 1 is completed ?
+            // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push( { path: '/split/step1' } );
             }
@@ -187,7 +191,7 @@ export default {
             $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate( "resetadvice" ) );
             $( '#error-modal' ).modal();
 
-            // # And back
+            // # And return
             return false;
         }        
 

@@ -143,7 +143,7 @@ export default {
               shoulder_linewidth: 7,
               shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: this.actual_lineabox_shoulder_height_LOW(),
+              shoulder_height_lower_limit: 45.4,
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
@@ -159,7 +159,10 @@ export default {
               base_scale_factor: 10,
 
               // # Pixel Multiplier
-              ratio: 3
+              ratio: 3,
+
+              // # Shapes top margin
+              standard_top_margin: 100,
           },
 
           // # Out of range flags
@@ -195,12 +198,12 @@ export default {
     methods: {
 
         /**
-         * Imported getters from store
+         * Import getters from store
          */
         ...mapGetters([
-          "actual_lineabox_shoulder_height_LOW", 
-          "actual_lineabox_shoulder_height_MID",
-          "actual_lineabox_shoulder_height_HIGH" 
+            "actual_lineabox_shoulder_height_LOW", 
+            "actual_lineabox_shoulder_height_MID",
+            "actual_lineabox_shoulder_height_HIGH" 
         ]),
 
         /**
@@ -222,7 +225,7 @@ export default {
 
             // # Drawer
             this.makeRect( this.mm2Pixel( this.$store.state.dimensions.width ) / 2, 
-                           100, 
+                           this.config.standard_top_margin, 
                            this.mm2Pixel( this.$store.state.dimensions.width ), 
                            this.mm2Pixel( this.$store.state.dimensions.length ), 
                            20, 
@@ -298,8 +301,7 @@ export default {
         mm2Pixel: function ( mm ) {
             
             try {
-                //return Math.floor(  ( mm / this.config.base_scale_factor ) * this.config.ratio );
-                return Math.floor(  mm  * this.config.ratio );
+                return Math.floor( mm  * this.config.ratio );
             } catch ( e ) {
                 // # Use a suitable default value
                 return 250;
@@ -341,16 +343,18 @@ export default {
             if( this.$store.state.dimensions.width > this.config.max_suitable_width_4_Hbridge ) {
                 
                 // # Show modal alert
-                $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate("step3.modal.too_large") );
+                $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step3.modal.too_large" ) );
                 $( '#error-modal' ).modal();
                 
                 // # Horizontal bridge will NOT be available
                 this.$store.commit( "isSuitableForHBridge", false );
+
                 return false;
             }
 
             // # Horizontal bridge will be available
             this.$store.commit( "isSuitableForHBridge", true );
+
             return true;
         },
 
@@ -364,8 +368,8 @@ export default {
             // # If is a custom drawer
             if( this.$store.state.drawertype == 4 ) {
 
-                // # Under 70 mm bridge is not allowed
-                if( this.$store.state.dimensions.shoulder_height < 72 ) {
+                // # Under 72 mm bridge is not allowed
+                if( this.$store.state.dimensions.shoulder_height < this.actual_lineabox_shoulder_height_MID() ) {
 
                     $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                     $( '#error-modal' ).modal();
@@ -381,8 +385,8 @@ export default {
             }
 
             // # LineaBox drawers
-            // # Under 71.5 mm bridge is not allowed
-            if( this.$store.state.dimensions.shoulder_height < 77 ) {
+            // # Under 45.4 mm bridge is not allowed
+            if( this.$store.state.dimensions.shoulder_height < this.actual_lineabox_shoulder_height_LOW() ) {
                 $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                 $( '#error-modal' ).modal();
                 
@@ -448,22 +452,25 @@ export default {
         }, 
 
         /**
-         * [resetAdvice description]
-         * @return {[type]} [description]
+         * Advice user that changing data will reset next step data ( if any )
+         * @return {Booelan}
          */
         resetAdvice: function() {
 
+              // # Only if advice is not already been viewed
               if( !this.advice_accepted && ( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) ) {
                   
                   // # Show modal alert
                   $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate("resetadvice") );
                   $( '#error-modal' ).modal();
 
+                  // # no more till this step will be reloaded
                   this.advice_accepted = true;
-                  
+
                   return false;
               }
 
+              return true;
         },
 
         /**
@@ -487,16 +494,19 @@ export default {
          */
         checkChoice: function() {
 
+            // # NaN management :: width
             if( isNaN( this.$store.state.dimensions.width ) ) {
-              this.$store.commit( "setWidth", 300 );
+              this.$store.commit( "setWidth", 800 );
               return false;
             }
 
+            // # NaN management :: length
             if( isNaN( this.$store.state.dimensions.length ) ) {
-              this.$store.commit( "setLength", 300 );
+              this.$store.commit( "setLength", 600 );
               return false;
             }
 
+            // # NaN management :: shoulder_height
             if( isNaN( this.$store.state.dimensions.shoulder_height ) ) {
               this.$store.commit( "setShoulderHeight", 100 );
               return false;
@@ -676,7 +686,10 @@ export default {
         makeRectWidthInfoText: function( x, y ) {
            
             // # Draw the text
-            this.hor_text_rect = this.two.makeText( this.$store.state.dimensions.width + " " + this.config.measure_label, x, y, this.config.font_weight );
+            this.hor_text_rect = this.two.makeText( this.$store.state.dimensions.width + " " + this.config.measure_label, 
+                                                    x, 
+                                                    y, 
+                                                    this.config.font_weight );
 
             // # Text settings
             this.hor_text_rect.size = this.config.font_size;
@@ -710,7 +723,10 @@ export default {
         makeRectLengthInfoText: function( x, y ) {
             
             // # Draw the text
-            this.vert_text_rect = this.two.makeText( this.$store.state.dimensions.length + " " + this.config.measure_label, x, y, this.config.font_weight );
+            this.vert_text_rect = this.two.makeText(  this.$store.state.dimensions.length + " " + this.config.measure_label, 
+                                                      x, 
+                                                      y, 
+                                                      this.config.font_weight );
 
             // # Text settings
             this.vert_text_rect.size = this.config.font_size;
@@ -730,7 +746,10 @@ export default {
         makeShoulder: function( x, y, width, length ) {
 
             // # Draw the shape ( rectangle )
-            this.shoulder = this.two.makeRectangle( x, y, this.mm2Pixel( width ), this.mm2Pixel( length ) );
+            this.shoulder = this.two.makeRectangle( x, 
+                                                    y, 
+                                                    this.mm2Pixel( width ), 
+                                                    this.mm2Pixel( length ) );
 
             // # Shape settings
             this.shoulder.linewidth = this.config.shoulder_linewidth;
@@ -746,7 +765,10 @@ export default {
         makeDrawerLabel: function( x, y ) {
 
             // # Draw the text
-            this.drawer_text = this.two.makeText( Vue.i18n.translate( this.config.drawer_text ), x, y, this.config.font_weight );
+            this.drawer_text = this.two.makeText( Vue.i18n.translate( this.config.drawer_text ), 
+                                                  x, 
+                                                  y, 
+                                                  this.config.font_weight );
 
             // # Text settings
             this.drawer_text.size = this.config.font_size;
@@ -760,7 +782,7 @@ export default {
          */
         updateDrawer: function() {
 
-            // # dimensions check
+            // # Dimensions check
             if( ! this.checkChoice() ) {
                 return false;
             }
@@ -773,7 +795,7 @@ export default {
 
             // # Drawer
             this.makeRect( this.mm2Pixel( this.$store.state.dimensions.width ) / 2, 
-                           100, 
+                           this.config.standard_top_margin, 
                            this.mm2Pixel( this.$store.state.dimensions.width ), 
                            this.mm2Pixel( this.$store.state.dimensions.length ), 20, 
                            50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2 );
@@ -803,6 +825,7 @@ export default {
          */
         updateShoulder: function() {
 
+            // # Get drawer positions and dimensions
             var rectObj = this.rect.getBoundingClientRect();
 
             // # Shoulder redraw                
@@ -865,55 +888,64 @@ export default {
 
             // # Drawer type check
             // # If is a custom drawer
-            if( this.$store.state.drawertype == 4 ) {
+            if( 4 == this.$store.state.drawertype ) {
 
                 // # Over 72 mm bridge is allowed, go to the bridge step
-                if( this.$store.state.dimensions.shoulder_height >= 72 ) {
-                    this.$router.push({ path: '/split/stepponte' });
+                if( this.$store.state.dimensions.shoulder_height >= this.actual_lineabox_shoulder_height_MID() ) {
+
+                    // # bridge is allowed, go to the bridge step
+                    this.$store.commit( "isSuitableHeightForBridge", true );
+                    this.$router.push( { path: '/split/stepponte' } );
                     return true;
                 }
 
                 // # Under 72 mm no bridge allowed, skip the bridge choice step
                 this.$store.commit( "setBridgecompleted", true );
-                this.$router.push({ path: '/split/step4' });
+                this.$store.commit( "isSuitableHeightForBridge", false );
+                this.$router.push( { path: '/split/step4' } );
                 return true;
             }
 
             // # Lineabox choice
-            if( this.$store.state.dimensions.shoulder_height > 45.4 ) { // 45.4 means choice: 77
+            if( this.$store.state.dimensions.shoulder_height > this.actual_lineabox_shoulder_height_LOW() ) { // 45.4 means choice: 77
+                
                 // # bridge is allowed, go to the bridge step
-                this.$router.push({ path: '/split/stepponte' });
+                this.$store.commit( "isSuitableHeightForBridge", true );
+                this.$router.push( { path: '/split/stepponte' } );
                 return false;
             }
             
-            // # no bridge allowed, skip the bridge choice step
+            // # No bridge allowed, skip the bridge choice step
             this.$store.commit( "setBridgecompleted", true );
-            this.$router.push({ path: '/split/step4' });
+            this.$store.commit( "isSuitableHeightForBridge", false );
+            this.$router.push( { path: '/split/step4' } );
         },        
-
     },
 
-    beforeRouteEnter: (to, from, next) => {
+    /**
+     * Route guard: disallow route entering if previuos data has not been submitted
+     * 
+     * @param  {string}   to   [description]
+     * @param  {string}   from [description]
+     * @param  {string}   next [description]
+     * @return {void} 
+     */
+    beforeRouteEnter: ( to, from, next ) => {
+ 
         next( vm => {
 
+            // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
                  return;
             }
 
+            // # is Step 2 completed ?
             if( !vm.$store.state.twocompleted ) {
                  vm.$router.push({ path: '/split/step2' });
                  return;
             }
         })
-    },  
-
-    watch: {
-
-      shoulder_height: function() {
-          this.$store.commit( "clearAllBridgeData", val );
-      }
-
     },  
 
     /**
@@ -930,5 +962,4 @@ export default {
     }
 
 }
-
 </script>
