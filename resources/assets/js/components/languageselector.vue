@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">{{ $store.state.language }} <span class="caret"></span></a>
+               aria-expanded="false">{{ getShort() }} <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
                 <li v-for="language in languages">
@@ -29,19 +29,26 @@ export default {
 
         return {
             languages:[
-                {label:'Italiano ',code:'it'},
-                {label:'English ',code:'en'},
-                {label:'Español ',code:'es'},
-                {label:'Français ',code:'fr'},
-                {label:'Português ',code:'pt'},
-                {label:'Deutsch ',code:'de'},
-                {label:'中国 ',code:'zh'},
+                {label:'Italiano ',code:'it',short:'Ita'},
+                {label:'English ',code:'en',short:'Eng'},
+                {label:'Español ',code:'es',short:'Epa'},
+                {label:'Français ',code:'fr',short:'Fra'},
+                {label:'Português ',code:'pt',short:'Por'},
+                {label:'Deutsch ',code:'de',short:'Deu'},
+                {label:'中国',code:'zh',short:'中国'},
             ]
 
         }
     },
 
     methods: {
+        /**
+         *  Return short language label
+         */
+        getShort: function () {
+            let langObj = this.languages.filter((lang)=> {return lang.code==this.$store.state.language;});
+            return langObj[0].short;
+        },
         /**
          * Change Gui Language
          * After language choice set the cookie for persistence

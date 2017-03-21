@@ -91,6 +91,8 @@ const store = new Vuex.Store({
 
     state: {
 
+        currentComponentHeader:'asd',
+
         /**
          * Types of drawers
          */

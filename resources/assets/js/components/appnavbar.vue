@@ -13,7 +13,7 @@
         </div>
         <div class="row component-header">
             <div class="col-xs-1"></div>
-            <div class="col-xs-11">QUI PRENDO IL VALORE DALLO STORE!!!</div>
+            <div class="col-xs-11">{{this.$store.state.currentComponentHeader | translate}}</div>
         </div>
     </div>
 </template>

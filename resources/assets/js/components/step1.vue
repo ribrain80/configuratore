@@ -63,6 +63,7 @@ export default {
      */
     mounted () {
 
+        this.$store.commit('setComponentHeader','informazioni');
         // # Log mount 
         console.log( "Welcome/info page mounted" );
 

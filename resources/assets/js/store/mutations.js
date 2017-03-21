@@ -471,6 +471,11 @@ const  mutations = {
 
     setDividerTypes: function (state,val) {
         state.dividerTypes = val;
+    },
+
+    setComponentHeader : function (state,payload)  {
+        console.log("EXECUTED");
+        state.currentComponentHeader=payload;
     }
 
 };
