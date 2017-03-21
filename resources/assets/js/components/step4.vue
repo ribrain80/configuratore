@@ -105,17 +105,14 @@ export default {
             this.canvas = new fabric.Canvas('canvas');
             this.canvasWidth = document.getElementById('canvas').width;
             this.canvasHeight = document.getElementById('canvas').height;
-            var counter = 0;
-            var rectLeft = 0;
             this.canvas.selection = true;
 
 
             this.canvas.on(['object:moving'],  (options) => {
-                console.log(options);
                 this.handleMoving(options);
             });
-            this.canvas.on(['object:added'], function (options) {
-                //console.log(options);
+            this.canvas.on(['object:added'], (options) => {
+                this.handleMoving(options);
             });  
 
             this.images = document.querySelectorAll('.media-left img');
@@ -126,10 +123,6 @@ export default {
                 img.addEventListener('dragstart', self.handleDragStart, false);
                 img.addEventListener('dragend', self.handleDragEnd, false);
             });
-
-
-
-
 
             // Bind the event listeners for the canvas
             var canvasContainer = document.getElementById('canvas-container');
@@ -142,22 +135,13 @@ export default {
         handleMoving: function (options) {
             options.target.setCoords();
 
-            // Don't allow objects off the canvas
-            if(options.target.getLeft() < this.snap) {
-                options.target.setLeft(0);
-            }
+            // Lock obj inside the canvas
+            this._lockToContainer(options);
 
-            if(options.target.getTop() < this.snap) {
-                options.target.setTop(0);
-            }
+            this._preventCollision(options);
+        },
 
-            if((options.target.getWidth() + options.target.getLeft()) > (this.canvasWidth - this.snap)) {
-                options.target.setLeft(this.canvasWidth - options.target.getWidth());
-            }
-
-            if((options.target.getHeight() + options.target.getTop()) > (this.canvasHeight - this.snap)) {
-                options.target.setTop(this.canvasHeight - options.target.getHeight());
-            }
+        _preventCollision: function (options) {
 
             // Loop through objects
             this.canvas.forEachObject((obj) => {
@@ -241,8 +225,9 @@ export default {
             options.target.setCoords();
 
             // If objects still overlap
+            // Todo: fix when too much full for find a new position
 
-            var outerAreaLeft = null,
+            let outerAreaLeft = null,
                 outerAreaTop = null,
                 outerAreaRight = null,
                 outerAreaBottom = null;
@@ -318,6 +303,26 @@ export default {
                     }
                 }
             });
+            options.target.setCoords();
+        },
+
+        _lockToContainer: function (options) {
+            // Don't allow objects off the canvas
+            if(options.target.getLeft() < this.snap) {
+                options.target.setLeft(0);
+            }
+
+            if(options.target.getTop() < this.snap) {
+                options.target.setTop(0);
+            }
+
+            if((options.target.getWidth() + options.target.getLeft()) > (this.canvasWidth - this.snap)) {
+                options.target.setLeft(this.canvasWidth - options.target.getWidth());
+            }
+
+            if((options.target.getHeight() + options.target.getTop()) > (this.canvasHeight - this.snap)) {
+                options.target.setTop(this.canvasHeight - options.target.getHeight());
+            }
         },
 
         handleDragStart: function( e ) {
