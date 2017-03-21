@@ -163,6 +163,24 @@ const store = new Vuex.Store({
              * @type {Number}
              */
             delta_length: 0,
+
+            /**
+             * [actual_lineabox_shoulder_height description]
+             * @type {Number}
+             */
+            actual_lineabox_shoulder_height_LOW: 45.4,
+
+            /**
+             * [actual_lineabox_shoulder_height_MID description]
+             * @type {Number}
+             */
+            actual_lineabox_shoulder_height_MID: 72,
+
+            /**
+             * [actual_lineabox_shoulder_height_HIGH description]
+             * @type {Number}
+             */
+            actual_lineabox_shoulder_height_HIGH: 148,
         },
 
         /**

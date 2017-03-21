@@ -139,13 +139,13 @@ export default {
               shoulder_linewidth: 7,
               shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: 45.4, 
+              shoulder_height_lower_limit: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, 
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { text: "77 - 45.4 ", value: 45.4, selected: true },
-                  { text: "104 - 72 " , value: 72, selected: false },
-                  { text: "180 - 148 " , value: 148, selected: false }
+                  { text: "77 - 45.4 ", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
+                  { text: "104 - 72 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
+                  { text: "180 - 148 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
               ],
 
               // # Bridge related limits
