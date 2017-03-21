@@ -135,7 +135,7 @@
 
                 </div>
                 <div class="col-sm-10 col-md-11" id="maincontent">
-                    <router-view></router-view>
+                    @yield( "content" )
                 </div>
             </div>
         </div>

@@ -35,8 +35,3 @@ window.VueCookie = require('vue-cookie');
  * Inject Vue-cookie plugin in Vue
  */
 Vue.use( VueCookie );
-
-/**
- * Load Fabric library. For step4 (2D and Drag&Drop)
- */
-import {fabric} from 'fabric'

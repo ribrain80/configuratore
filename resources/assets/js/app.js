@@ -16,6 +16,7 @@ require('./bootstrap');
 import Vue        from 'vue'
 import router     from './router'
 import store      from './store'
+import {fabric}   from 'fabric'
 
 // # Load others components
 const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );

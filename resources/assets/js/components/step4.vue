@@ -9,32 +9,8 @@
         </div>
         
         <!-- Canvas container -->
-        <div class="col-lg-6 dragdrop-area">
-
-            <div class="row">
-                <div class="col-lg-12">2d Drag & Drop</div>
-            </div>
-            
-            <div class="row">
-
-                <div class="col-lg-12" v-show="$store.state.has_bridge">
-                MM: {{ $store.state.has_bridge }}<br />
-                    Ci sono {{ $store.state.bridges_selected.length }} ponti<br />
-                    L'orientamento del ponte è: {{ $store.state.bridge_orientation }}<br />
-                    La larghezza reale disponibile è {{ parseFloat( $store.state.dimensions.width ) + parseFloat( $store.state.dimensions.delta_width ) }}<br />
-                    La lunghezza reale disponibile è {{ parseFloat( $store.state.dimensions.length ) +  parseFloat( $store.state.dimensions.delta_length ) }}<br />
-                    <button @click="addBridge()">Aggiungi un altro ponte ( stesso orientamento )</button>
-                    <button @click="removeBridge()">Rimuovi un ponte</button>
-                    <button @click="clearBridges()">Rimuovi tutti i ponti ( ! )</button>
-                </div>
-
-                <div class="col-lg-12" v-show="!$store.state.has_bridge">
-                    Non ci sono ponti
-                    La larghezza reale disponibile è {{ parseFloat( $store.state.dimensions.width ) +  parseFloat( $store.state.dimensions.delta_width ) }}<br />
-                    La lunghezza reale disponibile è {{ parseFloat( $store.state.dimensions.length ) +  parseFloat( $store.state.dimensions.delta_length ) }}                
-                </div>
-            </div>
-
+        <div class="col-lg-6 dragdrop-area" id="canvas-container">
+            <canvas id="canvas" width="400" height="400" style="border:1px solid #ccc"></canvas>
         </div>
 
         <!-- Canvas container -->
@@ -60,7 +36,7 @@
                             <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
                                 <div class="media" style="width: 100%">
                                     <div class="media-left" style="width: 20%">
-                                            <img class="media-object img-thumbnail" :src="divider.image" style="height:100px ">
+                                            <img draggable="true" class="media-object img-thumbnail" :src="divider.image" style="height:100px ">
                                     </div>
                                     <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 80%">
                                         <h4 class="media-heading">{{divider.description}}</h4>
@@ -112,10 +88,139 @@ export default {
      * @type {Object}
      */
     data: function() { 
-        return {}
+        return {
+            canvas: {},
+            images: []
+        }
     },
 
     methods: {
+
+        initCanvas: function() {
+
+            this.canvas = new fabric.Canvas('canvas');
+            var canvasWidth = document.getElementById('canvas').width;
+            var canvasHeight = document.getElementById('canvas').height;
+            var counter = 0;
+            var rectLeft = 0;
+            var snap = 20; //Pixels to snap
+            this.canvas.selection = true;  
+
+
+            this.canvas.on(['object:moving'], function (options) {
+                console.log(options);
+               
+            });
+            this.canvas.on(['object:added'], function (options) {
+                console.log(options);
+            });  
+
+            this.images = document.querySelectorAll('.media-left img');
+
+            var self = this;
+            [].forEach.call( self.images, function (img) {
+                img.addEventListener('dragstart', self.handleDragStart, false);
+                img.addEventListener('dragend', self.handleDragEnd, false);
+            });
+
+            // Bind the event listeners for the canvas
+            var canvasContainer = document.getElementById('canvas-container');
+            canvasContainer.addEventListener('dragenter', self.handleDragEnter, false);
+            canvasContainer.addEventListener('dragover', self.handleDragOver, false);
+            canvasContainer.addEventListener('dragleave', self.handleDragLeave, false);
+            canvasContainer.addEventListener('drop', self.handleDrop, false);              
+        },
+
+        handleDragStart: function( e ) {
+
+            [].forEach.call( this.images, function ( img ) {
+                img.classList.remove('img_dragging');
+            });
+            e.target.classList.add('img_dragging');
+           
+        },
+
+        handleDragEnd: function(e) {
+            // this/e.target is the source node.
+            [].forEach.call(this.images, function (img) {
+                img.classList.remove('img_dragging');
+            });
+        },        
+
+        handleDragEnter: function ( e ) {
+            // this / e.target is the current hover target.
+            console.log("ENTER",e);
+            e.target.classList.add('over');
+
+        },
+
+        handleDragOver: function ( e ) {
+            if (e.preventDefault) {
+                e.preventDefault(); // Necessary. Allows us to drop.
+            }
+
+            e.dataTransfer.dropEffect = 'copy'; // See the section on the DataTransfer object.
+            // NOTE: comment above refers to the article (see top) -natchiketa
+
+            return false;
+
+        },  
+
+        handleDragLeave: function ( e ) {
+            e.target.classList.remove('over'); // this / e.target is previous target element.
+
+        }, 
+
+        handleDrop: function ( e ) {
+
+            // this / e.target is current target element.
+
+            if (e.stopPropagation) {
+                e.stopPropagation(); // stops the browser from redirecting.
+            }
+
+            var img = document.querySelector('.media-left img.img_dragging');
+
+            console.log('event: ', e);
+
+            var newImage = new fabric.Image(img, {
+                width: img.width,
+                height: img.height,
+                // Set the center of the new object based on the event coordinates relative
+                // to the canvas container.
+                left: e.layerX,
+                top: e.layerY
+            });
+            this.canvas.add(newImage);
+
+
+
+            return false;
+
+        },  
+
+        handleDragLeave: function ( e ) {
+            e.target.classList.remove('over'); // this / e.target is previous target element.
+
+        },                                    
+
+        findNewPos: function ( distX, distY, target, obj ) {
+
+            // See whether to focus on X or Y axis
+            if(Math.abs(distX) > Math.abs(distY)) {
+                if (distX > 0) {
+                    target.setLeft(obj.getLeft() - target.getWidth());
+                } else {
+                    target.setLeft(obj.getLeft() + obj.getWidth());
+                }
+            } else {
+                if (distY > 0) {
+                    target.setTop(obj.getTop() - target.getHeight());
+                } else {
+                    target.setTop(obj.getTop() + obj.getHeight());
+                }
+            }
+        },
 
         /**
          * [pushDivider description]
@@ -246,6 +351,7 @@ export default {
 
         console.log("Step4 mounted!");
 
+        this.initCanvas();
        // this.initDividers();
     }
 
