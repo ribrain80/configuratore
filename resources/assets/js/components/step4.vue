@@ -530,7 +530,7 @@ export default {
     mounted () { // # Window onload eq
 
         console.log("Step4 mounted!");
-
+        this.$store.commit('setComponentHeader','gestione divisori');
         this.initCanvas();
        // this.initDividers();
     }

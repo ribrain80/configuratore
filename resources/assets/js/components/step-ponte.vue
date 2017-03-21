@@ -95,11 +95,16 @@
 
         <!-- Next button -->
         <div class="row">
-            <div class="col-lg-12" >
-                <button class="btn btn-danger inpagenav" @click="resetData">{{ 'stepponte.reset' | translate }}</button>
-                <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-                <router-link to="/split/step3" tag="button">{{ 'back' | translate }}</router-link>
+            <div class="col-lg-2" >
+                <router-link to="/split/step3" class="btn btn-danger btn-block" tag="button">{{ 'back' | translate }}</router-link>
             </div>
+            <div class="col-lg-3" >
+                <button class="btn btn-danger btn-block " @click="resetData">{{ 'stepponte.reset' | translate }}</button>
+            </div>
+            <div class="col-lg-2  pull-right" >
+                <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            </div>
+         </div>
         </div>
 
     </div>
@@ -546,7 +551,7 @@ export default {
      * @return {void}
      */    
     mounted() {
-
+        this.$store.commit('setComponentHeader','scelta elemento ');
         console.log( "Step ponte Mounted!" );
     }
 }

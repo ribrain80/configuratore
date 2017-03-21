@@ -961,7 +961,7 @@ export default {
 
         // # Log mount 
         console.log( "Dimensions choice mounted" );
-
+        this.$store.commit('setComponentHeader','dimensioni cassetto');
         // # Init canvas
         this.initTwo();
     }

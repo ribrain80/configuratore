@@ -191,6 +191,7 @@ export default {
      */
     mounted () { // # Window onload eq
         console.log( "Step5 mounted!" );
+        this.$store.commit('setComponentHeader','download');
     }
 }
 
