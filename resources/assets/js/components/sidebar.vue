@@ -1,16 +1,16 @@
 <template>
     <div class="col-md-1 col-lg-2 sidebar">
         <div class="row">
-            <div class="col-xs-12 logo orange sidebar-elem logo">
+            <div class="col-lg-12 logo orange sidebar-elem logo">
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 nuovaconf sidebar-elem">
+            <div class="col-lg-12 nuovaconf sidebar-elem">
                 <a data-toggle="modal" data-target="#new-conf-modal">{{ "menu.newconf" | translate }}</a>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 sidebar-elem navigator">
+            <div class="col-lg-12 sidebar-elem navigator">
                 <ul class="nav hidden-xs router-links" id="nav">
                     <li :class="this.$store.state.onecompleted ? 'reached' : ''">
                         <router-link to="/split/step1" >
@@ -49,10 +49,11 @@
                     </li>
                 </ul>
             </div>
-            <div class="row pushdown">
-                <div class="col-xs-12 sidebar-elem navigator">
-                    <a class="btn btn-primary btn-block btn-salice" id="gallery-trigger">{{ "menu.gallery" | translate }}</a>
-                </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-lg-12 sidebar-elem navigator " >
+                <a class="btn btn-danger btn-block btn-salice" id="gallery-trigger">{{ "menu.gallery" | translate }}</a>
             </div>
         </div>
     </div>

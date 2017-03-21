@@ -1,5 +1,5 @@
 <template>
-
+    <div>
     <!-- Container -->
     <div class="row" id="step3">
         
@@ -85,12 +85,17 @@
             <div class="col-lg-12" id="animation"></div>
         </div>
         
-        <!-- Next button -->
-        <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-            <router-link to="/split/step2" tag="button">{{ 'back' | translate }}</router-link>
-        </div>
 
+
+    </div>
+        <div class="row">
+            <div class="col-md-2 ">
+                <router-link to="/split/step2" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
+            </div>
+            <div class="col-md-2 pull-right">
+                <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            </div>
+        </div>
     </div>
 
 </template>

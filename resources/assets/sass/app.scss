@@ -214,7 +214,7 @@ html, body, .container-fluid, .wrapper {
 }
 
 .sidebar-elem {
-  height: 70px;
+  min-height: 70px;
 }
 
 .nuovaconf {
@@ -315,6 +315,21 @@ html, body, .container-fluid, .wrapper {
 .fade-enter, .fade-leave-active {
   opacity: 0
 }
+
+
+
+.btn-danger {
+  line-height: 40px;
+  border-radius: 40px ;
+  background: #f04f1a;
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.46);
+  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.46);
+  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.46);
+}
+
+  .btn-danger:hover {
+    background: #f04f1a;
+  }
 
 
 }

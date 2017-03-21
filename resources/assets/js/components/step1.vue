@@ -16,7 +16,10 @@
             <p>{{ 'step1.product_description_text' | translate }}</p>
 
             <!-- Next button -->
-            <button class="btn btn-danger inpagenav " @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            <div class="row">
+                <div class="col-xs-4"><button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button></div>
+            </div>
+
 
         </div>
         <div class="col-md-6">
