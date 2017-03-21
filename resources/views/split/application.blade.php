@@ -59,5 +59,36 @@
    {{-- Js Scripts --}}
     <script src="{{ elixir('js/vendor.js') }}"></script>
     <script src="{{ elixir('js/app.js') }}"></script>
+<script>
+
+    Pace.on("start", function(){
+        $(".cover").show();
+    });
+
+    Pace.on("done", function(){
+        $(".cover").fadeOut( 2000 );
+    });
+
+    $('#gallery-trigger').on('click', function() {
+
+        $(this).lightGallery({
+            dynamic: true,
+            dynamicEl: [{
+                "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+            }, {
+                "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+            }, {
+                "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
+                'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+            }]
+        })
+
+    });
+</script>
 </body>
 </html>

@@ -188,9 +188,24 @@ html, body, .container-fluid, .wrapper {
   height: 35px;
 }
 
+.pushdown {
+  position: absolute;
+  bottom: 0;
+}
+
 .orange {
   background-color: #f04f1a ;
   border-color: #f04f1a ;
+}
+
+.gray {
+  background-color: #eee ;
+  border-color: #e7e7e7 !important;
+}
+
+.green {
+  background-color: #eee ;
+  border-color: darkgreen !important;
 }
 
 
@@ -212,13 +227,65 @@ html, body, .container-fluid, .wrapper {
 }
 
 .circle {
-  z-index: 3;
-  width: 20px;
-  height: 20px;
-  border-width: 0;
+  width: 25px;
+  height: 25px;
+  border-width: 2px;
   border-style: solid;
-  border-radius: 24px;
+  border-radius: 25px;
 }
+/*
+.vertline {
+  width:2px;
+  border:1px solid;
+  min-height: 35px;
+  height: 35px;
+}*/
+
+a.router-link-active > div.circle {
+  width: 25px;
+  height: 25px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: #f04f1a ;
+  border-color: #f04f1a ;
+  box-shadow: inset 0 0 0 4px #eee;
+}
+
+
+.cover {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1999;
+  background:#fff;
+  opacity: .8;
+}
+
+.router-links li {
+  text-align: center;
+}
+
+.submenu {
+  cursor: pointer;
+  background-color: #e2e2e2;
+}
+
+.submenu > div {
+  /* border: 1px solid #dcdcdc; */
+}
+
+.checkbox label {
+  white-space: nowrap;
+}
+
+.dragdrop-area {
+  border: 1px solid #ddd;
+  height: 500px;
+}
+
 
 @media (min-width: 992px) {
   .sidebar {
