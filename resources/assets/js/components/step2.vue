@@ -9,22 +9,23 @@
         </div>
 
         <!-- Alerts: User Warning -->
+        <transition name="fade">
         <div class="col-lg-12" v-if="$store.state.drawertype == 0">
             <div class="alert alert-warning alert-dismissible fade in">
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
             </div>
         </div>
+        </transition>
 
         <!-- Drawer type choice -->
         <div class="col-lg-3" v-for="( type,category ) in $store.state.drawerTypes">
-            
             <!-- Level 1 navigation -->
             <div v-if="type.length == 1">
                 <div class="panel panel-default" :class="{ 'bg-success': ( type[ 0 ].id == $store.state.drawertype ) }">
                     <div class="panel-body" @click="setType( type[ 0 ].id )">{{ type[ 0 ].description  | translate}}</div>
                 </div>
             </div>
-            
+
             <!-- Level 2 navigation -->
             <div v-else>
                 
@@ -34,14 +35,15 @@
                 </div>
                 
                 <!-- Subcategories -->
-                <div class="drawerlist" :id="category" v-show="$store.state.drawer_type_category == 1">
-                    <div class="col-lg-12" v-for="ctype in type">
-                        <div class="panel panel-default " :class="{ 'bg-success': ( ctype.id == $store.state.drawertype ) }">
-                            <div class="panel-body" @click="setType( ctype.id )">{{ ctype.description | translate}}</div>
+                <transition name="fade">
+                    <div class="drawerlist" :id="category" v-show="$store.state.drawer_type_category == 1">
+                        <div class="col-lg-12" v-for="ctype in type">
+                            <div class="panel panel-default " :class="{ 'bg-success': ( ctype.id == $store.state.drawertype ) }">
+                                <div class="panel-body" @click="setType( ctype.id )">{{ ctype.description | translate}}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                </transition>
             </div>
 
         </div>
