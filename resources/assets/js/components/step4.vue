@@ -90,7 +90,8 @@ export default {
     data: function() { 
         return {
             canvas: {},
-            images: []
+            images: [],
+            draggingDivider: {}
         }
     },
 
@@ -108,20 +109,25 @@ export default {
 
 
             this.canvas.on(['object:moving'], function (options) {
-                console.log(options);
+                //console.log(options);
                
             });
             this.canvas.on(['object:added'], function (options) {
-                console.log(options);
+                //console.log(options);
             });  
 
             this.images = document.querySelectorAll('.media-left img');
+
 
             var self = this;
             [].forEach.call( self.images, function (img) {
                 img.addEventListener('dragstart', self.handleDragStart, false);
                 img.addEventListener('dragend', self.handleDragEnd, false);
             });
+
+
+
+
 
             // Bind the event listeners for the canvas
             var canvasContainer = document.getElementById('canvas-container');
@@ -132,25 +138,20 @@ export default {
         },
 
         handleDragStart: function( e ) {
-
-            [].forEach.call( this.images, function ( img ) {
-                img.classList.remove('img_dragging');
-            });
-            e.target.classList.add('img_dragging');
-           
+            this.draggingDivider = e.target;
         },
 
         handleDragEnd: function(e) {
-            // this/e.target is the source node.
-            [].forEach.call(this.images, function (img) {
-                img.classList.remove('img_dragging');
-            });
+
         },        
 
         handleDragEnter: function ( e ) {
-            // this / e.target is the current hover target.
-            console.log("ENTER",e);
             e.target.classList.add('over');
+
+        },
+
+        handleDragLeave: function ( e ) {
+            e.target.classList.remove('over'); // this / e.target is previous target element.
 
         },
 
@@ -164,12 +165,7 @@ export default {
 
             return false;
 
-        },  
-
-        handleDragLeave: function ( e ) {
-            e.target.classList.remove('over'); // this / e.target is previous target element.
-
-        }, 
+        },
 
         handleDrop: function ( e ) {
 
@@ -179,30 +175,26 @@ export default {
                 e.stopPropagation(); // stops the browser from redirecting.
             }
 
-            var img = document.querySelector('.media-left img.img_dragging');
 
-            console.log('event: ', e);
-
-            var newImage = new fabric.Image(img, {
-                width: img.width,
-                height: img.height,
+            //TODO: Use data attributes
+            var canvasToInsert = new fabric.Image( this.draggingDivider, {
+                width: this.draggingDivider.width,
+                height: this.draggingDivider.height,
                 // Set the center of the new object based on the event coordinates relative
                 // to the canvas container.
                 left: e.layerX,
-                top: e.layerY
+                top: e.layerY,
             });
-            this.canvas.add(newImage);
+            //TODO: Ugly hack for background
+            canvasToInsert.setBackgroundColor(new fabric.Color('f00'));
+            this.canvas.add(canvasToInsert);
 
-
+            //Clean data property
+            this.draggingDivider={};
 
             return false;
 
-        },  
-
-        handleDragLeave: function ( e ) {
-            e.target.classList.remove('over'); // this / e.target is previous target element.
-
-        },                                    
+        },
 
         findNewPos: function ( distX, distY, target, obj ) {
 
