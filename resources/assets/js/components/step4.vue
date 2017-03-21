@@ -91,7 +91,10 @@ export default {
         return {
             canvas: {},
             images: [],
-            draggingDivider: {}
+            draggingDivider: {},
+            snap: 20,
+            canvasWidth:0,
+            canvasHeight:0,
         }
     },
 
@@ -100,17 +103,16 @@ export default {
         initCanvas: function() {
 
             this.canvas = new fabric.Canvas('canvas');
-            var canvasWidth = document.getElementById('canvas').width;
-            var canvasHeight = document.getElementById('canvas').height;
+            this.canvasWidth = document.getElementById('canvas').width;
+            this.canvasHeight = document.getElementById('canvas').height;
             var counter = 0;
             var rectLeft = 0;
-            var snap = 20; //Pixels to snap
-            this.canvas.selection = true;  
+            this.canvas.selection = true;
 
 
-            this.canvas.on(['object:moving'], function (options) {
-                //console.log(options);
-               
+            this.canvas.on(['object:moving'],  (options) => {
+                console.log(options);
+                this.handleMoving(options);
             });
             this.canvas.on(['object:added'], function (options) {
                 //console.log(options);
@@ -135,6 +137,27 @@ export default {
             canvasContainer.addEventListener('dragover', self.handleDragOver, false);
             canvasContainer.addEventListener('dragleave', self.handleDragLeave, false);
             canvasContainer.addEventListener('drop', self.handleDrop, false);              
+        },
+
+        handleMoving: function (options) {
+            options.target.setCoords();
+
+            // Don't allow objects off the canvas
+            if(options.target.getLeft() < this.snap) {
+                options.target.setLeft(0);
+            }
+
+            if(options.target.getTop() < this.snap) {
+                options.target.setTop(0);
+            }
+
+            if((options.target.getWidth() + options.target.getLeft()) > (this.canvasWidth - this.snap)) {
+                options.target.setLeft(this.canvasWidth - options.target.getWidth());
+            }
+
+            if((options.target.getHeight() + options.target.getTop()) > (this.canvasHeight - this.snap)) {
+                options.target.setTop(this.canvasHeight - options.target.getHeight());
+            }
         },
 
         handleDragStart: function( e ) {
