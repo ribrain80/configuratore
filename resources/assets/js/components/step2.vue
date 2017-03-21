@@ -195,7 +195,8 @@ export default {
 
             // # And return
             return false;
-        }        
+        }
+        this.$store.commit('setComponentHeader','scelta tipologia cassetto ');
 
     }
 }

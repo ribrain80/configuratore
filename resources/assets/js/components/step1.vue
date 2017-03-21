@@ -4,7 +4,7 @@
     <div class="row" id="step1">
         
         <!-- Full width -->
-        <div class="col-md-12">
+        <div class="col-md-6">
 
             <!-- Page title -->
             <h3>{{ 'step1.title' | translate }}</h3>
@@ -16,8 +16,11 @@
             <p>{{ 'step1.product_description_text' | translate }}</p>
 
             <!-- Next button -->
-            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            <button class="btn btn-danger inpagenav " @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
 
+        </div>
+        <div class="col-md-6">
+            <img src="https://placeimg.com/480/640/tech" class="img img-responsive center-block">
         </div>
 
     </div>
