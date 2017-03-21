@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/lightgallery.min.css') }}">
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
-
 </head>
 <body>
 <div class="cover"></div>
@@ -52,7 +51,9 @@
             <sidebar></sidebar>
             <div class="col-md-11 col-md-offset-1 col-lg-10 col-lg-offset-2 content ">
                 <appnavbar></appnavbar>
-                <transition :duration="2000" name="fade" mode="out-in"><router-view></router-view></transition>
+                <transition name="fade">
+                    <router-view></router-view>
+                </transition>
             </div>
         </div>
     </div>

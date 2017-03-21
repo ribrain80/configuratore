@@ -282,4 +282,23 @@ html, body, .container-fluid, .wrapper {
     z-index: 1000;
     display: block;
   }
+
+
+/**
+ * Css Animation
+ */
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: 1s;
+}
+
+.fade-enter-active {
+  transition-delay: 1s;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+
 }

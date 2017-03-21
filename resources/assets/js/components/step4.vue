@@ -105,7 +105,7 @@ export default {
             this.canvas = new fabric.Canvas('canvas');
             this.canvasWidth = document.getElementById('canvas').width;
             this.canvasHeight = document.getElementById('canvas').height;
-            this.canvas.selection = true;
+            this.canvas.selection = false;
 
 
             this.canvas.on(['object:moving'],  (options) => {
