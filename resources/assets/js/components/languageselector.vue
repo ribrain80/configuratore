@@ -6,7 +6,7 @@
 
             <ul class="dropdown-menu">
                 <li v-for="language in languages">
-                    <a :class="{ active: (language.code==activeLanguage) }" class="langlink" href="#_"
+                    <a :class="{ active: (language.code==activeLanguage) }"  href="#_"
                        @click="changeLanguage(language.code)"> {{ language.label }} </a>
                 </li>
             </ul>

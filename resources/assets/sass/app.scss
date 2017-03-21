@@ -190,6 +190,7 @@ html, body, .container-fluid, .wrapper {
 
 .orange {
   background-color: #f04f1a ;
+  border-color: #f04f1a ;
 }
 
 
@@ -208,6 +209,15 @@ html, body, .container-fluid, .wrapper {
 
 .logo {
   padding: 10%;
+}
+
+.circle {
+  z-index: 3;
+  width: 20px;
+  height: 20px;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 24px;
 }
 
 @media (min-width: 992px) {
