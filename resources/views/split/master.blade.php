@@ -141,7 +141,18 @@
         </div>
 
     </div>
+    
+    <script>
+        
+        paceOptions  = {
+            ajax: false,
+            eventLag: false,
+            document: false,
+            element: false,
+            restartOnPushState: false
+        }
 
+    </script>
     <script src="{{ elixir('js/vendor.js') }}"></script>
     <script src="{{ elixir('js/app.js') }}"></script>
 
@@ -149,12 +160,12 @@
         @stack('jsfooter')
         <script>
 
-            Pace.on("start", function(){
+            Pace.on("start", function() {
                 $(".cover").show();
             });
 
             Pace.on("done", function(){
-                $(".cover").fadeOut( 2000 );
+                $(".cover").hide();
             });
 
             $('#gallery-trigger').on('click', function() {

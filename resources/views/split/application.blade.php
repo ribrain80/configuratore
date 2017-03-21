@@ -52,21 +52,34 @@
             <sidebar></sidebar>
             <div class="col-md-11 col-md-offset-1 col-lg-10 col-lg-offset-2 content ">
                 <appnavbar></appnavbar>
-                <router-view></router-view>
+                <transition :duration="2000" name="fade" mode="out-in"><router-view></router-view></transition>
             </div>
         </div>
     </div>
    {{-- Js Scripts --}}
+   <script>
+       
+        paceOptions  = {
+            ajax: true,
+            eventLag: true,
+            document: false,
+            element: false,
+            restartOnPushState: false,
+            restartOnRequestAfter: false
+        }  
+
+   </script>
     <script src="{{ elixir('js/vendor.js') }}"></script>
     <script src="{{ elixir('js/app.js') }}"></script>
-<script>
+    <script>
 
-    Pace.on("start", function(){
+    Pace.on( "start", function(){
         $(".cover").show();
     });
 
-    Pace.on("done", function(){
-        $(".cover").fadeOut( 2000 );
+    Pace.on( "done", function() {
+        console.log( "done" );
+        $(".cover").hide();
     });
 
     $('#gallery-trigger').on('click', function() {
