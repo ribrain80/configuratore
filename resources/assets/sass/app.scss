@@ -226,16 +226,32 @@ html, body, .container-fluid, .wrapper {
   padding: 10%;
 }
 
-.reached {
+.router-links li.reached a{
   color:green;
+  font-weight: 700;
 }
 
-.notreached {
-  color:#e7e7e7;
+.router-links li.reached a:hover {
+  color:green;
+  font-weight: 700;
+}
+
+.router-links li a{
+  color:#aaa ;
+}
+
+.router-links li a:hover {
+  color:#aaa ;
 }
 
 .router-link-active {
-  color:#f04f1a;
+  color:#f04f1a !important;
+  font-weight: 700;
+}
+
+.router-link-active:hover {
+  color:#f04f1a !important;
+  font-weight: 700;
 }
 
 

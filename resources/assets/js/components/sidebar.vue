@@ -12,39 +12,39 @@
         <div class="row">
             <div class="col-xs-12 sidebar-elem navigator">
                 <ul class="nav hidden-xs router-links" id="nav">
-                    <li>
-                        <router-link to="/split/step1" class="">
-                            <div class=" "></div> <span class="">{{ "informazioni" | translate}}</span>
+                    <li :class="this.$store.state.onecompleted ? 'reached' : ''">
+                        <router-link to="/split/step1" >
+                            <span >{{ "informazioni" | translate}}</span>
                         </router-link>
                     </li>
                     <li class="vertline "></li>
-                    <li>
+                    <li :class="this.$store.state.twocompleted ? 'reached' : ''">
                         <router-link to="/split/step2">
-                            <div class=" "></div> <span class="">{{"scelta tipologia di cassetto" | translate}}</span>
+                            <span >{{"scelta tipologia di cassetto" | translate}}</span>
                         </router-link>
                     </li>
                     <li class="vertline "></li>
-                    <li>
+                    <li :class="this.$store.state.threecompleted ? 'reached' : ''">
                         <router-link to="/split/step3">
-                            <div class=" "></div> <span class="">{{"dimensioni cassetto" | translate}}</span>
+                            <span >{{"dimensioni cassetto" | translate}}</span>
                         </router-link>
                     </li>
                     <li class="vertline "></li>
-                    <li>
+                    <li :class="this.$store.state.bridgecompleted ? 'reached' : ''">
                         <router-link to="/split/stepponte">
-                            <div class=" "></div> <span class="">{{"scelta elemento ponte" | translate}}</span>
+                            <span >{{"scelta elemento ponte" | translate}}</span>
                         </router-link>
                     </li>
                     <li class="vertline "></li>
-                    <li>
+                    <li :class="this.$store.state.fourcompleted ? 'reached' : ''">
                         <router-link to="/split/step4">
-                            <div class=" "></div> <span class="">{{"gestione divisori" | translate}}</span>
+                            <span >{{"gestione divisori" | translate}}</span>
                         </router-link>
                     </li>
                     <li class="vertline "></li>
-                    <li>
+                    <li :class="this.$store.state.fivecompleted ? 'reached' : ''">
                         <router-link to="/split/step5">
-                            <div class=" "></div> <span class="">{{ "download" | translate}}</span>
+                            <span >{{ "download" | translate}}</span>
                         </router-link>
                     </li>
                 </ul>
@@ -71,12 +71,18 @@
          */
         data: function() {
 
-            return {}
+            return {
+                test:true
+            }
         },
 
         methods: {
-            getClasses: function (step) {
+            getClass: function (step) {
+                let cls = "";
+                console.log( this.$store.router );
+                switch (step) {
 
+                }
                 return "";
             }
         },
