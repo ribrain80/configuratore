@@ -77,7 +77,16 @@ const store = new Vuex.Store({
 
         actual_lineabox_shoulder_height_LOW: function (state) {
             return state.dimensions.actual_lineabox_shoulder_height_LOW;
+        },
+
+        actual_lineabox_shoulder_height_MID: function( state ) {
+            return state.dimensions.actual_lineabox_shoulder_height_MID;
+        },
+
+        actual_lineabox_shoulder_height_HIGH: function( state ) {
+            return state.dimensions.actual_lineabox_shoulder_height_HIGH;
         }
+
     },
 
     state: {

@@ -97,7 +97,9 @@
 
 <script>
 
-    import { mapGetters } from 'vuex'
+// # Import map getters
+import { mapGetters } from 'vuex'
+
 /**
  * Vue object managing drawer dimensions inputs
  * Uses Two.js for graphic representation of the object ( drawer )
@@ -141,13 +143,13 @@ export default {
               shoulder_linewidth: 7,
               shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: this.lineabox_shoulder_height_LOW,
+              shoulder_height_lower_limit: this.actual_lineabox_shoulder_height_LOW(),
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { text: "77 - 45.4 ", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
-                  { text: "104 - 72 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
-                  { text: "180 - 148 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
+                  { text: "77 - 45.4 ", value: this.actual_lineabox_shoulder_height_LOW(), selected: true },
+                  { text: "104 - 72 " , value: this.actual_lineabox_shoulder_height_MID(), selected: false },
+                  { text: "180 - 148 " , value: this.actual_lineabox_shoulder_height_HIGH(), selected: false }
               ],
 
               // # Bridge related limits
@@ -195,9 +197,11 @@ export default {
         /**
          * Imported getters from store
          */
-        ...mapGetters({
-            lineabox_shoulder_height_LOW:'actual_lineabox_shoulder_height_LOW' //Rename getter
-        }),
+        ...mapGetters([
+          "actual_lineabox_shoulder_height_LOW", 
+          "actual_lineabox_shoulder_height_MID",
+          "actual_lineabox_shoulder_height_HIGH" 
+        ]),
 
         /**
          * Inits the Two object container and every shape needed in its initial state
