@@ -1,6 +1,6 @@
 export default {
     it:{
-        "menu.newconf" : "Nuova conf.",
+        "menu.newconf" : "Nuova",
         "menu.gallery": "Gallery",
         "back": "Indietro", 
         "resetadvice": "La modifica di questo valore implicherà la cancellazione dei dati inseriti negli step successivi ( supporti, ponti, divisori, colori )",    
@@ -47,7 +47,7 @@ export default {
         "500.description": "Si è verificato un errore, si prega di riprovare più tardi",
     },
     en:{
-        "menu.newconf" : "New conf.",
+        "menu.newconf" : "New",
         "menu.gallery": "Gallery",   
         "back": "Back", 
         "resetadvice": "Change this value will reset all data inserted in the next steps ( supports, bridges, dividers, colors )",   

@@ -17,31 +17,31 @@
                             <span >{{ "informazioni" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline "></li>
+                    
                     <li :class="this.$store.state.twocompleted ? 'reached' : ''">
                         <router-link to="/split/step2">
                             <span >{{"scelta tipologia di cassetto" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline "></li>
+                    
                     <li :class="this.$store.state.threecompleted ? 'reached' : ''">
                         <router-link to="/split/step3">
                             <span >{{"dimensioni cassetto" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline "></li>
+                    
                     <li :class="this.$store.state.bridgecompleted ? 'reached' : ''">
                         <router-link to="/split/stepponte">
                             <span >{{"scelta elemento ponte" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline "></li>
+                    
                     <li :class="this.$store.state.fourcompleted ? 'reached' : ''">
                         <router-link to="/split/step4">
                             <span >{{"gestione divisori" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline "></li>
+                    
                     <li :class="this.$store.state.fivecompleted ? 'reached' : ''">
                         <router-link to="/split/step5">
                             <span >{{ "download" | translate}}</span>
