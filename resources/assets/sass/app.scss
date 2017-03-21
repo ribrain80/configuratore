@@ -226,30 +226,16 @@ html, body, .container-fluid, .wrapper {
   padding: 10%;
 }
 
-.circle {
-  width: 25px;
-  height: 25px;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
+.reached {
+  color:green;
 }
-/*
-.vertline {
-  width:2px;
-  border:1px solid;
-  min-height: 35px;
-  height: 35px;
-}*/
 
-a.router-link-active > div.circle {
-  width: 25px;
-  height: 25px;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  background-color: #f04f1a ;
-  border-color: #f04f1a ;
-  box-shadow: inset 0 0 0 4px #eee;
+.notreached {
+  color:#e7e7e7;
+}
+
+.router-link-active {
+  color:#f04f1a;
 }
 
 

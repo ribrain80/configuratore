@@ -13,38 +13,38 @@
             <div class="col-xs-12 sidebar-elem navigator">
                 <ul class="nav hidden-xs router-links" id="nav">
                     <li>
-                        <router-link to="/split/step1">
-                            <div class="circle "></div> <span class="">{{ "informazioni" | translate}}</span>
+                        <router-link to="/split/step1" class="">
+                            <div class=" "></div> <span class="">{{ "informazioni" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline gray"></li>
+                    <li class="vertline "></li>
                     <li>
                         <router-link to="/split/step2">
-                            <div class="circle gray"></div> <span class="">{{"scelta tipologia di cassetto" | translate}}</span>
+                            <div class=" "></div> <span class="">{{"scelta tipologia di cassetto" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline gray"></li>
+                    <li class="vertline "></li>
                     <li>
                         <router-link to="/split/step3">
-                            <div class="circle gray"></div> <span class="">{{"dimensioni cassetto" | translate}}</span>
+                            <div class=" "></div> <span class="">{{"dimensioni cassetto" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline gray"></li>
+                    <li class="vertline "></li>
                     <li>
                         <router-link to="/split/stepponte">
-                            <div class="circle green"></div> <span class="">{{"scelta elemento ponte" | translate}}</span>
+                            <div class=" "></div> <span class="">{{"scelta elemento ponte" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline gray"></li>
+                    <li class="vertline "></li>
                     <li>
                         <router-link to="/split/step4">
-                            <div class="circle gray"></div> <span class="">{{"gestione divisori" | translate}}</span>
+                            <div class=" "></div> <span class="">{{"gestione divisori" | translate}}</span>
                         </router-link>
                     </li>
-                    <li class="vertline gray"></li>
+                    <li class="vertline "></li>
                     <li>
                         <router-link to="/split/step5">
-                            <div class="circle gray"></div> <span class="">{{ "download" | translate}}</span>
+                            <div class=" "></div> <span class="">{{ "download" | translate}}</span>
                         </router-link>
                     </li>
                 </ul>
@@ -57,3 +57,32 @@
         </div>
     </div>
 </template>
+
+<script>
+    /**
+     * Vue object managing bridge / bridge support choice
+     * @type {Vue}
+     */
+    export default {
+
+        /**
+         * Object data
+         * @type {Object}
+         */
+        data: function() {
+
+            return {}
+        },
+
+        methods: {
+            getClasses: function (step) {
+
+                return "";
+            }
+        },
+        mounted() {
+
+        }
+    }
+
+</script>
