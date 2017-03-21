@@ -19,6 +19,8 @@ import store      from './store'
 
 // # Load others components
 const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );
+const sidebar = Vue.component( 'sidebar', require('./components/sidebar.vue' ) );
+const appnavbar = Vue.component( 'appnavbar', require('./components/appnavbar.vue' ) );
 
 // # Load components ( NAV )
 const step1 = Vue.component( 'step1', require('./components/step1.vue' ));
@@ -50,6 +52,8 @@ const App = new Vue({
 	 */
 	components : {
 		languageselector,
+        sidebar,
+        appnavbar,
 		step1,
 		step2,
 		step3,

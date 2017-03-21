@@ -46,8 +46,6 @@ Route::group(['prefix' => 'm50'], function () {
 
 Route::group(['prefix' => 'split'], function () {
 
-    //TMP TODO: REMOVE FAKE ROUTE
-    Route::get('tmp',['uses'=>function() {return view('split.newmaster');}]);
     //API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
@@ -63,7 +61,7 @@ Route::group(['prefix' => 'split'], function () {
     }]);
 
     Route::get('/{catchall?}', function () {
-        return response()->view('split.onepage');
+        return response()->view('split.application');
     })->where('catchall', '(.*)');
 });
 

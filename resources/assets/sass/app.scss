@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
-@import "variables";
+//@import "variables";
 
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
@@ -36,7 +36,6 @@
     padding-right: 0px!important;
     padding-bottom: 0px!important;
     padding-left: 0px!important;
-    height: 60px!important;
 }
 
 .navbar-header div {
@@ -44,11 +43,7 @@
   margin: 0px!important;
 }
 
-body {
-  margin-top: 61px;
-  position: relative;
-  font-size: 14px;
-}
+
 
 .panel {
   cursor: pointer;
@@ -57,20 +52,6 @@ body {
 .bg-success {
   background-color: #dff0d8!important;
 }
-
-.languageselector li {
-  display: inline-block;
-}
-
-.languageselector li+li:before {
-  content: "  | "
-}
-
-.languageselector li a.active{
-  font-weight: bolder;
-  text-decoration: underline;
-}
-
 
 // # Scrollspy
 
@@ -165,9 +146,45 @@ p {
 }
 
 
-/*
+
 html, body, .container-fluid, .wrapper {
   height: 100%;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+  padding-top:4px !important;
+  padding-bottom:0 !important;
+  height: 35px;
+}
+.navbar {
+  min-height:35px !important;
+  border: none;
+
+}
+
+.navbar-inverse {
+  background: #424242;
+}
+
+.split-header {
+  background: #fff;
+  height: 35px;
+}
+
+
+.row-no-padding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.app-nav {
+  height: 75px;
+}
+
+.component-header {
+  height: 35px;
 }
 
 .orange {
@@ -180,7 +197,7 @@ html, body, .container-fluid, .wrapper {
 }
 
 .sidebar-elem {
-  height: 100px;
+  height: 70px;
 }
 
 .nuovaconf {
@@ -189,7 +206,7 @@ html, body, .container-fluid, .wrapper {
 }
 
 .logo {
-
+  padding: 10%;
 }
 
 @media (min-width: 992px) {
@@ -201,4 +218,4 @@ html, body, .container-fluid, .wrapper {
     z-index: 1000;
     display: block;
   }
-}*/
+}
