@@ -8,6 +8,10 @@
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 
+@import "/css/bootstrap-material-design.css";
+@import "/css/ripples.css";
+
+
 
 //App Specific css
 @mixin inline-block() {
@@ -329,10 +333,11 @@ html, body, .container-fluid, .wrapper {
 .btn-danger {
   line-height: 40px;
   border-radius: 40px ;
-  background: #f04f1a;
-  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
-  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
-  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
+  background: #f04f1a !important;
+  color: white !important;
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30) !important;
+  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30) !important;
+  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30) !important;
   font-weight: 700;
   font-size: 18px;
 }
@@ -347,8 +352,7 @@ html, body, .container-fluid, .wrapper {
   box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
 }
 .img-desaturate {
-  opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
+  opacity: 0.40;
 }
 
 .spacer {

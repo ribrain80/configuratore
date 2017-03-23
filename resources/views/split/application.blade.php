@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pace-theme-loading-bar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/lightgallery.min.css') }}">
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
 </head>
 <body>
@@ -72,6 +76,7 @@
    </script>
     <script src="{{ elixir('js/vendor.js') }}"></script>
     <script src="{{ elixir('js/app.js') }}"></script>
+    <script src="{{ elixir('js/material.min.js') }}"></script>
     <script>
 
     Pace.on( "start", function(){
@@ -103,6 +108,13 @@
         })
 
     });
+
+    $(function() {
+        $.material.init();
+    });
+
+
+
 </script>
 </body>
 </html>
