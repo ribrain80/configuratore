@@ -5,7 +5,7 @@
                 <div class="row">
                     <!-- Canvas container -->
                     <div class="col-lg-12 dragdrop-area" id="canvas-container">
-                        <canvas id="canvas" style="border:1px solid #ccc"></canvas>
+                        <canvas id="canvas" style="border:1px solid #ccc" class="center-block"></canvas>
                     </div>
                 </div>
                 <div class="spacer"></div>
@@ -24,7 +24,7 @@
                         <div class="tab-content">
                             <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                                 <div class="row" style="margin-top: 22px">
-                                    <div class="col-lg-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                                    <div class="col-lg-6"  v-for="(divider,dimension) in getDividerByCat(cat)">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 {{ dimension}}
