@@ -24,13 +24,13 @@
                         <div class="tab-content">
                             <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                                 <div class="row" style="margin-top: 22px">
-                                    <div class="col-lg-6"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                                    <div class="col-lg-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 {{ dimension}}
                                             </div>
                                             <div class="panel-body">
-                                                <div class="row" style="margin-bottom: 10px">
+                                                <div class="row" style="margin-bottom: 10px;display: none" >
                                                     <div class="col-lg-12 col-md-12">
                                                         <img src="http://placehold.it/100x100" class="img center-block">
                                                     </div>
