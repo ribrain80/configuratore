@@ -90,6 +90,7 @@ export default {
             snap: 20,
             canvasWidth:0,
             canvasHeight:0,
+            ratio:0.5
         }
     },
 
@@ -359,16 +360,14 @@ export default {
             }
 
 
-            //TODO: Use data attributes
-            var canvasToInsert = new fabric.Image( this.draggingDivider ,{
-                width: this.draggingDivider.width,
-                height: this.draggingDivider.height,
-                fill: 'red',
-                // Set the center of the new object based on the event coordinates relative
-                // to the canvas container.
+            var canvasToInsert = new fabric.Rect({
                 left: e.layerX,
                 top: e.layerY,
+                width: +this.draggingDivider.dataset.width * this.ratio,
+                height: +this.draggingDivider.dataset.height * this.ratio,
+                fill: '#f55'
             });
+
 
             this.canvas.add(canvasToInsert);
 
