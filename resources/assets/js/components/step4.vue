@@ -440,8 +440,8 @@ export default {
             let canvasToInsert = new fabric.Rect({
                 left: e.layerX,
                 top: e.layerY,
-                width: +this.draggingDivider.dataset.width / this.config.ratio,
-                height: +this.draggingDivider.dataset.height / this.config.ratio,
+                width: +this.draggingDivider.dataset.width * this.config.ratio,
+                height: +this.draggingDivider.dataset.height * this.config.ratio,
                 fill: '#f55'
             });
 
