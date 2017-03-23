@@ -38,6 +38,8 @@ class ApiController extends Controller
             $curSecondaryKey = $curDivider['width'].'X'.$curDivider['length'];
             $grouped[$curDivider['depth']][$curSecondaryKey]['items'][]=$curDivider;
             $grouped[$curDivider['depth']][$curSecondaryKey]['image']=$curDivider['image'];
+            $grouped[$curDivider['depth']][$curSecondaryKey]['width']=$curDivider['width'];
+            $grouped[$curDivider['depth']][$curSecondaryKey]['length']=$curDivider['length'];
         }
 
         //Extract the dividers depth (Array keys) and build an array to transform in json

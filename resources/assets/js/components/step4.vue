@@ -36,8 +36,8 @@
                                                  class="img  rotate90 canBeDragged center-block"
                                                  :src="divider.image"
                                                  style="height: 100px"
-                                                 data-width  = "100"
-                                                 data-height = "200"
+                                                 :data-width  = "divider.width"
+                                                 :data-height = "divider.length"
                                             >
                                         </div>
                                         <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
@@ -46,8 +46,8 @@
                                                  class="img canBeDragged center-block"
                                                  :src="divider.image"
                                                  style="height: 100px"
-                                                 data-width  = "200"
-                                                 data-height = "100"
+                                                 :data-width  = "divider.length"
+                                                 :data-height = "divider.width"
                                             >
                                         </div>
                                     </div>
