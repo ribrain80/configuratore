@@ -35,7 +35,9 @@ class ApiController extends Controller
         $grouped = [];
         // loop through all dividers and group them by depth
         foreach ( Divider::all( ['id','sku','width','length','depth','image','color','border','texture','description'] )->sortBy( "depth" ) as $curDivider ) {
-            $grouped[$curDivider['depth']][]=$curDivider;
+            $curSecondaryKey = $curDivider['width'].'X'.$curDivider['length'];
+            $grouped[$curDivider['depth']][$curSecondaryKey]['items'][]=$curDivider;
+            $grouped[$curDivider['depth']][$curSecondaryKey]['image']=$curDivider['image'];
         }
 
         //Extract the dividers depth (Array keys) and build an array to transform in json

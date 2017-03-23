@@ -24,31 +24,8 @@
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                     <div class="row" style="margin-top: 22px">
                         <div class="col-lg-4" v-for="divider in getDividerByCat(cat)">
-                            <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
-                                <div class="media" style="width: 100%">
-                                    <div class="media-left" style="width: 20%">
-                                            <img draggable="true" class="media-object img-thumbnail" :src="divider.image" style="height:100px ">
-                                    </div>
-                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 80%">
-                                        <h4 class="media-heading">{{divider.description}}</h4>
-                                        <table border="0" calss="table" width="100%">
-                                            <tr>
-                                                <td><b>Color:</b></td>
-                                                <td>{{divider.color}}</td>
-                                                <td><b>Texture:</b></td>
-                                                <td>{{divider.texture}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Border:</b></td>
-                                                <td>{{divider.border}}</td>
-                                                <td><b>Dimension:</b></td>
-                                                <td>({{divider.width}} x {{divider.length}})</td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-                                </div>
-                            </div>
+                            <img draggable="true" class="img-thumbnail" :src="divider.image" style="height:100px;float: left;">
+                            <img draggable="true" class="img-thumbnail" :src="divider.image" style="height:100px;float: left; ">
                         </div>
                     </div>
 
