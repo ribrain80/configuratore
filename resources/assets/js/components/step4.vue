@@ -3,7 +3,7 @@
     <!-- Container -->
     <div class="row" id="step4">
         
-               
+
         <!-- Canvas container -->
         <div class="col-lg-12 dragdrop-area" id="canvas-container">
             <canvas id="canvas" width="400" height="400" style="border:1px solid #ccc"></canvas>

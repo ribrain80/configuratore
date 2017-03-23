@@ -341,5 +341,18 @@ html, body, .container-fluid, .wrapper {
   background: #f04f1a;
 }
 
+.img-shadow {
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
+  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
+  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
+}
+.img-desaturate {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.spacer {
+  margin-top: 10px;
+}
 
 }

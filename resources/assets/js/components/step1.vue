@@ -23,7 +23,7 @@
 
         </div>
         <div class="col-md-6">
-            <img src="https://placeimg.com/480/640/tech" class="img img-responsive center-block">
+            <img src="/images/others/img-step1-right.jpg" class="img img-responsive center-block">
         </div>
 
     </div>

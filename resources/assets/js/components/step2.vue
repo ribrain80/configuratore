@@ -1,53 +1,64 @@
 <template>
-    <div>
     <!-- Container -->
-    <div class="row" id="step2">
-        
-        <!-- Title -->
-        <div class="col-lg-12">
-            <h2 >{{ 'step2.title' | translate }}</h2>
-        </div>
-
-        <!-- Alerts: User Warning -->
-        <transition name="fade">
-        <div class="col-lg-12" v-if="$store.state.drawertype == 0">
-            <div class="alert alert-warning alert-dismissible fade in">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
-            </div>
-        </div>
-        </transition>
-
-        <!-- Drawer type choice -->
-        <div class="col-lg-3" v-for="( type,category ) in $store.state.drawerTypes">
-            <!-- Level 1 navigation -->
-            <div v-if="type.length == 1">
-                <div class="panel panel-default" :class="{ 'bg-success': ( type[ 0 ].id == $store.state.drawertype ) }">
-                    <div class="panel-body" @click="setType( type[ 0 ].id )">{{ type[ 0 ].description  | translate}}</div>
-                </div>
-            </div>
-
-            <!-- Level 2 navigation -->
-            <div v-else>
-                
-                <!-- Category panel -->
-                <div class="panel panel-default">
-                    <div class="panel-body" @click="setDrawerTypeCategory( 1 )">{{ category | translate}}</div>
-                </div>
-                
-                <!-- Subcategories -->
-                <transition name="fade">
-                    <div class="drawerlist" :id="category" v-show="$store.state.drawer_type_category == 1">
-                        <div class="col-lg-12" v-for="ctype in type">
-                            <div class="panel panel-default " :class="{ 'bg-success': ( ctype.id == $store.state.drawertype ) }">
-                                <div class="panel-body" @click="setType( ctype.id )">{{ ctype.description | translate}}</div>
-                            </div>
-                        </div>
+    <section>
+        <div class="spacer"></div>
+        <div class="row">
+            <!-- Alerts: User Warning -->
+            <transition name="fade">
+                <div class="col-lg-12" v-if="$store.state.drawertype == 0">
+                    <div class="alert alert-warning alert-dismissible fade in">
+                        <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
                     </div>
-                </transition>
-            </div>
-
+                </div>
+            </transition>
         </div>
-    </div>
+        <div class="spacer"></div>
+        <div class="row" style="margin: 0 auto">
+            <!-- Drawer type choice -->
+            <div class="col-lg-3 " v-for="( type,category ) in $store.state.drawerTypes">
+                <div v-if="type.length == 1">
+                    <!-- Drawer type -->
+                    <figure class="drawer-container" :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }">
+                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                             class="img img-responsive img-thumbnail img-shadow"
+                             :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
+                             @click="setType( type[ 0 ].id )"
+                        />
+                    </figure>
+                </div>
+                <div v-else>
+                    <!-- Drawer category -->
+                    <figure class="drawer-container" :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }">
+                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                             class="img img-responsive img-thumbnail img-shadow img-desaturate"
+                             @click="setDrawerTypeCategory( 1 )"
+                        />
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row"
+             v-for="( type,category ) in $store.state.drawerTypes"
+             v-if="type.length > 1"
+             v-show="$store.state.drawer_type_category == 1">
+            <div class="col-lg-3 " v-for="ctype in type">
+                <figure class="drawer-container" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
+                    <figcaption> {{ ctype.description | translate}} </figcaption>
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'-'+ctype.id+'.png'"
+                         class="img img-responsive img-thumbnail img-shadow "
+                         :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
+                         @click="setType( ctype.id )"
+                    />
+                </figure>
+            </div>
+        </div>
+        <div class="spacer"></div>
         <!-- Navigation row -->
         <div class="row">
             <div class="col-md-2 ">
@@ -60,7 +71,7 @@
 
 
 
-    </div>
+    </section>
 
 </template>
 
