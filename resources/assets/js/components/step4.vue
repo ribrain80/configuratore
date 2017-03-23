@@ -23,9 +23,36 @@
             <div class="tab-content">
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                     <div class="row" style="margin-top: 22px">
-                        <div class="col-lg-4" v-for="divider in getDividerByCat(cat)">
-                            <img draggable="true" class="img-thumbnail" :src="divider.image" style="height:100px;float: left;">
-                            <img draggable="true" class="img-thumbnail" :src="divider.image" style="height:100px;float: left; ">
+                        <div class="col-lg-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    {{ dimension}}
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <!-- Remove the inline style and use something more responsive -->
+                                            <img draggable="true"
+                                                 class="img  rotate90 canBeDragged center-block"
+                                                 :src="divider.image"
+                                                 style="height: 100px"
+                                                 data-width  = "100"
+                                                 data-height = "200"
+                                            >
+                                        </div>
+                                        <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
+                                            <!-- Remove the inline style and use something more responsive -->
+                                            <img draggable="true"
+                                                 class="img canBeDragged center-block"
+                                                 :src="divider.image"
+                                                 style="height: 100px"
+                                                 data-width  = "200"
+                                                 data-height = "100"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -83,7 +110,7 @@ export default {
                 this.handleMoving(options);
             });  
 
-            this.images = document.querySelectorAll('.media-left img');
+            this.images = document.querySelectorAll('.canBeDragged');
 
 
             var self = this;
@@ -333,16 +360,16 @@ export default {
 
 
             //TODO: Use data attributes
-            var canvasToInsert = new fabric.Image( this.draggingDivider, {
+            var canvasToInsert = new fabric.Image( this.draggingDivider ,{
                 width: this.draggingDivider.width,
                 height: this.draggingDivider.height,
+                fill: 'red',
                 // Set the center of the new object based on the event coordinates relative
                 // to the canvas container.
                 left: e.layerX,
                 top: e.layerY,
             });
-            //TODO: Ugly hack for background
-            canvasToInsert.setBackgroundColor(new fabric.Color('f00'));
+
             this.canvas.add(canvasToInsert);
 
             //Clean data property
@@ -474,7 +501,7 @@ export default {
         
         next( vm => {
 
-           /* // # is Step 1 completed ?
+            // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
                  return;
@@ -490,7 +517,7 @@ export default {
             if( !vm.$store.state.threecompleted ) {
                  vm.$router.push({ path: '/split/step3' });
                  return;
-            }*/
+            }
 
         })
     },     
@@ -500,7 +527,6 @@ export default {
         console.log("Step4 mounted!");
         this.$store.commit('setComponentHeader','gestione divisori');
         this.initCanvas();
-       // this.initDividers();
     }
 
 }
