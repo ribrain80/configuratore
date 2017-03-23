@@ -1,74 +1,80 @@
 <template>
-    
-    <!-- Container -->
-    <div class="row" id="step4">
-        
-
-        <!-- Canvas container -->
-        <div class="col-lg-6 dragdrop-area" id="canvas-container">
-            <canvas id="canvas" style="border:1px solid #ccc"></canvas>
+    <section>
+        <div class="row">
+            <!-- Canvas container -->
+            <div class="col-lg-12 dragdrop-area" id="canvas-container">
+                <canvas id="canvas" style="border:1px solid #ccc"></canvas>
+            </div>
         </div>
+        <div class="spacer"></div>
+        <div class="row">
+            <!-- Dividers container -->
+            <div class="col-lg-12" id="elementmenu">
 
-        <!-- Dividers container -->
-        <div class="col-lg-12" id="elementmenu">
-            
-            <!-- Tab title ( Nav ) -->
-            <ul class="nav nav-tabs">
-                <li  :class="{active: !index}" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
-                    <a data-toggle="tab" :href="genHref(cat)"> Elem h-{{cat}}</a>
-                </li>
-            </ul>
-            
-            <!-- Tab contents -->
-            <div class="tab-content">
-                <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
-                    <div class="row" style="margin-top: 22px">
-                        <div class="col-lg-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    {{ dimension}}
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <!-- Remove the inline style and use something more responsive -->
-                                            <img draggable="true"
-                                                 class="img  rotate90 canBeDragged center-block"
-                                                 :src="divider.image"
-                                                 style="height: 100px"
-                                                 :data-width  = "divider.width"
-                                                 :data-height = "divider.length"
-                                            >
+                <!-- Tab title ( Nav ) -->
+                <ul class="nav nav-tabs">
+                    <li  :class="{active: !index}" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
+                        <a data-toggle="tab" :href="genHref(cat)"> Elem h-{{cat}}</a>
+                    </li>
+                </ul>
+
+                <!-- Tab contents -->
+                <div class="tab-content">
+                    <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
+                        <div class="row" style="margin-top: 22px">
+                            <div class="col-lg-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        {{ dimension}}
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row" style="margin-bottom: 10px">
+                                            <div class="col-lg-12 col-md-12">
+                                                <img src="http://placehold.it/100x100" class="img center-block">
+                                            </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
-                                            <!-- Remove the inline style and use something more responsive -->
-                                            <img draggable="true"
-                                                 class="img canBeDragged center-block"
-                                                 :src="divider.image"
-                                                 style="height: 100px"
-                                                 :data-width  = "divider.length"
-                                                 :data-height = "divider.width"
-                                            >
+                                        <div class="row" >
+                                            <div class="col-lg-6 col-md-6">
+                                                <!-- Remove the inline style and use something more responsive -->
+                                                <img draggable="true"
+                                                     class="img  rotate90 canBeDragged center-block"
+                                                     :src="divider.image"
+                                                     style="height: 100px"
+                                                     :data-width  = "divider.width"
+                                                     :data-height = "divider.length"
+                                                >
+                                            </div>
+                                            <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
+                                                <!-- Remove the inline style and use something more responsive -->
+                                                <img draggable="true"
+                                                     class="img canBeDragged center-block"
+                                                     :src="divider.image"
+                                                     style="height: 100px"
+                                                     :data-width  = "divider.length"
+                                                     :data-height = "divider.width"
+                                                >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
+
             </div>
-
         </div>
-        
-        <!-- Next button -->
-        <div class="col-lg-12" >
-            <button class="btn btn-danger inpagenav" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-            <router-link to="/split/stepponte" tag="button">{{ 'back' | translate }}</router-link>
+        <div class="spacer"></div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
+            </div>
+            <div class="col-lg-3 col-md-3 pull-right">
+                <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            </div>
         </div>
-
-    </div>
-
+    </section>
 </template>
 
 <script>
@@ -124,6 +130,10 @@ export default {
 
             // # Compute height based on ration computed
             this.canvasHeight = parseInt( this.$store.state.dimensions.length * this.config.ratio );
+
+            //TODO: Check me ...
+            $( "#canvas-container" ).height( this.canvasHeight );
+
 
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
@@ -545,7 +555,7 @@ export default {
         check: function() {
 
             // # Check
-            if( this.$store.state.dividers_selected.length == 0 ) {
+            /*if( this.$store.state.dividers_selected.length == 0 ) {
 
                 $( "#error-modal" ).find( '.modal-body' ).text( "Devi selezionare almeno un divisorio" );
                 $( '#error-modal' ).modal();
@@ -555,7 +565,7 @@ export default {
 
                 // # Stay here and fix it
                 return false;  
-            } 
+            } */
 
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );

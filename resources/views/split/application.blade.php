@@ -20,7 +20,7 @@
         padding-right: 0;
         margin-left: auto;
         margin-right: auto;
-        display: block;
+        display: inline-block;
     }        
     </style>
 </head>
