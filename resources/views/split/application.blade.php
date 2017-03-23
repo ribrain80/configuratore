@@ -12,6 +12,17 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
+
+    <style>
+        
+    canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }        
+    </style>
 </head>
 <body>
 <div class="cover"></div>

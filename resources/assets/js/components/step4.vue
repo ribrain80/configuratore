@@ -5,8 +5,8 @@
         
 
         <!-- Canvas container -->
-        <div class="col-lg-12 dragdrop-area" id="canvas-container">
-            <canvas id="canvas" width="400" height="400" style="border:1px solid #ccc"></canvas>
+        <div class="col-lg-6 dragdrop-area" id="canvas-container">
+            <canvas id="canvas" style="border:1px solid #ccc"></canvas>
         </div>
 
         <!-- Dividers container -->
@@ -86,44 +86,120 @@ export default {
             snap: 20,
             canvasWidth:0,
             canvasHeight:0,
+
+            config: {
+                ratio: 3
+            }
+        }
+    },
+
+    computed: {
+        // a computed getter
+        real_width: function () {
+            return this.$store.state.dimensions.width + this.$store.state.dimensions.delta_width;
+        },
+
+        real_height: function() {
+            return this.$store.state.dimensions.length + this.$store.state.dimensions.delta_length;
         }
     },
 
     methods: {
 
+        /**
+         * [initCanvas description]
+         * @return {[type]} [description]
+         */
         initCanvas: function() {
 
-            this.canvas = new fabric.Canvas('canvas');
-            this.canvasWidth = document.getElementById('canvas').width;
-            this.canvasHeight = document.getElementById('canvas').height;
+            // # Compute available width
+            this.canvasWidth  = parseInt( $( "#canvas-container" ).width() );
+
+            // # Compute ratio
+            this.ratioComputer();
+
+            // # Compute height based on ration computed
+            this.canvasHeight = parseInt( this.$store.state.dimensions.length * this.config.ratio );
+
+            // # Initialize canvas
+            this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
+
+            // # Force rendering
+            this.canvas.renderAll();
+
+            // # CHECK ME
             this.canvas.selection = false;
 
-
-            this.canvas.on(['object:moving'],  (options) => {
+            /**
+             * [description]
+             * @param  {[type]} ['object:moving'] [description]
+             * @param  {[type]} (options          [description]
+             * @return {[type]}                   [description]
+             */
+            this.canvas.on( ['object:moving'],  (options) => {
                 this.handleMoving(options);
             });
-            this.canvas.on(['object:added'], (options) => {
+
+            /**
+             * [description]
+             * @param  {[type]} ['object:added'] [description]
+             * @param  {[type]} (options         [description]
+             * @return {[type]}                  [description]
+             */
+            this.canvas.on( ['object:added'], (options) => {
                 this.handleMoving(options);
             });  
 
+            // # Draggable images selection
             this.images = document.querySelectorAll('.media-left img');
 
-
+            // # Scope fix
             var self = this;
+
             [].forEach.call( self.images, function (img) {
-                img.addEventListener('dragstart', self.handleDragStart, false);
-                img.addEventListener('dragend', self.handleDragEnd, false);
+                img.addEventListener( 'dragstart', self.handleDragStart, false);
+                img.addEventListener( 'dragend', self.handleDragEnd, false);
             });
 
             // Bind the event listeners for the canvas
             var canvasContainer = document.getElementById('canvas-container');
+
             canvasContainer.addEventListener('dragenter', self.handleDragEnter, false);
             canvasContainer.addEventListener('dragover', self.handleDragOver, false);
             canvasContainer.addEventListener('dragleave', self.handleDragLeave, false);
             canvasContainer.addEventListener('drop', self.handleDrop, false);              
         },
 
-        handleMoving: function (options) {
+        /**
+         * Computes the correct ratio based on container width
+         * @return {void}
+         */
+        ratioComputer: function() {
+
+            // # Container available width
+            var available_width = this.canvasWidth;
+
+            // # Ratio computed using max allowed rect width
+            this.config.ratio = available_width / this.real_width;
+        },  
+
+        /**
+         * Converts any real dimension into a suitable pixel rapresentation of it
+         * Conversion is based of a scale factor and a pixel ratio ( should be related to the device screen dimension )  
+         * @param  {double} mm input in millimeters
+         * @return {int}    computed ( adapted ) integer output
+         */
+        mm2Pixel: function ( mm ) {
+            
+            try {
+                return Math.floor( mm  * this.config.ratio );
+            } catch ( e ) {
+                // # Use a suitable default value
+                return 250;
+            }   
+        },              
+
+        handleMoving: function ( options ) {
             options.target.setCoords();
 
             // Lock obj inside the canvas
