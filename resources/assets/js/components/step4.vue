@@ -3,21 +3,12 @@
     <!-- Container -->
     <div class="row" id="step4">
         
-        <!-- Title -->
-        <div class="col-lg-12">
-            <h2>{{  "step4.title" | translate }}</h2>
-        </div>
-        
+               
         <!-- Canvas container -->
-        <div class="col-lg-6 dragdrop-area" id="canvas-container">
+        <div class="col-lg-12 dragdrop-area" id="canvas-container">
             <canvas id="canvas" width="400" height="400" style="border:1px solid #ccc"></canvas>
         </div>
 
-        <!-- Canvas container -->
-        <div class="col-lg-6 dragdrop-area">
-            3D Model
-        </div>        
-        
         <!-- Dividers container -->
         <div class="col-lg-12" id="elementmenu">
             
