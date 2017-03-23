@@ -23,29 +23,33 @@
             <div class="tab-content">
                 <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                     <div class="row" style="margin-top: 22px">
-                        <div class="col-lg-4" v-for="divider in getDividerByCat(cat)">
-                            <div class="panel panel-default" :class="{ 'bg-success': isSelected( divider.id ) }">
-                                <div class="media" style="width: 100%">
-                                    <div class="media-left" style="width: 20%">
-                                            <img draggable="true" class="media-object img-thumbnail" :src="divider.image" style="height:100px ">
-                                    </div>
-                                    <div class="media-body" :data-x="divider.width" :data-y="divider.length" :data-z="divider.depth" :data-orientation="H" @click="pushDivider( divider )" :data-id="divider.id" style="width: 80%">
-                                        <h4 class="media-heading">{{divider.description}}</h4>
-                                        <table border="0" calss="table" width="100%">
-                                            <tr>
-                                                <td><b>Color:</b></td>
-                                                <td>{{divider.color}}</td>
-                                                <td><b>Texture:</b></td>
-                                                <td>{{divider.texture}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Border:</b></td>
-                                                <td>{{divider.border}}</td>
-                                                <td><b>Dimension:</b></td>
-                                                <td>({{divider.width}} x {{divider.length}})</td>
-                                            </tr>
-                                        </table>
-
+                        <div class="col-lg-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    {{ dimension}}
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <!-- Remove the inline style and use something more responsive -->
+                                            <img draggable="true"
+                                                 class="img  rotate90 canBeDragged center-block"
+                                                 :src="divider.image"
+                                                 style="height: 100px"
+                                                 :data-width  = "divider.width"
+                                                 :data-height = "divider.length"
+                                            >
+                                        </div>
+                                        <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
+                                            <!-- Remove the inline style and use something more responsive -->
+                                            <img draggable="true"
+                                                 class="img canBeDragged center-block"
+                                                 :src="divider.image"
+                                                 style="height: 100px"
+                                                 :data-width  = "divider.length"
+                                                 :data-height = "divider.width"
+                                            >
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -150,8 +154,10 @@ export default {
                 this.handleMoving(options);
             });  
 
+
             // # Draggable images selection
-            this.images = document.querySelectorAll('.media-left img');
+            this.images = document.querySelectorAll('.canBeDragged');
+
 
             // # Scope fix
             var self = this;
@@ -431,17 +437,15 @@ export default {
             }
 
 
-            //TODO: Use data attributes
-            var canvasToInsert = new fabric.Image( this.draggingDivider, {
-                width: this.draggingDivider.width,
-                height: this.draggingDivider.height,
-                // Set the center of the new object based on the event coordinates relative
-                // to the canvas container.
+            var canvasToInsert = new fabric.Rect({
                 left: e.layerX,
                 top: e.layerY,
+                width: +this.draggingDivider.dataset.width * this.ratio,
+                height: +this.draggingDivider.dataset.height * this.ratio,
+                fill: '#f55'
             });
-            //TODO: Ugly hack for background
-            canvasToInsert.setBackgroundColor(new fabric.Color('f00'));
+
+
             this.canvas.add(canvasToInsert);
 
             //Clean data property
@@ -599,7 +603,6 @@ export default {
         console.log("Step4 mounted!");
         this.$store.commit('setComponentHeader','gestione divisori');
         this.initCanvas();
-       // this.initDividers();
     }
 
 }
