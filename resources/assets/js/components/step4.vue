@@ -474,7 +474,7 @@ export default {
         
         next( vm => {
 
-            // # is Step 1 completed ?
+           /* // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
                  return;
@@ -490,7 +490,7 @@ export default {
             if( !vm.$store.state.threecompleted ) {
                  vm.$router.push({ path: '/split/step3' });
                  return;
-            }
+            }*/
 
         })
     },     
