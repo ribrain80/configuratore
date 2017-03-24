@@ -3,6 +3,7 @@ import Vuex         from 'vuex'
 import vuexI18n     from 'vuex-i18n'
 import mutations    from './mutations'
 import translations from './translations'
+require('es6-promise').polyfill();
 
 Vue.use( Vuex );
 
