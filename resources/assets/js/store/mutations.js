@@ -370,19 +370,26 @@ const  mutations = {
      * @param {} obj
      * @return 
      */
-    manageDivider: function (state, obj) {
+    pushDivider: function (state, obj) {
 
         console.log("managing dividers");
 
-        if ($.inArray(obj.id, state.dividers_selected) != -1) {
+        /*if ($.inArray(obj.id, state.dividers_selected) != -1) {
             console.log("pulling out divider");
             state.dividers_selected.splice($.inArray(obj.id, state.dividers_selected), 1);
             return;
-        }
+        }*/
 
         console.log("pushing in divider");
-        state.dividers_selected.push(obj.id);
+        state.dividers_selected.push( obj );
     },
+
+    removeDivider: function( state, objID ) {
+        console.log( " removing ");
+        state.dividers_selected = state.dividers_selected.filter(obj => {obj.id!=objID;});
+        console.log( state.dividers_selected );
+
+    } ,
 
 
     /**

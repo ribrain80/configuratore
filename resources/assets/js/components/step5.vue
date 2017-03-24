@@ -113,6 +113,8 @@ export default {
             // # Let Pace track loading
             Pace.track( function() {
 
+                console.log( self.$store.getters.exported );
+
                 Axios.post( '/split/savedrawer', self.$store.getters.exported ).then( response => {
 
                     // # Got drawerID from server

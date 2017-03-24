@@ -30,7 +30,7 @@
                                     <div class="col-lg-3"  v-for="(divider,dimension) in getDividerByCat(cat)">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                {{ dimension}}
+                                                {{ dimension }}
                                             </div>
                                             <div class="panel-body">
                                                 <div class="row" style="margin-bottom: 10px;" >
@@ -47,6 +47,10 @@
                                                              style="height: 80px"
                                                              :data-width  = "divider.width"
                                                              :data-height = "divider.length"
+                                                             :data-sku = "divider.sku"
+                                                             :data-rotate = "90"
+                                                             :data-key = "dimension"
+                                                             :data-cat = "cat"
                                                         >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
@@ -57,6 +61,10 @@
                                                              style="height: 80px"
                                                              :data-width  = "divider.length"
                                                              :data-height = "divider.width"
+                                                             :data-sku = "divider.sku"
+                                                             :data-rotate = "0"
+                                                             :data-key = "dimension"
+                                                             :data-cat = "cat"
                                                         >
                                                     </div>
                                                 </div>
@@ -131,19 +139,24 @@ export default {
 
             // # Compute available width
             this.canvasWidth  = parseInt( $( "#canvas-container" ).width() );
+            console.log( "CW: " + this.canvasWidth );
 
             // # Compute ratio
             this.ratioComputer();
 
             // # Compute height based on ration computed
             this.canvasHeight = parseInt( this.$store.state.dimensions.length * this.config.ratio );
+            console.log( "CH: " + this.canvasHeight );
 
             //TODO: Check me ...
             $( "#canvas-container" ).height( this.canvasHeight );
 
+            
 
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
+
+
 
             // # Force rendering
             this.canvas.renderAll();
@@ -158,7 +171,7 @@ export default {
              * @return {[type]}                   [description]
              */
             this.canvas.on( ['object:moving'],  (options) => {
-                this.handleMoving(options);
+                this.handleMoving( options );
             });
 
             /**
@@ -168,13 +181,11 @@ export default {
              * @return {[type]}                  [description]
              */
             this.canvas.on( ['object:added'], (options) => {
-                this.handleMoving(options);
+                this.handleMoving( options );
             });  
-
 
             // # Draggable images selection
             this.images = document.querySelectorAll('.canBeDragged');
-
 
             // # Scope fix
             var self = this;
@@ -190,7 +201,8 @@ export default {
             canvasContainer.addEventListener('dragenter', self.handleDragEnter, false);
             canvasContainer.addEventListener('dragover', self.handleDragOver, false);
             canvasContainer.addEventListener('dragleave', self.handleDragLeave, false);
-            canvasContainer.addEventListener('drop', self.handleDrop, false);              
+            canvasContainer.addEventListener('drop', self.handleDrop, false); 
+
         },
 
         /**
@@ -203,7 +215,10 @@ export default {
             var available_width = this.canvasWidth;
 
             // # Ratio computed using max allowed rect width
-            this.config.ratio = available_width / this.real_width;
+            this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
+            this.snap = parseInt( this.snap * this.config.ratio );
+            console.log( "RATIO " + this.config.ratio );
+            console.log( "SNAP " + this.snap );
         },  
 
         /**
@@ -215,6 +230,8 @@ export default {
         mm2Pixel: function ( mm ) {
             
             try {
+                console.log( "mm orig " + mm );
+                console.log( "mm conv " + Math.floor( mm  * this.config.ratio ) );
                 return Math.floor( mm  * this.config.ratio );
             } catch ( e ) {
                 // # Use a suitable default value
@@ -223,6 +240,7 @@ export default {
         },              
 
         handleMoving: function ( options ) {
+
             options.target.setCoords();
 
             // Lock obj inside the canvas
@@ -234,8 +252,9 @@ export default {
         _preventCollision: function (options) {
 
             // Loop through objects
-            this.canvas.forEachObject((obj) => {
-                if (obj === options.target) return;
+            this.canvas.forEachObject( (obj) => {
+
+                if ( obj === options.target ) return;
 
                 // If objects intersect
                 if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || obj.isContainedWithinObject(options.target)) {
@@ -397,6 +416,8 @@ export default {
         },
 
         _lockToContainer: function (options) {
+
+            console.log( "TARGET " + options.target );
             // Don't allow objects off the canvas
             if(options.target.getLeft() < this.snap) {
                 options.target.setLeft(0);
@@ -463,11 +484,43 @@ export default {
                 top: e.layerY,
                 width: +this.draggingDivider.dataset.width * this.config.ratio,
                 height: +this.draggingDivider.dataset.height * this.config.ratio,
-                fill: '#f00'
+                fill: '#f00',
+                sku: this.draggingDivider.dataset.sku,
+                ID: this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now()
             });
 
 
+            var self = this;
+            window.fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function (event) {
+                try {
+                    var id = self.canvas.getActiveObject().ID;
+                    self.canvas.getActiveObject().remove();
+                    self.$store.commit( "removeDivider", id );
+                } catch( e ) {
+                    console.log( "is null")
+                } 
+            });
+
+                        // Lock obj inside the canvas
+            //this._lockToContainer(e);
             this.canvas.add(canvasToInsert);
+
+            var coords = canvasToInsert.calcCoords().bl;
+            var centerCoords = canvasToInsert.getCenterPoint(); 
+
+            var divider = {};
+            divider.sku = canvasToInsert.sku;
+            divider.width = canvasToInsert.width;
+            divider.height = canvasToInsert.height;
+            divider.x = coords.x;
+            divider.y = coords.y;
+            divider.centerx = centerCoords.x;
+            divider.centery = centerCoords.y;
+            divider.id = canvasToInsert.ID;
+            console.log( divider );
+
+            this.$store.commit( "pushDivider", divider );
+
 
             //Clean data property
             this.draggingDivider={};

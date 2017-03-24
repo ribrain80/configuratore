@@ -91,12 +91,11 @@
     <script>
 
     Pace.on( "start", function(){
-        $(".cover").show();
+        $(".cover").fadeIn( 100 );
     });
 
     Pace.on( "done", function() {
-        console.log( "done" );
-        $(".cover").hide();
+        $(".cover").fadeOut( 1000 );
     });
 
     $('#gallery-trigger').on('click', function() {
