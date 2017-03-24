@@ -78,7 +78,7 @@
 <script>
 
 // # Import map getters
-import { mapGetters } from 'vuex'
+//import { mapGetters } from 'vuex'
 
 /**
  * Vue object managing drawer type selection
@@ -103,9 +103,9 @@ export default {
         /**
          * Imported getters from store
          */
-        ...mapGetters([
+        /*...mapGetters([
             "actual_lineabox_shoulder_height_LOW"
-        ]),
+        ]),*/
 
          /**
          * Sets the drawer category, commit related store mutation
@@ -135,7 +135,7 @@ export default {
             // # Set a default 4 lineabox select
             // # Default is the lowest value
             if( 4 != type ) {
-                this.$store.commit( "setShoulderHeight", this.actual_lineabox_shoulder_height_LOW() );
+                this.$store.commit( "setShoulderHeight", this.$store.state.actual_lineabox_shoulder_height_LOW );
                 return;
             } 
 

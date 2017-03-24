@@ -114,7 +114,7 @@
 <script>
 
 // # Import map getters
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 /**
  * Vue object managing bridge / bridge support choice
@@ -135,15 +135,6 @@ export default {
      * @type {Object}
      */
     methods: {
-
-        /**
-         * Import getters from store
-         */
-        ...mapGetters([
-            "actual_lineabox_shoulder_height_LOW", 
-            "actual_lineabox_shoulder_height_MID",
-            "actual_lineabox_shoulder_height_HIGH" 
-        ]),
 
         /**
          * [setOrientation description]

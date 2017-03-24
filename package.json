@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bootstrap-material-design": "^0.5.10",
+    "es6-promise": "^4.1.0",
     "fabric": "^1.7.7",
     "findup": "^0.1.5",
     "vue-cookie": "^1.1.3",
