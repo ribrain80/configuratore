@@ -105,9 +105,9 @@
 
     });
 
-    $(function() {
+   /* $(function() {
         $.material.init();
-    });
+    });*/
 
 
 
