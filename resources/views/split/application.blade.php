@@ -79,8 +79,7 @@
         }  
 
    </script>
-    <script src="{{ elixir('js/vendor.js') }}"></script>
-    <script src="{{ elixir('js/app.js') }}"></script>
+    <script src="{{ elixir('js/split.js') }}"></script>
     <script>
 
 

@@ -26,8 +26,7 @@ var paths = {
 
 elixir(function(mix) {
 
-    mix.webpack('app.js');
-
+    //Copy resurces
     mix.copy('./resources/assets/css/pdf.css', 'public/css' );
     mix.copy('./resources/images', 'public/images');
     mix.copy('./resources/pdf/brochure.pdf', 'public/pdf/brochure.pdf');
@@ -38,6 +37,10 @@ elixir(function(mix) {
     mix.copy( paths.material + 'css/**', 'public/css');
     mix.copy( paths.material + 'js/**', 'public/js');
 
+    //Build Application logic
+    mix.webpack('app.js');
+
+    //Compile scss and build vendor.js
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
@@ -48,14 +51,16 @@ elixir(function(mix) {
             paths.lightgallerythumb + "lg-thumbnail.min.js",
         ], 'public/js/vendor.js', './');
 
+    //Join css and scripts
     mix.styles([
         'public/css/app.css',
         'public/css/pace-theme-loading-bar.css',
         'public/css/lightgallery.min.css'
     ], 'public/css/split.css', './');
+    mix.scripts(['public/js/vendor.js','public/js/app.js'],'public/js/split.js','./');
 
+    //Versiong files
     mix.version('public/css/split.css');
-
-    mix.version(['css/split.css', 'js/app.js','js/vendor.js']);
+    mix.version(['public/css/split.css', 'public/js/split.js']);
 
 });
