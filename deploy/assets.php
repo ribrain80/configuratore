@@ -8,8 +8,6 @@ require_once 'recipe/common.php';
 set('bin/npm', function () {
     return run('which npm')->toString();
 });
-
-
 task('npm:install', function () {
     $npm_folder_exists = run('if [ ! -L {{deploy_path}}/shared/node_modules ] && [ -d {{deploy_path}}/shared/node_modules ]; then echo true; fi')->toBool();
     if(!$npm_folder_exists) {
@@ -20,10 +18,19 @@ task('npm:install', function () {
 })->desc('Execute npm install');
 
 
-desc('Install bower packages');
+/**
+ * Setup the environment file in the new release
+ */
+
+task('env:link', function () {
+    run('cp {{deploy_path}}/shared/.env {{release_path}}/.env');
+})->desc('Environment setup');
+
+
+
 task('bower:install', function () {
     run('cd {{release_path}} && bower install');
-});
+})->desc('Execute npm install');
 
 
 task('assets:generate', function () {
@@ -31,11 +38,3 @@ task('assets:generate', function () {
 })->desc('Generating assets');
 
 
-task('env:link', function () {
-    run('ln -s {{deploy_path}}/current/.env {{deploy_path}}/shared/.env');
-})->desc('Symlink environment file');
-
-
-/*task('log:set-permissions', function () {
-    run('sudo chmod 664 {{deploy_path}}/current/storage/logs/laravel.log');
-})->desc('Make laravel.log readable by the web server');*/

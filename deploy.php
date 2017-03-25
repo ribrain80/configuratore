@@ -45,11 +45,6 @@ set('shared_dirs', [
 
 
 
-
-
-
-
-
 // Laravel writable dirs
 set('writable_dirs', ['storage', 'vendor','bootstrap','bootstrap/cache']);
 
