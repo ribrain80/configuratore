@@ -1,5 +1,8 @@
 <?php
+namespace Deployer;
 
+require_once 'vendor/autoload.php';
+require_once 'recipe/common.php';
 /**
  * Artisan tasks
  */

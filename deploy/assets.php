@@ -1,5 +1,11 @@
 <?php
-env('bin/npm', function () {
+
+namespace Deployer;
+
+require_once 'vendor/autoload.php';
+require_once 'recipe/common.php';
+
+set('bin/npm', function () {
     return run('which npm')->toString();
 });
 task('npm:install', function () {

@@ -1,8 +1,8 @@
 <?php
 namespace Deployer;
 
-require 'vendor/autoload.php';
-require 'recipe/common.php';
+require_once 'vendor/autoload.php';
+require_once 'recipe/common.php';
 require_once __DIR__ . '/deploy/laravel.php';
 require_once __DIR__ . '/deploy/assets.php';
 
@@ -51,11 +51,11 @@ task('environment', function () use($deployPath) {
     run('cp ' . $deployPath. '/shared/.env {{release_path}}/.env');
 })->desc('Environment setup');
 
-
+/*
 desc('Install npm packages');
 task('npm:install', function () {
     run('cd {{release_path}} && npm install');
-});
+});*/
 
 desc('Install bower packages');
 task('bower:install', function () {
@@ -86,8 +86,8 @@ task('deploy', [
     'deploy:vendors',
     'deploy:writable',
     'deploy:symlink',
-    'artisan:migrate',
-    'artisan:cache:clear',
+    //'artisan:migrate',
+    //'artisan:cache:clear',
     'npm:install',
     'bower:install',
     'assets:generate',
