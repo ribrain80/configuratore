@@ -50,8 +50,8 @@ set('writable_dirs', ['storage', 'vendor']);
 task('deploy', [
     'deploy:prepare',
     'deploy:release',
-    'environment',
     'deploy:update_code',
+    'environment',
     'deploy:vendors',
     'deploy:symlink',
     'cleanup',
