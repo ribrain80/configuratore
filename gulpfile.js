@@ -49,6 +49,7 @@ elixir(function(mix) {
         ], 'public/js/vendor.js', './');
 
     mix.styles([
+        'public/css/app.css',
         'public/css/pace-theme-loading-bar.css',
         'public/css/lightgallery.min.css'
     ], 'public/css/split.css', './');
