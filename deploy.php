@@ -51,11 +51,7 @@ task('environment', function () use($deployPath) {
     run('cp ' . $deployPath. '/shared/.env {{release_path}}/.env');
 })->desc('Environment setup');
 
-/*
-desc('Install npm packages');
-task('npm:install', function () {
-    run('cd {{release_path}} && npm install');
-});*/
+
 
 desc('Install bower packages');
 task('bower:install', function () {
@@ -63,10 +59,6 @@ task('bower:install', function () {
 });
 
 
-desc('Compile assets');
-task('gulp:compile', function () {
-    run('cd {{release_path}} && gulp');
-});
 
 
 
@@ -86,12 +78,11 @@ task('deploy', [
     'deploy:vendors',
     'deploy:writable',
     'deploy:symlink',
-    //'artisan:migrate',
-    //'artisan:cache:clear',
+    'artisan:migrate',
+    'artisan:cache:clear',
     'npm:install',
     'bower:install',
     'assets:generate',
-    'log:set-permissions',
     'cleanup',
 
 ])->desc('Deploy your project');
