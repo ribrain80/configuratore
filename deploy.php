@@ -3,6 +3,8 @@ namespace Deployer;
 
 require 'vendor/autoload.php';
 require 'recipe/common.php';
+require_once __DIR__ . '/deploy/laravel.php';
+require_once __DIR__ . '/deploy/assets.php';
 
 
 $deployPath="/var/www/mile2";
@@ -31,6 +33,15 @@ server('mile2', 'splitconf.tk', 443)
  * Set the repository
  */
 set('repository', 'https://github.com/ribrain80/configuratore.git');
+
+// Laravel shared dirs
+set('shared_dirs', [
+    'storage/app',
+    'storage/framework/cache',
+    'storage/framework/sessions',
+    'storage/framework/views',
+    'storage/logs',
+]);
 
 /**
  * Setup the environment file in the new release
@@ -70,12 +81,17 @@ task('deploy', [
     'deploy:prepare',
     'deploy:release',
     'deploy:update_code',
+    'deploy:shared',
     'environment',
     'deploy:vendors',
+    'deploy:writable',
     'deploy:symlink',
+    'artisan:migrate',
+    'artisan:cache:clear',
     'npm:install',
     'bower:install',
-    'gulp:compile',
+    'assets:generate',
+    'log:set-permissions',
     'cleanup',
 
 ])->desc('Deploy your project');
