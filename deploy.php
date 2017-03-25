@@ -6,10 +6,6 @@ require_once 'recipe/common.php';
 require_once __DIR__ . '/deploy/laravel.php';
 require_once __DIR__ . '/deploy/assets.php';
 
-
-$deployPath="/var/www/mile2";
-
-
 /**
  * Keep latest 5 releases
  */
@@ -28,7 +24,7 @@ server('mile2', 'splitconf.tk', 443)
     ->password('riccardosfelab')    //Not a great idea but usefull (dont use for production)
     ->stage('mile2')
     ->set('branch', 'deployer')
-    ->set('deploy_path', $deployPath);
+    ->set('deploy_path', "/var/www/mile2");
 
 /**
  * Set the repository
@@ -59,7 +55,6 @@ task('deploy', [
     'deploy:shared',
     'env:link',
     'deploy:vendors',
-    //'deploy:writable',
     'deploy:symlink',
     'artisan:migrate',
     'artisan:cache:clear',

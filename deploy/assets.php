@@ -1,13 +1,22 @@
 <?php
-
+/**
+ * Assets related tasks
+ */
 namespace Deployer;
 
 require_once 'vendor/autoload.php';
 require_once 'recipe/common.php';
 
+/**
+ * Set the right version of npm
+ */
 set('bin/npm', function () {
     return run('which npm')->toString();
 });
+
+/**
+ * Install the npm packages
+ */
 task('npm:install', function () {
     $npm_folder_exists = run('if [ ! -L {{deploy_path}}/shared/node_modules ] && [ -d {{deploy_path}}/shared/node_modules ]; then echo true; fi')->toBool();
     if(!$npm_folder_exists) {
@@ -27,12 +36,17 @@ task('env:link', function () {
 })->desc('Environment setup');
 
 
-
+/**
+ * Install the bower packages
+ */
 task('bower:install', function () {
     run('cd {{release_path}} && bower install');
 })->desc('Execute npm install');
 
-
+/**
+ * Compile and webpack the assets
+ * @todo: Handle dev/prod enviroenment
+ */
 task('assets:generate', function () {
     run('cd {{deploy_path}}/current; gulp');
 })->desc('Generating assets');
