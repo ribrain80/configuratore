@@ -25,6 +25,7 @@ set('ssh_multiplexing', true);
  */
 server('mile2', 'splitconf.tk', 443)
     ->user('riccardo')
+    ->password('riccardosfelab')    //Not a great idea but usefull (dont use for production)
     ->stage('mile2')
     ->set('branch', 'deployer')
     ->set('deploy_path', $deployPath);
