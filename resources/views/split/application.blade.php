@@ -25,7 +25,6 @@
     </style>
 </head>
 <body>
-<div class="cover"></div>
 
 <!-- New configration alert Modal -->
 <div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -90,14 +89,7 @@
     <script src="{{ elixir('js/material.min.js') }}"></script>
     <script>
 
-    Pace.on( "start", function(){
-        $(".cover").fadeIn( 100 );
-    });
-
-    Pace.on( "done", function() {
-        $(".cover").fadeOut( 1000 );
-    });
-
+    
     $('#gallery-trigger').on('click', function() {
 
         $(this).lightGallery({
