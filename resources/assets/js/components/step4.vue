@@ -33,16 +33,14 @@
                                                 {{ dimension }}
                                             </div>
                                             <div class="panel-body">
-                                                <div class="row" style="margin-bottom: 10px;" >
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <img src="http://placehold.it/100x100" class="img center-block">
+                                                <div class="row" style="display: flex">
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
                                                     </div>
-                                                </div>
-                                                <div class="row" >
-                                                    <div class="col-lg-6 col-md-6">
+                                                    <div class="col-lg-4 col-md-4">
                                                         <!-- Remove the inline style and use something more responsive -->
                                                         <img draggable="true"
-                                                             class="img  rotate90 canBeDragged center-block"
+                                                             class="img  rotate90 canBeDragged center-block  img-responsive "
                                                              :src="divider.image"
                                                              style="height: 80px"
                                                              :data-width  = "divider.width"
@@ -53,10 +51,10 @@
                                                              :data-cat = "cat"
                                                         >
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6" style="border-left: 1px solid #ddd;">
+                                                    <div class="col-lg-3 col-md-3" style="border-left: 1px solid #ddd;">
                                                         <!-- Remove the inline style and use something more responsive -->
                                                         <img draggable="true"
-                                                             class="img canBeDragged center-block"
+                                                             class="img canBeDragged center-block  img-responsive"
                                                              :src="divider.image"
                                                              style="height: 80px"
                                                              :data-width  = "divider.length"
@@ -108,7 +106,7 @@ export default {
             canvas: {},
             images: [],
             draggingDivider: {},
-            snap: 20,
+            snap: 5,
             canvasWidth:0,
             canvasHeight:0,
 
@@ -216,7 +214,7 @@ export default {
 
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
-            this.snap = parseInt( this.snap * this.config.ratio );
+            //this.snap = parseInt( this.snap * this.config.ratio );
             console.log( "RATIO " + this.config.ratio );
             console.log( "SNAP " + this.snap );
         },  
