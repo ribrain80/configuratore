@@ -48,4 +48,6 @@ elixir(function(mix) {
             paths.lightgallerythumb + "lg-thumbnail.min.js",
         ], 'public/js/vendor.js', './');
 
+    mix.version(['css/app.css', 'js/app.js','js/vendor.js']);
+
 });
