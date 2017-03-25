@@ -43,20 +43,7 @@ set('shared_dirs', [
     'storage/logs',
 ]);
 
-/**
- * Setup the environment file in the new release
- */
 
-task('environment', function () use($deployPath) {
-    run('cp ' . $deployPath. '/shared/.env {{release_path}}/.env');
-})->desc('Environment setup');
-
-
-
-desc('Install bower packages');
-task('bower:install', function () {
-    run('cd {{release_path}} && bower install');
-});
 
 
 
@@ -74,7 +61,7 @@ task('deploy', [
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',
-    'environment',
+    'env:link',
     'deploy:vendors',
     'deploy:writable',
     'deploy:symlink',
