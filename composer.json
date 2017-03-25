@@ -19,6 +19,7 @@
         "tecnickcom/tcpdf": "^6.2"
     },
     "require-dev": {
+        "deployer/deployer": "^4.3",
         "fzaninotto/faker": "~1.4",
         "krlove/eloquent-model-generator": "^1.2",
         "mockery/mockery": "0.9.*",
