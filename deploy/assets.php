@@ -34,7 +34,7 @@ task('bower:install', function () {
 
 
 task('assets:generate', function () {
-    run('cd {{deploy_path}}/current; gulp --prod');
+    run('cd {{deploy_path}}/current; gulp');
 })->desc('Generating assets');
 
 
