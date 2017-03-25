@@ -48,6 +48,13 @@ elixir(function(mix) {
             paths.lightgallerythumb + "lg-thumbnail.min.js",
         ], 'public/js/vendor.js', './');
 
-    mix.version(['css/app.css', 'js/app.js','js/vendor.js']);
+    mix.styles([
+        'public/css/pace-theme-loading-bar.css',
+        'public/css/lightgallery.min.css'
+    ], 'public/css/split.css', './');
+
+    mix.version('public/css/split.css');
+
+    mix.version(['css/split.css', 'js/app.js','js/vendor.js']);
 
 });
