@@ -41,6 +41,24 @@ task('environment', function () use($deployPath) {
 })->desc('Environment setup');
 
 
+desc('Install npm packages');
+task('npm:install', function () {
+    run('cd {{release_path}} && npm install');
+});
+
+desc('Install bower packages');
+task('bower:install', function () {
+    run('cd {{release_path}} && bower install');
+});
+
+
+desc('Compile assets');
+task('gulp:compile', function () {
+    run('cd {{release_path}} && bower install');
+});
+
+
+
 
 // Laravel writable dirs
 set('writable_dirs', ['storage', 'vendor','bootstrap','bootstrap/cache']);
@@ -55,6 +73,9 @@ task('deploy', [
     'environment',
     'deploy:vendors',
     'deploy:symlink',
+    'npm:install',
+    'bower:install',
+    'gulp:compile',
     'cleanup',
 
 ])->desc('Deploy your project');

@@ -42,8 +42,7 @@
         ]
     },
     "scripts": {
-       
-        "post-update-cmd": [
+       "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
         ]
