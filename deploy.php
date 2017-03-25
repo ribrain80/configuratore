@@ -3,6 +3,10 @@ namespace Deployer;
 
 require 'recipe/common.php';
 
+
+$deployPath="/var/www/mile2";
+
+
 /**
  * Keep latest 5 releases
  */
@@ -20,7 +24,7 @@ server('mile2', 'splitconf.tk', 443)
     ->user('riccardo')
     ->stage('mile2')
     ->set('branch', 'deployer')
-    ->set('deploy_path', '/var/www/mile2');
+    ->set('deploy_path', $deployPath);
 
 /**
  * Set the repository
@@ -31,8 +35,8 @@ set('repository', 'https://github.com/ribrain80/configuratore.git');
  * Setup the environment file in the new release
  */
 
-task('environment', function () {
-    run('cp /home/forge/yoursite.com/shared/.env {{release_path}}/.env');
+task('environment', function () use($deployPath) {
+    run('cp ' . $deployPath. '/shared/.env {{release_path}}/.env');
 })->desc('Environment setup');
 
 
@@ -46,6 +50,7 @@ set('writable_dirs', ['storage', 'vendor']);
 task('deploy', [
     'deploy:prepare',
     'deploy:release',
+    'environment',
     'deploy:update_code',
     'deploy:vendors',
     'deploy:symlink',
