@@ -54,7 +54,7 @@ task('bower:install', function () {
 
 desc('Compile assets');
 task('gulp:compile', function () {
-    run('cd {{release_path}} && bower install');
+    run('cd {{release_path}} && gulp');
 });
 
 
