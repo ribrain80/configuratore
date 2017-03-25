@@ -42,7 +42,7 @@ task('environment', function () use($deployPath) {
 
 
 // Laravel writable dirs
-set('writable_dirs', ['storage', 'vendor']);
+set('writable_dirs', ['storage', 'vendor','bootstrap']);
 
 /**
  * Main task
