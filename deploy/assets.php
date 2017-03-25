@@ -32,7 +32,7 @@ task('assets:generate', function () {
 
 
 task('env:link', function () {
-    run('ln -s {{deploy_path}}/shared/.env {{deploy_path}}/current/.env');
+    run('ln -s {{deploy_path}}/current/.env {{deploy_path}}/shared/.env');
 })->desc('Symlink environment file');
 
 
