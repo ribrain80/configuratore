@@ -89,7 +89,7 @@
     <script src="{{ elixir('js/material.min.js') }}"></script>
     <script>
 
-    
+
     $('#gallery-trigger').on('click', function() {
 
         $(this).lightGallery({

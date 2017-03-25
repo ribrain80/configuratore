@@ -58,7 +58,7 @@ task('deploy', [
     'deploy:shared',
     'env:link',
     'deploy:vendors',
-    'deploy:writable',
+    //'deploy:writable',
     'deploy:symlink',
     'artisan:migrate',
     'artisan:cache:clear',
