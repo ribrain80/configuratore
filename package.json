@@ -4,7 +4,7 @@
     "prod": "gulp --production",
     "dev": "gulp watch"
   },
-  "devDependencies": {
+  "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "bower": "^1.8.0",
     "gulp": "^3.9.1",
@@ -20,9 +20,7 @@
     "standard": "^6.0.8",
     "standard-loader": "^3.0.0",
     "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^1.14.1",
     "axios": "^0.15.3",
     "bootstrap-material-design": "^0.5.10",
     "es6-promise": "^4.1.0",
