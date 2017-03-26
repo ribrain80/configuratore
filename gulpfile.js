@@ -26,6 +26,10 @@ var paths = {
 
 elixir(function(mix) {
 
+    //Build Application logic
+    mix.webpack('app.js');
+
+
     //Copy resurces
     mix.copy('./resources/assets/css/pdf.css', 'public/css' );
     mix.copy('./resources/images', 'public/images');
@@ -37,8 +41,6 @@ elixir(function(mix) {
     mix.copy( paths.material + 'css/**', 'public/css');
     mix.copy( paths.material + 'js/**', 'public/js');
 
-    //Build Application logic
-    mix.webpack('app.js');
 
     //Compile scss and build vendor.js
     mix.sass("app.scss", 'public/css/')
