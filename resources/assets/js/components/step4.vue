@@ -42,8 +42,8 @@
                                                     <div class="col-lg-4 col-md-4">
                                                         <!-- Remove the inline style and use something more responsive -->
                                                         <img draggable="true"
-                                                             class="img  rotate90 canBeDragged center-block  img-responsive "
-                                                             :src="divider.image"
+                                                             class="img   canBeDragged center-block  img-responsive "
+                                                             src="http://homestead.app/images/dividers/445/200X100_H.png"
                                                              style="height: 80px"
                                                              :data-width  = "divider.width"
                                                              :data-height = "divider.length"
@@ -474,23 +474,43 @@ export default {
                 e.stopPropagation(); // stops the browser from redirecting.
             }
 
-            console.log("IMG SRC:",this.draggingDivider.src);
+            //Caching img dataset
+            var _imgW = +this.draggingDivider.dataset.width * this.config.ratio;
+            var _imgH = +this.draggingDivider.dataset.height * this.config.ratio;
+            var _imgID = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
+            var _imgSku = this.draggingDivider.dataset.sku;
 
-            let canvasToInsert = new fabric.Rect({
-                selectable: true,
-                hasControls: false,
-                hasBorders: false,
-                left: e.layerX,
-                top: e.layerY,
-                width: +this.draggingDivider.dataset.width * this.config.ratio,
-                height: +this.draggingDivider.dataset.height * this.config.ratio,
-                fill: '#f00',
-                sku: this.draggingDivider.dataset.sku,
-                ID: this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now()
+            //Creation of canvas to insert
+
+            fabric.Image.fromURL(this.draggingDivider.src,( oImg ) => {
+                oImg.setWidth( _imgW );
+                oImg.setHeight( _imgH );
+                oImg.setLeft( e.layerX );
+                oImg.setTop( e.layerY );
+                oImg.setBackgroundColor( '#ccc' );    //Set a light gray background
+                oImg.ID=_imgID;
+                oImg.sku = _imgSku;
+                this.canvas.add( oImg );    //Add img to the canvas container
             });
 
 
-            var self = this;
+            var divider = {};
+            divider.sku = _imgSku;
+            divider.width = _imgW;
+            divider.height = _imgH;
+            divider.id = _imgID;
+            //@todo: calculate again
+            /*divider.x = coords.x;
+            divider.y = coords.y;
+            divider.centerx = centerCoords.x;
+            divider.centery = centerCoords.y;*/
+
+            console.log( divider );
+
+            this.$store.commit( "pushDivider", divider );
+
+
+            /*var self = this;
             window.fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function (event) {
                 try {
                     var id = self.canvas.getActiveObject().ID;
@@ -501,9 +521,7 @@ export default {
                 } 
             });
 
-                        // Lock obj inside the canvas
-            //this._lockToContainer(e);
-            this.canvas.add(canvasToInsert);
+
 
             var coords = canvasToInsert.calcCoords().bl;
             var centerCoords = canvasToInsert.getCenterPoint(); 
@@ -519,7 +537,7 @@ export default {
             divider.id = canvasToInsert.ID;
             console.log( divider );
 
-            this.$store.commit( "pushDivider", divider );
+            this.$store.commit( "pushDivider", divider );*/
 
 
             //Clean data property
