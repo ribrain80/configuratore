@@ -42,8 +42,8 @@
                                                     <div class="col-lg-4 col-md-4">
                                                         <!-- Remove the inline style and use something more responsive -->
                                                         <img draggable="true"
-                                                             class="img   canBeDragged center-block  img-responsive "
-                                                             src="http://homestead.app/images/dividers/445/200X100_H.png"
+                                                             class="img canBeDragged center-block  img-responsive "
+                                                             src="http://configuratore.local/images/dividers/445/200X100_H.png"
                                                              style="height: 80px"
                                                              :data-width  = "divider.width"
                                                              :data-height = "divider.length"
@@ -104,7 +104,9 @@ export default {
      * @type {Object}
      */
     data: function() { 
+
         return {
+
             canvas: {},
             images: [],
             draggingDivider: {},
@@ -114,7 +116,9 @@ export default {
 
             config: {
                 ratio: 3
-            }
+            },
+
+            currentItem: {}
         }
     },
 
@@ -151,12 +155,9 @@ export default {
             //TODO: Check me ...
             $( "#canvas-container" ).height( this.canvasHeight );
 
-            
-
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
-
-
+            document.getElementById("canvas").fabric = this.canvas;
 
             // # Force rendering
             this.canvas.renderAll();
@@ -184,20 +185,69 @@ export default {
                 this.handleMoving( options );
             });  
 
-            // # Draggable images selection
-            this.images = document.querySelectorAll('.canBeDragged');
-
             // # Scope fix
             var self = this;
 
+            /**
+             * [description]
+             * @param  {[type]} e )  [ description]
+             * @return {[type]}   [description]
+             */
+            fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
+
+                try {
+                    // # Cache active object ID
+                    var id = self.canvas.getActiveObject().get( 'id');
+
+                    // # Remove ID from selected dividers list
+                    self.$store.commit( "removeDivider", id );
+
+                    // # Actually remove object from canvas
+                    self.canvas.remove( self.canvas.getActiveObject() );
+
+                    // # Clean up pointers
+                    self.canvas.discardActiveObject();
+
+                } catch( e ) {
+
+                    // # Log error and ignore it
+                    console.log( e );
+                } finally {
+
+                    // # Stop event propagation and prevent default
+                    // # mandatory cause otherwise the event is passed to the canvas itself
+                    e.preventDefault();
+                    e.stopPropagation();  
+
+                    // # Render all
+                    self.canvas.renderAll(); 
+
+                    // # also return false is needed             
+                    return false;                    
+                }
+
+            });
+
+            /**
+             * [description]
+             * @param  {[type]} e )             {} [description]
+             * @return {[type]}   [description]
+             */
+            fabric.util.removeListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {});            
+
+            // # Draggable images selection
+            this.images = document.querySelectorAll( '.canBeDragged' );
+
+            // # Add drag handler to all the images
             [].forEach.call( self.images, function (img) {
                 img.addEventListener( 'dragstart', self.handleDragStart, false);
                 img.addEventListener( 'dragend', self.handleDragEnd, false);
             });
 
-            // Bind the event listeners for the canvas
-            var canvasContainer = document.getElementById('canvas-container');
+            // # Get the container element
+            var canvasContainer = document.getElementById( 'canvas-container' );
 
+            // # Container listeners
             canvasContainer.addEventListener('dragenter', self.handleDragEnter, false);
             canvasContainer.addEventListener('dragover', self.handleDragOver, false);
             canvasContainer.addEventListener('dragleave', self.handleDragLeave, false);
@@ -216,7 +266,7 @@ export default {
 
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
-            this.snap = parseInt( this.snap * this.config.ratio );
+            this.snap = 1;//parseInt( this.snap * this.config.ratio );
             console.log( "RATIO " + this.config.ratio );
             console.log( "SNAP " + this.snap );
         },  
@@ -239,20 +289,27 @@ export default {
             }   
         },              
 
+        /**
+         * [handleMoving description]
+         * @param  {[type]} options [description]
+         * @return {[type]}         [description]
+         */
         handleMoving: function ( options ) {
 
+            // # Set element Coords
             options.target.setCoords();
 
-            // Lock obj inside the canvas
+            // # Lock obj inside the canvas
             this._lockToContainer(options);
 
+            // # Collision mnagement
             this._preventCollision(options);
         },
 
-        _preventCollision: function (options) {
+        _preventCollision: function ( options ) {
 
             // Loop through objects
-            this.canvas.forEachObject( (obj) => {
+            this.canvas.forEachObject( ( obj ) => {
 
                 if ( obj === options.target ) return;
 
@@ -336,12 +393,10 @@ export default {
             // If objects still overlap
             // Todo: fix when too much full for find a new position
 
-            let outerAreaLeft = null,
-                outerAreaTop = null,
-                outerAreaRight = null,
-                outerAreaBottom = null;
+            let outerAreaLeft = null, outerAreaTop = null, outerAreaRight = null, outerAreaBottom = null;
 
             this.canvas.forEachObject((obj) => {
+
                 if (obj === options.target) return;
 
                 if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || obj.isContainedWithinObject(options.target)) {
@@ -418,84 +473,137 @@ export default {
         _lockToContainer: function (options) {
 
             console.log( "TARGET " + options.target );
-            // Don't allow objects off the canvas
+
+            // # Don't allow objects off the canvas
             if(options.target.getLeft() < this.snap) {
-                options.target.setLeft(0);
+                options.target.setLeft( 0 );
             }
 
             if(options.target.getTop() < this.snap) {
-                options.target.setTop(0);
+                options.target.setTop( 0 );
             }
 
             if((options.target.getWidth() + options.target.getLeft()) > (this.canvasWidth - this.snap)) {
-                options.target.setLeft(this.canvasWidth - options.target.getWidth());
+                options.target.setLeft( this.canvasWidth - options.target.getWidth() );
             }
 
             if((options.target.getHeight() + options.target.getTop()) > (this.canvasHeight - this.snap)) {
-                options.target.setTop(this.canvasHeight - options.target.getHeight());
+                options.target.setTop( this.canvasHeight - options.target.getHeight() );
             }
         },
 
+        /**
+         * [handleDragStart description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         handleDragStart: function( e ) {
             this.draggingDivider = e.target;
         },
 
-        handleDragEnd: function(e) {
+        /**
+         * [handleDragEnd description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
+        handleDragEnd: function( e ) {
 
         },        
 
+        /**
+         * [handleDragEnter description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         handleDragEnter: function ( e ) {
-            e.target.classList.add('over');
-
+            e.target.classList.add( 'over' );
         },
 
+        /**
+         * [handleDragLeave description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         handleDragLeave: function ( e ) {
-            e.target.classList.remove('over'); // this / e.target is previous target element.
-
+            e.target.classList.remove( 'over' ); // this / e.target is previous target element.
         },
 
+        /**
+         * [handleDragOver description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         handleDragOver: function ( e ) {
+
             if (e.preventDefault) {
                 e.preventDefault(); // Necessary. Allows us to drop.
             }
 
             e.dataTransfer.dropEffect = 'copy'; // See the section on the DataTransfer object.
-            // NOTE: comment above refers to the article (see top) -natchiketa
+            // NOTE: comment above refers to the article (see top) - natchiketa
 
             return false;
-
         },
 
+        /**
+         * [handleDrop description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         handleDrop: function ( e ) {
 
             // this / e.target is current target element.
-
             if (e.stopPropagation) {
                 e.stopPropagation(); // stops the browser from redirecting.
             }
 
-            //Caching img dataset
-            var _imgW = +this.draggingDivider.dataset.width * this.config.ratio;
-            var _imgH = +this.draggingDivider.dataset.height * this.config.ratio;
-            var _imgID = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
+            // # Caching img dataset
+            var _imgW   = +this.draggingDivider.dataset.width * this.config.ratio;
+            var _imgH   = +this.draggingDivider.dataset.height * this.config.ratio;
+            var _imgID  = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
             var _imgSku = this.draggingDivider.dataset.sku;
 
-            //Creation of canvas to insert
+            var self = this;
 
-            fabric.Image.fromURL(this.draggingDivider.src,( oImg ) => {
+            /*this.canvas.on(['dblclick'], function (e) {
+               console.log( e.target.dropped ); 
+               console.log( e.target.ID ); 
+            });*/
+
+
+
+            var x = fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
+
+                // # Set image dimensions
                 oImg.setWidth( _imgW );
                 oImg.setHeight( _imgH );
+
+                // # Set image position
                 oImg.setLeft( e.layerX );
                 oImg.setTop( e.layerY );
+
+                // # Set background color
                 oImg.setBackgroundColor( '#ccc' );    //Set a light gray background
-                oImg.hasControls=false;
-                oImg.hasBorders=false;
-                oImg.ID=_imgID;
-                oImg.sku = _imgSku;
-                this.canvas.add( oImg );    //Add img to the canvas container
+                
+                // # Set controls off
+                oImg.hasControls = false;
+                oImg.hasBorders  = false;
+
+                oImg.dropped = true;
+                
+                // # Set ID unique
+                oImg.id =_imgID;
+
+                // # Set Sku
+                oImg.sku = _imgSku;           
+
+                // # Add image to canvas
+                this.canvas.add( oImg ); 
+
             });
 
 
+            // # Export ready object
             var divider = {};
             divider.sku = _imgSku;
             divider.width = _imgW;
@@ -512,19 +620,10 @@ export default {
             this.$store.commit( "pushDivider", divider );
 
 
-            /*var self = this;
-            window.fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function (event) {
-                try {
-                    var id = self.canvas.getActiveObject().ID;
-                    self.canvas.getActiveObject().remove();
-                    self.$store.commit( "removeDivider", id );
-                } catch( e ) {
-                    console.log( "is null")
-                } 
-            });
 
 
 
+/**
             var coords = canvasToInsert.calcCoords().bl;
             var centerCoords = canvasToInsert.getCenterPoint(); 
 
