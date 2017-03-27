@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-show="!this.canUseWebGl">LA TUA SCHEDA VIDEO NON SUPPORTA WEBGL ....</div>
-        <div v-show="this.canUseWebGl" id="step4_3d_container">LA TUA SCHEDA VIDEO  SUPPORTA WEBGL .... OK!!!</div>
+        <div id="step4_3d_container"></div>
     </div>
 
 </template>
@@ -105,7 +105,6 @@
         },
 
         updated() {
-            setTimeout(()=>{this.renderer.updateSize()},4000);
         }
     }
 </script>
