@@ -1,17 +1,18 @@
 <template>
     <section>
         <div class="row">
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-6 col-md-6" id="step4Preview">
                 <div class="row">
-                    <!-- Canvas container -->
-                    <div class="col-lg-6 dragdrop-area" id="canvas-container">
+                    <div class="col-lg-12 col-md-12 dragdrop-area" id="canvas-container">
                         <canvas id="canvas" style="border:1px solid #ccc" class="center-block"></canvas>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <div class="spacer"></div>
+                    <div class="col-lg-12 col-md-12">
                         Qui il 3d
                     </div>
                 </div>
-                <div class="spacer"></div>
+            </div>
+            <div class="col-lg-6 col-md-6" id="step4Tabs">
                 <div class="row">
                     <!-- Dividers container -->
                     <div class="col-lg-12" id="elementmenu">
@@ -27,14 +28,14 @@
                         <div class="tab-content">
                             <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                                 <div class="row" style="margin-top: 22px">
-                                    <div class="col-lg-3"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                                    <div class="col-lg-6 col-md-6"  v-for="(divider,dimension) in getDividerByCat(cat)">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 {{ dimension }}
                                             </div>
                                             <div class="panel-body">
                                                 <div class="row" style="display: flex">
-                                                    <div class="col-lg-3 col-md-3">
+                                                    <div class="col-lg-4 col-md-4">
                                                         <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4">
@@ -51,7 +52,7 @@
                                                              :data-cat = "cat"
                                                         >
                                                     </div>
-                                                    <div class="col-lg-3 col-md-3" style="border-left: 1px solid #ddd;">
+                                                    <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
                                                         <!-- Remove the inline style and use something more responsive -->
                                                         <img draggable="true"
                                                              class="img canBeDragged center-block  img-responsive"
@@ -76,15 +77,15 @@
 
                     </div>
                 </div>
-                <div class="spacer"></div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3">
-                        <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
-                    </div>
-                    <div class="col-lg-3 col-md-3 pull-right">
-                        <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
+            </div>
+            <div class="col-lg-3 col-md-3 pull-right">
+                <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>
         </div>
     </section>
