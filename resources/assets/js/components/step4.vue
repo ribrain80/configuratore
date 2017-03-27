@@ -488,6 +488,8 @@ export default {
                 oImg.setLeft( e.layerX );
                 oImg.setTop( e.layerY );
                 oImg.setBackgroundColor( '#ccc' );    //Set a light gray background
+                oImg.hasControls=false;
+                oImg.hasBorders=false;
                 oImg.ID=_imgID;
                 oImg.sku = _imgSku;
                 this.canvas.add( oImg );    //Add img to the canvas container
