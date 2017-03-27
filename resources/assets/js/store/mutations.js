@@ -382,15 +382,24 @@ const  mutations = {
 
         console.log("pushing in divider");
         state.dividers_selected.push( obj );
+        console.log( state.dividers_selected );
     },
 
     removeDivider: function( state, objID ) {
+
         console.log( " removing ");
-        state.dividers_selected = state.dividers_selected.filter(obj => {obj.id!=objID;});
+
+        var removeMe = {};
+        state.dividers_selected.forEach( function( divider, index ) {
+            if( objID === divider.id ) {
+                 removeMe = index;
+            }
+        });
+        
+        Vue.delete( state.dividers_selected, removeMe );
+        //state.dividers_selected.$remove( removeMe );        
         console.log( state.dividers_selected );
-
-    } ,
-
+    },
 
     /**
      * Description
