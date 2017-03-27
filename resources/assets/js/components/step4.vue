@@ -5,7 +5,7 @@
             <div class="col-lg-6 col-md-6" id="step4_2d">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 dragdrop-area" id="canvas-container">
-                        <canvas id="canvas" style="border:1px solid #ccc" class="center-block"></canvas>
+                        <canvas id="canvas" class="center-block"></canvas>
                     </div>
                     <div class="spacer"></div>
                     <div class="col-lg-12 col-md-12" id="step4_3d">
@@ -564,15 +564,9 @@ export default {
             var _imgSku = this.draggingDivider.dataset.sku;
 
             var self = this;
+            var divider = {};
 
-            /*this.canvas.on(['dblclick'], function (e) {
-               console.log( e.target.dropped ); 
-               console.log( e.target.ID ); 
-            });*/
-
-
-
-            var x = fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
+            fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
 
                 // # Set image dimensions
                 oImg.setWidth( _imgW );
@@ -600,52 +594,29 @@ export default {
                 // # Add image to canvas
                 this.canvas.add( oImg ); 
 
+                var coords = oImg.calcCoords().bl;
+                var centerCoords = oImg.getCenterPoint(); 
+
+                // # Export ready object
+                divider.sku = _imgSku;
+                divider.width = _imgW;
+                divider.height = _imgH;
+                divider.id = _imgID;
+                divider.x = coords.x;
+                divider.y = coords.y;
+                divider.centerx = centerCoords.x;
+                divider.centery = centerCoords.y;                
+
             });
 
-
-            // # Export ready object
-            var divider = {};
-            divider.sku = _imgSku;
-            divider.width = _imgW;
-            divider.height = _imgH;
-            divider.id = _imgID;
-            //@todo: calculate again
-            /*divider.x = coords.x;
-            divider.y = coords.y;
-            divider.centerx = centerCoords.x;
-            divider.centery = centerCoords.y;*/
-
-            console.log( divider );
-
+            // # Push divider
             this.$store.commit( "pushDivider", divider );
 
-
-
-
-
-/**
-            var coords = canvasToInsert.calcCoords().bl;
-            var centerCoords = canvasToInsert.getCenterPoint(); 
-
-            var divider = {};
-            divider.sku = canvasToInsert.sku;
-            divider.width = canvasToInsert.width;
-            divider.height = canvasToInsert.height;
-            divider.x = coords.x;
-            divider.y = coords.y;
-            divider.centerx = centerCoords.x;
-            divider.centery = centerCoords.y;
-            divider.id = canvasToInsert.ID;
-            console.log( divider );
-
-            this.$store.commit( "pushDivider", divider );*/
-
-
-            //Clean data property
+            // # Clean data property
             this.draggingDivider={};
 
+            // # Return
             return false;
-
         },
 
         findNewPos: function ( distX, distY, target, obj ) {
