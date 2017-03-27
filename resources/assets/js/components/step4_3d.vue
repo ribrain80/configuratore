@@ -1,9 +1,15 @@
 <template>
-    <div >QUI IL 3D</div>
+    <div>
+        <div v-show="!this.canUseWebGl">LA TUA SCHEDA VIDEO NON SUPPORTA WEBGL ....</div>
+        <div v-show="this.canUseWebGl">LA TUA SCHEDA VIDEO  SUPPORTA WEBGL .... OK!!!</div>
+    </div>
+
 </template>
 
 <script>
 
+
+    import Detector from '../3d/utils/detector';
     /**
      * Vue object managing info section / welcome page
      * @type {Vue}
@@ -14,7 +20,9 @@
          * Object data
          * @type {Object}
          */
-        data: function() { return {} },
+        data: function() { return {
+            canUseWebGl:false
+        } },
 
         /**
          * Object methods
@@ -30,6 +38,8 @@
          * @return {void}
          */
         mounted () {
+            //Check if the browser support webgl
+            this.canUseWebGl= Detector.webgl;
 
 
 
