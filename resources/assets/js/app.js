@@ -29,6 +29,7 @@ const step2 = Vue.component( 'step2', require('./components/step2.vue' ));
 const step3 = Vue.component( 'step3', require('./components/step3.vue' ));
 const stepponte = Vue.component( 'stepponte', require('./components/step-ponte.vue' ));
 const step4 = Vue.component( 'step4', require('./components/step4.vue' ));
+const step4_3d = Vue.component( 'step4_3d', require('./components/step4_3d.vue' ));
 const step5 = Vue.component( 'step5', require('./components/step5.vue' ));
 const error = Vue.component( 'error', require('./components/500.vue' ));
 

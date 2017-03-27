@@ -9,7 +9,7 @@
                     </div>
                     <div class="spacer"></div>
                     <div class="col-lg-12 col-md-12" id="step4_3d">
-                        Qui il 3d
+                        <step4_3d></step4_3d>
                     </div>
                 </div>
             </div>
