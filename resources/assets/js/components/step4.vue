@@ -1,5 +1,6 @@
 <template>
     <section>
+        <div class="spacer"></div>
         <div class="row">
             <div class="col-lg-6 col-md-6" id="step4_2d">
                 <div class="row">
