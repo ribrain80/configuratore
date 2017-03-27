@@ -69,7 +69,9 @@ export default {
      */
     mounted () {
 
+        // # Set component header title
         this.$store.commit('setComponentHeader','informazioni');
+        
         // # Log mount 
         console.log( "Welcome/info page mounted" );
 

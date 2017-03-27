@@ -83,38 +83,11 @@ const store = new Vuex.Store({
 
         },
 
-        /**
-         * [actual_lineabox_shoulder_height_LOW description]
-         * @param  {[type]} state [description]
-         * @return {[type]}       [description]
-         */
-        actual_lineabox_shoulder_height_LOW: function (state) {
-            return state.dimensions.actual_lineabox_shoulder_height_LOW;
-        },
-
-        /**
-         * [actual_lineabox_shoulder_height_MID description]
-         * @param  {[type]} state [description]
-         * @return {[type]}       [description]
-         */
-        actual_lineabox_shoulder_height_MID: function( state ) {
-            return state.dimensions.actual_lineabox_shoulder_height_MID;
-        },
-
-        /**
-         * [actual_lineabox_shoulder_height_HIGH description]
-         * @param  {[type]} state [description]
-         * @return {[type]}       [description]
-         */
-        actual_lineabox_shoulder_height_HIGH: function( state ) {
-            return state.dimensions.actual_lineabox_shoulder_height_HIGH;
-        }
-
     },
 
     state: {
 
-        currentComponentHeader:'asd',
+        currentComponentHeader: 'Info',
 
         /**
          * Types of drawers

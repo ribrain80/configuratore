@@ -1,5 +1,5 @@
 <template>
-    <div>
+
     <!-- Container -->
     <div class="row" id="step3">
         
@@ -85,9 +85,6 @@
             <div class="col-lg-12" id="animation"></div>
         </div>
         
-
-
-    </div>
         <div class="row">
             <div class="col-md-2 ">
                 <router-link to="/split/step2" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
@@ -96,14 +93,12 @@
                 <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>
         </div>
+
     </div>
 
 </template>
 
 <script>
-
-// # Import map getters
-// import { mapGetters } from 'vuex'
 
 /**
  * Vue object managing drawer dimensions inputs
@@ -152,9 +147,9 @@ export default {
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { text: "77 - 45.4 ", value: this.$store.state.actual_lineabox_shoulder_height_LOW, selected: true },
-                  { text: "104 - 72 " , value: this.$store.state.actual_lineabox_shoulder_height_MID, selected: false },
-                  { text: "180 - 148 " , value: this.$store.state.actual_lineabox_shoulder_height_HIGH, selected: false }
+                  { text: "77 - 45.4 ", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
+                  { text: "104 - 72 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
+                  { text: "180 - 148 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
               ],
 
               // # Bridge related limits
@@ -167,7 +162,7 @@ export default {
               ratio: 3,
 
               // # Shapes top margin
-              standard_top_margin: 100,
+              standard_top_margin: 10,
           },
 
           // # Out of range flags
@@ -200,16 +195,11 @@ export default {
         }
     },
 
+    /**
+     * Object methods
+     * @type {Object}
+     */
     methods: {
-
-        /**
-         * Import getters from store
-         */
-        /*...mapGetters([
-            "actual_lineabox_shoulder_height_LOW", 
-            "actual_lineabox_shoulder_height_MID",
-            "actual_lineabox_shoulder_height_HIGH" 
-        ]),*/
 
         /**
          * Inits the Two object container and every shape needed in its initial state
@@ -374,7 +364,7 @@ export default {
             if( this.$store.state.drawertype == 4 ) {
 
                 // # Under 72 mm bridge is not allowed
-                if( this.$store.state.dimensions.shoulder_height < this.$store.state.actual_lineabox_shoulder_height_MID ) {
+                if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_MID ) {
 
                     $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                     $( '#error-modal' ).modal();
@@ -391,7 +381,7 @@ export default {
 
             // # LineaBox drawers
             // # Under 45.4 mm bridge is not allowed
-            if( this.$store.state.dimensions.shoulder_height < this.$store.state.actual_lineabox_shoulder_height_LOW ) {
+            if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW ) {
                 $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                 $( '#error-modal' ).modal();
                 
@@ -896,7 +886,7 @@ export default {
             if( 4 == this.$store.state.drawertype ) {
 
                 // # Over 72 mm bridge is allowed, go to the bridge step
-                if( this.$store.state.dimensions.shoulder_height >= this.$store.state.actual_lineabox_shoulder_height_MID ) {
+                if( this.$store.state.dimensions.shoulder_height > this.$store.state.dimensions.actual_lineabox_shoulder_height_MID ) {
 
                     // # bridge is allowed, go to the bridge step
                     this.$store.commit( "isSuitableHeightForBridge", true );
@@ -912,7 +902,7 @@ export default {
             }
 
             // # Lineabox choice
-            if( this.$store.state.dimensions.shoulder_height > this.$store.state.actual_lineabox_shoulder_height_LOW ) { // 45.4 means choice: 77
+            if( this.$store.state.dimensions.shoulder_height > this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW ) { // 45.4 means choice: 77
                 
                 // # bridge is allowed, go to the bridge step
                 this.$store.commit( "isSuitableHeightForBridge", true );
@@ -961,7 +951,10 @@ export default {
 
         // # Log mount 
         console.log( "Dimensions choice mounted" );
+
+        // # Set component header title
         this.$store.commit('setComponentHeader','dimensioni cassetto');
+
         // # Init canvas
         this.initTwo();
     }

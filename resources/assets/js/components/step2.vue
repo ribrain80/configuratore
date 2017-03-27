@@ -1,8 +1,13 @@
 <template>
+
     <!-- Container -->
     <section>
+        
+        <!-- Spacer -->
         <div class="spacer"></div>
+
         <div class="row">
+
             <!-- Alerts: User Warning -->
             <transition name="fade">
                 <div class="col-lg-12" v-if="$store.state.drawertype == 0">
@@ -15,8 +20,12 @@
                 </div>
             </transition>
         </div>
+
+        <!-- Spacer -->
         <div class="spacer"></div>
+
         <div class="row" style="margin: 0 auto">
+
             <!-- Drawer type choice -->
             <div class="col-lg-3 " v-for="( type,category ) in $store.state.drawerTypes">
                 <div v-if="type.length == 1">
@@ -41,8 +50,12 @@
                     </figure>
                 </div>
             </div>
+
         </div>
+    
+        <!-- Spacer -->
         <div class="spacer"></div>
+
         <div class="row"
              v-for="( type,category ) in $store.state.drawerTypes"
              v-if="type.length > 1"
@@ -50,7 +63,7 @@
             <div class="col-lg-3 " v-for="ctype in type">
                 <figure class="drawer-container" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
                     <figcaption> {{ ctype.description | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'-'+ctype.id+'.png'"
+                    <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
                          class="img img-responsive  img-shadow "
                          :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
                          @click="setType( ctype.id )"
@@ -58,27 +71,26 @@
                 </figure>
             </div>
         </div>
+
         <div class="spacer"></div>
+
         <!-- Navigation row -->
         <div class="row">
+
             <div class="col-md-2 ">
                 <router-link to="/split/step1" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
             </div>
             <div class="col-md-2 pull-right">
                 <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>
+
         </div>
-
-
 
     </section>
 
 </template>
 
 <script>
-
-// # Import map getters
-//import { mapGetters } from 'vuex'
 
 /**
  * Vue object managing drawer type selection
@@ -100,17 +112,9 @@ export default {
      */
     methods: {
 
-        /**
-         * Imported getters from store
-         */
-        /*...mapGetters([
-            "actual_lineabox_shoulder_height_LOW"
-        ]),*/
-
          /**
          * Sets the drawer category, commit related store mutation
          * @param {int} cat 
-         * @private
          */
         setDrawerTypeCategory: function( cat ) {
             this.$store.commit( "setDrawerTypeCategory", cat );
@@ -191,17 +195,20 @@ export default {
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push( { path: '/split/step1' } );
             }
-        })
+        });
     }, 
 
     /**
      * Window onload eq 4 Vue
      * @return {void}
      */    
-    mounted() {
+    mounted () {
 
         // # Log mount 
         console.log( "Step2 Mounted!" );
+
+        // # Set component header title
+        this.$store.commit('setComponentHeader','scelta tipologia cassetto ');
 
         // # User reset advice ( shown once if user cames back here from one of the next steps )
         if( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) {
@@ -213,8 +220,6 @@ export default {
             // # And return
             return false;
         }
-        this.$store.commit('setComponentHeader','scelta tipologia cassetto ');
-
     }
 }
 </script>
