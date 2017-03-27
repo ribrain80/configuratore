@@ -107,7 +107,7 @@ export default {
             canvas: {},
             images: [],
             draggingDivider: {},
-            snap: 5,
+            snap: 10,
             canvasWidth:0,
             canvasHeight:0,
 
@@ -215,7 +215,7 @@ export default {
 
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
-            //this.snap = parseInt( this.snap * this.config.ratio );
+            this.snap = parseInt( this.snap * this.config.ratio );
             console.log( "RATIO " + this.config.ratio );
             console.log( "SNAP " + this.snap );
         },  
