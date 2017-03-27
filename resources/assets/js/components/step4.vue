@@ -1,13 +1,13 @@
 <template>
     <section>
         <div class="row">
-            <div class="col-lg-6 col-md-6" id="step4Preview">
+            <div class="col-lg-6 col-md-6" id="step4_2d">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 dragdrop-area" id="canvas-container">
                         <canvas id="canvas" style="border:1px solid #ccc" class="center-block"></canvas>
                     </div>
                     <div class="spacer"></div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-12 col-md-12" id="step4_3d">
                         Qui il 3d
                     </div>
                 </div>
