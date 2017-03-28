@@ -1,85 +1,171 @@
 <template>
-    <section>
-        <div class="spacer"></div>
-        <div class="row">
-            <div class="col-lg-6 col-md-6" id="step4_2d">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 dragdrop-area" id="canvas-container">
-                        <canvas id="canvas" class="center-block"></canvas>
-                    </div>
-                    <div class="spacer"></div>
-                    <div class="col-lg-12 col-md-12" id="step4_3d">
-                        <step4_3d></step4_3d>
-                    </div>
-                </div>
+
+<!-- Container -->
+ <div class="row">
+        
+        <!-- 2D container -->
+        <div class="col-lg-6 col-md-6" id="step4_2d">
+            
+            <!-- Upper edge -->
+            <div class="row">
+                <div class="col-lg-12 edge_2d_h"></div>
             </div>
-            <div class="col-lg-6 col-md-6" id="step4Tabs">
-                <div class="row">
-                    <!-- Dividers container -->
-                    <div class="col-lg-12" id="elementmenu">
+            
+            <!-- Center content -->
+            <div class="row">
 
-                        <!-- Tab title ( Nav ) -->
-                        <ul class="nav nav-tabs">
-                            <li  :class="{active: !index}" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
-                                <a data-toggle="tab" :href="genHref(cat)"> Elem h-{{cat}}</a>
-                            </li>
-                        </ul>
+                <!-- Left edge -->
+                <div class="col-lg-1 edge_2d_v"></div>
+                
+                <!-- Actual drawer canvas -->
+                <div class="col-lg-10 zeropadded col-md-12 dragdrop-area" id="canvas-container">
+                    <canvas id="canvas" class="center-block"></canvas>
+                </div>
+                
+                <!-- Right edge -->
+                <div class="col-lg-1 edge_2d_v"></div>
 
-                        <!-- Tab contents -->
-                        <div class="tab-content">
-                            <div :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
-                                <div class="row" style="margin-top: 22px">
-                                    <div class="col-lg-6 col-md-6"  v-for="(divider,dimension) in getDividerByCat(cat)">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                {{ dimension }}
-                                            </div>
-                                            <div class="panel-body">
-                                                <div class="row" style="display: flex">
-                                                    <div class="col-lg-4 col-md-4">
-                                                        <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-4">
-                                                        <!-- Remove the inline style and use something more responsive -->
-                                                        <img draggable="true"
-                                                             class="img canBeDragged center-block  img-responsive "
-                                                             src="http://configuratore.local/images/dividers/445/200X100_H.png"
-                                                             style="height: 80px"
-                                                             :data-width  = "divider.width"
-                                                             :data-height = "divider.length"
-                                                             :data-sku = "divider.sku"
-                                                             :data-rotate = "90"
-                                                             :data-key = "dimension"
-                                                             :data-cat = "cat"
-                                                        >
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
-                                                        <!-- Remove the inline style and use something more responsive -->
-                                                        <img draggable="true"
-                                                             class="img canBeDragged center-block  img-responsive"
-                                                             :src="divider.image"
-                                                             style="height: 80px"
-                                                             :data-width  = "divider.length"
-                                                             :data-height = "divider.width"
-                                                             :data-sku = "divider.sku"
-                                                             :data-rotate = "0"
-                                                             :data-key = "dimension"
-                                                             :data-cat = "cat"
-                                                        >
-                                                    </div>
+            </div>
+            
+            <!-- Lower edge -->
+            <div class="row">
+                <div class="col-lg-12 edge_2d_h"></div>
+            </div>
+            
+            <!-- Bridge info and management -->
+            <div class="row">
+                
+                <!-- Only if user selected a bridge -->
+                <div class="col-lg-12 col-md-12" v-if="$store.state.has_bridge">
+                    
+                    <!-- Bridge representation -->
+                    <div id="bridge_placeholder"></div>
+
+                    <!-- Bridge Ops -->
+                    <button class="btn btn-default" @click="addBridge">Add</button>
+                    <button class="btn btn-default" @click="removeBridge">Remove</button>
+                    <button class="btn btn-default" @click="clearBridges">RemoveAll</button>
+
+                    <!-- Bridge Counter -->
+                    <div>{{ $store.state.bridges_selected.length }}</div>
+
+                </div>
+                
+                <!-- 3D's lair -->
+                <div class="col-lg-12 col-md-12" id="step4_3d">
+                    <step4_3d></step4_3d>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Tabs: dividers and colors -->
+        <div class="col-lg-6 col-md-6" id="step4Tabs">
+
+            <div class="row">
+
+                <!-- Dividers container -->
+                <div class="col-lg-12" id="elementmenu">
+
+                    <!-- Tab title ( Nav ) -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li :class="{active: !index}" role="presentation" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
+                            <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
+                        </li>
+                        <li role="presentation"><a data-toggle="tab" role="tab" href="#colors">Textures e colori</a></li>
+                    </ul>
+
+                    <!-- Tab contents -->
+                    <div class="tab-content">
+                        
+                        <!-- Dividers by cat -->
+                        <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
+
+                            <div class="row" style="margin-top: 22px">
+
+                                <div class="col-lg-6 col-md-6"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            {{ dimension }}
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row" style="display: flex">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                                </div>
+                                                <div class="col-lg-4 col-md-4">
+                                                    <!-- Remove the inline style and use something more responsive -->
+                                                    <img draggable="true"
+                                                         class="img canBeDragged center-block  img-responsive "
+                                                         src="http://configuratore.local/images/dividers/445/200X100_H.png"
+                                                         style="height: 80px"
+                                                         :data-width  = "divider.width"
+                                                         :data-height = "divider.length"
+                                                         :data-sku = "divider.sku"
+                                                         :data-rotate = "90"
+                                                         :data-key = "dimension"
+                                                         :data-cat = "cat"
+                                                    >
+                                                </div>
+                                                <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
+                                                    <!-- Remove the inline style and use something more responsive -->
+                                                    <img draggable="true"
+                                                         class="img canBeDragged center-block  img-responsive"
+                                                         :src="divider.image"
+                                                         style="height: 80px"
+                                                         :data-width  = "divider.length"
+                                                         :data-height = "divider.width"
+                                                         :data-sku = "divider.sku"
+                                                         :data-rotate = "0"
+                                                         :data-key = "dimension"
+                                                         :data-cat = "cat"
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+
                             </div>
+
                         </div>
 
-                    </div>
+                        <!-- Colors container -->
+                        <div role="tabpanel" :id="colors" class="tab-pane fade in">  
+
+                            <div class="row" style="margin-top: 22px">
+
+                                <div class="col-lg-12">
+                                    
+                                    <div class="row" style="display: flex">
+
+                                        <div class="col-lg-4 col-md-4">
+                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4">
+                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
+                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div> 
+
+                        </div>
+
+                    </div> <!-- END tab content -->
+
                 </div>
             </div>
         </div>
+
         <div class="spacer"></div>
         <div class="row">
             <div class="col-lg-3 col-md-3">
@@ -89,7 +175,8 @@
                 <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>
         </div>
-    </section>
+
+    </div>
 </template>
 
 <script>
@@ -154,6 +241,8 @@ export default {
 
             //TODO: Check me ...
             $( "#canvas-container" ).height( this.canvasHeight );
+            $( ".edge_2d_v" ).height( this.canvasHeight );
+
 
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
@@ -266,7 +355,7 @@ export default {
 
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
-            this.snap = 1;//parseInt( this.snap * this.config.ratio );
+            this.snap = 10;//parseInt( this.snap * this.config.ratio );
             console.log( "RATIO " + this.config.ratio );
             console.log( "SNAP " + this.snap );
         },  

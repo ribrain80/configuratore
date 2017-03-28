@@ -2,11 +2,6 @@
 
     <!-- Container -->
     <div class="row" id="step3">
-        
-        <!-- Title -->
-        <div class="col-lg-12">
-            <h2>{{ 'step3.title' | translate }}</h2>
-        </div>
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12">

@@ -9,16 +9,12 @@
         <div class="row">
 
             <!-- Alerts: User Warning -->
-            <transition name="fade">
-                <div class="col-lg-12" v-if="$store.state.drawertype == 0">
-                    <div class="alert alert-warning alert-dismissible fade in">
-                        <button type="button" class="close" aria-label="Close" data-dismiss="alert">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
-                    </div>
+            <div class="col-lg-12" v-if="$store.state.drawertype == 0">
+                <div class="alert alert-warning"  role="alert">
+                    <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
                 </div>
-            </transition>
+            </div>
+            
         </div>
 
         <!-- Spacer -->

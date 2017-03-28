@@ -11,7 +11,28 @@
 /*@import "/css/bootstrap-material-design.css";
 @import "/css/ripples.css";*/
 
+#bridge_placeholder {
+  background-color: #ededed;
+  border: 1px dashed #999;
+}
 
+.zeropadded {
+  padding: 0!important;
+}
+
+.edge_2d_v {
+  background-color: #efefef;
+  /*border: 1px dashed #222;*/
+  height: 30px;
+  cursor:pointer;
+}
+
+.edge_2d_h {
+  background-color: #efefef;
+  /*border: 1px dashed #222;*/
+  height: 30px;
+  cursor:pointer;
+}
 
 //App Specific css
 @mixin inline-block() {

@@ -16,12 +16,11 @@
         margin-left: auto;
         margin-right: auto;
         display: inline-block;
-
     }        
 
-    #canvas {
+    /*#canvas {
         border: 10px solid #222;
-    }
+    }*/
     </style>
 </head>
 <body>
