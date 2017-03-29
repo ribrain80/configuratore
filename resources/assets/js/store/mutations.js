@@ -428,7 +428,7 @@ const  mutations = {
     },  
 
     setDividerHex: function( state, obj ) {
-        state.dividers_selected[ obj.id ].hex = hex;
+        state.dividers_selected[ obj.id ].hex = obj.hex;
     },  
 
     setBridgeHex: function( state, obj ) {
