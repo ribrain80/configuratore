@@ -431,6 +431,14 @@ const  mutations = {
         state.dividers_selected[ obj.id ].hex = hex;
     },  
 
+    setBridgeHex: function( state, obj ) {
+
+        for( var i = 0; i < state.bridges_selected.length; i++ ) {
+            state.bridges_selected[ i ].hex = obj;
+        }
+        console.log( state.bridges_selected );
+    },
+
     /**
      * Description
      * @method setOnecompleted

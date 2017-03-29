@@ -6,7 +6,7 @@
             <div class="col-lg-12 col-md-12" v-if="$store.state.has_bridge">
                 
                 <!-- Bridge representation -->
-                <div id="bridge_placeholder" @click="selectBridge( $event )"></div>
+                <div id="bridge_placeholder" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event )"></div>
 
                 <!-- Bridge Ops -->
                 <button class="btn btn-default" @click="addBridge">Add</button>
@@ -251,7 +251,9 @@ export default {
              * Currently selected item
              * @type {Object}
              */
-            selectedItem: {}
+            selectedItem: {},
+
+            bridge_hex: '',
         }
     },
 
@@ -468,7 +470,7 @@ export default {
         },  
 
         selectBridge: function() {
-            this.selectedItem = { type: "bridge", id: this.$store.bridges_selected[ 0 ].id };
+            this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
         },
 
@@ -491,9 +493,10 @@ export default {
                 break;
 
                 case "bridge":
-                    this.$store.commit( "setBridgeHex", { hex: hex } );
-                    this.selectedItem.setBackgroundColor( hex );
-                    this.canvas.renderAll();
+                    this.$store.commit( "setBridgeHex", hex );
+                    this.bridge_hex = hex;
+                    // this.selectedItem.setBackgroundColor( hex );
+                    // this.canvas.renderAll();
                 break;
             }
 
