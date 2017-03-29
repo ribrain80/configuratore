@@ -14,6 +14,8 @@
 #bridge_placeholder {
   background-color: #ededed;
   border: 1px dashed #999;
+  height: 30px;
+  cursor:pointer;
 }
 
 .zeropadded {
@@ -25,7 +27,7 @@
 }
 
 .edge_selected {
-  border: 1px dashed #999;
+  border: 1px dashed #cccc00;
 }
 
 .edge_2d_v {

@@ -248,6 +248,15 @@ const store = new Vuex.Store({
          */
         dividers_selected:[],
 
+
+        drawer_border_top: { hex: '', selected: false },
+
+        drawer_border_left: { hex: '', selected: false },
+
+        drawer_border_right: { hex: '', selected: false },
+
+        drawer_border_bottom: { hex: '', selected: false },
+
         /**
          * [pdf description]
          * @type {Object}

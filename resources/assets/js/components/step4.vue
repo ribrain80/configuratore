@@ -1,21 +1,42 @@
 <template>
 
+<div>
+     <div class="row">
+            <!-- Only if user selected a bridge -->
+            <div class="col-lg-12 col-md-12" v-if="$store.state.has_bridge">
+                
+                <!-- Bridge representation -->
+                <div id="bridge_placeholder" @click="selectBridge( $event )"></div>
+
+                <!-- Bridge Ops -->
+                <button class="btn btn-default" @click="addBridge">Add</button>
+                <button class="btn btn-default" @click="removeBridge">Remove</button>
+                <button class="btn btn-default" @click="clearBridges">RemoveAll</button>
+
+                <!-- Bridge Counter -->
+                <div>{{ $store.state.bridges_selected.length }}</div>
+
+            </div>
+    </div>    
+
 <!-- Container -->
  <div class="row">
-        
+
         <!-- 2D container -->
         <div class="col-lg-6 col-md-6" id="step4_2d">
             
             <!-- Upper edge -->
             <div class="row">
-                <div class="col-lg-12 edge_2d_h edge" id="upper" @click='selectBorder( $event );'></div>
+                <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" 
+                :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}" id="top" @click='selectBorder( $event );'></div>
             </div>
             
             <!-- Center content -->
             <div class="row">
 
                 <!-- Left edge -->
-                <div class="col-lg-1 edge_2d_v edge" id="left" @click='selectBorder( $event );'></div>
+                <div :class="[ 'col-lg-1', 'edge_2d_v edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" 
+                :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}" id="left" @click='selectBorder( $event );'></div>
                 
                 <!-- Actual drawer canvas -->
                 <div class="col-lg-10 zeropadded col-md-12 dragdrop-area" id="canvas-container">
@@ -23,33 +44,19 @@
                 </div>
                 
                 <!-- Right edge -->
-                <div class="col-lg-1 edge_2d_v edge" id="right" @click='selectBorder( $event );'></div>
+                <div :class="[ 'col-lg-1', 'edge_2d_v edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
+                :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}" id="right" @click='selectBorder( $event );'></div>
 
             </div>
             
             <!-- Lower edge -->
             <div class="row">
-                <div class="col-lg-12 edge_2d_h edge" id="bottom" @click='selectBorder( $event );'></div>
+                <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]"  
+                :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}"id="bottom" @click='selectBorder( $event );'></div>
             </div>
             
             <!-- Bridge info and management -->
             <div class="row">
-                
-                <!-- Only if user selected a bridge -->
-                <div class="col-lg-12 col-md-12" v-if="$store.state.has_bridge">
-                    
-                    <!-- Bridge representation -->
-                    <div id="bridge_placeholder"></div>
-
-                    <!-- Bridge Ops -->
-                    <button class="btn btn-default" @click="addBridge">Add</button>
-                    <button class="btn btn-default" @click="removeBridge">Remove</button>
-                    <button class="btn btn-default" @click="clearBridges">RemoveAll</button>
-
-                    <!-- Bridge Counter -->
-                    <div>{{ $store.state.bridges_selected.length }}</div>
-
-                </div>
                 
                 <!-- 3D's lair -->
                 <div class="col-lg-12 col-md-12" id="step4_3d">
@@ -66,10 +73,10 @@
             <div class="row">
 
                 <!-- Dividers container -->
-                <div class="col-lg-12" id="elementmenu">
+                <div class="col-lg-12">
 
                     <!-- Tab title ( Nav ) -->
-                    <ul class="nav nav-tabs" role="tablist">
+                    <ul class="nav nav-tabs" role="tablist" id="tab-container">
                         <li :class="{active: !index}" role="presentation" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
                             <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
                         </li>
@@ -77,7 +84,7 @@
                     </ul>
 
                     <!-- Tab contents -->
-                    <div class="tab-content" id="tab-container">
+                    <div class="tab-content">
                         
                         <!-- Dividers by cat -->
                         <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
@@ -168,7 +175,6 @@
             </div>
         </div>
 
-        <div class="spacer"></div>
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
@@ -179,6 +185,7 @@
         </div>
 
     </div>
+</div>
 </template>
 
 <script>
@@ -196,32 +203,85 @@ export default {
 
         return {
 
+            /**
+             * Fabric Canvas object
+             * @type {Object}
+             */
             canvas: {},
-            images: [],
-            draggingDivider: {},
-            snap: 10,
-            canvasWidth:0,
-            canvasHeight:0,
 
+            /**
+             * Dividers list ( from DB )
+             * @type {Array}
+             */
+            images: [],
+
+            /**
+             * Currently dragged divider
+             * @type {Object}
+             */
+            draggingDivider: {},
+
+            /**
+             * Base snap threshold
+             * @type {Number}
+             */
+            snap: 10,
+
+            /**
+             * Canvas width
+             * @type {Number}
+             */
+            canvasWidth: 0,
+
+            /**
+             * Canvas Height
+             * @type {Number}
+             */
+            canvasHeight: 0,
+
+            /**
+             * Computed dimensions ratio
+             * @type {Object}
+             */
             config: {
                 ratio: 3
             },
 
+            /**
+             * Currently selected item
+             * @type {Object}
+             */
             selectedItem: {}
         }
     },
 
+    /**
+     * Computed properties and data
+     * @type {Object}
+     */
     computed: {
-        // a computed getter
+
+        /**
+         * Actual available width ( supports computed )
+         * @return {number}
+         */
         real_width: function () {
             return this.$store.state.dimensions.width + this.$store.state.dimensions.delta_width;
         },
 
+        /**
+         * Actual available length ( supports computed )
+         * @return {number}
+         */
         real_height: function() {
             return this.$store.state.dimensions.length + this.$store.state.dimensions.delta_length;
         }
     },
 
+    /**
+     * Instance Methods
+     * @type {Object}
+     */
     methods: {
 
         /**
@@ -241,19 +301,14 @@ export default {
             this.canvasHeight = parseInt( this.$store.state.dimensions.length * this.config.ratio );
             console.log( "CH: " + this.canvasHeight );
 
-            //TODO: Check me ...
+            // # Force dimensions
             $( "#canvas-container" ).height( this.canvasHeight );
             $( ".edge_2d_v" ).height( this.canvasHeight );
 
-
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
-            document.getElementById("canvas").fabric = this.canvas;
 
-            // # Force rendering
-            this.canvas.renderAll();
-
-            // # CHECK ME
+            // # No selection
             this.canvas.selection = false;
 
             /**
@@ -280,9 +335,9 @@ export default {
             var self = this;
 
             /**
-             * [description]
-             * @param  {[type]} e )  [ description]
-             * @return {[type]}   [description]
+             * Double click listener ( Divider deletion )
+             * @param  {Object} e )  original event triggered
+             * @return {void}
              */
             fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
 
@@ -350,11 +405,13 @@ export default {
             var canvasContainer = document.getElementById( 'canvas-container' );
 
             // # Container listeners
-            canvasContainer.addEventListener('dragenter', self.handleDragEnter, false);
-            canvasContainer.addEventListener('dragover', self.handleDragOver, false);
-            canvasContainer.addEventListener('dragleave', self.handleDragLeave, false);
-            canvasContainer.addEventListener('drop', self.handleDrop, false); 
+            canvasContainer.addEventListener( 'dragenter', self.handleDragEnter, false );
+            canvasContainer.addEventListener( 'dragover',  self.handleDragOver, false );
+            canvasContainer.addEventListener( 'dragleave', self.handleDragLeave, false );
+            canvasContainer.addEventListener( 'drop',      self.handleDrop, false ); 
 
+            // # Force rendering
+            this.canvas.renderAll();
         },
 
         /**
@@ -368,7 +425,7 @@ export default {
 
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
-            this.snap = 10;//parseInt( this.snap * this.config.ratio );
+            this.snap = 30;//parseInt( this.snap * this.config.ratio );
             console.log( "RATIO " + this.config.ratio );
             console.log( "SNAP " + this.snap );
         },  
@@ -393,21 +450,27 @@ export default {
 
         selectBorder: function() {
 
-            console.log( event.target );
+            let pos = [ "top", "left", "right", "bottom" ];
 
-            this.selectedItem = { type: "border", id: event.target.id };
+            var self = this;
+            for( var posId in pos ) {
 
-            switch( event.target.id ) {
+                if( pos[ posId ] == event.target.id ) {
+                    self.$store.commit( "setDrawerBorderSelected", { id: pos[ posId ], val: true } );
+                    self.selectedItem = { type: "border", id: event.target.id };
+                    continue;
+                } 
 
-                case "upper":
-                    $('#colors').tab( 'show' );
-                break;
+                this.$store.commit( "setDrawerBorderSelected", { id: pos[ posId ], val: false } );
+            };
 
-                default:
-                break;
-            }
+            $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+        },  
 
-        },   
+        selectBridge: function() {
+            this.selectedItem = { type: "bridge", id: this.$store.bridges_selected[ 0 ].id };
+            $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+        },
 
         setColor: function( hex ) {
 
@@ -415,11 +478,22 @@ export default {
                 return;
             }
 
-
             switch( this.selectedItem.type ) {
                 
                 case "border":
-                    $( "#" + this.selectedItem.id ).css( "background-color", hex );
+                    this.$store.commit( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex", hex );
+                break;
+
+                case "divider":
+                    this.$store.commit( "setDividerHex", { id: this.selectedItem.id, hex: hex } );
+                    this.selectedItem.setBackgroundColor( hex );
+                    this.canvas.renderAll();
+                break;
+
+                case "bridge":
+                    this.$store.commit( "setBridgeHex", { hex: hex } );
+                    this.selectedItem.setBackgroundColor( hex );
+                    this.canvas.renderAll();
                 break;
             }
 
@@ -446,17 +520,25 @@ export default {
 
             // Loop through objects
             this.canvas.forEachObject( ( obj ) => {
-
+                //#
+                //obj.setCoords();
+                //#
+                //var activeObject = this.canvas.getActiveObject();
                 if ( obj === options.target ) return;
+                //#
+                //if ( obj === activeObject ) return;
 
                 // If objects intersect
-                if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || obj.isContainedWithinObject(options.target)) {
+                if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || 
+                    obj.isContainedWithinObject( options.target) ) {
 
                     var distX = ((obj.getLeft() + obj.getWidth()) / 2) - ((options.target.getLeft() + options.target.getWidth()) / 2);
                     var distY = ((obj.getTop() + obj.getHeight()) / 2) - ((options.target.getTop() + options.target.getHeight()) / 2);
+                    console.log( "distX " + distX );
+                    console.log( "distY " + distY );
 
                     // Set new position
-                    this.findNewPos(distX, distY, options.target, obj);
+                    this.findNewPos( distX, distY, options.target, obj );
                 }
 
                 // this.snap objects to each other horizontally
@@ -535,7 +617,8 @@ export default {
 
                 if (obj === options.target) return;
 
-                if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || obj.isContainedWithinObject(options.target)) {
+                if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || 
+                    obj.isContainedWithinObject(options.target)) {
 
                     var intersectLeft = null,
                         intersectTop = null,
@@ -607,8 +690,6 @@ export default {
         },
 
         _lockToContainer: function (options) {
-
-            console.log( "TARGET " + options.target );
 
             // # Don't allow objects off the canvas
             if(options.target.getLeft() < this.snap) {
@@ -688,9 +769,13 @@ export default {
          */
         handleDrop: function ( e ) {
 
-            // this / e.target is current target element.
+            // # this / e.target is current target element.
             if (e.stopPropagation) {
                 e.stopPropagation(); // stops the browser from redirecting.
+            }
+
+            if( e.preventDefault ) {
+                e.preventDefault();
             }
 
             // # Caching img dataset
@@ -733,6 +818,10 @@ export default {
                 var coords = oImg.calcCoords().bl;
                 var centerCoords = oImg.getCenterPoint(); 
 
+                oImg.type = "divider";
+
+                this.selectedItem = oImg;
+
                 // # Export ready object
                 divider.sku = _imgSku;
                 divider.width = _imgW;
@@ -741,12 +830,15 @@ export default {
                 divider.x = coords.x;
                 divider.y = coords.y;
                 divider.centerx = centerCoords.x;
-                divider.centery = centerCoords.y;                
+                divider.centery = centerCoords.y;
+                divider.hex = '';                
 
             });
 
             // # Push divider
             this.$store.commit( "pushDivider", divider );
+
+            $( '#tab-container a[href="#colors"]' ).tab( 'show' );
 
             // # Clean data property
             this.draggingDivider={};
@@ -758,17 +850,17 @@ export default {
         findNewPos: function ( distX, distY, target, obj ) {
 
             // See whether to focus on X or Y axis
-            if(Math.abs(distX) > Math.abs(distY)) {
-                if (distX > 0) {
-                    target.setLeft(obj.getLeft() - target.getWidth());
+            if( Math.abs( distX ) > Math.abs( distY ) ) {
+                if ( distX > 0 ) {
+                    target.setLeft( obj.getLeft() - target.getWidth() );
                 } else {
-                    target.setLeft(obj.getLeft() + obj.getWidth());
+                    target.setLeft( obj.getLeft() + obj.getWidth() );
                 }
             } else {
-                if (distY > 0) {
-                    target.setTop(obj.getTop() - target.getHeight());
+                if ( distY > 0 ) {
+                    target.setTop( obj.getTop() - target.getHeight() );
                 } else {
-                    target.setTop(obj.getTop() + obj.getHeight());
+                    target.setTop( obj.getTop() + obj.getHeight() );
                 }
             }
         },

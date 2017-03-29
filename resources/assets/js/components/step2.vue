@@ -9,8 +9,8 @@
         <div class="row">
 
             <!-- Alerts: User Warning -->
-            <div class="col-lg-12" v-if="$store.state.drawertype == 0">
-                <div class="alert alert-warning"  role="alert">
+            <div class="col-lg-12">
+                <div :class="[ 'alert', $store.state.drawertype != 0 ? 'alert-success' : 'alert-warning']"  role="alert">
                     <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
                 </div>
             </div>

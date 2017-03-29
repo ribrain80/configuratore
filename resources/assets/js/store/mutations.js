@@ -401,6 +401,36 @@ const  mutations = {
         console.log( state.dividers_selected );
     },
 
+    setDrawerBorderTopHex: function( state, obj ) {
+        console.log( "changing border top hex to: " + obj );
+        state.drawer_border_top.hex = obj;
+    },
+
+    setDrawerBorderLeftHex: function( state, obj ) {
+        console.log( "changing border left hex to: " + obj );
+        state.drawer_border_left.hex = obj;
+    },
+
+    setDrawerBorderRightHex: function( state, obj ) {
+        console.log( "changing border right hex to: " + obj );
+        state.drawer_border_right.hex = obj;
+    },
+
+    setDrawerBorderBottomHex: function( state, obj ) {
+        console.log( "changing border bottom hex to: " + obj );
+        state.drawer_border_bottom.hex = obj;
+    },  
+
+    setDrawerBorderSelected: function( state, obj ) {
+        console.log( obj );
+        console.log( "drawer_border_" +  obj.id );
+        state[ "drawer_border_" +  obj.id ].selected = obj.val;
+    },  
+
+    setDividerHex: function( state, obj ) {
+        state.dividers_selected[ obj.id ].hex = hex;
+    },  
+
     /**
      * Description
      * @method setOnecompleted

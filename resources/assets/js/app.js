@@ -7,6 +7,11 @@
 
 require('./bootstrap');
 
+// # Common utils
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt( 0 ).toUpperCase() + this.slice( 1 );
+};
+
 /**
  * We will create a fresh Vue application instance and attach it to
  * the body of the page. From here, you may begin adding components to
