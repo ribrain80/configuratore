@@ -8,14 +8,14 @@
             
             <!-- Upper edge -->
             <div class="row">
-                <div class="col-lg-12 edge_2d_h"></div>
+                <div class="col-lg-12 edge_2d_h edge" id="upper" @click='selectBorder( $event );'></div>
             </div>
             
             <!-- Center content -->
             <div class="row">
 
                 <!-- Left edge -->
-                <div class="col-lg-1 edge_2d_v"></div>
+                <div class="col-lg-1 edge_2d_v edge" id="left" @click='selectBorder( $event );'></div>
                 
                 <!-- Actual drawer canvas -->
                 <div class="col-lg-10 zeropadded col-md-12 dragdrop-area" id="canvas-container">
@@ -23,13 +23,13 @@
                 </div>
                 
                 <!-- Right edge -->
-                <div class="col-lg-1 edge_2d_v"></div>
+                <div class="col-lg-1 edge_2d_v edge" id="right" @click='selectBorder( $event );'></div>
 
             </div>
             
             <!-- Lower edge -->
             <div class="row">
-                <div class="col-lg-12 edge_2d_h"></div>
+                <div class="col-lg-12 edge_2d_h edge" id="bottom" @click='selectBorder( $event );'></div>
             </div>
             
             <!-- Bridge info and management -->
@@ -77,7 +77,7 @@
                     </ul>
 
                     <!-- Tab contents -->
-                    <div class="tab-content">
+                    <div class="tab-content" id="tab-container">
                         
                         <!-- Dividers by cat -->
                         <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
@@ -106,6 +106,7 @@
                                                          :data-rotate = "90"
                                                          :data-key = "dimension"
                                                          :data-cat = "cat"
+                                                         :data-type = "divider"
                                                     >
                                                 </div>
                                                 <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
@@ -120,6 +121,7 @@
                                                          :data-rotate = "0"
                                                          :data-key = "dimension"
                                                          :data-cat = "cat"
+                                                         :data-type = "divider"
                                                     >
                                                 </div>
                                             </div>
@@ -133,7 +135,7 @@
                         </div>
 
                         <!-- Colors container -->
-                        <div role="tabpanel" :id="colors" class="tab-pane fade in">  
+                        <div role="tabpanel" id="colors" class="tab-pane fade in">  
 
                             <div class="row" style="margin-top: 22px">
 
@@ -142,15 +144,15 @@
                                     <div class="row" style="display: flex">
 
                                         <div class="col-lg-4 col-md-4">
-                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail" @click="setColor( '#ccc' );">
                                         </div>
 
                                         <div class="col-lg-4 col-md-4">
-                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail" @click="setColor( '#ffcc00' );">
                                         </div>
 
                                         <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
-                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail" @click="setColor( '#222' );">
                                         </div>
 
                                     </div>
@@ -205,7 +207,7 @@ export default {
                 ratio: 3
             },
 
-            currentItem: {}
+            selectedItem: {}
         }
     },
 
@@ -285,6 +287,17 @@ export default {
             fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
 
                 try {
+
+                    // # Avoid null pbjects
+                    if( null == self.canvas.getActiveObject() ) {
+                        return;
+                    }
+
+                    // # Avoid canvas trying to remove itself
+                    if( self.canvas.getActiveObject().get( 'type' ) != "image" ) {
+                        return;
+                    }
+
                     // # Cache active object ID
                     var id = self.canvas.getActiveObject().get( 'id');
 
@@ -376,7 +389,41 @@ export default {
                 // # Use a suitable default value
                 return 250;
             }   
-        },              
+        },
+
+        selectBorder: function() {
+
+            console.log( event.target );
+
+            this.selectedItem = { type: "border", id: event.target.id };
+
+            switch( event.target.id ) {
+
+                case "upper":
+                    $('#colors').tab( 'show' );
+                break;
+
+                default:
+                break;
+            }
+
+        },   
+
+        setColor: function( hex ) {
+
+            if( $.isEmptyObject( this.selectedItem ) ) {
+                return;
+            }
+
+
+            switch( this.selectedItem.type ) {
+                
+                case "border":
+                    $( "#" + this.selectedItem.id ).css( "background-color", hex );
+                break;
+            }
+
+        },
 
         /**
          * [handleMoving description]

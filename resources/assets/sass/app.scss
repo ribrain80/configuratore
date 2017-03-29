@@ -20,6 +20,14 @@
   padding: 0!important;
 }
 
+.edge {
+  border: 1px solid #efefef;  
+}
+
+.edge_selected {
+  border: 1px dashed #999;
+}
+
 .edge_2d_v {
   background-color: #efefef;
   /*border: 1px dashed #222;*/
