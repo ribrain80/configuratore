@@ -3,24 +3,37 @@
 <div>
      <div class="row">
             <!-- Only if user selected a bridge -->
-            <div class="col-lg-12 col-md-12" v-if="$store.state.has_bridge">
-                
-                <!-- Bridge representation -->
-                <div id="bridge_placeholder" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event )"></div>
-
-                <!-- Bridge Ops -->
-                <button class="btn btn-default" @click="addBridge">Add</button>
-                <button class="btn btn-default" @click="removeBridge">Remove</button>
-                <button class="btn btn-default" @click="clearBridges">RemoveAll</button>
-
-                <!-- Bridge Counter -->
-                <div>{{ $store.state.bridges_selected.length }}</div>
-
+            <div class="col-lg-12 col-md-12 panel-default" v-if="$store.state.has_bridge">
+                <div class="panel-heading">
+                    Gestione bridges
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- Bridge representation -->
+                        <div class="col-lg-10 col-md-10">
+                            <div class="col-lg-1 col-md-1 "
+                                 v-for="curbridge in $store.state.bridges_selected"
+                                 style="min-height: 100px;border: 1px solid #666;border-radius: 10px"
+                                 :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}"
+                                 @click="selectBridge( $event )"
+                            >
+                                <br>INFO<br>
+                            </div>
+                        </div>
+                        <!-- Bridge Ops -->
+                        <div class="col-lg-2 col-md-2">
+                            <button class="btn btn-success btn-block"
+                                    :disabled="!canAddBridges"
+                                    @click="addBridge">Add</button>
+                            <button class="btn btn-primary btn-block" @click="clearBridges">RemoveAll</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-    </div>    
-
+    </div>
+    <div class="spacer"></div>
 <!-- Container -->
- <div class="row">
+    <div class="row">
 
         <!-- 2D container -->
         <div class="col-lg-6 col-md-6" id="step4_2d">
@@ -262,6 +275,34 @@ export default {
      * @type {Object}
      */
     computed: {
+
+        /**
+         *  Check if the user can add more bridges.
+         */
+        canAddBridges: function () {
+            let availableSpace = (this.$store.state.bridge_orientation=='V')?this.real_height:this.real_width;
+            return availableSpace >= (this.bridgesArea + this.tighterBridgeWidth)
+        },
+
+        /**
+         *  Return the tighter bridge width
+         */
+        tighterBridgeWidth: function () {
+            return this.$store.state.bridges_selected.reduce(
+                function ( min, elem ) {
+                    return (min>elem.width)?elem.width:min;
+                }
+                , 0);
+        },
+
+        /**
+         * Actual area covered by bridges
+         */
+        bridgesArea: function () {
+            return this.$store.state.bridges_selected.reduce(function ( accumulatore, elem ) {
+                return accumulatore + elem.width;
+            }, 0);
+        },
 
         /**
          * Actual available width ( supports computed )

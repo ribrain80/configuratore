@@ -68,9 +68,12 @@ class ApiController extends Controller
         foreach (Bridge::all(['id','sku','sku_short','width','depth','image','color','border','texture','description'])->sortBy('depth') as $curBridge) {
             $key = "".$curBridge['depth'];
             $grouped[$key]['image'] = $curBridge['image'];
-            $grouped[$key]['depth'] = $curBridge['depth'];   //redundant
+            $grouped[$key]['depth'] = $curBridge['depth'];
             $grouped[$key]['id'] = $curBridge['depth'];
-            $grouped[$key]['width'] = $curBridge['width'];   //redundant
+            $grouped[$key]['width'] = $curBridge['width'];
+
+            //Generate the image path as sha1 of the colors components (color,border,texture)
+            $curBridge['background'] = "/images/textures/".sha1($curBridge['color'].$curBridge['border'].$curBridge['texture']).".png";
             $grouped[$key]['items'][] = $curBridge;
         }
 
