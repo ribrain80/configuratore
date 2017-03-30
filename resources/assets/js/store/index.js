@@ -386,7 +386,7 @@ const store = new Vuex.Store({
 Vue.use( vuexI18n.plugin, store );
 
 // # Add to the applications all languages defined.
-$.each( translations,( code,term s) => { Vue.i18n.add( code,terms ); });
+$.each( translations,( code, terms) => { Vue.i18n.add( code,terms ); });
 
 // # Set the default locale
 Vue.i18n.set('it');
