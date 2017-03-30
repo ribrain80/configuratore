@@ -1,13 +1,17 @@
+/**
+ * Vuex store mutations ( functions that change store state )
+ * @type {Object}
+ */
 const  mutations = {
 
     /**
-     * Description
+     * Sets application language
      * @method setLanguage
-     * @param {} state
-     * @param {} locale
+     * @param {Object} state
+     * @param {string} locale
      * @return 
      */
-    setLanguage: function (state, locale) {
+    setLanguage: function ( state, locale ) {
         console.log("Setting language");
         state.language = locale;
         Vue.i18n.set(locale);
@@ -547,7 +551,7 @@ const  mutations = {
     },
 
     setComponentHeader : function (state,payload)  {
-        console.log("EXECUTED");
+        console.log("header changed");
         state.currentComponentHeader=payload;
     }
 
