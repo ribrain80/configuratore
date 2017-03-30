@@ -1,14 +1,18 @@
+// # Import needed packages
 import Vue          from 'vue'
 import Vuex         from 'vuex'
 import vuexI18n     from 'vuex-i18n'
 import mutations    from './mutations'
 import translations from './translations'
+
+// # Ie11 polyfill workarounds
 require('es6-promise').polyfill();
 
+// # Use Vuex
 Vue.use( Vuex );
 
 /**
- * [store description]
+ * Vuex store holds application state
  * @type {Vuex}
  */
 const store = new Vuex.Store({
@@ -25,6 +29,10 @@ const store = new Vuex.Store({
      */
     mutations: mutations,
 
+    /**
+     * Store actions
+     * @type {Object}
+     */
     actions: {
         /**
          * Init all App Elements from API
@@ -44,9 +52,10 @@ const store = new Vuex.Store({
                 ];
 
                 // # Resolve all promises. If any of them fail push into the router '/split/500'
+                // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [typesResponse,responseBridges,responseSupports,dividersResponse] ) => {
+                    ( [ typesResponse, responseBridges, responseSupports, dividersResponse ] ) => {
 
                         // # Success
                         commit( 'setDrawersTypes', typesResponse.data );
@@ -63,9 +72,16 @@ const store = new Vuex.Store({
         }
     },
     
+    /**
+     * Store getters
+     * @type {Object}
+     */
     getters: {
+
         /**
-         * Return a subset of the store.state object
+         * Returns a subset of the store.state object
+         * the subset consists in the data needed by the server 
+         * 
          * @method exported
          * @param state
          * @return CallExpression
@@ -85,176 +101,204 @@ const store = new Vuex.Store({
 
     },
 
+    /**
+     * Actual state ( app data )
+     * @type {Object}
+     */
     state: {
 
+        /**
+         * Current header label
+         * @type {String}
+         */
         currentComponentHeader: 'Info',
 
         /**
          * Types of drawers
+         * @type {Array}
          */
         drawerTypes:[],
 
         /**
          * Bridge types
+         * @type {Array}
          */
         bridgeTypes:[],
 
         /**
          * Bridge support types
+         * @type {Array}
          */
         supportTypes:[],
 
         /**
          * Divider types
+         * @type {Array}
          */
         dividerTypes:[],
 
         /**
-         * Application language
-         * @type: string
+         * Application default language
+         * @type: {string}
          */
         language:'it',
 
         /**
-         * Id of the drawer, if 0 it is a new drawer
+         * Id of the drawer, 0 means is new drawer
+         * @type {Number}
          */
-        drawerId:0,
+        drawerId: 0,
 
         /**
-         * [drawertype description]
+         * Drawert type, 0 means no choice
          * @type {Number}
          */
         drawertype: 0,
 
-
         /**
-         * [bridge_category description]
+         * Drawer type category, 0 means no category
          * @type {Number}
          */
         drawer_type_category: 0,
 
         /**
-         * [is_lineabox description]
+         * Lineabox family flag
          * @type {Boolean}
          */
         is_lineabox: false,
 
         /**
-         * [dimensions description]
+         * Drawer Dimensions
          * @type {Object}
          */
         dimensions: {
 
             /**
-             * [width description]
+             * Drawer width
              * @type {Number}
              */
             width: 800,
 
             /**
-             * [shoulder_height description]
+             * Shoulder height
              * @type {Number}
              */
             shoulder_height: 100,
 
             /**
-             * [length description]
+             * Drawer length
              * @type {Number}
              */
             length: 600,
 
             /**
-             * [available_width description]
+             * Actual width subtracted by the extra supports added for a bridge
              * @type {Number}
              */
             delta_width: 0,
 
             /**
-             * [available_length description]
+             * Actual length subtracted by the extra supports added for a bridge
              * @type {Number}
              */
             delta_length: 0,
 
             /**
-             * [actual_lineabox_shoulder_height description]
+             * Actual lineabox MIN shoulder height
              * @type {Number}
              */
             actual_lineabox_shoulder_height_LOW: 45.4,
 
             /**
-             * [actual_lineabox_shoulder_height_MID description]
+             * Actual lineabox MID shoulder height
              * @type {Number}
              */
             actual_lineabox_shoulder_height_MID: 72,
 
             /**
-             * [actual_lineabox_shoulder_height_HIGH description]
+             * Actual lineabox HIGH shoulder height
              * @type {Number}
              */
             actual_lineabox_shoulder_height_HIGH: 148,
         },
 
         /**
-         * drawer width must not exceed a value for a H bridge to be chosen
+         * Drawer width must not exceed a value for a H bridge to be chosen
          * @type {Boolean}
          */
         is_suitable_width_4hbridge: true,
 
         /**
-         * shoulder height must exceed a minimum value to allow for a bridge to be chosen
+         * Shoulder height must exceed a minimum value to allow for a bridge to be placed
          * @type {Boolean}
          */
         is_suitable_height_4bridge: true,
 
         /**
-         * [bridge_orientation description]
+         * Bridge Orientation: H or V
+         * Orientation is a common data for all the bridge placed, no bridge overlapping allowed
          * @type {String}
          */
         bridge_orientation: "",
 
         /**
-         * [has_bridge description]
+         * Drawer has bridge flag
          * @type {Boolean}
          */
         has_bridge: false,
 
         /**
-         * [bridge_supportID description]
+         * Bridge Support unique support ID
          * @type {Number}
          */
         bridge_supportID: 0,
 
         /**
-         * [bridge_ID description]
+         * Bridge unique support ID
          * @type {Number}
          */
         bridge_ID: 0,
 
         /**
-         * [bridge_supports_selected description]
+         * Bridge supports selected list
          * @type {Array}
          */
         bridge_supports_selected: [],
 
         /**
-         * [bridges_selected description]
+         * Bridge selected list
          * @type {Array}
          */
         bridges_selected: [],
 
         /**
-         * [dividers description]
+         * Dividers selected list
          * @type {Array}
          */
         dividers_selected:[],
 
-
+        /**
+         * Drawer border top data
+         * @type {Object}
+         */
         drawer_border_top: { hex: '', selected: false },
 
+        /**
+         * Drawer border left data
+         * @type {Object}
+         */
         drawer_border_left: { hex: '', selected: false },
 
+        /**
+         * Drawer border right data
+         * @type {Object}
+         */
         drawer_border_right: { hex: '', selected: false },
 
+        /**
+         * Drawer border bottom data
+         * @type {Object}
+         */
         drawer_border_bottom: { hex: '', selected: false },
 
         /**
@@ -263,51 +307,74 @@ const store = new Vuex.Store({
          */
         pdf: {
 
+            /**
+             * Brochure download flag
+             * @type {Boolean}
+             */
             brochure: false,
+
+            /**
+             * Summary download flag ( should not change )
+             * @type {Boolean}
+             */
             summary: true,
+
+            /**
+             * User email for summary/brochure mail send
+             * @type {String}
+             */
             email: '',
+
+            /**
+             * Send flag = !download flag
+             * @type {Boolean}
+             */
             send: false,
+
+            /**
+             * Download flag
+             * @type {Boolean}
+             */
             download: false
         },
 
         /**
-         * [onecompleted description]
+         * Step1 completion flag
          * @type {Boolean}
          */
         onecompleted: false,
 
         /**
-         * [twocompleted description]
+         * Step2 completion flag
          * @type {Boolean}
          */
         twocompleted: false,
 
         /**
-         * [threecompleted description]
+         * Step3 completion flag
          * @type {Boolean}
          */
         threecompleted: false,
 
         /**
-         * [bridgecompleted description]
+         * Step ponte completion flag
          * @type {Boolean}
          */
         bridgecompleted: false,
 
         /**
-         * [fourcompleted description]
+         * Step4 completion flag
          * @type {Boolean}
          */
         fourcompleted: false,
 
         /**
-         * [fivecompleted description]
+         * Step5 completion flag
          * @type {Boolean}
          */
         fivecompleted: false
 
     },
-
 
 });
 
@@ -315,16 +382,17 @@ const store = new Vuex.Store({
  * Here we enable the i18n plugin and inject the languages terms from translations.js
  */
 
-//Warn Vue to use VuexI18n plugin with store
-Vue.use(vuexI18n.plugin, store);
+// # Tell Vue to use VuexI18n plugin with store
+Vue.use( vuexI18n.plugin, store );
 
-// Add to the applications all languages defined.
-$.each(translations,(code,terms)=>{Vue.i18n.add(code,terms);});
+// # Add to the applications all languages defined.
+$.each( translations,( code,term s) => { Vue.i18n.add( code,terms ); });
 
-// set the start locale to use
+// # Set the default locale
 Vue.i18n.set('it');
 
-// set the fallback locale to use
+// # Set the fallback locale
 Vue.i18n.fallback('it');
 
+// # Export store "component"
 export default store;

@@ -268,7 +268,7 @@ export default {
          * @return {number}
          */
         real_width: function () {
-            return this.$store.state.dimensions.width + this.$store.state.dimensions.delta_width;
+            return +this.$store.state.dimensions.width + this.$store.state.dimensions.delta_width;
         },
 
         /**
@@ -276,7 +276,7 @@ export default {
          * @return {number}
          */
         real_height: function() {
-            return this.$store.state.dimensions.length + this.$store.state.dimensions.delta_length;
+            return +this.$store.state.dimensions.length + this.$store.state.dimensions.delta_length;
         }
     },
 
@@ -425,6 +425,12 @@ export default {
             // # Container available width
             var available_width = this.canvasWidth;
 
+            console.log( "AW :" + available_width );
+
+            console.log( "RW :" + this.real_width );
+
+            console.log( "ratio computed: " +  ( available_width / this.real_width ) );
+            
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
             this.snap = 30;//parseInt( this.snap * this.config.ratio );

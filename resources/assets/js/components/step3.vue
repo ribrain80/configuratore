@@ -469,12 +469,18 @@ export default {
          */
         setShoulderHeight: function( val ) {
             this.$store.commit( "setShoulderHeight", val );
-            this.$store.commit( "clearAllBridgeData" );
+            this.clearAllData();
             this.updateDrawer();
         }, 
 
+        /**
+         * [clearAllData description]
+         * @return {[type]} [description]
+         */
         clearAllData: function() {
           this.$store.commit( "clearAllBridgeData" );
+          this.$store.commit( "clearDividers" );
+          this.$store.commit( "clearDrawerBorders" );
           this.updateDrawer();
         },
 

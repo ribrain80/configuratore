@@ -126,8 +126,10 @@ export default {
             this.$store.commit( "setDrawerType", type );
             this.$store.commit( "isLineaBox", type != 4 ); 
 
-            // # Clean up next step already inserted data, eventually
+            // # Clean up following steps already inserted data, eventually
             this.$store.commit( "clearAllBridgeData" ); 
+            this.$store.commit( "clearDividers" );
+            this.$store.commit( "clearDrawerBorders" );
 
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );

@@ -401,6 +401,10 @@ const  mutations = {
         console.log( state.dividers_selected );
     },
 
+    clearDividers: function( state ) {
+        state.dividers_selected = [];
+    },
+
     setDrawerBorderTopHex: function( state, obj ) {
         console.log( "changing border top hex to: " + obj );
         state.drawer_border_top.hex = obj;
@@ -426,6 +430,13 @@ const  mutations = {
         console.log( "drawer_border_" +  obj.id );
         state[ "drawer_border_" +  obj.id ].selected = obj.val;
     },  
+
+    clearDrawerBorders: function() {
+        state.drawer_border_top = {};
+        state.drawer_border_left = {};
+        state.drawer_border_right = {};
+        state.drawer_border_bottom = {};
+    },
 
     setDividerHex: function( state, obj ) {
 
