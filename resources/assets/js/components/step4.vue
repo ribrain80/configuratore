@@ -17,7 +17,7 @@
                                  :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}"
                                  @click="selectBridge( $event )"
                             >
-                                <br>INFO<br>
+                                <br>{{ this.$store.state.bridge_orientation}}<br>
                             </div>
                         </div>
                         <!-- Bridge Ops -->
