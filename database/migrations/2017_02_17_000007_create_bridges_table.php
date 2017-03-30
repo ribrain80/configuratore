@@ -20,6 +20,11 @@ class CreateBridgesTable extends Migration
             $table->string('sku_short',50)->nullable()->default(null);
             $table->double('width')->nullable()->default(null);
             $table->double('depth')->nullable()->default(null);
+            $table->string('image')->nullable()->default(null);
+            $table->string('color')->nullable()->default(null);
+            $table->string('border')->nullable()->default(null);
+            $table->string('texture')->nullable()->default(null);
+            $table->string('description')->nullable()->default(null);
             $table->nullableTimestamps();
         });
     }

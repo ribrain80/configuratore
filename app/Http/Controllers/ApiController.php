@@ -63,7 +63,16 @@ class ApiController extends Controller
      */
     public function actionBridges() {
 
-        return response()->json(Bridge::all(['id','sku','width','depth'])->toArray());
+        $grouped = [];
+
+        foreach (Bridge::all(['id','sku','sku_short','width','depth','image','color','border','texture','description'])->sortBy('depth') as $curBridge) {
+            $grouped[$curBridge['depth']]['image'] = $curBridge['image'];
+            $grouped[$curBridge['depth']]['depth'] = $curBridge['depth'];   //redundant
+            $grouped[$curBridge['depth']]['width'] = $curBridge['width'];   //redundant
+            $grouped[$curBridge['depth']]['items'][] = $curBridge;
+        }
+
+        return response()->json($grouped);
     }
 
 }
