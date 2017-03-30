@@ -487,7 +487,9 @@ export default {
                 break;
 
                 case "divider":
-                    this.$store.commit( "setDividerHex", { id: this.selectedItem.id, hex: hex } );
+                    console.log( hex );
+                    console.log( this.selectedItem.id );
+                    this.$store.commit( "setDividerHex", { id: this.selectedItem.id, hexa: hex } );
                     this.selectedItem.setBackgroundColor( hex );
                     this.canvas.renderAll();
                 break;
