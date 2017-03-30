@@ -21,7 +21,7 @@ class BridgeSeeder extends Seeder
             $tmp = str_getcsv($line);
             $toInsert['sku'] = trim($tmp[0]);
             $toInsert['sku_short'] = trim($tmp[1]);
-            $toInsert['depth'] = str_pad(trim(str_replace(",","",$tmp[2])),3,'0',STR_PAD_RIGHT) ;
+            $toInsert['depth'] = (str_pad(trim(str_replace(",","",$tmp[2])),3,'0',STR_PAD_RIGHT)/10) ;
             $dim = explode("x",$tmp[3]);
             $toInsert['width'] = trim($dim[1]);
             $toInsert['image']='/images/bridges/' . $toInsert['depth'] . DIRECTORY_SEPARATOR .  "bridge.png";
