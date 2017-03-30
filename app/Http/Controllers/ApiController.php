@@ -69,6 +69,7 @@ class ApiController extends Controller
             $key = "".$curBridge['depth'];
             $grouped[$key]['image'] = $curBridge['image'];
             $grouped[$key]['depth'] = $curBridge['depth'];   //redundant
+            $grouped[$key]['id'] = $curBridge['depth'];
             $grouped[$key]['width'] = $curBridge['width'];   //redundant
             $grouped[$key]['items'][] = $curBridge;
         }

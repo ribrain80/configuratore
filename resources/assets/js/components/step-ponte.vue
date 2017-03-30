@@ -81,10 +81,10 @@
                     <h4 class="">{{ "stepponte.bridge_title" | translate  }}</h4>
 
                     <!-- Bridges choice -->
-                    <div class="row" v-for="bridge in $store.state.bridgeTypes">
+                    <div class="row" v-for="( bridge, cat ) in $store.state.bridgeTypes">
                         <div class="col-lg-6" v-show="checkBridgeCompatibility( bridge )">
                             <div class="panel panel-default">
-                                <div class="panel-body"  :class="{ 'bg-success': bridge.id == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">{{bridge.sku}} w:{{bridge.width}} mm d:{{bridge.depth}} mm</div>
+                                <div class="panel-body"  :class="{ 'bg-success': cat == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth"> w:{{ bridge.width }} mm d:{{ bridge.depth }} mm</div>
                             </div>
                         </div>
                     </div>
@@ -232,7 +232,8 @@ export default {
          * @param  {[type]} bridge [description]
          * @return {[type]}        [description]
          */
-        checkBridgeCompatibility: function(  bridge ) {
+        checkBridgeCompatibility: function( bridge ) { 
+            console.log( bridge );
 
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
@@ -247,7 +248,7 @@ export default {
                     switch( bridge.depth ) {
 
                         // # low bridge
-                        case 22.5:
+                        case 25.5:
                             return shoulder_height_float >= 72;
                         break;
 
@@ -269,7 +270,7 @@ export default {
                     switch( bridge.depth ) {
 
                         // # low bridge
-                        case 22.5:
+                        case 25.5:
                             return shoulder_height_float >= 72;
                         break;
 
@@ -314,7 +315,8 @@ export default {
 
                     if( shoulder_height_float >= 116 && shoulder_height_float < 138.5 ) {
 
-                        if( this.$store.state.bridge_supportID == 2 && bridge.id == 1 ) {
+                        // # TODO bridgeID won't be 1 or 2
+                        if( this.$store.state.bridge_supportID == 2 && bridge.id == 480 ) {
                             
                             // # Show error modal 
                             $( "#error-modal" )

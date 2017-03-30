@@ -431,7 +431,7 @@ const  mutations = {
         state[ "drawer_border_" +  obj.id ].selected = obj.val;
     },  
 
-    clearDrawerBorders: function() {
+    clearDrawerBorders: function( state ) {
         state.drawer_border_top = {};
         state.drawer_border_left = {};
         state.drawer_border_right = {};

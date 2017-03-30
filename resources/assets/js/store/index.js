@@ -386,13 +386,13 @@ const store = new Vuex.Store({
 Vue.use( vuexI18n.plugin, store );
 
 // # Add to the applications all languages defined.
-$.each( translations,( code, terms) => { Vue.i18n.add( code,terms ); });
+$.each( translations,( code, terms ) => { Vue.i18n.add( code,terms ); });
 
 // # Set the default locale
-Vue.i18n.set('it');
+Vue.i18n.set( 'it' );
 
 // # Set the fallback locale
-Vue.i18n.fallback('it');
+Vue.i18n.fallback( 'it' );
 
 // # Export store "component"
 export default store;
