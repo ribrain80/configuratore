@@ -1,10 +1,8 @@
 
 /**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
+ * First we load all of this project's JavaScript dependencies which
+ * include Vue and Vue Resource.
  */
-
 require('./bootstrap');
 
 // # Common utils
@@ -12,12 +10,7 @@ String.prototype.capitalizeFirstLetter = function() {
     return this.charAt( 0 ).toUpperCase() + this.slice( 1 );
 };
 
-/**
- * We will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
-
+// # Import needed packages
 import Vue        from 'vue'
 import router     from './router'
 import store      from './store'
@@ -44,12 +37,12 @@ const error = Vue.component( 'error', require('./components/500.vue' ));
 const App = new Vue({
 
 	/**
-	 * vuex store injection
+	 * Vuex store injection
 	 */
 	store,
 
 	/**
-	 * router injection
+	 * Router injection
 	 */
 	router,
 
@@ -58,6 +51,7 @@ const App = new Vue({
 	 * @type {Object}
 	 */
 	components : {
+
 		languageselector,
         sidebar,
         appnavbar,
@@ -70,8 +64,16 @@ const App = new Vue({
 		error
 	},
 
+	/**
+	 * App data
+	 * @type {Object}
+	 */
   	data : {},
 
+  	/**
+  	 * Window.onload equivalent
+  	 * @return {void} [description]
+  	 */
     mounted () {
 
         // # Log mount
@@ -81,6 +83,6 @@ const App = new Vue({
         this.$store.dispatch('initApp',this.$router);
     }
  
-}).$mount( '#app' );
+}).$mount( '#app' ); // # Mount component  ( element with id = app )
 
 

@@ -40,6 +40,7 @@
             
             <!-- Upper edge -->
             <div class="row">
+            SEL - {{ $store.state.drawer_border_top.selected }}
                 <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" 
                 :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}" id="top" @click='selectBorder( $event );'></div>
             </div>
@@ -534,13 +535,15 @@ export default {
 
         setColor: function( hex ) {
 
+            console.log( this.selectedItem );
             if( $.isEmptyObject( this.selectedItem ) ) {
                 return;
             }
 
             switch( this.selectedItem.type ) {
-                
+
                 case "border":
+                    console.log( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex" );
                     this.$store.commit( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex", hex );
                 break;
 

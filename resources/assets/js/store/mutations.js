@@ -430,16 +430,15 @@ const  mutations = {
     },  
 
     setDrawerBorderSelected: function( state, obj ) {
-        console.log( obj );
-        console.log( "drawer_border_" +  obj.id );
         state[ "drawer_border_" +  obj.id ].selected = obj.val;
+        console.log( state[ "drawer_border_" +  obj.id ] );
     },  
 
     clearDrawerBorders: function( state ) {
-        state.drawer_border_top = {};
-        state.drawer_border_left = {};
-        state.drawer_border_right = {};
-        state.drawer_border_bottom = {};
+        state.drawer_border_top = { hex: '', selected: false };
+        state.drawer_border_left = { hex: '', selected: false };
+        state.drawer_border_right = { hex: '', selected: false };
+        state.drawer_border_bottom = { hex: '', selected: false };
     },
 
     setDividerHex: function( state, obj ) {
