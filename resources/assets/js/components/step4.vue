@@ -90,7 +90,7 @@
 
                     <!-- Tab title ( Nav ) -->
                     <ul class="nav nav-tabs" role="tablist" id="tab-container">
-                        <li :class="{active: !index}" role="presentation" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
+                        <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availabeDividerCategories">
                             <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
                         </li>
                         <li role="presentation"><a data-toggle="tab" role="tab" href="#colors">Textures e colori</a></li>
@@ -100,7 +100,7 @@
                     <div class="tab-content">
                         
                         <!-- Dividers by cat -->
-                        <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in $store.state.dividerTypes.dividersCategories">
+                        <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in availabeDividerCategories">
 
                             <div class="row" style="margin-top: 22px">
 
@@ -275,6 +275,17 @@ export default {
      * @type {Object}
      */
     computed: {
+
+        availabeDividerCategories: function () {
+            let max = parseFloat(this.$store.state.dimensions.shoulder_height)*10;
+
+            //Altezza interna sponda in mm
+            return this.$store.state.dividerTypes.dividersCategories.filter(function (category) {
+                console.log("ADC:"+category);
+                return max >= parseInt(category);
+                }
+            );
+        },
 
         /**
          *  Check if the user can add more bridges.

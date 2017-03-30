@@ -135,7 +135,10 @@ const store = new Vuex.Store({
          * Divider types
          * @type {Array}
          */
-        dividerTypes:[],
+        dividerTypes: {
+            dividersCategories: [],
+            dividers: []
+        },
 
         /**
          * Application default language
