@@ -42,6 +42,11 @@ elixir(function(mix) {
     mix.copy( paths.material + 'js/**', 'public/js');
 
 
+    // Salice Fonts
+    mix.copy('./resources/assets/salicefonts/**', 'public/salicefonts' );
+
+
+
     //Compile scss and build vendor.js
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
@@ -62,7 +67,7 @@ elixir(function(mix) {
     mix.scripts(['public/js/vendor.js','public/js/app.js'],'public/js/split.js','./');
 
     //Versiong files
-    
+
     mix.version('public/css/split.css');
     mix.version(['public/css/split.css', 'public/js/split.js']);
 

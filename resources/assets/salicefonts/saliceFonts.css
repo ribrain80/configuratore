@@ -1,0 +1,58 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3365065, 2017-03-27T10:42:07-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: FranklinGothicURW-Boo by URW++
+ * URL: http://www.myfonts.com/fonts/urw/franklin-gothic/t-book/
+ * 
+ * Webfont: FranklinGothicURW-BooIta by URW++
+ * URL: http://www.myfonts.com/fonts/urw/franklin-gothic/t-book-italic/
+ * 
+ * Webfont: FranklinGothicURW-Dem by URW++
+ * URL: http://www.myfonts.com/fonts/urw/franklin-gothic/t-demi/
+ * 
+ * Webfont: FranklinGothicURW-DemIta by URW++
+ * URL: http://www.myfonts.com/fonts/urw/franklin-gothic/t-demi-italic/
+ * 
+ * Webfont: FranklinGothicURW-Hea by URW++
+ * URL: http://www.myfonts.com/fonts/urw/franklin-gothic/t-heavy/
+ * 
+ * Webfont: FranklinGothicURW-HeaIta by URW++
+ * URL: http://www.myfonts.com/fonts/urw/franklin-gothic/t-heavy-italic/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3365065
+ * Licensed pageviews: 350,000
+ * Webfonts copyright: Copyright 2010 URW++ Design &amp; Development Hamburg
+ * 
+ * © 2017 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3358c9");
+
+  
+@font-face {font-family: 'FranklinGothicURW-Boo';src: url('webfonts/3358C9_0_0.eot');src: url('webfonts/3358C9_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3358C9_0_0.woff2') format('woff2'),url('webfonts/3358C9_0_0.woff') format('woff'),url('webfonts/3358C9_0_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'FranklinGothicURW-BooIta';src: url('webfonts/3358C9_1_0.eot');src: url('webfonts/3358C9_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3358C9_1_0.woff2') format('woff2'),url('webfonts/3358C9_1_0.woff') format('woff'),url('webfonts/3358C9_1_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'FranklinGothicURW-Dem';src: url('webfonts/3358C9_2_0.eot');src: url('webfonts/3358C9_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3358C9_2_0.woff2') format('woff2'),url('webfonts/3358C9_2_0.woff') format('woff'),url('webfonts/3358C9_2_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'FranklinGothicURW-DemIta';src: url('webfonts/3358C9_3_0.eot');src: url('webfonts/3358C9_3_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3358C9_3_0.woff2') format('woff2'),url('webfonts/3358C9_3_0.woff') format('woff'),url('webfonts/3358C9_3_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'FranklinGothicURW-Hea';src: url('webfonts/3358C9_4_0.eot');src: url('webfonts/3358C9_4_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3358C9_4_0.woff2') format('woff2'),url('webfonts/3358C9_4_0.woff') format('woff'),url('webfonts/3358C9_4_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'FranklinGothicURW-HeaIta';src: url('webfonts/3358C9_5_0.eot');src: url('webfonts/3358C9_5_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3358C9_5_0.woff2') format('woff2'),url('webfonts/3358C9_5_0.woff') format('woff'),url('webfonts/3358C9_5_0.ttf') format('truetype');}
+ 
