@@ -130,6 +130,7 @@ export default {
             this.$store.commit( "clearAllBridgeData" ); 
             this.$store.commit( "clearDividers" );
             this.$store.commit( "clearDrawerBorders" );
+            this.$store.commit( "setDefaultDimensions" );
 
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );
@@ -206,7 +207,7 @@ export default {
         console.log( "Step2 Mounted!" );
 
         // # Set component header title
-        this.$store.commit('setComponentHeader','scelta tipologia cassetto ');
+        this.$store.commit( 'setComponentHeader','Scelta tipologia cassetto' );
 
         // # User reset advice ( shown once if user cames back here from one of the next steps )
         if( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) {

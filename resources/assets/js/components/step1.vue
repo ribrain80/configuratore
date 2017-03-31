@@ -4,13 +4,7 @@
     <div class="row" id="step1">
         
         <!-- Full width -->
-        <div class="col-md-6">
-
-            <!-- Page title -->
-            <h3>{{ 'step1.title' | translate }}</h3>
-
-            <!-- Product description -->
-            <h4>{{ 'step1.product_description_title' | translate }}</h4>
+        <div class="col-lg-6 col-md-6">
 
             <!-- Text -->
             <p>{{ 'step1.product_description_text' | translate }}</p>
@@ -22,7 +16,9 @@
 
 
         </div>
-        <div class="col-md-6">
+
+        <!-- Info image -->
+        <div class="col-lg-6 col-md-6">
             <img src="/images/others/img-step1-right.jpg" class="img img-responsive center-block">
         </div>
 
@@ -70,7 +66,7 @@ export default {
     mounted () {
 
         // # Set component header title
-        this.$store.commit('setComponentHeader','informazioni');
+        this.$store.commit( 'setComponentHeader', 'Informazioni' );
         
         // # Log mount 
         console.log( "Welcome/info page mounted" );

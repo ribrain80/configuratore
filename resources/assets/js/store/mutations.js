@@ -109,6 +109,12 @@ const  mutations = {
         state.dimensions.shoulder_height = parseFloat(val);
     },
 
+    setDefaultDimensions: function( state, val ) {
+        state.dimensions.width = 800;
+        state.dimensions.length = 600;
+        state.dimensions.shoulder_height = 100;
+    },
+
     /**
      * Description
      * @method setBridgeOrientation

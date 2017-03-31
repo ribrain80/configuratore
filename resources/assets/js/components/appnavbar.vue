@@ -1,4 +1,5 @@
 <template>
+
     <!-- Fixed navbar -->
     <div class="app-nav">
         <div class="row">
@@ -11,11 +12,13 @@
                 </div>
             </nav>
         </div>
-        <div class="row component-header">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-11">{{this.$store.state.currentComponentHeader | translate}}</div>
+
+        <div class="row component-header text-center">
+            <div class="col-lg-12">{{ this.$store.state.currentComponentHeader | translate }}</div>
         </div>
+
     </div>
+
 </template>
 
 <script>
