@@ -14,98 +14,116 @@
                 <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
             </div>
         </div>
-        
-        <!-- Orientation section -->
-        <div class="col-lg-12">
-            
-            <!-- Orientation description -->
-            <div class="row">
-               <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
-            </div>
-            
-            <!-- Orientation title -->
-            <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
-            
-            <!-- Orientation choice -->
-            <div class="row">
-                <div class="col-lg-6" v-show="$store.state.is_suitable_width_4hbridge">
-                    <div class="panel panel-default" :class="{ 'bg-success': ('H' == $store.state.bridge_orientation)}">
-                        <div class="panel-body" @click="setOrientation('H')" >{{ 'horizontal' | translate }}</div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default" :class="{ 'bg-success': ('V' == $store.state.bridge_orientation)}" >
-                        <div class="panel-body" @click="setOrientation('V')" >{{ 'vertical' | translate }}</div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        
-        <!-- Supports / bridges -->
-        <div class="col-lg-12"> 
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Orientation section -->
+                <div class="col-lg-12">
 
-            <div class="row">
-                
-                <!-- Supports section -->
-                <div class="col-lg-6" v-show="$store.state.bridge_orientation.length">
-
-                    <!-- Supports description -->
+                    <!-- Orientation description -->
                     <div class="row">
-                       <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
-                    </div> 
+                        <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
+                    </div>
 
-                    <!-- Supports title -->
-                    <h4 class="">{{ 'stepponte.bridge_support' | translate }}</h4>
-                    
-                    <!-- Support choice -->
-                    <div class="row" v-for="bridge_support in $store.state.supportTypes">
-                        <div class="col-lg-12" v-show="checkSupportCompatibility( bridge_support )">
-                            <div class="panel panel-default">
-                                <div class="panel-body" :class="{ 'bg-success': bridge_support.id == $store.state.bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
-                            </div>
+                    <!-- Orientation title -->
+                    <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
+
+                    <!-- Orientation choice -->
+                    <div class="row">
+                        <div class="col-lg-6" v-show="$store.state.is_suitable_width_4hbridge">
+
+                            <figure class="drawer-container" >
+
+                                <img src="/images/others/step-ponte/bridgeH.jpg"
+                                     class="img img-responsive  img-shadow"
+                                     :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
+                                     @click="setOrientation('H')"
+                                />
+                                <figcaption> {{ 'orizzontale' | translate}} </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-lg-6">
+                            <figure class="drawer-container" >
+                                <img src="/images/others/step-ponte/bridgeV.jpg"
+                                     class="img img-responsive  img-shadow"
+                                     :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
+                                     @click="setOrientation('V')"
+                                />
+                                <figcaption> {{ 'verticale' | translate}} </figcaption>
+                            </figure>
                         </div>
                     </div>
 
-                </div>  
-                
-                <!-- Bridges section -->
-                <div class="col-lg-6" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
-                    
-                    <!-- Bridges description -->
+                </div>
+                <div class="spacer"></div>
+                <!-- Supports / bridges -->
+                <div class="col-lg-12">
+
                     <div class="row">
-                       <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
-                    </div> 
-                    
-                    <!-- Bridges title -->
-                    <h4 class="">{{ "stepponte.bridge_title" | translate  }}</h4>
 
-                    <!-- Bridges choice -->
-                    <div class="row" v-for="( bridge, cat ) in $store.state.bridgeTypes">
-                        <div class="col-lg-12" v-show="checkBridgeCompatibility( bridge )">
-                            <div class="panel panel-default">
-                                <div class="panel-body"  :class="{ 'bg-success': cat == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">
+                        <!-- Supports section -->
+                        <div class="col-lg-12" v-show="$store.state.bridge_orientation.length">
 
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <!-- <img class="media-object " :src="bridge.image" style="width:70px" > -->
-                                                <img class="media-object " src="http://placehold.it/100x100" style="width:100px" >
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading" style="width: 100%"> {{ Bridge | translate}}</h4>
-                                            w:{{ bridge.width }} mm d:{{ bridge.depth }} mm
-                                        </div>
-                                    </div>
+                            <!-- Supports description -->
+                            <div class="row">
+                                <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
+                            </div>
+
+                            <!-- Supports title -->
+                            <h4 class="">{{ 'stepponte.bridge_support' | translate }}</h4>
+
+                            <!-- Support choice -->
+                            <div class="row" v-for="bridge_support in $store.state.supportTypes">
+                                <div class="col-lg-6" v-show="checkSupportCompatibility( bridge_support )">
+                                    <figure class="drawer-container" >
+                                        <img src="http://placehold.it/150x300"
+                                             class="img img-responsive  img-shadow"
+                                             :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
+                                             @click="selectBridgeSupport( bridge_support )"
+                                        />
+                                        <figcaption> {{bridge_support.id}} h:{{bridge_support.height}} mm </figcaption>
+                                    </figure>
                                 </div>
                             </div>
+
+                        </div>
+
+                        <!-- Bridges section -->
+                        <div class="col-lg-12" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
+
+                            <!-- Bridges description -->
+                            <div class="row">
+                                <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
+                            </div>
+
+                            <!-- Bridges title -->
+                            <h4 class="">{{ "stepponte.bridge_title" | translate  }}</h4>
+
+                            <!-- Bridges choice -->
+                            <div class="row" >
+                                <div class="col-lg-6" v-for="( bridge, cat ) in $store.state.bridgeTypes" v-if="checkBridgeCompatibility( bridge )">
+
+                                    <figure class="drawer-container" >
+                                        <img src="http://placehold.it/150x300"
+                                             class="img img-responsive  img-shadow"
+                                             :class="{ 'img-desaturate': cat != $store.state.bridge_ID }"
+                                             @click="selectBridgeType( bridge )"
+                                             :data-width="bridge.width"
+                                             :data-depth="bridge.depth"
+                                        />
+                                        <figcaption> w:{{ bridge.width }} mm d:{{ bridge.depth }} mm </figcaption>
+                                    </figure>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                </div>              
+                </div>
             </div>
+            <div class="col-lg-6"></div>
         </div>
+
 
         <!-- Next button -->
         <div class="row">
