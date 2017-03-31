@@ -551,8 +551,20 @@ export default {
                     console.log( hex );
                     console.log( this.selectedItem.id );
                     this.$store.commit( "setDividerHex", { id: this.selectedItem.id, hexa: hex } );
-                    this.selectedItem.setBackgroundColor( hex );
-                    this.canvas.renderAll();
+                    //this.selectedItem.setBackgroundColor( hex );
+                    this.selectedItem.set({
+                        url: 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
+                    });
+
+                    var self = this;
+                    var img = this.selectedItem.getElement();
+                    img.src = 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg';
+                    img.onload = function () {
+                        console.log( "YES" );
+                        self.canvas.renderAll();
+                    }
+
+                    //this.canvas.renderAll();
                 break;
 
                 case "bridge":

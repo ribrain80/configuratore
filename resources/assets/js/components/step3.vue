@@ -334,11 +334,16 @@ export default {
 
             // # Constraint check
             if( this.$store.state.dimensions.width > this.config.max_suitable_width_4_Hbridge ) {
-                
-                // # Show modal alert
-                $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step3.modal.too_large" ) );
-                $( '#error-modal' ).modal();
-                
+
+
+                // # Don't show the modal if the width is > max width ( there is a previous error )
+                if( this.$store.state.dimensions.width < this.config.rect_width_upper_limit ) {
+
+                    // # Show modal alert
+                    $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step3.modal.too_large" ) );
+                    $( '#error-modal' ).modal();  
+                }               
+                             
                 // # Horizontal bridge will NOT be available
                 this.$store.commit( "isSuitableForHBridge", false );
 
@@ -378,7 +383,7 @@ export default {
             }
 
             // # LineaBox drawers
-            // # Under 45.4 mm bridge is not allowed
+            // # Under 45.5 mm bridge is not allowed
             if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW ) {
                 $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
                 $( '#error-modal' ).modal();
@@ -390,6 +395,7 @@ export default {
 
             // # Bridge will be available
             this.$store.commit( "isSuitableHeightForBridge", true );
+            
             return true;
         },        
 
@@ -924,7 +930,7 @@ export default {
             }
 
             // # Lineabox choice
-            if( this.$store.state.dimensions.shoulder_height > this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW ) { // 45.4 means choice: 77
+            if( this.$store.state.dimensions.shoulder_height > this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW ) { // 45.5 means choice: 77
                 
                 // # bridge is allowed, go to the bridge step
                 this.$store.commit( "isSuitableHeightForBridge", true );

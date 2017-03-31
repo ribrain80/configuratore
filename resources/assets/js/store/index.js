@@ -228,7 +228,7 @@ const store = new Vuex.Store({
              * Actual lineabox MIN shoulder height
              * @type {Number}
              */
-            actual_lineabox_shoulder_height_LOW: 45.4,
+            actual_lineabox_shoulder_height_LOW: 45.5,
 
             /**
              * Actual lineabox MID shoulder height
