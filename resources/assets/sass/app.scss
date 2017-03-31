@@ -205,6 +205,7 @@ html, body, .container-fluid, .wrapper {
 .navbar {
   min-height:35px !important;
   border: none;
+  margin-bottom: 0!important;
 
 }
 
@@ -232,6 +233,7 @@ html, body, .container-fluid, .wrapper {
 
 .component-header {
   height: 35px;
+  line-height: 35px;
 }
 
 .pushdown {

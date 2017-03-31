@@ -11,7 +11,9 @@
 
             <!-- Next button -->
             <div class="row">
-                <div class="col-xs-4  pull-right"><button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button></div>
+                <div class="col-xs-4  pull-right">
+                    <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+                </div>
             </div>
 
 
@@ -25,6 +27,7 @@
     </div>
 
 </template>
+
 <script>
 
 /**

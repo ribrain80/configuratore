@@ -18,9 +18,6 @@
         display: inline-block;
     }        
 
-    /*#canvas {
-        border: 10px solid #222;
-    }*/
     </style>
 </head>
 <body>
@@ -33,7 +30,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
             </div>
-            <div class="modal-body" >Se clicchi su continua i dati inseriti andranno persi.</div>
+            <div class="modal-body">Se clicchi su continua i dati inseriti andranno persi.</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
                 <button type="button" class="btn btn-primary" onclick="window.location = location.protocol+'//'+location.host+'/split/step1'">Continua</button>

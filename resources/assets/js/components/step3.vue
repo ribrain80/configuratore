@@ -138,7 +138,7 @@ export default {
               shoulder_linewidth: 7,
               shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: 45.4,
+              shoulder_height_lower_limit: 45.5,
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
@@ -490,21 +490,30 @@ export default {
          */
         checkChoice: function() {
 
+            // # Allow comma, but change it to a point
+            this.$store.commit( "setWidth", this.$store.state.dimensions.width.replace( ",", "." ) );
+
             // # NaN management :: width
             if( isNaN( this.$store.state.dimensions.width ) ) {
-              this.$store.commit( "setWidth", 800 );
+              this.$store.commit( "setWidth", this.$store.state.dimensions.default_width );
               return false;
             }
+
+            // # Allow comma, but change it to a point
+            this.$store.commit( "setLength", this.$store.state.dimensions.length.replace( ",", "." ) );
 
             // # NaN management :: length
             if( isNaN( this.$store.state.dimensions.length ) ) {
-              this.$store.commit( "setLength", 600 );
+              this.$store.commit( "setLength", this.$store.state.dimensions.default_height );
               return false;
             }
 
+            // # Allow comma, but change it to a point
+            this.$store.commit( "setShoulderHeight", this.$store.state.dimensions.shoulder_height.replace( ",", "." ) );
+
             // # NaN management :: shoulder_height
             if( isNaN( this.$store.state.dimensions.shoulder_height ) ) {
-              this.$store.commit( "setShoulderHeight", 100 );
+              this.$store.commit( "setShoulderHeight", this.$store.state.dimensions.default_shoulder_height );
               return false;
             }                        
 

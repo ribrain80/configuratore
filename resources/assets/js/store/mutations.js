@@ -110,9 +110,9 @@ const  mutations = {
     },
 
     setDefaultDimensions: function( state, val ) {
-        state.dimensions.width = 800;
-        state.dimensions.length = 600;
-        state.dimensions.shoulder_height = 100;
+        state.dimensions.width = state.dimensions.default_width;
+        state.dimensions.length = state.dimensions.default_height;
+        state.dimensions.shoulder_height = state.dimensions.default_shoulder_height;
     },
 
     /**

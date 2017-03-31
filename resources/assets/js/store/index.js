@@ -195,6 +195,24 @@ const store = new Vuex.Store({
             length: 600,
 
             /**
+             * Default Drawer width
+             * @type {Number}
+             */
+            default_width: 800,
+
+            /**
+             * Default Drawer height
+             * @type {Number}
+             */
+            default_height: 600,
+
+            /**
+             * Default Shoulder height
+             * @type {Number}
+             */
+            default_shoulder_height: 100,
+
+            /**
              * Actual width subtracted by the extra supports added for a bridge
              * @type {Number}
              */
