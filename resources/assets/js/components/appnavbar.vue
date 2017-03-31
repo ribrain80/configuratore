@@ -4,7 +4,7 @@
     <div class="app-nav">
         <div class="row">
             <nav role="navigation" class="navbar navbar-default  navbar-inverse">
-                <div class="col-xs-1 split-header">
+                <div class="col-xs-1 split-header text-center">
                     Split
                 </div>
                 <div class="container-fluid">

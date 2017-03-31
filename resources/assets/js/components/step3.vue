@@ -26,7 +26,7 @@
                 
                 <!-- Width -->
                 <div v-bind:class="[ 'form-group', width_OOR ? 'has-error' : 'has-success' ]">
-                  <label class="col-sm-7 control-label">{{ 'step3.drawer_width_label' | translate }}</label>
+                  <label class="col-sm-7 control-label">LA - {{ 'step3.drawer_width_label' | translate }}</label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
                     <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
@@ -35,7 +35,7 @@
 
                 <!-- Length -->
                 <div v-bind:class="[ 'form-group', length_OOR ? 'has-error' : 'has-success' ]">
-                  <label class="col-sm-7 control-label">{{ 'step3.drawer_length_label' | translate }}</label>
+                  <label class="col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
                     <span class="help-block">min {{ config.rect_length_lower_limit }} max {{ config.rect_length_upper_limit }}</span>
@@ -45,7 +45,7 @@
                 <!-- Shoulder height -->
                 <!-- Custom drawer -->
                 <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
-                  <label class="col-sm-7 control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
+                  <label class="col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
                     <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
@@ -84,6 +84,9 @@
             <div class="col-md-2 ">
                 <router-link to="/split/step2" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
             </div>
+            <div class="col-md-2 pull-right">
+                <button class="btn btn-danger btn-block pull-right" @click="reset">{{ 'reset' | translate }}</button>
+            </div>            
             <div class="col-md-2 pull-right">
                 <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>
@@ -464,6 +467,15 @@ export default {
         },
 
         /**
+         * Resets dimensions to defautl values
+         * @return {void}
+         */
+        reset: function () {
+          this.$store.commit( "setDefaultDimensions" );
+          this.updateDrawer();
+        },
+
+        /**
          * [setShoulderHeight description]
          * @param {[type]} val [description]
          */
@@ -491,7 +503,7 @@ export default {
         checkChoice: function() {
 
             // # Allow comma, but change it to a point
-            this.$store.commit( "setWidth", this.$store.state.dimensions.width.replace( ",", "." ) );
+            // this.$store.commit( "setWidth", "" + this.$store.state.dimensions.width.replace( /,/g, '.' ) );
 
             // # NaN management :: width
             if( isNaN( this.$store.state.dimensions.width ) ) {
@@ -500,7 +512,7 @@ export default {
             }
 
             // # Allow comma, but change it to a point
-            this.$store.commit( "setLength", this.$store.state.dimensions.length.replace( ",", "." ) );
+            // this.$store.commit( "setLength", "" + this.$store.state.dimensions.length.replace( /,/g, '.' ) );
 
             // # NaN management :: length
             if( isNaN( this.$store.state.dimensions.length ) ) {
@@ -509,7 +521,7 @@ export default {
             }
 
             // # Allow comma, but change it to a point
-            this.$store.commit( "setShoulderHeight", this.$store.state.dimensions.shoulder_height.replace( ",", "." ) );
+            // this.$store.commit( "setShoulderHeight", "" + this.$store.state.dimensions.shoulder_height.replace( /,/g, '.' ) );
 
             // # NaN management :: shoulder_height
             if( isNaN( this.$store.state.dimensions.shoulder_height ) ) {
@@ -963,7 +975,7 @@ export default {
         console.log( "Dimensions choice mounted" );
 
         // # Set component header title
-        this.$store.commit('setComponentHeader','dimensioni cassetto');
+        this.$store.commit( 'setComponentHeader', 'Dimensione cassetto' );
 
         // # Init canvas
         this.initTwo();

@@ -7,7 +7,7 @@
         <div class="col-lg-6 col-md-6">
 
             <!-- Text -->
-            <p>{{ 'step1.product_description_text' | translate }}</p>
+            <p v-html="$t( 'step1.product_description_text' )"></p>
 
             <!-- Next button -->
             <div class="row">
@@ -74,6 +74,8 @@ export default {
         // # Log mount 
         console.log( "Welcome/info page mounted" );
 
+        // TODO
+        //$( "#step1" ).height( $( ".wrapper").height() );
     }
 }
 </script>
