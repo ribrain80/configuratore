@@ -48,7 +48,7 @@
             <div class="row">
                 
                 <!-- Supports section -->
-                <div class="col-lg-5" v-show="$store.state.bridge_orientation.length">   
+                <div class="col-lg-6" v-show="$store.state.bridge_orientation.length">
 
                     <!-- Supports description -->
                     <div class="row">
@@ -60,7 +60,7 @@
                     
                     <!-- Support choice -->
                     <div class="row" v-for="bridge_support in $store.state.supportTypes">
-                        <div class="col-lg-5" v-show="checkSupportCompatibility( bridge_support )">
+                        <div class="col-lg-12" v-show="checkSupportCompatibility( bridge_support )">
                             <div class="panel panel-default">
                                 <div class="panel-body" :class="{ 'bg-success': bridge_support.id == $store.state.bridge_supportID }" @click="selectBridgeSupport( bridge_support )">{{bridge_support.id}} h:{{bridge_support.height}} mm</div>
                             </div>
@@ -70,7 +70,7 @@
                 </div>  
                 
                 <!-- Bridges section -->
-                <div class="col-lg-5" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">   
+                <div class="col-lg-6" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
                     
                     <!-- Bridges description -->
                     <div class="row">
@@ -82,9 +82,23 @@
 
                     <!-- Bridges choice -->
                     <div class="row" v-for="( bridge, cat ) in $store.state.bridgeTypes">
-                        <div class="col-lg-6" v-show="checkBridgeCompatibility( bridge )">
+                        <div class="col-lg-12" v-show="checkBridgeCompatibility( bridge )">
                             <div class="panel panel-default">
-                                <div class="panel-body"  :class="{ 'bg-success': cat == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth"> w:{{ bridge.width }} mm d:{{ bridge.depth }} mm</div>
+                                <div class="panel-body"  :class="{ 'bg-success': cat == $store.state.bridge_ID }" @click="selectBridgeType( bridge )" :data-width="bridge.width" :data-depth="bridge.depth">
+
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <!-- <img class="media-object " :src="bridge.image" style="width:70px" > -->
+                                                <img class="media-object " src="http://placehold.it/100x100" style="width:100px" >
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading" style="width: 100%"> {{ Bridge | translate}}</h4>
+                                            w:{{ bridge.width }} mm d:{{ bridge.depth }} mm
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
