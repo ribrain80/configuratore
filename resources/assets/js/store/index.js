@@ -79,6 +79,63 @@ const store = new Vuex.Store({
     getters: {
 
         /**
+         * Return all dividers variations depending on the selected item
+         * @todo: trivial implementation -- just work but i can do it much better
+         * @param state
+         * @returns {Array}
+         */
+        getDividerVariants: function (state) {
+
+            // Execute only if type is set
+            if (state.objectWorkingOn.type) {
+
+                //1) recupero l'oggetto divider da state.dividers_selected
+                let _tmp = state.dividers_selected.filter(cur => {
+                    return cur.id==state.objectWorkingOn.id;
+                });
+
+                //2) If there is an object with id equals to state.objectWorkingOn.id extract the related items variants
+                if (_tmp.length) {
+                    // #todo: find a better way to navigate into the object
+                    let curDivider = _tmp[0];
+                    let itemxcategory = state.dividerTypes.dividers[curDivider.category];
+                    let itemxcategoryxsubcategory = itemxcategory[curDivider.subCategory];
+                    return itemxcategoryxsubcategory.items;
+                }
+            }
+
+            // Default return empty array
+            return [];
+        },
+
+        /**
+         * Return the sum of the areas of the selected dividers
+         * @param state
+         * @returns {*}
+         */
+        busyArea: function (state) {
+           return state.dividers_selected.reduce((accumulatore,cur) => {return accumulatore+=cur.area;},0);
+        },
+
+
+        /**
+         * Return how much space is still availabe on the drawer
+         * @todo: Work with real area (delta)
+         * @param state
+         * @returns {*}
+         */
+        freeArea: function (state) {
+
+            //Calc Internal Area 
+            let rw = +state.dimensions.width;
+            let rh = +state.dimensions.length;
+            let internalArea = rw * rh;
+
+            //#Iterate over dividers_selected and subtract divider area to internalArea
+            return state.dividers_selected.reduce((accumulatore,cur) => {return accumulatore-=cur.area;},internalArea);
+        },
+
+        /**
          * Returns a subset of the store.state object
          * the subset consists in the data needed by the server 
          * 
@@ -106,6 +163,11 @@ const store = new Vuex.Store({
      * @type {Object}
      */
     state: {
+
+        objectWorkingOn: {
+            type:false,
+            id:false,
+        },
 
         /**
          * Current header label

@@ -382,8 +382,6 @@ const  mutations = {
      */
     pushDivider: function (state, obj) {
 
-        console.log("managing dividers");
-
         /*if ($.inArray(obj.id, state.dividers_selected) != -1) {
             console.log("pulling out divider");
             state.dividers_selected.splice($.inArray(obj.id, state.dividers_selected), 1);
@@ -392,7 +390,6 @@ const  mutations = {
 
         console.log("pushing in divider");
         state.dividers_selected.push( obj );
-        console.log( state.dividers_selected );
     },
 
     removeDivider: function( state, objID ) {
@@ -558,6 +555,10 @@ const  mutations = {
     setComponentHeader : function (state,payload)  {
         console.log("header changed");
         state.currentComponentHeader=payload;
+    },
+
+    setobjectWorkingOn: function (state,payload) {
+        state.objectWorkingOn=payload;
     }
 
 };

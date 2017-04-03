@@ -127,7 +127,8 @@
                                                          :data-rotate = "90"
                                                          :data-key = "dimension"
                                                          :data-cat = "cat"
-                                                         :data-type = "divider"
+                                                         data-type = "divider"
+                                                         data-orientation = "H"
                                                     >
                                                 </div>
                                                 <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
@@ -142,7 +143,8 @@
                                                          :data-rotate = "0"
                                                          :data-key = "dimension"
                                                          :data-cat = "cat"
-                                                         :data-type = "divider"
+                                                         data-type = "divider"
+                                                         data-orientation = "V"
                                                     >
                                                 </div>
                                             </div>
@@ -159,23 +161,22 @@
                         <div role="tabpanel" id="colors" class="tab-pane fade in">  
 
                             <div class="row" style="margin-top: 22px">
-
+                                <span style="color:red">VISUAL-LOG: TYPE: {{ $store.state.objectWorkingOn.type }} -- ID  {{ $store.state.objectWorkingOn.id }}</span>
                                 <div class="col-lg-12">
                                     
-                                    <div class="row" style="display: flex">
-
-                                        <div class="col-lg-4 col-md-4">
-                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail" @click="setColor( '#ccc' );">
+                                    <div class="row" >
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getDividerVariants">
+                                            <figure>
+                                                <img src="http://lorempixel.com/output/nature-q-c-640-480-8.jpg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="setColor( '#ccc' );"
+                                                     style="width: 100px;height: 100px"
+                                                >
+                                                <figcaption>
+                                                    {{ variant.description }}
+                                                </figcaption>
+                                            </figure>
                                         </div>
-
-                                        <div class="col-lg-4 col-md-4">
-                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail" @click="setColor( '#ffcc00' );">
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
-                                            <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail" @click="setColor( '#222' );">
-                                        </div>
-
                                     </div>
 
                                 </div>
@@ -203,6 +204,7 @@
 </template>
 
 <script>
+    import Divider from '../entity/divider';
 /**
  * Vue object managing bridge / bridge support choice
  * @type {Vue}
@@ -282,7 +284,6 @@ export default {
 
             //Altezza interna sponda in mm
             return this.$store.state.dividerTypes.dividersCategories.filter(function (category) {
-                console.log("ADC:"+category);
                 return max >= parseInt(category);
                 }
             );
@@ -860,10 +861,17 @@ export default {
             var _imgW   = +this.draggingDivider.dataset.width * this.config.ratio;
             var _imgH   = +this.draggingDivider.dataset.height * this.config.ratio;
             var _imgID  = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
-            var _imgSku = this.draggingDivider.dataset.sku;
 
-            var self = this;
-            var divider = {};
+             var _divider = new Divider(
+                 this.draggingDivider.dataset.cat,
+                 this.draggingDivider.dataset.key,
+                 +this.draggingDivider.dataset.width,
+                 +this.draggingDivider.dataset.height,
+                 _imgW,
+                 _imgH,
+                 this.draggingDivider.dataset.orientation,
+                 this.draggingDivider.src
+             );
 
             fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
 
@@ -885,37 +893,34 @@ export default {
                 oImg.dropped = true;
                 
                 // # Set ID unique
-                oImg.id =_imgID;
+                oImg.id =_divider.id;
 
                 // # Set Sku
-                oImg.sku = _imgSku;           
+                //oImg.sku = _imgSku;
 
                 // # Add image to canvas
                 this.canvas.add( oImg ); 
 
                 var coords = oImg.calcCoords().bl;
-                var centerCoords = oImg.getCenterPoint(); 
+                var centerCoords = oImg.getCenterPoint();
 
                 oImg.type = "divider";
 
                 this.selectedItem = oImg;
 
-                // # Export ready object
-                divider.sku = _imgSku;
-                divider.width = _imgW;
-                divider.height = _imgH;
-                divider.id = _imgID;
-                divider.x = coords.x;
-                divider.y = coords.y;
-                divider.centerx = centerCoords.x;
-                divider.centery = centerCoords.y;
-                divider.hex = '';                
+
+                _divider.x=coords.x;
+                _divider.y=coords.y;
+                // # Push divider
+                this.$store.commit( "pushDivider", _divider );
+                // # Set ObjectWorking On
+                this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id});
+
 
             });
 
-            // # Push divider
-            this.$store.commit( "pushDivider", divider );
 
+            // # todo: find a way to dont open tab in this way
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
 
             // # Clean data property
