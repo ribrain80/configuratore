@@ -89,7 +89,6 @@ body { font-family: FranklinGothicURW-Boo; }
 }
 
 
-
 .panel {
   cursor: pointer;
 }
@@ -268,7 +267,6 @@ html, body, .container-fluid, .wrapper {
 
 .nuovaconf {
   background-color: #e7e7e7 ;
-
 }
 
 .logo {
@@ -341,17 +339,22 @@ html, body, .container-fluid, .wrapper {
   font-weight: bold;
 }
 
-
+.nuovaconf a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
 
 @media (min-width: 992px) {
-  .sidebar {
+  /*.sidebar {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     z-index: 1000;
     display: block;
-  }
+  }*/
 
 
 /**
@@ -374,14 +377,15 @@ html, body, .container-fluid, .wrapper {
 
 .btn-danger {
   line-height: 40px;
-  border-radius: 40px ;
+  border-radius: 30px ;
   background: #f04f1a !important;
   color: white !important;
-  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30) !important;
-  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30) !important;
-  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30) !important;
+  -webkit-box-shadow: 6px 6px 10px 0px rgba(0,0,0,0.30) !important;
+  -moz-box-shadow: 6px 6px 10px 0px rgba(0,0,0,0.30) !important;
+  box-shadow: 6px 6px 10px 0px rgba(0,0,0,0.30) !important;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 0!important;
 }
 
 .btn-danger:hover {

@@ -73,9 +73,6 @@ export default {
         
         // # Log mount 
         console.log( "Welcome/info page mounted" );
-
-        // TODO
-        //$( "#step1" ).height( $( ".wrapper").height() );
     }
 }
 </script>
