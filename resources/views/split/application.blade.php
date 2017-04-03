@@ -57,9 +57,9 @@
 </div>
 {{-- Application Container--}}
     <div class="container-fluid" id="app">
-        <div class="wrapper">
+        <div class="row wrapper">
             <sidebar></sidebar>
-            <div class="col-md-11 col-md-offset-1 col-lg-10 col-lg-offset-2 content ">
+            <div class="col-md-11 col-lg-10 content ">
                 <appnavbar></appnavbar>
                 <transition name="fade">
                     <router-view></router-view>
