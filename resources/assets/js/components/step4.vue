@@ -399,19 +399,21 @@ export default {
             fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
 
                 try {
-
+                    console.log("Inside the dblclick listener!");
+                    console.log("Active canvas",self.canvas.getActiveObject());
                     // # Avoid null pbjects
                     if( null == self.canvas.getActiveObject() ) {
                         return;
                     }
 
+                    console.log("Active canvas type",self.canvas.getActiveObject().get( 'type' ));
                     // # Avoid canvas trying to remove itself
-                    if( self.canvas.getActiveObject().get( 'type' ) != "image" ) {
+                    if( self.canvas.getActiveObject().get( 'type' ) != "divider" ) {
                         return;
                     }
 
                     // # Cache active object ID
-                    var id = self.canvas.getActiveObject().get( 'id');
+                    var id = self.canvas.getActiveObject().get( 'id' );
 
                     // # Remove ID from selected dividers list
                     self.$store.commit( "removeDivider", id );

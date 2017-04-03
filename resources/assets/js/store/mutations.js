@@ -373,45 +373,6 @@ const  mutations = {
         state.has_bridge = false;
     },
 
-    /**
-     * Description
-     * @method manageDivider
-     * @param {} state
-     * @param {} obj
-     * @return 
-     */
-    pushDivider: function (state, obj) {
-
-        /*if ($.inArray(obj.id, state.dividers_selected) != -1) {
-            console.log("pulling out divider");
-            state.dividers_selected.splice($.inArray(obj.id, state.dividers_selected), 1);
-            return;
-        }*/
-
-        console.log("pushing in divider");
-        state.dividers_selected.push( obj );
-    },
-
-    removeDivider: function( state, objID ) {
-
-        console.log( " removing ");
-
-        var removeMe = {};
-        state.dividers_selected.forEach( function( divider, index ) {
-            if( objID === divider.id ) {
-                 removeMe = index;
-            }
-        });
-        
-        Vue.delete( state.dividers_selected, removeMe );
-        //state.dividers_selected.$remove( removeMe );        
-        console.log( state.dividers_selected );
-    },
-
-    clearDividers: function( state ) {
-        state.dividers_selected = [];
-    },
-
     setDrawerBorderTopHex: function( state, obj ) {
         console.log( "changing border top hex to: " + obj );
         state.drawer_border_top.hex = obj;
@@ -597,7 +558,44 @@ const  mutations = {
             }
             return cur;
         });
-    }
+    },
+
+    /**
+     * Remove a divider depending on the dividerId
+     * @param state
+     * @param dividerId
+     */
+    removeDivider: function( state, dividerId ) {
+
+        console.log( " removing divider id: ", dividerId);
+
+        state.dividers_selected = state.dividers_selected.filter((cur) => {
+            return cur.id != dividerId;
+        });
+
+        console.log( state.dividers_selected );
+    },
+
+    /**
+     * Add a divider to state.dividers_selected
+     * @method pushDivider
+     * @param {} state
+     * @param {} obj
+     * @return
+     */
+    pushDivider: function (state, obj) {
+        console.log("pushing in divider");
+        state.dividers_selected.push( obj );
+    },
+
+
+    /**
+     * Remove all dividers
+     * @param state
+     */
+    clearDividers: function( state ) {
+        state.dividers_selected = [];
+    },
 
 };
 
