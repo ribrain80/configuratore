@@ -559,6 +559,29 @@ const  mutations = {
 
     setobjectWorkingOn: function (state,payload) {
         state.objectWorkingOn=payload;
+    },
+
+
+    /**
+     * Update the position of a divider
+     * @param state
+     * @param payload
+     */
+    updateDividerPosition: function (state,payload) {
+        console.log("Updating position");
+        console.log("Divider id. " + payload.id);
+        console.log("x:",payload.x);
+        console.log("y:",payload.y);
+
+        //Change the state.dividers_selected with a new one with the selected divider having coords changed
+        state.dividers_selected = state.dividers_selected.map((cur) => {
+            //Modify only if id are the same
+            if (cur.id==payload.id) {
+                cur.x=payload.x;
+                cur.y=payload.y;
+            }
+            return cur;
+        });
     }
 
 };

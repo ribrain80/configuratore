@@ -593,6 +593,15 @@ export default {
 
             // # Collision mnagement
             this._preventCollision(options);
+
+            // # get the new coords
+            let coords = options.target.calcCoords().bl;
+            let payload = {
+                id: options.target.id,
+                x: coords.x,
+                y: coords.y
+            }
+            this.$store.commit('updateDividerPosition',payload);
         },
 
         _preventCollision: function ( options ) {
