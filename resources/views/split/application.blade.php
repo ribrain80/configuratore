@@ -23,7 +23,7 @@
 <body>
 
 <!-- New configration alert Modal -->
-<div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header alert-danger">
@@ -40,7 +40,7 @@
 </div>
 
 <!-- Generic error Modal -->
-<div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header alert-danger">

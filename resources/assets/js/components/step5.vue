@@ -7,15 +7,7 @@
         <div class="col-lg-12">
             <h2>{{  "step5.title" | translate }}</h2>
         </div>
-		
-		<!-- Brochure -->
-		<div class="checkbox col-lg-12">
-			<label>Brochure</label>
-            <!-- $store.state.pdf.brochure -->
-            <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
-            <hr />
-		</div>
-	
+
 		<!-- Summary -->
 		<div class="checkbox col-lg-12">
 			<label>{{ "step5.summary_label" | translate }}</label>
@@ -23,6 +15,14 @@
             <button class="btn btn-danger" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
             <hr />
 		</div>
+
+        <!-- Brochure -->
+        <div class="checkbox col-lg-12">
+            <label>Brochure</label>
+            <!-- $store.state.pdf.brochure -->
+            <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
+            <hr />
+        </div>
 	
 		<!-- Email -->
 		<div class="col-lg-12">

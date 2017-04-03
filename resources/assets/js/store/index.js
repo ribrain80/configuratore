@@ -233,6 +233,12 @@ const store = new Vuex.Store({
         is_lineabox: false,
 
         /**
+         * Step2 Advice acceptance flag
+         * @type {Boolean}
+         */
+        step2_adviceAccepted: false,
+
+        /**
          * Drawer Dimensions
          * @type {Object}
          */

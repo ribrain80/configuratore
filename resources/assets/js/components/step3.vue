@@ -6,8 +6,8 @@
         <!-- Alerts: User Warning -->
         <div class="col-lg-12">
             <div class="alert alert-warning alert-dismissible fade in" >
-                <!--<button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> --><strong>{{ 'attenzione' | translate }}</strong> 
-                {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: config.max_suitable_width_4_Hbridge } ) }} 
+                <strong>{{ 'attenzione' | translate }}</strong> 
+                {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: getMaxWidth4BridgeByDrawerType } ) }} 
             </div>
         </div>
         
@@ -193,6 +193,18 @@ export default {
         }
     },
 
+    computed: {
+
+        /**
+         * [getMaxwidth4BridgeByDrawerType description]
+         * @return {[type]} [description]
+         */
+        getMaxWidth4BridgeByDrawerType: function () {
+          console.log( "computing " );
+          return !this.$store.state.is_lineabox ? this.config.max_suitable_width_4_Hbridge : parseFloat( this.config.max_suitable_width_4_Hbridge ) - 12
+        }
+    },
+
     /**
      * Object methods
      * @type {Object}
@@ -333,14 +345,16 @@ export default {
         isSuitableForHBridge: function() {
 
             // # Constraint check
-            if( this.$store.state.dimensions.width > this.config.max_suitable_width_4_Hbridge ) {
-
+            if( this.$store.state.dimensions.width > this.getMaxWidth4BridgeByDrawerType ) {
 
                 // # Don't show the modal if the width is > max width ( there is a previous error )
                 if( this.$store.state.dimensions.width < this.config.rect_width_upper_limit ) {
 
                     // # Show modal alert
-                    $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step3.modal.too_large" ) );
+                    $( "#error-modal" )
+                    .find( '.modal-body' )
+                    .text( Vue.i18n.translate( "step3.modal.too_large", { max: this.getMaxWidth4BridgeByDrawerType } ) );
+
                     $( '#error-modal' ).modal();  
                 }               
                              
@@ -362,6 +376,15 @@ export default {
          */
         isSuitableHeightForBridge: function() {
 
+            // # Don't show the modal if the shoyulder height is > max shoulder height ( there is a previous error )
+            if( this.$store.state.dimensions.shoulder_height > this.config.shoulder_height_upper_limit ) {
+
+              // # In any case reset it
+              this.$store.commit( "isSuitableHeightForBridge", false );
+
+              return false;
+            }
+
             // # Drawer type check
             // # If is a custom drawer
             if( this.$store.state.drawertype == 4 ) {
@@ -369,7 +392,11 @@ export default {
                 // # Under 72 mm bridge is not allowed
                 if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_MID ) {
 
-                    $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
+                    $( "#error-modal" )
+                    .find( '.modal-body' )
+                    .text( Vue.i18n.translate('step3.modal.not_enougth_high', 
+                         { min: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID }) );
+
                     $( '#error-modal' ).modal();
 
                     // # Bridge won't be available
@@ -384,8 +411,14 @@ export default {
 
             // # LineaBox drawers
             // # Under 45.5 mm bridge is not allowed
-            if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW ) {
-                $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate('step3.modal.not_enougth_high') );
+            if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_MID ) {
+
+                $( "#error-modal" )
+                .find( '.modal-body' )
+                .text( Vue.i18n.translate('step3.modal.not_enougth_high', 
+                     { min: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID } ) );
+
+
                 $( '#error-modal' ).modal();
                 
                 // # Bridge won't be available
@@ -509,7 +542,10 @@ export default {
         checkChoice: function() {
 
             // # Allow comma, but change it to a point
-            // this.$store.commit( "setWidth", "" + this.$store.state.dimensions.width.replace( /,/g, '.' ) );
+            /*var W = this.$store.state.dimensions.width.replace( /,/g, '.' );
+            W = W.replace( /,/g, '.' );
+            this.$store.commit( "setWidth", "" + parseFloat( W ).toFixed( 2 ) );
+            */
 
             // # NaN management :: width
             if( isNaN( this.$store.state.dimensions.width ) ) {
@@ -518,7 +554,10 @@ export default {
             }
 
             // # Allow comma, but change it to a point
-            // this.$store.commit( "setLength", "" + this.$store.state.dimensions.length.replace( /,/g, '.' ) );
+            /*var L = this.$store.state.dimensions.length.toFixed( 2 );
+            L = L.replace( /,/g, '.' );
+            this.$store.commit( "setLength", "" + parseFloat( L ).toFixed( 2 ) );
+            */
 
             // # NaN management :: length
             if( isNaN( this.$store.state.dimensions.length ) ) {
@@ -527,7 +566,10 @@ export default {
             }
 
             // # Allow comma, but change it to a point
-            // this.$store.commit( "setShoulderHeight", "" + this.$store.state.dimensions.shoulder_height.replace( /,/g, '.' ) );
+            /*var SH = this.$store.state.dimensions.shoulder_height;
+            SH = SH.replace( /,/g, '.' );
+            this.$store.commit( "setShoulderHeight", "" + parseFloat( SH ).toFixed( 2 ) );
+            */            
 
             // # NaN management :: shoulder_height
             if( isNaN( this.$store.state.dimensions.shoulder_height ) ) {

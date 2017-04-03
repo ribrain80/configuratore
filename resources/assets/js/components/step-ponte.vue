@@ -21,12 +21,14 @@
                 <div class="col-lg-12">
 
                     <!-- Orientation description -->
-                    <div class="row">
+                    <div class="col-lg-12">
                         <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
                     </div>
 
                     <!-- Orientation title -->
-                    <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
+                    <div class="col-lg-12">
+                        <h4 class="">{{ 'stepponte.orientation_title' | translate }}</h4>
+                    </div>
 
                     <!-- Orientation choice -->
                     <div class="row">
@@ -65,8 +67,15 @@
                         <div class="col-lg-12" v-show="$store.state.bridge_orientation.length">
 
                             <!-- Supports description -->
-                            <div class="row">
+                            <div class="col-lg-12">
                                 <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
+                            </div>  
+
+                            <!-- Alerts: User Advice -->
+                            <div class="col-lg-12" v-show="showSupportsAdvice">
+                                <div class='alert-warning' role="alert">
+                                    <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
+                                </div>
                             </div>
 
                             <!-- Supports title -->
@@ -162,6 +171,36 @@ export default {
         return {}
     },
 
+    computed: {
+
+        showSupportsAdvice: function () {
+            return   this.$store.state.drawertype == 4 || 
+                   ( this.$store.state.drawertype != 4 && this.$store.state.bridges_selected != "H" );
+        },
+
+        numSup: function () {
+
+            switch( this.$store.state.drawertype ) {
+
+                case 4:
+                    return 2;
+                
+                case 3:
+                    return this.$store.state.bridge_orientation == "H" ? 0 : 2;
+
+                case 2: 
+                case 1:
+
+                    return this.$store.state.bridge_orientation == "V" ? 1 : 0;
+
+            }
+        },
+
+        dimensionAffected: function () {
+            return this.$store.state.bridge_orientation == "H" ? "width" : "length";
+        }
+    },
+
     /**
      * Object methods
      * @type {Object}
@@ -178,6 +217,8 @@ export default {
             val == this.$store.state.bridge_orientation ? 
                    this.$store.commit( "setBridgeOrientation", "" ) : 
                    this.$store.commit( "setBridgeOrientation", val );
+
+            this.num_sup = 
 
             // # Commit mutation and clear step data
             this.$store.commit( "clearBridgeData" );
