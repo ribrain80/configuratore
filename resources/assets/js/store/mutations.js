@@ -54,6 +54,15 @@ const  mutations = {
     },
 
     /**
+     * [setStep2AdviceAccepted description]
+     * @param {[type]} state [description]
+     * @param {[type]} val   [description]
+     */
+    setStep2AdviceAccepted: function( state, val ) {
+        state.step2_adviceAccepted = val;
+    },
+
+    /**
      * Description
      * @method setWidth
      * @param {} state

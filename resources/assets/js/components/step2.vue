@@ -3,6 +3,22 @@
     <!-- Container -->
     <section>
         
+        <!-- User reset advice Modal -->
+        <div class="modal fade" id="reset-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header alert-danger">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
+                    </div>
+                    <div class="modal-body">{{ "resetadvice" | translate }}</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Spacer -->
         <div class="spacer"></div>
 
@@ -122,6 +138,20 @@ export default {
          */
         setType: function ( type ) {
 
+            // # User reset advice ( shown once if user cames back here from one of the next steps )
+            if( ( this.$store.state.threecompleted || this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) 
+                 && !this.$store.state.step2_adviceAccepted ) {
+              
+                // # Show modal alert
+                $( "#reset-advice-modal" ).modal();
+
+                // # Advice message accepted, show no more
+                this.$store.commit( "setStep2AdviceAccepted", true );
+
+                // # And return
+                return false;
+            }
+
             // # Data container updates
             this.$store.commit( "setDrawerType", type );
             this.$store.commit( "isLineaBox", type != 4 ); 
@@ -208,17 +238,6 @@ export default {
 
         // # Set component header title
         this.$store.commit( 'setComponentHeader','Scelta tipologia cassetto' );
-
-        // # User reset advice ( shown once if user cames back here from one of the next steps )
-        if( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) {
-          
-            // # Show modal alert
-            $( "#error-modal" ).find('.modal-body').text( Vue.i18n.translate( "resetadvice" ) );
-            $( '#error-modal' ).modal();
-
-            // # And return
-            return false;
-        }
     }
 }
 </script>
