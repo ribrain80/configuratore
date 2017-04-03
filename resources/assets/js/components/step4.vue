@@ -169,8 +169,9 @@
                                             <figure>
                                                 <img src="http://lorempixel.com/output/nature-q-c-640-480-8.jpg"
                                                      class="img center-block img-responsive img-thumbnail"
-                                                     @click="setColor( '#ccc' );"
+                                                     @click="_updateDividerSku( $event );"
                                                      style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
                                                 >
                                                 <figcaption>
                                                     {{ variant.description }}
@@ -532,6 +533,25 @@ export default {
         selectBridge: function() {
             this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+        },
+
+
+        _updateDividerSku: function ( e ) {
+            let payload = {
+                id: this.$store.state.objectWorkingOn.id,
+                sku: e.target.dataset.sku
+            };
+
+            //Update Image in canvas
+            // # todo: usare meglio la logica :D
+            let img = this.selectedItem.getElement();
+            img.src = e.target.src;
+            img.onload =  () => {
+                console.log( "YES" );
+                this.canvas.renderAll();
+            };
+
+            this.$store.commit("updateDividerSku",payload);
         },
 
         setColor: function( hex ) {

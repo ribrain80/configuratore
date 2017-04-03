@@ -570,8 +570,8 @@ const  mutations = {
     updateDividerPosition: function (state,payload) {
         console.log("Updating position");
         console.log("Divider id. " + payload.id);
-        console.log("x:",payload.x);
-        console.log("y:",payload.y);
+        console.log("new x:",payload.x);
+        console.log("new y:",payload.y);
 
         //Change the state.dividers_selected with a new one with the selected divider having coords changed
         state.dividers_selected = state.dividers_selected.map((cur) => {
@@ -579,6 +579,21 @@ const  mutations = {
             if (cur.id==payload.id) {
                 cur.x=payload.x;
                 cur.y=payload.y;
+            }
+            return cur;
+        });
+    },
+
+    updateDividerSku: function (state,payload) {
+        console.log("Updating divider sku");
+        console.log('Divider id :' , payload.id);
+        console.log('New sku: ' , payload.sku);
+
+        //Change the state.dividers_selected with a new one with the selected divider having sku changed
+        state.dividers_selected = state.dividers_selected.map((cur) => {
+            //Modify only if id are the same
+            if (cur.id==payload.id) {
+                cur.sku=payload.sku;
             }
             return cur;
         });

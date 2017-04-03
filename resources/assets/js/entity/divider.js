@@ -10,7 +10,7 @@ export default class Divider {
         this.y = 0;
         this.orientation = orientation;
         this.id = new Date();   //we can be sure that at the same time only one object can be dragged on the canvas container so it is unique
-        this.sku = "asap";
+        this.sku = "";
         this.tmpImg = tmpImg;
        // this.realImg = "";
         this.realImg = "http://lorempixel.com/output/nature-q-c-640-480-8.jpg";  //FAKE just for check
