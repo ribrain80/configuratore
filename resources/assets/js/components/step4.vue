@@ -391,6 +391,53 @@ export default {
             // # Scope fix
             var self = this;
 
+
+            fabric.util.addListener( this.canvas.upperCanvasEl, 'click', (e) => {
+                try {
+                    console.log("Inside the click listener!");
+                    console.log("Active canvas",self.canvas.getActiveObject());
+                    // # Avoid null pbjects
+                    if( null == this.canvas.getActiveObject() ) {
+                        return;
+                    }
+
+                    console.log("Active canvas type",this.canvas.getActiveObject().get( 'type' ));
+                    // # Avoid canvas trying to remove itself
+                    if( this.canvas.getActiveObject().get( 'type' ) != "divider" ) {
+                        return;
+                    }
+
+                    // # Cache active object ID
+                    let id = this.canvas.getActiveObject().get( 'id' );
+
+                    // Updating this.selectedItem and $store.objectWorkingOn
+                    // @todo: selectedItem deve diventare una property di $store.objectWorkingOn
+                    this.selectedItem = this.canvas.getActiveObject();
+                    this.$store.commit('setobjectWorkingOn',{type:'divider',id:id});
+
+
+
+                } catch( e ) {
+
+                    // # Log error and ignore it
+                    console.log( e );
+                } finally {
+
+                    // # Stop event propagation and prevent default
+                    // # mandatory cause otherwise the event is passed to the canvas itself
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // # Render all
+                    this.canvas.renderAll();
+
+                    // # also return false is needed
+                    return false;
+                }
+            });
+
+            fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {});
+
             /**
              * Double click listener ( Divider deletion )
              * @param  {Object} e )  original event triggered
