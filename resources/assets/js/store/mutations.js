@@ -606,6 +606,15 @@ const  mutations = {
         state.dividers_selected = [];
     },
 
+
+    setDrawerBorder(state,payload) {
+        console.log("Changing border color");
+        console.log("ID: " , payload.id);
+        console.log("IMAGE: " , payload.image);
+        console.log("SKU: " , payload.sku);
+        console.log("DEFINIRE BENE STORE PER QUESTE INFO E POI FARE LOGICA!!!!")
+    }
+
 };
 
 export default mutations;

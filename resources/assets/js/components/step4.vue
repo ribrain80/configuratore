@@ -165,7 +165,7 @@
                                 <div class="col-lg-12">
                                     
                                     <div class="row" >
-                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getDividerVariants">
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
                                             <figure>
                                                 <img src="http://lorempixel.com/output/nature-q-c-640-480-8.jpg"
                                                      class="img center-block img-responsive img-thumbnail"
@@ -178,6 +178,22 @@
                                                 </figcaption>
                                             </figure>
                                         </div>
+
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                                            <figure>
+                                                <img :src="variant.image"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBorder( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>
+                                                    {{ variant.description }}
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+
+
                                     </div>
 
                                 </div>
@@ -413,7 +429,7 @@ export default {
                     // Updating this.selectedItem and $store.objectWorkingOn
                     // @todo: selectedItem deve diventare una property di $store.objectWorkingOn
                     this.selectedItem = this.canvas.getActiveObject();
-                    this.$store.commit('setobjectWorkingOn',{type:'divider',id:id});
+                    this.$store.commit('setobjectWorkingOn',{type:'divider',id:id,obj:this.canvas.getActiveObject()});
 
 
 
@@ -562,19 +578,11 @@ export default {
 
         selectBorder: function() {
 
-            let pos = [ "top", "left", "right", "bottom" ];
+            let _selectedBorder = event.target;
 
-            var self = this;
-            for( var posId in pos ) {
+            this.$store.commit('setobjectWorkingOn',{type:'border',id:_selectedBorder.id,obj:_selectedBorder});
 
-                if( pos[ posId ] == event.target.id ) {
-                    self.$store.commit( "setDrawerBorderSelected", { id: pos[ posId ], val: true } );
-                    self.selectedItem = { type: "border", id: event.target.id };
-                    continue;
-                } 
-
-                this.$store.commit( "setDrawerBorderSelected", { id: pos[ posId ], val: false } );
-            };
+            console.log(this.$store.state.objectWorkingOn);
 
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
         },  
@@ -593,7 +601,8 @@ export default {
 
             //Update Image in canvas
             // # todo: usare meglio la logica :D
-            let img = this.selectedItem.getElement();
+            let img = this.selectedItem;
+            console.log("QUIIIIIIIIIIIIIII!!!!!!!!!!!!!",img);
             img.src = e.target.src;
             img.onload =  () => {
                 console.log( "YES" );
@@ -601,6 +610,20 @@ export default {
             };
 
             this.$store.commit("updateDividerSku",payload);
+        },
+
+        _updateBorder:function (e) {
+
+            let payload = {
+                id:this.$store.state.objectWorkingOn.id,
+                image:e.target.src,
+                sku: e.target.dataset.sku
+            };
+
+            console.log(this.$store.state.objectWorkingOn.obj);
+            this.$store.state.objectWorkingOn.obj.style.backgroundImage = "url("+e.target.src+")";
+
+            this.$store.commit('setDrawerBorder',payload);
         },
 
         setColor: function( hex ) {
@@ -615,26 +638,6 @@ export default {
                 case "border":
                     console.log( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex" );
                     this.$store.commit( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex", hex );
-                break;
-
-                case "divider":
-                    console.log( hex );
-                    console.log( this.selectedItem.id );
-                    this.$store.commit( "setDividerHex", { id: this.selectedItem.id, hexa: hex } );
-                    //this.selectedItem.setBackgroundColor( hex );
-                    this.selectedItem.set({
-                        url: 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
-                    });
-
-                    var self = this;
-                    var img = this.selectedItem.getElement();
-                    img.src = 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg';
-                    img.onload = function () {
-                        console.log( "YES" );
-                        self.canvas.renderAll();
-                    }
-
-                    //this.canvas.renderAll();
                 break;
 
                 case "bridge":
@@ -992,7 +995,7 @@ export default {
                 // # Push divider
                 this.$store.commit( "pushDivider", _divider );
                 // # Set ObjectWorking On
-                this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id});
+                this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id,'obj':oImg});
 
 
             });

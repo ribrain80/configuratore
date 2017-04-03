@@ -78,6 +78,44 @@ const store = new Vuex.Store({
      */
     getters: {
 
+
+
+        getBorderVariants: function (state) {
+            if (state.objectWorkingOn.type && state.objectWorkingOn.type=='border') {
+                let out = [];
+                out.push(
+                    {
+                        description:'Bordo 1 FAKE',
+                        image: 'http://lorempixel.com/output/nature-q-c-640-480-6.jpg',
+                        sku: 'FAKE 1'
+                    }
+                );
+                out.push(
+                    {
+                        description:'Bordo 2 FAKE',
+                        image: 'http://lorempixel.com/output/nature-q-c-640-480-5.jpg',
+                        sku: 'FAKE 2'
+                    }
+                );
+                out.push(
+                    {
+                        description:'Bordo 3 FAKE',
+                        image: 'http://lorempixel.com/output/nature-q-c-640-480-4.jpg',
+                        sku: 'FAKE 3'
+                    }
+                );
+                out.push(
+                    {
+                        description:'Bordo 4 FAKE',
+                        image: 'http://lorempixel.com/output/nature-q-c-640-480-3.jpg',
+                        sku: 'FAKE 4'
+                    }
+                );
+                return out;
+            }
+            return [];
+        },
+
         /**
          * Return all dividers variations depending on the selected item
          * @todo: trivial implementation -- just work but i can do it much better
@@ -87,7 +125,7 @@ const store = new Vuex.Store({
         getDividerVariants: function (state) {
 
             // Execute only if type is set
-            if (state.objectWorkingOn.type) {
+            if (state.objectWorkingOn.type && state.objectWorkingOn.type=='divider') {
 
                 //1) recupero l'oggetto divider da state.dividers_selected
                 let _tmp = state.dividers_selected.filter(cur => {
@@ -167,6 +205,7 @@ const store = new Vuex.Store({
         objectWorkingOn: {
             type:false,
             id:false,
+            obj:{}
         },
 
         /**
