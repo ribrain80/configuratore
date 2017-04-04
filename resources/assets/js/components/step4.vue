@@ -1,73 +1,68 @@
 <template>
 
-<div>
-     <div class="row">
-            <!-- Only if user selected a bridge -->
-            <div class="col-lg-12 col-md-12 panel-default" v-if="$store.state.has_bridge">
-                <div class="panel-heading">
-                    Gestione bridges
+<div class="me">
+
+    <div class="row">
+
+        <!-- Only if user selected a bridge -->
+        <div class="col-lg-12 col-md-12">
+            
+            
+            <div class="col-lg-12">{{ 'step4.upper_label' | translate }}</div>
+
+            <!-- Ponti -->
+            <div class="col-lg-4" v-if="$store.state.has_bridge">
+                
+                <div class="" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event )">
+                    {{ $store.state.bridge_orientation}}
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <!-- Bridge representation -->
-                        <div class="col-lg-10 col-md-10">
-                            <div class="col-lg-1 col-md-1 "
-                                 v-for="curbridge in $store.state.bridges_selected"
-                                 style="min-height: 100px;border: 1px solid #666;border-radius: 10px"
-                                 :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}"
-                                 @click="selectBridge( $event )"
-                            >
-                                <br>{{ $store.state.bridge_orientation}}<br>
-                            </div>
-                        </div>
-                        <!-- Bridge Ops -->
-                        <div class="col-lg-2 col-md-2">
-                            <button class="btn btn-success btn-block"
-                                    :disabled="!canAddBridges"
-                                    @click="addBridge">Add</button>
-                            <button class="btn btn-primary btn-block" @click="clearBridges">RemoveAll</button>
-                        </div>
-                    </div>
-                </div>
+                
+                <button class="btn btn-success btn-block" :disabled="!canAddBridges" @click="addBridge">Add</button>
+                <button class="btn btn-primary btn-block" @click="clearBridges">RemoveAll</button>
+
             </div>
+            <div class="col-lg-4"></div>
+
+
+        </div>
+
     </div>
-    <div class="spacer"></div>
-<!-- Container -->
+
+    <!-- Container -->
     <div class="row">
 
         <!-- 2D container -->
         <div class="col-lg-6 col-md-6" id="step4_2d">
             
             <!-- Upper edge -->
-            <div class="row">
-            SEL - {{ $store.state.drawer_border_top.selected }}
+            <!--<div class="row">
                 <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" 
                 :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}" id="top" @click='selectBorder( $event );'></div>
-            </div>
+            </div>-->
             
             <!-- Center content -->
             <div class="row">
 
                 <!-- Left edge -->
-                <div :class="[ 'col-lg-1', 'edge_2d_v edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" 
-                :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}" id="left" @click='selectBorder( $event );'></div>
+                <!--<div :class="[ 'pull-left', 'edge_2d_v', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" 
+                :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}" id="left" @click='selectBorder( $event );'></div>-->
                 
                 <!-- Actual drawer canvas -->
-                <div class="col-lg-10 zeropadded col-md-12 dragdrop-area" id="canvas-container">
+                <div class="center-block zeropadded dragdrop-area" id="canvas-container">
                     <canvas id="canvas" class="center-block"></canvas>
                 </div>
                 
                 <!-- Right edge -->
-                <div :class="[ 'col-lg-1', 'edge_2d_v edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
-                :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}" id="right" @click='selectBorder( $event );'></div>
-
+                <!--<div :class="[ 'pull-left', 'edge_2d_v', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
+                :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}" id="right" @click='selectBorder( $event );'></div>-->
             </div>
+
             
             <!-- Lower edge -->
-            <div class="row">
+            <!--<div class="row">
                 <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]"  
                 :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}"id="bottom" @click='selectBorder( $event );'></div>
-            </div>
+            </div>-->
             
             <!-- Bridge info and management -->
             <div class="row">
@@ -91,7 +86,7 @@
 
                     <!-- Tab title ( Nav ) -->
                     <ul class="nav nav-tabs" role="tablist" id="tab-container">
-                        <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availabeDividerCategories">
+                        <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
                             <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
                         </li>
                         <li role="presentation"><a data-toggle="tab" role="tab" href="#colors">Textures e colori</a></li>
@@ -101,7 +96,7 @@
                     <div class="tab-content">
                         
                         <!-- Dividers by cat -->
-                        <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in availabeDividerCategories">
+                        <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in availableDividerCategories">
 
                             <div class="row" style="margin-top: 22px">
 
@@ -179,7 +174,7 @@
                                             </figure>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-else-if="$store.state.objectWorkingOn.type=='border'">
                                             <figure>
                                                 <img :src="variant.image"
                                                      class="img center-block img-responsive img-thumbnail"
@@ -207,21 +202,24 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
-            </div>
-            <div class="col-lg-3 col-md-3 pull-right">
-                <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-            </div>
-        </div>
-
     </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
+        </div>
+        <div class="col-lg-3 col-md-3 pull-right">
+            <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+        </div>
+    </div>
+
 </div>
 </template>
 
 <script>
-    import Divider from '../entity/divider';
+
+import Divider from '../entity/divider';
+
 /**
  * Vue object managing bridge / bridge support choice
  * @type {Vue}
@@ -296,12 +294,13 @@ export default {
      */
     computed: {
 
-        availabeDividerCategories: function () {
-            let max = parseFloat(this.$store.state.dimensions.shoulder_height)*10;
+        availableDividerCategories: function () {
+
+            let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;
 
             //Altezza interna sponda in mm
-            return this.$store.state.dividerTypes.dividersCategories.filter(function (category) {
-                return max >= parseInt(category);
+            return this.$store.state.dividerTypes.dividersCategories.filter( function (category) {
+                    return max >= parseInt(category);
                 }
             );
         },
@@ -310,28 +309,29 @@ export default {
          *  Check if the user can add more bridges.
          */
         canAddBridges: function () {
-            let availableSpace = (this.$store.state.bridge_orientation=='V')?this.real_height:this.real_width;
-            return availableSpace >= (this.bridgesArea + this.tighterBridgeWidth)
+            let availableSpace = ( this.$store.state.bridge_orientation == 'V' ) ? this.real_height : this.real_width;
+            return availableSpace >= ( this.bridgesArea + this.tighterBridgeWidth )
         },
 
         /**
          *  Return the tighter bridge width
          */
         tighterBridgeWidth: function () {
+
             return this.$store.state.bridges_selected.reduce(
                 function ( min, elem ) {
-                    return (min>elem.width)?elem.width:min;
+                    return ( min > elem.width ) ? elem.width : min;
                 }
-                , 0);
+                , 0 );
         },
 
         /**
          * Actual area covered by bridges
          */
         bridgesArea: function () {
-            return this.$store.state.bridges_selected.reduce(function ( accumulatore, elem ) {
+            return this.$store.state.bridges_selected.reduce( function ( accumulatore, elem ) {
                 return accumulatore + elem.width;
-            }, 0);
+            }, 0 );
         },
 
         /**
@@ -371,7 +371,7 @@ export default {
             this.ratioComputer();
 
             // # Compute height based on ration computed
-            this.canvasHeight = parseInt( this.$store.state.dimensions.length * this.config.ratio );
+            this.canvasHeight = parseInt( this.real_height * this.config.ratio );
             console.log( "CH: " + this.canvasHeight );
 
             // # Force dimensions
@@ -407,17 +407,20 @@ export default {
             // # Scope fix
             var self = this;
 
+            fabric.util.addListener( this.canvas.upperCanvasEl, 'click', ( e ) => {
 
-            fabric.util.addListener( this.canvas.upperCanvasEl, 'click', (e) => {
+                console.log( "Inside the click listener!" );
+
                 try {
-                    console.log("Inside the click listener!");
-                    console.log("Active canvas",self.canvas.getActiveObject());
+
                     // # Avoid null pbjects
                     if( null == this.canvas.getActiveObject() ) {
                         return;
                     }
 
-                    console.log("Active canvas type",this.canvas.getActiveObject().get( 'type' ));
+                    console.log( "Active canvas", this.canvas.getActiveObject() );
+                    console.log( "Active canvas type", this.canvas.getActiveObject().get( 'type' ));
+
                     // # Avoid canvas trying to remove itself
                     if( this.canvas.getActiveObject().get( 'type' ) != "divider" ) {
                         return;
@@ -430,8 +433,6 @@ export default {
                     // @todo: selectedItem deve diventare una property di $store.objectWorkingOn
                     this.selectedItem = this.canvas.getActiveObject();
                     this.$store.commit('setobjectWorkingOn',{type:'divider',id:id,obj:this.canvas.getActiveObject()});
-
-
 
                 } catch( e ) {
 
@@ -462,14 +463,17 @@ export default {
             fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
 
                 try {
+
                     console.log("Inside the dblclick listener!");
-                    console.log("Active canvas",self.canvas.getActiveObject());
+                    
                     // # Avoid null pbjects
                     if( null == self.canvas.getActiveObject() ) {
                         return;
                     }
 
+                    console.log("Active canvas",self.canvas.getActiveObject());
                     console.log("Active canvas type",self.canvas.getActiveObject().get( 'type' ));
+
                     // # Avoid canvas trying to remove itself
                     if( self.canvas.getActiveObject().get( 'type' ) != "divider" ) {
                         return;
@@ -538,24 +542,53 @@ export default {
 
         /**
          * Computes the correct ratio based on container width
+         * manages also long and thin drawers
          * @return {void}
          */
         ratioComputer: function() {
 
+            // # Dimension ratio tells us if we are in the case that height > width
+            let dimensions_ratio = this.real_width / this.real_height;
+
             // # Container available width
-            var available_width = this.canvasWidth;
+            let available_width = this.canvasWidth;
+            console.log( "AW" + available_width );
 
-            console.log( "AW :" + available_width );
-
-            console.log( "RW :" + this.real_width );
-
-            console.log( "ratio computed: " +  ( available_width / this.real_width ) );
-            
             // # Ratio computed using max allowed rect width
             this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
-            this.snap = 30;//parseInt( this.snap * this.config.ratio );
+            console.log( "RAZ: " + this.config.ratio );
+
+            // # height > width
+            if( dimensions_ratio < 1 ) {
+
+               // # let's say that we want to set a threshold
+               var threshold = available_width * 1.2;
+               
+               // # Initial height computed based on available width
+               var computed_height = this.real_height * this.config.ratio;
+               console.log( "CH first " + computed_height );
+
+               // # Reduce the computed height to a dimension similar to the 
+               // # available width so that the resulting shape won't be to 
+               // # tall
+               while( computed_height > threshold ) {
+
+                    // # Reduce ratio at each iteration
+                    this.config.ratio = ( this.config.ratio / 100 ) * 90;
+                    console.log( "RA: " + this.config.ratio );
+                    
+                    // # Newly computed canvas dimension are smaller and smaller
+                    computed_height  = this.real_height * this.config.ratio;
+                    this.canvasWidth = this.real_width * this.config.ratio;
+
+                    console.log( "CWChanged " +  this.canvasWidth );
+                    console.log( "CHChanged " +  computed_height );
+               }
+
+               console.log( computed_height + " - " + available_width );
+            }
+
             console.log( "RATIO " + this.config.ratio );
-            console.log( "SNAP " + this.snap );
         },  
 
         /**
@@ -593,23 +626,28 @@ export default {
         },
 
 
-        _updateDividerSku: function ( e ) {
+        _updateDividerSku: function () {
+
             let payload = {
                 id: this.$store.state.objectWorkingOn.id,
-                sku: e.target.dataset.sku
+                sku: event.target.dataset.sku
             };
 
-            //Update Image in canvas
-            // # todo: usare meglio la logica :D
-            let img = this.selectedItem;
-            console.log("QUIIIIIIIIIIIIIII!!!!!!!!!!!!!",img);
-            img.src = e.target.src;
-            img.onload =  () => {
+            console.log( payload );
+
+            this.selectedItem.set({
+                url: event.target.src
+            });
+
+            var self = this;
+            var img = this.selectedItem.getElement();
+            img.src = event.target.src;
+            img.onload = function () {
                 console.log( "YES" );
-                this.canvas.renderAll();
-            };
+                self.canvas.renderAll();
+            }
 
-            this.$store.commit("updateDividerSku",payload);
+            this.$store.commit( "updateDividerSku", payload );
         },
 
         _updateBorder:function (e) {
@@ -645,6 +683,10 @@ export default {
                     this.bridge_hex = hex;
                     // this.selectedItem.setBackgroundColor( hex );
                     // this.canvas.renderAll();
+                break;
+
+                case "divider":
+
                 break;
             }
 
@@ -988,7 +1030,6 @@ export default {
                 oImg.type = "divider";
 
                 this.selectedItem = oImg;
-
 
                 _divider.x=coords.x;
                 _divider.y=coords.y;

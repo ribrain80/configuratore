@@ -19,7 +19,10 @@
 
 body { font-family: FranklinGothicURW-Boo; }
 
-
+.col-centered{
+    /*float: none;*/
+    margin: 0 auto;
+}
 
 #bridge_placeholder {
   background-color: #ededed;
@@ -30,6 +33,10 @@ body { font-family: FranklinGothicURW-Boo; }
 
 .zeropadded {
   padding: 0!important;
+}
+
+#canvas-container {
+  width: auto;
 }
 
 .edge {
@@ -45,6 +52,7 @@ body { font-family: FranklinGothicURW-Boo; }
   /*border: 1px dashed #222;*/
   height: 30px;
   cursor:pointer;
+  width: 30px;
 }
 
 .edge_2d_h {

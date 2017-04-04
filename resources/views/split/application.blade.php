@@ -16,6 +16,8 @@
         margin-left: auto;
         margin-right: auto;
         display: inline-block;
+        border: 2px solid #222;
+        margin: 0 auto;
     }        
 
     </style>
