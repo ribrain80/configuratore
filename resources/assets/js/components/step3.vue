@@ -597,6 +597,9 @@ export default {
                  return false;
             }
 
+            // # Clear all on change
+            this.clearAllData();
+
             // # Dimensions inputs satisfied constraints
             return true;
         },         

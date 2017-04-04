@@ -162,7 +162,7 @@
                                     <div class="row" >
                                         <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
                                             <figure>
-                                                <img src="http://lorempixel.com/output/nature-q-c-640-480-8.jpg"
+                                                <img src="/images/nature.jpg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateDividerSku( $event );"
                                                      style="width: 100px;height: 100px"
@@ -385,7 +385,7 @@ export default {
             this.canvas.selection = false;
 
             /**
-             * [description]
+             * Handle object moving inside the canvas
              * @param  {[type]} ['object:moving'] [description]
              * @param  {[type]} (options          [description]
              * @return {[type]}                   [description]
@@ -394,8 +394,40 @@ export default {
                 this.handleMoving( options );
             });
 
+
+            // # Last chance 
+            // # FIX ME
+            this.canvas.on( "mouse:up", () => {
+
+                if( null != this.selectedItem ) {
+
+                    if( this.selectedItem.type == "divider" ) {
+
+                        // Loop through objects
+                        this.canvas.forEachObject( ( obj ) => {
+
+                                // # Do nothing if the object checked against is itself
+                                if ( obj === this.selectedItem ) return;
+
+                                // # Set element Coords
+                                this.selectedItem.setCoords();
+                                console.log( "intersect " + this.selectedItem.intersectsWithObject(obj, true, true ) );
+
+                                // If objects intersect
+                                if (this.selectedItem.intersectsWithObject( obj, true, true ) ) { 
+
+                                    // # Actually remove object from canvas
+                                    this.canvas.remove( this.canvas.getActiveObject() );
+                                }     
+
+                        });                
+                    }
+                }
+            });
+
+
             /**
-             * [description]
+             * Handle Object added inside the canvas
              * @param  {[type]} ['object:added'] [description]
              * @param  {[type]} (options         [description]
              * @return {[type]}                  [description]
@@ -407,9 +439,14 @@ export default {
             // # Scope fix
             var self = this;
 
+            /**
+             * Canvas on click listener
+             * @param  {[type]} this.canvas.upperCanvasEl [description]
+             * @param  {[type]} 'click'                   [description]
+             * @param  {[type]} (                         e             [description]
+             * @return {[type]}                           [description]
+             */
             fabric.util.addListener( this.canvas.upperCanvasEl, 'click', ( e ) => {
-
-                console.log( "Inside the click listener!" );
 
                 try {
 
@@ -451,9 +488,15 @@ export default {
                     // # also return false is needed
                     return false;
                 }
+
             });
 
-            fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {});
+            /**
+             * Canvas click listener remove
+             * @param  {[type]} e )             {} [description]
+             * @return {[type]}   [description]
+             */
+            fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {} );
 
             /**
              * Double click listener ( Divider deletion )
@@ -463,8 +506,6 @@ export default {
             fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
 
                 try {
-
-                    console.log("Inside the dblclick listener!");
                     
                     // # Avoid null pbjects
                     if( null == self.canvas.getActiveObject() ) {
@@ -642,8 +683,8 @@ export default {
             var self = this;
             var img = this.selectedItem.getElement();
             img.src = event.target.src;
+            img.crossOrigin = "Anonymous";
             img.onload = function () {
-                console.log( "YES" );
                 self.canvas.renderAll();
             }
 
@@ -702,11 +743,11 @@ export default {
             // # Set element Coords
             options.target.setCoords();
 
-            // # Lock obj inside the canvas
-            this._lockToContainer(options);
-
             // # Collision mnagement
             this._preventCollision(options);
+
+            // # Lock obj inside the canvas
+            this._lockToContainer(options);
 
             // # get the new coords
             let coords = options.target.calcCoords().bl;
@@ -715,32 +756,36 @@ export default {
                 x: coords.x,
                 y: coords.y
             }
-            this.$store.commit('updateDividerPosition',payload);
+            this.$store.commit( 'updateDividerPosition', payload );
         },
 
         _preventCollision: function ( options ) {
 
+            console.log( "starting point coords" );
+            var starting_point= options.target.calcCoords().bl;
+
             // Loop through objects
             this.canvas.forEachObject( ( obj ) => {
-                //#
-                //obj.setCoords();
-                //#
-                //var activeObject = this.canvas.getActiveObject();
+
+                // # Do nothing if the object checked against is itself
                 if ( obj === options.target ) return;
-                //#
-                //if ( obj === activeObject ) return;
+
+                // # Set element Coords
+                options.target.setCoords();
+                console.log( "intersect " + options.target.intersectsWithObject(obj, true, true ) );
 
                 // If objects intersect
-                if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || 
-                    obj.isContainedWithinObject( options.target) ) {
-
+                if ( options.target.intersectsWithObject( obj, true, true ) ) {
+                    
                     var distX = ((obj.getLeft() + obj.getWidth()) / 2) - ((options.target.getLeft() + options.target.getWidth()) / 2);
                     var distY = ((obj.getTop() + obj.getHeight()) / 2) - ((options.target.getTop() + options.target.getHeight()) / 2);
-                    console.log( "distX " + distX );
-                    console.log( "distY " + distY );
+
+                    /*console.log( "distX " + distX );
+                    console.log( "distY " + distY );*/
 
                     // Set new position
                     this.findNewPos( distX, distY, options.target, obj );
+                    
                 }
 
                 // this.snap objects to each other horizontally
@@ -819,8 +864,12 @@ export default {
 
                 if (obj === options.target) return;
 
-                if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || 
-                    obj.isContainedWithinObject(options.target)) {
+                options.target.setCoords();
+                console.log( "intersect 2" + options.target.intersectsWithObject(obj, true, true ) );
+
+                if ( options.target.intersectsWithObject(obj)  || options.target.isContainedWithinObject( obj ) || obj.isContainedWithinObject( options.target ) ) {
+
+                    console.log( "still overlapping" );
 
                     var intersectLeft = null,
                         intersectTop = null,
@@ -856,10 +905,17 @@ export default {
                         intersectHeight = options.target.getHeight() - (intersectTop - targetTop);
                     }
 
+                    console.log( "IL" +  intersectLeft );
+                    console.log( "IH" + intersectHeight );
+                    console.log( "IT" + intersectTop );
+                    console.log( "IW" + intersectWidth );
+
                     // Find intersect size (this will be 0 if objects are touching but not overlapping)
                     if(intersectWidth > 0 && intersectHeight > 0) {
                         intersectSize = intersectWidth * intersectHeight;
                     }
+
+                    console.log( "intersectSize " +  intersectSize );
 
                     // Set outer snapping area
                     if(obj.getLeft() < outerAreaLeft || outerAreaLeft == null) {
@@ -879,15 +935,20 @@ export default {
                     }
 
                     // If objects are intersecting, reposition outside all shapes which touch
-                    if(intersectSize) {
+                    if( intersectSize ) {
                         var distX = (outerAreaRight / 2) - ((options.target.getLeft() + options.target.getWidth()) / 2);
                         var distY = (outerAreaBottom / 2) - ((options.target.getTop() + options.target.getHeight()) / 2);
+                        console.log( "IN" );
+                        /*options.target.setLeft( starting_point.x );
+                        options.target.setTop(  starting_point.y );
+                        options.target.setCoords();*/
 
                         // Set new position
                         this.findNewPos(distX, distY, options.target, obj);
                     }
                 }
             });
+
             options.target.setCoords();
         },
 
@@ -1013,6 +1074,8 @@ export default {
                 oImg.hasControls = false;
                 oImg.hasBorders  = false;
 
+                oImg.perPixelTargetFind = true;
+
                 oImg.dropped = true;
                 
                 // # Set ID unique
@@ -1131,7 +1194,6 @@ export default {
          * @return {[type]} [description]
          */
         clearBridges: function() {
-            console.log( this.$store.state.has_bridge );
             this.$store.commit( "clearAllBridgeData" );
         },
 
