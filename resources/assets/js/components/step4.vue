@@ -415,9 +415,14 @@ export default {
 
                                 // If objects intersect
                                 if (this.selectedItem.intersectsWithObject( obj, true, true ) ) { 
+                                    console.log( "Intersex size " + this.selectedItem.intersectSize );
+                                    if( this.selectedItem.intersectSize != null ) {
+                                        // # Actually remove object from canvas
+                                        this.canvas.remove( this.canvas.getActiveObject() ); 
+                                        // # Clean up pointers
+                                        this.canvas.discardActiveObject();
+                                    }
 
-                                    // # Actually remove object from canvas
-                                    this.canvas.remove( this.canvas.getActiveObject() );
                                 }     
 
                         });                
@@ -747,7 +752,7 @@ export default {
             this._preventCollision(options);
 
             // # Lock obj inside the canvas
-            this._lockToContainer(options);
+            //this._lockToContainer(options);
 
             // # get the new coords
             let coords = options.target.calcCoords().bl;
@@ -762,7 +767,26 @@ export default {
         _preventCollision: function ( options ) {
 
             console.log( "starting point coords" );
+
+            options.target.setCoords();
             var starting_point= options.target.calcCoords().bl;
+
+            // Don't allow objects off the canvas
+            if(options.target.getLeft() < this.snap) {
+                options.target.setLeft(0);
+            }
+
+            if(options.target.getTop() < this.snap) {
+                options.target.setTop(0);
+            }
+
+            if((options.target.getWidth() + options.target.getLeft()) > (this.canvasWidth - this.snap)) {
+                options.target.setLeft( this.canvasWidth - options.target.getWidth());
+            }
+
+            if((options.target.getHeight() + options.target.getTop()) > (this.canvasHeight - this.snap)) {
+                options.target.setTop( this.canvasHeight - options.target.getHeight());
+            }
 
             // Loop through objects
             this.canvas.forEachObject( ( obj ) => {
@@ -772,10 +796,12 @@ export default {
 
                 // # Set element Coords
                 options.target.setCoords();
-                console.log( "intersect " + options.target.intersectsWithObject(obj, true, true ) );
+                console.log( "intersect " + options.target.intersectsWithObject(obj) );
+
+                obj.setOpacity(options.target.intersectsWithObject( obj ) ? 0.5 : 1);
 
                 // If objects intersect
-                if ( options.target.intersectsWithObject( obj, true, true ) ) {
+                if ( options.target.intersectsWithObject( obj ) ) {
                     
                     var distX = ((obj.getLeft() + obj.getWidth()) / 2) - ((options.target.getLeft() + options.target.getWidth()) / 2);
                     var distY = ((obj.getTop() + obj.getHeight()) / 2) - ((options.target.getTop() + options.target.getHeight()) / 2);
@@ -784,7 +810,7 @@ export default {
                     console.log( "distY " + distY );*/
 
                     // Set new position
-                    this.findNewPos( distX, distY, options.target, obj );
+                    //this.findNewPos( distX, distY, options.target, obj );
                     
                 }
 
@@ -851,14 +877,64 @@ export default {
                         options.target.setTop(obj.getTop() - options.target.getHeight());
                     }
                 }
+
+                var intersectLeft = null,
+                    intersectTop = null,
+                    intersectWidth = null,
+                    intersectHeight = null,
+                    intersectSize = null,
+                    targetLeft = options.target.getLeft(),
+                    targetRight = targetLeft + options.target.getWidth(),
+                    targetTop = options.target.getTop(),
+                    targetBottom = targetTop + options.target.getHeight(),
+                    objectLeft = obj.getLeft(),
+                    objectRight = objectLeft + obj.getWidth(),
+                    objectTop = obj.getTop(),
+                    objectBottom = objectTop + obj.getHeight();            
+
+                console.log( "IL" +  intersectLeft );
+                console.log( "IH" + intersectHeight );
+                console.log( "IT" + intersectTop );
+                console.log( "IW" + intersectWidth );
+
+                // Find intersect information for X axis
+                if(targetLeft >= objectLeft && targetLeft <= objectRight) {
+                    intersectLeft = targetLeft;
+                    intersectWidth = obj.getWidth() - (intersectLeft - objectLeft);
+
+                } else if(objectLeft >= targetLeft && objectLeft <= targetRight) {
+                    intersectLeft = objectLeft;
+                    intersectWidth = options.target.getWidth() - (intersectLeft - targetLeft);
+                }
+
+                // Find intersect information for Y axis
+                if(targetTop >= objectTop && targetTop <= objectBottom) {
+                    intersectTop = targetTop;
+                    intersectHeight = obj.getHeight() - (intersectTop - objectTop);
+
+                } else if(objectTop >= targetTop && objectTop <= targetBottom) {
+                    intersectTop = objectTop;
+                    intersectHeight = options.target.getHeight() - (intersectTop - targetTop);
+                }            
+
+                // Find intersect size (this will be 0 if objects are touching but not overlapping)
+                if(intersectWidth > 0 && intersectHeight > 0) {
+                    intersectSize = intersectWidth * intersectHeight;
+                }
+
+                this.selectedItem.intersectSize = intersectSize;
+
+                options.target.setCoords();                
             });
 
-            options.target.setCoords();
+
+            
+
 
             // If objects still overlap
             // Todo: fix when too much full for find a new position
 
-            let outerAreaLeft = null, outerAreaTop = null, outerAreaRight = null, outerAreaBottom = null;
+            /*let outerAreaLeft = null, outerAreaTop = null, outerAreaRight = null, outerAreaBottom = null;
 
             this.canvas.forEachObject((obj) => {
 
@@ -944,12 +1020,12 @@ export default {
                         options.target.setCoords();*/
 
                         // Set new position
-                        this.findNewPos(distX, distY, options.target, obj);
-                    }
-                }
-            });
+                        //this.findNewPos(distX, distY, options.target, obj);
+                  //  }
+                //}
+            //});
 
-            options.target.setCoords();
+            // options.target.setCoords();
         },
 
         _lockToContainer: function (options) {
@@ -1075,6 +1151,8 @@ export default {
                 oImg.hasBorders  = false;
 
                 oImg.perPixelTargetFind = true;
+                oImg.originX = "left";
+                oImg.originY = "top";
 
                 oImg.dropped = true;
                 

@@ -511,7 +511,6 @@ export default {
          */
         reset: function () {
           this.$store.commit( "setDefaultDimensions" );
-          this.clearAllData();
           this.updateDrawer();
         },
 
@@ -521,7 +520,6 @@ export default {
          */
         setShoulderHeight: function( val ) {
             this.$store.commit( "setShoulderHeight", val );
-            this.clearAllData();
             this.updateDrawer();
         }, 
 
@@ -533,7 +531,6 @@ export default {
           this.$store.commit( "clearAllBridgeData" );
           this.$store.commit( "clearDividers" );
           this.$store.commit( "clearDrawerBorders" );
-          this.updateDrawer();
         },
 
         /**
@@ -853,7 +850,7 @@ export default {
                 return false;
             }
 
-            // # Clear all on change
+            // # Clean up data
             this.clearAllData();
 
             // # Clean up if any previous error stills
