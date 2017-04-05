@@ -511,6 +511,7 @@ export default {
          */
         reset: function () {
           this.$store.commit( "setDefaultDimensions" );
+          this.clearAllData();
           this.updateDrawer();
         },
 
@@ -596,9 +597,6 @@ export default {
             if( this.widthOutOfRange() || this.lengthOutOfRange() || this.shoulderHeightOutOfRange() ) {
                  return false;
             }
-
-            // # Clear all on change
-            this.clearAllData();
 
             // # Dimensions inputs satisfied constraints
             return true;
@@ -854,6 +852,9 @@ export default {
             if( ! this.checkChoice() ) {
                 return false;
             }
+
+            // # Clear all on change
+            this.clearAllData();
 
             // # Clean up if any previous error stills
             this.width_OOR = false; this.length_OOR = false; this.shoulder_height_OOR = false;
