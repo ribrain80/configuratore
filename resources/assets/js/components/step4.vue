@@ -411,16 +411,69 @@ export default {
 
                                 // # Set element Coords
                                 this.selectedItem.setCoords();
-                                console.log( "intersect " + this.selectedItem.intersectsWithObject(obj, true, true ) );
+                                console.log( "intersect " + this.selectedItem.intersectsWithObject(obj) );
 
                                 // If objects intersect
-                                if (this.selectedItem.intersectsWithObject( obj, true, true ) ) { 
-                                    console.log( "Intersex size " + this.selectedItem.intersectSize );
-                                    if( this.selectedItem.intersectSize != null ) {
-                                        // # Actually remove object from canvas
-                                        this.canvas.remove( this.canvas.getActiveObject() ); 
-                                        // # Clean up pointers
+                                if (this.selectedItem.intersectsWithObject( obj ) ) { 
+
+                                var intersectLeft = null,
+                                    intersectTop = null,
+                                    intersectWidth = null,
+                                    intersectHeight = null,
+                                    intersectSize = null,
+                                    targetLeft = this.selectedItem.getLeft(),
+                                    targetRight = targetLeft + this.selectedItem.getWidth(),
+                                    targetTop = this.selectedItem.getTop(),
+                                    targetBottom = targetTop + this.selectedItem.getHeight(),
+                                    objectLeft = obj.getLeft(),
+                                    objectRight = objectLeft + obj.getWidth(),
+                                    objectTop = obj.getTop(),
+                                    objectBottom = objectTop + obj.getHeight();            
+
+                                // Find intersect information for X axis
+                                if(targetLeft >= objectLeft && targetLeft <= objectRight) {
+                                    intersectLeft = targetLeft;
+                                    intersectWidth = obj.getWidth() - (intersectLeft - objectLeft);
+
+                                } else if(objectLeft >= targetLeft && objectLeft <= targetRight) {
+                                    intersectLeft = objectLeft;
+                                    intersectWidth = this.selectedItem.getWidth() - (intersectLeft - targetLeft);
+                                }
+
+                                // Find intersect information for Y axis
+                                if(targetTop >= objectTop && targetTop <= objectBottom) {
+                                    intersectTop = targetTop;
+                                    intersectHeight = obj.getHeight() - (intersectTop - objectTop);
+
+                                } else if(objectTop >= targetTop && objectTop <= targetBottom) {
+                                    intersectTop = objectTop;
+                                    intersectHeight = this.selectedItem.getHeight() - (intersectTop - targetTop);
+                                }  
+
+
+                                console.log( "IL" + intersectLeft );
+                                console.log( "IH" + intersectHeight );
+                                console.log( "IT" + intersectTop );
+                                console.log( "IW" + intersectWidth );
+                          
+                                // Find intersect size (this will be 0 if objects are touching but not overlapping)
+                                if(intersectWidth > 0 && intersectHeight > 0) {
+                                    intersectSize = intersectWidth * intersectHeight;
+                                }                                    
+
+                                    console.log( "Intersect size " + intersectSize );
+                                    obj.setOpacity(1);
+
+                                    if( intersectSize != null ) {
+
                                         this.canvas.discardActiveObject();
+                                        // # Actually remove object from canvas
+                                        //this.canvas.remove( this.canvas.getActiveObject() ); 
+                                        this.canvas.remove( this.selectedItem );
+                                        // # Clean up pointers
+                                       
+                                        this.canvas.renderAll();
+                                        this.canvas.calcOffset();
                                     }
 
                                 }     
@@ -796,7 +849,6 @@ export default {
 
                 // # Set element Coords
                 options.target.setCoords();
-                console.log( "intersect " + options.target.intersectsWithObject(obj) );
 
                 obj.setOpacity(options.target.intersectsWithObject( obj ) ? 0.5 : 1);
 
@@ -878,7 +930,7 @@ export default {
                     }
                 }
 
-                var intersectLeft = null,
+               /* var intersectLeft = null,
                     intersectTop = null,
                     intersectWidth = null,
                     intersectHeight = null,
@@ -891,11 +943,6 @@ export default {
                     objectRight = objectLeft + obj.getWidth(),
                     objectTop = obj.getTop(),
                     objectBottom = objectTop + obj.getHeight();            
-
-                console.log( "IL" +  intersectLeft );
-                console.log( "IH" + intersectHeight );
-                console.log( "IT" + intersectTop );
-                console.log( "IW" + intersectWidth );
 
                 // Find intersect information for X axis
                 if(targetLeft >= objectLeft && targetLeft <= objectRight) {
@@ -915,14 +962,20 @@ export default {
                 } else if(objectTop >= targetTop && objectTop <= targetBottom) {
                     intersectTop = objectTop;
                     intersectHeight = options.target.getHeight() - (intersectTop - targetTop);
-                }            
+                }  
 
+
+                console.log( "IL" +  intersectLeft );
+                console.log( "IH" + intersectHeight );
+                console.log( "IT" + intersectTop );
+                console.log( "IW" + intersectWidth );
+          
                 // Find intersect size (this will be 0 if objects are touching but not overlapping)
                 if(intersectWidth > 0 && intersectHeight > 0) {
                     intersectSize = intersectWidth * intersectHeight;
-                }
+                }*/
 
-                this.selectedItem.intersectSize = intersectSize;
+                //this.selectedItem.intersectSize = intersectSize;
 
                 options.target.setCoords();                
             });
