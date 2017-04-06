@@ -4,91 +4,100 @@
     <div class="row" id="step3">
 
         <!-- Alerts: User Warning -->
-        <div class="col-lg-12">
-            <div class="alert alert-warning alert-dismissible fade in" >
-                <strong>{{ 'attenzione' | translate }}</strong> 
-                {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: getMaxWidth4BridgeByDrawerType } ) }} 
-            </div>
+        <div class="row">
+          <div class="col-lg-12">
+              <div class="alert alert-warning alert-dismissible fade in" >
+                  <strong>{{ 'attenzione' | translate }}</strong> 
+                  {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: getMaxWidth4BridgeByDrawerType } ) }} 
+              </div>
+          </div>
         </div>
         
         <!-- Alerts: User Error -->
-        <div class="col-lg-12" v-if="showAlert">
-            <div class="alert alert-danger alert-dismissible fade in" id="alert">
-                <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
-            </div>
-        </div>
-        
-        <!-- Left container "form" -->
-        <div class="col-lg-4">
-            
-            <!-- form group -->
-            <div class="form-horizontal">
-                
-                <!-- Width -->
-                <div v-bind:class="[ 'form-group', width_OOR ? 'has-error' : 'has-success' ]">
-                  <label class="col-sm-7 control-label">LA - {{ 'step3.drawer_width_label' | translate }}</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
-                    <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
-                  </div>
-                </div>
-
-                <!-- Length -->
-                <div v-bind:class="[ 'form-group', length_OOR ? 'has-error' : 'has-success' ]">
-                  <label class="col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
-                    <span class="help-block">min {{ config.rect_length_lower_limit }} max {{ config.rect_length_upper_limit }}</span>
-                  </div>
-                </div>
-                  
-                <!-- Shoulder height -->
-                <!-- Custom drawer -->
-                <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
-                  <label class="col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
-                    <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
-                  </div>
-                </div>
-                
-                <!-- Lineabox drawer -->
-                <div class="form-group" v-else>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                          <label class="control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
-                        </div>
-                        <div v-for="option in config.lineabox_shoulders_height">
-                          <div class="col-lg-4">
-                              <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
-                                  <div class="panel-body" @focus.once="resetAdvice()" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}} <br>{{ 'step3.real' | translate}}</div>
-                              </div>
-                          </div>
-                        </div>
-                        <span class="help-block">{{ "step3.edge_advice" | translate }}</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Canvas container -->
-        <div class="col-lg-7" >
-            <div class="col-lg-12" id="animation"></div>
+        <div class="row">
+          <div class="col-lg-12" v-if="showAlert">
+              <div class="alert alert-danger alert-dismissible fade in" id="alert">
+                  <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
+              </div>
+          </div>
         </div>
         
         <div class="row">
-            <div class="col-md-2 ">
-                <router-link to="/split/step2" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
-            </div>
-            <div class="col-md-2 pull-right">
+          <!-- Left container "form" -->
+          <div class="col-lg-4">
+              
+              <!-- form group -->
+              <div class="form-horizontal">
+                  
+                  <!-- Width -->
+                  <div v-bind:class="[ 'form-group', width_OOR ? 'has-error' : 'has-success' ]">
+                    <label class="col-sm-7 control-label">LA - {{ 'step3.drawer_width_label' | translate }}</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
+                      <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
+                    </div>
+                  </div>
+
+                  <!-- Length -->
+                  <div v-bind:class="[ 'form-group', length_OOR ? 'has-error' : 'has-success' ]">
+                    <label class="col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
+                      <span class="help-block">min {{ config.rect_length_lower_limit }} max {{ config.rect_length_upper_limit }}</span>
+                    </div>
+                  </div>
+                    
+                  <!-- Shoulder height -->
+                  <!-- Custom drawer -->
+                  <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
+                    <label class="col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
+                      <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Lineabox drawer -->
+                  <div class="form-group" v-else>
+
+                      <div class="row">
+                          <div class="col-lg-12">
+                            <label class="control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
+                          </div>
+                          <div v-for="option in config.lineabox_shoulders_height">
+                            <div class="col-lg-4">
+                                <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
+                                    <div class="panel-body" @focus.once="resetAdvice()" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}} <br>{{ 'step3.real' | translate}}</div>
+                                </div>
+                            </div>
+                          </div>
+                          <span class="help-block">{{ "step3.edge_advice" | translate }}</span>
+
+                      </div>
+
+                  </div>
+
+              </div>
+          </div>
+
+          <!-- Canvas container -->
+          <div class="col-lg-8" >
+              <div id="animation"></div>
+          </div>
+         
+        </div>  
+
+
+        <div class="row">
+
+            <div class="col-lg-2 col-md-2 pull-left">
                 <button class="btn btn-danger btn-block pull-right" @click="reset">{{ 'reset' | translate }}</button>
             </div>            
-            <div class="col-md-2 pull-right">
+            <div class="col-lg-2 col-md-2 pull-right">
                 <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            </div>
+            <div class="col-lg-2 col-md-2 pull-right">
+                <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
             </div>
         </div>
 
@@ -160,7 +169,7 @@ export default {
               ratio: 3,
 
               // # Shapes top margin
-              standard_top_margin: 10,
+              standard_top_margin: 2,
           },
 
           // # Out of range flags
@@ -200,7 +209,6 @@ export default {
          * @return {[type]} [description]
          */
         getMaxWidth4BridgeByDrawerType: function () {
-          console.log( "computing " );
           return !this.$store.state.is_lineabox ? this.config.max_suitable_width_4_Hbridge : parseFloat( this.config.max_suitable_width_4_Hbridge ) - 12
         }
     },
@@ -234,7 +242,7 @@ export default {
                            this.mm2Pixel( this.$store.state.dimensions.width ), 
                            this.mm2Pixel( this.$store.state.dimensions.length ), 
                            20, 
-                           50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2 );
+                           this.config.standard_top_margin + this.mm2Pixel( this.$store.state.dimensions.length ) / 2 );
             
             // # Get drawer dimensions
             var rectObj = this.rect.getBoundingClientRect();
@@ -249,7 +257,7 @@ export default {
             this.makeDrawerLabel( rectObj.width / 2 + rectObj.left, rectObj.height / 2 + rectObj.top );
 
             this.makeShoulder(  rectObj.right + 30, 
-                                50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2, 
+                                this.config.standard_top_margin + this.mm2Pixel( this.$store.state.dimensions.length ) / 2, 
                                 this.$store.state.dimensions.shoulder_height , 
                                 this.$store.state.dimensions.length
                              );                                
@@ -864,7 +872,7 @@ export default {
                            this.config.standard_top_margin, 
                            this.mm2Pixel( this.$store.state.dimensions.width ), 
                            this.mm2Pixel( this.$store.state.dimensions.length ), 20, 
-                           50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2 );
+                           this.config.standard_top_margin + this.mm2Pixel( this.$store.state.dimensions.length ) / 2 );
 
             // # Get width line dimensions
             var width_line_bounding_client_rect = this.hor_line_rect.getBoundingClientRect();
@@ -896,7 +904,7 @@ export default {
 
             // # Shoulder redraw                
             this.makeShoulder(  rectObj.right + ( this.mm2Pixel( this.$store.state.dimensions.shoulder_height ) / 2 ) + 20, 
-                                50 + this.mm2Pixel( this.$store.state.dimensions.length ) / 2, 
+                                this.config.standard_top_margin + this.mm2Pixel( this.$store.state.dimensions.length ) / 2, 
                                 this.$store.state.dimensions.shoulder_height , 
                                 this.$store.state.dimensions.length
                              );    
