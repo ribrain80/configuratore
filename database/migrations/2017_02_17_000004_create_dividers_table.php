@@ -22,6 +22,7 @@ class CreateDividersTable extends Migration
             $table->double('depth')->nullable()->default(null);
             $table->string('imageH')->nullable()->default(null);
             $table->string('imageV')->nullable()->default(null);
+            $table->string('image3d')->nullable()->default(null);
             $table->string('color')->nullable()->default(null);
             $table->string('border')->nullable()->default(null);
             $table->string('texture')->nullable()->default(null);

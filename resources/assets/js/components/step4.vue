@@ -108,7 +108,8 @@
                                         <div class="panel-body">
                                             <div class="row" style="display: flex">
                                                 <div class="col-lg-4 col-md-4">
-                                                    <img src="http://placehold.it/100x100" class="img center-block img-responsive img-thumbnail">
+                                                    <!-- TODO: Fix the inline style -->
+                                                    <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width: 100px;height: 100px">
                                                 </div>
                                                 <div class="col-lg-4 col-md-4">
                                                     <!-- Remove the inline style and use something more responsive -->

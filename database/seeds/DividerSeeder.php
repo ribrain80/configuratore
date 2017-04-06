@@ -44,6 +44,7 @@ class DividerSeeder eXtends Seeder
                     $toInsert['texture'],
                     'V'
                 );
+            $toInsert['image3d'] = '/images/dividers/3d' . DIRECTORY_SEPARATOR . $toInsert['depth'] .'x'. $toInsert['width'] . "x" . $toInsert['length'].".png";
             $dividers[]=$toInsert;
         }
 
