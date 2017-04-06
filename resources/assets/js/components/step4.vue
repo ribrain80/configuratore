@@ -166,7 +166,7 @@
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateDividerSku( $event );"
                                                      style="width: 100px;height: 100px"
-                                                     :data-sku="variant.textureH"
+                                                     :data-sku="variant.sku"
                                                 >
                                             </figure>
                                         </div>
