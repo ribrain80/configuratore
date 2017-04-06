@@ -1,17 +1,14 @@
 <template>
 
-<div class="me">
+<div class="container-fluid">
 
     <div class="row">
 
         <!-- Only if user selected a bridge -->
         <div class="col-lg-12 col-md-12">
             
-            
-            <div class="col-lg-12">{{ 'step4.upper_label' | translate }}</div>
-
             <!-- Ponti -->
-            <div class="col-lg-4" v-if="$store.state.has_bridge">
+            <!--<div class="col-lg-4" v-if="$store.state.has_bridge">
                 
                 <div class="" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event )">
                     {{ $store.state.bridge_orientation}}
@@ -22,17 +19,29 @@
 
             </div>
             <div class="col-lg-4"></div>
-
+            -->
 
         </div>
 
     </div>
 
     <!-- Container -->
-    <div class="row">
+    <div class="row top1">
 
         <!-- 2D container -->
         <div class="col-lg-6 col-md-6" id="step4_2d">
+            
+            <div class="row">
+                <div class="col-lg-12" >
+                    <div class="col-lg-2 pull-left" >
+                        <button class="btn btn-split-small">{{ 'step4.select_all' | translate }}</button>
+                    </div> 
+
+                    <div class="col-lg-2 pull-right" >
+                        <img src="/images/others/garbage.png" style="width: 40%; height: 40%;" />
+                    </div> 
+                </div>
+            </div>
             
             <!-- Upper edge -->
             <!--<div class="row">
@@ -41,19 +50,19 @@
             </div>-->
             
             <!-- Center content -->
-            <div class="row">
+            <div class="row top1">
 
                 <!-- Left edge -->
-                <!--<div :class="[ 'pull-left', 'edge_2d_v', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" 
+                <!--<div :class="[ 'col-lg-1', 'edge_2d_v', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" 
                 :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}" id="left" @click='selectBorder( $event );'></div>-->
                 
                 <!-- Actual drawer canvas -->
-                <div class="center-block zeropadded dragdrop-area" id="canvas-container">
+                <div class="dragdrop-area" id="canvas-container">
                     <canvas id="canvas" class="center-block"></canvas>
                 </div>
                 
                 <!-- Right edge -->
-                <!--<div :class="[ 'pull-left', 'edge_2d_v', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
+                <!--<div :class="[ 'col-lg-1', 'edge_2d_v', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
                 :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}" id="right" @click='selectBorder( $event );'></div>-->
             </div>
 
@@ -65,7 +74,7 @@
             </div>-->
             
             <!-- Bridge info and management -->
-            <div class="row">
+            <div class="row top1">
                 
                 <!-- 3D's lair -->
                 <div class="col-lg-12 col-md-12" id="step4_3d">
@@ -369,6 +378,8 @@ export default {
             this.canvasHeight = parseInt( this.real_height * this.config.ratio );
             console.log( "CH: " + this.canvasHeight );
 
+            $( "#canvas-container" ).width( this.canvasWidth );
+            
             // # Force dimensions
             $( "#canvas-container" ).height( this.canvasHeight );
             $( ".edge_2d_v" ).height( this.canvasHeight );
@@ -1192,7 +1203,7 @@ export default {
     mounted () { // # Window onload eq
 
         console.log("Step4 mounted!");
-        this.$store.commit('setComponentHeader','gestione divisori');
+        this.$store.commit( 'setComponentHeader', 'Gestione divisori' );
         this.initCanvas();
     }
 

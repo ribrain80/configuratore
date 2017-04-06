@@ -159,7 +159,7 @@ export default {
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );
 
-            $( "#step2-alert-warning" ).slideUp( 1500, function() {
+            $( "#step2-alert-warning" ).slideUp( 1000, function() {
                 $( this ).remove();
             });
 

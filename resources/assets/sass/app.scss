@@ -50,6 +50,7 @@ body { font-family: FranklinGothicURW-Boo; color: #666;}
 }
 
 .top10 { margin-top: 10%; }
+.top1 { margin-top: 1% }
 .top2 { margin-top: 2%; }
 .top5 { margin-top: 5%; }
 
@@ -412,6 +413,16 @@ html, body, .container-fluid, .wrapper {
 
 .btn-danger:hover {
   background: #f04f1a;
+}
+
+.btn-split-small {
+    line-height: 10px;
+    border-radius: 8px;
+    background: #f04f1a !important;
+    color: white !important;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3) !important;
+    font-size: 1em;
+    padding: 8px !important;
 }
 
 .btn-back {
