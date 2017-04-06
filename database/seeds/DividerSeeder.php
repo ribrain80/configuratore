@@ -24,8 +24,8 @@ class DividerSeeder eXtends Seeder
             $dim = explode("x",$tmp[2]);
             $toInsert['width'] = trim($dim[0]);
             $toInsert['length'] = trim($dim[1]);
-            $toInsert['imageH']='/images/dividers/' . $toInsert['depth'] . DIRECTORY_SEPARATOR . 'H'. DIRECTORY_SEPARATOR . $toInsert['width'] . "X" . $toInsert['length'].".png";
-            $toInsert['imageV']='/images/dividers/' . $toInsert['depth'] . DIRECTORY_SEPARATOR . 'V'. DIRECTORY_SEPARATOR. $toInsert['width'] . "X" . $toInsert['length'].".png";
+            $toInsert['imageH']='/images/dividers/base/' . DIRECTORY_SEPARATOR . 'H'. DIRECTORY_SEPARATOR . $toInsert['width'] . "x" . $toInsert['length'].".png";
+            $toInsert['imageV']='/images/dividers/base/' . DIRECTORY_SEPARATOR . 'V'. DIRECTORY_SEPARATOR . $toInsert['width'] . "x" . $toInsert['length'].".png";
             $toInsert['color'] = trim($tmp[3]);
             $toInsert['border'] = trim($tmp[4]);
             $toInsert['texture'] = trim($tmp[5]);
