@@ -67,9 +67,9 @@ elixir(function(mix) {
     mix.scripts(['public/js/vendor.js','public/js/app.js'],'public/js/split.js','./');
 
     //Versiong files
-/*
+
     mix.version('public/css/split.css');
     mix.version(['public/css/split.css', 'public/js/split.js']);
-*/
+
 
 });
