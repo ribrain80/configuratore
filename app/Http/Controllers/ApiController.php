@@ -56,7 +56,16 @@ class ApiController extends Controller
      */
     public function actionSupports() {
 
-        return response()->json(Support::all()->toArray());
+        $grouped = [];
+        foreach (Support::all() as $curSupport) {
+            $key = "" . $curSupport['height'];
+            $grouped[$key]['items'][] = $curSupport;
+            $grouped[$key]['height'] = (double)($curSupport['height']/10);
+            $grouped[$key]['id'] = ($curSupport['height']==456?1:2);
+
+        }
+
+        return response()->json($grouped);
     }
 
     /**

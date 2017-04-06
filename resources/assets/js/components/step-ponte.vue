@@ -39,7 +39,7 @@
 
                 <div class="col-lg-4">
                     <figure class="drawer-container" >
-                        <img src="/images/others/step-ponte/bridgeV."
+                        <img src="/images/others/step-ponte/bridgeV.png"
                              class="img img-responsive  img-shadow"
                              :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
                              @click="setOrientation('V')"
@@ -74,8 +74,8 @@
                         <h4 class="">{{ 'stepponte.bridge_support' | translate }}</h4>
 
                         <!-- Support choice -->
-                        <div class="row" v-for="bridge_support in $store.state.supportTypes">
-                            <div class="col-lg-6" v-show="checkSupportCompatibility( bridge_support )">
+                        <div class="row" v-for="bridge_support,cat in $store.state.supportTypes" v-show="checkSupportCompatibility( bridge_support )">
+                            <div class="col-lg-6" >
                                 <figure class="drawer-container" >
                                     <img src="http://placehold.it/150x300"
                                          class="img img-responsive  img-shadow"
@@ -239,13 +239,15 @@ export default {
 
         /**
          * [checkSupportCompatibility description]
+         * @todo check
          * @param  {[type]} bridge_support [description]
          * @return {[type]}                [description]
          */
         checkSupportCompatibility: function( bridge_support ) {
 
+            console.log("TODO: checkSupportCompatibility controllare calcoli");
             // # Parse to float
-            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
+            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height ) ;
 
             // # Switch drawer type
             switch( this.$store.state.drawertype ) {
@@ -257,12 +259,12 @@ export default {
                     switch( bridge_support.height ) { 
 
                         // # low support 
-                        case 45.4:
+                        case 45.6:
                             return shoulder_height_float >= 72;
                         break;
 
                         // # high support 
-                        case 89.5:
+                        case 89.8:
                             return shoulder_height_float >= 116;
                         break;
 
@@ -280,12 +282,12 @@ export default {
                     switch( bridge_support.height ) { 
 
                         // # low support 
-                        case 45.4:
+                        case 45.6:
                             return shoulder_height_float >= 72 && shoulder_height_float < 148;
                         break;
 
                         // # high support 
-                        case 89.5:
+                        case 89.8:
                             return shoulder_height_float >= 148;
                         break;
 

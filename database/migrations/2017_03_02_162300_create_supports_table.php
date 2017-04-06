@@ -17,6 +17,8 @@ class CreateSupportsTable extends Migration
             $table->increments('id');
             $table->string('sku');
             $table->double('height');
+            $table->string('color')->nullable()->default(null);
+            $table->string('description')->nullable()->default(null);
         });
     }
 

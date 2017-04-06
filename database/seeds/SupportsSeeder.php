@@ -11,16 +11,18 @@ class SupportsSeeder extends Seeder
      */
     public function run()
     {
-        $supports = [
-            [
-                'height'=>45.4,
-                'sku'=>'SUP-1'
-            ],
-            [
-                'height'=>89.5,
-                'sku'=>'SUP-2'
-            ],
-        ];
+        $supports = [];
+        $csvFile = file(resource_path('data/supports.csv'));
+        foreach ($csvFile as $line) {
+            $tmp = str_getcsv($line);
+            $toInsert['sku'] = trim($tmp[0]);
+            $toInsert['height'] = trim($tmp[1]);
+            $toInsert['color'] = trim($tmp[2]);
+            $toInsert['description'] = trim($tmp[3]);
+
+            $supports[]=$toInsert;
+        }
+
         DB::table('supports')->insert($supports);
     }
 }
