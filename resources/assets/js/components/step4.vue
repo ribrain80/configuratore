@@ -1036,13 +1036,14 @@ export default {
                 // # Set Sku
                 //oImg.sku = _imgSku;
 
+
+                oImg.type = "divider";
+
                 // # Add image to canvas
                 this.canvas.add( oImg ); 
 
                 var coords = oImg.calcCoords().bl;
                 var centerCoords = oImg.getCenterPoint();
-
-                oImg.type = "divider";
 
                 this.selectedItem = oImg;
 
