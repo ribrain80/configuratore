@@ -36,27 +36,29 @@
 
         <div class="row top2">
 
-            <!-- Drawer type choice -->
-            <div :class="['col-lg-4', category == 'LineaBox' ? 'col-lg-offset-2' : '' ]" v-for="( type,category ) in $store.state.drawerTypes">
-                <!-- Drawer type -->
-                <figure v-if="type.length == 1" style="width: 300px; margin: 0 auto;" class="drawer-container"  :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }" >
-                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                         class="img img-responsive  img-shadow"
-                         :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
-                         @click="setType( type[ 0 ].id )"
-                    />
-                </figure>
-
-                <!-- Drawer category -->
-                <figure v-else style="width: 300px; margin: 0 auto;" class="drawer-container" :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }">
-                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                         class="img img-responsive  img-shadow img-desaturate"
-                         @click="setDrawerTypeCategory( 1 )"
-                    />
-                </figure>
-
+            <div  v-for="( type,category ) in $store.state.drawerTypes">
+                <div class="col-lg-4" v-if="type.length == 1">
+                    <!-- Drawer type -->
+                    <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
+                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                             class="img img-responsive  img-shadow"
+                             :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
+                             @click="setType( type[ 0 ].id )"
+                        />
+                    </figure>
+                </div>
+                    
+                <div class="col-lg-4 col-lg-offset-2" v-else>
+                    <!-- Drawer category -->
+                    <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
+                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                             class="img img-responsive  img-shadow img-desaturate"
+                             @click="setDrawerTypeCategory( 1 )"
+                        />
+                    </figure>
+                </div>
             </div>
 
         </div>

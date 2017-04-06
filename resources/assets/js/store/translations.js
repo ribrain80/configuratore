@@ -6,7 +6,7 @@ export default {
         "resetadvice": "La modifica di questo valore implicherà la cancellazione dei dati inseriti negli step successivi ( supporti, ponti, divisori, colori )",    
         "step1.title": "Benvenuti nel configuratore Split",
         "step2.resetadvice" : "La modifica della tipologia di cassetto implicherà la cancellazione dei dati inseriti negli step successivi ( supporti, ponti, divisori, colori )",
-        "step2.warning":"<strong>Attenzione!<strong>è obbligatorio selezionare una tipologia di cassetto",
+        "step2.warning":"<strong>Attenzione!<strong> è obbligatorio selezionare una tipologia di cassetto",
         "step2.modal-warning":"è obbligatorio selezionare una tipologia di cassetto",
         "step2.info_message": "Tipologia di cassetto selezionata.",
         'step2.error.tipologie':"Impossibile scaricare le tipologie di cassetto, riprovi più tardi",

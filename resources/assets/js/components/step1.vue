@@ -1,7 +1,9 @@
 <template>
 
-    <!-- Container -->
-    <div class="row" id="step1">
+<!-- Container -->
+<div class="container-fluid" id="step1">
+    
+    <div class="row">
         
         <!-- Full width -->
         <div class="col-lg-6 col-md-6">
@@ -15,7 +17,6 @@
                     <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
                 </div>
             </div>
-
 
         </div>
 
