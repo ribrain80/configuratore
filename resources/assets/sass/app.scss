@@ -17,7 +17,7 @@
 
 @import "/salicefonts/saliceFonts.css";
 
-body { font-family: FranklinGothicURW-Boo; }
+body { font-family: FranklinGothicURW-Boo; color: #666;}
 
 .col-centered{
     /*float: none;*/
@@ -240,9 +240,9 @@ html, body, .container-fluid, .wrapper {
   }
 }
 
-.step1 p {
+#step1 p {
   font-size: 1.1em;
-  
+  line-height: 1.8em;
 }
 
 .app-nav {

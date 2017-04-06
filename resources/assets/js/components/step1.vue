@@ -7,7 +7,7 @@
         <div class="col-lg-6 col-md-6">
 
             <!-- Text -->
-            <p v-html="$t( 'step1.product_description_text' )"></p>
+            <div v-html="$t( 'step1.product_description_text' )"></div>
 
             <!-- Next button -->
             <div class="row">
