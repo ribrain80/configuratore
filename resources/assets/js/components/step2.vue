@@ -8,71 +8,64 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header alert-danger">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
                     </div>
                     <div class="modal-body">{{ "resetadvice" | translate }}</div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok!</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Spacer -->
-        <div class="spacer"></div>
-
+        
+        <!-- Information alert -->
         <div class="row">
 
             <!-- Alerts: User Warning -->
             <div class="col-lg-12">
-                <div :class="[ 'alert', $store.state.drawertype != 0 ? 'alert-success' : 'alert-warning']"  role="alert">
-                    <strong>{{ 'attenzione' | translate }}</strong> {{ 'step2.warning' | translate }}
+                <div :class="[ 'alert', $store.state.drawertype != 0 ? 'alert-success' : 'alert-warning']"  
+                     role="alert"
+                     v-html="info_alert_message">
                 </div>
             </div>
             
         </div>
 
-        <!-- Spacer -->
-        <div class="spacer"></div>
-
-        <div class="row" style="margin: 0 auto">
+        <div class="row top2">
 
             <!-- Drawer type choice -->
-            <div class="col-lg-3 " v-for="( type,category ) in $store.state.drawerTypes">
-                <div v-if="type.length == 1">
-                    <!-- Drawer type -->
-                    <figure class="drawer-container" :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }">
-                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                             class="img img-responsive  img-shadow"
-                             :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
-                             @click="setType( type[ 0 ].id )"
-                        />
-                    </figure>
-                </div>
-                <div v-else>
-                    <!-- Drawer category -->
-                    <figure class="drawer-container" :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }">
-                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                             class="img img-responsive  img-shadow img-desaturate"
-                             @click="setDrawerTypeCategory( 1 )"
-                        />
-                    </figure>
-                </div>
+            <div :class="['col-lg-4', category == 'LineaBox' ? 'col-lg-offset-2' : '' ]" v-for="( type,category ) in $store.state.drawerTypes">
+                <!-- Drawer type -->
+                <figure v-if="type.length == 1" style="width: 300px; margin: 0 auto;" class="drawer-container"  :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }" >
+                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                         class="img img-responsive  img-shadow"
+                         :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
+                         @click="setType( type[ 0 ].id )"
+                    />
+                </figure>
+
+                <!-- Drawer category -->
+                <figure v-else style="width: 300px; margin: 0 auto;" class="drawer-container" :class="{ 'asd-keeplogic': ( type[ 0 ].id == $store.state.drawertype ) }">
+                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                         class="img img-responsive  img-shadow img-desaturate"
+                         @click="setDrawerTypeCategory( 1 )"
+                    />
+                </figure>
+
             </div>
 
         </div>
-    
-        <!-- Spacer -->
-        <div class="spacer"></div>
 
-        <div class="row"
+        <div class="row top5"
              v-for="( type,category ) in $store.state.drawerTypes"
              v-if="type.length > 1"
              v-show="$store.state.drawer_type_category == 1">
-            <div class="col-lg-3 " v-for="ctype in type">
+            <div class="col-lg-4" v-for="ctype in type">
                 <figure class="drawer-container" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
                     <figcaption> {{ ctype.description | translate}} </figcaption>
                     <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
@@ -84,16 +77,15 @@
             </div>
         </div>
 
-        <div class="spacer"></div>
-
         <!-- Navigation row -->
-        <div class="row">
+        <div class="row top5">
 
-            <div class="col-md-2 ">
-                <router-link to="/split/step1" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
-            </div>
             <div class="col-md-2 pull-right">
                 <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            </div>
+
+            <div class="col-md-2 pull-right">
+                <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
             </div>
 
         </div>
@@ -114,8 +106,16 @@ export default {
      * Object data
      * @type {Object}
      */   
-    data: function() { 
-        return {}
+    data: function() {
+
+        return {
+
+            /**
+             * Info/alert message for this step ( non modal )
+             * @type {String}
+             */
+            info_alert_message: Vue.i18n.translate( "step2.warning" )
+        }
     },
 
     /**
@@ -165,6 +165,9 @@ export default {
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );
 
+            // # Change non modal message text
+            this.info_alert_message = Vue.i18n.translate( "step2.info_message" );
+
             // # Set a default 4 lineabox select
             // # Default is the lowest value
             if( 4 != type ) {
@@ -196,11 +199,14 @@ export default {
                 return true;
             }
 
+            // # Change non modal message text
+            this.info_alert_message = Vue.i18n.translate( "step2.warning" );
+
             // # Step2 has errors
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
-            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.warning" ) );
+            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) );
             $( '#error-modal' ).modal();
 
             // # Error
@@ -211,9 +217,9 @@ export default {
     /**
      * Route guard: disallow route entering if previuos data has not been submitted
      * 
-     * @param  {string}   to   [description]
-     * @param  {string}   from [description]
-     * @param  {string}   next [description]
+     * @param  {string}   to   [destination]
+     * @param  {string}   from [source]
+     * @param  {string}   next [next]
      * @return {void} 
      */
     beforeRouteEnter: ( to, from, next ) => {

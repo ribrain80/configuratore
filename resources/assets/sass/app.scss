@@ -47,6 +47,10 @@ body { font-family: FranklinGothicURW-Boo; }
   border: 1px dashed #cccc00;
 }
 
+.top10 { margin-top: 10%; }
+.top2 { margin-top: 2%; }
+.top5 { margin-top: 5%; }
+
 .edge_2d_v {
   background-color: #efefef;
   /*border: 1px dashed #222;*/
@@ -398,6 +402,15 @@ html, body, .container-fluid, .wrapper {
 
 .btn-danger:hover {
   background: #f04f1a;
+}
+
+.btn-back {
+  background: #222 !important;
+  border: 1px solid #222!important;
+}
+
+.btn-back:hover {
+  background: #222!important;
 }
 
 .img-shadow {
