@@ -114,7 +114,7 @@
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block  img-responsive "
-                                                         src="http://configuratore.local/images/dividers/445/200X100_H.png"
+                                                         :src="divider.imageH"
                                                          style="height: 80px"
                                                          :data-width  = "divider.width"
                                                          :data-height = "divider.length"
@@ -130,7 +130,7 @@
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block  img-responsive"
-                                                         :src="divider.image"
+                                                         :src="divider.imageV"
                                                          style="height: 80px"
                                                          :data-width  = "divider.length"
                                                          :data-height = "divider.width"
@@ -162,15 +162,12 @@
                                     <div class="row" >
                                         <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
                                             <figure>
-                                                <img src="/images/nature.jpg"
+                                                <img :src="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateDividerSku( $event );"
                                                      style="width: 100px;height: 100px"
-                                                     :data-sku="variant.sku"
+                                                     :data-sku="variant.textureH"
                                                 >
-                                                <figcaption>
-                                                    {{ variant.description }}
-                                                </figcaption>
                                             </figure>
                                         </div>
 
@@ -182,9 +179,6 @@
                                                      style="width: 100px;height: 100px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>
-                                                    {{ variant.description }}
-                                                </figcaption>
                                             </figure>
                                         </div>
 
@@ -995,6 +989,7 @@ export default {
             var _imgW   = +this.draggingDivider.dataset.width * this.config.ratio;
             var _imgH   = +this.draggingDivider.dataset.height * this.config.ratio;
             var _imgID  = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
+            let _imgOr  = this.draggingDivider.dataset.orientation;
 
              var _divider = new Divider(
                  this.draggingDivider.dataset.cat,
@@ -1038,6 +1033,7 @@ export default {
 
 
                 oImg.type = "divider";
+                oImg.orientation = _imgOr;
 
                 // # Add image to canvas
                 this.canvas.add( oImg ); 
