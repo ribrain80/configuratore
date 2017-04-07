@@ -172,7 +172,8 @@
                                     <div class="row" >
                                         <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
                                             <figure>
-                                                <img :src="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                <img :src="variant.textureImg"
+                                                     :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateDividerSku( $event );"
                                                      style="width: 100px;height: 100px"
@@ -746,7 +747,7 @@ export default {
 
             var self = this;
             var img = this.selectedItem.getElement();
-            img.src = event.target.src;
+            img.src = event.target.dataset.img;
             img.crossOrigin = "Anonymous";
             img.onload = function () {
                 self.canvas.renderAll();

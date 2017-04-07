@@ -34,7 +34,7 @@ class ApiController extends Controller
     public function actionDividers() {
         $grouped = [];
         // loop through all dividers and group them by depth
-        foreach ( Divider::all( ['id','sku','width','length','depth','imageH','imageV','color','border','description','textureH','textureV','image3d'] )->sortBy( "depth" ) as $curDivider ) {
+        foreach ( Divider::all( ['id','sku','width','length','depth','imageH','imageV','color','border','description','textureH','textureV','image3d','textureImg'] )->sortBy( "depth" ) as $curDivider ) {
             $curSecondaryKey = $curDivider['width'].'X'.$curDivider['length'];
             $grouped[$curDivider['depth']][$curSecondaryKey]['items'][]=$curDivider;
             $grouped[$curDivider['depth']][$curSecondaryKey]['imageH']=$curDivider['imageH'];

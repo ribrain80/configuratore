@@ -44,6 +44,7 @@ class DividerSeeder eXtends Seeder
                     $toInsert['texture'],
                     'V'
                 );
+            $toInsert['textureImg'] = '/images/dividers/textures/base/'.$this->buildTextureImgName( $toInsert['color'], $toInsert['texture'] );
             $toInsert['image3d'] = '/images/dividers/3d' . DIRECTORY_SEPARATOR . $toInsert['depth'] .'x'. $toInsert['width'] . "x" . $toInsert['length'].".png";
             $dividers[]=$toInsert;
         }
@@ -52,6 +53,19 @@ class DividerSeeder eXtends Seeder
 
 
         DB::table('dividers')->insert($dividers);
+    }
+
+
+    private function buildTextureImgName ($color,$texture) {
+        $color = str_replace(" ","",$color);
+        $color = strtolower($color);
+        $texture = str_replace(" ","",$texture);
+        $texture = str_replace("(","-",$texture);
+        $texture = str_replace(")","",$texture);
+        $texture = str_replace("Spazzolata","Spazzolato",$texture);
+        $texture = strtolower($texture);
+        return $color . "_" . $texture . ".jpg";
+
     }
 
     private function buildTexture($w,$l,$c,$t,$orr) {
