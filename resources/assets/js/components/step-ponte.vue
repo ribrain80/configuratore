@@ -613,7 +613,7 @@ export default {
      * @return {void}
      */    
     mounted() {
-        this.$store.commit('setComponentHeader','Scelta elemento ponte');
+        this.$store.commit( "setComponentHeader", "stepponte.header-title" );
         console.log( "Step ponte Mounted!" );
     }
 }

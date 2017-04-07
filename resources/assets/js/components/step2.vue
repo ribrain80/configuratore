@@ -166,7 +166,7 @@ export default {
             // # Set a default 4 lineabox select
             // # Default is the lowest value
             if( 4 != type ) {
-                this.$store.commit( "setShoulderHeight", this.$store.state.actual_lineabox_shoulder_height_LOW );
+                this.$store.commit( "setShoulderHeight", this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW );
                 return;
             } 
 

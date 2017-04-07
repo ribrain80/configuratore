@@ -142,17 +142,16 @@
                                             {{ dimension }}
                                         </div>
                                         <div class="panel-body">
-                                            <div class="row" style="display: flex">
-                                                <div class="col-lg-4 col-md-4">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 center-block">
                                                     <!-- TODO: Fix the inline style -->
-                                                    <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width: 100px;height: 100px">
+                                                    <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width: 60%;height: 60%px">
                                                 </div>
-                                                <div class="col-lg-4 col-md-4">
+                                                <div class="col-lg-6 col-md-6 center-block top1">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
-                                                         class="img canBeDragged center-block  img-responsive "
+                                                         class="img canBeDragged center-block img-responsive "
                                                          :src="divider.imageH"
-                                                         style="height: 80px"
                                                          :data-width  = "divider.width"
                                                          :data-height = "divider.length"
                                                          :data-sku = "divider.sku"
@@ -163,12 +162,11 @@
                                                          data-orientation = "H"
                                                     >
                                                 </div>
-                                                <div class="col-lg-4 col-md-4" style="border-left: 1px solid #ddd;">
+                                                <div class="col-lg-6 col-md-6 center-block top1">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
-                                                         class="img canBeDragged center-block  img-responsive"
+                                                         class="img canBeDragged center-block img-responsive"
                                                          :src="divider.imageV"
-                                                         style="height: 80px"
                                                          :data-width  = "divider.length"
                                                          :data-height = "divider.width"
                                                          :data-sku = "divider.sku"
@@ -1316,7 +1314,7 @@ export default {
     mounted () { // # Window onload eq
 
         console.log("Step4 mounted!");
-        this.$store.commit( 'setComponentHeader', 'Gestione divisori' );
+        this.$store.commit( "setComponentHeader",  "step4.header-title" );
         this.initCanvas();
     }
 

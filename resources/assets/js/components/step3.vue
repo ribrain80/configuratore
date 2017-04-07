@@ -35,7 +35,7 @@
                     <label class="col-sm-7 control-label">LA - {{ 'step3.drawer_width_label' | translate }}</label>
                     <div class="col-sm-5">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
-                      <span  class="help-block">min {{ config.rect_width_lower_limit}} max {{ config.rect_width_upper_limit}}</span>
+                        <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : ''">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : ''">max {{ config.rect_width_upper_limit}}</span></span>
                     </div>
                   </div>
 
@@ -209,6 +209,17 @@ export default {
          */
         getMaxWidth4BridgeByDrawerType: function () {
           return !this.$store.state.is_lineabox ? this.config.max_suitable_width_4_Hbridge : parseFloat( this.config.max_suitable_width_4_Hbridge ) - 12
+        },
+
+
+        isWidthOverMax: function() {
+            // # Upper limit check
+            return this.$store.state.dimensions.width > this.config.rect_width_upper_limit;
+        },
+
+        isWidthUnderMin: function() {
+            // # Lower limit check
+            return this.$store.state.dimensions.width < this.config.rect_width_lower_limit;
         }
     },
 

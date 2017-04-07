@@ -5,7 +5,7 @@ export default {
         "back": "Indietro", 
         "resetadvice": "La modifica di questo valore implicherà la cancellazione dei dati inseriti negli step successivi ( supporti, ponti, divisori, colori )",    
         "step1.header-title": "Informazioni",
-        "step2.header-title": "Sceltaa tipologi cassetto",  
+        "step2.header-title": "Scelta tipologia cassetto",  
         "step3.header-title": "Dimensioni cassetto",  
         "stepponte.header-title": "Scelta elemento ponte",  
         "step4.header-title": "Gestione divisori",  

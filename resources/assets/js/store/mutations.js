@@ -108,7 +108,7 @@ const  mutations = {
      */
     setShoulderHeight: function (state, val) {
 
-        if (isNaN(val)) {
+        if ( isNaN( val ) ) {
             console.log("shoulder_height dimension NaN changed to: " + 100);
             state.dimensions.shoulder_height = 100;
             return;
