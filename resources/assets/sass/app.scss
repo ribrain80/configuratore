@@ -391,6 +391,10 @@ html, body, .container-fluid, .wrapper {
   margin: 0 auto;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff!important;
+}
+
 .btn-danger {
   line-height: 40px;
   border-radius: 30px ;

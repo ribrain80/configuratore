@@ -25,7 +25,7 @@
     <div class="row">
 
         <!-- Alerts: User Warning -->
-        <div class="col-lg-12">
+        <div class="col-lg-12" v-show="$store.state.drawertype == 0">
             <div class="alert alert-warning" role="alert" id="step2-alert-warning">
                 <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
             </div>
@@ -51,7 +51,7 @@
             <div class="col-lg-4 col-lg-offset-2" v-else>
                 <!-- Drawer category -->
                 <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
-                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                    <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
                          class="img img-responsive  img-shadow img-desaturate"
                          @click="setDrawerTypeCategory( 1 )"

@@ -47,7 +47,7 @@ export default {
          */
         getShort: function () {
             let langObj = this.languages.filter((lang)=> {return lang.code==this.$store.state.language;});
-            return langObj[0].short;
+            return langObj[0].short.toUpperCase();
         },
         /**
          * Change Gui Language

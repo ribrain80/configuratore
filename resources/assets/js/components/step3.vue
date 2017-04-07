@@ -35,7 +35,7 @@
                     <label class="col-sm-7 control-label">LA - {{ 'step3.drawer_width_label' | translate }}</label>
                     <div class="col-sm-5">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
-                        <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : ''">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : ''">max {{ config.rect_width_upper_limit}}</span></span>
+                        <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
                     </div>
                   </div>
 
@@ -44,7 +44,7 @@
                     <label class="col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
                     <div class="col-sm-5">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
-                      <span class="help-block">min {{ config.rect_length_lower_limit }} max {{ config.rect_length_upper_limit }}</span>
+                      <span class="help-block"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
                   </div>
                     
@@ -54,7 +54,7 @@
                     <label class="col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
                     <div class="col-sm-5">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
-                      <span class="help-block">min {{ config.shoulder_height_lower_limit }} max {{ config.shoulder_height_upper_limit }}</span>
+                      <span class="help-block"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
                     </div>
                   </div>
                   
@@ -214,12 +214,29 @@ export default {
 
         isWidthOverMax: function() {
             // # Upper limit check
+            console.log( "MAX");
+            console.log( this.$store.state.dimensions.width > this.config.rect_width_upper_limit );
             return this.$store.state.dimensions.width > this.config.rect_width_upper_limit;
         },
 
         isWidthUnderMin: function() {
-            // # Lower limit check
             return this.$store.state.dimensions.width < this.config.rect_width_lower_limit;
+        },
+
+        isLengthOverMax: function() {
+            return this.$store.state.dimensions.length > this.config.rect_length_upper_limit;
+        },
+
+        isLengthUnderMin: function() {
+            return this.$store.state.dimensions.length < this.config.rect_length_lower_limit;
+        },
+
+        isShoulderHeightOverMax: function() {
+            return this.$store.state.dimensions.shoulder_height > this.config.shoulder_height_upper_limit;
+        },
+
+        isShoulderHeightUnderMin: function() {
+            return this.$store.state.dimensions.shoulder_height < this.config.shoulder_height_lower_limit;
         }
     },
 
