@@ -446,4 +446,28 @@ img.rotate90 {
   transform: rotate(90deg);
 }
 
+
+
+  .container {
+    height: 600px;
+  }
+
+  .dragable-img-container {
+    height: 70px;
+  }
+  /*And then change */
+  .dragable-img-container .img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+  /*To */
+
+  .dragable-img-container  .img-responsive {
+    display: block;
+    width: auto;
+    max-height: 100%;
+  }
+
+
 }

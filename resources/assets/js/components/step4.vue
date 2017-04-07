@@ -147,7 +147,7 @@
                                                     <!-- TODO: Fix the inline style -->
                                                     <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width: 60%;height: 60%px">
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 center-block top1">
+                                                <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block img-responsive "
@@ -162,7 +162,7 @@
                                                          data-orientation = "H"
                                                     >
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 center-block top1">
+                                                <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block img-responsive"
