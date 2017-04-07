@@ -211,8 +211,6 @@ export default {
                    this.$store.commit( "setBridgeOrientation", "" ) : 
                    this.$store.commit( "setBridgeOrientation", val );
 
-            this.num_sup = 
-
             // # Commit mutation and clear step data
             this.$store.commit( "clearBridgeData" );
             this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } ); 
@@ -242,9 +240,10 @@ export default {
          */
         checkSupportCompatibility: function( bridge_support ) {
 
-            console.log("TODO: checkSupportCompatibility controllare calcoli");
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height ) ;
+            console.log("SH" + shoulder_height_float );
+            console.log( bridge_support );
 
             // # Switch drawer type
             switch( this.$store.state.drawertype ) {
