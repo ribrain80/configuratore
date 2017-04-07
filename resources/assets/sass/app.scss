@@ -387,6 +387,21 @@ html, body, .container-fluid, .wrapper {
   opacity: 0
 }
 
+.lg-backdrop {
+  background-color: #fff!important;
+}
+
+.lg-sub-html {
+  background-color: #fff!important;
+}
+
+.lg-outer .lg-thumb-outer {
+  background-color: #fff!important; 
+}
+.lg-sub-html, .lg-toolbar {
+  background-color: #fff!important;
+}
+
 .canvas-container {
   margin: 0 auto;
 }

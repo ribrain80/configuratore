@@ -93,16 +93,13 @@
             dynamic: true,
             dynamicEl: [{
                 "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
             }, {
                 "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
             }, {
                 "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
             }]
         })
 
