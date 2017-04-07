@@ -2,27 +2,21 @@
 
 <div class="container-fluid">
 
-    <div class="row">
-
-        <!-- Only if user selected a bridge -->
-        <div class="col-lg-12 col-md-12">
-            
-            <!-- Ponti -->
-            <!--<div class="col-lg-4" v-if="$store.state.has_bridge">
-                
-                <div class="" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event )">
-                    {{ $store.state.bridge_orientation}}
+    <!-- Modal -->
+    <div class="modal fade" id="deletion-alert-modal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
                 </div>
-                
-                <button class="btn btn-success btn-block" :disabled="!canAddBridges" @click="addBridge">Add</button>
-                <button class="btn btn-primary btn-block" @click="clearBridges">RemoveAll</button>
-
+                <div class="modal-body">Sei sicuro di voler cancellare il divisorio?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
+                    <button type="button" class="btn btn-primary" @click="deleteDivider()">Sono sicuro, eliminalo!</button>
+                </div>
             </div>
-            <div class="col-lg-4"></div>
-            -->
-
         </div>
-
     </div>
 
     <!-- Container -->
@@ -38,7 +32,7 @@
                     </div> 
 
                     <div class="col-lg-2 pull-right" >
-                        <img src="/images/others/garbage.png" style="width: 40%; height: 40%;" />
+                        <img src="/images/others/garbage.png" style="width: 40%; height: 40%;cursor:pointer;" @click="alertDividerDeletion()"/>
                     </div> 
                 </div>
             </div>
@@ -65,6 +59,39 @@
                 <!--<div :class="[ 'col-lg-1', 'edge_2d_v', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
                 :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}" id="right" @click='selectBorder( $event );'></div>-->
             </div>
+
+            <div class="row top1">
+
+                <!-- Only if user selected a bridge -->
+                <div class="col-lg-12 col-md-12">
+                    
+                    <!-- Ponti -->
+                    <div v-if="$store.state.has_bridge">
+                        
+                        <div class="row">
+
+                            <div class="col-lg-2 bridge_representation" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event );">
+                            </div>
+                            <div class="col-lg-4">
+                                N. {{ $store.state.bridges_selected.length }}
+                            </div>
+                            <div class="col-lg-6">
+                                <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge">+</button>
+                                <button class="btn btn-default btn-sm" @click="alert( 'todo' );">-</button>
+                                <button class="btn btn-default btn-sm" @click="clearBridges">Rimuovi tutti</button>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <span class="help-block">Ponte {{ $store.state.bridge_orientation }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>            
 
             
             <!-- Lower edge -->
@@ -289,6 +316,10 @@ export default {
              */
             selectedItem: {},
 
+            /**
+             * [bridge_hex description]
+             * @type {String}
+             */
             bridge_hex: '',
         }
     },
@@ -644,6 +675,56 @@ export default {
 
             // # Force rendering
             this.canvas.renderAll();
+        },
+
+        alertDividerDeletion: function() {
+            if( null == this.selectedItem ) {
+                return;
+            }
+
+            if( this.selectedItem.get( 'type' ) != "divider") {
+                return;
+            }
+            
+            $( "#deletion-alert-modal" ).modal();
+        },
+
+        deleteDivider: function() {
+
+            console.log( "IN" );
+            // # Avoid null pbjects
+            if( null == this.selectedItem ) {
+                return;
+            }
+
+            console.log( "Active canvas",this.selectedItem);
+            console.log( "Active canvas type",this.selectedItem.get( 'type' ));
+
+            // # Avoid canvas trying to remove itself
+            if( this.selectedItem.get( 'type' ) != "divider" ) {
+                return;
+            }
+
+            // # Cache active object ID
+            var id = this.selectedItem.get( 'id' );
+
+            // # Remove ID from selected dividers list
+            this.$store.commit( "removeDivider", id );
+
+            // # Actually remove object from canvas
+            this.canvas.remove( this.selectedItem );
+
+            // # Set active object null
+            this.selectedItem = null;
+
+            // # Clean up pointers
+            this.canvas.discardActiveObject();
+
+            // # Refresh canvas
+            this.canvas.renderAll();
+
+            $( "#deletion-alert-modal" ).modal( 'hide' );
+            $( '#tab-container a:first' ).tab( 'show' );
         },
 
         /**
