@@ -41,6 +41,8 @@ class SplitDrawerController extends Controller
      */
     private function save($data)
     {
+
+
         //2 Inizializzo l'oggetto (sia save che update)
         $drawer = $this->loadModel(isset($data['drawerId'])?$data['drawerId']:null);
         //3 Aggiorno i campi di model (fake)
@@ -63,11 +65,12 @@ class SplitDrawerController extends Controller
 
             //5 Gestisco i bridges
             $bridges = [];
+            $_bridgeLength = ($data['bridge_orientation']=="V")?$data['dimensions']['length']:$data['dimensions']['width'];
             foreach ($data['bridges_selected'] as $bridge) {
                 $bridges[] = [
                     'bridge'=>$bridge['id'],
                     'orientation' => $data['bridge_orientation'],
-                    'length' => $bridge['length'],
+                    'length' => $_bridgeLength,
                     // 'color' => 1,
                 ];
             }
