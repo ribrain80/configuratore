@@ -57,7 +57,7 @@
                 :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}" id="left" @click='selectBorder( $event );'></div>-->
                 
                 <!-- Actual drawer canvas -->
-                <div class="dragdrop-area" id="canvas-container">
+                <div class="dragdrop-area center-block" id="canvas-container">
                     <canvas id="canvas" class="center-block"></canvas>
                 </div>
                 
@@ -380,7 +380,7 @@ export default {
             console.log( "CH: " + this.canvasHeight );
 
             $( "#canvas-container" ).width( this.canvasWidth );
-            
+
             // # Force dimensions
             $( "#canvas-container" ).height( this.canvasHeight );
             $( ".edge_2d_v" ).height( this.canvasHeight );
@@ -667,8 +667,13 @@ export default {
             // # height > width
             if( dimensions_ratio < 1 ) {
 
+               console.log( "D ratio: " + dimensions_ratio );
+               console.log( "H > W" );
+
                // # let's say that we want to set a threshold
-               var threshold = available_width * 1.2;
+               // # this will prevent the scale change when 
+               // # H / W dfference is little
+               var threshold = available_width * 1.1;
                
                // # Initial height computed based on available width
                var computed_height = this.real_height * this.config.ratio;
