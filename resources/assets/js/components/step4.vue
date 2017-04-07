@@ -280,6 +280,10 @@ export default {
             selectedItem: {},
 
             bridge_hex: '',
+
+            validLeft:0,
+
+            validTop:0
         }
     },
 
@@ -392,7 +396,7 @@ export default {
 
             // # Last chance 
             // # FIX ME
-            this.canvas.on( "mouse:up", () => {
+            /*this.canvas.on( "mouse:up", () => {
 
                 if( null != this.selectedItem ) {
 
@@ -476,7 +480,7 @@ export default {
                         });                
                     }
                 }
-            });
+            });*/
 
 
             /**
@@ -492,6 +496,22 @@ export default {
             // # Scope fix
             var self = this;
 
+
+            this.canvas.on('after:render', () => {
+                this.canvas.contextContainer.strokeStyle = '#555';
+
+                this.canvas.forEachObject((obj) =>{
+                    let bound = obj.getBoundingRect();
+
+                    this.canvas.contextContainer.strokeRect(
+                        bound.left + 0.5,
+                        bound.top + 0.5,
+                        bound.width,
+                        bound.height
+                    );
+                })
+            });
+
             /**
              * Canvas on click listener
              * @param  {[type]} this.canvas.upperCanvasEl [description]
@@ -500,29 +520,32 @@ export default {
              * @return {[type]}                           [description]
              */
             fabric.util.addListener( this.canvas.upperCanvasEl, 'click', ( e ) => {
-
                 try {
 
+                    let activeObj = this.canvas.getActiveObject();
+                    this.validLeft = activeObj.getLeft();
+                    this.validTop = activeObj.getTop();
+
                     // # Avoid null pbjects
-                    if( null == this.canvas.getActiveObject() ) {
+                    if( null == activeObj ) {
                         return;
                     }
 
-                    console.log( "Active canvas", this.canvas.getActiveObject() );
-                    console.log( "Active canvas type", this.canvas.getActiveObject().get( 'type' ));
+                    console.log( "Active canvas", activeObj );
+                    console.log( "Active canvas type", activeObj.get( 'type' ));
 
                     // # Avoid canvas trying to remove itself
-                    if( this.canvas.getActiveObject().get( 'type' ) != "divider" ) {
+                    if( activeObj.get( 'type' ) != "divider" ) {
                         return;
                     }
 
                     // # Cache active object ID
-                    let id = this.canvas.getActiveObject().get( 'id' );
+                    let id = activeObj.get( 'id' );
 
                     // Updating this.selectedItem and $store.objectWorkingOn
                     // @todo: selectedItem deve diventare una property di $store.objectWorkingOn
-                    this.selectedItem = this.canvas.getActiveObject();
-                    this.$store.commit('setobjectWorkingOn',{type:'divider',id:id,obj:this.canvas.getActiveObject()});
+                    this.selectedItem = activeObj;
+                    this.$store.commit('setobjectWorkingOn',{type:'divider',id:id,obj:activeObj});
 
                 } catch( e ) {
 
@@ -807,7 +830,7 @@ export default {
                 y: coords.y
             }
 
-            this.$store.commit( 'updateDividerPosition', payload );
+           // this.$store.commit( 'updateDividerPosition', payload );
         },
 
         _preventCollision: function ( options ) {
@@ -838,83 +861,173 @@ export default {
             this.canvas.forEachObject( ( obj ) => {
 
                 // # Do nothing if the object checked against is itself
-                if ( obj === options.target ) return;
+                if ( obj !== options.target && obj.type == 'divider') {
+                    // # Set element Coords
+                    options.target.setCoords();
+                    obj.setCoords();
 
-                // # Set element Coords
-                options.target.setCoords();
+                    let haveToSnap = false;
+                    // # If objects intersect
+                    // # once there was the findNewPos call
+                    if (options.target.isContainedWithinObject(obj) || options.target.intersectsWithObject(obj) || obj.isContainedWithinObject(options.target))
+                    {
+                        console.log("INTERSEZIONE: CERCO NUOVA POSIZIONE");
+                        let distX = ((obj.getLeft() + obj.getWidth()) / 2) - ((options.target.getLeft() + options.target.getWidth()) / 2);
+                        let distY = ((obj.getTop() + obj.getHeight()) / 2) - ((options.target.getTop() + options.target.getHeight()) / 2);
+                        this.findNewPos(distX,distY,options.target, obj);
+                        haveToSnap=false
+                    }
 
-                // # If objects intersect
-                // # once there was the findNewPos call
-                if ( options.target.intersectsWithObject( obj ) ) { 
-                    obj.setOpacity(options.target.intersectsWithObject( obj ) ? 0.5 : 1);
+                    // # This.snap objects to each other horizontally
+                    if (haveToSnap) {
+                        // If bottom points are on same Y axis
+                        if (Math.abs((options.target.getTop() + options.target.getHeight()) - (obj.getTop() + obj.getHeight())) < this.snap) {
+                            // this.snap target BL to object BR
+                            if (Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {
+                                options.target.setLeft(obj.getLeft() + obj.getWidth());
+                                options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());
+                            }
+
+                            // this.snap target BR to object BL
+                            if (Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {
+                                options.target.setLeft(obj.getLeft() - options.target.getWidth());
+                                options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());
+                            }
+                        }
+
+                        // If top points are on same Y axis
+                        if (Math.abs(options.target.getTop() - obj.getTop()) < this.snap) {
+                            // this.snap target TL to object TR
+                            if (Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {
+                                options.target.setLeft(obj.getLeft() + obj.getWidth());
+                                options.target.setTop(obj.getTop());
+                            }
+
+                            // this.snap target TR to object TL
+                            if (Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {
+                                options.target.setLeft(obj.getLeft() - options.target.getWidth());
+                                options.target.setTop(obj.getTop());
+                            }
+                        }
+
+                        // this.snap objects to each other vertically
+
+                        // If right points are on same X axis
+                        if (Math.abs((options.target.getLeft() + options.target.getWidth()) - (obj.getLeft() + obj.getWidth())) < this.snap) {
+                            // this.snap target TR to object BR
+                            if (Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {
+                                options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());
+                                options.target.setTop(obj.getTop() + obj.getHeight());
+                            }
+
+                            // this.snap target BR to object TR
+                            if (Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {
+                                options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());
+                                options.target.setTop(obj.getTop() - options.target.getHeight());
+                            }
+                        }
+
+                        // If left points are on same X axis
+                        if (Math.abs(options.target.getLeft() - obj.getLeft()) < this.snap) {
+                            // this.snap target TL to object BL
+                            if (Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {
+                                options.target.setLeft(obj.getLeft());
+                                options.target.setTop(obj.getTop() + obj.getHeight());
+                            }
+
+                            // this.snap target BL to object TL
+                            if (Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {
+                                options.target.setLeft(obj.getLeft());
+                                options.target.setTop(obj.getTop() - options.target.getHeight());
+                            }
+                        }
+                    }
+
+                    this.validLeft = options.target.getLeft();
+                    this.validTop = options.target.getTop();
+                    options.target.setCoords();
                 }
 
-                // # This.snap objects to each other horizontally
-
-                // If bottom points are on same Y axis
-                if(Math.abs((options.target.getTop() + options.target.getHeight()) - (obj.getTop() + obj.getHeight())) < this.snap) {
-                    // this.snap target BL to object BR
-                    if(Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {
-                        options.target.setLeft(obj.getLeft() + obj.getWidth());
-                        options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());
-                    }
-
-                    // this.snap target BR to object BL
-                    if(Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {
-                        options.target.setLeft(obj.getLeft() - options.target.getWidth());
-                        options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());
-                    }
-                }
-
-                // If top points are on same Y axis
-                if(Math.abs(options.target.getTop() - obj.getTop()) < this.snap) {
-                    // this.snap target TL to object TR
-                    if(Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {
-                        options.target.setLeft(obj.getLeft() + obj.getWidth());
-                        options.target.setTop(obj.getTop());
-                    }
-
-                    // this.snap target TR to object TL
-                    if(Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {
-                        options.target.setLeft(obj.getLeft() - options.target.getWidth());
-                        options.target.setTop(obj.getTop());
-                    }
-                }
-
-                // this.snap objects to each other vertically
-
-                // If right points are on same X axis
-                if(Math.abs((options.target.getLeft() + options.target.getWidth()) - (obj.getLeft() + obj.getWidth())) < this.snap) {
-                    // this.snap target TR to object BR
-                    if(Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {
-                        options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());
-                        options.target.setTop(obj.getTop() + obj.getHeight());
-                    }
-
-                    // this.snap target BR to object TR
-                    if(Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {
-                        options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());
-                        options.target.setTop(obj.getTop() - options.target.getHeight());
-                    }
-                }
-
-                // If left points are on same X axis
-                if(Math.abs(options.target.getLeft() - obj.getLeft()) < this.snap) {
-                    // this.snap target TL to object BL
-                    if(Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {
-                        options.target.setLeft(obj.getLeft());
-                        options.target.setTop(obj.getTop() + obj.getHeight());
-                    }
-
-                    // this.snap target BL to object TL
-                    if(Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {
-                        options.target.setLeft(obj.getLeft());
-                        options.target.setTop(obj.getTop() - options.target.getHeight());
-                    }
-                }
-
-                options.target.setCoords();                
             });
+        },
+
+         findNewPos: function(distX, distY, target, obj) {
+
+            // # moving object initial pos e dimension
+            let width= target.getWidth();
+            let height = target.getHeight();
+
+            let newLeft = false;
+            let newTop = false;
+
+             // See whether to focus on X or Y axis
+             if (Math.abs(distX) > Math.abs(distY)) {
+                 if (distX > 0) {
+                     newLeft = obj.getLeft() - width;
+
+                 } else {
+                     newLeft = obj.getLeft() + width;
+                 }
+             } else {
+                 if (distY > 0) {
+                     newTop = obj.getTop() - height;
+
+                 } else {
+                     newTop = obj.getTop() + height;
+                 }
+             }
+
+             if (this.checkInCanvas(newTop,newLeft,width,height) && this.checkOverlapWhitOther(target)) {
+                 if (newTop) {
+                     target.setTop(newTop);
+                 }
+
+                 if (newLeft) {
+                     target.setLeft(newLeft);
+                 }
+             } else {
+                 console.log("Nessuna nuova posizione che posso usare!!!!!");
+                 target.setLeft(this.validLeft);
+                 target.setTop(this.validTop);
+             }
+             target.setCoords();
+             
+         },
+
+        checkOverlapWhitOther: function (canvasToTest) {
+            let overlap = false;
+            this.canvas.forEachObject( ( obj ) => {
+                if (obj != canvasToTest && obj.type=='divider') {
+                    if (this.intersectOrOverlap(obj, canvasToTest)) {
+                        overlap = true;
+                        return;
+                    }
+                }
+            });
+            return overlap;
+        },
+
+        intersectOrOverlap: function (obj1,obj2) {
+            return obj1.isContainedWithinObject(obj2) || obj2.isContainedWithinObject(obj1) || obj1.intersectsWithObject(obj2) || obj2.intersectsWithObject(obj1);
+        },
+
+        checkInCanvas: function (top,left,width,height) {
+            if(left < 0) {
+                return false;
+            }
+
+            if(top < 0) {
+               return false;
+            }
+
+            if((width + left) > (this.canvasWidth)) {
+               return false;
+            }
+
+            if((height + top) > (this.canvasHeight)) {
+                return false;
+            }
+            return true;
         },
 
         /**
