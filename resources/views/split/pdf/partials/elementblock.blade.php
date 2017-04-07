@@ -14,7 +14,7 @@
                 $l = $obj->length;
                 $d = $obj->depth;
                 $texture = $obj->texture;
-                $img_src = asset($obj->image);
+                $img_src = asset($obj->image3d);
                 break;
             case 'bridge':
                 $l = $obj->pivot->length;

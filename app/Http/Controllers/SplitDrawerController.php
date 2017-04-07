@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Divider;
 use App\Models\Drawer;
 use App\Models\PdfDrawer;
 use Mail;
@@ -55,7 +56,8 @@ class SplitDrawerController extends Controller
             //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
             $dividers = [];
             foreach ($data['dividers_selected'] as $divider) {
-                $dividers[$divider] = ['x' => 0, 'y' => 0];
+                $curDividerId= $this->getDividerIdBySku($divider['sku']);
+                $dividers[$curDividerId] = ['x' => $divider['x'], 'y' => $divider['y']];
             }
             $drawer->drawerdividers()->sync($dividers);
 
@@ -135,4 +137,12 @@ class SplitDrawerController extends Controller
         }
         return $drawer;
     }
+
+
+    private function getDividerIdBySku($sku) {
+         $model = Divider::where('sku',$sku)->get()->first();
+         if (!$model) {return false;}
+         return $model->id;
+    }
+
 }

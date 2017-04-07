@@ -18,7 +18,7 @@ class Divider extends Model
     /**
      * @var array
      */
-    protected $fillable = ['width', 'lenght', 'height', 'created_at', 'updated_at'];
+    protected $fillable = ['id','width', 'lenght', 'height', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
