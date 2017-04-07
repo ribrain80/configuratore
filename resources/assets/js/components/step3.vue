@@ -1,16 +1,16 @@
 <template>
 
-    <!-- Container -->
-    <div class="row" id="step3">
+<!-- Container -->
+<div class="container-fluid" id="step3">
 
         <!-- Alerts: User Warning -->
         <div class="row">
-          <div class="col-lg-12">
-              <div class="alert alert-warning alert-dismissible fade in" >
-                  <strong>{{ 'attenzione' | translate }}</strong> 
-                  {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: getMaxWidth4BridgeByDrawerType } ) }} 
-              </div>
-          </div>
+            <div class="col-lg-12">
+                <div class="alert alert-warning alert-dismissible fade in" >
+                    <strong>{{ 'attenzione' | translate }}</strong> 
+                    {{ $t('step3.advice', { Rwll: config.rect_width_lower_limit , Rwul: config.rect_width_upper_limit, Rhll: config.rect_length_lower_limit, Rhul: config.rect_length_upper_limit, Shll: config.shoulder_height_lower_limit, Shup : config.shoulder_height_upper_limit, maxw4b: getMaxWidth4BridgeByDrawerType } ) }} 
+                </div>
+            </div>
         </div>
         
         <!-- Alerts: User Error -->
@@ -23,6 +23,7 @@
         </div>
         
         <div class="row">
+          
           <!-- Left container "form" -->
           <div class="col-lg-4">
               
@@ -87,7 +88,6 @@
          
         </div>  
 
-
         <div class="row">
 
             <div class="col-lg-2 col-md-2 pull-left">
@@ -101,8 +101,7 @@
             </div>
         </div>
 
-    </div>
-
+</div>
 </template>
 
 <script>

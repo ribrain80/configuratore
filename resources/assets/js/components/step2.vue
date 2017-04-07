@@ -1,98 +1,97 @@
 <template>
 
-    <!-- Container -->
-    <section>
-        
-        <!-- User reset advice Modal -->
-        <div class="modal fade" id="reset-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header alert-danger">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
-                    </div>
-                    <div class="modal-body">{{ "resetadvice" | translate }}</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
-                    </div>
+<!-- Container -->
+<div class="container-fluid" id="step2">
+    
+    <!-- User reset advice Modal -->
+    <div class="modal fade" id="reset-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
                 </div>
+                <div class="modal-body">{{ "resetadvice" | translate }}</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Information alert -->
+    <div class="row">
+
+        <!-- Alerts: User Warning -->
+        <div class="col-lg-12">
+            <div class="alert alert-warning" role="alert" id="step2-alert-warning">
+                <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
             </div>
         </div>
         
-        <!-- Information alert -->
-        <div class="row">
+    </div>
 
-            <!-- Alerts: User Warning -->
-            <div class="col-lg-12">
-                <div :class="[ 'alert', $store.state.drawertype != 0 ? 'alert-success' : 'alert-warning']"  
-                     role="alert"
-                     v-html="info_alert_message">
-                </div>
+    <div class="row top2">
+
+        <div v-for="( type,category ) in $store.state.drawerTypes">
+            <div class="col-lg-4" v-if="type.length == 1">
+                <!-- Drawer type -->
+                <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
+                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                         class="img img-responsive  img-shadow"
+                         :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
+                         @click="setType( type[ 0 ].id )"
+                    />
+                </figure>
             </div>
-            
-        </div>
-
-        <div class="row top2">
-
-            <div  v-for="( type,category ) in $store.state.drawerTypes">
-                <div class="col-lg-4" v-if="type.length == 1">
-                    <!-- Drawer type -->
-                    <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
-                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                             class="img img-responsive  img-shadow"
-                             :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
-                             @click="setType( type[ 0 ].id )"
-                        />
-                    </figure>
-                </div>
-                    
-                <div class="col-lg-4 col-lg-offset-2" v-else>
-                    <!-- Drawer category -->
-                    <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
-                        <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                        <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                             class="img img-responsive  img-shadow img-desaturate"
-                             @click="setDrawerTypeCategory( 1 )"
-                        />
-                    </figure>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row top5"
-             v-for="( type,category ) in $store.state.drawerTypes"
-             v-if="type.length > 1"
-             v-show="$store.state.drawer_type_category == 1">
-            <div class="col-lg-4" v-for="ctype in type">
-                <figure class="drawer-container" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
-                    <figcaption> {{ ctype.description | translate}} </figcaption>
-                    <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
-                         class="img img-responsive  img-shadow "
-                         :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
-                         @click="setType( ctype.id )"
+                
+            <div class="col-lg-4 col-lg-offset-2" v-else>
+                <!-- Drawer category -->
+                <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
+                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                         class="img img-responsive  img-shadow img-desaturate"
+                         @click="setDrawerTypeCategory( 1 )"
                     />
                 </figure>
             </div>
         </div>
 
-        <!-- Navigation row -->
-        <div class="row top5">
+    </div>
 
-            <div class="col-md-2 pull-right">
-                <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-            </div>
+    <div class="row top5"
+         v-for="( type,category ) in $store.state.drawerTypes"
+         v-if="type.length > 1"
+         v-show="$store.state.drawer_type_category == 1">
+        <div class="col-lg-4" v-for="ctype in type">
+            <figure class="drawer-container" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
+                <figcaption> {{ ctype.description | translate}} </figcaption>
+                <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
+                     class="img img-responsive  img-shadow "
+                     :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
+                     @click="setType( ctype.id )"
+                />
+            </figure>
+        </div>
+    </div>
 
-            <div class="col-md-2 pull-right">
-                <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
-            </div>
+    <!-- Navigation row -->
+    <div class="row top5">
 
+        <div class="col-md-2 pull-right">
+            <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
-    </section>
+        <div class="col-md-2 pull-right">
+            <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
+        </div>
+
+    </div>
+
+</div>
 
 </template>
 
@@ -110,14 +109,7 @@ export default {
      */   
     data: function() {
 
-        return {
-
-            /**
-             * Info/alert message for this step ( non modal )
-             * @type {String}
-             */
-            info_alert_message: Vue.i18n.translate( "step2.warning" )
-        }
+        return {}
     },
 
     /**
@@ -167,8 +159,9 @@ export default {
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );
 
-            // # Change non modal message text
-            this.info_alert_message = Vue.i18n.translate( "step2.info_message" );
+            $( "#step2-alert-warning" ).slideUp( 1500, function() {
+                $( this ).remove();
+            });
 
             // # Set a default 4 lineabox select
             // # Default is the lowest value
@@ -200,9 +193,6 @@ export default {
                 // # OK
                 return true;
             }
-
-            // # Change non modal message text
-            this.info_alert_message = Vue.i18n.translate( "step2.warning" );
 
             // # Step2 has errors
             this.$store.commit( "setTwocompleted", false );

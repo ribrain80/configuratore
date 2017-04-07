@@ -53,27 +53,30 @@
                 </div>
 
             </div>
+        </div>
+        
+        <!-- Supports section -->
+        <div class="row top2" >
 
-            <!-- Supports section -->
             <div class="col-lg-12" v-show="$store.state.bridge_orientation.length">
 
-                    <!-- Supports description -->
-                    <div class="col-lg-12">
-                        <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
-                    </div>  
+                <!-- Supports description -->
+                <div class="col-lg-12 text-center">
+                    <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
+                </div> 
 
                     <!-- Alerts: User Advice -->
                     <div class="col-lg-12" v-show="showSupportsAdvice">
-                        <div class='alert-warning' role="alert">
+                        <div class='alert alert-warning' role="alert">
                             <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
                         </div>
                     </div>
 
                     <!-- Support choice -->
-                    <div class="row" v-for="bridge_support, cat in $store.state.supportTypes">
-                        <div class="col-lg-6" v-show="checkSupportCompatibility( bridge_support )">
+                    <div class="row" v-for="( bridge_support, cat, index ) in $store.state.supportTypes">
+                        <div :class="[ 'col-lg-4', index == 0 ? 'col-lg-offset-2' : '']" v-show="checkSupportCompatibility( bridge_support )">
                             <figure class="drawer-container" >
-                                <img src="http://placehold.it/150x300"
+                                <img src="/images/others/step-ponte/support_high.png"
                                      class="img img-responsive  img-shadow"
                                      :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
                                      @click="selectBridgeSupport( bridge_support )"
@@ -84,31 +87,32 @@
                     </div>
 
             </div>
+        </div>
 
-            <!-- Bridges section -->
+        <!-- Bridges section -->
+        <div class="row top2" >       
+            
             <div class="col-lg-12" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
 
                 <!-- Bridges description -->
-                <div class="row text-center">
+                <div class="col-lg-12 text-center">
                     <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
-                </div>
-
-                <!-- Bridges title -->
-                <h4 class="">{{ "stepponte.bridge_title" | translate  }}</h4>
+                </div> 
 
                 <!-- Bridges choice -->
                 <div class="row" >
-                    <div class="col-lg-6" v-for="( bridge, cat ) in $store.state.bridgeTypes" v-if="checkBridgeCompatibility( bridge )">
+
+                    <div :class="[ 'col-lg-4', index == 0 ? 'col-lg-offset-2' : '']" v-for="( bridge, cat, index ) in $store.state.bridgeTypes" v-if="checkBridgeCompatibility( bridge )">
 
                         <figure class="drawer-container" >
-                            <img src="http://placehold.it/150x300"
+                            <img src="/images/others/step-ponte/bridge_high.png"
                                  class="img img-responsive  img-shadow"
                                  :class="{ 'img-desaturate': cat != $store.state.bridge_ID }"
                                  @click="selectBridgeType( bridge )"
                                  :data-width="bridge.width"
                                  :data-depth="bridge.depth"
                             />
-                            <figcaption> w:{{ bridge.width }} mm d:{{ bridge.depth }} mm </figcaption>
+                            <figcaption>id: {{ bridge.id }} w:{{ bridge.width }} mm d:{{ bridge.depth }} mm </figcaption>
                         </figure>
 
                     </div>
@@ -123,7 +127,7 @@
 
             <div class="col-lg-2 pull-left" >
                 <button class="btn btn-danger btn-block " @click="resetData">{{ 'stepponte.reset' | translate }}</button>
-            </div>
+            </div>        
 
             <div class="col-lg-2 pull-right" >
                 <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>

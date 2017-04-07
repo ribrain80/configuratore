@@ -24,6 +24,7 @@
 </head>
 <body>
 
+
 <!-- New configration alert Modal -->
 <div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="">
     <div class="modal-dialog" role="document">
