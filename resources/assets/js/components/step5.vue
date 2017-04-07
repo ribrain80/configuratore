@@ -1,45 +1,57 @@
 <template>
 
+<div class="container-fluid" id="step5">
+
 	<!-- Container -->
-    <div class="row" id="step5">
-	
-		<!-- Title -->
-        <div class="col-lg-12">
-            <h2>{{  "step5.title" | translate }}</h2>
-        </div>
+    <div class="row" >
 
 		<!-- Summary -->
 		<div class="checkbox col-lg-12">
-			<label>{{ "step5.summary_label" | translate }}</label>
-            <!-- $store.state.pdf.summary -->
-            <button class="btn btn-danger" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
-            <hr />
+			<div class="col-lg-3">
+                {{ "step5.summary_label" | translate }}
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-default" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
+            </div>
 		</div>
+
+        <hr />
 
         <!-- Brochure -->
         <div class="checkbox col-lg-12">
-            <label>Brochure</label>
-            <!-- $store.state.pdf.brochure -->
-            <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
-            <hr />
+            <div class="col-lg-3">
+                Brochure
+            </div>
+            <div class="col-lg-2">
+                <a class="btn btn-default" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
+            </div>
         </div>
+
+        <hr />
 	
 		<!-- Email -->
-		<div class="col-lg-12">
-			<label style="font-weight: normal;">
-                <input type="text" name="email" v-model="$store.state.pdf.email" /> {{  "step5.email_label" | translate }}
-            </label>
-            <!-- $store.state.pdf.email -->
-            <button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
-            <hr />
+		<div class="row">
+            <div class="col-lg-3">
+                <label> {{  "step5.email_label" | translate }}</label>
+                <input type="text" name="email" v-model="$store.state.pdf.email" />
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-default" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
+            </div>
 		</div>
+
+        <hr />
 		
 		<!-- Back -->
-		<div class="col-lg-12">	
-			<router-link to="/split/step4" tag="button">{{ 'back' | translate }}</router-link>
-		</div>		
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <router-link to="/split/step4" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
+            </div>
+        </div>	
 
     </div>
+
+</div>
 
 </template>
 
@@ -193,7 +205,7 @@ export default {
      */
     mounted () { // # Window onload eq
         console.log( "Step5 mounted!" );
-        this.$store.commit('setComponentHeader','download');
+        this.$store.commit( 'setComponentHeader', 'Download configurazione' );
     }
 }
 

@@ -15,37 +15,37 @@
                 <ul class="nav hidden-xs router-links" id="nav">
                     <li :class="this.$store.state.onecompleted ? 'reached' : ''">
                         <router-link to="/split/step1" >
-                            <span >{{ "informazioni" | translate}}</span>
+                            <span >{{ "step1.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="this.$store.state.twocompleted ? 'reached' : ''">
                         <router-link to="/split/step2">
-                            <span >{{"scelta tipologia di cassetto" | translate}}</span>
+                            <span >{{ "step2.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="this.$store.state.threecompleted ? 'reached' : ''">
                         <router-link to="/split/step3">
-                            <span >{{"dimensioni cassetto" | translate}}</span>
+                            <span >{{ "step3.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="this.$store.state.bridgecompleted ? 'reached' : ''">
                         <router-link to="/split/stepponte">
-                            <span >{{"scelta elemento ponte" | translate}}</span>
+                            <span >{{ "stepponte.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="this.$store.state.fourcompleted ? 'reached' : ''">
                         <router-link to="/split/step4">
-                            <span >{{"gestione divisori" | translate}}</span>
+                            <span >{{ "step4.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="this.$store.state.fivecompleted ? 'reached' : ''">
                         <router-link to="/split/step5">
-                            <span >{{ "download" | translate}}</span>
+                            <span >{{ "step5.header-title" | translate }}</span>
                         </router-link>
                     </li>
                 </ul>

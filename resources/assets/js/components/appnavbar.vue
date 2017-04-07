@@ -3,8 +3,8 @@
     <!-- Fixed navbar -->
     <div class="app-nav">
         <div class="row">
-            <nav role="navigation" class="navbar navbar-default  navbar-inverse">
-                <div class="col-xs-1 split-header text-center">
+            <nav role="navigation" class="navbar navbar-default navbar-inverse">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 split-header text-center">
                     Split
                 </div>
                 <div class="container-fluid">

@@ -235,7 +235,7 @@ export default {
         console.log( "Step2 Mounted!" );
 
         // # Set component header title
-        this.$store.commit( 'setComponentHeader', 'Scelta tipologia cassetto' );
+        this.$store.commit( "setComponentHeader", "step2.header-title" );
     }
 }
 </script>

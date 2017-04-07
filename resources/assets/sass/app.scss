@@ -1,9 +1,6 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
-//@import "variables";
+@import "/salicefonts/saliceFonts.css";
 
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
@@ -11,17 +8,9 @@
 /*@import "/css/bootstrap-material-design.css";
 @import "/css/ripples.css";*/
 
-
-
-//SALICE FONTS
-
-@import "/salicefonts/saliceFonts.css";
-
-body { font-family: FranklinGothicURW-Boo; color: #666;}
-
-.col-centered{
-    /*float: none;*/
-    margin: 0 auto;
+body { 
+  font-family: "FranklinGothicURW-Boo", sans-serif; 
+  color: #666;
 }
 
 #bridge_placeholder {
@@ -38,8 +27,6 @@ body { font-family: FranklinGothicURW-Boo; color: #666;}
 #canvas-container {
   width: auto;
 }
-
-
 
 .edge {
   border: 1px solid #efefef;  
@@ -69,7 +56,7 @@ body { font-family: FranklinGothicURW-Boo; color: #666;}
   cursor:pointer;
 }
 
-//App Specific css
+// App Specific css
 @mixin inline-block() {
   display: -moz-inline-stack;
   display: inline-block;
@@ -90,7 +77,6 @@ body { font-family: FranklinGothicURW-Boo; color: #666;}
 .has_error {
   color: #ff0000!important;
 }
-
 
 .navbar {
   border-radius: 0 !important;
@@ -238,13 +224,14 @@ html, body, .container-fluid, .wrapper {
   line-height: 35px;
 }
 
-
+/*
 .row-no-padding {
   [class*="col-"] {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 }
+*/
 
 #step1 p {
   font-size: 1.1em;
@@ -358,8 +345,6 @@ html, body, .container-fluid, .wrapper {
   white-space: nowrap;
 }
 
-
-
 .nuovaconf {
   line-height: 70px;
   text-align: center;
@@ -368,10 +353,11 @@ html, body, .container-fluid, .wrapper {
 }
 
 .nuovaconf a {
-  color: #333333;
+  color: #666;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 1.1em;
   cursor: pointer;
+  font-weight: 300;
 }
 
 @media (min-width: 992px) {

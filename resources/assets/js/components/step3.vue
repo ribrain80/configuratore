@@ -1031,7 +1031,7 @@ export default {
         console.log( "Dimensions choice mounted" );
 
         // # Set component header title
-        this.$store.commit( 'setComponentHeader', 'Dimensione cassetto' );
+        this.$store.commit( "setComponentHeader", "step3.header-title" );
 
         // # Init canvas
         this.initTwo();
