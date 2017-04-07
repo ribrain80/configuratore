@@ -76,7 +76,7 @@ class ApiController extends Controller
 
         $grouped = [];
 
-        foreach (Bridge::all(['id','sku','sku_short','width','depth','image','color','border','texture','description'])->sortBy('depth') as $curBridge) {
+        foreach (Bridge::all(['id','sku','sku_short','width','depth','image','color','border','texture','description','textureImg'])->sortBy('depth') as $curBridge) {
             $key = "".$curBridge['depth'];
             $grouped[$key]['image'] = $curBridge['image'];
             $grouped[$key]['depth'] = $curBridge['depth'];

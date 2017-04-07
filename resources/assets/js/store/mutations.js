@@ -295,7 +295,7 @@ const  mutations = {
     manageBridgeSupport: function (state, obj) {
 
         console.log("pushing in support");
-        state.bridge_supports_selected.push(obj);
+        state.bridge_supports_selected = [obj];
     },
 
     /**
@@ -309,61 +309,7 @@ const  mutations = {
         state.bridge_supports_selected = [];
     },
 
-    /**
-     * Description
-     * @method manageBridge
-     * @param {} state
-     * @param {} obj
-     * @return 
-     */
-    manageBridge: function (state, obj) {
 
-        console.log("pushing in bridge");
-        state.bridges_selected.push(obj);
-    },
-
-    /**
-     * Description
-     * @method removeBridge
-     * @param {} state
-     * @param {} val
-     * @return 
-     */
-    removeBridge: function (state, val) { /** TODO **/
-    },
-
-    /**
-     * Description
-     * @method clearBridges
-     * @param {} state
-     * @return 
-     */
-    clearBridges: function (state) {
-        console.log("Bridges cleanUp");
-        state.bridges_selected = [];
-    },
-
-    /**
-     * Description
-     * @method clearAllBridgeData
-     * @param {} state
-     * @return 
-     */
-    clearAllBridgeData: function (state) {
-
-        console.log("clearing all bridge data");
-
-        state.bridge_orientation = '';
-        state.bridge_supports_selected = [];
-        state.bridges_selected = [];
-        state.bridge_ID = 0;
-        state.bridge_supportID = 0;
-        state.has_bridge = 0;
-        state.dimensions.delta_width = 0;
-        state.dimensions.delta_length = 0;
-
-        console.log("has bridge changed to: " + state.has_bridge);
-    },
 
     /**
      * Description
@@ -613,7 +559,77 @@ const  mutations = {
         console.log("IMAGE: " , payload.image);
         console.log("SKU: " , payload.sku);
         console.log("DEFINIRE BENE STORE PER QUESTE INFO E POI FARE LOGICA!!!!")
-    }
+    },
+
+
+    changeBridgeSku(state,payload) {
+        let _tmp = state.bridgeTypes[state.objectWorkingOn.id];
+        let _tmp1 = _tmp['items'];
+        let itemToPutIn = _tmp1.filter((item)=> {
+            return (item.sku==payload);
+        });
+        state.bridges_selected = state.bridges_selected.map((item) => {
+            return itemToPutIn[0];
+        });
+    },
+
+    addBridge(state) {
+        // # get the first item
+        let bridgeExample = state.bridges_selected[0];
+        state.bridges_selected.push(bridgeExample);
+    },
+
+    removeBridge(state) {
+        state.bridges_selected.pop();
+    },
+
+    /**
+     * Description
+     * @method manageBridge
+     * @param {} state
+     * @param {} obj
+     * @return
+     */
+    manageBridge: function (state, obj) {
+
+        console.log("pushing in bridge");
+        state.bridges_selected.push(obj);
+    },
+
+
+    /**
+     * Description
+     * @method clearBridges
+     * @param {} state
+     * @return
+     */
+    clearBridges: function (state) {
+        console.log("Bridges cleanUp");
+        state.bridges_selected = [];
+    },
+
+    /**
+     * Description
+     * @method clearAllBridgeData
+     * @param {} state
+     * @return
+     */
+    clearAllBridgeData: function (state) {
+
+        console.log("clearing all bridge data");
+
+        state.bridge_orientation = '';
+        state.bridge_supports_selected = [];
+        state.bridges_selected = [];
+        state.bridge_ID = 0;
+        state.bridge_supportID = 0;
+        state.has_bridge = 0;
+        state.dimensions.delta_width = 0;
+        state.dimensions.delta_length = 0;
+
+        console.log("has bridge changed to: " + state.has_bridge);
+    },
+
 
 };
 

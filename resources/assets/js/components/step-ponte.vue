@@ -425,7 +425,8 @@ export default {
                 break;
             }
 
-            this.$store.commit( "manageBridge", bridge );
+            // # Push the first bridge of the selected type
+            this.$store.commit( "manageBridge", bridge.items[0] );
         },
 
         /**

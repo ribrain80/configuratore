@@ -76,8 +76,8 @@
                                 N. {{ $store.state.bridges_selected.length }}
                             </div>
                             <div class="col-lg-6">
-                                <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge">+</button>
-                                <button class="btn btn-default btn-sm" @click="alert( 'todo' );">-</button>
+                                <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge()">+</button>
+                                <button class="btn btn-default btn-sm" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">-</button>
                                 <button class="btn btn-default btn-sm" @click="clearBridges">Rimuovi tutti</button>
                             </div>
 
@@ -209,7 +209,7 @@
                                             </figure>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-else-if="$store.state.objectWorkingOn.type=='border'">
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
                                             <figure>
                                                 <img :src="variant.image"
                                                      class="img center-block img-responsive img-thumbnail"
@@ -218,6 +218,18 @@
                                                      :data-sku="variant.sku"
                                                 >
                                             </figure>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBridgesVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                            </figure>
+
                                         </div>
 
 
@@ -353,7 +365,9 @@ export default {
          *  Return the tighter bridge width
          */
         tighterBridgeWidth: function () {
-
+            if (!this.$store.state.bridges_selected) {
+                return 0;
+            }
             return this.$store.state.bridges_selected.reduce(
                 function ( min, elem ) {
                     return ( min > elem.width ) ? elem.width : min;
@@ -814,6 +828,8 @@ export default {
 
         selectBridge: function() {
             this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
+            this.$store.commit('setobjectWorkingOn',{type:'bridge',id:this.$store.state.bridge_ID,'obj':null});
+
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
         },
 
@@ -855,6 +871,13 @@ export default {
 
             this.$store.commit('setDrawerBorder',payload);
         },
+
+
+        _updateBridges: function (e) {
+            $('.bridge_representation').css('background-image',"url("+e.target.src+")");
+            this.$store.commit('changeBridgeSku',e.target.dataset.sku);
+        },
+
 
         setColor: function( hex ) {
 
@@ -1203,8 +1226,11 @@ export default {
          * [addBridge description]
          */
         addBridge: function() {
-            this.$store.commit( "manageBridge", this.$store.state.bridges_selected[ 0 ] );
+            this.$store.commit( "addBridge" );
         },
+
+
+
 
         /**
          * [removeBridge description]
@@ -1213,7 +1239,7 @@ export default {
         removeBridge: function() {
 
             if( this.$store.state.bridges_selected.length > 1 ) {
-                this.$store.state.bridges_selected.pop();
+                this.$store.commit( "removeBridge" );
             } else {
                 this.clearBridges();
             }  

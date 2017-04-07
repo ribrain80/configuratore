@@ -24,6 +24,7 @@ class CreateBridgesTable extends Migration
             $table->string('color')->nullable()->default(null);
             $table->string('border')->nullable()->default(null);
             $table->string('texture')->nullable()->default(null);
+            $table->string('textureImg')->nullable()->default(null);
             $table->string('description')->nullable()->default(null);
             $table->nullableTimestamps();
         });

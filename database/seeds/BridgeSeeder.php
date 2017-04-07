@@ -29,10 +29,25 @@ class BridgeSeeder extends Seeder
             $toInsert['border'] = trim($tmp[5]);
             $toInsert['texture'] = trim($tmp[6]);
             $toInsert['description'] = trim($tmp[7]);
+            $toInsert['textureImg'] = '/images/bridges/textures/'.$this->buildTextureImgName( $toInsert['color'], $toInsert['texture'] );
             $dividers[]=$toInsert;
         }
 
 
         DB::table('bridges')->insert($dividers);
     }
+
+
+    private function buildTextureImgName ($color,$texture) {
+        $color = str_replace(" ","",$color);
+        $color = strtolower($color);
+        $texture = str_replace(" ","",$texture);
+        $texture = str_replace("(","-",$texture);
+        $texture = str_replace(")","",$texture);
+        $texture = str_replace("Spazzolata","Spazzolato",$texture);
+        $texture = strtolower($texture);
+        return $color . "_" . $texture . ".jpg";
+
+    }
+
 }

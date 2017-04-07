@@ -116,6 +116,15 @@ const store = new Vuex.Store({
             return [];
         },
 
+        getBridgesVariants: function (state) {
+            if (state.objectWorkingOn.type && state.objectWorkingOn.type=='bridge') {
+                let _tmp = state.bridgeTypes[state.objectWorkingOn.id];
+                return _tmp['items'];
+            }
+        },
+
+
+
         /**
          * Return all dividers variations depending on the selected item
          * @todo: trivial implementation -- just work but i can do it much better
