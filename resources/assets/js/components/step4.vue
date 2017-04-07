@@ -604,68 +604,7 @@ export default {
              * @param  {[type]} e )             {} [description]
              * @return {[type]}   [description]
              */
-            fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {} );
-
-            /**
-             * Double click listener ( Divider deletion )
-             * @param  {Object} e )  original event triggered
-             * @return {void}
-             */
-            fabric.util.addListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {
-
-                try {
-                    
-                    // # Avoid null pbjects
-                    if( null == self.canvas.getActiveObject() ) {
-                        return;
-                    }
-
-                    console.log("Active canvas",self.canvas.getActiveObject());
-                    console.log("Active canvas type",self.canvas.getActiveObject().get( 'type' ));
-
-                    // # Avoid canvas trying to remove itself
-                    if( self.canvas.getActiveObject().get( 'type' ) != "divider" ) {
-                        return;
-                    }
-
-                    // # Cache active object ID
-                    var id = self.canvas.getActiveObject().get( 'id' );
-
-                    // # Remove ID from selected dividers list
-                    self.$store.commit( "removeDivider", id );
-
-                    // # Actually remove object from canvas
-                    self.canvas.remove( self.canvas.getActiveObject() );
-
-                    // # Clean up pointers
-                    self.canvas.discardActiveObject();
-
-                } catch( e ) {
-
-                    // # Log error and ignore it
-                    console.log( e );
-                } finally {
-
-                    // # Stop event propagation and prevent default
-                    // # mandatory cause otherwise the event is passed to the canvas itself
-                    e.preventDefault();
-                    e.stopPropagation();  
-
-                    // # Render all
-                    self.canvas.renderAll(); 
-
-                    // # also return false is needed             
-                    return false;                    
-                }
-
-            });
-
-            /**
-             * [description]
-             * @param  {[type]} e )             {} [description]
-             * @return {[type]}   [description]
-             */
-            fabric.util.removeListener( this.canvas.upperCanvasEl, 'dblclick', function( e ) {});            
+            fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {} );    
 
             // # Draggable images selection
             this.images = document.querySelectorAll( '.canBeDragged' );
