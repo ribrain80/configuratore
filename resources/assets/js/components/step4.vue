@@ -145,7 +145,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 center-block">
                                                     <!-- TODO: Fix the inline style -->
-                                                    <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width: 60%;height: 60%px">
+                                                    <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="height: 80px">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
                                                     <!-- Remove the inline style and use something more responsive -->
@@ -191,7 +191,9 @@
                         <div role="tabpanel" id="colors" class="tab-pane fade in">  
 
                             <div class="row" style="margin-top: 22px">
-                                <span style="color:red">VISUAL-LOG: TYPE: {{ $store.state.objectWorkingOn.type }} -- ID  {{ $store.state.objectWorkingOn.id }}</span>
+                                <div class="col-lg-12">
+                                    <span style="color:red">VISUAL-LOG: TYPE: {{ $store.state.objectWorkingOn.type }} -- ID  {{ $store.state.objectWorkingOn.id }}</span>
+                                </div>
                                 <div class="col-lg-12">
                                     
                                     <div class="row" >
@@ -425,6 +427,15 @@ export default {
          * @return {[type]} [description]
          */
         initCanvas: function() {
+
+           /*
+           //TODO: Check why it is mounted too early
+            if (this.$store.state.canvasReady) {
+               console.log("Dont init twice");
+                return ;
+            } else {
+                this.$store.commit('setCanvasReady');
+            }*/
 
             // # Compute available width
             this.canvasWidth  = parseInt( $( "#canvas-container" ).width() );

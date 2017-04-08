@@ -646,6 +646,11 @@ const  mutations = {
         state.bridge_supports_selected = state.bridge_supports_selected.map((item) => {
             return itemToPutIn[0];
         });
+    },
+
+    setCanvasReady(state) {
+        console.log("SETTING CANVAS READY");
+        state.canvasReady=true;
     }
 
 
