@@ -52,6 +52,15 @@ const  getters = {
         return [];
     },
 
+    getSupportsVariants: function (state) {
+        let output = [];
+        if (state.objectWorkingOn.type && state.objectWorkingOn.type=='bridge' && state.bridge_supportID) {
+            let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[456]:state.supportTypes[898];
+            output = supportsByCategory['items'];
+        }
+        return output;
+    },
+
     getBorderVariants: function (state) {
         if (state.objectWorkingOn.type && state.objectWorkingOn.type=='border') {
             let out = [];

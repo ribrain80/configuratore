@@ -218,6 +218,9 @@
                                             </figure>
                                         </div>
 
+                                        <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                            <h3>Finiture ponti</h3>
+                                        </div>
                                         <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBridgesVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
                                             <figure>
                                                 <img :src="variant.textureImg"
@@ -227,7 +230,19 @@
                                                      :data-sku="variant.sku"
                                                 >
                                             </figure>
-
+                                        </div>
+                                        <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                            <h3>Finiture supporti</h3>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getSupportsVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateSupports( $event ); "
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                            </figure>
                                         </div>
 
 
@@ -815,6 +830,9 @@ export default {
             this.$store.commit('changeBridgeSku',e.target.dataset.sku);
         },
 
+        _updateSupports: function (e) {
+            this.$store.commit('changeSupportSku',e.target.dataset.sku);
+        },
 
         setColor: function( hex ) {
 
