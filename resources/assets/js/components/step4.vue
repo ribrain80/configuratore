@@ -70,7 +70,7 @@
                         
                         <div class="row">
 
-                            <div class="col-lg-2 bridge_representation" :style="{ 'background-color': bridge_hex != '' ?  bridge_hex : ''}" @click="selectBridge( $event );">
+                            <div class="col-lg-2 bridge_representation"  @click="selectBridge( $event );">
                             </div>
                             <div class="col-lg-4">
                                 N. {{ $store.state.bridges_selected.length }}
@@ -845,34 +845,6 @@ export default {
             this.$store.commit('changeSupportSku',e.target.dataset.sku);
         },
 
-        setColor: function( hex ) {
-
-            console.log( this.selectedItem );
-            if( $.isEmptyObject( this.selectedItem ) ) {
-                return;
-            }
-
-            switch( this.selectedItem.type ) {
-
-                case "border":
-                    console.log( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex" );
-                    this.$store.commit( "setDrawerBorder" + this.selectedItem.id.capitalizeFirstLetter() + "Hex", hex );
-                break;
-
-                case "bridge":
-                    this.$store.commit( "setBridgeHex", hex );
-                    this.bridge_hex = hex;
-                    // this.selectedItem.setBackgroundColor( hex );
-                    // this.canvas.renderAll();
-                break;
-
-                case "divider":
-
-                break;
-            }
-
-        },
-
         /**
          * [handleMoving description]
          * @param  {[type]} options [description]
@@ -1162,15 +1134,6 @@ export default {
         },
 
         /**
-         * [isSelected description]
-         * @param  {[type]}  id [description]
-         * @return {Boolean}    [description]
-         */
-        isSelected: function( id ) {
-            return $.inArray( id, this.$store.state.dividers_selected ) != -1;
-        },
-
-        /**
          * [genHref description]
          * @param  {[type]} val [description]
          * @return {[type]}     [description]
@@ -1224,19 +1187,6 @@ export default {
          * @return {[type]} [description]
          */
         check: function() {
-
-            // # Check
-            /*if( this.$store.state.dividers_selected.length == 0 ) {
-
-                $( "#error-modal" ).find( '.modal-body' ).text( "Devi selezionare almeno un divisorio" );
-                $( '#error-modal' ).modal();
-
-                // # Step4 has errors
-                this.$store.commit( "setFourcompleted", false );
-
-                // # Stay here and fix it
-                return false;  
-            } */
 
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );
