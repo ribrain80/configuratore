@@ -73,8 +73,9 @@
                     </div>
 
                     <!-- Support choice -->
-                    <div class="row" v-for="( bridge_support, cat, index ) in $store.state.supportTypes">
-                        <div :class="[ 'col-lg-4', index == 0 ? 'col-lg-offset-2' : '']" v-show="checkSupportCompatibility( bridge_support )">
+                    <div class="row" >
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-4 " :class="[ ($store.getters.getSupportsAvailabe.length == 1 && index == 0)  ? 'col-lg-offset-2' : '']" v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe" >
                             <figure class="drawer-container" >
                                 <img src="/images/others/step-ponte/support_high.png"
                                      class="img img-responsive  img-shadow"
@@ -243,7 +244,7 @@ export default {
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height ) ;
             console.log("SH" + shoulder_height_float );
-            console.log( bridge_support );
+            console.log("DH" + this.$store.state.drawertype );
 
             // # Switch drawer type
             switch( this.$store.state.drawertype ) {
@@ -273,7 +274,8 @@ export default {
                 case 3: // # Lineabox 2 sides
                 case 2: // # Lineabox 3 sides
                 case 1: // # Lineabox 4 sides
-
+                    console.log("HEIGHT:",bridge_support.height);
+                    console.log("SHOULDER:",shoulder_height_float);
                     // # Switch support height
                     switch( bridge_support.height ) { 
 
@@ -300,7 +302,6 @@ export default {
          * @return {[type]}        [description]
          */
         checkBridgeCompatibility: function( bridge ) { 
-            console.log( bridge );
 
             // # Parse to float
             var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
@@ -459,7 +460,8 @@ export default {
                     this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
                     // # Orientation is the one of the bridge
-                    bridge_support.orientation = this.$store.state.bridge_orientation;
+                   // bridge_support.orientation = this.$store.state.bridge_orientation;
+
                     
                     this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
 
@@ -485,7 +487,7 @@ export default {
                             this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
                             // # Orientation is the one of the bridge
-                            bridge_support.orientation = this.$store.state.bridge_orientation;
+                           // bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push 2 of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
@@ -515,7 +517,7 @@ export default {
                             this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
                             // # Orientation is the one of the bridge
-                            bridge_support.orientation = this.$store.state.bridge_orientation;
+                           // bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push ONLY ONE  of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );

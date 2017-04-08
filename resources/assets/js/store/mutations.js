@@ -289,14 +289,20 @@ const  mutations = {
      * Description
      * @method manageBridgeSupport
      * @param {} state
-     * @param {} obj
+     * @param {} payload
      * @return 
      */
-    manageBridgeSupport: function (state, obj) {
+    manageBridgeSupport: function (state, payload) {
 
         console.log("pushing in support");
-        state.bridge_supports_selected = [obj];
+        state.bridge_supports_selected.push(payload.items[0]);
     },
+
+
+    setBridge_support_orientation:function (state,payload) {
+      state.bridge_support_orientation=payload;
+    },
+
 
     /**
      * Description

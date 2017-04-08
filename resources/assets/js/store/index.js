@@ -78,7 +78,36 @@ const store = new Vuex.Store({
      */
     getters: {
 
+        getSupportsAvailabe: function (state) {
+            if (state.dimensions.shoulder_height && state.drawertype) {
+                let output = [];
+                let shoulder_height_float = parseFloat(state.dimensions.shoulder_height);
+                _.forOwn(state.supportTypes, (value, key) => {
+                    switch( state.drawertype ) {
+                        case 4:
+                            if ((value.height<=45.6) && shoulder_height_float >= 72) {
+                                output.push(value);
+                            }
+                            if ((value.height>=89.8) && shoulder_height_float >= 116) {
+                                output.push(value);
+                            }
 
+                            break;
+                        default:
+                            // # Lineabox is the defaul here!!!!!
+                            if ((value.height<=45.6) && shoulder_height_float >= 72 && shoulder_height_float < 148) {
+                                output.push(value);
+                            }
+                            if ((value.height>=89.8) && shoulder_height_float >= 148) {
+                                output.push(value);
+                            }
+                            break;
+                    }
+                });
+                return output;
+            }
+            return [];
+        },
 
         getBorderVariants: function (state) {
             if (state.objectWorkingOn.type && state.objectWorkingOn.type=='border') {
@@ -389,6 +418,11 @@ const store = new Vuex.Store({
          * @type {Number}
          */
         bridge_supportID: 0,
+
+        /**
+         * Orientation of the bridgeSupport
+         */
+        bridge_support_orientation: false,
 
         /**
          * Bridge unique support ID
