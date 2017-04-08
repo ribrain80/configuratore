@@ -215,7 +215,7 @@ export default {
             this.$store.commit( "clearBridgeData" );
             this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } ); 
         },
-        
+
 
         /**
          * [resetData description]
@@ -246,13 +246,13 @@ export default {
             this.$store.commit( "clearBridges" );
             
             // # Parse to float
-            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
+            let shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
 
             // # Switch drawer types
             switch( this.$store.state.drawertype ) {
 
                 case 4:
-
+                    // # todo: capire perchè è qui!
                     if( shoulder_height_float >= 116 && shoulder_height_float < 138.5 ) {
 
                         // # TODO bridgeID won't be 1 or 2
