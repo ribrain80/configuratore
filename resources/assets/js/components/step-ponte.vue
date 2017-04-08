@@ -82,7 +82,7 @@
                                      :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
                                      @click="selectBridgeSupport( bridge_support )"
                                 />
-                                <figcaption> {{bridge_support.id}} h:{{bridge_support.height}} mm </figcaption>
+                                <figcaption> h:{{bridge_support.height}} mm </figcaption>
                             </figure>
                         </div>
                     </div>
@@ -102,18 +102,17 @@
 
                 <!-- Bridges choice -->
                 <div class="row" >
-
-                    <div :class="[ 'col-lg-4', index == 0 ? 'col-lg-offset-2' : '']" v-for="( bridge, cat, index ) in $store.state.bridgeTypes" v-if="checkBridgeCompatibility( bridge )">
-
-                        <figure class="drawer-container" >
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4 " :class="[ ($store.getters.getBridgesAvailabe.length == 1 && index == 0)  ? 'col-lg-offset-2' : '']" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
+                            <figure class="drawer-container" >
                             <img src="/images/others/step-ponte/bridge_high.png"
                                  class="img img-responsive  img-shadow"
-                                 :class="{ 'img-desaturate': cat != $store.state.bridge_ID }"
+                                 :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
                                  @click="selectBridgeType( bridge )"
                                  :data-width="bridge.width"
                                  :data-depth="bridge.depth"
                             />
-                            <figcaption>id: {{ bridge.id }} w:{{ bridge.width }} mm d:{{ bridge.depth }} mm </figcaption>
+                            <figcaption>w:{{ bridge.width }} mm d:{{ bridge.depth }} mm </figcaption>
                         </figure>
 
                     </div>
@@ -216,14 +215,7 @@ export default {
             this.$store.commit( "clearBridgeData" );
             this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } ); 
         },
-
-        /**
-         * [checkOrientationCompatibility description]
-         * @return {[type]} [description]
-         */
-        checkOrientationCompatibility: function() {
-            return this.$store.state.is_suitable_width_4hbridge;
-        },
+        
 
         /**
          * [resetData description]
@@ -231,126 +223,6 @@ export default {
          */
         resetData: function() {
             this.$store.commit( "clearAllBridgeData" );
-        },
-
-        /**
-         * [checkSupportCompatibility description]
-         * @todo check
-         * @param  {[type]} bridge_support [description]
-         * @return {[type]}                [description]
-         */
-        checkSupportCompatibility: function( bridge_support ) {
-
-            // # Parse to float
-            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height ) ;
-            console.log("SH" + shoulder_height_float );
-            console.log("DH" + this.$store.state.drawertype );
-
-            // # Switch drawer type
-            switch( this.$store.state.drawertype ) {
-                
-                // # Custom drawer
-                case 4:
-
-                    // # Switch support height
-                    switch( bridge_support.height ) { 
-
-                        // # low support 
-                        case 45.6:
-                            return shoulder_height_float >= 72;
-                        break;
-
-                        // # high support 
-                        case 89.8:
-                            return shoulder_height_float >= 116;
-                        break;
-
-                    }
-
-                break;
-
-                // # Lineabox
-                default:
-                case 3: // # Lineabox 2 sides
-                case 2: // # Lineabox 3 sides
-                case 1: // # Lineabox 4 sides
-                    console.log("HEIGHT:",bridge_support.height);
-                    console.log("SHOULDER:",shoulder_height_float);
-                    // # Switch support height
-                    switch( bridge_support.height ) { 
-
-                        // # low support 
-                        case 45.6:
-                            return shoulder_height_float >= 72 && shoulder_height_float < 148;
-                        break;
-
-                        // # high support 
-                        case 89.8:
-                            return shoulder_height_float >= 148;
-                        break;
-
-                    }                
-
-                break;
-            }
-            
-        },  
-
-        /**
-         * [checkBridgeCompatibility description]
-         * @param  {[type]} bridge [description]
-         * @return {[type]}        [description]
-         */
-        checkBridgeCompatibility: function( bridge ) { 
-
-            // # Parse to float
-            var shoulder_height_float = parseFloat( this.$store.state.dimensions.shoulder_height );
-            
-            // # Switch drawer type
-            switch( this.$store.state.drawertype ) {
-                
-                // # Custom drawer
-                case 4:
-
-                    // # Switch bridge height ( depth )
-                    switch( bridge.depth ) {
-
-                        // # low bridge
-                        case 25.5:
-                            return shoulder_height_float >= 72;
-                        break;
-
-                        // # High bridge
-                        case 48:
-                            return  shoulder_height_float >= 94.5 
-                        break;
-                    }
-
-                break;
-
-                // # Lineabox
-                default:
-                case 3: // # Lineabox 2 sides
-                case 2: // # Lineabox 3 sides
-                case 1: // # Lineabox 4 sides
-
-                    // # Switch bridge height ( depth )
-                    switch( bridge.depth ) {
-
-                        // # low bridge
-                        case 25.5:
-                            return shoulder_height_float >= 72;
-                        break;
-
-                        // # High bridge
-                        case 48:
-                            return shoulder_height_float >= 94.5;
-                        break;
-                    }   
-
-                break;               
-            }
-            
         },
 
         /**

@@ -1,5 +1,25 @@
 const  getters = {
 
+    getBridgesAvailabe: function (state) {
+        let output = [];
+        if (state.dimensions.shoulder_height && state.drawertype) {
+            let shoulder_height_float = parseFloat( state.dimensions.shoulder_height );
+            console.log("shoulder_height_float in getter",shoulder_height_float);
+            _.forOwn(state.bridgeTypes, (value, key) => {
+                console.log("KEY in getter",key);
+                console.log("H in getter",value.height);
+                if ((key <= 25.5) && shoulder_height_float >= 72) {
+                    output.push(value);
+                }
+                if (( key >= 48 ) && shoulder_height_float >= 94.5) {
+                    output.push(value);
+                }
+            });
+        }
+        console.log("OUTPUT in getter: ",output);
+        // # Default output: empty array
+        return output;
+    },
 
     getSupportsAvailabe: function (state) {
         if (state.dimensions.shoulder_height && state.drawertype) {
