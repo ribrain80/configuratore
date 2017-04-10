@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-12" >
                     <div class="col-lg-2 pull-left" >
-                        <button class="btn btn-split-small">{{ 'step4.select_all' | translate }}</button>
+                        <button class="btn btn-split-small" @click="selectAll()">{{ 'step4.select_all' | translate }}</button>
                     </div> 
 
                     <div class="col-lg-2 pull-right" >
@@ -428,14 +428,14 @@ export default {
          */
         initCanvas: function() {
 
-           /*
-           //TODO: Check why it is mounted too early
-            if (this.$store.state.canvasReady) {
-               console.log("Dont init twice");
-                return ;
-            } else {
-                this.$store.commit('setCanvasReady');
-            }*/
+            // # Draggable images selection
+            this.images = document.querySelectorAll( ".canBeDragged" );
+
+            // # Add drag handler to all the images
+            [].forEach.call( this.images, ( img ) => {
+                img.addEventListener( 'dragstart', this.handleDragStart, false);
+                img.addEventListener( 'dragend',   this.handleDragEnd, false);
+            });        
 
             // # Compute available width
             this.canvasWidth  = parseInt( $( "#canvas-container" ).width() );
@@ -448,10 +448,11 @@ export default {
             this.canvasHeight = parseInt( this.real_height * this.config.ratio );
             console.log( "CH: " + this.canvasHeight );
 
+            // # Set DOM dimensions
             $( "#canvas-container" ).width( this.canvasWidth );
-
-            // # Force dimensions
             $( "#canvas-container" ).height( this.canvasHeight );
+
+            // # FIX ME
             $( ".edge_2d_v" ).height( this.canvasHeight );
 
             // # Initialize canvas
@@ -466,96 +467,112 @@ export default {
              * @param  {[type]} (options          [description]
              * @return {[type]}                   [description]
              */
-            this.canvas.on( ['object:moving'],  (options) => {
+            this.canvas.on( ['object:moving'],  ( options ) => {
                 this.handleMoving( options );
             });
+
+            /*this.canvas.on( ['object:selected'],  ( options ) => {
+                console.log( options.type );
+                options.setStroke( "#ffcc00" );
+                options.setStrokeWidth( 2 ); 
+            });*/
+
 
 
             // # Last chance 
             // # FIX ME
             this.canvas.on( "mouse:up", () => {
 
-                if( null != this.selectedItem ) {
+                // # No selected Item, return
+                if( null == this.selectedItem ) {
+                    console.log( "no item selected" );
+                    return;
+                }
 
-                    if( this.selectedItem.type == "divider" ) {
+                // # Only for dividers
+                if( this.selectedItem.type == "divider" ) {
 
-                        // Loop through objects
-                        this.canvas.forEachObject( ( obj ) => {
-
-                                // # Do nothing if the object checked against is itself
-                                if ( obj === this.selectedItem ) return;
-
-                                // # Set element Coords
-                                this.selectedItem.setCoords();
-                                console.log( "intersect " + this.selectedItem.intersectsWithObject(obj) );
-
-                                // If objects intersect
-                                if (this.selectedItem.intersectsWithObject( obj ) ) { 
-
-                                var intersectLeft = null,
-                                    intersectTop = null,
-                                    intersectWidth = null,
-                                    intersectHeight = null,
-                                    intersectSize = null,
-                                    targetLeft = this.selectedItem.getLeft(),
-                                    targetRight = targetLeft + this.selectedItem.getWidth(),
-                                    targetTop = this.selectedItem.getTop(),
-                                    targetBottom = targetTop + this.selectedItem.getHeight(),
-                                    objectLeft = obj.getLeft(),
-                                    objectRight = objectLeft + obj.getWidth(),
-                                    objectTop = obj.getTop(),
-                                    objectBottom = objectTop + obj.getHeight();            
-
-                                // Find intersect information for X axis
-                                if(targetLeft >= objectLeft && targetLeft <= objectRight) {
-                                    intersectLeft = targetLeft;
-                                    intersectWidth = obj.getWidth() - (intersectLeft - objectLeft);
-
-                                } else if(objectLeft >= targetLeft && objectLeft <= targetRight) {
-                                    intersectLeft = objectLeft;
-                                    intersectWidth = this.selectedItem.getWidth() - (intersectLeft - targetLeft);
-                                }
-
-                                // Find intersect information for Y axis
-                                if(targetTop >= objectTop && targetTop <= objectBottom) {
-                                    intersectTop = targetTop;
-                                    intersectHeight = obj.getHeight() - (intersectTop - objectTop);
-
-                                } else if(objectTop >= targetTop && objectTop <= targetBottom) {
-                                    intersectTop = objectTop;
-                                    intersectHeight = this.selectedItem.getHeight() - (intersectTop - targetTop);
-                                }  
+                    this.canvas.getActiveObject().setOpacity( 1 );
 
 
-                                console.log( "IL" + intersectLeft );
-                                console.log( "IH" + intersectHeight );
-                                console.log( "IT" + intersectTop );
-                                console.log( "IW" + intersectWidth );
-                          
-                                // Find intersect size (this will be 0 if objects are touching but not overlapping)
-                                if(intersectWidth > 0 && intersectHeight > 0) {
-                                    intersectSize = intersectWidth * intersectHeight;
-                                }                                    
+                    // Loop through objects
+                    this.canvas.forEachObject( ( obj ) => {
 
-                                    console.log( "Intersect size " + intersectSize );
-                                    obj.setOpacity(1);
+                        // # Do nothing if the object checked against is itself
+                        if ( obj === this.selectedItem ) return;
 
-                                    if( intersectSize != null ) {
+                        obj.setOpacity( 1 );
 
-                                        this.canvas.discardActiveObject();
-                                        // # Actually remove object from canvas
-                                        //this.canvas.remove( this.canvas.getActiveObject() ); 
-                                        this.canvas.remove( this.selectedItem );
-                                        // # Clean up pointers
-                                       
-                                        this.canvas.renderAll();
-                                        this.canvas.calcOffset();
-                                    }
+                        // # Set element Coords
+                        this.selectedItem.setCoords();
+                        console.log( "intersect " + this.selectedItem.intersectsWithObject(obj) );
 
-                                }     
+                            // If objects intersect
+                        if (this.selectedItem.intersectsWithObject( obj ) ) { 
 
-                        });                
-                    }
+                            var intersectLeft = null,
+                                intersectTop = null,
+                                intersectWidth = null,
+                                intersectHeight = null,
+                                intersectSize = null,
+                                targetLeft = this.selectedItem.getLeft(),
+                                targetRight = targetLeft + this.selectedItem.getWidth(),
+                                targetTop = this.selectedItem.getTop(),
+                                targetBottom = targetTop + this.selectedItem.getHeight(),
+                                objectLeft = obj.getLeft(),
+                                objectRight = objectLeft + obj.getWidth(),
+                                objectTop = obj.getTop(),
+                                objectBottom = objectTop + obj.getHeight();            
+
+                            // Find intersect information for X axis
+                            if(targetLeft >= objectLeft && targetLeft <= objectRight) {
+                                intersectLeft = targetLeft;
+                                intersectWidth = obj.getWidth() - (intersectLeft - objectLeft);
+
+                            } else if(objectLeft >= targetLeft && objectLeft <= targetRight) {
+                                intersectLeft = objectLeft;
+                                intersectWidth = this.selectedItem.getWidth() - (intersectLeft - targetLeft);
+                            }
+
+                            // Find intersect information for Y axis
+                            if(targetTop >= objectTop && targetTop <= objectBottom) {
+                                intersectTop = targetTop;
+                                intersectHeight = obj.getHeight() - (intersectTop - objectTop);
+
+                            } else if(objectTop >= targetTop && objectTop <= targetBottom) {
+                                intersectTop = objectTop;
+                                intersectHeight = this.selectedItem.getHeight() - (intersectTop - targetTop);
+                            }  
+
+
+                            console.log( "IL" + intersectLeft );
+                            console.log( "IH" + intersectHeight );
+                            console.log( "IT" + intersectTop );
+                            console.log( "IW" + intersectWidth );
+                      
+                            // Find intersect size (this will be 0 if objects are touching but not overlapping)
+                            if(intersectWidth > 0 && intersectHeight > 0) {
+                                intersectSize = intersectWidth * intersectHeight;
+                            }                                    
+
+                            if( intersectSize != null ) {
+
+                                console.log( "Intersect size " + intersectSize );
+
+                                this.canvas.getActiveObject().setOpacity( 0.5 );
+                                /*this.canvas.discardActiveObject();
+                                // # Actually remove object from canvas
+                                //this.canvas.remove( this.canvas.getActiveObject() ); 
+                                this.canvas.remove( this.selectedItem );
+                                // # Clean up pointers
+                               
+                                this.canvas.renderAll();
+                                this.canvas.calcOffset();*/
+                            }
+
+                        }     
+
+                    });                
                 }
             });
 
@@ -632,15 +649,6 @@ export default {
              */
             fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {} );    
 
-            // # Draggable images selection
-            this.images = document.querySelectorAll( '.canBeDragged' );
-
-            // # Add drag handler to all the images
-            [].forEach.call( self.images, function (img) {
-                img.addEventListener( 'dragstart', self.handleDragStart, false);
-                img.addEventListener( 'dragend', self.handleDragEnd, false);
-            });
-
             // # Get the container element
             var canvasContainer = document.getElementById( 'canvas-container' );
 
@@ -655,6 +663,7 @@ export default {
         },
 
         alertDividerDeletion: function() {
+
             if( null == this.selectedItem ) {
                 return;
             }
@@ -664,6 +673,16 @@ export default {
             }
             
             $( "#deletion-alert-modal" ).modal();
+        },
+
+        selectAll: function() {
+            /*var objs = this.canvas.getObjects().map( function( o ) {
+                return o.set( 'active', true );
+            });
+
+            this.canvas.renderAll();*/
+
+            alert( "todo" );
         },
 
         deleteDivider: function() {
@@ -731,15 +750,14 @@ export default {
                // # let's say that we want to set a threshold
                // # this will prevent the scale change when 
                // # H / W dfference is little
-               var threshold = available_width * 1.1;
+               var threshold = available_width;
                
                // # Initial height computed based on available width
                var computed_height = this.real_height * this.config.ratio;
                console.log( "CH first " + computed_height );
 
-               // # Reduce the computed height to a dimension similar to the 
-               // # available width so that the resulting shape won't be to 
-               // # tall
+               // # Reduce the computed height to a dimension max = available width 
+               // # so that the resulting shape won't be to tall
                while( computed_height > threshold ) {
 
                     // # Reduce ratio at each iteration
@@ -876,7 +894,7 @@ export default {
             var starting_point= options.target.calcCoords().bl;
 
             // # lock container
-            // Don't allow objects off the canvas
+            // # Don't allow objects off the canvas
             if(options.target.getLeft() < this.snap) {
                 options.target.setLeft(0);
             }
@@ -904,11 +922,9 @@ export default {
 
                 // # If objects intersect
                 // # once there was the findNewPos call
-                if ( options.target.intersectsWithObject( obj ) ) { 
-                    obj.setOpacity(options.target.intersectsWithObject( obj ) ? 0.5 : 1);
-                }
+               //options.target.setOpacity( options.target.intersectsWithObject( obj ) ? 0.5 : 1 );
 
-                // # This.snap objects to each other horizontally
+                // # This snaps objects to each other horizontally
 
                 // If bottom points are on same Y axis
                 if(Math.abs((options.target.getTop() + options.target.getHeight()) - (obj.getTop() + obj.getHeight())) < this.snap) {
@@ -971,6 +987,8 @@ export default {
                         options.target.setTop(obj.getTop() - options.target.getHeight());
                     }
                 }
+
+                // options.target.setOpacity( options.target.intersectsWithObject( obj ) ? 0.5 : 1 );
 
                 options.target.setCoords();                
             });
@@ -1062,7 +1080,83 @@ export default {
                  this.draggingDivider.src
              );
 
-            fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
+
+             //document.getElementById("imageID").onload
+
+             /*
+             var imgObj = new Image();
+imgObj.src = "http://www.w3schools.com/css/img_fjords.jpg";
+imgObj.onload = function () 
+              */
+             
+            var imgObj = new Image();
+            imgObj.src = this.draggingDivider.src;
+
+            imgObj.onload = () => {
+
+                var oImg = new fabric.Image(imgObj);
+                oImg.setWidth( _imgW );
+                oImg.setHeight( _imgH );
+
+                // # Set image position
+                oImg.setLeft( e.layerX );
+                oImg.setTop( e.layerY );
+
+                // # Set background color
+                oImg.setBackgroundColor( '#ccc' );    //Set a light gray background
+                
+                // # Set controls off
+                oImg.hasControls = false;
+                oImg.hasBorders  = false;
+
+                oImg.perPixelTargetFind = true;
+                oImg.originX = "left";
+                oImg.originY = "top";
+
+                oImg.dropped = true;
+                
+                // # Set ID unique
+                oImg.id =_divider.id;
+
+                // # Set Sku
+                //oImg.sku = _imgSku;
+
+
+                oImg.type = "divider";
+                oImg.orientation = _imgOr;
+
+                // # Add image to canvas
+                this.canvas.add( oImg ); 
+
+                var coords = oImg.calcCoords().bl;
+                var centerCoords = oImg.getCenterPoint();
+
+                this.selectedItem = oImg;
+
+                _divider.x=coords.x;
+                _divider.y=coords.y;
+
+                oImg.on('selected', function() {
+                    console.log( "SELECTED" );
+                    this.setStroke( "#ffcc00" );
+                    this.setStrokeWidth( 2 );  
+                });
+
+                oImg.on( 'deselected', function() {
+                    console.log( "DESELECTED" );
+                    this.setStrokeWidth( 0 );  
+                });
+
+                // # Push divider
+                this.$store.commit( "pushDivider", _divider );
+                
+                // # Set ObjectWorking On
+                this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id,'obj':oImg});                 
+
+            };
+
+
+            /*fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
 
                 // # Set image dimensions
                 oImg.setWidth( _imgW );
@@ -1105,13 +1199,25 @@ export default {
 
                 _divider.x=coords.x;
                 _divider.y=coords.y;
+
+                oImg.on('selected', function() {
+                    console.log( "SELECTED" );
+                    this.setStroke( "#ffcc00" );
+                    this.setStrokeWidth( 2 );  
+                });
+
+                oImg.on( 'deselected', function() {
+                    console.log( "DESELECTED" );
+                    this.setStrokeWidth( 0 );  
+                });
+
                 // # Push divider
                 this.$store.commit( "pushDivider", _divider );
                 // # Set ObjectWorking On
                 this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id,'obj':oImg});
 
 
-            });
+            });*/
 
 
             // # todo: find a way to dont open tab in this way
