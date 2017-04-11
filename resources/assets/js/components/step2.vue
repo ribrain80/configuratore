@@ -38,10 +38,10 @@
         <div v-for="( type,category ) in $store.state.drawerTypes">
             <div class="col-lg-4" v-if="type.length == 1">
                 <!-- Drawer type -->
-                <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
+                <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
                     <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                         class="img img-responsive img-rounded img-shadow"
+                         class="img img-responsive img-rounded center-block img-shadow"
                          :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
                          @click="setType( type[ 0 ].id )"
                     />
@@ -50,10 +50,10 @@
                 
             <div class="col-lg-4 col-lg-offset-2" v-else>
                 <!-- Drawer category -->
-                <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
+                <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
                     <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                         class="img img-responsive img-rounded img-shadow img-desaturate"
+                         class="img img-responsive img-rounded center-block img-shadow img-desaturate"
                          @click="setDrawerTypeCategory( 1 )"
                     />
                 </figure>
