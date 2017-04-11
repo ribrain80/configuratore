@@ -473,117 +473,7 @@ export default {
             // # Last chance 
             // # FIX ME
             this.canvas.on( "mouse:up", () => {
-
-                var activeObj = this.canvas.getActiveObject();
-                
-                // # No selected Item, return
-                if( null == activeObj ) {
-                    return;
-                }
-
-                // # No type defined, return
-                if( undefined == activeObj.type ) {
-                    return;
-                }
-
-                // # Only for dividers
-                if( activeObj.type == "divider" ) {
-
-                    // # Reset standard opacity ( some object may be stuck in half opacity )
-                    // # this is a "runtime" fix
-                    activeObj.setOpacity( 1 );
-
-                    // Loop through objects
-                    this.canvas.forEachObject( ( obj ) => {
-
-                        // # Set element Coords
-                        activeObj.setCoords();
-
-
-
-                        // # Do nothing if the object checked against is itself
-                        if ( obj === activeObj ) {
-                            console.log( "same" );
-                            console.log( obj );
-                            return;
-                        }
-
-                        // # Check type
-                        if( undefined == obj.type || obj.type != "divider" ) {
-                            console.log( "no type" );
-                            console.log( obj );
-                            return;
-                        }
-
-                        // # Reset standard opacity ( some object may be stuck in half opacity )
-                        // # this is a "runtime" fix
-                        obj.setOpacity( 1 );
-
-
-                        // # Log intersection
-                        console.log( "intersect " + activeObj.intersectsWithObject(obj) );
-
-                        // # If objects intersect
-                        if ( activeObj.intersectsWithObject( obj ) ) { 
-
-                            // # Intersections init
-                            var intersectLeft = null, intersectTop = null, intersectWidth = null;
-                            var intersectHeight = null, intersectSize = null;
-                            var targetLeft = activeObj.getLeft();
-                            var targetRight = targetLeft + activeObj.getWidth();
-                            var targetTop = activeObj.getTop();
-                            var targetBottom = targetTop + activeObj.getHeight();
-                            var objectLeft = obj.getLeft();
-                            var objectRight = objectLeft + obj.getWidth();
-                            var objectTop = obj.getTop();
-                            var objectBottom = objectTop + obj.getHeight();            
-
-                            // Find intersect information for X axis
-                            if( targetLeft >= objectLeft && targetLeft <= objectRight ) {
-                                intersectLeft = targetLeft;
-                                intersectWidth = obj.getWidth() - ( intersectLeft - objectLeft );
-
-                            } else if( objectLeft >= targetLeft && objectLeft <= targetRight ) {
-                                intersectLeft = objectLeft;
-                                intersectWidth = activeObj.getWidth() - ( intersectLeft - targetLeft );
-                            }
-
-                            // Find intersect information for Y axis
-                            if( targetTop >= objectTop && targetTop <= objectBottom ) {
-                                intersectTop = targetTop;
-                                intersectHeight = obj.getHeight() - ( intersectTop - objectTop );
-
-                            } else if( objectTop >= targetTop && objectTop <= targetBottom ) {
-                                intersectTop = objectTop;
-                                intersectHeight = activeObj.getHeight() - ( intersectTop - targetTop );
-                            }  
-                      
-                            // Find intersect size (this will be 0 if objects are touching but not overlapping)
-                            if( intersectWidth > 0 && intersectHeight >  0 ) {
-                                console.log( "intersect area!" );
-                                intersectSize = intersectWidth * intersectHeight;
-                            }                                    
-
-                            if( intersectSize != null ) {
-
-                                console.log( "Intersect size " + intersectSize );
-
-                                activeObj.setOpacity( 0.5 );
-                                this.canvas.renderAll();
-                                /*this.canvas.discardActiveObject();
-                                // # Actually remove object from canvas
-                                //this.canvas.remove( this.canvas.getActiveObject() ); 
-                                this.canvas.remove( this.selectedItem );
-                                // # Clean up pointers
-                               
-                                this.canvas.renderAll();
-                                this.canvas.calcOffset();*/
-                            }
-
-                        }     
-
-                    });                
-                }
+                this.finalCollisionDetectionManagement();
             });
 
 
@@ -731,6 +621,109 @@ export default {
 
             $( "#deletion-alert-modal" ).modal( 'hide' );
             $( '#tab-container a:first' ).tab( 'show' );
+        },
+
+        finalCollisionDetectionManagement: function() {
+
+              var activeObj = this.canvas.getActiveObject();
+                
+                // # No selected Item, return
+                if( null == activeObj ) {
+                    return;
+                }
+
+                // # No type defined, return
+                if( undefined == activeObj.type ) {
+                    return;
+                }
+
+                // # Only for dividers
+                if( activeObj.type == "divider" ) {
+
+                    // # Reset standard opacity ( some object may be stuck in half opacity )
+                    // # this is a "runtime" fix
+                    activeObj.setOpacity( 1 );
+
+                    // Loop through objects
+                    this.canvas.forEachObject( ( obj ) => {
+
+                        // # Set element Coords
+                        activeObj.setCoords();
+
+                        // # Do nothing if the object checked against is itself
+                        if ( obj === activeObj ) {
+                            console.log( "same" );
+                            return;
+                        }
+
+                        // # Check type
+                        if( undefined == obj.type || obj.type != "divider" ) {
+                            console.log( "no type" );
+                            return;
+                        }
+
+                        // # Reset standard opacity ( some object may be stuck in half opacity )
+                        // # this is a "runtime" fix
+                        obj.setOpacity( 1 );
+
+                        // # Log intersection
+                        console.log( "intersect " + activeObj.intersectsWithObject(obj) );
+
+                        // # If objects intersect
+                        if ( activeObj.intersectsWithObject( obj ) ) { 
+
+                            // # Intersections init
+                            var intersectLeft = null, intersectTop = null, intersectWidth = null;
+                            var intersectHeight = null, intersectSize = null;
+                            var targetLeft = activeObj.getLeft();
+                            var targetRight = targetLeft + activeObj.getWidth();
+                            var targetTop = activeObj.getTop();
+                            var targetBottom = targetTop + activeObj.getHeight();
+                            var objectLeft = obj.getLeft();
+                            var objectRight = objectLeft + obj.getWidth();
+                            var objectTop = obj.getTop();
+                            var objectBottom = objectTop + obj.getHeight();            
+
+                            // Find intersect information for X axis
+                            if( targetLeft >= objectLeft && targetLeft <= objectRight ) {
+                                intersectLeft = targetLeft;
+                                intersectWidth = obj.getWidth() - ( intersectLeft - objectLeft );
+
+                            } else if( objectLeft >= targetLeft && objectLeft <= targetRight ) {
+                                intersectLeft = objectLeft;
+                                intersectWidth = activeObj.getWidth() - ( intersectLeft - targetLeft );
+                            }
+
+                            // Find intersect information for Y axis
+                            if( targetTop >= objectTop && targetTop <= objectBottom ) {
+                                intersectTop = targetTop;
+                                intersectHeight = obj.getHeight() - ( intersectTop - objectTop );
+
+                            } else if( objectTop >= targetTop && objectTop <= targetBottom ) {
+                                intersectTop = objectTop;
+                                intersectHeight = activeObj.getHeight() - ( intersectTop - targetTop );
+                            }  
+                      
+                            // Find intersect size (this will be 0 if objects are touching but not overlapping)
+                            if( intersectWidth > 0 && intersectHeight >  0 ) {
+                                console.log( "intersect area!" );
+                                intersectSize = intersectWidth * intersectHeight;
+                            }                                    
+
+                            if( intersectSize != null ) {
+                                console.log( "Intersect size " + intersectSize );
+                                activeObj.setOpacity( 0.5 );
+                                this.canvas.renderAll();
+                                return;
+                            }
+
+                            // # No collision
+                            activeObj.setOpacity( 1 );
+                            this.canvas.renderAll();
+                            
+                        }     
+                    });                
+                }
         },
 
         /**
@@ -899,7 +892,7 @@ export default {
 
         _preventCollision: function ( options ) {
 
-            console.log( "starting point coords" );
+            console.log( "get starting point coords" );
             options.target.setCoords();
             var starting_point= options.target.calcCoords().bl;
 
@@ -1134,8 +1127,6 @@ export default {
                 var coords = oImg.calcCoords().bl;
                 var centerCoords = oImg.getCenterPoint();
 
-                this.selectedItem = oImg;
-
                 _divider.x = coords.x;
                 _divider.y = coords.y;
 
@@ -1148,19 +1139,23 @@ export default {
                     this.setStrokeWidth( 0 );  
                 });
 
+                oImg.set( 'active', true );
+                this.canvas.setActiveObject( oImg );
+
+                this.selectedItem = oImg;
+
                 // # Push divider
                 this.$store.commit( "pushDivider", _divider );
 
                 // # Set ObjectWorking On
-                this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id,'obj':oImg});                 
+                this.$store.commit( 'setobjectWorkingOn',{ type:'divider', id:_divider.id, 'obj':oImg } ); 
 
+                // # Final check
+                this.finalCollisionDetectionManagement();  
             };
 
-            // # todo: find a way to dont open tab in this way
-            // $( '#tab-container a[href="#colors"]' ).tab( 'show' );
-
             // # Clean data property
-            this.draggingDivider={};
+            this.draggingDivider = {};
 
             // # Return
             return false;
