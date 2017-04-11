@@ -29,7 +29,9 @@ body {
 }
 
 .edge {
-  border: 1px solid #efefef;  
+  border: 1px solid #ddd; 
+  background-color: #efefef; 
+  cursor:pointer;
 }
 
 .edge_selected {
@@ -47,6 +49,11 @@ body {
   height: 30px;
   cursor:pointer;
   width: 30px;
+}
+
+.bridge_representation {
+  cursor:pointer;
+  line-height: 30px;
 }
 
 .edge_2d_h {

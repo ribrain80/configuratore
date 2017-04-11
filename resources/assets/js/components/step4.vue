@@ -36,28 +36,16 @@
                     </div> 
                 </div>
             </div>
-            
-            <!-- Upper edge -->
-            <!--<div class="row">
-                <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" 
-                :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}" id="top" @click='selectBorder( $event );'></div>
-            </div>-->
+        
             
             <!-- Center content -->
             <div class="row top1">
-
-                <!-- Left edge -->
-                <!--<div :class="[ 'col-lg-1', 'edge_2d_v', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" 
-                :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}" id="left" @click='selectBorder( $event );'></div>-->
                 
                 <!-- Actual drawer canvas -->
                 <div class="dragdrop-area center-block" id="canvas-container">
                     <canvas id="canvas" class="center-block"></canvas>
                 </div>
                 
-                <!-- Right edge -->
-                <!--<div :class="[ 'col-lg-1', 'edge_2d_v', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" 
-                :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}" id="right" @click='selectBorder( $event );'></div>-->
             </div>
 
             <div class="row top1">
@@ -70,21 +58,31 @@
                         
                         <div class="row">
 
-                            <div class="col-lg-2 bridge_representation"  @click="selectBridge( $event );">
+                            <div class="col-lg-3 bridge_representation"  @click="selectBridge( $event );">
+                                Ponte {{ $store.state.bridge_orientation }} - N. {{ $store.state.bridges_selected.length }}
                             </div>
-                            <div class="col-lg-4">
-                                N. {{ $store.state.bridges_selected.length }}
-                            </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge()">+</button>
                                 <button class="btn btn-default btn-sm" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">-</button>
-                                <button class="btn btn-default btn-sm" @click="clearBridges">Rimuovi tutti</button>
+                                <button class="btn btn-default btn-sm" @click="clearBridges">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
                             </div>
 
-                        </div>
+                            <div class="col-lg-6">
+                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="top" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}">
+                                    TOP
+                                </div>
+                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}">LEFT</div>
+                                
+                                <div class="col-lg-6 text-center">LATI</div>
 
-                        <div class="row">
-                            <span class="help-block">Ponte {{ $store.state.bridge_orientation }}</span>
+                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}">RIGHT</div>
+
+                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]" id="bottom" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}">BOTTOM</div>
+
+                            </div>                     
+
                         </div>
 
                     </div>
@@ -93,13 +91,6 @@
 
             </div>            
 
-            
-            <!-- Lower edge -->
-            <!--<div class="row">
-                <div :class="[ 'col-lg-12', 'edge_2d_h edge', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]"  
-                :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}"id="bottom" @click='selectBorder( $event );'></div>
-            </div>-->
-            
             <!-- Bridge info and management -->
             <div class="row top1">
                 
@@ -800,9 +791,9 @@ export default {
 
             let _selectedBorder = event.target;
 
-            this.$store.commit('setobjectWorkingOn',{type:'border',id:_selectedBorder.id,obj:_selectedBorder});
+            this.$store.commit( 'setobjectWorkingOn', { type:'border', id:_selectedBorder.id,obj:_selectedBorder } );
 
-            console.log(this.$store.state.objectWorkingOn);
+            console.log( this.$store.state.objectWorkingOn );
 
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
         },  
@@ -1098,43 +1089,47 @@ export default {
                 
                 // # Set controls off
                 oImg.hasControls = false;
+
+                // # borders off
                 oImg.hasBorders  = false;
 
+                // # Pixel precision
                 oImg.perPixelTargetFind = true;
+
+                // # Change origin point to corner top left
                 oImg.originX = "left";
                 oImg.originY = "top";
 
+                // # Image has been dropped
                 oImg.dropped = true;
                 
                 // # Set ID unique
                 oImg.id =_divider.id;
 
-                // # Set Sku
-                //oImg.sku = _imgSku;
-
-
+                // # Set object type
                 oImg.type = "divider";
+
+                // # Set orientation
                 oImg.orientation = _imgOr;
 
                 // # Add image to canvas
                 this.canvas.add( oImg ); 
 
+                // # Coords
                 var coords = oImg.calcCoords().bl;
                 var centerCoords = oImg.getCenterPoint();
 
                 this.selectedItem = oImg;
 
-                _divider.x=coords.x;
-                _divider.y=coords.y;
+                _divider.x = coords.x;
+                _divider.y = coords.y;
 
                 oImg.on('selected', function() {
-                    console.log( "SELECTED" );
                     this.setStroke( "#ffcc00" );
                     this.setStrokeWidth( 2 );  
                 });
 
                 oImg.on( 'deselected', function() {
-                    console.log( "DESELECTED" );
                     this.setStrokeWidth( 0 );  
                 });
 
@@ -1146,73 +1141,8 @@ export default {
 
             };
 
-
-            /*fabric.Image.fromURL( this.draggingDivider.src,( oImg ) => {
-
-                // # Set image dimensions
-                oImg.setWidth( _imgW );
-                oImg.setHeight( _imgH );
-
-                // # Set image position
-                oImg.setLeft( e.layerX );
-                oImg.setTop( e.layerY );
-
-                // # Set background color
-                oImg.setBackgroundColor( '#ccc' );    //Set a light gray background
-                
-                // # Set controls off
-                oImg.hasControls = false;
-                oImg.hasBorders  = false;
-
-                oImg.perPixelTargetFind = true;
-                oImg.originX = "left";
-                oImg.originY = "top";
-
-                oImg.dropped = true;
-                
-                // # Set ID unique
-                oImg.id =_divider.id;
-
-                // # Set Sku
-                //oImg.sku = _imgSku;
-
-
-                oImg.type = "divider";
-                oImg.orientation = _imgOr;
-
-                // # Add image to canvas
-                this.canvas.add( oImg ); 
-
-                var coords = oImg.calcCoords().bl;
-                var centerCoords = oImg.getCenterPoint();
-
-                this.selectedItem = oImg;
-
-                _divider.x=coords.x;
-                _divider.y=coords.y;
-
-                oImg.on('selected', function() {
-                    console.log( "SELECTED" );
-                    this.setStroke( "#ffcc00" );
-                    this.setStrokeWidth( 2 );  
-                });
-
-                oImg.on( 'deselected', function() {
-                    console.log( "DESELECTED" );
-                    this.setStrokeWidth( 0 );  
-                });
-
-                // # Push divider
-                this.$store.commit( "pushDivider", _divider );
-                // # Set ObjectWorking On
-                this.$store.commit('setobjectWorkingOn',{type:'divider',id:_divider.id,'obj':oImg});
-
-
-            });*/
-
-
             // # todo: find a way to dont open tab in this way
-            $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+            // $( '#tab-container a[href="#colors"]' ).tab( 'show' );
 
             // # Clean data property
             this.draggingDivider={};
