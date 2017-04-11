@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Models\Divider;
 use App\Models\Drawer;
 use App\Models\PdfDrawer;
+use App\Models\Support;
 use Mail;
 use Illuminate\Http\Request;
 
@@ -41,8 +42,6 @@ class SplitDrawerController extends Controller
      */
     private function save($data)
     {
-
-
         //2 Inizializzo l'oggetto (sia save che update)
         $drawer = $this->loadModel(isset($data['drawerId'])?$data['drawerId']:null);
         //3 Aggiorno i campi di model (fake)
@@ -77,11 +76,13 @@ class SplitDrawerController extends Controller
             $drawer->drawerbridges()->sync($bridges);
             //6 Gestisco i supports
             $supports = [];
+            $_supportLength = ($data['bridge_orientation']!="V")?$data['dimensions']['length']:$data['dimensions']['width'];
             foreach ($data['bridge_supports_selected'] as $support) {
                 $supports[]  = [
-                    'support' => $support['id'],
-                    'orientation'=>$support['orientation'],
-                    'length'=> $support['length']
+                    'support' => $this->getSupportIdBySku($support['sku']) ,
+
+                    'orientation'=>$data['bridge_orientation'],
+                    'length'=> $_supportLength
                 ];
             }
             $drawer->drawersupports()->sync($supports);
@@ -146,6 +147,12 @@ class SplitDrawerController extends Controller
          $model = Divider::where('sku',$sku)->get()->first();
          if (!$model) {return false;}
          return $model->id;
+    }
+
+    private function getSupportIdBySku($sku) {
+        $model = Support::where('sku',$sku)->get()->first();
+        if (!$model) {return false;}
+        return $model->id;
     }
 
 }

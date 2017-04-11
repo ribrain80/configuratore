@@ -53,12 +53,18 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('supports',['as'=>'split.api.bridges','uses'=>'ApiController@actionSupports']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     //EXPORT TO PDF
+    Route::get('topdf/debug/{drawer}',['as'=>'split.export.topdf.debug','uses'=>'ExportController@actionDebug']);
     Route::get('topdf/header/{drawer}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
     Route::get('topdf/{id}/{brochure?}/{lang?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
+
     //FABRIC
     Route::get('fabric',['uses'=>function () {
         return view('fabric');
     }]);
+
+
+
+
 
     Route::get('/{catchall?}', function () {
         return response()->view('split.application');

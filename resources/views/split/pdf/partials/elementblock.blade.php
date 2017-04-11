@@ -1,5 +1,6 @@
 <div class="col-xs-6 boxelem">
         @if($element)
+
         <?php
         //Prepare dimension values
         $obj = $element['item'];
@@ -28,6 +29,7 @@
             case 'support':
                 $l = $obj->pivot->length;
                 $d = $obj->height;
+                $texture = $obj->color;
                 break;
 
             default:

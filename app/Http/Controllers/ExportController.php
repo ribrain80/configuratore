@@ -154,4 +154,25 @@ class ExportController extends Controller
             'pages'=>$pages
         ];
     }
+
+
+
+    public function actionDebug($id) {
+        //Set application locale from the request param language
+
+        //Load the Drawer from db, if throw an exception if the drawer dont exist
+        $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
+
+        //Handle all kind of dividers,bridges and supports
+        $elements = $this->handleElements($model->drawerdividers,$model->drawerbridges,$model->drawersupports);
+
+
+        return view('split.pdf.riepilogo', ['model'=>$model,'dividers'=>$elements]);
+
+
+
+    }
+
+
+
 }
