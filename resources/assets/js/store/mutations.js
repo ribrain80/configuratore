@@ -298,11 +298,7 @@ const  mutations = {
         state.bridge_supports_selected.push(payload.items[0]);
     },
 
-
-    setBridge_support_orientation:function (state,payload) {
-      state.bridge_support_orientation=payload;
-    },
-
+    
 
     /**
      * Description
@@ -334,57 +330,18 @@ const  mutations = {
         state.has_bridge = false;
     },
 
-    setDrawerBorderTopHex: function( state, obj ) {
-        console.log( "changing border top hex to: " + obj );
-        state.drawer_border_top.hex = obj;
-    },
-
-    setDrawerBorderLeftHex: function( state, obj ) {
-        console.log( "changing border left hex to: " + obj );
-        state.drawer_border_left.hex = obj;
-    },
-
-    setDrawerBorderRightHex: function( state, obj ) {
-        console.log( "changing border right hex to: " + obj );
-        state.drawer_border_right.hex = obj;
-    },
-
-    setDrawerBorderBottomHex: function( state, obj ) {
-        console.log( "changing border bottom hex to: " + obj );
-        state.drawer_border_bottom.hex = obj;
-    },  
-
-    setDrawerBorderSelected: function( state, obj ) {
-        state[ "drawer_border_" +  obj.id ].selected = obj.val;
-        console.log( state[ "drawer_border_" +  obj.id ] );
-    },  
-
     clearDrawerBorders: function( state ) {
-        state.drawer_border_top = { hex: '', selected: false };
-        state.drawer_border_left = { hex: '', selected: false };
-        state.drawer_border_right = { hex: '', selected: false };
-        state.drawer_border_bottom = { hex: '', selected: false };
-    },
-
-    setDividerHex: function( state, obj ) {
-
-        var i = 0;
-        state.dividers_selected.forEach( function( divider, index ) {
-            if( obj.id === divider.id ) {
-                 i = index;
-            }
-        });
-
-        state.dividers_selected[ i ].hex = obj.hexa;
-    },  
-
-    setBridgeHex: function( state, obj ) {
-
-        for( var i = 0; i < state.bridges_selected.length; i++ ) {
-            state.bridges_selected[ i ].hex = obj;
+        state.borders = {
+            top: '',
+            left: '',
+            bottom: '',
+            right: '',
         }
-        console.log( state.bridges_selected );
     },
+
+
+
+
 
     /**
      * Description
@@ -560,11 +517,7 @@ const  mutations = {
 
 
     setDrawerBorder(state,payload) {
-        console.log("Changing border color");
-        console.log("ID: " , payload.id);
-        console.log("IMAGE: " , payload.image);
-        console.log("SKU: " , payload.sku);
-        console.log("DEFINIRE BENE STORE PER QUESTE INFO E POI FARE LOGICA!!!!")
+        state.borders[payload.id]=payload.dbId;
     },
 
 

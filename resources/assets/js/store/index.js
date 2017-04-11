@@ -295,6 +295,15 @@ const store = new Vuex.Store({
          */
         dividers_selected:[],
 
+
+        borders: {
+            top: '',
+            left: '',
+            bottom: '',
+            right: '',
+        },
+
+
         /**
          * Drawer border top data
          * @type {Object}

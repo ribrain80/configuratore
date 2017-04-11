@@ -212,7 +212,7 @@
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBorder( $event );"
                                                      style="width: 100px;height: 100px"
-                                                     :data-sku="variant.sku"
+                                                     :data-sku="variant.id"
                                                 >
                                             </figure>
                                         </div>
@@ -841,7 +841,7 @@ export default {
             let payload = {
                 id:this.$store.state.objectWorkingOn.id,
                 image:e.target.src,
-                sku: e.target.dataset.sku
+                dbId: e.target.dataset.sku  //This is a fake sku => just the db id!!!!
             };
 
             console.log(this.$store.state.objectWorkingOn.obj);

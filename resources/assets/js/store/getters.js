@@ -68,28 +68,28 @@ const  getters = {
                 {
                     description:'Bordo 1 FAKE',
                     image: 'http://lorempixel.com/output/nature-q-c-640-480-6.jpg',
-                    sku: 'FAKE 1'
+                    id: 1,
                 }
             );
             out.push(
                 {
                     description:'Bordo 2 FAKE',
                     image: 'http://lorempixel.com/output/nature-q-c-640-480-5.jpg',
-                    sku: 'FAKE 2'
+                    id: 2,
                 }
             );
             out.push(
                 {
                     description:'Bordo 3 FAKE',
                     image: 'http://lorempixel.com/output/nature-q-c-640-480-4.jpg',
-                    sku: 'FAKE 3'
+                    id: 3,
                 }
             );
             out.push(
                 {
                     description:'Bordo 4 FAKE',
                     image: 'http://lorempixel.com/output/nature-q-c-640-480-3.jpg',
-                    sku: 'FAKE 4'
+                    id: 4,
                 }
             );
             return out;
@@ -177,7 +177,7 @@ const  getters = {
         //Use a subset reduce the bandwidth usage
         let needed_props = ['drawerId' ,'pdf', 'dimensions', 'language', 'drawertype',
             'bridge_orientation', 'bridge_supportID', 'bridge_ID',
-            'bridge_supports_selected', 'bridges_selected', 'dividers_selected' ];
+            'bridge_supports_selected', 'bridges_selected', 'dividers_selected','borders' ];
 
         //return am object with a subset of the state object properties using the pick function from lodash libray
         return _.pick(state,needed_props);
