@@ -13,6 +13,29 @@ body {
   color: #666;
 }
 
+.i-icon {
+  background: url( "/images/others/i-icon.png" ) no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor:pointer;
+}
+
+input {
+  border-left: 0px!important;
+  border-top: 0px!important;
+  border-right: 0px!important;
+  border-radius: 0px!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  box-shadow: none!important;
+}
+
+.control-label {
+    padding: 6px;
+    border-bottom: 1px solid #ddd;
+}
+
 #bridge_placeholder {
   background-color: #ededed;
   border: 1px dashed #999;

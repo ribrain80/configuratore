@@ -159,10 +159,6 @@ export default {
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );
 
-            $( "#step2-alert-warning" ).slideUp( 2000, function() {
-                $( this ).remove();
-            });
-
             // # Set a default 4 lineabox select
             // # Default is the lowest value
             if( 4 != type ) {

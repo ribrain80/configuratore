@@ -25,37 +25,46 @@
         <div class="row">
           
           <!-- Left container "form" -->
-          <div class="col-lg-4">
+          <div class="col-lg-6">
               
               <!-- form group -->
               <div class="form-horizontal">
                   
                   <!-- Width -->
-                  <div v-bind:class="[ 'form-group', width_OOR ? 'has-error' : 'has-success' ]">
-                    <label class="col-sm-7 control-label">LA - {{ 'step3.drawer_width_label' | translate }}</label>
-                    <div class="col-sm-5">
+                  <div class="form-group">
+                    <label class="col-lg-7 col-md-7 ol-sm-7 control-label"><span class="i-icon" @click="alert('click');">&nbsp;</span> LA - {{ 'step3.drawer_width_label' | translate }}</label>
+                    <div :class="['col-lg-5', 'col-md-5', width_OOR ? 'has-error' : 'has-success' ]">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
                         <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 pull-left">
+                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded"/>
                     </div>
                   </div>
 
                   <!-- Length -->
-                  <div v-bind:class="[ 'form-group', length_OOR ? 'has-error' : 'has-success' ]">
-                    <label class="col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
-                    <div class="col-sm-5">
+                  <div class="form-group">
+                    <label class="col-lg-7 col-md-7 col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
+                    <div :class="['col-lg-5', 'col-md-5', length_OOR ? 'has-error' : 'has-success' ]">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
                       <span class="help-block"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 pull-left">
+                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded"/>
+                    </div>                    
                   </div>
                     
                   <!-- Shoulder height -->
                   <!-- Custom drawer -->
-                  <div v-if="$store.state.is_lineabox === false" :class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
-                    <label class="col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
-                    <div class="col-sm-5">
+                  <div v-if="$store.state.is_lineabox === false" class="form-group">
+                    <label class="col-lg-7 col-md-7 col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
+                    <div :class="['col-lg-5', 'col-md-5', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
                       <span class="help-block"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
                     </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 pull-left">
+                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded"/>
+                    </div>                      
                   </div>
                   
                   <!-- Lineabox drawer -->
@@ -82,7 +91,7 @@
           </div>
 
           <!-- Canvas container -->
-          <div class="col-lg-8" >
+          <div class="col-lg-6 center-block" >
               <div id="animation"></div>
           </div>
          
