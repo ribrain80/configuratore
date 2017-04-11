@@ -496,6 +496,7 @@ const  mutations = {
 
     /**
      * Add a divider to state.dividers_selected
+     * Push the first sku in the items list
      * @method pushDivider
      * @param {} state
      * @param {} obj
@@ -503,7 +504,14 @@ const  mutations = {
      */
     pushDivider: function (state, obj) {
         console.log("pushing in divider");
+        let _category = obj.category;
+        let _dividerCategoryObj = state.dividerTypes.dividers[_category];
+        let _dimension = obj.realWidth + "X" + obj.realHeight;
+        let _dividerDimension = _dividerCategoryObj[_dimension];
+        let _objProt = _dividerDimension.items[0];
+        obj.sku = _objProt.sku;
         state.dividers_selected.push( obj );
+
     },
 
 

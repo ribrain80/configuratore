@@ -149,6 +149,7 @@
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block img-responsive "
                                                          :src="divider.imageH"
+                                                         :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,true)"
                                                          :data-width  = "divider.width"
                                                          :data-height = "divider.length"
                                                          :data-sku = "divider.sku"
@@ -164,6 +165,7 @@
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block img-responsive"
                                                          :src="divider.imageV"
+                                                         :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,false)"
                                                          :data-width  = "divider.length"
                                                          :data-height = "divider.width"
                                                          :data-sku = "divider.sku"
@@ -354,6 +356,10 @@ export default {
      */
     computed: {
 
+
+
+
+
         availableDividerCategories: function () {
 
             let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;
@@ -418,6 +424,16 @@ export default {
      * @type {Object}
      */
     methods: {
+
+        /**
+         *  Return the first item in list texture depending on parameters
+         */
+        getDefaultDividerImg: function(divider,cat,dimension,horizontal) {
+             let _dividerCategoryObj = this.$store.state.dividerTypes.dividers[cat];
+             let _dividerDimension = _dividerCategoryObj[dimension];
+             let _obj = _dividerDimension.items[0];
+             return (horizontal)? _obj.textureH : _obj.textureV;
+        },
 
         /**
          * [initCanvas description]
@@ -1082,7 +1098,7 @@ export default {
              );
              
             var imgObj = new Image();
-            imgObj.src = this.draggingDivider.src;
+            imgObj.src = this.draggingDivider.dataset.defaultdivider;
 
             imgObj.onload = () => {
 
