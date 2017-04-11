@@ -799,7 +799,7 @@ export default {
             }   
         },
 
-        selectBorder: function() {
+        selectBorder: function( event ) {
 
             let _selectedBorder = event.target;
 
@@ -810,7 +810,7 @@ export default {
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
         },  
 
-        selectBridge: function() {
+        selectBridge: function( event ) {
             this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
             this.$store.commit('setobjectWorkingOn',{type:'bridge',id:this.$store.state.bridge_ID,'obj':null});
 
@@ -818,7 +818,9 @@ export default {
         },
 
 
-        _updateDividerSku: function () {
+        _updateDividerSku: function ( event ) {
+
+            console.log( event );
 
             let payload = {
                 id: this.$store.state.objectWorkingOn.id,

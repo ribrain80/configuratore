@@ -1,37 +1,32 @@
 <?php
+// # Namespace
 namespace Deployer;
 
+// # importing needed libs
 require_once 'vendor/autoload.php';
 require_once 'recipe/common.php';
 require_once __DIR__ . '/deploy/laravel.php';
 require_once __DIR__ . '/deploy/assets.php';
 
-/**
- * Keep latest 5 releases
- */
-set('keep_releases', 5);
-/**
- * Use of the native ssh command
- */
-set('ssh_type', 'native');
-set('ssh_multiplexing', true);
+// # Keep latest 5 releases
+set( 'keep_releases', 3 );
 
-/**
- * Define a server conf for the milestone2
- */
+// # Use of the native ssh command
+set( 'ssh_type', 'native' );
+set( 'ssh_multiplexing', true );
+
+// # Define a server conf for the milestone2
 server('mile2', 'splitconf.tk', 443)
     ->user('riccardo')
-    ->password('riccardosfelab')    //Not a great idea but usefull (dont use for production)
+    ->password('riccardosfelab')    // Not a great idea but usefull (dont use for production)
     ->stage('mile2')
     ->set('branch', 'master2')
     ->set('deploy_path', "/var/www/mile2");
 
-/**
- * Set the repository
- */
+// # Set the repository
 set('repository', 'https://github.com/ribrain80/configuratore.git');
 
-// Laravel shared dirs
+// # Laravel shared dirs
 set('shared_dirs', [
     'storage/app',
     'storage/framework/cache',
@@ -40,9 +35,7 @@ set('shared_dirs', [
     'storage/logs',
 ]);
 
-
-
-// Laravel writable dirs
+// # Laravel writable dirs
 set('writable_dirs', ['storage', 'vendor','bootstrap','bootstrap/cache']);
 
 /**

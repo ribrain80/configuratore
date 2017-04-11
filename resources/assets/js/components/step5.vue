@@ -77,7 +77,7 @@ export default {
          * [savedrawer description]
          * @return {[type]} [description]
          */
-        savedrawer: function() {
+        savedrawer: function( event ) {
 
             // # Mail mangement
             if ( event.target.id == "email" ) {
