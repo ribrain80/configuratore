@@ -473,7 +473,7 @@ export default {
             }
 
             // # if shoulder height it's not enough go back
-            if( !vm.$store.state.is_suitable_width_4hbridge ) {
+            if( !vm.$store.state.is_suitable_height_4bridge ) {
                  vm.$router.go( -1 );
                  return;
             }
