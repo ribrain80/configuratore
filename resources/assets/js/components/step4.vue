@@ -2,13 +2,15 @@
 
 <div class="container-fluid">
 
-    <!-- Modal -->
+    <!-- Divider deletion Modal -->
     <div class="modal fade" id="deletion-alert-modal" tabindex="-1" role="dialog" aria-labelledby="">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header alert-danger">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
                 </div>
                 <div class="modal-body">Sei sicuro di voler cancellare il divisorio?</div>
                 <div class="modal-footer">
@@ -25,6 +27,7 @@
         <!-- 2D container -->
         <div class="col-lg-6 col-md-6" id="step4_2d">
             
+            <!-- Select All - trash bin row -->
             <div class="row">
                 <div class="col-lg-12" >
                     <div class="col-lg-2 pull-left" >
@@ -47,7 +50,8 @@
                 </div>
                 
             </div>
-
+            
+            <!-- bridges, edges row -->
             <div class="row top1">
 
                 <!-- Only if user selected a bridge -->
@@ -57,7 +61,8 @@
                     <div v-if="$store.state.has_bridge">
                         
                         <div class="row">
-
+                            
+                            <!-- Bridges -->
                             <div class="col-lg-3 bridge_representation"  @click="selectBridge( $event );">
                                 Ponte {{ $store.state.bridge_orientation }} - N. {{ $store.state.bridges_selected.length }}
                             </div>
@@ -68,7 +73,8 @@
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </div>
-
+                            
+                            <!-- Egdes -->
                             <div class="col-lg-6">
                                 <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="top" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}">
                                     TOP
