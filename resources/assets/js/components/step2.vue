@@ -41,7 +41,7 @@
                 <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
                     <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                         class="img img-responsive  img-shadow"
+                         class="img img-responsive img-rounded img-shadow"
                          :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
                          @click="setType( type[ 0 ].id )"
                     />
@@ -53,7 +53,7 @@
                 <figure :class="[ 'drawer-container', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
                     <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
-                         class="img img-responsive  img-shadow img-desaturate"
+                         class="img img-responsive img-rounded img-shadow img-desaturate"
                          @click="setDrawerTypeCategory( 1 )"
                     />
                 </figure>

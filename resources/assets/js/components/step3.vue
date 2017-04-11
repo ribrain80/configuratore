@@ -32,24 +32,24 @@
                   
                   <!-- Width -->
                   <div class="form-group">
-                    <label class="col-lg-7 col-md-7 ol-sm-7 control-label"><span class="i-icon" @click="alert('click');">&nbsp;</span> LA - {{ 'step3.drawer_width_label' | translate }}</label>
+                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label"><a class="i-icon" id="width-popover" rel="popover" data-content="">&nbsp;</a> LA - {{ 'step3.drawer_width_label' | translate }}</label>
                     <div :class="['col-lg-5', 'col-md-5', width_OOR ? 'has-error' : 'has-success' ]">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
                         <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
                     </div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 pull-left">
-                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded"/>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
+                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded" id="width-info-image"/>
                     </div>
                   </div>
 
                   <!-- Length -->
                   <div class="form-group">
-                    <label class="col-lg-7 col-md-7 col-sm-7 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
+                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label">PS - {{ 'step3.drawer_length_label' | translate }}</label>
                     <div :class="['col-lg-5', 'col-md-5', length_OOR ? 'has-error' : 'has-success' ]">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
                       <span class="help-block"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 pull-left">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
                       <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded"/>
                     </div>                    
                   </div>
@@ -57,12 +57,12 @@
                   <!-- Shoulder height -->
                   <!-- Custom drawer -->
                   <div v-if="$store.state.is_lineabox === false" class="form-group">
-                    <label class="col-lg-7 col-md-7 col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
+                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
                     <div :class="['col-lg-5', 'col-md-5', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
                       <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
                       <span class="help-block"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
                     </div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 pull-left">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
                       <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded"/>
                     </div>                      
                   </div>
@@ -1046,6 +1046,14 @@ export default {
 
         // # Log mount 
         console.log( "Dimensions choice mounted" );
+
+        $('#width-popover').popover( 
+          { 
+            placement: 'right', 
+            content: $( "#width-info-image" ).clone( true ), 
+            html: true,
+            container: 'body'
+          });
 
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step3.header-title" );
