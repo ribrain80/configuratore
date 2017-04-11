@@ -496,8 +496,13 @@ export default {
                     // Loop through objects
                     this.canvas.forEachObject( ( obj ) => {
 
+                        // # Set element Coords
+                        activeObj.setCoords();
+
+
+
                         // # Do nothing if the object checked against is itself
-                        if ( obj === this.activeObj ) {
+                        if ( obj === activeObj ) {
                             console.log( "same" );
                             console.log( obj );
                             return;
@@ -514,8 +519,6 @@ export default {
                         // # this is a "runtime" fix
                         obj.setOpacity( 1 );
 
-                        // # Set element Coords
-                        activeObj.setCoords();
 
                         // # Log intersection
                         console.log( "intersect " + activeObj.intersectsWithObject(obj) );

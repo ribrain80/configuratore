@@ -298,7 +298,7 @@ const  mutations = {
         state.bridge_supports_selected.push(payload.items[0]);
     },
 
-    
+
 
     /**
      * Description
