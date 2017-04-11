@@ -478,7 +478,6 @@ export default {
                 
                 // # No selected Item, return
                 if( null == activeObj ) {
-                    console.log( "no item selected" );
                     return;
                 }
 
@@ -498,7 +497,18 @@ export default {
                     this.canvas.forEachObject( ( obj ) => {
 
                         // # Do nothing if the object checked against is itself
-                        if ( obj === this.activeObj ) return;
+                        if ( obj === this.activeObj ) {
+                            console.log( "same" );
+                            console.log( obj );
+                            return;
+                        }
+
+                        // # Check type
+                        if( undefined == obj.type || obj.type != "divider" ) {
+                            console.log( "no type" );
+                            console.log( obj );
+                            return;
+                        }
 
                         // # Reset standard opacity ( some object may be stuck in half opacity )
                         // # this is a "runtime" fix
@@ -916,10 +926,6 @@ export default {
 
                 // # Set element Coords
                 options.target.setCoords();
-
-                // # If objects intersect
-                // # once there was the findNewPos call
-               //options.target.setOpacity( options.target.intersectsWithObject( obj ) ? 0.5 : 1 );
 
                 // # This snaps objects to each other horizontally
 
