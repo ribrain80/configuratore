@@ -28,6 +28,9 @@
             <!-- Orientation choice -->
             <div class="col-lg-12">
 
+                <div class="col-lg-4" v-show="!$store.state.is_suitable_width_4hbridge"></div>
+
+
                 <div class="col-lg-4 col-lg-offset-2" v-show="$store.state.is_suitable_width_4hbridge">
 
                     <figure class="drawer-container" >
