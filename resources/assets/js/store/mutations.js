@@ -506,7 +506,7 @@ const  mutations = {
         console.log("pushing in divider");
         let _category = obj.category;
         let _dividerCategoryObj = state.dividerTypes.dividers[_category];
-        let _dimension = obj.realWidth + "X" + obj.realHeight;
+        let _dimension = obj.subCategory;
         let _dividerDimension = _dividerCategoryObj[_dimension];
         let _objProt = _dividerDimension.items[0];
         obj.sku = _objProt.sku;
