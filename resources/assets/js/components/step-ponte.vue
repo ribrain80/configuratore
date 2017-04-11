@@ -40,7 +40,7 @@
                              :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
                              @click="setOrientation('H')"
                         />
-                        <figcaption class="text-center"> {{ 'orizzontale' | translate}} </figcaption>
+                        <figcaption class="text-center small"> {{ 'orizzontale' | translate}} </figcaption>
                     </figure>
                 </div>
 
@@ -51,7 +51,7 @@
                              :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
                              @click="setOrientation('V')"
                         />
-                        <figcaption class="text-center"> {{ 'verticale' | translate}} </figcaption>
+                        <figcaption class="text-center small"> {{ 'verticale' | translate}} </figcaption>
                     </figure>
                 </div>
 
