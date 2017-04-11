@@ -11,7 +11,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
                 </div>
                 <div class="modal-body">{{ "resetadvice" | translate }}</div>
                 <div class="modal-footer">

@@ -50,10 +50,10 @@
                     
                   <!-- Shoulder height -->
                   <!-- Custom drawer -->
-                  <div v-if="$store.state.is_lineabox === false" v-bind:class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
+                  <div v-if="$store.state.is_lineabox === false" :class="[ 'form-group', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
                     <label class="col-sm-7 control-label">HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
                     <div class="col-sm-5">
-                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="clearAllData" @blur="isSuitableHeightForBridge" autocomplete="off">
+                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
                       <span class="help-block"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
                     </div>
                   </div>
@@ -214,8 +214,6 @@ export default {
 
         isWidthOverMax: function() {
             // # Upper limit check
-            console.log( "MAX");
-            console.log( this.$store.state.dimensions.width > this.config.rect_width_upper_limit );
             return this.$store.state.dimensions.width > this.config.rect_width_upper_limit;
         },
 
@@ -383,7 +381,7 @@ export default {
             if( this.$store.state.dimensions.width > this.getMaxWidth4BridgeByDrawerType ) {
 
                 // # Don't show the modal if the width is > max width ( there is a previous error )
-                if( this.$store.state.dimensions.width < this.config.rect_width_upper_limit ) {
+                if( !this.isWidthOverMax ) {
 
                     // # Show modal alert
                     $( "#error-modal" )
@@ -574,35 +572,17 @@ export default {
          */
         checkChoice: function() {
 
-            // # Allow comma, but change it to a point
-            /*var W = this.$store.state.dimensions.width.replace( /,/g, '.' );
-            W = W.replace( /,/g, '.' );
-            this.$store.commit( "setWidth", "" + parseFloat( W ).toFixed( 2 ) );
-            */
-
             // # NaN management :: width
             if( isNaN( this.$store.state.dimensions.width ) ) {
               this.$store.commit( "setWidth", this.$store.state.dimensions.default_width );
               return false;
             }
 
-            // # Allow comma, but change it to a point
-            /*var L = this.$store.state.dimensions.length.toFixed( 2 );
-            L = L.replace( /,/g, '.' );
-            this.$store.commit( "setLength", "" + parseFloat( L ).toFixed( 2 ) );
-            */
-
             // # NaN management :: length
             if( isNaN( this.$store.state.dimensions.length ) ) {
               this.$store.commit( "setLength", this.$store.state.dimensions.default_height );
               return false;
-            }
-
-            // # Allow comma, but change it to a point
-            /*var SH = this.$store.state.dimensions.shoulder_height;
-            SH = SH.replace( /,/g, '.' );
-            this.$store.commit( "setShoulderHeight", "" + parseFloat( SH ).toFixed( 2 ) );
-            */            
+            }        
 
             // # NaN management :: shoulder_height
             if( isNaN( this.$store.state.dimensions.shoulder_height ) ) {
