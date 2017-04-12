@@ -13,6 +13,7 @@ use App\Models\Drawer;
 use App\Models\PdfDrawer;
 use App\Models\Support;
 use Mail;
+use DB;
 use Illuminate\Http\Request;
 
 
@@ -44,6 +45,7 @@ class SplitDrawerController extends Controller
     {
 
 
+
         //2 Inizializzo l'oggetto (sia save che update)
         $drawer = $this->loadModel(isset($data['drawerId'])?$data['drawerId']:null);
         //3 Aggiorno i campi di model (fake)
@@ -62,12 +64,18 @@ class SplitDrawerController extends Controller
 
 
 
-            //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
-            //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
+            //4 Gestisco i dividers 
+
+            // Clean the pivot table
+            DB::table('drawerdivider')->where('drawer',$drawer->id)->delete();
             $dividers = [];
             foreach ($data['dividers_selected'] as $divider) {
                 $curDividerId= $this->getDividerIdBySku($divider['sku']);
-                $dividers[$curDividerId] = ['x' => $divider['x'], 'y' => $divider['y']];
+                $dividers[] = [
+                    'divider' => $curDividerId,
+                    'x' => $divider['x'],
+                    'y' => $divider['y']
+                ];
             }
             $drawer->drawerdividers()->sync($dividers);
 
