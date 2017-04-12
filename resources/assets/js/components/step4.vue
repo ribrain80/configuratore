@@ -58,20 +58,22 @@
                 <div class="col-lg-12 col-md-12">
                     
                     <!-- Ponti -->
-                    <div v-if="$store.state.has_bridge">
+                    <div>
                         
                         <div class="row">
                             
-                            <!-- Bridges -->
-                            <div class="col-lg-3 bridge_representation"  @click="selectBridge( $event );">
-                                Ponte {{ $store.state.bridge_orientation }} - N. {{ $store.state.bridges_selected.length }}
-                            </div>
-                            <div class="col-lg-3">
-                                <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge()">+</button>
-                                <button class="btn btn-default btn-sm" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">-</button>
-                                <button class="btn btn-default btn-sm" @click="clearBridges">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+                            <div v-if="$store.state.has_bridge">
+                                <!-- Bridges -->
+                                <div class="col-lg-3 bridge_representation"  @click="selectBridge( $event );">
+                                    Ponte {{ $store.state.bridge_orientation }} - N. {{ $store.state.bridges_selected.length }}
+                                </div>
+                                <div class="col-lg-3">
+                                    <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge()">+</button>
+                                    <button class="btn btn-default btn-sm" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">-</button>
+                                    <button class="btn btn-default btn-sm" @click="clearBridges">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
+                                </div>
                             </div>
                             
                             <!-- Egdes -->
@@ -347,6 +349,8 @@ export default {
              * @type {String}
              */
             bridge_hex: '',
+
+            allselected: false,
         }
     },
 
@@ -454,7 +458,7 @@ export default {
             });        
 
             // # Compute available width
-            this.canvasWidth  = parseInt( canvas_container.width() );
+            this.canvasWidth  = parseInt( canvas_container.width() * 0.60 );
             console.log( "CW: " + this.canvasWidth );
 
             // # Compute ratio
@@ -592,13 +596,15 @@ export default {
         },
 
         selectAll: function() {
-            /*var objs = this.canvas.getObjects().map( function( o ) {
-                return o.set( 'active', true );
+
+            /*var objs = this.canvas.getObjects().map( ( o )  => {
+                o.set( 'active', true );
+                o.setStroke( "#ffcc00" );
+                o.setStrokeWidth( 2 );
             });
 
             this.canvas.renderAll();*/
-
-            alert( "todo" );
+            alert( 'todo' );
         },
 
         deleteDivider: function() {
@@ -756,9 +762,13 @@ export default {
             let available_width = this.canvasWidth;
             console.log( "AW" + available_width );
 
+            var real_ratio = ( available_width / this.real_width );
             // # Ratio computed using max allowed rect width
-            this.config.ratio = ( available_width / this.real_width ).toFixed( 2 );
+            this.config.ratio = real_ratio.toFixed( 2 );
             console.log( "RAZ: " + this.config.ratio );
+
+            this.config.ratio = this.config.ratio;
+            console.log( "RAZ adjusted: " + this.config.ratio );
 
             // # height > width
             if( dimensions_ratio < 1 ) {
@@ -1148,7 +1158,13 @@ export default {
                 _divider.x = coords.x;
                 _divider.y = coords.y;
 
+                var self = this;
                 oImg.on('selected', function() {
+
+                    /*var objs = self.canvas.getObjects().map( ( o )  => {
+                        o.trigger('deselected' );//, {target: text});
+                    });*/
+
                     this.setStroke( "#ffcc00" );
                     this.setStrokeWidth( 2 );  
                 });

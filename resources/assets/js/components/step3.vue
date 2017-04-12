@@ -34,7 +34,7 @@
                   <div class="form-group">
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label"><a class="i-icon" id="width-popover" rel="popover" data-content="">&nbsp;</a> LA - {{ 'step3.drawer_width_label' | translate }}</label>
                     <div :class="['col-lg-5', 'col-md-5', width_OOR ? 'has-error' : 'has-success' ]">
-                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off">
+                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" /> <span class="text-danger">mm</span> 
                         <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
