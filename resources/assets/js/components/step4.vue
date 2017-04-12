@@ -1244,6 +1244,9 @@ export default {
         check: function() {
 
             //console.log("EXPORT TO SVG:",this.canvas.toSVG());
+
+            this.$store.commit('setCanvasSvg',this.canvas.toSVG());
+
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );
 

@@ -609,9 +609,13 @@ const  mutations = {
         });
     },
 
-    setCanvasReady(state) {
+    setCanvasReady: function (state) {
         console.log("SETTING CANVAS READY");
         state.canvasReady=true;
+    },
+
+    setCanvasSvg: function(state,svg) {
+        state.canvasSvg=svg;
     }
 
 

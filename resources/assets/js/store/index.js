@@ -93,6 +93,8 @@ const store = new Vuex.Store({
 
         canvasReady: false,
 
+        canvasSvg : "",
+
         /**
          * Current header label
          * @type {String}

@@ -42,6 +42,8 @@ class SplitDrawerController extends Controller
      */
     private function save($data)
     {
+
+
         //2 Inizializzo l'oggetto (sia save che update)
         $drawer = $this->loadModel(isset($data['drawerId'])?$data['drawerId']:null);
         //3 Aggiorno i campi di model (fake)
@@ -49,10 +51,17 @@ class SplitDrawerController extends Controller
         $drawer->width = (int)$data['dimensions']['width'];
         $drawer->depth = (int)$data['dimensions']['shoulder_height'];
         $drawer->drawertypes_id = $data['drawertype'];
+        if ($data['canvasSvg']) {
+            $drawer->svg=$data['canvasSvg'];
+        }
         $saved = false;
         $error = "";
         try {
             $saved = $drawer->saveOrFail();
+            // Gestisco svg
+
+
+
             //4 Gestisco i dividers ....(PER ORA SOLO PER IL NOSTRO TEST!)
             //TODO: CONTROLLARE CHE SUCCEDE SE RIMANE MA CAMBIO I CAMPI X/Y
             $dividers = [];

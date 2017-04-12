@@ -23,6 +23,8 @@ class CreateDrawersTable extends Migration
             $table->tinyInteger('sponda_back')->nullable()->default('0');
             $table->tinyInteger('sponda_left')->nullable()->default('0');
             $table->string('sponda_right', 45)->nullable()->default('0');
+
+            $table->longText('svg')->nullable();
             $table->unsignedInteger('drawertypes_id')->nullable()->default(null);
             $table->unsignedInteger('edgecolor_id')->nullable()->default(null);
             $table->nullableTimestamps();

@@ -10,6 +10,16 @@
         <meta name="generator" lang="en" content="Configuratore split">
         <meta name="author" content="Salice">
         <link rel="author" href="http://www.salice.it">
+        <style>
+            svg {
+               width: 50%;
+                max-width: 50%;
+                height: 100%;
+                border:1px solid black;
+                margin: 0  auto;
+                display: block
+            }
+        </style>
     </head>
     <body>
     <div class="wrap">
@@ -18,7 +28,7 @@
                 <div class="col-xs-12">
                     &nbsp;
                     <div id="box2d">
-                        &nbsp;
+                        &nbsp;{!! $model->svg !!}
                     </div>
                 </div>
             </div>
