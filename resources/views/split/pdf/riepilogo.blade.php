@@ -14,7 +14,7 @@
             svg {
                width: 50%;
                 max-width: 50%;
-                height: 100%;
+                max-height: 80%;
                 border:1px solid black;
                 margin: 0  auto;
                 display: block
