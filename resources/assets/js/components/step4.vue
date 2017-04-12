@@ -458,7 +458,7 @@ export default {
             });        
 
             // # Compute available width
-            this.canvasWidth  = parseInt( canvas_container.width() * 0.60 );
+            this.canvasWidth  = parseInt( canvas_container.width() * 0.80 );
             console.log( "CW: " + this.canvasWidth );
 
             // # Compute ratio
@@ -584,11 +584,13 @@ export default {
 
         alertDividerDeletion: function() {
 
-            if( null == this.selectedItem ) {
+            var activeObj = this.canvas.getActiveObject();
+
+            if( null == activeObj || undefined == activeObj ) {
                 return;
             }
 
-            if( this.selectedItem.get( 'type' ) != "divider") {
+            if( activeObj.get( 'type' ) != "divider") {
                 return;
             }
             
@@ -597,52 +599,78 @@ export default {
 
         selectAll: function() {
 
-            /*var objs = this.canvas.getObjects().map( ( o )  => {
-                o.set( 'active', true );
-                o.setStroke( "#ffcc00" );
-                o.setStrokeWidth( 2 );
+            if( this.allselected ) {
+
+            }
+
+            var objs = this.canvas.getObjects().map( ( o )  => {
+
+                if( !this.allselected ) {
+                    o.set( 'active', false );
+                    o.setStroke( "#ffcc00" );
+                    o.setStrokeWidth( 2 );
+                } else {
+                    if( this.allselected ) {
+                        o.set( 'active', false );
+                        o.setStrokeWidth( 0 );
+                    }
+                }
+
             });
 
-            this.canvas.renderAll();*/
-            alert( 'todo' );
+            this.allselected = true;
+
+            this.canvas.renderAll();
         },
 
         deleteDivider: function() {
 
-            console.log( "IN" );
-            // # Avoid null pbjects
-            if( null == this.selectedItem ) {
-                return;
+            switch( this.allselected ) {
+                
+                case true:
+
+                    this.canvas.clear();
+                    this.canvas.discardActiveObject();
+                    this.canvas.renderAll();
+                    this.allselected = false;
+
+                break;
+
+                case false:
+
+                    var activeObj = this.canvas.getActiveObject();
+
+                    // # Avoid null pbjects
+                    if( null == activeObj || undefined == activeObj ) {
+                        return;
+                    }
+
+                    // # Avoid canvas trying to remove itself
+                    if( activeObj.get( 'type' ) != "divider" ) {
+                        return;
+                    }
+
+                    // # Cache active object ID
+                    var id = activeObj.get( 'id' );
+
+                    // # Remove ID from selected dividers list
+                    this.$store.commit( "removeDivider", id );
+
+                    // # Actually remove object from canvas
+                    this.canvas.remove( activeObj );
+
+                    // # Clean up pointers
+                    this.canvas.discardActiveObject();
+
+                    // # Refresh canvas
+                    this.canvas.renderAll(); 
+                                   
+                break;
             }
-
-            console.log( "Active canvas",this.selectedItem);
-            console.log( "Active canvas type",this.selectedItem.get( 'type' ));
-
-            // # Avoid canvas trying to remove itself
-            if( this.selectedItem.get( 'type' ) != "divider" ) {
-                return;
-            }
-
-            // # Cache active object ID
-            var id = this.selectedItem.get( 'id' );
-
-            // # Remove ID from selected dividers list
-            this.$store.commit( "removeDivider", id );
-
-            // # Actually remove object from canvas
-            this.canvas.remove( this.selectedItem );
-
-            // # Set active object null
-            this.selectedItem = null;
-
-            // # Clean up pointers
-            this.canvas.discardActiveObject();
-
-            // # Refresh canvas
-            this.canvas.renderAll();
 
             $( "#deletion-alert-modal" ).modal( 'hide' );
             $( '#tab-container a:first' ).tab( 'show' );
+
         },
 
         finalCollisionDetectionManagement: function() {
@@ -1161,9 +1189,11 @@ export default {
                 var self = this;
                 oImg.on('selected', function() {
 
-                    /*var objs = self.canvas.getObjects().map( ( o )  => {
+                    this.allselected = false;
+                    var objs = self.canvas.getObjects().map( ( o )  => {
+                        console.log( "IN" );
                         o.trigger('deselected' );//, {target: text});
-                    });*/
+                    });
 
                     this.setStroke( "#ffcc00" );
                     this.setStrokeWidth( 2 );  
@@ -1175,6 +1205,9 @@ export default {
 
                 oImg.set( 'active', true );
                 this.canvas.setActiveObject( oImg );
+                this.canvas.trigger( 'selected', { target: oImg });
+
+                this.allselected = false;
 
                 this.selectedItem = oImg;
 
