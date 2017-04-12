@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-12" >
                     <div class="col-lg-2 pull-left" >
-                        <button class="btn btn-split-small" @click="selectAll()">{{ 'step4.select_all' | translate }}</button>
+                        <button class="btn btn-split-small" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
                     </div> 
 
                     <div class="col-lg-2 pull-right" >
@@ -146,7 +146,7 @@
                                                     <!-- TODO: Fix the inline style -->
                                                     <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="height: 80px">
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
+                                                <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container" v-if="enoughSpace(divider.height, divider.width )">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
                                                          class="img canBeDragged center-block img-responsive "
@@ -361,9 +361,6 @@ export default {
     computed: {
 
 
-
-
-
         availableDividerCategories: function () {
 
             let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;
@@ -428,6 +425,7 @@ export default {
      * @type {Object}
      */
     methods: {
+
 
         /**
          *  Return the first item in list texture depending on parameters
@@ -559,6 +557,8 @@ export default {
 
             });
 
+
+
             /**
              * Canvas click listener remove
              * @param  {[type]} e )             {} [description]
@@ -582,6 +582,19 @@ export default {
             this.canvas.renderAll();
         },
 
+        availableSpace: function() {
+
+            var initial_area = parseInt( this.real_height * this.real_width );
+            return this.$store.state.dividers_selected.reduce((occupied_area,cur) => {return initial_area-=cur.area;},initial_area);
+        },
+
+        enoughSpace: function( divider_width, divider_height ) {
+            var avs = this.availableSpace();
+            console.log( "AVS" +  avs );
+            return avs > ( divider_width * divider_height );
+        },
+
+
         alertDividerDeletion: function() {
 
             var activeObj = this.canvas.getActiveObject();
@@ -599,9 +612,6 @@ export default {
 
         selectAll: function() {
 
-            if( this.allselected ) {
-
-            }
 
             var objs = this.canvas.getObjects().map( ( o )  => {
 
@@ -609,6 +619,7 @@ export default {
                     o.set( 'active', false );
                     o.setStroke( "#ffcc00" );
                     o.setStrokeWidth( 2 );
+                    
                 } else {
                     if( this.allselected ) {
                         o.set( 'active', false );
@@ -618,12 +629,13 @@ export default {
 
             });
 
-            this.allselected = true;
-
+            this.allselected = !this.allselected;
             this.canvas.renderAll();
         },
 
         deleteDivider: function() {
+            console.log( "allselected" );
+            console.log( this.allselected)
 
             switch( this.allselected ) {
                 
