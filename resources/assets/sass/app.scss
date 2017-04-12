@@ -1,12 +1,10 @@
+$icon-font-path: '../fonts/';
 
 // Fonts
 @import "/salicefonts/saliceFonts.css";
 
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
-
-/*@import "/css/bootstrap-material-design.css";
-@import "/css/ripples.css";*/
 
 body { 
   font-family: "FranklinGothicURW-Boo", sans-serif; 

@@ -6,14 +6,14 @@
     <div class="row">
         
         <!-- Full width -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
 
             <!-- Text -->
             <div v-html="$t( 'step1.product_description_text' )"></div>
 
             <!-- Next button -->
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-4 pull-right">
+                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
                     <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
                 </div>
             </div>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Info image -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
             <img src="/images/others/img-step1-right.jpg" class="img img-responsive center-block">
         </div>
 
@@ -61,7 +61,7 @@ export default {
             this.$store.commit( "setOnecompleted", true );
 
             // # Push me to the next step
-        	this.$router.push({ path: '/split/step2' });
+        	this.$router.push( { path: '/split/step2' } );
         }
     },
 

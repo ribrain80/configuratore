@@ -34,24 +34,27 @@
                 <div class="col-lg-4 col-lg-offset-2" v-show="$store.state.is_suitable_width_4hbridge">
 
                     <figure class="drawer-container" >
-
+                        <a class="i-icon" id="orientation-H-popover" rel="popover" data-content="">&nbsp;</a>
                         <img src="/images/others/step-ponte/bridgeH.png"
                              class="img img-responsive  img-shadow"
+                             id="or-H" 
                              :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
                              @click="setOrientation('H')"
                         />
-                        <figcaption class="text-center small"> {{ 'orizzontale' | translate}} </figcaption>
+                        <figcaption :class="[ 'text-center', 'small', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'orizzontale' | translate}} </figcaption>
                     </figure>
                 </div>
 
                 <div class="col-lg-4">
                     <figure class="drawer-container" >
+                        <a class="i-icon" id="orientation-V-popover" rel="popover" data-content="">&nbsp;</a>
                         <img src="/images/others/step-ponte/bridgeV.png"
                              class="img img-responsive  img-shadow"
+                             id="or-V" 
                              :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
                              @click="setOrientation('V')"
                         />
-                        <figcaption class="text-center small"> {{ 'verticale' | translate}} </figcaption>
+                        <figcaption :class="[ 'text-center', 'small', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'verticale' | translate}} </figcaption>
                     </figure>
                 </div>
 
@@ -85,7 +88,7 @@
                                      :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
                                      @click="selectBridgeSupport( bridge_support )"
                                 />
-                                <figcaption> h:{{bridge_support.height}} mm </figcaption>
+                                <figcaption :class="[ 'text-center', 'small', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
                             </figure>
                         </div>
                     </div>
@@ -115,7 +118,7 @@
                                  :data-width="bridge.width"
                                  :data-depth="bridge.depth"
                             />
-                            <figcaption>w:{{ bridge.width }} mm d:{{ bridge.depth }} mm </figcaption>
+                            <figcaption :class="[ 'text-center', 'small', true ? 'text-success' : 'text-danger']"> H: {{ bridge.depth }} mm </figcaption>
                         </figure>
 
                     </div>
@@ -490,6 +493,25 @@ export default {
      */    
     mounted() {
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
+
+        // # Dimensions info popovers
+        // # WIDTH
+        $( '#orientation-H-popover' ).popover({ 
+            placement: 'right', 
+            content: $( "#or-H" ).clone( true ), 
+            html: true,
+            container: 'body'
+        });
+
+                // # Dimensions info popovers
+        // # WIDTH
+        $( '#orientation-V-popover' ).popover({ 
+            placement: 'right', 
+            content: $( "#or-V" ).clone( true ), 
+            html: true,
+            container: 'body'
+        });
+
         console.log( "Step ponte Mounted!" );
     }
 }
