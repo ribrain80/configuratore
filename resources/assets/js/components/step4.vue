@@ -146,37 +146,40 @@
                                                     <!-- TODO: Fix the inline style -->
                                                     <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="height: 80px">
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container" v-if="enoughSpace(divider.height, divider.width )">
-                                                    <!-- Remove the inline style and use something more responsive -->
-                                                    <img draggable="true"
-                                                         class="img canBeDragged center-block img-responsive "
-                                                         :src="divider.imageH"
-                                                         :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,true)"
-                                                         :data-width  = "divider.width"
-                                                         :data-height = "divider.length"
-                                                         :data-sku = "divider.sku"
-                                                         :data-rotate = "90"
-                                                         :data-key = "dimension"
-                                                         :data-cat = "cat"
-                                                         data-type = "divider"
-                                                         data-orientation = "H"
-                                                    >
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
-                                                    <!-- Remove the inline style and use something more responsive -->
-                                                    <img draggable="true"
-                                                         class="img canBeDragged center-block img-responsive"
-                                                         :src="divider.imageV"
-                                                         :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,false)"
-                                                         :data-width  = "divider.length"
-                                                         :data-height = "divider.width"
-                                                         :data-sku = "divider.sku"
-                                                         :data-rotate = "0"
-                                                         :data-key = "dimension"
-                                                         :data-cat = "cat"
-                                                         data-type = "divider"
-                                                         data-orientation = "V"
-                                                    >
+
+                                                <div class="row" v-show="enoughSpace(divider.width, divider.length )">
+                                                    <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
+                                                        <!-- Remove the inline style and use something more responsive -->
+                                                        <img draggable="true"
+                                                             class="img canBeDragged center-block img-responsive "
+                                                             :src="divider.imageH"
+                                                             :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,true)"
+                                                             :data-width  = "divider.width"
+                                                             :data-height = "divider.length"
+                                                             :data-sku = "divider.sku"
+                                                             :data-rotate = "90"
+                                                             :data-key = "dimension"
+                                                             :data-cat = "cat"
+                                                             data-type = "divider"
+                                                             data-orientation = "H"
+                                                        >
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 center-block top1 dragable-img-container">
+                                                        <!-- Remove the inline style and use something more responsive -->
+                                                        <img draggable="true"
+                                                             class="img canBeDragged center-block img-responsive"
+                                                             :src="divider.imageV"
+                                                             :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,false)"
+                                                             :data-width  = "divider.length"
+                                                             :data-height = "divider.width"
+                                                             :data-sku = "divider.sku"
+                                                             :data-rotate = "0"
+                                                             :data-key = "dimension"
+                                                             :data-cat = "cat"
+                                                             data-type = "divider"
+                                                             data-orientation = "V"
+                                                        >
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -263,7 +266,8 @@
         </div>
 
     </div>
-
+    
+    <!-- Buttons row -->
     <div class="row">
         <div class="col-lg-3 col-md-3">
             <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
@@ -588,10 +592,11 @@ export default {
             return this.$store.state.dividers_selected.reduce((occupied_area,cur) => {return initial_area-=cur.area;},initial_area);
         },
 
-        enoughSpace: function( divider_width, divider_height ) {
+        enoughSpace: function( divider_width, divider_length ) {
             var avs = this.availableSpace();
             console.log( "AVS" +  avs );
-            return avs > ( divider_width * divider_height );
+            console.log( "div area" + ( divider_width * divider_length ) );
+            return avs > ( divider_width * divider_length );
         },
 
 
@@ -616,24 +621,23 @@ export default {
             var objs = this.canvas.getObjects().map( ( o )  => {
 
                 if( !this.allselected ) {
-                    o.set( 'active', false );
                     o.setStroke( "#ffcc00" );
                     o.setStrokeWidth( 2 );
-                    
+                    o.set( 'active', true );
                 } else {
-                    if( this.allselected ) {
-                        o.set( 'active', false );
-                        o.setStrokeWidth( 0 );
-                    }
+                    o.setStrokeWidth( 0 );
+                    o.set( 'active', false );
                 }
-
             });
 
             this.allselected = !this.allselected;
+
+            //this.canvas.discardActiveObject();
             this.canvas.renderAll();
         },
 
         deleteDivider: function() {
+
             console.log( "allselected" );
             console.log( this.allselected)
 
@@ -680,6 +684,7 @@ export default {
                 break;
             }
 
+            // # Related events
             $( "#deletion-alert-modal" ).modal( 'hide' );
             $( '#tab-container a:first' ).tab( 'show' );
 
@@ -966,19 +971,24 @@ export default {
 
             // # lock container
             // # Don't allow objects off the canvas
-            if(options.target.getLeft() < this.snap) {
+            
+            // # Snap to left
+            if( options.target.getLeft() < this.snap ) {
                 options.target.setLeft(0);
             }
 
-            if(options.target.getTop() < this.snap) {
+            // # Snap to top
+            if( options.target.getTop() < this.snap ) {
                 options.target.setTop(0);
             }
 
-            if((options.target.getWidth() + options.target.getLeft()) > (this.canvasWidth - this.snap)) {
+            // # Snap to right
+            if( ( options.target.getWidth() + options.target.getLeft() ) > ( this.canvasWidth - this.snap ) ) {
                 options.target.setLeft( this.canvasWidth - options.target.getWidth());
             }
 
-            if((options.target.getHeight() + options.target.getTop()) > (this.canvasHeight - this.snap)) {
+            // # Snap to bottom
+            if(  ( options.target.getHeight() + options.target.getTop() ) > ( this.canvasHeight - this.snap) ) {
                 options.target.setTop( this.canvasHeight - options.target.getHeight());
             }
 
@@ -1152,7 +1162,7 @@ export default {
 
             imgObj.onload = () => {
 
-                var oImg = new fabric.Image(imgObj);
+                var oImg = new fabric.Image( imgObj );
                 oImg.setWidth( _imgW );
                 oImg.setHeight( _imgH );
 
@@ -1201,10 +1211,15 @@ export default {
                 var self = this;
                 oImg.on('selected', function() {
 
-                    this.allselected = false;
+                    // self.allselected = false;
                     var objs = self.canvas.getObjects().map( ( o )  => {
-                        console.log( "IN" );
-                        o.trigger('deselected' );//, {target: text});
+
+                        if( o == this ) {
+                            console.log( "SAME OBJ" );
+                            return;
+                        }
+
+                        o.trigger( 'deselected' );
                     });
 
                     this.setStroke( "#ffcc00" );
@@ -1212,12 +1227,12 @@ export default {
                 });
 
                 oImg.on( 'deselected', function() {
+                    self.allselected = false;
                     this.setStrokeWidth( 0 );  
                 });
 
                 oImg.set( 'active', true );
                 this.canvas.setActiveObject( oImg );
-                this.canvas.trigger( 'selected', { target: oImg });
 
                 this.allselected = false;
 
