@@ -23,8 +23,12 @@
                 $l = $obj->pivot->length;
                 $d = $obj->depth;
                 $img_src = asset("/images/bridges/3D/".$obj->depth.".png");
+                if ($l <= 600) {
+                    $img_src = asset("/images/bridges/3D/".$obj->depth."_short.png");
+                    $sku = $obj->sku_short;
+                }
                 $texture = $obj->texture;
-                $sku = ((double)$obj->pivot->length<=600)?$obj->sku_short:$sku;
+
                 break;
             case 'support':
                 $l = $obj->pivot->length;
