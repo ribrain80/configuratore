@@ -35,7 +35,7 @@
 
                     <figure class="drawer-container" >
                         <a class="i-icon" id="orientation-H-popover" rel="popover" data-content="">&nbsp;</a>
-                        <img src="/images/others/step-ponte/bridgeH.png"
+                        <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/orizzontale.png'"
                              class="img img-responsive  img-shadow"
                              id="or-H" 
                              :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
@@ -48,7 +48,7 @@
                 <div class="col-lg-4">
                     <figure class="drawer-container" >
                         <a class="i-icon" id="orientation-V-popover" rel="popover" data-content="">&nbsp;</a>
-                        <img src="/images/others/step-ponte/bridgeV.png"
+                        <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/verticale.png'"
                              class="img img-responsive  img-shadow"
                              id="or-V" 
                              :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
@@ -83,7 +83,7 @@
                         <div class="col-lg-2"></div>
                         <div class="col-lg-4 " :class="[ ($store.getters.getSupportsAvailabe.length == 1 && index == 0)  ? 'col-lg-offset-2' : '']" v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe" >
                             <figure class="drawer-container" >
-                                <img src="/images/others/step-ponte/support_high.png"
+                                <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/s-'+((bridge_support.id==2)?'alto':'basso')+'.png'"
                                      class="img img-responsive  img-shadow"
                                      :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
                                      @click="selectBridgeSupport( bridge_support )"
@@ -111,7 +111,7 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-4 " :class="[ ($store.getters.getBridgesAvailabe.length == 1 && index == 0)  ? 'col-lg-offset-2' : '']" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
                             <figure class="drawer-container" >
-                            <img src="/images/others/step-ponte/bridge_high.png"
+                            <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/h-'+((bridge.id==48)?'alto':'basso')+'.png'"
                                  class="img img-responsive  img-shadow"
                                  :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
                                  @click="selectBridgeType( bridge )"
