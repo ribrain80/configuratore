@@ -39,26 +39,15 @@
         <!-- Center content -->
     <div class="row top1">
         <div class="col-lg-6">
-            <div class="dragdrop-area center-block" id="canvas-container">
-                <canvas id="canvas" class="center-block"></canvas>
+            <div class="row top1">
+                <div class="col-lg-12">
+                    <div class="dragdrop-area center-block" id="canvas-container">
+                        <canvas id="canvas" class="center-block"></canvas>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-6">
-            <step4_3d></step4_3d>
-        </div>
-    </div>
-
-    <!-- bridges, edges row -->
-    <div class="row top1" style="display: none">
-
-        <!-- Only if user selected a bridge -->
-        <div class="col-lg-12 col-md-12">
-
-            <!-- Ponti -->
-            <div>
-
-                <div class="row">
-
+            <div class="row top1">
+                <div class="col-lg-12">
                     <div v-if="$store.state.has_bridge">
                         <!-- Bridges -->
                         <div class="col-lg-3 bridge_representation"  @click="selectBridge( $event );">
@@ -72,28 +61,12 @@
                             </button>
                         </div>
                     </div>
-
-                    <!-- Egdes -->
-                    <div class="col-lg-6">
-                        <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="top" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}">
-                            TOP
-                        </div>
-                        <div :class="['col-lg-3', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}">LEFT</div>
-
-                        <div class="col-lg-6 text-center">LATI</div>
-
-                        <div :class="['col-lg-3', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}">RIGHT</div>
-
-                        <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]" id="bottom" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}">BOTTOM</div>
-
-                    </div>
-
                 </div>
-
             </div>
-
         </div>
-
+        <div class="col-lg-6">
+            <step4_3d></step4_3d>
+        </div>
     </div>
 
     <!-- tabs row -->
@@ -106,6 +79,9 @@
                 <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
                     <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
                 </li>
+                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">Finiture divisori</a></li>
+                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab">Finiture ponti</a></li>
+                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">Finiture cassetto</a></li>
                 <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#colors">Textures e colori</a></li>
             </ul>
 
@@ -174,6 +150,56 @@
                     </div>
 
                 </div>
+
+
+                <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
+                    <div class="row top1">
+                        <div class="col-lg-12">
+
+                            <div class="row" >
+                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                    <figure>
+                                        <img :src="variant.textureImg"
+                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                             class="img center-block img-responsive img-thumbnail"
+                                             @click="_updateDividerSku( $event );"
+                                             style="width: 100px;height: 100px"
+                                             :data-sku="variant.sku"
+                                        >
+                                    </figure>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div role="tabpanel" id="bridges-tab"  class="tab-pane fade in">
+                    <div class="row top1">
+                        <div class="col-lg-12">
+                            TODO LOGIC HERE
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
+                    <div class="row top1">
+                        <div class="col-lg-12">
+                            <!-- Egdes -->
+                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="top" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}">
+                                    TOP
+                                </div>
+                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}">LEFT</div>
+
+                                <div class="col-lg-6 text-center">LATI</div>
+
+                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}">RIGHT</div>
+
+                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]" id="bottom" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}">BOTTOM</div>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <!-- Colors container -->
                 <div role="tabpanel" id="colors" class="tab-pane fade in">
