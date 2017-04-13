@@ -23,6 +23,9 @@ body {
   text-decoration:none;
 }
 
+.w-100 {
+  width: 100%!important;  
+}
 
 .i-icon {
   background: url( "/images/others/i-icon.png" ) no-repeat;
@@ -31,8 +34,15 @@ body {
   display: inline-block;
   cursor:pointer;
   text-decoration:none;
+  margin-right: 3%;
 }
 
+.input-mm {
+    line-height: 33px;
+    margin-left: -30px;
+    color: #f04f1a !important;
+    font-weight: bold;
+}
 input {
   border-left: 0px!important;
   border-top: 0px!important;
@@ -41,6 +51,7 @@ input {
   -webkit-box-shadow: none!important;
   -moz-box-shadow: none!important;
   box-shadow: none!important;
+  font-weight: bold;
 }
 
 .control-label {

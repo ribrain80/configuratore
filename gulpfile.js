@@ -71,5 +71,4 @@ elixir(function(mix) {
     mix.version('public/css/split.css');
     mix.version(['public/css/split.css', 'public/js/split.js']);
 
-
 });

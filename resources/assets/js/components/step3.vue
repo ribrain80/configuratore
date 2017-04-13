@@ -4,7 +4,7 @@
 <div class="container-fluid" id="step3">
 
         <!-- Alerts: User Warning -->
-        <div class="row">
+        <div class="row top1">
             <div class="col-lg-12">
                 <div class="alert alert-warning alert-dismissible fade in" >
                     <strong>{{ 'attenzione' | translate }}</strong> 
@@ -14,7 +14,7 @@
         </div>
         
         <!-- Alerts: User Error -->
-        <div class="row">
+        <div class="row top1">
           <div class="col-lg-12" v-if="showAlert">
               <div class="alert alert-danger alert-dismissible fade in" id="alert">
                   <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">×</span></button> <strong>{{ 'attenzione' | translate }}</strong> {{ alert_message }}
@@ -32,39 +32,82 @@
                   
                   <!-- Width -->
                   <div class="form-group">
-                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label"><a class="i-icon" id="width-popover" rel="popover" data-content="">&nbsp;</a> LA - {{ 'step3.drawer_width_label' | translate }}</label>
+
+                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label">
+                      <a class="i-icon pull-left" id="width-popover" rel="popover" data-content="">&nbsp;</a> 
+                      <span class="pull-left">LA - {{ 'step3.drawer_width_label' | translate }}</span>
+                    </label>
+
                     <div :class="['col-lg-5', 'col-md-5', width_OOR ? 'has-error' : 'has-success' ]">
-                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" /> <span class="text-danger">mm</span> 
-                        <span class="help-block"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
+
+                      <div class="row">
+                        <div class="col-lg-10"><input type="text" class="form-control text-right" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
+                        </div>
+                        <div class="col-lg-2 input-mm">mm</div>
+                      </div>
+
+                        <span class="help-block pull-right small"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
+
                     </div>
+
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
                       <img src="/images/others/step-3/step3_info_width.png" class="img-responsive img-rounded" id="width-info-image"/>
                     </div>
+
                   </div>
 
                   <!-- Length -->
                   <div class="form-group">
-                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label"><a class="i-icon" id="length-popover" rel="popover" data-content="">&nbsp;</a>PS - {{ 'step3.drawer_length_label' | translate }}</label>
+
+                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
+                      <a class="i-icon pull-left" id="length-popover" rel="popover" data-content="">&nbsp;</a> 
+                      <span class="pull-left">PS - {{ 'step3.drawer_length_label' | translate }}</span>
+                    </label>
+
                     <div :class="['col-lg-5', 'col-md-5', length_OOR ? 'has-error' : 'has-success' ]">
-                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" >
-                      <span class="help-block"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
+
+
+                      <div class="row">
+                        <div class="col-lg-10"><input type="text" class="form-control text-right" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
+                        </div>
+                        <div class="col-lg-2 input-mm">mm</div>
+                      </div>
+
+                      
+                      <span class="help-block pull-right small"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
+
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
                       <img src="/images/others/step-3/step3_info_length.png" class="img-responsive img-rounded" id="length-info-image"/>
-                    </div>                    
+                    </div>   
+
                   </div>
                     
                   <!-- Shoulder height -->
                   <!-- Custom drawer -->
                   <div v-if="$store.state.is_lineabox === false" class="form-group">
-                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label"><a class="i-icon" id="sh-popover" rel="popover" data-content="">&nbsp;</a>HA - {{ 'step3.drawer_edge_height_label' | translate }}</label>
+
+                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
+                      <a class="i-icon pull-left" id="sh-popover" rel="popover" data-content="">&nbsp;</a> 
+                      <span class="pull-left">HA - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                    </label>
+
                     <div :class="['col-lg-5', 'col-md-5', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
-                      <input type="text" class="form-control" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off">
-                      <span class="help-block"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
+                      
+                      <div class="row">
+                        <div class="col-lg-10"><input type="text" class="form-control text-right" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
+                        </div>
+                        <div class="col-lg-2 input-mm">mm</div>
+                      </div>
+
+                      <span class="help-block pull-right small"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
+
                     </div>
+
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
                       <img src="/images/others/step-3/step3_info_depth.png" class="img-responsive img-rounded" id="sh-info-image"/>
-                    </div>                      
+                    </div>  
+
                   </div>
                   
                   <!-- Lineabox drawer -->
@@ -99,18 +142,20 @@
           </div>
          
         </div>  
+        
+        <div class="container-fluid">
+          <div class="row top2">
 
-        <div class="row">
-
-            <div class="col-lg-2 col-md-2 pull-left">
-                <button class="btn btn-danger btn-block pull-right" @click="reset">{{ 'reset' | translate }}</button>
-            </div>            
-            <div class="col-lg-2 col-md-2 pull-right">
-                <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-            </div>
-            <div class="col-lg-2 col-md-2 pull-right">
-                <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
-            </div>
+              <div class="col-lg-2 col-md-2 pull-left">
+                  <button class="btn btn-danger btn-block pull-right" @click="reset">{{ 'reset' | translate }}</button>
+              </div>            
+              <div class="col-lg-2 col-md-2 pull-right">
+                  <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+              </div>
+              <div class="col-lg-2 col-md-2 pull-right">
+                  <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
+              </div>
+          </div>
         </div>
 
 </div>
@@ -1079,7 +1124,7 @@ export default {
             content: $( "#sh-info-image" ).clone( true ), 
             html: true,
             container: 'body'
-        });          
+        });       
     }
 }
 </script>

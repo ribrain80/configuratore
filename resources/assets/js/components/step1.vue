@@ -22,7 +22,7 @@
 
         <!-- Info image -->
         <div class="col-lg-6 col-md-6 col-sm-6">
-            <img src="/images/others/foto-home.png" class="img img-responsive center-block">
+            <img src="/images/others/foto-home.png" class="img img-responsive w-100">
         </div>
 
     </div>

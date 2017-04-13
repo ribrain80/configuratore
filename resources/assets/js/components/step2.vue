@@ -22,7 +22,7 @@
     </div>
     
     <!-- Information alert -->
-    <div class="row">
+    <div class="row top1">
 
         <!-- Alerts: User Warning -->
         <div class="col-lg-12" v-show="$store.state.drawertype == 0">
