@@ -579,11 +579,11 @@ export default {
 
             var activeObj = this.canvas.getActiveObject();
 
-            if( null == activeObj || undefined == activeObj ) {
+            if( null == activeObj || undefined == activeObj || !this.allselected) {
                 return;
             }
 
-            if( activeObj.get( 'type' ) != "divider") {
+            if (( activeObj.get( 'type' ) != "divider") || !this.allselected) {
                 return;
             }
             
