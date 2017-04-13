@@ -21,33 +21,27 @@
         </div>
     </div>
 
+    <!-- Select All - trash bin row -->
+    <div class="row top1">
+        <div class="col-lg-5 col-md-5 pull-left" >
+            <button class="btn btn-split-small" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
+        </div>
 
+        <div class="col-lg-1 col-md-1" style="text-align: right">
+            <img src="/images/others/garbage.png"
+                 style="cursor:pointer;"
+                 @click="alertDividerDeletion()"
+                 v-show="allselected || $store.state.objectWorkingOn.type=='divider'"
+            />
+        </div>
+    </div>
 
         <!-- Center content -->
     <div class="row top1">
         <div class="col-lg-6">
-            <!-- Select All - trash bin row -->
-            <div class="row">
-                <div class="col-lg-2 pull-left" >
-                    <button class="btn btn-split-small" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
-                </div>
-
-                <div class="col-lg-2 pull-right" >
-                    <img src="/images/others/garbage.png"
-                         style="cursor:pointer;"
-                         @click="alertDividerDeletion()"
-                         v-show="allselected || $store.state.objectWorkingOn.type=='divider'"
-                    />
-                </div>
+            <div class="dragdrop-area center-block" id="canvas-container">
+                <canvas id="canvas" class="center-block"></canvas>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Actual drawer canvas -->
-                    <div class="dragdrop-area center-block" id="canvas-container">
-                        <canvas id="canvas" class="center-block"></canvas>
-                    </div>
-                </div>
-            </div>            
         </div>
         <div class="col-lg-6">
             <step4_3d></step4_3d>

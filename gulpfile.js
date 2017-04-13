@@ -60,14 +60,14 @@ elixir(function(mix) {
 
     //Join css and scripts
     mix.styles([
-        'public/css/app.css',
         'public/css/pace-theme-loading-bar.css',
-        'public/css/lightgallery.min.css'
+        'public/css/lightgallery.min.css',
+        'public/css/app.css'
     ], 'public/css/split.css', './');
     mix.scripts(['public/js/vendor.js','public/js/app.js'],'public/js/split.js','./');
 
     //Versiong files
-    
+
     mix.version('public/css/split.css');
     mix.version(['public/css/split.css', 'public/js/split.js']);
 
