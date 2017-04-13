@@ -98,10 +98,11 @@ const  getters = {
     },
 
     getBridgesVariants: function (state) {
-        if (state.objectWorkingOn.type && state.objectWorkingOn.type=='bridge') {
-            let _tmp = state.bridgeTypes[state.objectWorkingOn.id];
+        if (state.has_bridge && state.bridge_ID) {
+            let _tmp = state.bridgeTypes[state.bridge_ID];
             return _tmp['items'];
         }
+        return [];
     },
 
 

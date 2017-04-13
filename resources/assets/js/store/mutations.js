@@ -530,7 +530,7 @@ const  mutations = {
 
 
     changeBridgeSku(state,payload) {
-        let _tmp = state.bridgeTypes[state.objectWorkingOn.id];
+        let _tmp = state.bridgeTypes[state.bridge_ID];
         let _tmp1 = _tmp['items'];
         let itemToPutIn = _tmp1.filter((item)=> {
             return (item.sku==payload);

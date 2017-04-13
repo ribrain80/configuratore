@@ -80,7 +80,7 @@
                     <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
                 </li>
                 <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">Finiture divisori</a></li>
-                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab">Finiture ponti</a></li>
+                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">Finiture ponti</a></li>
                 <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">Finiture cassetto</a></li>
             </ul>
 
@@ -173,13 +173,13 @@
                     </div>
                 </div>
 
-                <div role="tabpanel" id="bridges-tab"  class="tab-pane fade in">
+                <div role="tabpanel" id="bridges-tab"  v-if="$store.state.has_bridge"  class="tab-pane fade in">
                     <div class="row top1">
                         <div class="col-lg-12">
-                            <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                            <div class="col-lg-12 col-md-12">
                                 <h3>Finiture ponti</h3>
                             </div>
-                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" >
                                 <figure>
                                     <img :src="variant.textureImg"
                                          class="img center-block img-responsive img-thumbnail"
@@ -189,10 +189,10 @@
                                     >
                                 </figure>
                             </div>
-                            <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                            <div class="col-lg-12 col-md-12">
                                 <h3>Finiture supporti</h3>
                             </div>
-                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants">
                                 <figure>
                                     <img :src="variant.textureImg"
                                          class="img center-block img-responsive img-thumbnail"
