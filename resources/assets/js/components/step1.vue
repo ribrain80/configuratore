@@ -73,7 +73,31 @@ export default {
 
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
-        
+
+        $( '#gallery-trigger' ).on( 'click', function() {
+            
+            $(this).lightGallery({
+
+                download: false,
+
+                toogleThumb: false,
+
+                dynamic: true,
+
+                dynamicEl: [{
+                    "src": '/images/gallery/images/img1.png',
+                    'thumb': '/images/gallery/images/img1.png'
+                }, {
+                    "src": '/images/gallery/images/img1.png',
+                    'thumb': '/images/gallery/images/img1.png'
+                }, {
+                    "src": '/images/gallery/images/img1.png',
+                    'thumb': '/images/gallery/images/img1.png'
+                }]
+            })
+
+        });
+
         // # Log mount 
         console.log( "Welcome/info page mounted" );
     }

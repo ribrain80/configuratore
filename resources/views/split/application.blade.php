@@ -70,8 +70,8 @@
             </div>
         </div>
     </div>
-   {{-- Js Scripts --}}
-   <script>
+    {{-- Js Scripts --}}
+    <script>
        
         paceOptions  = {
             ajax: true,
@@ -82,35 +82,8 @@
             restartOnRequestAfter: false
         }  
 
-   </script>
+    </script>
     <script src="{{ elixir('js/split.js') }}"></script>
-    <script>
 
-
-    $('#gallery-trigger').on('click', function() {
-
-        $(this).lightGallery({
-            dynamic: true,
-            dynamicEl: [{
-                "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
-            }, {
-                "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
-            }, {
-                "src": 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg',
-                'thumb': 'http://lorempixel.com/output/nature-q-c-640-480-8.jpg'
-            }]
-        })
-
-    });
-
-   /* $(function() {
-        $.material.init();
-    });*/
-
-
-
-</script>
 </body>
 </html>
