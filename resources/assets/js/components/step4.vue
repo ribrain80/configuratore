@@ -177,7 +177,32 @@
                 <div role="tabpanel" id="bridges-tab"  class="tab-pane fade in">
                     <div class="row top1">
                         <div class="col-lg-12">
-                            TODO LOGIC HERE
+                            <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                <h3>Finiture ponti</h3>
+                            </div>
+                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                <figure>
+                                    <img :src="variant.textureImg"
+                                         class="img center-block img-responsive img-thumbnail"
+                                         @click="_updateBridges( $event );"
+                                         style="width: 100px;height: 100px"
+                                         :data-sku="variant.sku"
+                                    >
+                                </figure>
+                            </div>
+                            <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                <h3>Finiture supporti</h3>
+                            </div>
+                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
+                                <figure>
+                                    <img :src="variant.textureImg"
+                                         class="img center-block img-responsive img-thumbnail"
+                                         @click="_updateSupports( $event ); "
+                                         style="width: 100px;height: 100px"
+                                         :data-sku="variant.sku"
+                                    >
+                                </figure>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,32 +259,7 @@
                                     </figure>
                                 </div>
 
-                                <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
-                                    <h3>Finiture ponti</h3>
-                                </div>
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
-                                    <figure>
-                                        <img :src="variant.textureImg"
-                                             class="img center-block img-responsive img-thumbnail"
-                                             @click="_updateBridges( $event );"
-                                             style="width: 100px;height: 100px"
-                                             :data-sku="variant.sku"
-                                        >
-                                    </figure>
-                                </div>
-                                <div class="col-lg-12 col-md-12" v-if="$store.state.objectWorkingOn.type=='bridge'">
-                                    <h3>Finiture supporti</h3>
-                                </div>
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants" v-if="$store.state.objectWorkingOn.type=='bridge'">
-                                    <figure>
-                                        <img :src="variant.textureImg"
-                                             class="img center-block img-responsive img-thumbnail"
-                                             @click="_updateSupports( $event ); "
-                                             style="width: 100px;height: 100px"
-                                             :data-sku="variant.sku"
-                                        >
-                                    </figure>
-                                </div>
+
 
 
                             </div>
@@ -892,7 +892,7 @@ export default {
             this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
             this.$store.commit('setobjectWorkingOn',{type:'bridge',id:this.$store.state.bridge_ID,'obj':null});
 
-            $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+            $( '#tab-container a[href="#bridges-tab"]' ).tab( 'show' );
         },
 
 
