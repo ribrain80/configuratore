@@ -50,7 +50,7 @@
                       <span class="help-block"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
-                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded" id="length-info-image"/>
+                      <img src="/images/others/step3_info_length.png" class="img-responsive img-rounded" id="length-info-image"/>
                     </div>                    
                   </div>
                     
@@ -63,7 +63,7 @@
                       <span class="help-block"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
-                      <img src="/images/others/step3_info_width.png" class="img-responsive img-rounded" id="sh-info-image"/>
+                      <img src="/images/others/step3_info_depth.png" class="img-responsive img-rounded" id="sh-info-image"/>
                     </div>                      
                   </div>
                   
@@ -77,7 +77,10 @@
                           <div v-for="option in config.lineabox_shoulders_height">
                             <div class="col-lg-4">
                                 <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
-                                    <div class="panel-body" @focus.once="resetAdvice()" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">{{option.text}} <br>{{ 'step3.real' | translate}}</div>
+                                    <div class="panel-body" @focus.once="resetAdvice()" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">
+                                        <img :src="'/images/others/step-3/h-'+option.value+'.png'">
+                                        {{option.text}} <br>{{ 'step3.real' | translate}}
+                                    </div>
                                 </div>
                             </div>
                           </div>
