@@ -82,7 +82,6 @@
                 <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">Finiture divisori</a></li>
                 <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab">Finiture ponti</a></li>
                 <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">Finiture cassetto</a></li>
-                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#colors">Textures e colori</a></li>
             </ul>
 
             <!-- Tab contents -->
@@ -208,7 +207,7 @@
                 </div>
                 <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
                     <div class="row top1">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <!-- Egdes -->
                                 <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="top" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}">
                                     TOP
@@ -221,53 +220,22 @@
 
                                 <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]" id="bottom" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}">BOTTOM</div>
                         </div>
-                    </div>
-                </div>
-
-
-
-                <!-- Colors container -->
-                <div role="tabpanel" id="colors" class="tab-pane fade in">
-
-                    <div class="row" style="margin-top: 22px">
-                        <div class="col-lg-12">
-                            <span style="color:red">VISUAL-LOG: TYPE: {{ $store.state.objectWorkingOn.type }} -- ID  {{ $store.state.objectWorkingOn.id }}</span>
-                        </div>
-                        <div class="col-lg-12">
-
-                            <div class="row" >
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
-                                    <figure>
-                                        <img :src="variant.textureImg"
-                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
-                                             class="img center-block img-responsive img-thumbnail"
-                                             @click="_updateDividerSku( $event );"
-                                             style="width: 100px;height: 100px"
-                                             :data-sku="variant.sku"
-                                        >
-                                    </figure>
-                                </div>
-
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
-                                    <figure>
-                                        <img :src="variant.image"
-                                             class="img center-block img-responsive img-thumbnail"
-                                             @click="_updateBorder( $event );"
-                                             style="width: 100px;height: 100px"
-                                             :data-sku="variant.id"
-                                        >
-                                    </figure>
-                                </div>
-
-
-
-
+                        <div class="col-lg-6">
+                            <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                                <figure>
+                                    <img :src="variant.image"
+                                         class="img center-block img-responsive img-thumbnail"
+                                         @click="_updateBorder( $event );"
+                                         style="width: 100px;height: 100px"
+                                         :data-sku="variant.id"
+                                    >
+                                </figure>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
+
+
 
             </div> <!-- END tab content -->
 
