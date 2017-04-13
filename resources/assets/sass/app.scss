@@ -30,6 +30,9 @@ body {
 .w-100 {
   width: 100%!important;  
 }
+.btn-block {
+  width: 70%!important;
+}
 
 .i-icon {
   background: url( "/images/others/i-icon.png" ) no-repeat;
@@ -469,7 +472,7 @@ html, body, .container-fluid, .wrapper {
 
 .btn-danger {
   line-height: 40px;
-  border-radius: 30px ;
+  border-radius: 25px ;
   background: #f04f1a !important;
   color: white !important;
   -webkit-box-shadow: 6px 6px 10px 0px rgba(0,0,0,0.30) !important;

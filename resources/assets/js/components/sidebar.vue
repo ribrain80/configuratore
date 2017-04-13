@@ -54,7 +54,7 @@
         </div>
         <div class="row ">
             <div class="col-lg-12 sidebar-elem navigator " >
-                <a class="btn btn-danger btn-block btn-raised" id="gallery-trigger">{{ "menu.gallery" | translate }}</a>
+                <a class="btn btn-danger btn-block btn-raised center-block" id="gallery-trigger">{{ "menu.gallery" | translate }}</a>
             </div>
         </div>
     </div>
