@@ -9,7 +9,34 @@ $icon-font-path: '../fonts/';
 body { 
   font-family: "FranklinGothicURW-Boo", sans-serif; 
   color: #666;
+  font-size: 12px;
 }
+
+.caret {
+  border: none!important;
+  width: 18px;
+  height: 18px;
+  margin-top: 6px;
+  background: url( "/images/others/navbar/freccia-lang.png" ) no-repeat!important;
+}
+
+.alert {
+  font-size: 1.1em;
+}
+
+.lang-text {
+  font-size: 1.2em;
+}
+
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    border: 1px solid #666;
+    margin: 0 auto;
+}  
 
 .lg-close {
   background: url( "/images/gallery/x-galleria.png" ) no-repeat!important;
@@ -27,11 +54,16 @@ body {
   text-decoration:none;
 }
 
+.btn {
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
+
 .w-100 {
   width: 100%!important;  
 }
 .btn-block {
-  width: 70%!important;
+  width: 80%!important;
 }
 
 .i-icon {
@@ -282,6 +314,7 @@ html, body, .container-fluid, .wrapper {
   background: #fff;
   height: 35px;
   line-height: 35px;
+  font-size: 1.3em;
 }
 
 /*
@@ -293,8 +326,8 @@ html, body, .container-fluid, .wrapper {
 }
 */
 
-#step1 p {
-  font-size: 1.1em;
+#step1 p, #step1 ul {
+  font-size: 1.2em;
   line-height: 1.8em;
 }
 
@@ -360,6 +393,7 @@ html, body, .container-fluid, .wrapper {
 
 .router-links li a{
   color:#aaa ;
+  font-size: 1.1em;
 }
 
 .router-links li a:hover {
@@ -471,8 +505,8 @@ html, body, .container-fluid, .wrapper {
 }
 
 .btn-danger {
-  line-height: 40px;
-  border-radius: 25px ;
+  line-height: 35px;
+  border-radius: 20px ;
   background: #f04f1a !important;
   color: white !important;
   -webkit-box-shadow: 6px 6px 10px 0px rgba(0,0,0,0.30) !important;

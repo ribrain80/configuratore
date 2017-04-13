@@ -1,12 +1,12 @@
 <template>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            <a href="#" class="dropdown-toggle lang-text" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">{{ getShort() }} <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
                 <li v-for="language in languages">
-                    <a :class="{ active: (language.code==activeLanguage) }"  href="#_"
+                    <a :class="{ active: (language.code==activeLanguage) }" href="#_"
                        @click="changeLanguage(language.code)"> {{ language.label }} </a>
                 </li>
             </ul>

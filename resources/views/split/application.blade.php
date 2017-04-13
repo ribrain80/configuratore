@@ -7,20 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/split.css') }}">
 
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
-
-    <style>
-        
-    canvas {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        display: inline-block;
-        border: 2px solid #222;
-        margin: 0 auto;
-    }        
-
-    </style>
 </head>
 <body>
 
