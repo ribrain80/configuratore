@@ -78,6 +78,9 @@ export default {
             
             $(this).lightGallery({
 
+                nextHtml: "<img src='/images/gallery/freccia-galleria-dx.png'>",
+                prevHtml: "<img src='/images/gallery/freccia-galleria-sx.png'>",
+
                 download: false,
 
                 toogleThumb: false,
