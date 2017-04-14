@@ -114,35 +114,42 @@
                   <div class="form-group" v-else>
 
                       <div class="row">
-                          <div class="col-lg-12">
-                            <label class="control-label">{{ 'step3.drawer_edge_height_label' | translate }}</label>
-                          </div>
-                          <div v-for="option in config.lineabox_shoulders_height">
-                            <div class="col-lg-4">
-                                <div class="panel panel-default" :class="{ 'bg-success': option.value == $store.state.dimensions.shoulder_height }">
-                                    <div class="panel-body" @focus.once="resetAdvice()" @click="setShoulderHeight( option.value )" @blur="isSuitableHeightForBridge">
-                                        <img :src="'/images/others/step-3/h-'+option.value+'.png'">
-                                        {{option.text}} <br>{{ 'step3.real' | translate}}
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                          <span class="help-block">{{ "step3.edge_advice" | translate }}</span>
 
+                          <div class="col-lg-12">
+                            <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
+                              <a class="i-icon pull-left" id="sh-popover" rel="popover" data-content="">&nbsp;</a> 
+                              <span class="pull-left">HA - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                            </label>
+                          </div>
                       </div>
 
-                  </div>
+                      <div class="row top1">
+                        <div class="col-lg-12">
+                          <div v-for="option in config.lineabox_shoulders_height">
+                              <div class="col-lg-4">
+                                  <div :class="[ 'panel panel-default', option.value == $store.state.dimensions.shoulder_height ? 'border-selected' : 'border-deselected' ]">
+                                      <div class="panel-body" @focus.once="resetAdvice()" 
+                                           @click="setShoulderHeight( option.value )" 
+                                           @blur="isSuitableHeightForBridge">
+                                          <img :src="'/images/others/step-3/h-'+option.value+'.png'" />
+                                      </div>
+                                      <div class="panel-footer text-center no-background ha-lineabox">{{option.dimension}}</div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
 
-              </div>
+                    </div>
+                </div>
           </div>
-
+          </div>
           <!-- Canvas container -->
           <div class="col-lg-6 center-block" >
               <div id="animation"></div>
           </div>
-         
-        </div>  
-        
+          
+        </div>
+
         <div class="container-fluid">
           <div class="row top2">
 
@@ -157,6 +164,7 @@
               </div>
           </div>
         </div>
+
 
 </div>
 </template>
@@ -188,7 +196,7 @@ export default {
               line_stroke: '#222222',
               text_stroke: '#222222',
               font_size: 12,
-              font_family: 'Raleway',
+              font_family: 'FranklinGothicURW-Boo',
               font_weight: 'normal',
               measure_label: "mm",
 
@@ -210,9 +218,9 @@ export default {
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { text: "77 - 45.4 ", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
-                  { text: "104 - 72 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
-                  { text: "180 - 148 " , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
+                  { dimension: "77", text: "77 - 45.4", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
+                  { dimension: "104", text: "104 - 72" , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
+                  { dimension: "180", text: "180 - 148" , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
               ],
 
               // # Bridge related limits
@@ -317,6 +325,7 @@ export default {
             // # TWO Instance, autostart means we do not have to reupdate the canvas each time there
             // # is an update on a shape/path/text
             this.two = new Two( { autostart: true } ).appendTo( this.container );
+
 
             // # Drawer
             this.makeRect( this.mm2Pixel( this.$store.state.dimensions.width ) / 2, 

@@ -67,10 +67,10 @@
          v-if="type.length > 1"
          v-show="$store.state.drawer_type_category == 1">
         <div class="col-lg-4" v-for="ctype in type">
-            <figure class="drawer-container" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
+            <figure class="drawer-container text-center" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
                 <figcaption> {{ ctype.description | translate}} </figcaption>
                 <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
-                     class="img img-responsive  img-shadow "
+                     class="img img-responsive center-block img-shadow "
                      :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
                      @click="setType( ctype.id )"
                 />

@@ -28,6 +28,26 @@ body {
   font-size: 1.2em;
 }
 
+.border-selected {
+  border: 1px solid green;
+  color: green;
+}
+
+.no-background {
+  background-color: none!important;
+  background: none!important;
+}
+
+.ha-lineabox {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.border-deselected {
+  border: 1px solid red;
+  color: red;
+}
+
 canvas {
     padding-left: 0;
     padding-right: 0;
