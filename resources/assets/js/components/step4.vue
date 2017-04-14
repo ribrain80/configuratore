@@ -167,6 +167,9 @@
                                         >
                                     </figure>
                                 </div>
+                                <div class="col-lg-12" v-if="$store.state.objectWorkingOn.type!='divider'">
+                                    <span class="nodividerselectedmessage"> Devi selezionare almeno un divider</span>
+                                </div>
                             </div>
 
                         </div>
