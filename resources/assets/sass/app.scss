@@ -598,6 +598,18 @@ img.rotate90 {
   }
 
   */
+
+  .nav .active {
+    background: #f04f1a;
+  }
+
+
+  .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 4px 4px;
+  }
+
   .nav-tabs > li > a{
     color: #f04f1a !important;
     border: medium none;
@@ -609,6 +621,12 @@ img.rotate90 {
   }
 
 
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #fff;
+    border: 1px solid #f04f1a;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
 
 
 
