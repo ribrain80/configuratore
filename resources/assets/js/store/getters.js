@@ -54,7 +54,7 @@ const  getters = {
 
     getSupportsVariants: function (state) {
         let output = [];
-        if (state.objectWorkingOn.type && state.objectWorkingOn.type=='bridge' && state.bridge_supportID) {
+        if ( state.bridge_supportID ) {
             let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[456]:state.supportTypes[898];
             output = supportsByCategory['items'];
         }
@@ -62,38 +62,13 @@ const  getters = {
     },
 
     getBorderVariants: function (state) {
-        if (state.objectWorkingOn.type && state.objectWorkingOn.type=='border') {
-            let out = [];
-            out.push(
-                {
-                    description:'Bordo 1 FAKE',
-                    image: 'http://lorempixel.com/output/nature-q-c-640-480-6.jpg',
-                    id: 1,
-                }
-            );
-            out.push(
-                {
-                    description:'Bordo 2 FAKE',
-                    image: 'http://lorempixel.com/output/nature-q-c-640-480-5.jpg',
-                    id: 2,
-                }
-            );
-            out.push(
-                {
-                    description:'Bordo 3 FAKE',
-                    image: 'http://lorempixel.com/output/nature-q-c-640-480-4.jpg',
-                    id: 3,
-                }
-            );
-            out.push(
-                {
-                    description:'Bordo 4 FAKE',
-                    image: 'http://lorempixel.com/output/nature-q-c-640-480-3.jpg',
-                    id: 4,
-                }
-            );
-            return out;
+
+        if (state.drawertype && state.objectWorkingOn.type && state.objectWorkingOn.type=='border') {
+            let _drawerTypeVariants =state.textureTypes[state.drawertype];
+            let _drawerTypeVariantsById = _drawerTypeVariants[state.objectWorkingOn.id];
+            return _drawerTypeVariantsById;
         }
+
         return [];
     },
 
@@ -136,6 +111,8 @@ const  getters = {
         // Default return empty array
         return [];
     },
+
+
 
     /**
      * Return the sum of the areas of the selected dividers

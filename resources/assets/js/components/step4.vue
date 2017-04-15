@@ -210,29 +210,32 @@
                 </div>
                 <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
                     <div class="row top1">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <!-- Egdes -->
-                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="top" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_top.hex != '' ?  $store.state.drawer_border_top.hex : ''}">
+                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_top.selected ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
                                     TOP
                                 </div>
-                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_left.hex != '' ?  $store.state.drawer_border_left.hex : ''}">LEFT</div>
+                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_left.selected ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px">LEFT</div>
 
-                                <div class="col-lg-6 text-center">LATI</div>
+                                <div class="col-lg-6 text-center" style="min-height: 100px">LATI</div>
 
-                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_right.hex != '' ?  $store.state.drawer_border_right.hex : ''}">RIGHT</div>
+                                <div :class="['col-lg-3', 'edge', $store.state.drawer_border_right.selected ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px">RIGHT</div>
 
-                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]" id="bottom" @click='selectBorder( $event );' :style="{ 'background-color': $store.state.drawer_border_bottom.hex != '' ?  $store.state.drawer_border_bottom.hex : ''}">BOTTOM</div>
+                                <div :class="['col-lg-12', 'edge', 'text-center', $store.state.drawer_border_bottom.selected ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' >BOTTOM</div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="col-lg-4 col-md-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                        <div class="col-lg-8">
+                            <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
                                 <figure>
-                                    <img :src="variant.image"
+                                    <img :src="variant.textureImg"
                                          class="img center-block img-responsive img-thumbnail"
                                          @click="_updateBorder( $event );"
                                          style="width: 100px;height: 100px"
-                                         :data-sku="variant.id"
+                                         :data-sku="variant.textureId"
                                     >
                                 </figure>
+                            </div>
+                            <div class="col-lg-12 col-md-12"  v-if="$store.state.objectWorkingOn.type!='border'">
+                                DEVI SELEZIONARE UN LATO O IL FONDO
                             </div>
                         </div>
                     </div>

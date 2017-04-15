@@ -49,21 +49,23 @@ const store = new Vuex.Store({
                     Axios.get( '/split/drawerstypes' ),
                     Axios.get( '/split/bridges' ),
                     Axios.get( '/split/supports' ),
-                    Axios.get( '/split/dividers')
+                    Axios.get( '/split/dividers'),
+                    Axios.get( '/split/edgestextures')
                 ];
 
                 // # Resolve all promises. If any of them fail push into the router '/split/500'
                 // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [ typesResponse, responseBridges, responseSupports, dividersResponse ] ) => {
+                    ( [ typesResponse, responseBridges, responseSupports, dividersResponse, texturesResponse ] ) => {
 
                         // # Success
                         commit( 'setDrawersTypes', typesResponse.data );
                         commit( 'setBridgesTypes', responseBridges.data );
                         commit( 'setSupportsTypes',responseSupports.data );
                         commit( 'setDividerTypes', dividersResponse.data );
-                    }, 
+                        commit( 'setTextureTypes', texturesResponse.data );
+                    },
                     () => { 
                         // # Fail
                         context.push( { path: '/split/500' } );
@@ -100,6 +102,11 @@ const store = new Vuex.Store({
          * @type {String}
          */
         currentComponentHeader: 'Info',
+
+        /**
+         * Tipes of textures
+         */
+        textureTypes:[],
 
         /**
          * Types of drawers

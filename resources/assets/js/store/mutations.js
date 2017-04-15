@@ -616,6 +616,10 @@ const  mutations = {
 
     setCanvasSvg: function(state,svg) {
         state.canvasSvg=svg;
+    },
+
+    setTextureTypes (state,textures) {
+        state.textureTypes=textures;
     }
 
 
