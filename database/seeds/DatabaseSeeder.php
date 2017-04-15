@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DividerSeeder::class);
         $this->call(BridgeSeeder::class);
         $this->call(SupportsSeeder::class);
+        $this->call(TexturesSeeder::class);
     }
 }

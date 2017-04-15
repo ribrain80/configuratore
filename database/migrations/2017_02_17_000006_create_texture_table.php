@@ -17,9 +17,10 @@ class CreateTextureTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 70);
-            $table->string('file');
+            $table->string('image');
+            $table->boolean('universal');
 
-            $table->unique(["name"], 'unique_texture');
+
         });
     }
 
