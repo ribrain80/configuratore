@@ -93,8 +93,29 @@ class ApiController extends Controller
 
     public function actionEdgesFinitures() {
         $output = [];
+        foreach (Drawertypestexture::all() as $curRel ) {
+            $cur['textureId'] = $curRel->texture;
+            $cur['textureImg'] = $curRel->rTexture()->first()->image;
+            $cur['textureName'] = $curRel->rTexture()->first()->name;
+
+            if ($curRel->left) {
+                $output[$curRel->drawertypes]['left'][]=$cur;
+            }
+            if ($curRel->right) {
+                $output[$curRel->drawertypes]['right'][]=$cur;
+            }
+            if ($curRel->front) {
+                $output[$curRel->drawertypes]['front'][]=$cur;
+            }
+            if ($curRel->back) {
+                $output[$curRel->drawertypes]['back'][]=$cur;
+            }
+            if ($curRel->background) {
+                $output[$curRel->drawertypes]['background'][]=$cur;
+            }
+        }
         //Logic here
-        return response()->json(Drawertypestexture::all());
+        return response()->json($output);
     }
 
 }
