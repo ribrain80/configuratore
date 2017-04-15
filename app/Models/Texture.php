@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class drawertypestexture extends Model
+class Texture extends Model
 {
-    //
+    protected $table = "texture";
 }

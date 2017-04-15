@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bridge;
 use App\Models\Divider;
 use App\Models\Drawertype;
+use App\Models\Drawertypestexture;
 use App\Models\Support;
 use Log;
 
@@ -83,8 +84,6 @@ class ApiController extends Controller
             $grouped[$key]['id'] = $curBridge['depth'];
             $grouped[$key]['width'] = $curBridge['width'];
 
-            //Generate the image path as sha1 of the colors components (color,border,texture)
-            $curBridge['background'] = "/images/textures/".sha1($curBridge['color'].$curBridge['border'].$curBridge['texture']).".png";
             $grouped[$key]['items'][] = $curBridge;
         }
 
@@ -95,7 +94,7 @@ class ApiController extends Controller
     public function actionEdgesFinitures() {
         $output = [];
         //Logic here
-        return response()->json($output);
+        return response()->json(Drawertypestexture::all());
     }
 
 }
