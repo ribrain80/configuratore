@@ -91,4 +91,11 @@ class ApiController extends Controller
         return response()->json($grouped);
     }
 
+
+    public function actionEdgesFinitures() {
+        $output = [];
+        //Logic here
+        return response()->json($output);
+    }
+
 }

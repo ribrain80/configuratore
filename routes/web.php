@@ -51,6 +51,7 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
     Route::get('bridges',['as'=>'split.api.bridges','uses'=>'ApiController@actionBridges']);
     Route::get('supports',['as'=>'split.api.bridges','uses'=>'ApiController@actionSupports']);
+    Route::get('edgestextures',['as'=>'split.api.edgesTextures','uses'=>'ApiController@actionEdgesFinitures']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     //EXPORT TO PDF
     Route::get('topdf/debug/{drawer}',['as'=>'split.export.topdf.debug','uses'=>'ExportController@actionDebug']);

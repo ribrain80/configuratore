@@ -17,8 +17,8 @@ class CreateEdgecolorTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
-            $table->string('hex');
-            $table->string('ral');
+            $table->string('category');
+            $table->string('texture');
         });
     }
 

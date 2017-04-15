@@ -197,7 +197,7 @@
                             </div>
                             <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants">
                                 <figure>
-                                    <img :src="variant.textureImg"
+                                    <img :src="variant.texture"
                                          class="img center-block img-responsive img-thumbnail"
                                          @click="_updateSupports( $event ); "
                                          style="width: 100px;height: 100px"

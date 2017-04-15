@@ -19,6 +19,7 @@ class SupportsSeeder extends Seeder
             $toInsert['height'] = trim($tmp[1]);
             $toInsert['color'] = trim($tmp[2]);
             $toInsert['description'] = trim($tmp[3]);
+            $toInsert['texture'] = '/images/supports/textures/'.trim($tmp[4]);
 
             $supports[]=$toInsert;
         }

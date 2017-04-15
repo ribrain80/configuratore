@@ -23,7 +23,7 @@ class Edgecolor extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'hex', 'ral'];
+    protected $fillable = ['name', 'category', 'texture'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
