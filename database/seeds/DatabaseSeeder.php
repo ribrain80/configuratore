@@ -11,11 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       /* $this->call(DrawertypesTableSeeder::class);
+        $this->call(DrawertypesTableSeeder::class);
         $this->call(DividerSeeder::class);
         $this->call(BridgeSeeder::class);
         $this->call(SupportsSeeder::class);
-        $this->call(TexturesSeeder::class);*/
+        $this->call(TexturesSeeder::class);
         $this->call(DrawerTypesTexturesSeeder::class);
     }
 }
