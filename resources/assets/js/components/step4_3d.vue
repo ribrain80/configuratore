@@ -13,6 +13,7 @@
     import Renderer from '../3d/components/renderer';
     import Camera   from '../3d/components/camera';
     import Light    from '../3d/components/light';
+    import Divider  from '../3d/entity/Divider';
     import Config   from '../3d/config';
     import * as THREE from 'three';
     /**
@@ -33,7 +34,9 @@
                 camera:{},
                 renderer:{},
                 meshes:[],
-                clock:{}
+                clock:{},
+                OBJLoader:{},
+                manager:{}
             }
         },
 
@@ -72,6 +75,24 @@
                 for(let i = 0; i < lights.length; i++) {
                     this.light.place(lights[i]);
                 }
+
+
+
+
+                this.manager = new THREE.LoadingManager();
+
+                /*
+                var onProgress = function ( xhr ) {
+                    if ( xhr.lengthComputable ) {
+                        var percentComplete = xhr.loaded / xhr.total * 100;
+                        console.log( Math.round(percentComplete, 2) + '% downloaded' );
+                    }
+                };
+
+                var onError = function ( xhr ) {
+                };*/
+
+                let divider = new Divider(this.manager,this.scene,'https://threejs.org/examples/obj/male02/male02.obj','/images/textures/08_Radica.jpg');
 
                 this.render();
 
