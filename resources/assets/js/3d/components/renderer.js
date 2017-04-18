@@ -19,9 +19,12 @@ export default class Renderer {
 
         container.appendChild(this.threeRenderer.domElement);
 
+        // Remove border from renderer
+        this.threeRenderer.domElement.style.border="none";
+
         // Shadow map options
         this.threeRenderer.shadowMap.enabled = true;
-        this.threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.threeRenderer.shadowMap.type = THREE.PCFShadowMap;
 
         // Get anisotropy for textures
         Config.maxAnisotropy = this.threeRenderer.getMaxAnisotropy();

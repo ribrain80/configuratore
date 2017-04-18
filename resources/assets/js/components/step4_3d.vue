@@ -76,7 +76,7 @@
                 this.light = new Light(this.scene);
 
                 // Create and place lights in scene
-                const lights = ['directional'];
+                const lights = ['directional','ambient'];
                 for(let i = 0; i < lights.length; i++) {
                     this.light.place(lights[i]);
                 }
