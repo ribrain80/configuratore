@@ -13,6 +13,7 @@
     import Renderer from '../3d/components/renderer';
     import Camera   from '../3d/components/camera';
     import Light    from '../3d/components/light';
+    import Controls    from '../3d/components/controls';
     import Divider  from '../3d/entity/Divider';
     import Config   from '../3d/config';
     import * as THREE from 'three';
@@ -56,7 +57,9 @@
 
                 // Main scene creation
                 this.scene = new THREE.Scene();
-                this.scene.fog = new THREE.FogExp2(Config.fog.color, Config.fog.near);
+
+                // # fog disabled
+               // this.scene.fog = new THREE.FogExp2(Config.fog.color, Config.fog.near);
 
                 // Get Device Pixel Ratio first for retina
                 if(window.devicePixelRatio) {
@@ -67,7 +70,7 @@
 
                 // Components instantiation
                 this.camera = new Camera(this.renderer.threeRenderer);
-                //this.controls = new Controls(this.camera.threeCamera, container);
+                this.controls = new Controls(this.camera.threeCamera, this.container);
                 this.light = new Light(this.scene);
 
                 // Create and place lights in scene
