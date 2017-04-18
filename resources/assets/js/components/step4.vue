@@ -359,22 +359,24 @@ export default {
 
 
         /**
-         * [availableDividerCategories description]
-         * @return {[type]} [description]
+         * Returns available dividers category based on shpulder height set
+         * @return {Array}
          */
         availableDividerCategories: function () {
 
+            // # Get max value - value is in mm, category id in decimillimeters
             let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;
 
-            //Altezza interna sponda in mm
-            return this.$store.state.dividerTypes.dividersCategories.filter( function (category) {
+            // # Filter array
+            return this.$store.state.dividerTypes.dividersCategories.filter( function ( category ) {
                     return max >= parseInt(category);
                 }
             );
         },
 
         /**
-         *  Check if the user can add more bridges.
+         * Checks if the user can add more bridges.
+         * @return {Boolean}
          */
         canAddBridges: function () {
             let availableSpace = ( this.$store.state.bridge_orientation == 'V' ) ? this.real_height : this.real_width;
@@ -382,12 +384,16 @@ export default {
         },
 
         /**
-         *  Return the tighter bridge width
+         * Returns the tighter bridge width
+         * @return {Number}
          */
         tighterBridgeWidth: function () {
-            if (!this.$store.state.bridges_selected) {
+
+            // # No bridge selected management
+            if ( !this.$store.state.bridges_selected.length ) {
                 return 0;
             }
+
             return this.$store.state.bridges_selected.reduce(
                 function ( min, elem ) {
                     return ( min > elem.width ) ? elem.width : min;
@@ -397,6 +403,7 @@ export default {
 
         /**
          * Actual area covered by bridges
+         * @return {Number} [description]
          */
         bridgesArea: function () {
             return this.$store.state.bridges_selected.reduce( function ( accumulatore, elem ) {
@@ -458,23 +465,25 @@ export default {
 
             // # Compute available width
             this.canvasWidth  = parseInt( canvas_container.width() * 0.80 );
-            console.log( "CW: " + this.canvasWidth );
+            console.log( "Canvas width: " + this.canvasWidth );
 
             // # Compute ratio
             this.ratioComputer();
 
             // # Compute height based on ration computed
             this.canvasHeight = parseInt( this.real_height * this.config.ratio );
-            console.log( "CH: " + this.canvasHeight );
+            console.log( "Canvas height: " + this.canvasHeight );
 
             // # Set DOM dimensions
             canvas_container.width( this.canvasWidth ).height( this.canvasHeight );
+
+            // # 3D container should have the same height as the 2D one
             $( "#step4_3d_container" ).height( this.canvasHeight );
 
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
 
-            // # No selection
+            // # No selection on this canvas
             this.canvas.selection = false;
 
             /**
@@ -492,7 +501,6 @@ export default {
             this.canvas.on( "mouse:up", () => {
                 this.finalCollisionDetectionManagement();
             });
-
 
             /**
              * Handle Object added inside the canvas
@@ -513,33 +521,39 @@ export default {
              */
             fabric.util.addListener( this.canvas.upperCanvasEl, 'click', ( e ) => {
 
-                try {
+                try {   
+
+                    // # Active object caching
+                    var activeObj = this.canvas.getActiveObject();
 
                     // # Avoid null pbjects
-                    if( null == this.canvas.getActiveObject() ) {
+                    if( null == activeObj ) {
                         return;
                     }
 
-                    console.log( "Active canvas", this.canvas.getActiveObject() );
-                    console.log( "Active canvas type", this.canvas.getActiveObject().get( 'type' ));
+                    console.log( "Active object after click", activeObj );
+                    console.log( "Active object type", activeObj.get( 'type' ) );
 
                     // # Avoid canvas trying to remove itself
-                    if( this.canvas.getActiveObject().get( 'type' ) != "divider" ) {
+                    if( activeObj.get( "type" ) != "divider" ) {
                         return;
                     }
 
+                    // # Set this object as the selected one
+                    activeObj.trigger( "selected" );
+
                     // # Cache active object ID
-                    let id = this.canvas.getActiveObject().get( 'id' );
+                    let id = activeObj.get( "id" );
 
-                    // Updating this.selectedItem and $store.objectWorkingOn
-                    // @todo: selectedItem deve diventare una property di $store.objectWorkingOn
+                    // # Updating this.selectedItem and $store.objectWorkingOn
+                    // TODO: selectedItem deve diventare una property di $store.objectWorkingOn
                     this.selectedItem = this.canvas.getActiveObject();
-                    this.$store.commit('setobjectWorkingOn',{type:'divider',id:id,obj:this.canvas.getActiveObject()});
+                    this.$store.commit( "setobjectWorkingOn", { type: "divider", id: id, obj: activeObj } );
 
-                } catch( e ) {
+                } catch( ignoreMe ) {
 
                     // # Log error and ignore it
-                    console.log( e );
+                    console.log( ignoreMe );
                 } finally {
 
                     // # Stop event propagation and prevent default
@@ -550,26 +564,24 @@ export default {
                     // # Render all
                     this.canvas.renderAll();
 
-                    // # also return false is needed
+                    // # return false is also needed
                     return false;
                 }
 
             });
 
 
-
             /**
-             * Canvas click listener remove
-             * @param  {[type]} e )             {} [description]
-             * @return {[type]}   [description]
+             * Canvas click listener remover
+             * @param  {Object} e 
              */
             fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {} );    
 
             // # Get the container element
-            var canvasContainer = document.getElementById( 'canvas-container' );
+            let canvasContainer = document.getElementById( 'canvas-container' );
 
             // # Scope fix
-            var self = this;
+            let self = this;
 
             // # Container listeners
             canvasContainer.addEventListener( 'dragenter', self.handleDragEnter, false );
@@ -581,74 +593,116 @@ export default {
             this.canvas.renderAll();
         },
 
+        /**
+         * Computes the available canvas area ( area free from dividers )
+         * 
+         * @return {Number}
+         */
         availableSpace: function() {
 
-            var initial_area = parseInt( this.real_height * this.real_width );
-            return this.$store.state.dividers_selected.reduce((occupied_area,cur) => {return initial_area-=cur.area;},initial_area);
+            // # Stay solid and evaluate the nearest ( floor ) integer
+            let initial_area = Math.floor( this.real_height * this.real_width );
+            return this.$store.state.dividers_selected.reduce( ( occupied_area, cur ) => {
+                return initial_area -= cur.area;
+            }, initial_area);
         },
 
+        /**
+         * Tells if there is enough space for the divider to be placed
+         * 
+         * @param  {Number} divider_width 
+         * @param  {Number} divider_length
+         * @return {Number}
+         */
         enoughSpace: function( divider_width, divider_length ) {
             var avs = this.availableSpace();
-            console.log( "AVS" +  avs );
-            console.log( "div area" + ( divider_width * divider_length ) );
-            return avs > ( divider_width * divider_length );
+            return avs > parseFloat( divider_width * divider_length );
         },
 
-
+        /**
+         * Shows an alert to the user before a divider deletion
+         * @return {null}
+         */
         alertDividerDeletion: function() {
 
+            // # Cache the active Object
             var activeObj = this.canvas.getActiveObject();
 
+            // # If only one is selected it mustn't be null!
             if( (null == activeObj || undefined == activeObj) && !this.allselected) {
                 return;
             }
 
+            // # And it MUST be a divider!
             if (( activeObj.get( 'type' ) != "divider") && !this.allselected) {
                 return;
             }
             
+            // # Show modal
             $( "#deletion-alert-modal" ).modal();
         },
 
+        /**
+         * Select all dividers logic
+         * @return {void}
+         */
         selectAll: function() {
 
+            // # Clean up the situation
+            this.canvas.discardActiveObject();
 
+            // # Loop through the canvas objects
             var objs = this.canvas.getObjects().map( ( o )  => {
 
-                if( !this.allselected ) {
-                    o.setStroke( "#ffcc00" );
-                    o.setStrokeWidth( 2 );
-                    o.set( 'active', true );
-                } else {
-                    o.setStrokeWidth( 0 );
-                    o.set( 'active', false );
+                switch( this.allselected ) {
+
+                    case true:
+                        o.setStrokeWidth( 0 );
+                        o.set( 'active', false );
+                    break;
+
+                    case false:
+                        o.setStroke( "#ffcc00" );
+                        o.setStrokeWidth( 2 );
+                        o.set( 'active', true );
+                    break;
                 }
+
             });
 
+            // # Set flag
             this.allselected = !this.allselected;
 
-            //this.canvas.discardActiveObject();
+            // # Refresh canvas
             this.canvas.renderAll();
         },
 
+        /**
+         * Divider deletion logic
+         * @return {[type]} [description]
+         */
         deleteDivider: function() {
 
-            console.log( "allselected" );
-            console.log( this.allselected)
+            console.log( "allselected: " + this.allselected );
 
             switch( this.allselected ) {
                 
                 case true:
 
-                    this.canvas.clear();
+                    // # All selected to be removed, clean up the canvas
                     this.canvas.discardActiveObject();
+                    this.canvas.clear();
                     this.canvas.renderAll();
                     this.allselected = false;
+
+                    // # Clean up the store variable
+                    this.$store.commit( "clearDividers" );
 
                 break;
 
                 case false:
 
+                    // # Cache active object
                     var activeObj = this.canvas.getActiveObject();
 
                     // # Avoid null pbjects
@@ -667,11 +721,11 @@ export default {
                     // # Remove ID from selected dividers list
                     this.$store.commit( "removeDivider", id );
 
-                    // # Actually remove object from canvas
-                    this.canvas.remove( activeObj );
-
                     // # Clean up pointers
                     this.canvas.discardActiveObject();
+
+                    // # Actually remove object from canvas
+                    this.canvas.remove( activeObj );
 
                     // # Refresh canvas
                     this.canvas.renderAll(); 
@@ -685,107 +739,111 @@ export default {
 
         },
 
-        finalCollisionDetectionManagement: function() {
+        /**
+         * This is the last place to manage the dividers collisions
+         * @return {void}
+         */
+        finalCollisionDetectionManagement: function () {
 
-              var activeObj = this.canvas.getActiveObject();
+            // # Cache active object
+            var activeObj = this.canvas.getActiveObject();
                 
-                // # No selected Item, return
-                if( null == activeObj ) {
-                    return;
-                }
+            // # No selected Item, return
+            if( null == activeObj ) {
+                return;
+            }
 
-                // # No type defined, return
-                if( undefined == activeObj.type ) {
-                    return;
-                }
+            // # No type defined, return
+            if( undefined == activeObj.type ) {
+                return;
+            }
 
-                // # Only for dividers
-                if( activeObj.type == "divider" ) {
+            // # Only for dividers
+            if( activeObj.type == "divider" ) {
+
+                // # Reset standard opacity ( some object may be stuck in half opacity )
+                // # this is a "runtime" fix
+                activeObj.setOpacity( 1 );
+
+                // # Loop through canvas objects
+                this.canvas.forEachObject( ( obj ) => {
+
+                    // # Set element Coords
+                    activeObj.setCoords();
+
+                    // # Do nothing if the object checked against is itself
+                    if ( obj === activeObj ) {
+                        console.log( "same" );
+                        return;
+                    }
+
+                    // # Check type
+                    if( undefined == obj.type || obj.type != "divider" ) {
+                        console.log( "no type or wrong type" );
+                        return;
+                    }
 
                     // # Reset standard opacity ( some object may be stuck in half opacity )
                     // # this is a "runtime" fix
-                    activeObj.setOpacity( 1 );
+                    obj.setOpacity( 1 );
 
-                    // Loop through objects
-                    this.canvas.forEachObject( ( obj ) => {
+                    // # Log intersection
+                    console.log( "intersect " + activeObj.intersectsWithObject(obj) );
 
-                        // # Set element Coords
-                        activeObj.setCoords();
+                    // # If objects intersect
+                    if ( activeObj.intersectsWithObject( obj ) ) { 
 
-                        // # Do nothing if the object checked against is itself
-                        if ( obj === activeObj ) {
-                            console.log( "same" );
-                            return;
+                        // # Intersections init
+                        let intersectLeft = null, intersectTop = null, intersectWidth = null;
+                        let intersectHeight = null, intersectSize = null;
+                        let targetLeft = activeObj.getLeft();
+                        let targetRight = targetLeft + activeObj.getWidth();
+                        let targetTop = activeObj.getTop();
+                        let targetBottom = targetTop + activeObj.getHeight();
+                        let objectLeft = obj.getLeft();
+                        let objectRight = objectLeft + obj.getWidth();
+                        let objectTop = obj.getTop();
+                        let objectBottom = objectTop + obj.getHeight();            
+
+                        // Find intersect information for X axis
+                        if( targetLeft >= objectLeft && targetLeft <= objectRight ) {
+                            intersectLeft = targetLeft;
+                            intersectWidth = obj.getWidth() - ( intersectLeft - objectLeft );
+
+                        } else if( objectLeft >= targetLeft && objectLeft <= targetRight ) {
+                            intersectLeft = objectLeft;
+                            intersectWidth = activeObj.getWidth() - ( intersectLeft - targetLeft );
                         }
 
-                        // # Check type
-                        if( undefined == obj.type || obj.type != "divider" ) {
-                            console.log( "no type" );
-                            return;
-                        }
+                        // # Find intersect information for Y axis
+                        if( targetTop >= objectTop && targetTop <= objectBottom ) {
+                            intersectTop = targetTop;
+                            intersectHeight = obj.getHeight() - ( intersectTop - objectTop );
 
-                        // # Reset standard opacity ( some object may be stuck in half opacity )
-                        // # this is a "runtime" fix
-                        obj.setOpacity( 1 );
+                        } else if( objectTop >= targetTop && objectTop <= targetBottom ) {
+                            intersectTop = objectTop;
+                            intersectHeight = activeObj.getHeight() - ( intersectTop - targetTop );
+                        }  
+                  
+                        // # Find intersect size (this will be 0 if objects are touching but not overlapping)
+                        if( intersectWidth > 0 && intersectHeight >  0 ) {
+                            console.log( "intersect area!" );
+                            intersectSize = intersectWidth * intersectHeight;
+                        }                                    
 
-                        // # Log intersection
-                        console.log( "intersect " + activeObj.intersectsWithObject(obj) );
-
-                        // # If objects intersect
-                        if ( activeObj.intersectsWithObject( obj ) ) { 
-
-                            // # Intersections init
-                            var intersectLeft = null, intersectTop = null, intersectWidth = null;
-                            var intersectHeight = null, intersectSize = null;
-                            var targetLeft = activeObj.getLeft();
-                            var targetRight = targetLeft + activeObj.getWidth();
-                            var targetTop = activeObj.getTop();
-                            var targetBottom = targetTop + activeObj.getHeight();
-                            var objectLeft = obj.getLeft();
-                            var objectRight = objectLeft + obj.getWidth();
-                            var objectTop = obj.getTop();
-                            var objectBottom = objectTop + obj.getHeight();            
-
-                            // Find intersect information for X axis
-                            if( targetLeft >= objectLeft && targetLeft <= objectRight ) {
-                                intersectLeft = targetLeft;
-                                intersectWidth = obj.getWidth() - ( intersectLeft - objectLeft );
-
-                            } else if( objectLeft >= targetLeft && objectLeft <= targetRight ) {
-                                intersectLeft = objectLeft;
-                                intersectWidth = activeObj.getWidth() - ( intersectLeft - targetLeft );
-                            }
-
-                            // Find intersect information for Y axis
-                            if( targetTop >= objectTop && targetTop <= objectBottom ) {
-                                intersectTop = targetTop;
-                                intersectHeight = obj.getHeight() - ( intersectTop - objectTop );
-
-                            } else if( objectTop >= targetTop && objectTop <= targetBottom ) {
-                                intersectTop = objectTop;
-                                intersectHeight = activeObj.getHeight() - ( intersectTop - targetTop );
-                            }  
-                      
-                            // Find intersect size (this will be 0 if objects are touching but not overlapping)
-                            if( intersectWidth > 0 && intersectHeight >  0 ) {
-                                console.log( "intersect area!" );
-                                intersectSize = intersectWidth * intersectHeight;
-                            }                                    
-
-                            if( intersectSize != null ) {
-                                console.log( "Intersect size " + intersectSize );
-                                activeObj.setOpacity( 0.5 );
-                                this.canvas.renderAll();
-                                return;
-                            }
-
-                            // # No collision
-                            activeObj.setOpacity( 1 );
+                        if( intersectSize != null ) {
+                            console.log( "Intersect size " + intersectSize );
+                            activeObj.setOpacity( 0.5 );
                             this.canvas.renderAll();
-                            
-                        }     
-                    });                
-                }
+                            return;
+                        }
+
+                        // # No collision
+                        activeObj.setOpacity( 1 );
+                        this.canvas.renderAll();
+                    }     
+                });                
+            }
         },
 
         /**
@@ -1220,13 +1278,15 @@ export default {
                         o.trigger( 'deselected' );
                     });
 
-                    this.setStroke( "#ffcc00" );
-                    this.setStrokeWidth( 2 );  
+                    this.setBackgroundColor( "#ffcc00" );
+                    /*this.setStroke( "#ffcc00" );
+                    this.setStrokeWidth( 2 );*/  
                 });
 
                 oImg.on( 'deselected', function() {
                     self.allselected = false;
-                    this.setStrokeWidth( 0 );  
+                    this.setStrokeWidth( 0 ); 
+                    this.setBackgroundColor( "#ddd" ); 
                 });
 
                 oImg.set( 'active', true );
