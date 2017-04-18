@@ -38,10 +38,10 @@ export default {
         autoRotateSpeed: -0.5,
         rotateSpeed: 0.5,
         zoomSpeed: 0.8,
-        minDistance: 200,
-        maxDistance: 2000,
-        minPolarAngle:  - Math.PI ,
-        maxPolarAngle: Math.PI ,
+        minDistance: 100,
+        maxDistance: 4000,
+        minPolarAngle:  -2 * Math.PI ,
+        maxPolarAngle: 2 * Math.PI ,
         minAzimuthAngle: -Infinity,
         maxAzimuthAngle: Infinity,
         enableDamping: true,
@@ -53,18 +53,7 @@ export default {
             z: 0
         }
     },
-    ambientLight: {
-        enabled: false,
-        color: 0x141414
-    },
-    directionalLight: {
-        enabled: true,
-        color: 0xffffff,
-        intensity: 0.7,
-        x: -75,
-        y: 280,
-        z: 150
-    },
+
     shadow: {
         enabled: true,
         helperEnabled: true,
@@ -78,22 +67,13 @@ export default {
         bottom: -100,
         left: -100
     },
-    pointLight: {
-        enabled: true,
+
+
+    lightBaseConfig: {
         color: 0xffffff,
-        intensity: 0.34,
-        distance: 115,
-        x: 0,
-        y: 0,
-        z: 0
-    },
-    hemiLight: {
-        enabled: true,
-        color: 0xc8c8c8,
-        groundColor: 0xffffff,
-        intensity: 0.55,
-        x: 0,
-        y: 0,
-        z: 0
+        intensity: 0.25,
+        x:1000,
+        y:1000,
+        z:1000
     }
 };

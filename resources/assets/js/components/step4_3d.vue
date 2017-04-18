@@ -12,7 +12,7 @@
     import Detector from '../3d/utils/detector';
     import Renderer from '../3d/components/renderer';
     import Camera   from '../3d/components/camera';
-    import Light    from '../3d/components/light';
+    import Light    from '../3d/components/splitligth';
     import Controls    from '../3d/components/controls';
     import Divider  from '../3d/entity/Divider';
     import DividerFactory from '../3d/utils/DividerFactory';
@@ -73,13 +73,11 @@
                 // Components instantiation
                 this.camera = new Camera(this.renderer.threeRenderer);
                 this.controls = new Controls(this.camera.threeCamera, this.container);
+
+                // # Add lights to the scene
                 this.light = new Light(this.scene);
 
-                // Create and place lights in scene
-                const lights = ['directional','ambient'];
-                for(let i = 0; i < lights.length; i++) {
-                    this.light.place(lights[i]);
-                }
+
 
                 this.manager = new THREE.LoadingManager();
 
