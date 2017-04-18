@@ -391,6 +391,17 @@ const  mutations = {
     },
 
     /**
+     * step4_2D_ratio setter
+     * 
+     * @param {Object} state
+     * @param {Number} val
+     */
+    setStep42DRatio: function ( state, val ) {
+        state.step4_2D_ratio = val;
+        console.log( "step4_2D_ratio changed to: " + val );
+    },
+
+    /**
      * TODO
      * @param  {[type]} state [description]
      * @return {[type]}       [description]

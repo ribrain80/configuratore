@@ -354,6 +354,12 @@ const store = new Vuex.Store({
         drawer_border_bottom: { hex: '', selected: false },
 
         /**
+         * ratio computed for drawer representation in step4
+         * @type {Number}
+         */
+        step4_2D_ratio: 1,
+
+        /**
          * [pdf description]
          * @type {Object}
          */

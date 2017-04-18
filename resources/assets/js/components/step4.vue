@@ -455,9 +455,6 @@ export default {
             canvas_container.width( this.canvasWidth ).height( this.canvasHeight );
             $( "#step4_3d_container" ).height( this.canvasHeight );
 
-            // # FIX ME
-            $( ".edge_2d_v" ).height( this.canvasHeight );
-
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
 
@@ -829,7 +826,10 @@ export default {
                }
 
                console.log( computed_height + " - " + available_width );
-            }
+            }   
+
+            // # Commit ratio ( useful for 3d )
+            this.$store.commit( "setStep42DRatio", this.config.ratio );
 
             console.log( "RATIO " + this.config.ratio );
         },  
