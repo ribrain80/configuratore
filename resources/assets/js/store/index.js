@@ -35,15 +35,16 @@ const store = new Vuex.Store({
      * @type {Object}
      */
     actions: {
+
         /**
          * Init all App Elements from API
          * @param commit
          * @param context
          */
-        initApp: function ( { commit },context) {
+        initApp: function ( { commit }, context ) {
 
             // # Let Pace track loading
-            Pace.track( function() {
+            Pace.track( function () {
                 
                 let promises = [
                     Axios.get( '/split/drawerstypes' ),
@@ -57,14 +58,14 @@ const store = new Vuex.Store({
                 // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [ typesResponse, responseBridges, responseSupports, dividersResponse, texturesResponse ] ) => {
+                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures ] ) => {
 
                         // # Success
-                        commit( 'setDrawersTypes', typesResponse.data );
+                        commit( 'setDrawersTypes', responseTypes.data );
                         commit( 'setBridgesTypes', responseBridges.data );
                         commit( 'setSupportsTypes',responseSupports.data );
-                        commit( 'setDividerTypes', dividersResponse.data );
-                        commit( 'setTextureTypes', texturesResponse.data );
+                        commit( 'setDividerTypes', responseDividers.data );
+                        commit( 'setTextureTypes', responseTextures.data );
                     },
                     () => { 
                         // # Fail
@@ -87,21 +88,34 @@ const store = new Vuex.Store({
      */
     state: {
 
+        /**
+         * Current workin' object in step4
+         * @type {Object}
+         */
         objectWorkingOn: {
-            type:false,
-            id:false,
-            obj:{}
+
+            type: false,
+            id: false,
+            obj: {}
         },
 
+        /**
+         * Canvas onload flag
+         * @type {Boolean}
+         */
         canvasReady: false,
 
+        /**
+         * Camvas svg representation
+         * @type {String}
+         */
         canvasSvg : "",
 
         /**
          * Current header label
          * @type {String}
          */
-        currentComponentHeader: 'Info',
+        currentComponentHeader: '',
 
         /**
          * Tipes of textures
@@ -139,7 +153,7 @@ const store = new Vuex.Store({
          * Application default language
          * @type: {string}
          */
-        language:'it',
+        language: "it",
 
         /**
          * Id of the drawer, 0 means is new drawer
@@ -304,14 +318,16 @@ const store = new Vuex.Store({
          */
         dividers_selected:[],
 
-
+        /**
+         * Drawer Borders
+         * @type {Object}
+         */
         borders: {
-            top: '',
-            left: '',
-            bottom: '',
-            right: '',
+            top: "",
+            left: "",
+            bottom: "",
+            right: "",
         },
-
 
         /**
          * Drawer border top data
@@ -359,7 +375,7 @@ const store = new Vuex.Store({
              * User email for summary/brochure mail send
              * @type {String}
              */
-            email: '',
+            email: "",
 
             /**
              * Send flag = !download flag
@@ -422,13 +438,13 @@ const store = new Vuex.Store({
 Vue.use( vuexI18n.plugin, store );
 
 // # Add to the applications all languages defined.
-$.each( translations,( code, terms ) => { Vue.i18n.add( code,terms ); });
+$.each( translations,( code, terms ) => { Vue.i18n.add( code,terms ); } );
 
 // # Set the default locale
-Vue.i18n.set( 'it' );
+Vue.i18n.set( "it" );
 
 // # Set the fallback locale
-Vue.i18n.fallback( 'it' );
+Vue.i18n.fallback( "it" );
 
 // # Export store "component"
 export default store;

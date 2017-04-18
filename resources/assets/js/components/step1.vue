@@ -61,7 +61,7 @@ export default {
             this.$store.commit( "setOnecompleted", true );
 
             // # Push me to the next step
-        	this.$router.push( { path: '/split/step2' } );
+        	this.$router.push( { path: "/split/step2" } );
         }
     },
 
@@ -74,26 +74,52 @@ export default {
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
 
-        $( '#gallery-trigger' ).on( 'click', function() {
+        // # Lightgallery binding
+        $( "#gallery-trigger" ).on( "click", function () {
             
-            $(this).lightGallery({
+            // # Init
+            $( this ).lightGallery({
 
+                /**
+                 * Custom next arrow html
+                 * @type {String}
+                 */
                 nextHtml: "<img src='/images/gallery/freccia-galleria-dx.png'>",
+
+                /**
+                 * Custom prev arrow html
+                 * @type {String}
+                 */
                 prevHtml: "<img src='/images/gallery/freccia-galleria-sx.png'>",
 
+                /**
+                 * No donwload button
+                 * @type {Boolean}
+                 */
                 download: false,
 
+                /**
+                 * No toggle thumb button
+                 * @type {Boolean}
+                 */
                 toogleThumb: false,
 
+                /**
+                 * Dynamic images
+                 * @type {Boolean}
+                 */
                 dynamic: true,
 
                 dynamicEl: [{
+
                     "src": '/images/gallery/images/img1.png',
                     'thumb': '/images/gallery/images/img1.png'
                 }, {
+
                     "src": '/images/gallery/images/img1.png',
                     'thumb': '/images/gallery/images/img1.png'
                 }, {
+                    
                     "src": '/images/gallery/images/img1.png',
                     'thumb': '/images/gallery/images/img1.png'
                 }]

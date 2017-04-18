@@ -21,7 +21,7 @@
         </div>
     </div>
     
-    <!-- Information alert -->
+    <!-- Information alert bootstrap alert plugin -->
     <div class="row top1">
 
         <!-- Alerts: User Warning -->
@@ -36,7 +36,9 @@
     <div class="row top2">
 
         <div v-for="( type,category ) in $store.state.drawerTypes">
+
             <div class="col-lg-4" v-if="type.length == 1">
+
                 <!-- Drawer type -->
                 <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
                     <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
@@ -46,9 +48,11 @@
                          @click="setType( type[ 0 ].id )"
                     />
                 </figure>
+
             </div>
                 
             <div class="col-lg-4 col-lg-offset-2" v-else>
+
                 <!-- Drawer category -->
                 <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
                     <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
@@ -57,16 +61,16 @@
                          @click="setDrawerTypeCategory( 1 )"
                     />
                 </figure>
+
             </div>
         </div>
 
     </div>
 
-    <div class="row top5"
-         v-for="( type,category ) in $store.state.drawerTypes"
-         v-if="type.length > 1"
-         v-show="$store.state.drawer_type_category == 1">
+    <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
+
         <div class="col-lg-4" v-for="ctype in type">
+
             <figure class="drawer-container text-center" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
                 <figcaption> {{ ctype.description | translate}} </figcaption>
                 <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
@@ -75,16 +79,20 @@
                      @click="setType( ctype.id )"
                 />
             </figure>
+
         </div>
+
     </div>
 
     <!-- Navigation row -->
     <div class="row top5">
-
+    
+        <!-- Next button -->
         <div class="col-md-2 pull-right">
             <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
-
+        
+        <!-- Prev button -->
         <div class="col-md-2 pull-right">
             <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
         </div>
@@ -108,7 +116,6 @@ export default {
      * @type {Object}
      */   
     data: function() {
-
         return {}
     },
 
@@ -132,9 +139,9 @@ export default {
          */
         setType: function ( type ) {
 
-            // # User reset advice ( shown once if user cames back here from one of the next steps )
+            // # User reset advice ( shown once if user came back here from one of the next steps )
             if( ( this.$store.state.threecompleted || this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) 
-                 && !this.$store.state.step2_adviceAccepted ) {
+                  && !this.$store.state.step2_adviceAccepted ) {
               
                 // # Show modal alert
                 $( "#reset-advice-modal" ).modal();
@@ -159,16 +166,15 @@ export default {
             // # Step2 is completed, everything's ok
             this.$store.commit( "setTwocompleted", true );
 
-            // # Set a default 4 lineabox select
+            // # Set a default shoulder height 4 lineabox selection
             // # Default is the lowest value
-            if( 4 != type ) {
+            if( 4 != type ) { // Lineabox ( any ) 
                 this.$store.commit( "setShoulderHeight", this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW );
                 return;
             } 
 
             // # Custom drawer - category = 0
-            this.$store.commit( "setDrawerTypeCategory", 0 );
-                    
+            this.$store.commit( "setDrawerTypeCategory", 0 );        
         },      
 
         /**
@@ -194,8 +200,7 @@ export default {
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
-            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) );
-            $( '#error-modal' ).modal();
+            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) ).modal();
 
             // # Error
             return false; 

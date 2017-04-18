@@ -5,16 +5,50 @@
  */
 require('./bootstrap');
 
+/**
+ * Load Vue for data-bind
+ * @type {Vue}
+ */
+window.Vue = require( 'vue' );
+
+/**
+ * Load Axios for handle ajax calls with ES6 promises
+ */
+window.Axios = require ( 'axios');
+
+/**
+ * Load VueCookie for handle cookies inside Vue
+ */
+
+window.VueCookie = require('vue-cookie');
+
+/**
+ * Inject Vue-cookie plugin in Vue
+ */
+Vue.use( VueCookie );
+
 // # Common utils
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt( 0 ).toUpperCase() + this.slice( 1 );
 };
 
+// # Pace.js tracker options init
+window.paceOptions  = {
+
+    ajax: true,
+    eventLag: true,
+    document: false,
+    element: false,
+    restartOnPushState: false,
+    restartOnRequestAfter: false,
+    startOnPageLoad: false
+} 
+
 // # Import needed packages
 import Vue        from 'vue'
 import router     from './router'
 import store      from './store'
-import {fabric}   from 'fabric'
+import { fabric }   from 'fabric'
 
 // # Load others components
 const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );
@@ -79,8 +113,22 @@ const App = new Vue({
         // # Log mount
         console.log( "Application mounted" );
 
+        // # Pace "overlay" in and out
+        // # IN
+        Pace.on( "start", function () {
+            $( "#cover" ).show();
+        });
+
+        // # OUT
+        Pace.on( "done", function () {
+            $( "#cover").fadeOut( 800 );
+        });
+
+        // # Trigger start
+        Pace.start();
+
         //Get all init values from Api
-        this.$store.dispatch('initApp',this.$router);
+        this.$store.dispatch( 'initApp', this.$router );
     }
  
 }).$mount( '#app' ); // # Mount component  ( element with id = app )
