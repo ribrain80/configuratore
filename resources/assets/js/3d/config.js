@@ -25,13 +25,13 @@ export default {
         near: 0.0006
     },
     camera: {
-        fov: 40,
-        near: 2,
-        far: 1000,
+        fov: 50,
+        near: 1,
+        far: 20000,
         aspect: 1,
-        posX: 0,
-        posY: 30,
-        posZ: 40
+        posX: 300,
+        posY: 1500,
+        posZ: 2000
     },
     controls: {
         autoRotate: true,
@@ -39,9 +39,9 @@ export default {
         rotateSpeed: 0.5,
         zoomSpeed: 0.8,
         minDistance: 200,
-        maxDistance: 600,
-        minPolarAngle: Math.PI / 5,
-        maxPolarAngle: Math.PI / 2,
+        maxDistance: 2000,
+        minPolarAngle:  - Math.PI ,
+        maxPolarAngle: Math.PI ,
         minAzimuthAngle: -Infinity,
         maxAzimuthAngle: Infinity,
         enableDamping: true,
@@ -59,8 +59,8 @@ export default {
     },
     directionalLight: {
         enabled: true,
-        color: 0xf0f0f0,
-        intensity: 0.4,
+        color: 0xffffff,
+        intensity: 0.7,
         x: -75,
         y: 280,
         z: 150

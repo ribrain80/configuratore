@@ -33,10 +33,13 @@ export default class Renderer {
         document.addEventListener('DOMContentLoaded', () => this.updateSize(), false);
         window.addEventListener('resize', () => this.updateSize(), false);
         container.addEventListener('resize', () => this.updateSize(), false);
+        console.log("WEBGL CONTAINER:",container);
+        document.getElementById("step4_3d_container").addEventListener('resize', () => this.updateSize(), false);
     }
 
     updateSize() {
-        this.threeRenderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+        console.log("UPDATE RENDERER SIZE!!");
+        this.threeRenderer.setSize(this.container.offsetWidth, this.container.offsetHeight, true);
     }
 
     render(scene, camera) {
