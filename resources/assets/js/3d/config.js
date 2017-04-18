@@ -8,6 +8,7 @@ export default {
     isMouseOver: false,
     maxAnisotropy: 1,
     dpr: 1,
+    sceneClearColor: 0xffffff,
 
     duration: 500,
 
@@ -20,10 +21,7 @@ export default {
             emissive: 0xffffff
         }
     },
-    fog: {
-        color: 0xffffff,
-        near: 0.0006
-    },
+
     camera: {
         fov: 50,
         near: 1,

@@ -60,8 +60,6 @@
                 // Main scene creation
                 this.scene = new THREE.Scene();
 
-                // # fog disabled
-                this.scene.fog = new THREE.FogExp2(Config.fog.color, Config.fog.near);
 
                 // Get Device Pixel Ratio first for retina
                 if(window.devicePixelRatio) {
