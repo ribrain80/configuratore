@@ -5,233 +5,277 @@
 const  mutations = {
 
     /**
-     * Sets application language
+     * Sets application language ( state and plugin )
+     * 
      * @method setLanguage
      * @param {Object} state
      * @param {string} locale
      * @return 
      */
     setLanguage: function ( state, locale ) {
-        console.log("Setting language");
+        console.log( "Setting language:" + locale );
         state.language = locale;
         Vue.i18n.set(locale);
     },
 
     /**
-     * Description
+     * drawertype setter
+     * 
      * @method setDrawerType
-     * @param {} state
-     * @param {} typeID
+     * @param {Object} state
+     * @param {Integer} typeID
      * @return 
      */
-    setDrawerType: function (state, typeID) {
-        console.log("drawer type changed to: " + typeID);
+    setDrawerType: function ( state, typeID ) {
+        console.log( "Drawer type changed to: " + typeID );
         state.drawertype = typeID;
     },
 
     /**
-     * Description
+     * drawer_type_category setter
+     * 
      * @method setDrawerTypeCategory
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Integer} val
      * @return 
      */
-    setDrawerTypeCategory: function (state, val) {
-        console.log("type category set to: " + val);
+    setDrawerTypeCategory: function ( state, val ) {
+        console.log( "Type category set to: " + val );
         state.drawer_type_category = val;
     },
 
     /**
-     * Description
+     * is_lineabox setter
+     * 
      * @method isLineaBox
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    isLineaBox: function (state, val) {
-        console.log("lineabox flag changed to: " + val);
+    isLineaBox: function ( state, val ) {
+        console.log( "is_lineabox flag changed to: " + val );
         state.is_lineabox = val;
     },
 
     /**
-     * [setStep2AdviceAccepted description]
-     * @param {[type]} state [description]
-     * @param {[type]} val   [description]
+     * step2_adviceAccepted setter
+     * 
+     * @param {Object} state
+     * @param {Boolean} val
      */
     setStep2AdviceAccepted: function( state, val ) {
+        console.log( "step2_adviceAccepted changed to: " + val );
         state.step2_adviceAccepted = val;
     },
 
     /**
-     * Description
+     * width setter
+     * 
      * @method setWidth
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Float} val
      * @return 
      */
-    setWidth: function (state, val) {
+    setWidth: function ( state, val ) {
 
-        if (isNaN(val)) {
-            console.log("width dimension NaN changed to: " + 300);
-            state.dimensions.width = 300;
+        // # NaN Check
+        if ( isNaN( val ) ) {
+            
+            // # Set to a default
+            state.dimensions.width = state.dimensions.default_width;
+            console.log( "width dimension ( NaN ) changed to: " + state.dimensions.default_width );
             return;
         }
-        console.log("width dimension changed to: " + val);
-        state.dimensions.width = parseFloat(val);
+
+        // # Set
+        state.dimensions.width = parseFloat( val );
+        console.log( "width dimension changed to: " + val );
     },
 
     /**
-     * Description
+     * lenght setter
+     * 
      * @method setLength
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Float} val
      * @return 
      */
-    setLength: function (state, val) {
+    setLength: function ( state, val ) {
 
-        if (isNaN(val)) {
-            console.log("length dimension NaN changed to: " + 300);
-            state.dimensions.length = 300;
+        // # NaN Check
+        if ( isNaN( val ) ) {
+
+            // # Set to a default
+            state.dimensions.length = state.dimensions.default_height;
+            console.log( "length dimension NaN changed to: " + state.dimensions.default_height );
             return;
         }
 
-        console.log("length dimension changed to: " + val);
+        // # Set
         state.dimensions.length = parseFloat(val);
+        console.log( "length dimension changed to: " + val );
     },
 
     /**
      * Description
      * @method setShoulderHeight
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Float} val
      * @return 
      */
     setShoulderHeight: function (state, val) {
 
+        // # NaN Check
         if ( isNaN( val ) ) {
-            console.log("shoulder_height dimension NaN changed to: " + 100);
-            state.dimensions.shoulder_height = 100;
+            
+            // # Set to a default
+            state.dimensions.shoulder_height = state.dimensions.default_shoulder_height;
+            console.log( "shoulder_height dimension NaN changed to: " + state.dimensions.default_shoulder_height );
             return;
         }
 
-        console.log("shoulder height dimension changed to: " + parseFloat(val));
-        state.dimensions.shoulder_height = parseFloat(val);
-    },
-
-    setDefaultDimensions: function( state, val ) {
-        state.dimensions.width = state.dimensions.default_width;
-        state.dimensions.length = state.dimensions.default_height;
-        state.dimensions.shoulder_height = state.dimensions.default_shoulder_height;
+        // # Set
+        state.dimensions.shoulder_height = parseFloat( val );
+        console.log( "shoulder height dimension changed to: " + val );
     },
 
     /**
-     * Description
+     * Reset dimsnsion to default
+     * @param {Object} state
+     * @param {Float} val
+     */
+    setDefaultDimensions: function( state, val ) {
+
+        // # Set Width
+        state.dimensions.width = state.dimensions.default_width;
+
+        // # Set Length
+        state.dimensions.length = state.dimensions.default_height;
+
+        // # Set Shoulder height
+        state.dimensions.shoulder_height = state.dimensions.default_shoulder_height;
+
+        console.log( "All dimensions has been reset" );
+    },
+
+    /**
+     * bridge_orientation setter
+     * s
      * @method setBridgeOrientation
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {string} val
      * @return 
      */
-    setBridgeOrientation: function (state, val) {
-        console.log("bridge orientation changed to: " + val);
+    setBridgeOrientation: function ( state, val ) {
         state.bridge_orientation = val;
+        console.log( "bridge orientation changed to: " + val );
     },
 
     /**
-     * Description
+     * is_suitable_width_4hbridge setter
+     * 
      * @method isSuitableForHBridge
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
     isSuitableForHBridge: function (state, val) {
-        console.log("is_suitable_width_4hbridge changed to: " + val);
         state.is_suitable_width_4hbridge = val;
+        console.log( "is_suitable_width_4hbridge changed to: " + val );
     },
 
     /**
-     * Description
+     * is_suitable_height_4bridge setter
+     * 
      * @method isSuitableHeightForBridge
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    isSuitableHeightForBridge: function (state, val) {
-        console.log("is_suitable_height_4bridge changed to: " + val);
+    isSuitableHeightForBridge: function ( state, val ) {
         state.is_suitable_height_4bridge = val;
+        console.log( "is_suitable_height_4bridge changed to: " + val );
     },
 
     /**
-     * Description
+     * has_bridge setter
+     * 
      * @method hasBridge
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    hasBridge: function (state, val) {
-        console.log("has_bridge changed to: " + val);
+    hasBridge: function ( state, val ) {
         state.has_bridge = val;
+        console.log( "has_bridge changed to: " + val );
     },
 
     /**
-     * Description
+     * bridge_supportID setter
+     * 
      * @method setBridgeSupportID
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Integer} val
      * @return 
      */
-    setBridgeSupportID: function (state, val) {
-        console.log("bridge_supportID changed to: " + val);
+    setBridgeSupportID: function ( state, val ) {
         state.bridge_supportID = val;
+        console.log( "bridge_supportID changed to: " + val );
     },
 
     /**
      * Description
      * @method setBridgeID
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Integer} val
      * @return 
      */
-    setBridgeID: function (state, val) {
-        console.log("bridge_ID changed to: " + val);
+    setBridgeID: function ( state, val ) {
         state.bridge_ID = val;
+        console.log( "bridge_ID changed to: " + val );
     },
 
     /**
-     * Description
+     * Commputes dimensions on bridge places ( supports added )
+     * 
      * @method computeDimensionsOnSupportsChanges
-     * @param {} state
-     * @param {} obj
+     * @param {Object} state
+     * @param {Object} obj
      * @return 
      */
-    computeDimensionsOnSupportsChanges: function (state, obj) {
+    computeDimensionsOnSupportsChanges: function ( state, obj ) {
 
-        switch (state.bridge_orientation) {
+        // # Computation is based on bridge orientattion selected
+        switch ( state.bridge_orientation ) {
 
-            case 'H':
+            case 'H': // # Horizontal
 
-                switch (state.drawertype) {
+                // # Depends on drawer type selected also
+                switch ( state.drawertype ) {
 
-                    case 4:
+                    case 4:// # Custom drawer
 
-                        if (obj.op == "clear") {
+                        if ( obj.op == "clear" ) {
+
                             var supports_in = state.bridge_supports_selected.length;
-                            if (0 == supports_in) {
-                                console.log("no changes to available width");
+
+                            if ( 0 == supports_in ) {
+                                console.log( "no changes applied to available width" );
                                 return;
                             }
+
                             state.dimensions.delta_width += supports_in * 6;
-                            console.log("available width enlarged by: " + supports_in * 6);
+                            console.log( "available width enlarged by: " + supports_in * 6 );
+                            return;
                         }
-                        else {
-                            state.dimensions.delta_width -= 12;
-                            console.log("available width reduced by: " + 12);
-                        }
+                        
+                        // # Else 
+                        state.dimensions.delta_width -= 12;
+                        console.log( "available width reduced by: " + 12 );
+                        
                         break;
 
                     case 3:
-                        // do nothing
-                        break;
-
                     case 2:
                     case 1:
                         // do nothing
@@ -240,44 +284,54 @@ const  mutations = {
 
                 break;
 
-            case 'V':
+            case 'V': // # Vertical
 
-                switch (state.drawertype) {
+                switch ( state.drawertype ) {
 
                     case 4: // custom
                     case 3: // lineabox 2 sides
 
-                        if (obj.op == "clear") {
+                        if ( obj.op == "clear" ) {
 
                             var supports_in = state.bridge_supports_selected.length;
-                            if (0 == supports_in) {
-                                console.log("no changes to available length");
+
+                            if ( 0 == supports_in ) {
+                                console.log( "no changes applied to available length" );
                                 return;
                             }
+
                             state.dimensions.delta_length += supports_in * 6;
-                            console.log("available length enlarged by: " + supports_in * 6);
+                            console.log( "available length enlarged by: " + supports_in * 6 );
+                            return;
                         }
-                        else {
-                            state.dimensions.delta_length -= 12;
-                            console.log("available length reduced by: " + 12);
-                        }
+                        
+                        // # Else 
+                        state.dimensions.delta_length -= 12;
+                        console.log( "available length reduced by: " + 12 );
+                        
                         break;
 
-                    case 2:
-                    case 1:
-                        if (obj.op == "clear") {
+                    case 2:// lineabox 3 sides
+                    case 1:// lineabox 4 sides
+
+                        if ( obj.op == "clear" ) {
+
                             var supports_in = state.bridge_supports_selected.length;
-                            if (0 == supports_in) {
-                                console.log("no changes to available length");
+
+                            if ( 0 == supports_in ) {
+                                console.log( "no changes to available length" );
                                 return;
                             }
+
                             state.dimensions.delta_length += supports_in * 6;
-                            console.log("available length enlarged by: " + 6);
+                            console.log( "available length enlarged by: " + 6 );
+                            return;
                         }
-                        else {
-                            state.dimensions.delta_length -= 6;
-                            console.log("available length reduced by: " + 6);
-                        }
+                        
+                        // # Else 
+                        state.dimensions.delta_length -= 6;
+                        console.log( "available length reduced by: " + 6 );
+                        
                         break;
                 }
 
@@ -286,160 +340,225 @@ const  mutations = {
     },
 
     /**
-     * Description
+     * bridge_supports_selected push management
+     * 
      * @method manageBridgeSupport
-     * @param {} state
-     * @param {} payload
+     * @param {Object} state
+     * @param {Object} payload
      * @return 
      */
-    manageBridgeSupport: function (state, payload) {
-
-        console.log("pushing in support");
-        state.bridge_supports_selected.push(payload.items[0]);
+    manageBridgeSupport: function ( state, payload ) {
+        state.bridge_supports_selected.push( payload.items[ 0 ] );
+        console.log( "pushing in support" );
     },
-
-
 
     /**
-     * Description
+     * bridge_supports_selected clear management
+     * 
      * @method clearBridgeSupports
-     * @param {} state
+     * @param {Object} state
      * @return 
      */
-    clearBridgeSupports: function (state) {
-        console.log("Bridge supports cleanUp");
+    clearBridgeSupports: function ( state ) {
         state.bridge_supports_selected = [];
+        console.log( "Bridge supports cleared" );
     },
-
-
 
     /**
      * Description
      * @method clearBridgeData
-     * @param {} state
+     * @param {Object} state
      * @return 
      */
     clearBridgeData: function (state) {
 
-        console.log("clearing bridge data");
-
+        // # Clear supports
         state.bridge_supports_selected = [];
+
+        // # Clear bridges
         state.bridges_selected = [];
+
+        // # Clear bridge ID
         state.bridge_ID = 0;
+
+        // # Clear bridge support ID
         state.bridge_supportID = 0;
+
+        // # No bridge selected
         state.has_bridge = false;
+
+        console.log( "clearing bridge data" );
     },
 
+    /**
+     * TODO
+     * @param  {[type]} state [description]
+     * @return {[type]}       [description]
+     */
     clearDrawerBorders: function( state ) {
+
         state.borders = {
-            top: '',
-            left: '',
-            bottom: '',
-            right: '',
+            top: "",
+            left: "",
+            bottom: "",
+            right: "",
+            background: ""
         }
     },
 
-
-
-
-
     /**
-     * Description
+     * onecompleted setter
+     * 
      * @method setOnecompleted
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    setOnecompleted: function (state, val) {
-        console.log("onecompleted changed to: " + val);
+    setOnecompleted: function ( state, val ) {
         state.onecompleted = val;
+        console.log( "onecompleted changed to: " + val );
     },
 
     /**
-     * Description
+     * twocompleted setter
+     * 
      * @method setTwocompleted
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    setTwocompleted: function (state, val) {
-        console.log("twocompleted changed to: " + val);
+    setTwocompleted: function ( state, val ) {
         state.twocompleted = val;
+        console.log( "twocompleted changed to: " + val );
     },
 
     /**
-     * Description
+     * threecompleted setter
+     * 
      * @method setThreecompleted
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    setThreecompleted: function (state, val) {
-        console.log("threecompleted changed to: " + val);
+    setThreecompleted: function ( state, val ) {
         state.threecompleted = val;
+        console.log( "threecompleted changed to: " + val );
     },
 
     /**
-     * Description
+     * bridgecompleted setter
+     * 
      * @method setBridgecompleted
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    setBridgecompleted: function (state, val) {
-        console.log("bridgecompleted changed to: " + val);
+    setBridgecompleted: function ( state, val ) {
         state.bridgecompleted = val;
+        console.log( "bridgecompleted changed to: " + val );
     },
 
     /**
-     * Description
+     * fourcompleted setter
+     * 
      * @method setFourcompleted
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    setFourcompleted: function (state, val) {
-        console.log("fourcompleted changed to: " + val);
+    setFourcompleted: function ( state, val ) {
         state.fourcompleted = val;
+        console.log( "fourcompleted changed to: " + val );
     },
 
     /**
-     * Description
+     * fivecompleted setter
+     * 
      * @method setFivecompleted
-     * @param {} state
-     * @param {} val
+     * @param {Object} state
+     * @param {Boolean} val
      * @return 
      */
-    setFivecompleted: function (state, val) {
-        console.log("fivecompleted changed to: " + val);
+    setFivecompleted: function ( state, val ) {
         state.fivecompleted = val;
+        console.log( "fivecompleted changed to: " + val );
     },
 
-    setDrawersTypes: function (state,val) {
+    /**
+     * drawerTypes setter
+     * 
+     * @param {Object} state
+     * @param {Object} val
+     */
+    setDrawersTypes: function ( state, val ) {
         state.drawerTypes = val;
+        console.log( "drawer types downloaded" );
     },
 
-    setBridgesTypes: function (state,val) {
+    /**
+     * bridgeTypes setter
+     * 
+     * @param {Object} state
+     * @param {Object} val
+     */
+    setBridgesTypes: function ( state, val ) {
         state.bridgeTypes = val;
+        console.log( "bridge types downloaded" );
     },
 
-    setSupportsTypes: function (state,val) {
+    /**
+     * supportTypes setter
+     * 
+     * @param {Object} state
+     * @param {Object} val
+     */
+    setSupportsTypes: function ( state, val ) {
         state.supportTypes = val;
+        console.log( "support Types downloaded" );
     },
 
-    setDividerTypes: function (state,val) {
+    /**
+     * [setDividerTypes description]
+     * @param {Object} state
+     * @param {Object} val
+     */
+    setDividerTypes: function ( state, val ) {
         state.dividerTypes = val;
+        console.log( "divider Types downloaded" );
     },
 
-    setComponentHeader : function (state,payload)  {
-        console.log("header changed");
-        state.currentComponentHeader=payload;
+    /**
+     * [setTextureTypes description]
+     * @param {Object} state
+     * @param {Object} val
+     */
+    setTextureTypes ( state, val ) {
+        state.textureTypes = val;
+        console.log( "texture Types downloaded" );
     },
 
-    setobjectWorkingOn: function (state,payload) {
-        state.objectWorkingOn=payload;
+    /**
+     * currentComponentHeader setter
+     * 
+     * @param {Object} state
+     * @param {string} val
+     */
+    setComponentHeader : function ( state, val )  {
+        state.currentComponentHeader = val;
+        console.log("header changed to " + val );
     },
 
+    /**
+     * objectWorkingOn setter
+     * 
+     * @param {Object} state
+     * @param {Object} val
+     * @return
+     */
+    setobjectWorkingOn: function ( state, val ) {
+        state.objectWorkingOn = val;
+        console.log( "Object working on changed" );
+    },
 
     /**
      * Update the position of a divider
@@ -463,13 +582,19 @@ const  mutations = {
         });
     },
 
+    /**
+     * [updateDividerSku description]
+     * @param  {[type]} state   [description]
+     * @param  {[type]} payload [description]
+     * @return {[type]}         [description]
+     */
     updateDividerSku: function (state,payload) {
         console.log("Updating divider sku");
         console.log('Divider id :' , payload.id);
         console.log('New sku: ' , payload.sku);
 
         //Change the state.dividers_selected with a new one with the selected divider having sku changed
-        state.dividers_selected = state.dividers_selected.map((cur) => {
+        state.dividers_selected = state.dividers_selected.map( ( cur ) => {
             //Modify only if id are the same
             if (cur.id==payload.id) {
                 cur.sku=payload.sku;
@@ -485,9 +610,9 @@ const  mutations = {
      */
     removeDivider: function( state, dividerId ) {
 
-        console.log( " removing divider id: ", dividerId);
+        console.log( " removing divider id: ", dividerId );
 
-        state.dividers_selected = state.dividers_selected.filter((cur) => {
+        state.dividers_selected = state.dividers_selected.filter( ( cur ) => {
             return cur.id != dividerId;
         });
 
@@ -511,7 +636,6 @@ const  mutations = {
         let _objProt = _dividerDimension.items[0];
         obj.sku = _objProt.sku;
         state.dividers_selected.push( obj );
-
     },
 
 
@@ -616,10 +740,6 @@ const  mutations = {
 
     setCanvasSvg: function(state,svg) {
         state.canvasSvg=svg;
-    },
-
-    setTextureTypes (state,textures) {
-        state.textureTypes=textures;
     }
 
 
