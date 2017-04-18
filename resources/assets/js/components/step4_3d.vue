@@ -15,6 +15,7 @@
     import Light    from '../3d/components/light';
     import Controls    from '../3d/components/controls';
     import Divider  from '../3d/entity/Divider';
+    import DividerFactory from '../3d/utils/DividerFactory';
     import Config   from '../3d/config';
     import * as THREE from 'three';
     /**
@@ -37,7 +38,8 @@
                 meshes:[],
                 clock:{},
                 OBJLoader:{},
-                manager:{}
+                manager:{},
+                dividerFactory:{}
             }
         },
 
@@ -59,7 +61,7 @@
                 this.scene = new THREE.Scene();
 
                 // # fog disabled
-               // this.scene.fog = new THREE.FogExp2(Config.fog.color, Config.fog.near);
+                this.scene.fog = new THREE.FogExp2(Config.fog.color, Config.fog.near);
 
                 // Get Device Pixel Ratio first for retina
                 if(window.devicePixelRatio) {
@@ -74,28 +76,31 @@
                 this.light = new Light(this.scene);
 
                 // Create and place lights in scene
-                const lights = ['directional'];
+                const lights = ['directional','ambient'];
                 for(let i = 0; i < lights.length; i++) {
                     this.light.place(lights[i]);
                 }
 
-
-
-
                 this.manager = new THREE.LoadingManager();
 
-                /*
-                var onProgress = function ( xhr ) {
-                    if ( xhr.lengthComputable ) {
-                        var percentComplete = xhr.loaded / xhr.total * 100;
-                        console.log( Math.round(percentComplete, 2) + '% downloaded' );
-                    }
+                this.dividerFactory = new DividerFactory(this.manager,this.scene);
+
+                let cc = {
+                    x:0,
+                    y:0,
+                    z:0
                 };
 
-                var onError = function ( xhr ) {
-                };*/
+                let cd = {
+                    x:-150,
+                    y:10,    //just a bit over the cassetto
+                    z:-170
+                };
 
-                let divider = new Divider(this.manager,this.scene,'/images/3dmodels/cassetto_legno.obj','/images/textures/08_Radica.jpg');
+                this.dividerFactory.addDivider('gino','/images/3dmodels/cassetto_legno.obj','/images/textures/08_Radica.jpg',cc);
+                this.dividerFactory.addDivider('gino2','/images/3dmodels/divider.obj','/images/textures/22_Blu.jpg',cd);
+
+                //this.dividerFactory.removeDivider('gino');
 
                 this.render();
 
