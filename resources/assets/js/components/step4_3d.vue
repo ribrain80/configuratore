@@ -92,7 +92,7 @@
                 var onError = function ( xhr ) {
                 };*/
 
-                let divider = new Divider(this.manager,this.scene,'https://threejs.org/examples/obj/male02/male02.obj','/images/textures/08_Radica.jpg');
+                let divider = new Divider(this.manager,this.scene,'/images/3dmodels/cassetto_legno.obj','/images/textures/08_Radica.jpg');
 
                 this.render();
 
