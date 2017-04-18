@@ -49,17 +49,25 @@
             <div class="row top1">
                 <div class="col-lg-12">
                     <div v-if="$store.state.has_bridge">
-                        <!-- Bridges -->
-                        <div class="col-lg-3 bridge_representation"  @click="selectBridge( $event );">
-                            Ponte {{ $store.state.bridge_orientation }} - N. {{ $store.state.bridges_selected.length }}
+                        
+                        <div class="col-lg-10 col-lg-offset-1">
+
+                            <!-- Bridges -->
+                            <div class="col-lg-5 bridge_representation" @click="selectBridge( $event );"></div>
+                            <div class="col-lg-2" style="line-height: 30px;">N. {{ $store.state.bridges_selected.length }}</div>
+                            <div class="col-lg-5">
+                                <button class="btn btn-default btn-sm btn-no-borders" :disabled="!canAddBridges" @click="addBridge()">
+                                    <img src="/images/others/step-4/plus.png" width="23" height="23" />
+                                </button>
+                                <button class="btn btn-default btn-sm btn-no-borders" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">
+                                    <img src="/images/others/step-4/minus.png" width="23" height="23" />
+                                </button>
+                            </div>
+                            <span class="help-block">
+                                Ponte {{ $store.state.bridge_orientation | translate }}
+                            </span>
                         </div>
-                        <div class="col-lg-3">
-                            <button class="btn btn-default btn-sm" :disabled="!canAddBridges" @click="addBridge()">+</button>
-                            <button class="btn btn-default btn-sm" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">-</button>
-                            <button class="btn btn-default btn-sm" @click="clearBridges">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -320,7 +328,7 @@ export default {
              * @type {Object}
              */
             config: {
-                ratio: 3
+                ratio: 1
             },
 
             /**
@@ -330,11 +338,15 @@ export default {
             selectedItem: {},
 
             /**
-             * [bridge_hex description]
+             * bridge hex color
              * @type {String}
              */
             bridge_hex: '',
 
+            /**
+             * All dividers selected flag
+             * @type {Boolean}
+             */
             allselected: false,
         }
     },
@@ -346,6 +358,10 @@ export default {
     computed: {
 
 
+        /**
+         * [availableDividerCategories description]
+         * @return {[type]} [description]
+         */
         availableDividerCategories: function () {
 
             let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;

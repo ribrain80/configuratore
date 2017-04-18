@@ -156,9 +156,20 @@ input {
   width: 30px;
 }
 
+#bridges-tab img {
+  cursor:pointer;
+}
+
+.btn-no-borders {
+  border: none!important;
+}
+
 .bridge_representation {
   cursor:pointer;
   line-height: 30px;
+  height: 30px;
+  border: 1px solid #666;
+  color: #222;
 }
 
 .edge_2d_h {
@@ -175,11 +186,6 @@ input {
   vertical-align: top;
   zoom: 1;
   *display: inline;
-}
-
-.bridge_representation {
-  height: 30px;
-  background-color: #ddd;
 }
 
 .ok {
