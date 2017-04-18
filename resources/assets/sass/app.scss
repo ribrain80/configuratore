@@ -1,10 +1,10 @@
 $icon-font-path: '../fonts/';
 
-// Fonts
-@import "/salicefonts/saliceFonts.css";
-
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+
+// Fonts
+@import "/salicefonts/saliceFonts.css";
 
 body { 
   font-family: "FranklinGothicURW-Boo", sans-serif; 
@@ -83,7 +83,7 @@ canvas {
   width: 100%!important;  
 }
 .btn-block {
-  width: 80%!important;
+  
 }
 
 .i-icon {
@@ -431,7 +431,7 @@ html, body, .container-fluid, .wrapper {
 }
 
 
-.cover {
+#cover {
   position: fixed;
   left: 0px;
   top: 0px;
@@ -440,6 +440,7 @@ html, body, .container-fluid, .wrapper {
   z-index: 1999;
   background:#fff;
   opacity: .8;
+  display: none;
 }
 
 .router-links li {

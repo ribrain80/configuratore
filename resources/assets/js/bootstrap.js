@@ -13,25 +13,3 @@ window._ = require('lodash');
  * Load bootstrap js libs
  */
 require( 'bootstrap-sass' );
-
-/**
- * Load Vue for data-bind
- * @type {Vue}
- */
-window.Vue = require( 'vue' );
-
-/**
- * Load Axios for handle ajax calls with ES6 promises
- */
-window.Axios = require ( 'axios');
-
-/**
- * Load VueCookie for handle cookies inside Vue
- */
-
-window.VueCookie = require('vue-cookie');
-
-/**
- * Inject Vue-cookie plugin in Vue
- */
-Vue.use( VueCookie );
