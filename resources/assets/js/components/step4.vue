@@ -39,7 +39,7 @@
         <!-- Center content -->
     <div class="row top1">
         <div class="col-lg-6">
-            <div class="row top1">
+            <div class="row top">
                 <div class="col-lg-12">
                     <div class="dragdrop-area center-block" id="canvas-container">
                         <canvas id="canvas" class="center-block"></canvas>
@@ -453,6 +453,7 @@ export default {
 
             // # Set DOM dimensions
             canvas_container.width( this.canvasWidth ).height( this.canvasHeight );
+            $( "#step4_3d_container" ).height( this.canvasHeight );
 
             // # FIX ME
             $( ".edge_2d_v" ).height( this.canvasHeight );
