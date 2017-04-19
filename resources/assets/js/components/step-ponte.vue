@@ -3,15 +3,8 @@
 <!-- Container -->
 <div class="container-fluid" id="step-ponte">  
         
-        <!-- Title -->
-        <div class="row" >
-            <div class="col-lg-12">
-                <h2>{{ "stepponte.title" | translate }}</h2>
-            </div>
-        </div>
-        
         <!-- Alerts: User Warning -->
-        <div class="row" >
+        <div class="row top1" >
             <div class="col-lg-12">
                 <div class="alert alert-warning" role="alert" v-html="$t( 'stepponte.info_message' )"></div>
             </div>
