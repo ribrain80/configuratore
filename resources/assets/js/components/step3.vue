@@ -154,7 +154,7 @@
           <div class="row top2">
 
               <div class="col-lg-2 col-md-2 pull-left">
-                  <button class="btn btn-danger btn-block pull-right" @click="reset">{{ 'reset' | translate }}</button>
+                  <button class="btn btn-danger btn-block pull-right reset-btn" @click="reset">{{ 'reset' | translate }}</button>
               </div>            
               <div class="col-lg-2 col-md-2 pull-right">
                   <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>

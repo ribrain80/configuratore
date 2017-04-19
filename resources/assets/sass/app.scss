@@ -160,6 +160,10 @@ input {
   cursor:pointer;
 }
 
+.no-padding {
+  padding: 0!important;
+}
+
 .btn-no-borders {
   border: none!important;
 }
@@ -359,7 +363,7 @@ html, body, .container-fluid, .wrapper {
 
 .app-nav {
   height: 74px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #ededed;
 }
 
 .component-header {
@@ -545,6 +549,14 @@ html, body, .container-fluid, .wrapper {
 
 .btn-danger:hover {
   background: #f04f1a;
+}
+
+.btn-reset {
+  background-color: #fcbb58!important;
+}
+
+.btn-reset:hover {
+  background-color: #fcbb58!important;
 }
 
 .btn-split-small {
