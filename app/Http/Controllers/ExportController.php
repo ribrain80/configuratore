@@ -21,7 +21,7 @@ use App;
  */
 class ExportController extends Controller
 {
-    const FIRST_PAGE_ITEMS_NUMBER = 4;
+    const FIRST_PAGE_ITEMS_NUMBER = 0;
     const OTHER_PAGES_ITEMS_NUMBER = 6;
     
     /**

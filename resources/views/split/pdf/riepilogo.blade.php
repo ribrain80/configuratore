@@ -12,8 +12,8 @@
         <link rel="author" href="http://www.salice.it">
         <style>
             svg {
-               width: 50%;
-                max-width: 50%;
+               width: 70%;
+                max-width: 70%;
                 max-height: 80%;
                 border:1px solid black;
                 margin: 0  auto;
@@ -24,6 +24,16 @@
     <body>
     <div class="wrap">
         <div class="container-fluid keeptogether" id="page1">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    &nbsp;
+                    <div id="box_dimension">
+                        &nbsp;Qui la tabella con le dimensioni
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-xs-12">
                     &nbsp;
@@ -32,12 +42,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top: 20px">
-                @foreach($dividers['first'] as $divider)
-                    @include('split.pdf.partials.elementblock',['element'=>$divider])
-                @endforeach
 
+            <div class="row" style="margin-top: 50px">
+                <div class="col-xs-6 pull-right" style="">
+                    <img src="{{asset('images/qrcode.png')}}" class="img img-responsive">
+                    <div class="push"></div>
+                </div>
             </div>
+
         </div>
         @foreach($dividers['pages'] as $page)
             @include('split.pdf.partials.elementPage',['page'=>$page])
