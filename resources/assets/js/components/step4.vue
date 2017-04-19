@@ -117,8 +117,8 @@
                                                      class="img canBeDragged center-block img-responsive "
                                                      :src="divider.imageH"
                                                      :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,true)"
-                                                     :data-width  = "divider.width"
-                                                     :data-height = "divider.length"
+                                                     :data-width  = "divider.width-4"
+                                                     :data-height = "divider.length-4"
                                                      :data-sku = "divider.sku"
                                                      :data-rotate = "90"
                                                      :data-key = "dimension"
@@ -136,8 +136,8 @@
                                                      class="img canBeDragged center-block img-responsive"
                                                      :src="divider.imageV"
                                                      :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,false)"
-                                                     :data-width  = "divider.length"
-                                                     :data-height = "divider.width"
+                                                     :data-width  = "divider.length-4"
+                                                     :data-height = "divider.width-4"
                                                      :data-sku = "divider.sku"
                                                      :data-rotate = "0"
                                                      :data-key = "dimension"
@@ -761,9 +761,10 @@ export default {
             // # Only for dividers
             if( activeObj.type == "divider" ) {
 
-                // # Reset standard opacity ( some object may be stuck in half opacity )
+                // # Reset standard stroke ( some object may be stuck in half opacity )
                 // # this is a "runtime" fix
-                activeObj.setOpacity( 1 );
+                activeObj.setStrokeWidth( 2 );
+                activeObj.setStroke( "#222" );
 
                 // # Loop through canvas objects
                 this.canvas.forEachObject( ( obj ) => {
@@ -782,10 +783,6 @@ export default {
                         console.log( "no type or wrong type" );
                         return;
                     }
-
-                    // # Reset standard opacity ( some object may be stuck in half opacity )
-                    // # this is a "runtime" fix
-                    obj.setOpacity( 1 );
 
                     // # Log intersection
                     console.log( "intersect " + activeObj.intersectsWithObject(obj) );
@@ -833,16 +830,51 @@ export default {
 
                         if( intersectSize != null ) {
                             console.log( "Intersect size " + intersectSize );
-                            activeObj.setOpacity( 0.5 );
+                            activeObj.setStroke( "#ff0000" );
+                            activeObj.setStrokeWidth( 2 );
+                            activeObj.dirtystate = true;
                             this.canvas.renderAll();
                             return;
                         }
 
                         // # No collision
-                        activeObj.setOpacity( 1 );
-                        this.canvas.renderAll();
+                        console.log( "NO COLLISION" );
+                        
+                        // # Set standard stroke
+                        activeObj.setStroke( "#222" );
+                        activeObj.setStrokeWidth( 2 );
+                        activeObj.dirtystate = false;
+                        this.canvas.renderAll(); 
                     }     
-                });                
+                }); 
+
+                this.canvas.forEachObject( ( obj ) => {
+
+                    if( obj.dirtystate ) {
+
+                        let actuallyCollides = false;
+
+                        this.canvas.forEachObject( ( otherObj ) => {
+
+                            if( obj == otherObj ) {
+                                return;
+                            }
+
+                            if( obj.intersectsWithObject( otherObj ) ) {
+                                actuallyCollides = true;
+                                return;
+                            }
+
+                        });
+
+                        if( !actuallyCollides ) {
+                            obj.setStroke( "#222" );
+                            obj.setStrokeWidth( 2 );
+                            obj.dirtystate = false;
+                            this.canvas.renderAll();                             
+                        }
+                    }
+                });              
             }
         },
 
@@ -1227,16 +1259,19 @@ export default {
                 oImg.setTop( e.layerY );
 
                 // # Set background color
-                oImg.setBackgroundColor( '#ccc' );    //Set a light gray background
+                oImg.setBackgroundColor( '#ededed' );    //Set a light gray background
                 
                 // # Set controls off
                 oImg.hasControls = false;
 
                 // # borders off
-                oImg.hasBorders  = false;
+                oImg.hasBorders  = true;
+                oImg.setStroke( "#222" );
+                oImg.setStrokeWidth( 2 );
 
                 // # Pixel precision
                 oImg.perPixelTargetFind = true;
+                oImg.dirtystate = false;
 
                 // # Change origin point to corner top left
                 oImg.originX = "left";
@@ -1278,18 +1313,25 @@ export default {
                         o.trigger( 'deselected' );
                     });
 
-                    this.setBackgroundColor( "#ffcc00" );
-                    /*this.setStroke( "#ffcc00" );
-                    this.setStrokeWidth( 2 );*/  
+                    this.bringToFront();
+
+                    if( !this.dirtystate ) {
+                        this.setStroke( "#ffcc00" );
+                        this.setStrokeWidth( 2 );
+                    }
                 });
 
                 oImg.on( 'deselected', function() {
                     self.allselected = false;
-                    this.setStrokeWidth( 0 ); 
-                    this.setBackgroundColor( "#ddd" ); 
+
+                    if( !this.dirtystate ) {
+                        this.setStrokeWidth( 2 ); 
+                        this.setStroke( "#222" ); 
+                    }
                 });
 
                 oImg.set( 'active', true );
+
                 this.canvas.setActiveObject( oImg );
 
                 this.allselected = false;
