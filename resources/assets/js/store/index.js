@@ -163,6 +163,10 @@ const store = new Vuex.Store({
          */
         scene: new fakeScene(),
 
+        renderer : false,
+
+        camera : false,
+
         /**
          * Current workin' object in step4
          * @type {Object}
@@ -181,10 +185,15 @@ const store = new Vuex.Store({
         canvasReady: false,
 
         /**
-         * Camvas svg representation
+         * Canvas svg representation
          * @type {String}
          */
         canvasSvg : "",
+
+        /**
+         *
+         */
+        drawer3dImage: "",
 
         /**
          * Current header label

@@ -56,6 +56,9 @@ class SplitDrawerController extends Controller
         if ($data['canvasSvg']) {
             $drawer->svg=$data['canvasSvg'];
         }
+        if ($data['drawer3dImage']) {
+            $drawer->png=$data['drawer3dImage'];
+        }
         $saved = false;
         $error = "";
         try {

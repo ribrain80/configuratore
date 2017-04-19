@@ -9,7 +9,7 @@ export default class Renderer {
         this.container = container;
 
         // Create WebGL renderer and set its antialias
-        this.threeRenderer = new THREE.WebGLRenderer({antialias: true});
+        this.threeRenderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
 
         // # Set scene background color
         this.threeRenderer.setClearColor(Config.sceneClearColor);

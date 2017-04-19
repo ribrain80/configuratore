@@ -58,8 +58,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     &nbsp;
-                    <div id="box3d">
-                        &nbsp;
+                    <div id="box3d" class="center-block">
+                        @if ($model->png)
+                        &nbsp;<img src="{!! $model->png !!}" class="img img-responsive center-block" />
+                        @endif
                     </div>
                 </div>
             </div>

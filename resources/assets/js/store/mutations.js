@@ -753,9 +753,23 @@ const  mutations = {
         state.canvasSvg=svg;
     },
 
+    setDrawer3dImage: function(state,img) {
+        state.drawer3dImage=img;
+    },
+
     setScene: function (state,scene) {
         //Setting 3D scene
         state.scene=scene;
+    },
+
+    setRenderer: function (state,renderer) {
+        //Setting 3D renderer
+        state.renderer=renderer;
+    },
+
+    setCamera: function (state,camera) {
+        //Setting 3D renderer
+        state.camera=camera;
     }
 
 

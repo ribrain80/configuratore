@@ -66,15 +66,19 @@
                     Config.dpr = window.devicePixelRatio;
                 }
 
-                this.renderer = new Renderer(this.$store.state.scene, this.container);
+                let renderer = new Renderer(this.$store.state.scene, this.container);
 
+                this.$store.commit('setRenderer',renderer);
+                console.log("1- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 // Components instantiation
-                this.camera = new Camera(this.renderer.threeRenderer);
-                this.controls = new Controls(this.camera.threeCamera, this.container);
-
+                let camera = new Camera(this.$store.state.renderer.threeRenderer);
+                this.$store.commit('setCamera',camera);
+                console.log("2- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                this.controls = new Controls(this.$store.state.camera.threeCamera, this.container);
+                console.log("3- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 // # Add lights to the scene
                 new Light(this.$store.state.scene);
-
+                console.log("4- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
 
                 this.manager = new THREE.LoadingManager();
@@ -114,7 +118,7 @@
             },
 
             render: function () {
-                this.renderer.render(this.$store.state.scene, this.camera.threeCamera);
+                this.$store.state.renderer.render(this.$store.state.scene, this.$store.state.camera.threeCamera);
                 // RAF
                 requestAnimationFrame(this.render.bind(this));
             }

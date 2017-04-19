@@ -1422,10 +1422,9 @@ export default {
          * @return {[type]} [description]
          */
         check: function() {
-
-            //console.log("EXPORT TO SVG:",this.canvas.toSVG());
-
-            this.$store.commit('setCanvasSvg',this.canvas.toSVG());        
+            
+            this.$store.commit('setCanvasSvg',this.canvas.toSVG());
+            this.$store.commit('setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL("image/png"));
 
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );
