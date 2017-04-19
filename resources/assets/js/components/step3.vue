@@ -35,7 +35,7 @@
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label">
                       <a class="i-icon pull-left" id="width-popover" rel="popover" data-content="">&nbsp;</a> 
-                      <span class="pull-left">LA - {{ 'step3.drawer_width_label' | translate }}</span>
+                      <span class="pull-left"><strong>LA</strong> - {{ 'step3.drawer_width_label' | translate }}</span>
                     </label>
 
                     <div :class="['col-lg-5', 'col-md-5', width_OOR ? 'has-error' : 'has-success' ]">
@@ -61,7 +61,7 @@
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
                       <a class="i-icon pull-left" id="length-popover" rel="popover" data-content="">&nbsp;</a> 
-                      <span class="pull-left">PS - {{ 'step3.drawer_length_label' | translate }}</span>
+                      <span class="pull-left"><strong>PS</strong> - {{ 'step3.drawer_length_label' | translate }}</span>
                     </label>
 
                     <div :class="['col-lg-5', 'col-md-5', length_OOR ? 'has-error' : 'has-success' ]">
@@ -89,7 +89,7 @@
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
                       <a class="i-icon pull-left" id="sh-popover" rel="popover" data-content="">&nbsp;</a> 
-                      <span class="pull-left">HA - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                      <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                     </label>
 
                     <div :class="['col-lg-5', 'col-md-5', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
@@ -118,7 +118,7 @@
                           <div class="col-lg-12">
                             <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
                               <a class="i-icon pull-left" id="sh-popover" rel="popover" data-content="">&nbsp;</a> 
-                              <span class="pull-left">HA - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                              <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                             </label>
                           </div>
                       </div>

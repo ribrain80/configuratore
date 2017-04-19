@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"font",
+				"font-family"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"inte",
+				"intersectsWithObject"
+			],
+			[
+				"other",
+				"otherObj"
+			],
+			[
+				"setS",
+				"setStroke"
+			],
+			[
+				"setStr",
+				"setStrokeWidth"
+			],
+			[
 				"po",
 				"pointer"
 			],
@@ -22,10 +46,6 @@
 			[
 				"panel",
 				"panel-footer \tBootstrap 3 Class"
-			],
-			[
-				"back",
-				"background"
 			],
 			[
 				"u",
@@ -494,26 +514,6 @@
 			[
 				"dep",
 				"depthOOR"
-			],
-			[
-				"leng",
-				"lengthOOR"
-			],
-			[
-				"De",
-				"depthOutOfRange"
-			],
-			[
-				"len",
-				"lengthOutOfRange"
-			],
-			[
-				"hor",
-				"hor_line_shoulder"
-			],
-			[
-				"vert",
-				"vert_line_shoulder"
 			]
 		]
 	},
@@ -523,7 +523,34 @@
 			"file": "resources/assets/sass/app.scss",
 			"settings":
 			{
-				"buffer_size": 9780,
+				"buffer_size": 13212,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step3.vue",
+			"settings":
+			{
+				"buffer_size": 44482,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step-ponte.vue",
+			"settings":
+			{
+				"buffer_size": 19144,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step1.vue",
+			"settings":
+			{
+				"buffer_size": 3293,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +559,7 @@
 			"file": "resources/assets/js/store/translations.js",
 			"settings":
 			{
-				"buffer_size": 10309,
+				"buffer_size": 10644,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,26 +568,16 @@
 			"file": "resources/assets/js/components/step4.vue",
 			"settings":
 			{
-				"buffer_size": 55112,
+				"buffer_size": 56810,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/assets/js/store/mutations.js",
+			"file": "resources/assets/js/components/step2.vue",
 			"settings":
 			{
-				"buffer_size": 20192,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/store/index.js",
-			"settings":
-			{
-				"buffer_size": 10264,
-				"encoding": "UTF-8",
+				"buffer_size": 8159,
 				"line_ending": "Windows"
 			}
 		}
@@ -623,36 +640,36 @@
 	"expanded_folders":
 	[
 		"/C/Users/brambillari/Code/configuratore",
+		"/C/Users/brambillari/Code/configuratore/public",
 		"/C/Users/brambillari/Code/configuratore/public/salicefonts",
 		"/C/Users/brambillari/Code/configuratore/resources",
 		"/C/Users/brambillari/Code/configuratore/resources/assets",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/css",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/components",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/entity",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/salicefonts"
 	],
 	"file_history":
 	[
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
+		"/C/Users/brambillari/Code/configuratore/public/salicefonts/saliceFonts.css",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
+		"/C/Users/brambillari/Code/configuratore/public/salicefonts/webfonts/3358C9_0_0.eot",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/app.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/router.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/bootstrap.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/application.blade.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/getters.js",
 		"/C/Users/brambillari/Code/configuratore/config/app.php",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step1.vue",
 		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/sidebar.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step-ponte.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step5.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/sass/app.scss",
-		"/C/Users/brambillari/Code/configuratore/public/salicefonts/saliceFonts.css",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/salicefonts/saliceFonts.css",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4_3d.vue",
 		"/C/Users/brambillari/Code/configuratore/package.json",
@@ -777,6 +794,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"component-head",
+			"6px 6px 10px 0px",
+			".btn",
+			"stepponte",
+			"rset",
+			"btn-rese",
+			"next",
+			"reset",
+			"deletion-alert-modal",
+			"alertdi",
+			"selectAll",
+			"final",
+			"finall",
+			"final",
+			"setStroke",
+			"selected",
 			"setOpacity",
 			"selected",
 			"final",
@@ -888,23 +921,7 @@
 			"tab",
 			"selectBorder",
 			"edge",
-			"<div class=\"col-lg-12\"></div>",
-			"@icon-font-path",
-			"handledrop",
-			"selectall",
-			".src",
-			"selectAll",
-			"oimg",
-			"selected",
-			"setStrokeWidth",
-			"selectedItem",
-			"selectAll",
-			"e.target",
-			"setopa",
-			"mouse:up",
-			"mouse",
-			"ratioComputer",
-			"getMaxWidth4BridgeByDrawerType"
+			"<div class=\"col-lg-12\"></div>"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -912,6 +929,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"3px 3px 8px 0px",
 			"/salicefonts/webfonts/",
 			"/images/gallery/img1.png",
 			"col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1",
@@ -956,7 +974,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -965,15 +983,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9780,
+						"buffer_size": 13212,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2544,
-								2544
+								4946,
+								4946
 							]
 						],
 						"settings":
@@ -985,8 +1003,8 @@
 								{
 									"1":
 									[
-										2545,
-										2546
+										4945,
+										4946
 									]
 								},
 								"icon":
@@ -1001,8 +1019,8 @@
 								{
 									"1":
 									[
-										2525,
-										2526
+										4713,
+										4714
 									]
 								},
 								"unmatched":
@@ -1011,26 +1029,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1041,26 +1049,36 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1073,27 +1091,235 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2738.0,
+						"translation.y": 2208.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "resources/assets/js/store/translations.js",
+					"file": "resources/assets/js/components/step3.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10309,
+						"buffer_size": 44482,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								188,
-								188
+								6947,
+								6947
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2100.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/assets/js/components/step-ponte.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								708,
+								708
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/assets/js/components/step1.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								97,
+								97
 							]
 						],
 						"settings":
@@ -1105,8 +1331,8 @@
 								{
 									"1":
 									[
-										188,
-										189
+										96,
+										97
 									]
 								},
 								"icon":
@@ -1121,8 +1347,8 @@
 								{
 									"1":
 									[
-										186,
-										187
+										92,
+										93
 									]
 								},
 								"unmatched":
@@ -1131,36 +1357,36 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1171,16 +1397,135 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "resources/assets/js/store/translations.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9170,
+								9170
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										9170,
+										9171
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										9164,
+										9165
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1193,27 +1538,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1708.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 5,
 					"file": "resources/assets/js/components/step4.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 55112,
+						"buffer_size": 56810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								51055,
-								51055
+								26651,
+								26651
 							]
 						],
 						"settings":
@@ -1225,8 +1570,8 @@
 								{
 									"1":
 									[
-										51056,
-										51057
+										26679,
+										26680
 									]
 								},
 								"icon":
@@ -1241,8 +1586,8 @@
 								{
 									"1":
 									[
-										51052,
-										51053
+										26651,
+										26652
 									]
 								},
 								"unmatched":
@@ -1251,36 +1596,36 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1291,16 +1636,16 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1313,27 +1658,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 16578.0,
+						"translation.y": 12538.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "resources/assets/js/store/mutations.js",
+					"buffer": 6,
+					"file": "resources/assets/js/components/step2.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20192,
+						"buffer_size": 8159,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17594,
-								17607
+								5260,
+								5265
 							]
 						],
 						"settings":
@@ -1342,160 +1687,65 @@
 							"bracket_highlighter.locations":
 							{
 								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12518.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/assets/js/store/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8288,
-								8302
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
 								{
 									"1":
 									[
-										9789,
-										9790
+										5278,
+										5279
 									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										5258,
+										5259
+									]
+								},
+								"unmatched":
+								{
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1506,32 +1756,31 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6660.0,
+						"translation.y": 1638.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1586,6 +1835,22 @@
 		"selected_items":
 		[
 			[
+				"step3",
+				"resources\\assets\\js\\components\\step3.vue"
+			],
+			[
+				"steppo",
+				"resources\\assets\\js\\components\\step-ponte.vue"
+			],
+			[
+				"step1",
+				"resources\\assets\\js\\components\\step1.vue"
+			],
+			[
+				"step2",
+				"resources\\assets\\js\\components\\step2.vue"
+			],
+			[
 				"translation",
 				"resources\\assets\\js\\store\\translations.js"
 			],
@@ -1618,14 +1883,6 @@
 				"resources\\assets\\sass\\app.scss"
 			],
 			[
-				"step2",
-				"resources\\assets\\js\\components\\step2.vue"
-			],
-			[
-				"step1",
-				"resources\\assets\\js\\components\\step1.vue"
-			],
-			[
 				"package",
 				"package.json"
 			],
@@ -1652,10 +1909,6 @@
 			[
 				"gulp",
 				"gulpfile.js"
-			],
-			[
-				"step3",
-				"resources\\assets\\js\\components\\step3.vue"
 			],
 			[
 				"app.css",
