@@ -75,6 +75,71 @@ const store = new Vuex.Store({
                     }  
                 );
             });
+        },
+
+        /**
+         * Add a divider to the 3d scene
+         *
+         * params structure:
+         * params.id : Divider id
+         * params.model: Divider 3d model
+         * params.texture: Divider texture
+         * params.coords: an obj like this: {x: ... , y: ... } we dont need the z coord
+         * params.rotate: a boolean flag to know if rotate the model before add
+         *
+         * @param commit
+         * @param params
+         */
+        add3dDivider: function ( { commit }, params ) {
+
+        },
+
+        /**
+         * Remove a divider from the 3d scene
+         * @param commit
+         * @param dividerId
+         */
+        remove3dDivider: function ({ commit }, dividerId) {
+
+        },
+
+        /**
+         * Change a divider position
+         * params structure:
+         * params.id: divider id
+         * params.coords: an obj like this: {x: ... , y: ... } we dont need the z coord
+         */
+        update3dDividerPos: function ({ commit }, params) {
+
+        },
+
+        /**
+         * Change a divider texture
+         * params structure
+         * params.id: divider id
+         * params.texture: Divider texture
+         * @param commit
+         * @param params
+         */
+        update3dDividerTexture: function ( { commit }, params ) {
+
+        },
+
+        /**
+         * Change all 3d divider texture
+         * @param commit
+         * @param texture texture to apply
+         */
+        updateAll3dDividerTexture: function ( { commit }, texture ) {
+
+        },
+
+        /**
+         * Remove all 3d divider from the scene
+         * @param commit
+         */
+        removeAll3dDividers: function ( { commit }) {
+
         }
     },
     
