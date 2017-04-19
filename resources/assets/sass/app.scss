@@ -574,11 +574,14 @@ html, body, .container-fluid, .wrapper {
   white-space: nowrap;
 }
 
+.navigator #nav li {
+  line-height: 30px;
+}
+
 .nuovaconf {
-  line-height: 70px;
+  line-height: 35px;
   text-align: center;
-  font-size: 18px;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .nuovaconf a {
