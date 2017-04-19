@@ -650,6 +650,22 @@ export default {
 
         },
 
+
+        /**
+         * Select all dividers logic
+         * @return {void}
+         */
+        deselectAll:function() {
+
+            // # Loop through the canvas objects
+            var objs = this.canvas.getObjects().map( ( o )  => {
+
+                o.setStrokeWidth( 2 );
+                o.setStroke( "#222" );
+                o.set( 'active', false );  
+            });            
+        },
+
         /**
          * Select all dividers logic
          * @return {void}
@@ -1426,6 +1442,8 @@ export default {
          */
         check: function() {
 
+            this.deselectAll();
+            
             this.$store.commit('setCanvasSvg',this.canvas.toSVG());
             this.$store.commit('setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL("image/png"));
 

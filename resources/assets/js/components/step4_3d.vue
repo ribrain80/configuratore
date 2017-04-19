@@ -99,7 +99,7 @@
                     z:-170
                 };
 
-                this.dividerFactory.addDivider('gino','/images/3dmodels/cassetto_legno.obj','/images/textures/08_Radica.jpg',cc);
+                this.dividerFactory.addDivider('gino','/images/3dmodels/cassetto_legno.obj','/images/textures/04_Faggio.jpg',cc);
                 this.dividerFactory.addDivider('gino1','/images/3dmodels/divider.obj','/images/textures/22_Blu.jpg',cd);
                 this.dividerFactory.addDivider('gino2','/images/3dmodels/divider.obj','/images/textures/32_Lino chiaro.jpg',cd1);
 

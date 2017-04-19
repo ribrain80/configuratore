@@ -125,15 +125,15 @@
         <div class="row top1">
 
             <div class="col-lg-2 pull-left" >
-                <button class="btn btn-danger btn-block " @click="resetData">{{ 'stepponte.reset' | translate }}</button>
+                <button class="btn btn-danger btn-reset " @click="resetData">{{ 'stepponte.reset' | translate }}</button>
             </div>        
 
             <div class="col-lg-2 pull-right" >
-                <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+                <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>  
 
             <div class="col-lg-2 pull-right" >
-                <router-link to="/split/step3" class="btn btn-danger btn-back btn-block" tag="button">{{ 'back' | translate }}</router-link>
+                <router-link to="/split/step3" class="btn btn-danger btn-back" tag="button">{{ 'back' | translate }}</router-link>
             </div>
 
 
