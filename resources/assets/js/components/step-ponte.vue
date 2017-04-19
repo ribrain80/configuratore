@@ -34,7 +34,7 @@
                              :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
                              @click="setOrientation('H')"
                         />
-                        <figcaption :class="[ 'text-center', 'small', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'orizzontale' | translate}} </figcaption>
+                        <figcaption :class="[ 'text-center', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'orizzontale' | translate}} </figcaption>
                     </figure>
                 </div>
 
@@ -47,7 +47,7 @@
                              :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
                              @click="setOrientation('V')"
                         />
-                        <figcaption :class="[ 'text-center', 'small', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'verticale' | translate}} </figcaption>
+                        <figcaption :class="[ 'text-center', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'verticale' | translate}} </figcaption>
                     </figure>
                 </div>
 
@@ -81,7 +81,7 @@
                                      :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
                                      @click="selectBridgeSupport( bridge_support )"
                                 />
-                                <figcaption :class="[ 'text-center', 'small', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
+                                <figcaption :class="[ 'text-center', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
                             </figure>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                  :data-width="bridge.width"
                                  :data-depth="bridge.depth"
                             />
-                            <figcaption :class="[ 'text-center', 'small', true ? 'text-success' : 'text-danger']"> H: {{ bridge.depth }} mm </figcaption>
+                            <figcaption :class="[ 'text-center', true ? 'text-success' : 'text-danger']"> H: {{ bridge.depth }} mm </figcaption>
                         </figure>
 
                     </div>

@@ -12,10 +12,10 @@ $icon-font-path: '../fonts/';
 
 
 /* Setting bootstrap sass variables */
-$font-family-sans-serif:  "FranklinGothicURW-Boo", Helvetica, Arial, sans-serif !default;
-$font-family-serif:       "Georgia", "FranklinGothicURW-Boo", Times, serif !default;
+$font-family-sans-serif:  "FranklinGothicURW-Boo", "Helvetica", "Arial", sans-serif !default;
+$font-family-serif:       "Georgia", "FranklinGothicURW-Boo", "Times", serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-monospace:   "Menlo", "Monaco", "Consolas", "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
 
 // Bootstrap
@@ -31,6 +31,10 @@ body {
 strong, .component-header {
   font-family: "FranklinGothicURW-Dem";
   font-weight: 500;
+}
+
+.no-padding-left {
+  padding-left: 0!important;
 }
 
 .caret {
@@ -232,6 +236,10 @@ input {
 .top1 { margin-top: 1% }
 .top2 { margin-top: 2%; }
 .top5 { margin-top: 5%; }
+
+#step-ponte .help-block {
+  font-size: 1.2em;
+}
 
 .edge_2d_v {
   background-color: #efefef;
@@ -475,11 +483,12 @@ html, body, .container-fluid, .wrapper {
 }
 
 .sidebar-elem {
-  min-height: 70px;
+  min-height: 30px;
 }
 
 .nuovaconf {
-  background-color: #e7e7e7 ;
+  background-color: #e7e7e7;
+  font-size: 1.1em;
 }
 
 .logo {
