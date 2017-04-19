@@ -1,13 +1,30 @@
 $icon-font-path: '../fonts/';
 
+// Fonts
+/* Import Salice FranklinGothicURW font */
+@import url("//hello.myfonts.net/count/3358c9");
+@font-face {font-family: 'FranklinGothicURW-Boo';src: url('/salicefonts/webfonts/3358C9_0_0.eot');src: url('/salicefonts/webfonts/3358C9_0_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_0_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_0_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_0_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-BooIta';src: url('/salicefonts/webfonts/3358C9_1_0.eot');src: url('/salicefonts/webfonts/3358C9_1_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_1_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_1_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_1_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-Dem';src: url('/salicefonts/webfonts/3358C9_2_0.eot');src: url('/salicefonts/webfonts/3358C9_2_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_2_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_2_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_2_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-DemIta';src: url('/salicefonts/webfonts/3358C9_3_0.eot');src: url('/salicefonts/webfonts/3358C9_3_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_3_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_3_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_3_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-Hea';src: url('/salicefonts/webfonts/3358C9_4_0.eot');src: url('/salicefonts/webfonts/3358C9_4_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_4_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_4_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_4_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-HeaIta';src: url('/salicefonts/webfonts/3358C9_5_0.eot');src: url('/salicefonts/webfonts/3358C9_5_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_5_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_5_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_5_0.ttf') format('truetype');}
+
+
+/* Setting bootstrap sass variables */
+$font-family-sans-serif:  "FranklinGothicURW-Boo", Helvetica, Arial, sans-serif !default;
+$font-family-serif:       Georgia, "FranklinGothicURW-Boo", Times, serif !default;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
 // Bootstrap
 @import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 
-// Fonts
-@import "/salicefonts/saliceFonts.css";
+
 
 body { 
-  font-family: "FranklinGothicURW-Boo", sans-serif; 
+  /*font-family: "FranklinGothicURW-Boo", sans-serif; */
   color: #666;
   font-size: 12px;
 }
