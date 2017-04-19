@@ -625,21 +625,25 @@ export default {
          */
         alertDividerDeletion: function() {
 
+            console.log( this.allselected );
+            if( this.allselected ) {
+                console.log( "ALL");
+                $( "#deletion-alert-modal" ).find( ".modal-body" ).text( Vue.i18n.translate( "step4.delete_all_advice" ) );
+                $( "#deletion-alert-modal" ).modal();
+                return;
+            }
+
             // # Cache the active Object
             var activeObj = this.canvas.getActiveObject();
-
-            // # If only one is selected it mustn't be null!
-            if( (null == activeObj || undefined == activeObj) && !this.allselected) {
+            if( null != activeObj && activeObj.get( 'type' ) == "divider" ) {
+                console.log( "ONE");
+                $( "#deletion-alert-modal" ).find( ".modal-body" ).text( Vue.i18n.translate( "step4.delete_single_advice" ) );
+                $( "#deletion-alert-modal" ).modal();
                 return;
             }
 
-            // # And it MUST be a divider!
-            if (( activeObj.get( 'type' ) != "divider") && !this.allselected) {
-                return;
-            }
-            
-            // # Show modal
-            $( "#deletion-alert-modal" ).modal();
+            return;
+
         },
 
         /**
@@ -648,22 +652,20 @@ export default {
          */
         selectAll: function() {
 
-            // # Clean up the situation
-            this.canvas.discardActiveObject();
-
             // # Loop through the canvas objects
             var objs = this.canvas.getObjects().map( ( o )  => {
 
                 switch( this.allselected ) {
 
                     case true:
-                        o.setStrokeWidth( 0 );
+                        o.setStrokeWidth( 2 );
+                        o.setStroke( "#222" );
                         o.set( 'active', false );
                     break;
 
                     case false:
-                        o.setStroke( "#ffcc00" );
                         o.setStrokeWidth( 2 );
+                        o.setStroke( "#ffcc00" );
                         o.set( 'active', true );
                     break;
                 }
