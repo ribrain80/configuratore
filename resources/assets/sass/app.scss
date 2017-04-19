@@ -242,10 +242,26 @@ input {
   width: auto;
 }
 
+#step5 label {
+  font-size: 1.3em;
+}
+
+.no-padding-left {
+  padding-left: 0!important;
+}
+
+.lh-34 {
+  line-height: 34px;
+}
+
 .edge {
   border: 1px solid #ddd; 
   background-color: #efefef; 
   cursor:pointer;
+}
+
+.form-control {
+  font-size: 1.2em;
 }
 
 .edge_selected {
