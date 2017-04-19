@@ -28,8 +28,8 @@ export default {
         far: 20000,
         aspect: 1,
         posX: 300,
-        posY: 1500,
-        posZ: 2000
+        posY: 500,
+        posZ: 500
     },
     controls: {
         autoRotate: true,
