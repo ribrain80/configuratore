@@ -39,10 +39,24 @@ strong, .component-header {
 
 .caret {
   border: none!important;
-  width: 18px;
-  height: 18px;
-  margin-top: 6px;
-  background: url( "/images/others/navbar/freccia-lang.png" ) no-repeat!important;
+  width: 17px;
+  height: 11px;
+  margin-top: 5px;
+  background: url( "/images/others/navbar/freccia-lang.png" ) no-repeat;
+  background-size: 10px 10px;
+}
+
+.text-success {
+    color: #3c763d!important;
+}
+
+.text-danger {
+    color: #a94442!important;
+}
+
+.menu-arrow {
+    font-size: .9em;
+    margin-top: 1px;
 }
 
 figure:hover {
@@ -50,13 +64,19 @@ figure:hover {
   -webkit-transform:scale(1.1,1.1);
   -moz-transform:scale(1.1,1.1);
 }
+.pointer {
+  cursor: pointer;
+}
 
 .alert {
   font-size: 1.2em;
 }
 
 .lang-text {
-  font-size: 1.2em;
+
+  letter-spacing: 1px;
+  font-size: 1.08em;
+  margin-right: 4px;
 }
 
 .border-selected {

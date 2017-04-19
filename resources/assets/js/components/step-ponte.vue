@@ -122,7 +122,7 @@
         </div>
 
         <!-- Next button -->
-        <div class="row">
+        <div class="row top1">
 
             <div class="col-lg-2 pull-left" >
                 <button class="btn btn-danger btn-block " @click="resetData">{{ 'stepponte.reset' | translate }}</button>

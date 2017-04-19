@@ -38,15 +38,15 @@
                       <span class="pull-left"><strong>LA</strong> - {{ 'step3.drawer_width_label' | translate }}</span>
                     </label>
 
-                    <div :class="['col-lg-5', 'col-md-5', width_OOR ? 'has-error' : 'has-success' ]">
+                    <div :class="['col-lg-5', 'col-md-5' ]">
 
                       <div class="row">
-                        <div class="col-lg-10"><input type="text" class="form-control text-right" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
+                        <div class="col-lg-10"><input type="text" :class="[ 'form-control', 'text-right', width_OOR ? 'text-danger' : 'text-success']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
                         </div>
                         <div class="col-lg-2 input-mm">mm</div>
                       </div>
 
-                        <span class="help-block pull-right small"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
+                        <span class="help-block pull-right"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
 
                     </div>
 
@@ -64,17 +64,17 @@
                       <span class="pull-left"><strong>PS</strong> - {{ 'step3.drawer_length_label' | translate }}</span>
                     </label>
 
-                    <div :class="['col-lg-5', 'col-md-5', length_OOR ? 'has-error' : 'has-success' ]">
+                    <div :class="['col-lg-5', 'col-md-5']">
 
 
                       <div class="row">
-                        <div class="col-lg-10"><input type="text" class="form-control text-right" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
+                        <div class="col-lg-10"><input type="text" :class="[ 'form-control', 'text-right', length_OOR ? 'text-danger' : 'text-success']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
                         </div>
                         <div class="col-lg-2 input-mm">mm</div>
                       </div>
 
                       
-                      <span class="help-block pull-right small"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
+                      <span class="help-block pull-right"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
@@ -92,15 +92,15 @@
                       <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                     </label>
 
-                    <div :class="['col-lg-5', 'col-md-5', shoulder_height_OOR ? 'has-error' : 'has-success' ]">
+                    <div :class="['col-lg-5', 'col-md-5']">
                       
                       <div class="row">
-                        <div class="col-lg-10"><input type="text" class="form-control text-right" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
+                        <div class="col-lg-10"><input type="text" :class="[ 'form-control', 'text-right', shoulder_height_OOR ? 'text-danger' : 'text-success']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
                         </div>
                         <div class="col-lg-2 input-mm">mm</div>
                       </div>
 
-                      <span class="help-block pull-right small"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
+                      <span class="help-block pull-right"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
 
                     </div>
 
@@ -197,7 +197,7 @@ export default {
               text_stroke: '#222222',
               font_size: 12,
               font_family: 'FranklinGothicURW-Boo',
-              font_weight: 'normal',
+              font_weight: 300,
               measure_label: "mm",
 
               // # Rect related info
@@ -714,6 +714,7 @@ export default {
             this.hor_text_shoulder.size = this.config.font_size;
             this.hor_text_shoulder.stroke = this.config.text_stroke;
             this.hor_text_shoulder.family = this.config.font_family; 
+            this.hor_text_shoulder.weight = this.config.font_weight;
         },
 
         /**
@@ -751,6 +752,7 @@ export default {
             this.vert_text_shoulder.size = this.config.font_size;
             this.vert_text_shoulder.stroke = this.config.text_stroke;
             this.vert_text_shoulder.family = this.config.font_family;
+            this.vert_text_shoulder.weight = this.config.font_weight;
 
             // # Rotate text 90 degrees clockwise
             this.vert_text_shoulder.rotation = Math.PI/2;
@@ -773,6 +775,7 @@ export default {
             this.shoulder_text.size = this.config.font_size;
             this.shoulder_text.stroke = this.config.text_stroke;
             this.shoulder_text.family = this.config.font_family;
+            this.shoulder_text.weight = this.config.font_weight;
 
             // # Rotate text 90 degrees clockwise
             this.shoulder_text.rotation = Math.PI/2;
@@ -839,6 +842,7 @@ export default {
             this.hor_text_rect.size = this.config.font_size;
             this.hor_text_rect.stroke = this.config.text_stroke;
             this.hor_text_rect.family = this.config.font_family; 
+            this.hor_text_rect.weight = this.config.font_weight;
         },
 
         /**
@@ -876,6 +880,8 @@ export default {
             this.vert_text_rect.size = this.config.font_size;
             this.vert_text_rect.stroke = this.config.text_stroke;
             this.vert_text_rect.family = this.config.font_family;
+            this.vert_text_rect.weight = this.config.font_weight;
+            
             this.vert_text_rect.rotation = Math.PI/2;
         },
 
@@ -918,6 +924,7 @@ export default {
             this.drawer_text.size = this.config.font_size;
             this.drawer_text.stroke = this.config.text_stroke;
             this.drawer_text.family = this.config.font_family;
+            this.drawer_text.weight = this.config.font_weight;
         },
 
         /**

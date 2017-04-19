@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle lang-text" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">{{ getShort() }} <span class="caret"></span></a>
+               aria-expanded="false">{{ getShort() }} <span class="glyphicon glyphicon-menu-down menu-arrow"></span></a>
 
             <ul class="dropdown-menu">
                 <li v-for="language in languages">

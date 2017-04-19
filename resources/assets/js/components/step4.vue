@@ -56,16 +56,18 @@
                             <div class="col-lg-5 bridge_representation" @click="selectBridge( $event );"></div>
                             <div class="col-lg-2" style="line-height: 30px;">N. {{ $store.state.bridges_selected.length }}</div>
                             <div class="col-lg-5">
-                                <button class="btn btn-default btn-sm btn-no-borders" :disabled="!canAddBridges" @click="addBridge()">
-                                    <img src="/images/others/step-4/plus.png" width="23" height="23" />
-                                </button>
-                                <button class="btn btn-default btn-sm btn-no-borders" :disabled="!$store.state.bridges_selected.length" @click="removeBridge()">
-                                    <img src="/images/others/step-4/minus.png" width="23" height="23" />
-                                </button>
+                                <div class="pull-left pointer">
+                                    <img src="/images/others/step-4/plus.png" width="23" height="23" class="" v-show="canAddBridges" @click="addBridge()"/>
+                                </div>
+                                <div class="pull-left pointer">
+                                    <img src="/images/others/step-4/minus.png" width="23" height="23" class="" v-show="$store.state.bridges_selected.length" @click="removeBridge()"/>
+                                </div>
                             </div>
-                            <span class="help-block">
-                                Ponte {{ $store.state.bridge_orientation | translate }}
-                            </span>
+                            <div class="col-lg-11 col-lg-offset-1">
+                                <span class="help-block">
+                                    Ponte {{ $store.state.bridge_orientation | translate }}
+                                </span>
+                            </div>
                         </div>
 
                     </div>
@@ -1423,7 +1425,7 @@ export default {
 
             //console.log("EXPORT TO SVG:",this.canvas.toSVG());
 
-            this.$store.commit('setCanvasSvg',this.canvas.toSVG());
+            this.$store.commit('setCanvasSvg',this.canvas.toSVG());        
 
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );
