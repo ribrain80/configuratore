@@ -69,16 +69,12 @@
                 let renderer = new Renderer(this.$store.state.scene, this.container);
 
                 this.$store.commit('setRenderer',renderer);
-                console.log("1- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 // Components instantiation
                 let camera = new Camera(this.$store.state.renderer.threeRenderer);
                 this.$store.commit('setCamera',camera);
-                console.log("2- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 this.controls = new Controls(this.$store.state.camera.threeCamera, this.container);
-                console.log("3- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 // # Add lights to the scene
                 new Light(this.$store.state.scene);
-                console.log("4- QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
 
                 this.manager = new THREE.LoadingManager();

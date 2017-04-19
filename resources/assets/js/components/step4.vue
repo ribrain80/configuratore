@@ -481,6 +481,8 @@ export default {
 
             // # 3D container should have the same height as the 2D one
             $( "#step4_3d_container" ).height( this.canvasHeight );
+            this.$store.state.renderer.updateSize();
+            this.$store.state.camera.updateSize(this.$store.state.renderer.threeRenderer);
 
             // # Initialize canvas
             this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
@@ -940,6 +942,7 @@ export default {
 
             // # Commit ratio ( useful for 3d )
             this.$store.commit( "setStep42DRatio", this.config.ratio );
+
 
             console.log( "RATIO " + this.config.ratio );
         },  
@@ -1422,7 +1425,7 @@ export default {
          * @return {[type]} [description]
          */
         check: function() {
-            
+
             this.$store.commit('setCanvasSvg',this.canvas.toSVG());
             this.$store.commit('setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL("image/png"));
 
