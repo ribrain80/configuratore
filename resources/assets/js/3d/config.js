@@ -69,7 +69,7 @@ export default {
 
     lightBaseConfig: {
         color: 0xffffff,
-        intensity: 0.25,
+        intensity: 0.45,
         x:1000,
         y:1000,
         z:1000

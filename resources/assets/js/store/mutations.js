@@ -751,7 +751,13 @@ const  mutations = {
 
     setCanvasSvg: function(state,svg) {
         state.canvasSvg=svg;
+    },
+
+    setScene: function (state,scene) {
+        //Setting 3D scene
+        state.scene=scene;
     }
+
 
 
 };

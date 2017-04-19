@@ -57,29 +57,29 @@
                 //Start clock
                 this.clock = new THREE.Clock();
 
-                // Main scene creation
-                this.scene = new THREE.Scene();
-
+                // Main scene creation and set on Store
+                let scene = new THREE.Scene();
+                this.$store.commit('setScene',scene);
 
                 // Get Device Pixel Ratio first for retina
                 if(window.devicePixelRatio) {
                     Config.dpr = window.devicePixelRatio;
                 }
 
-                this.renderer = new Renderer(this.scene, this.container);
+                this.renderer = new Renderer(this.$store.state.scene, this.container);
 
                 // Components instantiation
                 this.camera = new Camera(this.renderer.threeRenderer);
                 this.controls = new Controls(this.camera.threeCamera, this.container);
 
                 // # Add lights to the scene
-                this.light = new Light(this.scene);
+                new Light(this.$store.state.scene);
 
 
 
                 this.manager = new THREE.LoadingManager();
 
-                this.dividerFactory = new DividerFactory(this.manager,this.scene);
+                this.dividerFactory = new DividerFactory(this.manager,this.$store.state.scene);
 
                 let cc = {
                     x:0,
@@ -114,7 +114,7 @@
             },
 
             render: function () {
-                this.renderer.render(this.scene, this.camera.threeCamera);
+                this.renderer.render(this.$store.state.scene, this.camera.threeCamera);
                 // RAF
                 requestAnimationFrame(this.render.bind(this));
             }

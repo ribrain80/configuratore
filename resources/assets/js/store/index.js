@@ -5,6 +5,8 @@ import vuexI18n     from 'vuex-i18n'
 import mutations    from './mutations'
 import getters      from './getters'
 import translations from './translations'
+import fakeScene    from '../3d/dummy/dummyScene'
+
 
 // # Ie11 polyfill workarounds
 require('es6-promise').polyfill();
@@ -87,6 +89,14 @@ const store = new Vuex.Store({
      * @type {Object}
      */
     state: {
+
+
+        /**
+         * Threejs Scene or DummyScene
+         * First init as Dummy
+         * @type {Object}
+         */
+        scene: new fakeScene(),
 
         /**
          * Current workin' object in step4
