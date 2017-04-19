@@ -1033,8 +1033,11 @@ export default {
                 dbId: e.target.dataset.sku  //This is a fake sku => just the db id!!!!
             };
 
-            console.log(this.$store.state.objectWorkingOn.obj);
+
             this.$store.state.objectWorkingOn.obj.style.backgroundImage = "url("+e.target.src+")";
+            if (this.$store.state.objectWorkingOn.id=='background') {
+                document.getElementById('canvas-container').style.backgroundImage = "url("+e.target.src+")";
+            }
 
             this.$store.commit('setDrawerBorder',payload);
         },

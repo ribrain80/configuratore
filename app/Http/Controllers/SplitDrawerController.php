@@ -48,11 +48,19 @@ class SplitDrawerController extends Controller
 
         //2 Inizializzo l'oggetto (sia save che update)
         $drawer = $this->loadModel(isset($data['drawerId'])?$data['drawerId']:null);
-        //3 Aggiorno i campi di model (fake)
+        //3 Aggiorno i campi di model
         $drawer->length = (int)$data['dimensions']['length'];
         $drawer->width = (int)$data['dimensions']['width'];
         $drawer->depth = (int)$data['dimensions']['shoulder_height'];
         $drawer->drawertypes_id = $data['drawertype'];
+        // Update borders and background
+        $drawer->sponda_front=isset($data['borders']['front'])?$data['borders']['front']:0;
+        $drawer->sponda_back=isset($data['borders']['back'])?$data['borders']['back']:0;
+        $drawer->sponda_left=isset($data['borders']['left'])?$data['borders']['left']:0;
+        $drawer->sponda_right=isset($data['borders']['right'])?$data['borders']['right']:0;
+        $drawer->background=isset($data['borders']['background'])?$data['borders']['background']:0;
+
+        //Update svg and 3d
         if ($data['canvasSvg']) {
             $drawer->svg=$data['canvasSvg'];
         }

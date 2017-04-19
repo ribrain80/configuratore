@@ -35,10 +35,13 @@
                     <tbody>
                     <tr>
                         <td>{{ $model->drawertype->description }}</td>
-                        <td>{{ $model->edgecolor ? $model->edgecolor:'n.d.' }}</td>
-                        <td>TODO</td>
-                        <td>TODO</td>
-                        <td>TODO</td>
+                        <td>
+                            sx: {{ $model->sponda_left ? \App\Models\Texture::where('id',$model->sponda_left)->get()->first()->name:'n.d.' }} <br>
+                            dx: {{ $model->sponda_right ? \App\Models\Texture::where('id',$model->sponda_right)->get()->first()->name:'n.d.' }}
+                        </td>
+                        <td>{{ $model->sponda_back ? \App\Models\Texture::where('id',$model->sponda_back)->get()->first()->name:'n.d.' }}</td>
+                        <td>{{ $model->background ? \App\Models\Texture::where('id',$model->background)->get()->first()->name:'n.d.' }}</td>
+                        <td>{{ $model->sponda_front ? \App\Models\Texture::where('id',$model->sponda_front)->get()->first()->name:'n.d.' }}</td>
                     </tr>
                     </tbody>
                 </table>
