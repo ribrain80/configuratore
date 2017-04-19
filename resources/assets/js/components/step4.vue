@@ -1085,17 +1085,17 @@ export default {
             
             // # Snap to left
             if( options.target.getLeft() < this.snap ) {
-                options.target.setLeft(0);
+                options.target.setLeft( 0 );
             }
 
             // # Snap to top
             if( options.target.getTop() < this.snap ) {
-                options.target.setTop(0);
+                options.target.setTop( 0 );
             }
 
             // # Snap to right
             if( ( options.target.getWidth() + options.target.getLeft() ) > ( this.canvasWidth - this.snap ) ) {
-                options.target.setLeft( this.canvasWidth - options.target.getWidth());
+                options.target.setLeft( this.canvasWidth - options.target.getWidth() - 1);
             }
 
             // # Snap to bottom
@@ -1252,8 +1252,8 @@ export default {
             }
 
             // # Caching img dataset
-            var _imgW   = +this.draggingDivider.dataset.width * this.config.ratio;
-            var _imgH   = +this.draggingDivider.dataset.height * this.config.ratio;
+            var _imgW   = Math.floor( +this.draggingDivider.dataset.width * this.config.ratio );
+            var _imgH   = Math.floor( +this.draggingDivider.dataset.height * this.config.ratio );
             var _imgID  = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
             let _imgOr  = this.draggingDivider.dataset.orientation;
 
@@ -1276,6 +1276,8 @@ export default {
                 var oImg = new fabric.Image( imgObj );
                 oImg.setWidth( _imgW );
                 oImg.setHeight( _imgH );
+                console.log( "image width" + _imgW );
+                console.log( "image height" + _imgH );
 
                 // # Set image position
                 oImg.setLeft( e.layerX );
@@ -1443,7 +1445,7 @@ export default {
         check: function() {
 
             this.deselectAll();
-            
+
             this.$store.commit('setCanvasSvg',this.canvas.toSVG());
             this.$store.commit('setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL("image/png"));
 
