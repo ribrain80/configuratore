@@ -538,6 +538,11 @@ const  mutations = {
         console.log( "divider Types downloaded" );
     },
 
+    setDividerTypesPlain: function ( state, val ) {
+        state.dividerTypesPlain = val;
+        console.log( "divider Types  Plain downloaded" );
+    },
+
     /**
      * [setTextureTypes description]
      * @param {Object} state

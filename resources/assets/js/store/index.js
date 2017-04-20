@@ -53,14 +53,15 @@ const store = new Vuex.Store({
                     Axios.get( '/split/bridges' ),
                     Axios.get( '/split/supports' ),
                     Axios.get( '/split/dividers'),
-                    Axios.get( '/split/edgestextures')
+                    Axios.get( '/split/edgestextures'),
+                    Axios.get( '/split/dividersplain'),
                 ];
 
                 // # Resolve all promises. If any of them fail push into the router '/split/500'
                 // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures ] ) => {
+                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain ] ) => {
 
                         // # Success
                         commit( 'setDrawersTypes', responseTypes.data );
@@ -68,6 +69,7 @@ const store = new Vuex.Store({
                         commit( 'setSupportsTypes',responseSupports.data );
                         commit( 'setDividerTypes', responseDividers.data );
                         commit( 'setTextureTypes', responseTextures.data );
+                        commit( 'setDividerTypesPlain', responseDividersPlain.data );
 
                         // # Trigger start
                         Pace.stop();
@@ -94,17 +96,23 @@ const store = new Vuex.Store({
          * @param commit
          * @param params
          */
-        add3dDivider: function ( { commit,state }, params ) {
+        add3dDivider: function ( { commit,state }, divider ) {
             //Check if action is allowed !!
             if (state.dividerHelper) {
+                console.log("DIVIDER OBJ", divider);
+                let _model = state.dividerTypesPlain[divider.sku];
+                let ratio = state.step4_2D_ratio;
+                let coords = {
+                    x:(divider.x / ratio),
+                    z: (divider.y / ratio),
+                    y:0
+                };
 
-                // todo: Made that configurable!
-                //params.coords.y= 10;
                 state.dividerHelper.addDivider(
-                    params.id,
-                    params.model,
-                    params.texture,
-                    params.coords
+                    divider.id,
+                    _model.model3d,
+                    _model.baseTexture,
+                    coords
                 );
             }
         },
@@ -116,11 +124,7 @@ const store = new Vuex.Store({
          * @param dividerId
          */
         remove3dDivider: function ({ commit,state }, dividerId) {
-            let _toRemove = state.scene.getObjectByName( dividerId );
-
-            if (_toRemove) {
-                state.scene.remove();
-            }
+            state.dividerHelper.removeDivider(dividerId);
         },
 
         /**
@@ -129,8 +133,9 @@ const store = new Vuex.Store({
          * params.id: divider id
          * params.coords: an obj like this: {x: ... , y: ... } we dont need the z coord
          */
-        update3dDividerPos: function ({ commit }, params) {
-
+        update3dDividerPos: function ({ commit,state }, params) {
+            let ratio = state.step4_2D_ratio;
+            state.dividerHelper.updateDividerPosition(params.id,params.x/ratio, params.y/ratio);
         },
 
         /**
@@ -141,8 +146,13 @@ const store = new Vuex.Store({
          * @param commit
          * @param params
          */
-        update3dDividerTexture: function ( { commit }, params ) {
-
+        update3dDividerTexture: function ( { commit,state }, params ) {
+            let _model = state.dividerTypesPlain[params.sku];
+            state.dividerHelper.updateDividerTexture(
+                params.id,
+                _model.model3d,
+                _model.baseTexture
+            );
         },
 
         /**
@@ -254,6 +264,8 @@ const store = new Vuex.Store({
             dividersCategories: [],
             dividers: []
         },
+
+        dividerTypesPlain: {},
 
         /**
          * Application default language

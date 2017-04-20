@@ -772,6 +772,7 @@ export default {
 
                     // # Remove ID from selected dividers list
                     this.$store.commit( "removeDivider", id );
+                    this.$store.dispatch( "remove3dDivider", id);
 
                     // # Clean up pointers
                     this.canvas.discardActiveObject();
@@ -1054,6 +1055,7 @@ export default {
             }
 
             this.$store.commit( "updateDividerSku", payload );
+            this.$store.dispatch( "update3dDividerTexture", payload );
         },
 
         _updateBorder:function (e) {
@@ -1102,9 +1104,10 @@ export default {
                 id: options.target.id,
                 x: coords.x,
                 y: coords.y
-            }
+            };
 
             this.$store.commit( 'updateDividerPosition', payload );
+            this.$store.dispatch( 'update3dDividerPos', payload );
         },
 
         _preventCollision: function ( options ) {
@@ -1402,6 +1405,8 @@ export default {
 
                 // # Push divider
                 this.$store.commit( "pushDivider", _divider );
+
+                this.$store.dispatch ( "add3dDivider", _divider) ;
 
                 // # Set ObjectWorking On
                 this.$store.commit( 'setobjectWorkingOn',{ type:'divider', id:_divider.id, 'obj':oImg } ); 

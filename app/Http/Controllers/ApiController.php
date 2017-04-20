@@ -55,6 +55,15 @@ class ApiController extends Controller
     }
 
 
+    public function actionPlainDividers() {
+        $out = [];
+        foreach (Divider::all()->groupBy('sku') as $sku => $cur) {
+            $out[$sku]=$cur[0];
+        }
+        return response()->json($out);
+    }
+
+
     /**
      * Return a json with all supports
      * @return \Illuminate\Http\JsonResponse

@@ -69,7 +69,7 @@
                 // # DividerHelper Create ad set on the store
                 this.$store.commit('setDividerHelper',new DividerHelper(new THREE.LoadingManager(),this.$store.state.scene));
 
-                let cc = {
+             /*   let cc = {
                     x:0,
                     y:0,
                     z:0
@@ -110,7 +110,7 @@
 
                 this.$store.dispatch('add3dDivider',_drawer);
                 this.$store.dispatch('add3dDivider',_d1);
-                this.$store.dispatch('add3dDivider',_d2);
+                this.$store.dispatch('add3dDivider',_d2);*/
 
 
 

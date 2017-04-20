@@ -49,6 +49,7 @@ Route::group(['prefix' => 'split'], function () {
     //API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
+    Route::get('dividersplain',['as'=>'split.api.dividersplain','uses'=>'ApiController@actionPlainDividers']);
     Route::get('bridges',['as'=>'split.api.bridges','uses'=>'ApiController@actionBridges']);
     Route::get('supports',['as'=>'split.api.bridges','uses'=>'ApiController@actionSupports']);
     Route::get('edgestextures',['as'=>'split.api.edgesTextures','uses'=>'ApiController@actionEdgesFinitures']);
