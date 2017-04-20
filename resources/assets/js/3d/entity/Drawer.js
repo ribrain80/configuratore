@@ -6,4 +6,8 @@ export default class Drawer {
         this.right={};
         this.background={};
     }
+
+    get3DObjGroup() {
+
+    }
 }
