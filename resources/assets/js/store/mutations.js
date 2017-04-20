@@ -770,6 +770,10 @@ const  mutations = {
     setCamera: function (state,camera) {
         //Setting 3D renderer
         state.camera=camera;
+    },
+
+    setDividerHelper: function (state,helper) {
+        state.dividerHelper = helper;
     }
 
 

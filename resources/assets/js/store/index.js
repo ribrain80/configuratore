@@ -84,14 +84,26 @@ const store = new Vuex.Store({
          * params.id : Divider id
          * params.model: Divider 3d model
          * params.texture: Divider texture
-         * params.coords: an obj like this: {x: ... , y: ... } we dont need the z coord
+         * params.coords: an obj like this: {x: ... , z: ... } we dont need the y coord
          * params.rotate: a boolean flag to know if rotate the model before add
          *
+         * @param state
          * @param commit
          * @param params
          */
-        add3dDivider: function ( { commit }, params ) {
+        add3dDivider: function ( { commit,state }, params ) {
+            //Check if action is allowed !!
+            if (state.dividerHelper) {
 
+                // todo: Made that configurable!
+                //params.coords.y= 10;
+                state.dividerHelper.addDivider(
+                    params.id,
+                    params.model,
+                    params.texture,
+                    params.coords
+                );
+            }
         },
 
         /**
@@ -171,6 +183,8 @@ const store = new Vuex.Store({
         renderer : false,
 
         camera : false,
+
+        dividerHelper : false,
 
         /**
          * Current workin' object in step4

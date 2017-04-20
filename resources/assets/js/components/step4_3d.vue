@@ -32,12 +32,6 @@
             return {
                 canUseWebGl:true,
                 container:{},
-                scene:{},
-                camera:{},
-                renderer:{},
-                OBJLoader:{},
-                manager:{},
-                dividerFactory:{}
             }
         },
 
@@ -72,9 +66,8 @@
                 // # Add lights to the scene
                 new Light(this.$store.state.scene);
 
-                this.manager = new THREE.LoadingManager();
-
-                this.dividerFactory = new DividerHelper(this.manager,this.$store.state.scene);
+                // # DividerHelper Create ad set on the store
+                this.$store.commit('setDividerHelper',new DividerHelper(new THREE.LoadingManager(),this.$store.state.scene));
 
                 let cc = {
                     x:0,
@@ -94,9 +87,31 @@
                     z:-170
                 };
 
-                this.dividerFactory.addDivider('gino','/images/3dmodels/cassetto_legno.obj','/images/textures/04_Faggio.jpg',cc);
-                this.dividerFactory.addDivider('gino1','/images/3dmodels/divider.obj','/images/textures/22_Blu.jpg',cd);
-                this.dividerFactory.addDivider('gino2','/images/3dmodels/divider.obj','/images/textures/32_Lino chiaro.jpg',cd1);
+                let _drawer = {
+                    id: 'gino',
+                    model: '/images/3dmodels/cassetto_legno.obj',
+                    texture: '/images/textures/04_Faggio.jpg',
+                    coords: cc
+                };
+
+                let _d1 = {
+                    id: 'd1',
+                    model: '/images/3dmodels/divider.obj',
+                    texture: '/images/textures/22_Blu.jpg',
+                    coords: cd
+                };
+
+                let _d2 = {
+                    id: 'd2',
+                    model: '/images/3dmodels/divider.obj',
+                    texture: '/images/textures/32_Lino chiaro.jpg',
+                    coords: cd1
+                };
+
+                this.$store.dispatch('add3dDivider',_drawer);
+                this.$store.dispatch('add3dDivider',_d1);
+                this.$store.dispatch('add3dDivider',_d2);
+
 
 
 

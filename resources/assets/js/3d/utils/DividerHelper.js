@@ -25,7 +25,7 @@ export default class DividerHelper {
      * @param coords
      */
     addDivider (name,model,textureImg,coords) {
-
+        console.log("TEXTURE IMG:", textureImg);
         this.objLoader.loadModel(name,model,textureImg,coords).then((obj3d) => {
             this.scene.add(obj3d);
         });
