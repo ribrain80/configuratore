@@ -21,7 +21,8 @@ var paths = {
     'two': './vendor/bower_components/two.js/build/',
     'pace': './vendor/bower_components/PACE/',
     'lightgallery': './vendor/bower_components/lightgallery/dist/',
-    'lightgallerythumb': './vendor/bower_components/lg-thumbnail/dist/'
+    'lightgallerythumb': './vendor/bower_components/lg-thumbnail/dist/',
+    'fabric': './resources/assets/js/lib/'
 };
 
 elixir(function(mix) {
@@ -40,6 +41,7 @@ elixir(function(mix) {
     mix.copy( paths.lightgallery + 'fonts/**', 'public/fonts');
     mix.copy( paths.material + 'css/**', 'public/css');
     mix.copy( paths.material + 'js/**', 'public/js');
+    mix.copy( paths.fabric + 'fabric.js', 'public/js/lib/fabric');
 
 
     // Salice Fonts
