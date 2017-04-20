@@ -103,7 +103,7 @@
                 this.dividerFactory.addDivider('gino1','/images/3dmodels/divider.obj','/images/textures/22_Blu.jpg',cd);
                 this.dividerFactory.addDivider('gino2','/images/3dmodels/divider.obj','/images/textures/32_Lino chiaro.jpg',cd1);
 
-                //this.dividerFactory.removeDivider('gino');
+                this.dividerFactory.removeDivider('gino');
 
                 this.render();
 
