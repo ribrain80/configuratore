@@ -1,4 +1,5 @@
 import Drawer from '../entity/Drawer';
+import * as THREE from 'three';
 
 export default class DrawerFactory {
 
