@@ -29,33 +29,31 @@ export default class SplitObjLoader {
         }
 
         //Load model then  add the texture and coords if required
+        return new Promise( (resolve,reject) => {
+            this.loader.load( model ,  ( object )  => {
 
-        //let promise = new Promise
+                // # Apply texture only if required
+                if (textureImg) {
+                    object.traverse( function ( child ) {
+                        if ( child instanceof THREE.Mesh ) {
+                            child.material.map = texture;
+                        }
+                    } );
+                }
 
-         this.loader.load( model ,  ( object )  => {
+                // # Change object position ( default: 0,0,0 )
+                if (coords) {
+                    object.position.x = coords.x;
+                    object.position.y = coords.y;
+                    object.position.z = coords.z;
+                }
 
-            // # Apply texture only if required
-            if (textureImg) {
-                object.traverse( function ( child ) {
-                    if ( child instanceof THREE.Mesh ) {
-                        child.material.map = texture;
-                    }
-                } );
-            }
+                object.name=name;
 
-            // # Change object position ( default: 0,0,0 )
-            if (coords) {
-                object.position.x = coords.x;
-                object.position.y = coords.y;
-                object.position.z = coords.z;
-            }
-            console.log("IN LOADER LOAD FUNCTION MODEL:",object);
+                resolve(object)
+            }, this._onProgress , this._onError);
 
-            return object;
-        }, this._onProgress , this._onError);
-
-
-
+        });
     }
 
      _onProgress  ( xhr ) {
