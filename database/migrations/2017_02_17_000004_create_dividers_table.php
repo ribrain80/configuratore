@@ -29,6 +29,8 @@ class CreateDividersTable extends Migration
             $table->string('textureH')->nullable()->default(null);
             $table->string('textureV')->nullable()->default(null);
             $table->string('textureImg')->nullable()->default(null);
+            $table->string('model3d')->nullable()->default(null);
+            $table->string('baseTexture')->nullable()->default(null);
             $table->string('description')->nullable()->default(null);
 
             $table->nullableTimestamps();

@@ -45,7 +45,9 @@ class DividerSeeder eXtends Seeder
                     'V'
                 );
             $toInsert['textureImg'] = '/images/dividers/textures/base/'.$this->buildTextureImgName( $toInsert['color'], $toInsert['texture'] );
+            $toInsert['baseTexture'] = '/images/dividers/3dtextures/'.$this->buildTextureImgName( $toInsert['color'], $toInsert['texture'] );
             $toInsert['image3d'] = '/images/dividers/3d' . DIRECTORY_SEPARATOR . $toInsert['depth'] .'x'. $toInsert['width'] . "x" . $toInsert['length'].".png";
+            $toInsert['model3d']='/images/dividers/models' . DIRECTORY_SEPARATOR .  $toInsert['length'] . "x" . $toInsert['width']."x" . $toInsert['depth'] . ".obj";
             $dividers[]=$toInsert;
         }
 
