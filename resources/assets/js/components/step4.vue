@@ -1,6 +1,7 @@
 <template>
 
 <div class="container-fluid">
+<div id="info"></div>
 
     <!-- Divider deletion Modal -->
     <div class="modal fade" id="deletion-alert-modal" tabindex="-1" role="dialog" aria-labelledby="">
@@ -503,6 +504,31 @@ export default {
             // # FIX ME
             this.canvas.on( "mouse:up", () => {
                 this.finalCollisionDetectionManagement();
+            });
+
+            var info = document.getElementById('info');
+
+            this.canvas.on({
+              'touch:gesture': function() {
+                var text = document.createTextNode(' Gesture ');
+                info.insertBefore(text, info.firstChild);
+              },
+              'touch:drag': function() {
+                var text = document.createTextNode(' Dragging ');
+                info.insertBefore(text, info.firstChild);
+              },
+              'touch:orientation': function() {
+                var text = document.createTextNode(' Orientation ');
+                info.insertBefore(text, info.firstChild);
+              },
+              'touch:shake': function() {
+                var text = document.createTextNode(' Shaking ');
+                info.insertBefore(text, info.firstChild);
+              },
+              'touch:longpress': function() {
+                var text = document.createTextNode(' Longpress ');
+                info.insertBefore(text, info.firstChild);
+              }
             });
 
             /**
