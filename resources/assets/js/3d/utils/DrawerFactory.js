@@ -2,6 +2,15 @@ import Drawer from '../entity/Drawer';
 
 export default class DrawerFactory {
 
+    /**
+     * Build and add a drawer to the scene
+     * @param scene
+     * @param type
+     * @param width
+     * @param length
+     * @param depth
+     * @param height
+     */
     constructor(scene,type,width,length,depth,height) {
         // threejs scene
         this.scene = scene;
@@ -40,7 +49,7 @@ export default class DrawerFactory {
                 _drawer = this._buildLb2(width,length,depth,height);
                 break;
             case 4:
-                _drawer = this._buildWood(width,length,depth,height);
+                _drawer = this._buildWooden(width,length,depth,height);
                 break;
         }
         return _drawer;
@@ -100,7 +109,7 @@ export default class DrawerFactory {
      * @returns {Drawer}
      * @private
      */
-    _buildWood(width,length,depth,height) {
+    _buildWooden(width,length,depth,height) {
         let _drawer = new Drawer();
 
         return _drawer;
