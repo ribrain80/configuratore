@@ -260,9 +260,9 @@
     
     <!-- Buttons row -->
     <div class="row top5">
-        <div class="col-lg-3 col-md-3">
+        <!--<div class="col-lg-3 col-md-3">
             <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
-        </div>
+        </div>-->
         <div class="col-lg-3 col-md-3 pull-right">
             <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
@@ -447,6 +447,25 @@ export default {
              return (horizontal)? _obj.textureH : _obj.textureV;
         },
 
+        touchHandler: function ( event ) {
+            var touch = event.changedTouches[0];
+
+            var simulatedEvent = document.createEvent("MouseEvent");
+                simulatedEvent.initMouseEvent({
+                touchstart: "mousedown",
+                touchmove: "mousemove",
+                touchend: "mouseup"
+            }[event.type], true, true, window, 1,
+                touch.screenX, touch.screenY,
+                touch.clientX, touch.clientY, false,
+                false, false, false, 0, null);
+
+            touch.target.dispatchEvent(simulatedEvent);
+            if (event.target.id == 'draggable_item' ) {
+                event.preventDefault();
+            }
+        },
+
         /**
          * [initCanvas description]
          * @return {[type]} [description]
@@ -504,25 +523,17 @@ export default {
 
             console.log( "touch supported: " +  fabric.isTouchSupported );
 
-            /*this.canvas.on( ['touch:drag' ],  ( options ) => {
-                console.log( "DRAG" );
-                console.log( options.self );
-                this.handleMoving( options.self );
-            });*/
+            /*if( fabric.isTouchSupported ) {
+                document.addEventListener("touchstart", this.touchHandler, true);
+                document.addEventListener("touchmove", this.touchHandler, true);
+                document.addEventListener("touchend", this.touchHandler, true);
+                document.addEventListener("touchcancel", this.touchHandler, true); 
+            }*/
 
             // # Last chance 
             // # FIX ME
             this.canvas.on( "mouse:up", () => {
                 this.finalCollisionDetectionManagement();
-            });
-
-            var info = document.getElementById('info');
-
-            this.canvas.on({
-              'touch:longpress': function() {
-                var text = document.createTextNode(' Longpress ');
-                info.insertBefore(text, info.firstChild);
-              }
             });
 
             /**
@@ -1267,6 +1278,7 @@ export default {
          */
         handleDrop: function ( e ) {
 
+            console.log( "dropped")
             // # this / e.target is current target element.
             if (e.stopPropagation) {
                 e.stopPropagation(); // stops the browser from redirecting.

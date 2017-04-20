@@ -65,10 +65,6 @@
     <!-- Js Scripts -->
     <script src="/js/lib/fabric/fabric.js"></script>
     <script src="{{ elixir('js/split.js') }}"></script>
-
-    <script>
     
-    </script>
-
 </body>
 </html>
