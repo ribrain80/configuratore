@@ -1,10 +1,10 @@
-import SpliObjLoader from './splitObjLoader';
+import SplitObjLoader from './splitObjLoader';
 
 
 /**
  * Factory class that help handle divider logic
  */
-export default class DividerFactory {
+export default class DividerHelper {
     /**
      *
      * @param manager
@@ -14,7 +14,7 @@ export default class DividerFactory {
         //Local copy of the scene
         this.scene = scene;
         //Dividers Container
-        this.objLoader = new SpliObjLoader(manager);
+        this.objLoader = new SplitObjLoader(manager);
     }
 
     /**
@@ -34,7 +34,6 @@ export default class DividerFactory {
 
     removeDivider(name) {
         let _objToRemove = this.scene.getObjectByName( name );
-        console.log("REMOVING: ",_objToRemove);
         this.scene.remove( _objToRemove );
     }
 }

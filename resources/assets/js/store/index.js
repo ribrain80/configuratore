@@ -97,10 +97,15 @@ const store = new Vuex.Store({
         /**
          * Remove a divider from the 3d scene
          * @param commit
+         * @param state
          * @param dividerId
          */
-        remove3dDivider: function ({ commit }, dividerId) {
+        remove3dDivider: function ({ commit,state }, dividerId) {
+            let _toRemove = state.scene.getObjectByName( dividerId );
 
+            if (_toRemove) {
+                state.scene.remove();
+            }
         },
 
         /**

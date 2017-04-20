@@ -15,7 +15,7 @@
     import Light    from '../3d/components/splitligth';
     import Controls    from '../3d/components/controls';
     import Divider  from '../3d/entity/Divider';
-    import DividerFactory from '../3d/utils/DividerFactory';
+    import DividerHelper from '../3d/utils/DividerHelper';
     import Config   from '../3d/config';
     import * as THREE from 'three';
     /**
@@ -35,8 +35,6 @@
                 scene:{},
                 camera:{},
                 renderer:{},
-                meshes:[],
-                clock:{},
                 OBJLoader:{},
                 manager:{},
                 dividerFactory:{}
@@ -54,32 +52,29 @@
 
                 this.container = document.getElementById('step4_3d_container');
 
-                //Start clock
-                this.clock = new THREE.Clock();
+                // # Main scene creation and set on Store
+                this.$store.commit('setScene',new THREE.Scene());
 
-                // Main scene creation and set on Store
-                let scene = new THREE.Scene();
-                this.$store.commit('setScene',scene);
-
-                // Get Device Pixel Ratio first for retina
+                // # Get Device Pixel Ratio first for retina todo: add to the store!!!
                 if(window.devicePixelRatio) {
                     Config.dpr = window.devicePixelRatio;
                 }
 
-                let renderer = new Renderer(this.$store.state.scene, this.container);
+                // # Renderer creation and set on Store
+                this.$store.commit('setRenderer',new Renderer(this.$store.state.scene, this.container));
 
-                this.$store.commit('setRenderer',renderer);
-                // Components instantiation
-                let camera = new Camera(this.$store.state.renderer.threeRenderer);
-                this.$store.commit('setCamera',camera);
+                // # Camera creation and set on Store
+                this.$store.commit('setCamera',new Camera(this.$store.state.renderer.threeRenderer));
+
+                // # Add OrbitController to the Camera
                 this.controls = new Controls(this.$store.state.camera.threeCamera, this.container);
+
                 // # Add lights to the scene
                 new Light(this.$store.state.scene);
 
-
                 this.manager = new THREE.LoadingManager();
 
-                this.dividerFactory = new DividerFactory(this.manager,this.$store.state.scene);
+                this.dividerFactory = new DividerHelper(this.manager,this.$store.state.scene);
 
                 let cc = {
                     x:0,
@@ -103,7 +98,7 @@
                 this.dividerFactory.addDivider('gino1','/images/3dmodels/divider.obj','/images/textures/22_Blu.jpg',cd);
                 this.dividerFactory.addDivider('gino2','/images/3dmodels/divider.obj','/images/textures/32_Lino chiaro.jpg',cd1);
 
-                this.dividerFactory.removeDivider('gino');
+
 
                 this.render();
 
@@ -134,9 +129,6 @@
 
 
             }
-        },
-
-        updated() {
         }
     }
 </script>
