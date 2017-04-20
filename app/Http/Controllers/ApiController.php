@@ -23,8 +23,12 @@ class ApiController extends Controller
         foreach (Drawertype::all(['id','description','category'])->sortBy(['category' => 'desc' ]) as $type) {
             $grouped[$type['category']][]=$type;
         }
+        $out = [];
+        foreach ( $grouped as $k=>$v) {
+            $out[$k] = array_reverse($v);
+        }
 
-        return response()->json($grouped);
+        return response()->json($out);
     }
 
 
