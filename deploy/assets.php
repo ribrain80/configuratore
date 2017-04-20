@@ -48,7 +48,7 @@ task('bower:install', function () {
  * @todo: Handle dev/prod enviroenment
  */
 task('assets:generate', function () {
-    run('cd {{deploy_path}}/current; gulp --production');   // --production minify css and js
+    run('cd {{deploy_path}}/current; gulp ');   // --production minify css and js
 })->desc('Generating assets');
 
 
