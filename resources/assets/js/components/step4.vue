@@ -462,7 +462,9 @@ export default {
             // # Add drag handler to all the images
             [].forEach.call( this.images, ( img ) => {
                 img.addEventListener( 'dragstart', this.handleDragStart, false);
-                img.addEventListener( 'dragend',   this.handleDragEnd, false);
+                img.addEventListener( 'touchstart', this.handleDragStart, false);
+                img.addEventListener( 'dragend', this.handleDragEnd, false);
+                img.addEventListener( 'touchend', this.handleDragEnd, false);
             });        
 
             // # Compute available width
@@ -500,6 +502,14 @@ export default {
                 this.handleMoving( options );
             });
 
+            console.log( "touch supported: " +  fabric.isTouchSupported );
+
+            /*this.canvas.on( ['touch:drag' ],  ( options ) => {
+                console.log( "DRAG" );
+                console.log( options.self );
+                this.handleMoving( options.self );
+            });*/
+
             // # Last chance 
             // # FIX ME
             this.canvas.on( "mouse:up", () => {
@@ -509,22 +519,6 @@ export default {
             var info = document.getElementById('info');
 
             this.canvas.on({
-              'touch:gesture': function() {
-                var text = document.createTextNode(' Gesture ');
-                info.insertBefore(text, info.firstChild);
-              },
-              'touch:drag': function() {
-                var text = document.createTextNode(' Dragging ');
-                info.insertBefore(text, info.firstChild);
-              },
-              'touch:orientation': function() {
-                var text = document.createTextNode(' Orientation ');
-                info.insertBefore(text, info.firstChild);
-              },
-              'touch:shake': function() {
-                var text = document.createTextNode(' Shaking ');
-                info.insertBefore(text, info.firstChild);
-              },
               'touch:longpress': function() {
                 var text = document.createTextNode(' Longpress ');
                 info.insertBefore(text, info.firstChild);
@@ -1216,6 +1210,7 @@ export default {
          * @return {[type]}   [description]
          */
         handleDragStart: function( e ) {
+            console.log( "drag start" );
             this.draggingDivider = e.target;
         },
 
@@ -1225,7 +1220,7 @@ export default {
          * @return {[type]}   [description]
          */
         handleDragEnd: function( e ) {
-
+            console.log( "drag end" );
         },        
 
         /**
@@ -1234,7 +1229,8 @@ export default {
          * @return {[type]}   [description]
          */
         handleDragEnter: function ( e ) {
-            e.target.classList.add( 'over' );
+            console.log( "enter" );
+            //e.target.classList.add( 'over' );
         },
 
         /**
@@ -1243,7 +1239,7 @@ export default {
          * @return {[type]}   [description]
          */
         handleDragLeave: function ( e ) {
-            e.target.classList.remove( 'over' ); // this / e.target is previous target element.
+            //e.target.classList.remove( 'over' ); // this / e.target is previous target element.
         },
 
         /**
@@ -1253,6 +1249,7 @@ export default {
          */
         handleDragOver: function ( e ) {
 
+            console.log( "drag over" );
             if (e.preventDefault) {
                 e.preventDefault(); // Necessary. Allows us to drop.
             }

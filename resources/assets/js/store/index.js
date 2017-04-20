@@ -68,6 +68,9 @@ const store = new Vuex.Store({
                         commit( 'setSupportsTypes',responseSupports.data );
                         commit( 'setDividerTypes', responseDividers.data );
                         commit( 'setTextureTypes', responseTextures.data );
+
+                        // # Trigger start
+                        Pace.stop();
                     },
                     () => { 
                         // # Fail

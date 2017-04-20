@@ -200,7 +200,8 @@ export default {
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
-            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) ).modal();
+            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) );
+            $( '#error-modal' ).modal();
 
             // # Error
             return false; 
