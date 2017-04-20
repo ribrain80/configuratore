@@ -324,7 +324,7 @@ export default {
 
             // # TWO Instance, autostart means we do not have to reupdate the canvas each time there
             // # is an update on a shape/path/text
-            this.two = new Two( { autostart: true } ).appendTo( this.container );
+            this.two = new Two( { autostart: true, width: $( "#animation" ).width() } ).appendTo( this.container );
 
 
             // # Drawer
