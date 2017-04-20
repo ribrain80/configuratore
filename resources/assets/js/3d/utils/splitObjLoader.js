@@ -54,7 +54,7 @@ export default class SplitObjLoader {
             return object;
         }, this._onProgress , this._onError);
 
-        console.log(tmp);
+
 
     }
 
