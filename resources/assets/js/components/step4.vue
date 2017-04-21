@@ -579,7 +579,7 @@ export default {
 
                     // # Updating this.selectedItem and $store.objectWorkingOn
                     // TODO: selectedItem deve diventare una property di $store.objectWorkingOn
-                    this.selectedItem = this.canvas.getActiveObject();
+                    //this.selectedItem = this.canvas.getActiveObject();
                     this.$store.commit( "setobjectWorkingOn", { type: "divider", id: id, obj: activeObj } );
 
                 } catch( ignoreMe ) {
@@ -685,13 +685,19 @@ export default {
          */
         deselectAll:function() {
 
+            console.log( "deselecting  all dividers" );
+            
             // # Loop through the canvas objects
             var objs = this.canvas.getObjects().map( ( o )  => {
-
                 o.setStrokeWidth( 2 );
                 o.setStroke( "#222" );
                 o.set( 'active', false );  
-            });            
+
+            }); 
+
+            this.canvas.discardActiveObject()
+            this.canvas.renderAll();
+            this.allselected = false;           
         },
 
         /**
@@ -1012,6 +1018,9 @@ export default {
 
         selectBorder: function( event ) {
 
+            // # deselect All dividers
+            this.deselectAll();
+
             let _selectedBorder = event.target;
 
             this.$store.commit( 'setobjectWorkingOn', { type:'border', id:_selectedBorder.id,obj:_selectedBorder } );
@@ -1022,7 +1031,10 @@ export default {
         },  
 
         selectBridge: function( event ) {
-            this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
+
+            // # deselect All dividers
+            this.deselectAll();
+            // this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
             this.$store.commit('setobjectWorkingOn',{type:'bridge',id:this.$store.state.bridge_ID,'obj':null});
 
             $( '#tab-container a[href="#bridges-tab"]' ).tab( 'show' );
@@ -1040,12 +1052,21 @@ export default {
 
             console.log( payload );
 
-            this.selectedItem.set({
+            /*this.selectedItem.set({
+                url: event.target.src
+            });*/
+
+            let objectWorkingOn = this.$store.state.objectWorkingOn;
+            objectWorkingOn.obj.set({
                 url: event.target.src
             });
 
+            this.$store.commit('setobjectWorkingOn', objectWorkingOn );
+
+
             var self = this;
-            var img = this.selectedItem.getElement();
+            // var img = this.selectedItem.getElement();
+            var img = this.$store.state.objectWorkingOn.obj.getElement();
             img.src = event.target.dataset.img;
             img.crossOrigin = "Anonymous";
             img.onload = function () {
@@ -1399,7 +1420,7 @@ export default {
 
                 this.allselected = false;
 
-                this.selectedItem = oImg;
+                //this.selectedItem = oImg;
 
                 // # Push divider
                 this.$store.commit( "pushDivider", _divider );
