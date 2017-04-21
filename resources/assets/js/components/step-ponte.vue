@@ -12,101 +12,115 @@
         
         <!-- Orientation section -->
         <div class="row top2" >
+            
+            <div class="row">
+                <!-- Orientation description -->
+                <div class="col-lg-12 text-center">
+                    <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
+                </div>
 
-            <!-- Orientation description -->
-            <div class="col-lg-12 text-center">
-                <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
             </div>
-
+            
             <!-- Orientation choice -->
-            <div class="col-lg-12">
+            <div class="row top2">
 
-                <div class="col-lg-4" v-show="!$store.state.is_suitable_width_4hbridge"></div>
+                <div class="col-lg-12">
 
+                    <div class="col-lg-4" v-show="!$store.state.is_suitable_width_4hbridge"></div>
 
-                <div class="col-lg-4 col-lg-offset-2" v-show="$store.state.is_suitable_width_4hbridge">
+                    <div class="col-lg-4 col-lg-offset-1" v-show="$store.state.is_suitable_width_4hbridge">
 
-                    <figure class="drawer-container" >
-                        <a class="i-icon" id="orientation-H-popover" rel="popover" data-content="">&nbsp;</a>
-                        <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/orizzontale.png'"
-                             class="img img-responsive  img-shadow"
-                             id="or-H" 
-                             :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
-                             @click="setOrientation('H')"
-                        />
-                        <figcaption :class="[ 'text-center', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'orizzontale' | translate}} </figcaption>
-                    </figure>
+                        <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'H' ? 'image_selected' : '']" >
+                            <a class="i-icon" id="orientation-H-popover" rel="popover" data-content="">&nbsp;</a>
+                            <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/orizzontale.png'"
+                                 class="img img-responsive  img-shadow"
+                                 id="or-H" 
+                                 :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
+                                 @click="setOrientation('H')"
+                            />
+                            <figcaption :class="[ 'text-center', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'orizzontale' | translate}} </figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="col-lg-4 col-lg-offset-1">
+                        <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'V' ? 'image_selected' : '']">
+                            <a class="i-icon" id="orientation-V-popover" rel="popover" data-content="">&nbsp;</a>
+                            <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/verticale.png'"
+                                 class="img img-responsive  img-shadow"
+                                 id="or-V" 
+                                 :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
+                                 @click="setOrientation('V')"
+                            />
+                            <figcaption :class="[ 'text-center', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'verticale' | translate}} </figcaption>
+                        </figure>
+                    </div>
+
                 </div>
-
-                <div class="col-lg-4">
-                    <figure class="drawer-container" >
-                        <a class="i-icon" id="orientation-V-popover" rel="popover" data-content="">&nbsp;</a>
-                        <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/verticale.png'"
-                             class="img img-responsive  img-shadow"
-                             id="or-V" 
-                             :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
-                             @click="setOrientation('V')"
-                        />
-                        <figcaption :class="[ 'text-center', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'verticale' | translate}} </figcaption>
-                    </figure>
-                </div>
-
             </div>
         </div>
         
         <!-- Supports section -->
         <div class="row top2" >
 
-            <div class="col-lg-12" v-show="$store.state.bridge_orientation.length">
-
-                <!-- Supports description -->
-                <div class="col-lg-12 text-center">
-                    <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
-                </div> 
-
+            <div v-show="$store.state.bridge_orientation.length">
+                
+                <div class="row top2">
+                    <!-- Supports description -->
+                    <div class="col-lg-12 text-center">
+                        <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
+                    </div> 
+                </div>
+                
+                <div class="row top2">
                     <!-- Alerts: User Advice -->
                     <div class="col-lg-12" v-show="showSupportsAdvice">
                         <div class='alert alert-warning' role="alert">
                             <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
                         </div>
                     </div>
+                </div>
 
-                    <!-- Support choice -->
-                    <div class="row" >
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-4 " :class="[ ($store.getters.getSupportsAvailabe.length == 1 && index == 0)  ? 'col-lg-offset-2' : '']" v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe" >
-                            <figure class="drawer-container" >
-                                <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/s-'+((bridge_support.id==2)?'alto':'basso')+'.png'"
-                                     class="img img-responsive  img-shadow"
-                                     :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
-                                     @click="selectBridgeSupport( bridge_support )"
-                                />
-                                <figcaption :class="[ 'text-center', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
-                            </figure>
-                        </div>
+                <!-- Support choice -->
+                <div class="row top2">
+                    <div class="col-lg-4 col-lg-offset-1" v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe" >
+                        <figure :class="[ 'drawer-container', bridge_support.id == $store.state.bridge_supportID ? 'image_selected' : '']" >
+                            <a class="i-icon" id="supports-popover" rel="popover" data-content="">&nbsp;</a>
+                            <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/s-'+((bridge_support.id==2)?'alto':'basso')+'.png'"
+                                 class="img img-responsive  img-shadow"
+                                 id="sup" 
+                                 :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
+                                 @click="selectBridgeSupport( bridge_support )"
+                            />
+                            <figcaption :class="[ 'text-center', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
+                        </figure>
                     </div>
+                </div>
 
             </div>
+
         </div>
 
         <!-- Bridges section -->
         <div class="row top2" >       
             
-            <div class="col-lg-12" v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
-
-                <!-- Bridges description -->
-                <div class="col-lg-12 text-center">
-                    <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
-                </div> 
+            <div v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
+                
+                <div class="row top2">
+                    <!-- Bridges description -->
+                    <div class="col-lg-12 text-center">
+                        <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
+                    </div> 
+                </div>
 
                 <!-- Bridges choice -->
-                <div class="row" >
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-4 " :class="[ ($store.getters.getBridgesAvailabe.length == 1 && index == 0)  ? 'col-lg-offset-2' : '']" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
-                            <figure class="drawer-container" >
+                <div class="row top2">
+                    <div class="col-lg-4 col-lg-offset-1" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
+                        <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
+                            <a class="i-icon" id="bridges-popover" rel="popover" data-content="">&nbsp;</a>
                             <img :src="'/images/others/step-ponte/'+(($store.state.is_lineabox)?'lineabox':'cassetto')+'/h-'+((bridge.id==48)?'alto':'basso')+'.png'"
                                  class="img img-responsive  img-shadow"
                                  :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
+                                 id="bri"
                                  @click="selectBridgeType( bridge )"
                                  :data-width="bridge.width"
                                  :data-depth="bridge.depth"
@@ -496,11 +510,25 @@ export default {
             container: 'body'
         });
 
-                // # Dimensions info popovers
+        // # Dimensions info popovers
         // # WIDTH
         $( '#orientation-V-popover' ).popover({ 
             placement: 'right', 
             content: $( "#or-V" ).clone( true ), 
+            html: true,
+            container: 'body'
+        });
+
+        $( '#supports-popover' ).popover({ 
+            placement: 'right', 
+            content: $( "#sup" ).clone( true ), 
+            html: true,
+            container: 'body'
+        });
+
+        $( '#bridges-popover' ).popover({ 
+            placement: 'right', 
+            content: $( "#bri" ).clone( true ), 
             html: true,
             container: 'body'
         });

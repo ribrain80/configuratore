@@ -6,7 +6,7 @@
     <div class="row">
         
         <!-- Full width -->
-        <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6" id="step1-content" >
 
             <!-- Text -->
             <div v-html="$t( 'step1.product_description_text' )"></div>
@@ -21,8 +21,8 @@
         </div>
 
         <!-- Info image -->
-        <div class="col-lg-6 col-md-6 col-sm-6 no-padding">
-            <img src="/images/others/foto-home.png" class="img img-responsive w-100">
+        <div class="col-lg-6 col-md-6 col-sm-6 no-padding" id="step1-description-image">
+            <!--<img src="/images/others/foto-home.png" id="step1-description-image" class="img img-responsive w-100">-->
         </div>
 
     </div>
@@ -118,6 +118,8 @@ export default {
             })
 
         });
+
+        //$( "#step1-description-image" ).height( $( "#step1-content" ).height() );
 
         // # Log mount 
         console.log( "Welcome/info page mounted" );
