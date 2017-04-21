@@ -15,8 +15,8 @@
                 </div>
                 <div class="modal-body">Sei sicuro di voler cancellare il divisorio?</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
-                    <button type="button" class="btn btn-primary" @click="deleteDivider()">Sono sicuro, eliminalo!</button>
+                    <button type="button" class="btn btn-back" data-dismiss="modal">Annulla!</button>
+                    <button type="button" class="btn btn-danger" @click="deleteDivider()">Sono sicuro, eliminalo!</button>
                 </div>
             </div>
         </div>
