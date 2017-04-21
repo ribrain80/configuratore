@@ -59,6 +59,8 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('topdf/header/{drawer}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
     Route::get('topdf/{id}/{brochure?}/{lang?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
 
+    Route::get('gallery-images', ['as'=>'split.api.gallery-images','uses'=>'ApiController@actionGalleryImages']);
+
     //FABRIC
     Route::get('fabric',['uses'=>function () {
         return view('fabric');

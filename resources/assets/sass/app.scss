@@ -37,6 +37,17 @@ strong, .component-header {
   padding-left: 0!important;
 }
 
+.modal-body {
+  font-size: 1.2em;
+}
+
+.modal-title {
+  font-size: 1.3em;
+  font-family: 'FranklinGothicURW-Dem';
+  font-weight: 600;
+}
+
+
 .caret {
   border: none!important;
   width: 17px;
@@ -59,11 +70,22 @@ strong, .component-header {
     margin-top: 1px;
 }
 
+figure {
+  transition: all .5s ease-in-out;
+}
+
 figure:hover {
   transform:scale(1.1,1.1);
   -webkit-transform:scale(1.1,1.1);
   -moz-transform:scale(1.1,1.1);
 }
+
+.image_selected {
+  transform:scale(1.1,1.1);
+  -webkit-transform:scale(1.1,1.1);
+  -moz-transform:scale(1.1,1.1);
+}
+
 .pointer {
   cursor: pointer;
 }

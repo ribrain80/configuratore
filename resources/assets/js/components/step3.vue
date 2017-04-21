@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
-                      <img src="/images/others/step-3/step3_info_width.png" class="img-responsive img-rounded" id="width-info-image"/>
+                      <img src="/images/others/step-3/LA_lineabox_3_lati.png" class="img-responsive img-rounded" id="width-info-image"/>
                     </div>
 
                   </div>
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
-                      <img src="/images/others/step-3/step3_info_length.png" class="img-responsive img-rounded" id="length-info-image"/>
+                      <img src="/images/others/step-3/PS_lineabox_3_lati.png" class="img-responsive img-rounded" id="length-info-image"/>
                     </div>   
 
                   </div>
@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
-                      <img src="/images/others/step-3/step3_info_depth.png" class="img-responsive img-rounded" id="sh-info-image"/>
+                      <img src="/images/others/step-3/HA_cassetto_generico.png" class="img-responsive img-rounded" id="sh-info-image"/>
                     </div>  
 
                   </div>
@@ -131,7 +131,7 @@
                                       <div class="panel-body" @focus.once="resetAdvice()" 
                                            @click="setShoulderHeight( option.value )" 
                                            @blur="isSuitableHeightForBridge">
-                                          <img :src="'/images/others/step-3/h-'+option.value+'.png'" />
+                                          <img :src="'/images/others/step-3/HA_lineabox_'+option.dimension+'.png'" :id="option.value == $store.state.dimensions.shoulder_height ? 'selected_HA' : ''" class="img img-responsive"/>
                                       </div>
                                       <div class="panel-footer text-center no-background ha-lineabox">{{option.dimension}}</div>
                                   </div>
@@ -1137,7 +1137,7 @@ export default {
         // # SHOULDER HEIGHT
         $('#sh-popover').popover({ 
             placement: 'right', 
-            content: $( "#sh-info-image" ).clone( true ), 
+            content: $( "#selected_HA" ).clone( true ), 
             html: true,
             container: 'body'
         });       

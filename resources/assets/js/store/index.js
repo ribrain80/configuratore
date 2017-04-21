@@ -55,13 +55,14 @@ const store = new Vuex.Store({
                     Axios.get( '/split/dividers'),
                     Axios.get( '/split/edgestextures'),
                     Axios.get( '/split/dividersplain'),
+                    Axios.get( '/split/gallery-images' ),
                 ];
 
                 // # Resolve all promises. If any of them fail push into the router '/split/500'
                 // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain ] ) => {
+                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
 
                         // # Success
                         commit( 'setDrawersTypes', responseTypes.data );
@@ -70,6 +71,7 @@ const store = new Vuex.Store({
                         commit( 'setDividerTypes', responseDividers.data );
                         commit( 'setTextureTypes', responseTextures.data );
                         commit( 'setDividerTypesPlain', responseDividersPlain.data );
+                        commit( 'setGalleryImages', responseGalleryImages.data );
 
                         // # Trigger start
                         Pace.stop();
@@ -548,7 +550,9 @@ const store = new Vuex.Store({
          * Step5 completion flag
          * @type {Boolean}
          */
-        fivecompleted: false
+        fivecompleted: false,
+
+        gallery_images: []
 
     },
 

@@ -779,6 +779,10 @@ const  mutations = {
 
     setDividerHelper: function (state,helper) {
         state.dividerHelper = helper;
+    },
+
+    setGalleryImages: function( state, val ) {
+        state.gallery_images = val;
     }
 
 

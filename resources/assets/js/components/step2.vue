@@ -40,7 +40,7 @@
             <div class="col-lg-4" v-if="type.length == 1">
 
                 <!-- Drawer type -->
-                <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]" >
+                <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'image_selected' : '' ]" >
                     <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
                          class="img img-responsive img-rounded center-block img-shadow"
@@ -54,7 +54,7 @@
             <div class="col-lg-4 col-lg-offset-2" v-else>
 
                 <!-- Drawer category -->
-                <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'asd-keeplogic' : '' ]">
+                <figure :class="[ 'drawer-container', 'text-center', ( 1 == $store.state.drawer_type_category ) ? 'image_selected' : '' ]">
                     <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
                     <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
                          class="img img-responsive img-rounded center-block img-shadow img-desaturate"
@@ -71,7 +71,7 @@
 
         <div class="col-lg-4" v-for="ctype in type">
 
-            <figure class="drawer-container text-center" :class="{ 'asd-keeplogic': ( ctype.id == $store.state.drawertype ) }">
+            <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
                 <figcaption> {{ ctype.description | translate}} </figcaption>
                 <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
                      class="img img-responsive center-block img-shadow "

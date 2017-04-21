@@ -131,4 +131,22 @@ class ApiController extends Controller
         return response()->json($output);
     }
 
+    public function actionGalleryImages() {
+
+        $container = [];
+        $iterator = new \DirectoryIterator(  "./images/gallery/images"  );
+        foreach( $iterator as $item ) {
+
+            if( !is_dir( $item) ) {
+                $path = ltrim( $item->getPathname(), "." );
+                $tmp['src']=  $path;
+                $tmp['thumb'] = $path;
+                $container[] = $tmp;
+            }
+        }
+
+        return response()->json( $container );
+
+    }
+
 }

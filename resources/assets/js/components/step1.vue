@@ -74,6 +74,10 @@ export default {
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
 
+        var self = this;
+
+        console.log( self.$store.state.gallery_images );
+
         // # Lightgallery binding
         $( "#gallery-trigger" ).on( "click", function () {
             
@@ -102,7 +106,7 @@ export default {
                  * No toggle thumb button
                  * @type {Boolean}
                  */
-                toogleThumb: false,
+                toogleThumb: true,
 
                 /**
                  * Dynamic images
@@ -110,19 +114,7 @@ export default {
                  */
                 dynamic: true,
 
-                dynamicEl: [{
-
-                    "src": '/images/gallery/images/img1.png',
-                    'thumb': '/images/gallery/images/img1.png'
-                }, {
-
-                    "src": '/images/gallery/images/img1.png',
-                    'thumb': '/images/gallery/images/img1.png'
-                }, {
-                    
-                    "src": '/images/gallery/images/img1.png',
-                    'thumb': '/images/gallery/images/img1.png'
-                }]
+                dynamicEl: self.$store.state.gallery_images
             })
 
         });

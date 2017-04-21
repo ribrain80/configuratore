@@ -25,8 +25,8 @@
                 </div>
                 <div class="modal-body">Se clicchi su continua i dati inseriti andranno persi.</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulla!</button>
-                    <button type="button" class="btn btn-primary" onclick="window.location = location.protocol+'//'+location.host+'/split/step1'">Continua</button>
+                    <button type="button" class="btn btn-back" data-dismiss="modal">Annulla!</button>
+                    <button type="button" class="btn btn-danger" onclick="window.location = location.protocol+'//'+location.host+'/split/step1'">Continua</button>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                 <div class="modal-body"  id="generic-alert-message">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok!</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
                 </div>
             </div>
         </div>
