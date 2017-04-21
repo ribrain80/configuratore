@@ -42,7 +42,7 @@
                 <!-- Drawer type -->
                 <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'image_selected' : '' ]" >
                     <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'.jpg'"
                          class="img img-responsive img-rounded center-block img-shadow"
                          :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
                          @click="setType( type[ 0 ].id )"
@@ -56,7 +56,7 @@
                 <!-- Drawer category -->
                 <figure :class="[ 'drawer-container', 'text-center', ( 1 == $store.state.drawer_type_category ) ? 'image_selected' : '' ]">
                     <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'.png'"
+                    <img :src="'/images/drawers/'+category.toLowerCase()+'.jpg'"
                          class="img img-responsive img-rounded center-block img-shadow img-desaturate"
                          @click="setDrawerTypeCategory( 1 )"
                     />
@@ -73,7 +73,7 @@
 
             <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
                 <figcaption> {{ ctype.description | translate}} </figcaption>
-                <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.png'"
+                <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.jpg'"
                      class="img img-responsive center-block img-shadow "
                      :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
                      @click="setType( ctype.id )"
