@@ -85,10 +85,9 @@ export default class DividerHelper {
 
 
             let backgroundCoords = {x:w/2,y:-30,z:l};
-            let frontCoords = {x:w/2,y:-30,z:l};
-            let backCoords = {x:w/2,y:-30,z:l};
             let sxCoords = {x:0,y:-30,z:l};
             let dxCoords = {x:w,y:-30,z:l};
+
 
 
             // # start loading and placing the background
@@ -102,33 +101,45 @@ export default class DividerHelper {
             });
 
             // # load and place the front
-            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg',frontCoords).then((obj3d) => {
+            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((front) => {
                 // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                let bbox = new THREE.Box3().setFromObject( front );
+                let elZ = (bbox.max.z - bbox.min.z);
+                front.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                front.position.x = w/2;
+                front.position.z = -elZ/2;
+                front.position.y = -30;
                 // # Add background to the scene
-                this.scene.add(obj3d);
+                this.scene.add(front);
             });
 
             // # load and place the back
-            this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','http://homestead.app/images/textures/02_Acero.jpg',backCoords).then((obj3d) => {
+            this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','http://homestead.app/images/textures/02_Acero.jpg').then((back) => {
                 // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                let bbox = new THREE.Box3().setFromObject( back );
+                back.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                let elZ = (bbox.max.z - bbox.min.z);
+                back.position.x = w/2;
+                back.position.z = 2*l-elZ/2;
+                back.position.y = -30;
+
+                console.log("BACK ELZ:",elZ);
                 // # Add background to the scene
-                this.scene.add(obj3d);
+                this.scene.add(back);
             });
 
             // # load and place the back
-            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','http://homestead.app/images/textures/02_Acero.jpg',sxCoords).then((obj3d) => {
+            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','http://homestead.app/images/textures/02_Acero.jpg').then((left) => {
                 // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(1,1,1);
-                console.log("SX BBOX",bbox);
+                let bbox = new THREE.Box3().setFromObject( left );
+                left.scale.set(1,1,1);
+                left.position.x = 0;
+                left.position.y = -30;
+                left.position.z = l;
                 // # Add background to the scene
-                this.scene.add(obj3d);
+                this.scene.add(left);
             });
-
+            /*
             // # load and place the back
             this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','http://homestead.app/images/textures/02_Acero.jpg',dxCoords).then((obj3d) => {
                 // # Change background dimension
@@ -137,7 +148,7 @@ export default class DividerHelper {
                 // # Add background to the scene
                 this.scene.add(obj3d);
             });
-
+*/
         }
     }
 
