@@ -76,5 +76,11 @@ export default class DividerHelper {
         this.objLoader.changeObjectTexture(_obj,textureImg);
 
     }
+
+
+    genDrawer(type) {
+        
+    }
+
 }
 
