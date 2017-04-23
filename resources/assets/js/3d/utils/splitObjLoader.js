@@ -65,6 +65,10 @@ export default class SplitObjLoader {
                     object.position.x = coords.x;
                     object.position.y = coords.y;
                     object.position.z = coords.z;
+                } else {
+                    object.position.x = 0;
+                    object.position.y = 0;
+                    object.position.z = 0;
                 }
 
                 object.name=name;

@@ -623,7 +623,7 @@ export default {
 
             // # Force rendering
             this.canvas.renderAll();
-            this.$store.dispatch('genDrawer',4);
+            this.$store.dispatch('genDrawer',this.$store.state.drawertype);
         },
 
         /**
