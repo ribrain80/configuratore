@@ -54,32 +54,26 @@ export default class DividerHelper {
         let _obj = this.scene.getObjectByName( name, true );
 
         if (_obj) {
-            _obj.position.set( x, 0, z )
+
+            _obj.translateX (x - _obj.position.x);
+            _obj.translateZ (z - _obj.position.z);
+
         }
+
+
     }
 
     /**
      * Update Divider texture.
      *
-     * In real the function create a new model and remove the old one keeping the same position
      * @param name
-     * @param model
      * @param textureImg
      */
-    updateDividerTexture(name,model,textureImg) {
+    updateDividerTexture(name, textureImg) {
 
         let _obj = this.scene.getObjectByName( name, true );
 
-        let _coords = {
-            x:_obj.position.x,
-            y:_obj.position.y,
-            z:_obj.position.z,
-        };
-
-        this.objLoader.loadModel(name,model,textureImg,_coords).then((obj3d) => {
-            this.scene.add(obj3d);
-            this.scene.remove(_obj);
-        });
+        this.objLoader.changeObjectTexture(_obj,textureImg);
 
     }
 }

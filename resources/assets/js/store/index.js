@@ -104,9 +104,16 @@ const store = new Vuex.Store({
                 console.log("DIVIDER OBJ", divider);
                 let _model = state.dividerTypesPlain[divider.sku];
                 let ratio = state.step4_2D_ratio;
+
+                let realW = divider.realWidth + 4;
+                let realH = divider.realHeight + 4;
+
+                let x = (divider.x / ratio) - (realW/2);
+                let y = (divider.y / ratio) - (realH/2);
+
                 let coords = {
-                    x:(divider.x / ratio),
-                    z: (divider.y / ratio),
+                    x: x,
+                    z: y,
                     y:0
                 };
 
@@ -137,7 +144,11 @@ const store = new Vuex.Store({
          */
         update3dDividerPos: function ({ commit,state }, params) {
             let ratio = state.step4_2D_ratio;
-            state.dividerHelper.updateDividerPosition(params.id,params.x/ratio, params.y/ratio);
+
+            let x = (params.x / ratio) ;
+            let y = (params.y / ratio) ;
+
+            state.dividerHelper.updateDividerPosition(params.id,x, y);
         },
 
         /**
@@ -152,7 +163,6 @@ const store = new Vuex.Store({
             let _model = state.dividerTypesPlain[params.sku];
             state.dividerHelper.updateDividerTexture(
                 params.id,
-                _model.model3d,
                 _model.baseTexture
             );
         },

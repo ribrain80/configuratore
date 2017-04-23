@@ -10,6 +10,25 @@ export default class SplitObjLoader {
         this.loader = new THREE.OBJLoader( manager );
     }
 
+
+    changeObjectTexture( object, textureImg ) {
+        let texture = new THREE.Texture();
+        if (textureImg) {
+            this.textureLoader.load( textureImg,  ( image ) => {
+                texture.image = image;
+                texture.needsUpdate = true;
+            } );
+        }
+        if (textureImg) {
+            object.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material.map = texture;
+                }
+            } );
+        }
+
+    }
+
     /**
      *
      * @param name name of the object

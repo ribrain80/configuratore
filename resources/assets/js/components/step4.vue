@@ -1118,7 +1118,7 @@ export default {
             this._preventCollision(options);
 
             // # get the new coords
-            let coords = options.target.calcCoords().bl;
+            let coords = options.target.getCenterPoint();
             let payload = {
                 id: options.target.id,
                 x: coords.x,
