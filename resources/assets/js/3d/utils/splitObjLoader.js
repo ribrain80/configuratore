@@ -69,6 +69,7 @@ export default class SplitObjLoader {
 
                 object.name=name;
 
+
                 resolve(object)
             }, this._onProgress , this._onError);
 

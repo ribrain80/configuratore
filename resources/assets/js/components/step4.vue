@@ -623,6 +623,7 @@ export default {
 
             // # Force rendering
             this.canvas.renderAll();
+            this.$store.dispatch('genDrawer',4);
         },
 
         /**
@@ -1092,6 +1093,7 @@ export default {
             }
 
             this.$store.commit('setDrawerBorder',payload);
+            this.$store.dispatch( 'update3dDrawerPartTexture', payload);
         },
 
 

@@ -1,5 +1,5 @@
 import SplitObjLoader from './splitObjLoader';
-
+import * as THREE from 'three';
 
 /**
  * Factory class that help handle divider logic
@@ -70,7 +70,7 @@ export default class DividerHelper {
      * @param textureImg
      */
     updateDividerTexture(name, textureImg) {
-
+        console.log(this.scene,name,textureImg);
         let _obj = this.scene.getObjectByName( name, true );
 
         this.objLoader.changeObjectTexture(_obj,textureImg);
@@ -78,8 +78,30 @@ export default class DividerHelper {
     }
 
 
-    genDrawer(type) {
-        
+    genDrawer(type,w,l) {
+        if (true || type ==4) {
+
+
+
+            let backgroundCoords = {
+                x:w/2,
+                y:-30,
+                z:l
+            };
+
+            // # start loading and placing the background
+            // # ugly hack ... i dont know why i need a texture at the first init
+            this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg',backgroundCoords).then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                // # Calc the scale factor and change background dimension
+                // # todo: do it knowing the initial size istead of calc (ask gabriele for parts sizes)
+                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+
+                // # Add background to the scene
+                this.scene.add(obj3d);
+            });
+        }
     }
 
 }

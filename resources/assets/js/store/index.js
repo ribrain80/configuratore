@@ -167,6 +167,22 @@ const store = new Vuex.Store({
             );
         },
 
+
+        update3dDrawerPartTexture: function ({ commit,state }, params) {
+            console.log("update3dDrawerPartTexture",params);
+            state.dividerHelper.updateDividerTexture(
+                params.id,
+                params.image
+            );
+        },
+
+        genDrawer: function ({ commit,state }, type) {
+            console.log("genDrawer",type);
+            state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length);
+        },
+
+
+
         /**
          * Change all 3d divider texture
          * @param commit

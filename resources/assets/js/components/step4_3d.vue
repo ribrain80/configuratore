@@ -69,48 +69,7 @@
                 // # DividerHelper Create ad set on the store
                 this.$store.commit('setDividerHelper',new DividerHelper(new THREE.LoadingManager(),this.$store.state.scene));
 
-             /*   let cc = {
-                    x:0,
-                    y:0,
-                    z:0
-                };
 
-                let cd = {
-                    x:-150,
-                    y:10,    //just a bit over the cassetto
-                    z:-170
-                };
-
-                let cd1 = {
-                    x:150,
-                    y:10,    //just a bit over the cassetto
-                    z:-170
-                };
-
-                let _drawer = {
-                    id: 'gino',
-                    model: '/images/3dmodels/cassetto_legno.obj',
-                    texture: '/images/textures/04_Faggio.jpg',
-                    coords: cc
-                };
-
-                let _d1 = {
-                    id: 'd1',
-                    model: '/images/3dmodels/divider.obj',
-                    texture: '/images/textures/22_Blu.jpg',
-                    coords: cd
-                };
-
-                let _d2 = {
-                    id: 'd2',
-                    model: '/images/3dmodels/divider.obj',
-                    texture: '/images/textures/32_Lino chiaro.jpg',
-                    coords: cd1
-                };
-
-                this.$store.dispatch('add3dDivider',_drawer);
-                this.$store.dispatch('add3dDivider',_d1);
-                this.$store.dispatch('add3dDivider',_d2);*/
 
 
 
