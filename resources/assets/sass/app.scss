@@ -41,6 +41,11 @@ strong, .component-header {
   padding-left: 0!important;
 }
 
+.img-thumbnail:hover {
+  border: 1px solid #ffcc00;
+  cursor:pointer; 
+}
+
 .modal-body {
   font-size: 1.2em;
 }
