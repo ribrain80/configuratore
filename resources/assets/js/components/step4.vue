@@ -1554,6 +1554,48 @@ export default {
             this.$router.push({ path: '/split/stepponte' });
         },
 
+        canGoToFive: function () {
+
+            let out = {};
+            out.bordersStatus = this.$store.state.borders.background &&
+                this.$store.state.borders.back &&
+                this.$store.state.borders.front &&
+                this.$store.state.borders.left &&
+                this.$store.state.borders.right;
+            out.noCollision = true;
+
+            this.canvas.forEachObject( ( obj ) => {
+
+                if( obj.dirtystate ) {
+
+                    let actuallyCollides = false;
+
+                    this.canvas.forEachObject( ( otherObj ) => {
+
+                        if( obj == otherObj ) {
+                            return;
+                        }
+
+                        if( obj.intersectsWithObject( otherObj ) ) {
+                            actuallyCollides = true;
+                            out.noCollision = false;
+                            return;
+                        }
+
+                    });
+
+                    if( !actuallyCollides ) {
+                        obj.setStroke( "#222" );
+                        obj.setStrokeWidth( 2 );
+                        obj.dirtystate = false;
+                        this.canvas.renderAll();
+                    }
+                }
+            });
+
+
+        }
+
     },
 
     /**
