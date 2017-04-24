@@ -1,6 +1,25 @@
 <template>
 
 <div class="container-fluid" id="step5">
+    
+    <!-- User reset advice Modal -->
+    <div class="modal fade" id="reset-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
+                </div>
+                <div class="modal-body">{{ "step5.resetadvice" | translate }}</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( 'cancel' ) }}</button>
+                    <button type="button" class="btn btn-danger" @click="back2Four()">{{ $t( "dont-mind-go" ) }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<!-- Container -->
     <div class="row" >
@@ -58,7 +77,7 @@
 
             <!-- Prev button -->
             <div class="col-md-2 pull-left">
-                <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+                <button  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
             </div>  
 
         </div>
@@ -156,6 +175,25 @@ export default {
                     alert( "Si è verificato un errore!" );
                 });
             });
+        },
+
+        /**
+         * [backAdvice description]
+         * @return {[type]} [description]
+         */
+        backAdvice: function () {
+            $( "#reset-advice-modal" ).modal();
+            return;
+        },
+
+        /**
+         * Takes the user back to step4 ( after an advice has been accepted )
+         * @return {void}
+         */
+        back2Four: function () {
+
+            // # Take the user back
+            this.$router.push({ path: '/split/step4' });
         },
 
         /**

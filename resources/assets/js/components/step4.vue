@@ -1,8 +1,26 @@
 <template>
 
 <div class="container-fluid">
-<div id="info"></div>
 
+    <!-- User reset advice Modal -->
+    <div class="modal fade" id="reset-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
+                </div>
+                <div class="modal-body">{{ "step5.resetadvice" | translate }}</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( 'cancel' ) }}</button>
+                    <button type="button" class="btn btn-danger" @click="back2Bridge()">{{ $t( "dont-mind-go" ) }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Divider deletion Modal -->
     <div class="modal fade" id="deletion-alert-modal" tabindex="-1" role="dialog" aria-labelledby="">
         <div class="modal-dialog" role="document">
@@ -260,7 +278,7 @@
     <div class="row top5">
 
         <div class="col-lg-3 col-md-3 pull-right">
-            <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+            <button to="/split/stepponte"  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
         </div>
 
         <div class="col-lg-3 col-md-3 pull-right">
@@ -728,7 +746,7 @@ export default {
 
                     case false:
                         o.setStrokeWidth( 2 );
-                        o.setStroke( "#ffcc00" );
+                        o.setStroke( "#00cc00" );
                         o.set( 'active', true );
                     break;
                 }
@@ -1389,7 +1407,7 @@ export default {
                     this.bringToFront();
 
                     if( !this.dirtystate ) {
-                        this.setStroke( "#ffcc00" );
+                        this.setStroke( "#00cc00" );
                         this.setStrokeWidth( 2 );
                     }
                 });
@@ -1515,6 +1533,26 @@ export default {
             // # Take the user to the next step
             this.$router.push({ path: '/split/step5' });
         }, 
+
+        /**
+         * [backAdvice description]
+         * @return {[type]} [description]
+         */
+        backAdvice: function () {
+            $( "#reset-advice-modal" ).modal();
+            return;
+        },
+
+        /**
+         * Takes the user back to step4 ( after an advice has been accepted )
+         * @return {void}
+         */
+        back2Bridge: function () {
+            
+            // # Take the user back
+            this.$router.push({ path: '/split/stepponte' });
+        },
+
     },
 
     /**
