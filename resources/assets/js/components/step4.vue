@@ -1585,15 +1585,12 @@ export default {
                     });
 
                     if( !actuallyCollides ) {
-                        obj.setStroke( "#222" );
-                        obj.setStrokeWidth( 2 );
                         obj.dirtystate = false;
-                        this.canvas.renderAll();
                     }
                 }
             });
 
-
+            return out;
         }
 
     },
