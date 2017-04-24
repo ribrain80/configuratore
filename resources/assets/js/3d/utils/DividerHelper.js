@@ -29,7 +29,7 @@ export default class DividerHelper {
         this.objLoader.loadModel(name,model,textureImg,coords).then((obj3d) => {
             if (orr) {
                 obj3d.rotateY(Math.PI/2);
-
+                obj3d.updateMatrix();
             }
             this.scene.add(obj3d);
         });
@@ -59,8 +59,10 @@ export default class DividerHelper {
 
         if (_obj) {
 
-            _obj.translateX (x - _obj.position.x);
-            _obj.translateZ (z - _obj.position.z);
+            /*_obj.translateX (x - _obj.position.x);
+            _obj.translateZ (z - _obj.position.z);*/
+            _obj.position.x = x;
+            _obj.position.z = z;
 
         }
 
