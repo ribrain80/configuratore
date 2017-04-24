@@ -121,7 +121,8 @@ const store = new Vuex.Store({
                     divider.id,
                     _model.model3d,
                     _model.baseTexture,
-                    coords
+                    coords,
+                    divider.orientation=="H"
                 );
             }
         },

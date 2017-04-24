@@ -24,9 +24,13 @@ export default class DividerHelper {
      * @param textureImg
      * @param coords
      */
-    addDivider (name,model,textureImg,coords) {
+    addDivider (name,model,textureImg,coords,orr) {
 
         this.objLoader.loadModel(name,model,textureImg,coords).then((obj3d) => {
+            if (orr) {
+                obj3d.rotateY(Math.PI/2);
+
+            }
             this.scene.add(obj3d);
         });
 
