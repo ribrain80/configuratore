@@ -55,7 +55,7 @@ const  getters = {
     getSupportsVariants: function (state) {
         let output = [];
         if ( state.bridge_supportID ) {
-            let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[456]:state.supportTypes[898];
+            let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[455]:state.supportTypes[900];
             output = supportsByCategory['items'];
         }
         return output;

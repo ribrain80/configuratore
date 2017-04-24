@@ -75,7 +75,7 @@ class ApiController extends Controller
             $key = "" . $curSupport['height'];
             $grouped[$key]['items'][] = $curSupport;
             $grouped[$key]['height'] = (double)($curSupport['height']/10);
-            $grouped[$key]['id'] = ($curSupport['height']==456?1:2);
+            $grouped[$key]['id'] = ($curSupport['height']==455?1:2);
 
         }
 
