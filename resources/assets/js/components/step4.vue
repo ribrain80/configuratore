@@ -275,14 +275,14 @@
     </div>
     
     <!-- Buttons row -->
-    <div class="row top5">
+    <div class="row top2">
 
-        <div class="col-lg-3 col-md-3 pull-right">
-            <button to="/split/stepponte"  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
+        <div class="col-lg-2 col-md-2 pull-right">
+            <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
-        <div class="col-lg-3 col-md-3 pull-right">
-            <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+        <div class="col-lg-2 col-md-2 pull-right">
+            <button to="/split/stepponte"  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
         </div>
 
     </div>
@@ -306,7 +306,13 @@ export default {
      */
     data: function() { 
 
-        return {
+        return {    
+
+            /**
+             * Error modal selector caching
+             * @type {[type]}
+             */
+            error_modal: $( "#error-modal" ),
 
             /**
              * Fabric Canvas object
@@ -1406,6 +1412,8 @@ export default {
 
                     this.bringToFront();
 
+                    $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+
                     if( !this.dirtystate ) {
                         this.setStroke( "#ffcc00" );
                         this.setStrokeWidth( 2 );
@@ -1522,10 +1530,64 @@ export default {
          */
         check: function() {
 
+            // # No dividers selected check
+            if( this.$store.state.dividers_selected.length == 0  ) {
+
+                // # Modal Error display
+                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.nodividers-advice" ) );
+                this.error_modal.modal();  
+
+                // # Step4 is completed, everything's ok
+                this.$store.commit( "setFourcompleted", false );
+
+                // # Open related tab
+                $( '#tab-container a:first' ).tab( 'show' );
+                
+                // # No way
+                return false;    
+            }
+
+            // # Global check
+            let checkinObj = this.canGoToFive();
+
+            // # Not all borders have been set
+            if( checkinObj.bordersStatus == "" ) {
+
+                // # Modal Error display
+                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.noborders-advice" ) );
+                this.error_modal.modal();  
+
+                // # Step4 is completed, everything's ok
+                this.$store.commit( "setFourcompleted", false );
+
+                // # Open related tab
+                $( '#tab-container a[href="#edges-tab"]' ).tab( 'show' );
+                
+                // # No way
+                return false;              
+            }
+
+            // # Some collisions in canvas are still there
+            if( !checkinObj.noCollision ) {
+
+                // # Modal Error display
+                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.collisions-advice" ) );
+                this.error_modal.modal();  
+
+                // # Step4 is completed, everything's ok
+                this.$store.commit( "setFourcompleted", false );                
+                
+                return false;                    
+            }
+
+            // # Deselect All ( SVG image should have no colored borders )
             this.deselectAll();
 
-            this.$store.commit('setCanvasSvg',this.canvas.toSVG());
-            this.$store.commit('setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL("image/png"));
+            // # Se canvas screenshot
+            this.$store.commit( 'setCanvasSvg',this.canvas.toSVG() );
+
+            // # Set 3D screenshot
+            this.$store.commit( 'setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL( "image/png" ) );
 
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );
