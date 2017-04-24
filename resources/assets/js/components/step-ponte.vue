@@ -181,7 +181,7 @@ export default {
 
         showSupportsAdvice: function () {
             return   this.$store.state.drawertype == 4 || 
-                   ( this.$store.state.drawertype != 4 && this.$store.state.bridges_selected != "H" );
+                   ( this.$store.state.drawertype != 4 && this.$store.state.bridge_orientation != "H" );
         },
 
         numSup: function () {

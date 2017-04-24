@@ -66,23 +66,25 @@
         </div>
 
     </div>
+    
+    <transition name="fade">
+      <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
 
-    <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
+          <div class="col-lg-4" v-for="ctype in type">
 
-        <div class="col-lg-4" v-for="ctype in type">
+              <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
+                  <figcaption> {{ ctype.description | translate}} </figcaption>
+                  <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.jpg'"
+                       class="img img-responsive center-block img-shadow "
+                       :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
+                       @click="setType( ctype.id )"
+                  />
+              </figure>
 
-            <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
-                <figcaption> {{ ctype.description | translate}} </figcaption>
-                <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.jpg'"
-                     class="img img-responsive center-block img-shadow "
-                     :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
-                     @click="setType( ctype.id )"
-                />
-            </figure>
+          </div>
 
-        </div>
-
-    </div>
+      </div>
+    </transition>
 
     <!-- Navigation row -->
     <div class="row top5">
