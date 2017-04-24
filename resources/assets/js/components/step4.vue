@@ -416,7 +416,7 @@ export default {
          * @return {number}
          */
         real_width: function () {
-            return +this.$store.state.dimensions.width + this.$store.state.dimensions.delta_width;
+            return parseFloat( this.$store.state.dimensions.width ) + parseInt( this.$store.state.dimensions.delta_width );
         },
 
         /**
@@ -424,7 +424,7 @@ export default {
          * @return {number}
          */
         real_height: function() {
-            return +this.$store.state.dimensions.length + this.$store.state.dimensions.delta_length;
+            return parseFloat( this.$store.state.dimensions.length ) + parseInt( this.$store.state.dimensions.delta_length );
         }
     },
 
@@ -484,8 +484,13 @@ export default {
                 img.addEventListener( 'touchend', this.handleDragEnd, false);
             });        
 
+            let original_container_width = Math.floor( canvas_container.width() );
+            console.log( "Canvas container Width: ", original_container_width );
+            console.log( "canvas_container.width() * 0.8: ", original_container_width * 0.8 );
+            console.log( "canvas_container.width() FLOOR ", Math.floor( canvas_container.width() * 0.8 ) );
+            
             // # Compute available width
-            this.canvasWidth  = parseInt( canvas_container.width() * 0.80 );
+            this.canvasWidth = Math.floor( original_container_width * 0.8 );
             console.log( "Canvas width: " + this.canvasWidth );
 
             // # Compute ratio
@@ -943,79 +948,55 @@ export default {
          */
         ratioComputer: function() {
 
+            console.log( "RW:" + this.real_width );
+            console.log( "RH:" + this.real_height );
+
             // # Dimension ratio tells us if we are in the case that height > width
-            let dimensions_ratio = this.real_width / this.real_height;
+            let dimensions_ratio = parseFloat( this.real_width / this.real_height ).toFixed( 2 );
+            console.log( "dimensions_ratio: " + dimensions_ratio );
 
             // # Container available width
             let available_width = this.canvasWidth;
             console.log( "AW" + available_width );
 
-            var real_ratio = ( available_width / this.real_width );
             // # Ratio computed using max allowed rect width
-            this.config.ratio = real_ratio.toFixed( 2 );
-            console.log( "RAZ: " + this.config.ratio );
-
-            this.config.ratio = this.config.ratio;
-            console.log( "RAZ adjusted: " + this.config.ratio );
+            this.config.ratio = parseFloat( available_width / this.real_width );
+            console.log( "RATIO: " + this.config.ratio );
 
             // # height > width
             if( dimensions_ratio < 1 ) {
 
-               console.log( "D ratio: " + dimensions_ratio );
                console.log( "H > W" );
+               
+               // # Initial height computed based on available width
+               let computed_height = parseFloat( this.real_height * this.config.ratio ).toFixed( 2 );
+               console.log( "Initial CH: " + computed_height );
 
                // # let's say that we want to set a threshold
                // # this will prevent the scale change when 
                // # H / W dfference is little
-               var threshold = available_width;
-               
-               // # Initial height computed based on available width
-               var computed_height = this.real_height * this.config.ratio;
-               console.log( "CH first " + computed_height );
-
                // # Reduce the computed height to a dimension max = available width 
                // # so that the resulting shape won't be to tall
-               while( computed_height > threshold ) {
+               while( computed_height >= available_width ) {
 
                     // # Reduce ratio at each iteration
-                    this.config.ratio = ( this.config.ratio / 100 ) * 90;
-                    console.log( "RA: " + this.config.ratio );
+                    this.config.ratio = parseFloat( ( this.config.ratio / 100 ) * 90 );
+                    console.log( "RATIO in iteration: " + this.config.ratio );
                     
                     // # Newly computed canvas dimension are smaller and smaller
-                    computed_height  = this.real_height * this.config.ratio;
-                    this.canvasWidth = this.real_width * this.config.ratio;
+                    computed_height  = parseFloat( this.real_height * this.config.ratio ).toFixed( 2 );
+                    this.canvasWidth = parseFloat( this.real_width * this.config.ratio ).toFixed( 2 );
 
-                    console.log( "CWChanged " +  this.canvasWidth );
-                    console.log( "CHChanged " +  computed_height );
+                    console.log( "CW Changed in iteration: " +  this.canvasWidth );
+                    console.log( "CH Changed in iteration:"  +  computed_height );
                }
-
-               console.log( computed_height + " - " + available_width );
             }   
 
             // # Commit ratio ( useful for 3d )
             this.$store.commit( "setStep42DRatio", this.config.ratio );
 
-
-            console.log( "RATIO " + this.config.ratio );
+            console.log( "Final RATIO: " + this.config.ratio );
         },  
-
-        /**
-         * Converts any real dimension into a suitable pixel rapresentation of it
-         * Conversion is based of a scale factor and a pixel ratio ( should be related to the device screen dimension )  
-         * @param  {double} mm input in millimeters
-         * @return {int}    computed ( adapted ) integer output
-         */
-        mm2Pixel: function ( mm ) {
-            
-            try {
-                console.log( "mm orig " + mm );
-                console.log( "mm conv " + Math.floor( mm  * this.config.ratio ) );
-                return Math.floor( mm  * this.config.ratio );
-            } catch ( e ) {
-                // # Use a suitable default value
-                return 250;
-            }   
-        },
 
         selectBorder: function( event ) {
 
@@ -1312,9 +1293,13 @@ export default {
                 e.preventDefault();
             }
 
+            console.log( "imageW: ", parseInt( this.draggingDivider.dataset.width ) );
+            console.log( "imageW before Ceil: ", parseInt( this.draggingDivider.dataset.width ) * this.config.ratio );
+            console.log( "imageW after Ceil: ", Math.ceil( parseInt( this.draggingDivider.dataset.width ) * this.config.ratio ) );
+
             // # Caching img dataset
-            var _imgW   = Math.floor( +this.draggingDivider.dataset.width * this.config.ratio );
-            var _imgH   = Math.floor( +this.draggingDivider.dataset.height * this.config.ratio );
+            var _imgW   = Math.ceil( parseInt( this.draggingDivider.dataset.width ) * this.config.ratio );
+            var _imgH   = Math.ceil( parseInt( this.draggingDivider.dataset.height ) * this.config.ratio );
             var _imgID  = this.draggingDivider.dataset.key + "_" + this.draggingDivider.dataset.cat + "_" + Date.now();
             let _imgOr  = this.draggingDivider.dataset.orientation;
 
