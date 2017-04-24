@@ -28,20 +28,20 @@ const  getters = {
             _.forOwn(state.supportTypes, (value, key) => {
                 switch( state.drawertype ) {
                     case 4:
-                        if ((value.height<=45.6) && shoulder_height_float >= 72) {
+                        if ((value.height<=45.5) && shoulder_height_float >= 72) {
                             output.push(value);
                         }
-                        if ((value.height>=89.8) && shoulder_height_float >= 116) {
+                        if ((value.height>=90) && shoulder_height_float >= 116) {
                             output.push(value);
                         }
 
                         break;
                     default:
                         // # Lineabox is the defaul here!!!!!
-                        if ((value.height<=45.6) && shoulder_height_float >= 72 && shoulder_height_float < 148) {
+                        if ((value.height<=45.5) && shoulder_height_float >= 72 && shoulder_height_float < 148) {
                             output.push(value);
                         }
-                        if ((value.height>=89.8) && shoulder_height_float >= 148) {
+                        if ((value.height>=90) && shoulder_height_float >= 148) {
                             output.push(value);
                         }
                         break;

@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"Dire",
+				"DirectoryIterator"
+			],
+			[
+				"drawer",
+				"drawer_type_category"
+			],
+			[
+				"Handle",
+				"handleDragStart"
+			],
+			[
+				"re",
+				"responseTypes"
+			],
+			[
 				"col",
 				"col-lg-5 \tBootstrap 3 Class"
 			],
@@ -122,10 +138,6 @@
 			[
 				"update",
 				"updateDrawer"
-			],
-			[
-				"drawer",
-				"drawer_border_top"
 			],
 			[
 				"active",
@@ -502,37 +514,16 @@
 			[
 				"sholu",
 				"shoulder_height"
-			],
-			[
-				"mm",
-				"mm2Pixel"
-			],
-			[
-				"sho",
-				"shoulder_height_upper_limit"
-			],
-			[
-				"rect_h",
-				"rect_height_upper_limit"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "resources/assets/js/components/step3.vue",
+			"file": ".env",
 			"settings":
 			{
-				"buffer_size": 44904,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/sass/app.scss",
-			"settings":
-			{
-				"buffer_size": 13902,
+				"buffer_size": 556,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,87 +532,90 @@
 			"file": "resources/assets/js/components/step-ponte.vue",
 			"settings":
 			{
-				"buffer_size": 19093,
+				"buffer_size": 20238,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step1.vue",
-			"settings":
-			{
-				"buffer_size": 3293,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/store/translations.js",
-			"settings":
-			{
-				"buffer_size": 10947,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "resources/assets/js/components/step4.vue",
 			"settings":
 			{
-				"buffer_size": 57706,
+				"buffer_size": 60312,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step5.vue",
-			"settings":
-			{
-				"buffer_size": 6394,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step4_3d.vue",
-			"settings":
-			{
-				"buffer_size": 4137,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/store/mutations.js",
-			"settings":
-			{
-				"buffer_size": 20603,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/appnavbar.vue",
-			"settings":
-			{
-				"buffer_size": 1174,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/languageselector.vue",
-			"settings":
-			{
-				"buffer_size": 2253,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "resources/assets/js/components/step2.vue",
 			"settings":
 			{
-				"buffer_size": 8159,
-				"line_ending": "Windows"
+				"buffer_size": 8195,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/split/application.blade.php",
+			"settings":
+			{
+				"buffer_size": 2810,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step1.vue",
+			"settings":
+			{
+				"buffer_size": 3119,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/store/index.js",
+			"settings":
+			{
+				"buffer_size": 13888,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/store/mutations.js",
+			"settings":
+			{
+				"buffer_size": 20945,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/sass/app.scss",
+			"settings":
+			{
+				"buffer_size": 14483,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/web.php",
+			"settings":
+			{
+				"buffer_size": 2446,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step3.vue",
+			"settings":
+			{
+				"buffer_size": 45066,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -683,52 +677,66 @@
 	"expanded_folders":
 	[
 		"/C/Users/brambillari/Code/configuratore",
-		"/C/Users/brambillari/Code/configuratore/public",
-		"/C/Users/brambillari/Code/configuratore/public/salicefonts",
+		"/C/Users/brambillari/Code/configuratore/public/images",
+		"/C/Users/brambillari/Code/configuratore/public/images/gallery",
+		"/C/Users/brambillari/Code/configuratore/public/images/gallery/images",
 		"/C/Users/brambillari/Code/configuratore/resources",
 		"/C/Users/brambillari/Code/configuratore/resources/assets",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/css",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/entity",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/utils",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/salicefonts"
+		"/C/Users/brambillari/Code/configuratore/resources/images",
+		"/C/Users/brambillari/Code/configuratore/storage",
+		"/C/Users/brambillari/Code/configuratore/storage/logs"
 	],
 	"file_history":
 	[
+		"/C/Users/brambillari/Code/configuratore/app/Http/Controllers/ApiController.php",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/getters.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/utils/DividerHelper.js",
+		"/C/Users/brambillari/Code/configuratore/storage/logs/laravel-2017-04-21.log",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/utils/splitObjLoader.js",
+		"/C/Users/brambillari/Code/configuratore/node_modules/array-union/index.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
+		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
+		"/C/Users/brambillari/Code/configuratore/public/css/lightgallery.min.css",
+		"/C/Users/brambillari/Code/configuratore/public/fonts/lg.woff",
+		"/C/Users/brambillari/Code/configuratore/public/fonts/lg.eot",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/sass/app.scss",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
-		"/C/Users/brambillari/Code/configuratore/public/salicefonts/saliceFonts.css",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
-		"/C/Users/brambillari/Code/configuratore/public/salicefonts/webfonts/3358C9_0_0.eot",
+		"/C/Users/brambillari/Code/configuratore/resources/views/split/application.blade.php",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step1.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/app.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/appnavbar.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/languageselector.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
+		"/C/Users/brambillari/Code/configuratore/vendor/phpunit/phpunit-mock-objects/tests/_fixture/AnInterface.php",
+		"/C/Users/brambillari/Code/configuratore/routes/web.php",
+		"/C/Users/brambillari/Code/configuratore/database/seeds/DrawertypesTableSeeder.php",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step-ponte.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/translations.js",
+		"/C/Users/brambillari/Code/configuratore/node_modules/fabric/dist/fabric.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step5.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/utils/DrawerFactory.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4_3d.vue",
+		"/C/Users/brambillari/Code/configuratore/public/salicefonts/saliceFonts.css",
+		"/C/Users/brambillari/Code/configuratore/public/salicefonts/webfonts/3358C9_0_0.eot",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/router.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/bootstrap.js",
-		"/C/Users/brambillari/Code/configuratore/resources/views/split/application.blade.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/getters.js",
 		"/C/Users/brambillari/Code/configuratore/config/app.php",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step1.vue",
-		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/sidebar.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step-ponte.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step5.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/salicefonts/saliceFonts.css",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4_3d.vue",
 		"/C/Users/brambillari/Code/configuratore/package.json",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/languageselector.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/translations.js",
 		"/C/Users/brambillari/Code/configuratore/deploy.php",
 		"/C/Users/brambillari/Code/configuratore/public/css/app.css",
-		"/C/Users/brambillari/Code/configuratore/public/css/lightgallery.min.css",
 		"/C/Users/brambillari/Code/configuratore/node_modules/caniuse-db/features-json/svg-css.json",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/appnavbar.vue",
-		"/C/Users/brambillari/Code/configuratore/node_modules/array-union/index.js",
 		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss",
 		"/C/Users/brambillari/Desktop/step4.vue",
 		"/C/Users/brambillari/Desktop/I e II_Modulo_import_wrong.txt",
-		"/C/Users/brambillari/Code/configuratore/app/Http/Controllers/ApiController.php",
-		"/C/Users/brambillari/Code/configuratore/routes/web.php",
 		"/C/Users/brambillari/Code/configuratore/resources/views/fabric.blade.php",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/master.blade.php",
 		"/C/Users/brambillari/Code/configuratore/app/Http/Controllers/SplitDrawerController.php",
@@ -759,7 +767,6 @@
 		"/C/Users/brambillari/Code/configuratore/bower.json",
 		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/gridstack/dist/gridstack-extra.css",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/Commons.js",
-		"/C/Users/brambillari/Code/configuratore/database/seeds/DrawertypesTableSeeder.php",
 		"/C/Users/brambillari/Code/configuratore/app/Models/Drawertype.php",
 		"/C/Users/brambillari/Code/configuratore/public/js/split/newconfiguration.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/split/newconfiguration.js",
@@ -813,9 +820,7 @@
 		"/C/Users/brambillari/Code/configuratore/app/Http/Controllers/Split/SplitController.php",
 		"/C/Users/brambillari/Code/configuratore/elixir.json",
 		"/C/Users/brambillari/Code/configuratore/.env",
-		"/C/Users/brambillari/Code/configuratore/.env.example",
-		"/C/Users/brambillari/Code/configuratore/storage/logs/laravel.log",
-		"/C/Users/brambillari/Code/configuratore/public/js/step1.js"
+		"/C/Users/brambillari/Code/configuratore/.env.example"
 	],
 	"find":
 	{
@@ -837,6 +842,36 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"handledrop",
+			"handlefrop",
+			"this.select",
+			"deselectAll",
+			"selectB",
+			"objectworki",
+			"selectedI",
+			"selectedItem",
+			"workin",
+			"popover",
+			"modal-body",
+			"asd-keeplogic",
+			"../fonts",
+			"light",
+			"two",
+			"animation",
+			"handleDragEnd",
+			"dragend",
+			"handleDrop",
+			"handledrag",
+			"handleDragOver",
+			"handleDragEnter",
+			"dragenter",
+			"touch",
+			"gesture",
+			"handleDragEnter",
+			"handleDragEnd",
+			"dragen",
+			"step2.modal-warning",
+			"handleMoving",
 			"snap",
 			"setStrokeWidth( 2 )",
 			"selectAll",
@@ -934,37 +969,7 @@
 			"selectAll",
 			"build/fonts",
 			"build",
-			"$icon-font-pat",
-			"sass",
-			"drawer-container",
-			"drawer container",
-			"drawercontainer",
-			"drawer_container",
-			"width-info-imag",
-			"col-lg-7 col-md-7 col-sm-7",
-			"url",
-			"step2-alert-warning",
-			"$event",
-			"event",
-			"savedrawer",
-			"$event",
-			"selectBridge",
-			"$event",
-			"_updateBorder",
-			"event",
-			"_updateDividerSku",
-			"setcolo",
-			");\n",
-			"active",
-			"set active",
-			"finalCollisionDetectionManagement",
-			"mouse:up",
-			"handledrop",
-			"                        // # If objects intersect\n                        if ( activeObj.intersectsWithObject( obj ) ) { \n\n                            // # Intersections init\n                            var intersectLeft = null, intersectTop = null, intersectWidth = null;\n                            var intersectHeight = null, intersectSize = null;\n                            var targetLeft = activeObj.getLeft();\n                            var targetRight = targetLeft + activeObj.getWidth();\n                            var targetTop = activeObj.getTop();\n                            var targetBottom = targetTop + activeObj.getHeight();\n                            var objectLeft = obj.getLeft();\n                            var objectRight = objectLeft + obj.getWidth();\n                            var objectTop = obj.getTop();\n                            var objectBottom = objectTop + obj.getHeight();            \n\n                            // Find intersect information for X axis\n                            if( targetLeft >= objectLeft && targetLeft <= objectRight ) {\n                                intersectLeft = targetLeft;\n                                intersectWidth = obj.getWidth() - ( intersectLeft - objectLeft );\n\n                            } else if( objectLeft >= targetLeft && objectLeft <= targetRight ) {\n                                intersectLeft = objectLeft;\n                                intersectWidth = activeObj.getWidth() - ( intersectLeft - targetLeft );\n                            }\n\n                            // Find intersect information for Y axis\n                            if( targetTop >= objectTop && targetTop <= objectBottom ) {\n                                intersectTop = targetTop;\n                                intersectHeight = obj.getHeight() - ( intersectTop - objectTop );\n\n                            } else if( objectTop >= targetTop && objectTop <= targetBottom ) {\n                                intersectTop = objectTop;\n                                intersectHeight = activeObj.getHeight() - ( intersectTop - targetTop );\n                            }  \n                      \n                            // Find intersect size (this will be 0 if objects are touching but not overlapping)\n                            if( intersectWidth > 0 && intersectHeight >  0 ) {\n                                console.log( \"intersect area!\" );\n                                intersectSize = intersectWidth * intersectHeight;\n                            }                                    \n\n                            if( intersectSize != null ) {\n                                console.log( \"Intersect size \" + intersectSize );\n                                activeObj.setOpacity( 0.5 );\n                                this.canvas.renderAll();\n                                return;\n                            }\n\n                            // # No collision\n                            activeObj.setOpacity( 1 );\n                            this.canvas.renderAll();\n                            \n                        }   ",
-			"checkChoice",
-			"threecompleted",
-			"threecompleted ",
-			"checkChoice"
+			"$icon-font-pat"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -972,6 +977,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"/fonts",
 			"setStrokeWidth( 1 )",
 			"text-danger",
 			"3px 3px 8px 0px",
@@ -1019,24 +1025,127 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "resources/assets/js/components/step3.vue",
+					"file": ".env",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 44904,
+						"buffer_size": 556,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8542,
-								8551
+								199,
+								199
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "resources/assets/js/components/step-ponte.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20238,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20087,
+								20087
 							]
 						],
 						"settings":
@@ -1048,8 +1157,8 @@
 								{
 									"1":
 									[
-										8551,
-										8552
+										20087,
+										20088
 									]
 								},
 								"icon":
@@ -1064,8 +1173,8 @@
 								{
 									"1":
 									[
-										8505,
-										8506
+										20082,
+										20083
 									]
 								},
 								"unmatched":
@@ -1079,46 +1188,16 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1128,140 +1207,65 @@
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2922.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "resources/assets/sass/app.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13902,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6866,
-								6861
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4648.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "resources/assets/js/components/step-ponte.vue",
+					"file": "resources/assets/js/components/step4.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19093,
+						"buffer_size": 60312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7493,
-								7499
+								56895,
+								56928
 							]
 						],
 						"settings":
@@ -1273,8 +1277,8 @@
 								{
 									"1":
 									[
-										7509,
-										7510
+										56929,
+										56930
 									]
 								},
 								"icon":
@@ -1289,8 +1293,8 @@
 								{
 									"1":
 									[
-										7428,
-										7429
+										56928,
+										56929
 									]
 								},
 								"unmatched":
@@ -1304,176 +1308,56 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3118.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "resources/assets/js/components/step1.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								97,
-								97
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										96,
-										97
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										92,
-										93
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
@@ -1481,371 +1365,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/assets/js/store/translations.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10947,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5158,
-								5158
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										5174,
-										5175
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										5158,
-										5159
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 826.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "resources/assets/js/components/step4.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 57706,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14801,
-								14801
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4969.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "resources/assets/js/components/step5.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6394,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1502,
-								1502
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1502,
-										1503
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1477,
-										1478
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 28318.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "resources/assets/js/components/step4_3d.vue",
+					"buffer": 3,
+					"file": "resources/assets/js/components/step2.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4137,
+						"buffer_size": 8195,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3121,
-								3121
+								3388,
+								3388
 							]
 						],
 						"settings":
@@ -1857,8 +1397,8 @@
 								{
 									"1":
 									[
-										3125,
-										3126
+										3388,
+										3389
 									]
 								},
 								"icon":
@@ -1873,8 +1413,8 @@
 								{
 									"1":
 									[
-										3094,
-										3095
+										3383,
+										3384
 									]
 								},
 								"unmatched":
@@ -1888,46 +1428,16 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1937,34 +1447,65 @@
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1920.0,
+						"translation.y": 1260.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "resources/assets/js/store/mutations.js",
+					"buffer": 4,
+					"file": "resources/views/split/application.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20603,
+						"buffer_size": 2810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7689,
-								7695
+								1978,
+								1988
 							]
 						],
 						"settings":
@@ -1976,8 +1517,678 @@
 								{
 									"1":
 									[
-										9611,
-										9612
+										1988,
+										1989
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1977,
+										1978
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 840.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/assets/js/components/step1.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3118,
+								3118
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "resources/assets/js/store/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6044,
+								6059
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										5702,
+										5703
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3608.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "resources/assets/js/store/mutations.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20945,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20827,
+								20843
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										20915,
+										20916
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6806.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "resources/assets/sass/app.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3144,
+								3144
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "routes/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2446,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2117,
+								2103
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2117,
+										2118
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										2102,
+										2103
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "resources/assets/js/components/step3.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								44435,
+								44435
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										44593,
+										44594
 									]
 								},
 								"icon":
@@ -1992,8 +2203,8 @@
 								{
 									"1":
 									[
-										6409,
-										6410
+										44433,
+										44434
 									]
 								},
 								"unmatched":
@@ -2007,401 +2218,56 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "resources/assets/js/components/appnavbar.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1174,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								11
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "resources/assets/js/components/languageselector.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2253,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								309,
-								309
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										309,
-										310
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										268,
-										269
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "resources/assets/js/components/step2.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8159,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5260,
-								5265
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										5278,
-										5279
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										5258,
-										5259
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
@@ -2409,10 +2275,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 338.0,
+						"translation.y": 6490.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -2467,6 +2333,86 @@
 		"selected_items":
 		[
 			[
+				"step4",
+				"resources\\assets\\js\\components\\step4.vue"
+			],
+			[
+				"steppo",
+				"resources\\assets\\js\\components\\step-ponte.vue"
+			],
+			[
+				"getters",
+				"resources\\assets\\js\\store\\getters.js"
+			],
+			[
+				"mutations",
+				"resources\\assets\\js\\store\\mutations.js"
+			],
+			[
+				"step3",
+				"resources\\assets\\js\\components\\step3.vue"
+			],
+			[
+				"ind",
+				"node_modules\\array-union\\index.js"
+			],
+			[
+				"step1",
+				"resources\\assets\\js\\components\\step1.vue"
+			],
+			[
+				"apicontro",
+				"app\\Http\\Controllers\\ApiController.php"
+			],
+			[
+				"web.php",
+				"routes\\web.php"
+			],
+			[
+				"applica",
+				"resources\\views\\split\\application.blade.php"
+			],
+			[
+				"app.scss",
+				"resources\\assets\\sass\\app.scss"
+			],
+			[
+				"step2",
+				"resources\\assets\\js\\components\\step2.vue"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"appnav",
+				"resources\\assets\\js\\components\\appnavbar.vue"
+			],
+			[
+				"language",
+				"resources\\assets\\js\\components\\languageselector.vue"
+			],
+			[
+				"ani",
+				"vendor\\phpunit\\phpunit-mock-objects\\tests\\_fixture\\AnInterface.php"
+			],
+			[
+				"app.scs",
+				"resources\\assets\\sass\\app.scss"
+			],
+			[
+				"apicontrol",
+				"app\\Http\\Controllers\\ApiController.php"
+			],
+			[
+				"web.p",
+				"routes\\web.php"
+			],
+			[
+				"drawerfactory",
+				"resources\\assets\\js\\3d\\utils\\DrawerFactory.js"
+			],
+			[
 				"step5",
 				"resources\\assets\\js\\components\\step5.vue"
 			],
@@ -2479,56 +2425,12 @@
 				"resources\\assets\\js\\store\\mutations.js"
 			],
 			[
-				"step3",
-				"resources\\assets\\js\\components\\step3.vue"
-			],
-			[
 				"languagese",
 				"resources\\assets\\js\\components\\languageselector.vue"
 			],
 			[
-				"appnav",
-				"resources\\assets\\js\\components\\appnavbar.vue"
-			],
-			[
-				"app.scs",
-				"resources\\assets\\sass\\app.scss"
-			],
-			[
-				"steppo",
-				"resources\\assets\\js\\components\\step-ponte.vue"
-			],
-			[
-				"step1",
-				"resources\\assets\\js\\components\\step1.vue"
-			],
-			[
-				"step2",
-				"resources\\assets\\js\\components\\step2.vue"
-			],
-			[
 				"translation",
 				"resources\\assets\\js\\store\\translations.js"
-			],
-			[
-				"step4",
-				"resources\\assets\\js\\components\\step4.vue"
-			],
-			[
-				"getters",
-				"resources\\assets\\js\\store\\getters.js"
-			],
-			[
-				"app.scss",
-				"resources\\assets\\sass\\app.scss"
-			],
-			[
-				"applica",
-				"resources\\views\\split\\application.blade.php"
-			],
-			[
-				"mutations",
-				"resources\\assets\\js\\store\\mutations.js"
 			],
 			[
 				"app.sc",
@@ -2543,10 +2445,6 @@
 				"resources\\assets\\js\\store\\getters.js"
 			],
 			[
-				"language",
-				"resources\\assets\\js\\components\\languageselector.vue"
-			],
-			[
 				"side",
 				"resources\\assets\\js\\components\\sidebar.vue"
 			],
@@ -2557,10 +2455,6 @@
 			[
 				"scss",
 				"node_modules\\caniuse-db\\features-json\\svg-css.json"
-			],
-			[
-				"gulp",
-				"gulpfile.js"
 			],
 			[
 				"app.css",
@@ -2621,10 +2515,6 @@
 			[
 				"apicontr",
 				"app\\Http\\Controllers\\ApiController.php"
-			],
-			[
-				"web.p",
-				"routes\\web.php"
 			],
 			[
 				"splitcon",
@@ -2761,10 +2651,6 @@
 			[
 				"pdfcontr",
 				"app\\Http\\Controllers\\PDFController.php"
-			],
-			[
-				"web.php",
-				"routes\\web.php"
 			],
 			[
 				"dividersee",

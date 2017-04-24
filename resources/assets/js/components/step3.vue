@@ -88,7 +88,7 @@
                   <div v-if="$store.state.is_lineabox === false" class="form-group">
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
-                      <a class="i-icon pull-left" id="sh-popover" rel="popover" data-content="">&nbsp;</a> 
+                      <a class="i-icon pull-left" id="sh-popover" rel="popover">&nbsp;</a> 
                       <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                     </label>
 
@@ -129,9 +129,10 @@
                               <div class="col-lg-4">
                                   <div :class="[ 'panel panel-default', option.value == $store.state.dimensions.shoulder_height ? 'border-selected' : 'border-deselected' ]">
                                       <div class="panel-body" @focus.once="resetAdvice()" 
-                                           @click="setShoulderHeight( option.value )" 
+                                           @click="setShoulderHeight( $event, option.value )" 
                                            @blur="isSuitableHeightForBridge">
-                                          <img :src="'/images/others/step-3/HA_lineabox_'+option.dimension+'.png'" :id="option.value == $store.state.dimensions.shoulder_height ? 'selected_HA' : ''" class="img img-responsive"/>
+                                          <img :src="'/images/others/step-3/HA_lineabox_'+option.dimension+'.png'" 
+                                               :class="['img', 'img-responsive', 'HA_' + option.dimension, option.value == $store.state.dimensions.shoulder_height ? 'selected_HA' : '' ]"/>
                                       </div>
                                       <div class="panel-footer text-center no-background ha-lineabox">{{option.dimension}}</div>
                                   </div>
@@ -218,7 +219,7 @@ export default {
 
               // # Lineabox shoulder fixed measures ( height ) 
               lineabox_shoulders_height: [
-                  { dimension: "77", text: "77 - 45.4", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
+                  { dimension: "77", text: "77 - 45.5", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
                   { dimension: "104", text: "104 - 72" , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
                   { dimension: "180", text: "180 - 148" , value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
               ],
@@ -263,43 +264,74 @@ export default {
           // # Advice
           advice_accepted: false,
 
+          sh_dim: ""
+
         }
     },
 
     computed: {
 
         /**
-         * [getMaxwidth4BridgeByDrawerType description]
-         * @return {[type]} [description]
+         * Computes actual max width depending on drawer type selected
+         * @return {Number}
          */
         getMaxWidth4BridgeByDrawerType: function () {
           return !this.$store.state.is_lineabox ? this.config.max_suitable_width_4_Hbridge : parseFloat( this.config.max_suitable_width_4_Hbridge ) - 12
         },
 
-
+        /**
+         * Checks width upper limit
+         * @return {Boolean}
+         */
         isWidthOverMax: function() {
             // # Upper limit check
             return this.$store.state.dimensions.width > this.config.rect_width_upper_limit;
         },
 
+        /**
+         * Checks width lower limit
+         * @return {Boolean}
+         */
         isWidthUnderMin: function() {
             return this.$store.state.dimensions.width < this.config.rect_width_lower_limit;
         },
 
+        /**
+         * Checks length upper limit
+         * @return {Boolean}
+         */        
         isLengthOverMax: function() {
             return this.$store.state.dimensions.length > this.config.rect_length_upper_limit;
         },
 
+        /**
+         * Checks length lower limit
+         * @return {Boolean}
+         */        
         isLengthUnderMin: function() {
             return this.$store.state.dimensions.length < this.config.rect_length_lower_limit;
         },
 
+        /**
+         * Checks shoulder_height upper limit
+         * @return {Boolean}
+         */        
         isShoulderHeightOverMax: function() {
             return this.$store.state.dimensions.shoulder_height > this.config.shoulder_height_upper_limit;
         },
 
+        /**
+         * Checks shoulder_height lower limit
+         * @return {Boolean}
+         */        
         isShoulderHeightUnderMin: function() {
             return this.$store.state.dimensions.shoulder_height < this.config.shoulder_height_lower_limit;
+        }
+    },
+
+    watch: {
+        sh_dim: function() {
+          console.log( "chamged" );
         }
     },
 
@@ -324,8 +356,7 @@ export default {
 
             // # TWO Instance, autostart means we do not have to reupdate the canvas each time there
             // # is an update on a shape/path/text
-            this.two = new Two( { autostart: true, width: $( "#animation" ).width() } ).appendTo( this.container );
-
+            this.two = new Two( { autostart: true, width: $( "#animation" ).width() - 40 } ).appendTo( this.container );
 
             // # Drawer
             this.makeRect( this.mm2Pixel( this.$store.state.dimensions.width ) / 2, 
@@ -615,11 +646,20 @@ export default {
 
         /**
          * [setShoulderHeight description]
-         * @param {[type]} val [description]
+         * @param {[type]} event [description]
+         * @param {[type]} val   [description]
          */
-        setShoulderHeight: function( val ) {
+        setShoulderHeight: function( event, val ) {
+
+            // # Commit mutation and update draw
             this.$store.commit( "setShoulderHeight", val );
             this.updateDrawer();
+
+            // # Dynamically change popover content
+            let popover = $( '#sh-popover' ).data( 'bs.popover' );
+            let nuPopoverContent = $( event.target ).clone( false );
+            nuPopoverContent.removeClass( 'selected_HA' );
+            popover.options.content = nuPopoverContent;            
         }, 
 
         /**
@@ -1120,7 +1160,7 @@ export default {
         // # Dimensions info popovers
         // # WIDTH
         $('#width-popover').popover({ 
-            placement: 'right', 
+            placement: 'auto right', 
             content: $( "#width-info-image" ).clone( true ), 
             html: true,
             container: 'body'
@@ -1128,7 +1168,7 @@ export default {
 
         // # LENGTH
         $('#length-popover').popover({ 
-            placement: 'right', 
+            placement: 'auto right', 
             content: $( "#length-info-image" ).clone( true ), 
             html: true,
             container: 'body'
@@ -1136,8 +1176,8 @@ export default {
 
         // # SHOULDER HEIGHT
         $('#sh-popover').popover({ 
-            placement: 'right', 
-            content: $( "#selected_HA" ).clone( true ), 
+            placement: 'auto right', 
+            content: $( ".selected_HA" ).clone( false ), 
             html: true,
             container: 'body'
         });       
