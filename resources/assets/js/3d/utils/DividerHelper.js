@@ -26,11 +26,18 @@ export default class DividerHelper {
      */
     addDivider (name,model,textureImg,coords,orr) {
 
-        this.objLoader.loadModel(name,model,textureImg,coords).then((obj3d) => {
+        this.objLoader.loadModel(name,model,textureImg).then((obj3d) => {
             if (orr) {
                 obj3d.rotateY(Math.PI/2);
                 obj3d.updateMatrix();
             }
+            if (coords) {
+                obj3d.position.x=coords.x;
+                obj3d.position.y=coords.y;
+                obj3d.position.z=coords.z;
+                obj3d.updateMatrix();
+            }
+
             this.scene.add(obj3d);
         });
 
@@ -98,14 +105,20 @@ export default class DividerHelper {
 
             // # start loading and placing the background
             // # ugly hack ... i dont know why i need a texture at the first init
-            this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg',backgroundCoords).then((obj3d) => {
+            /*
+            this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = w/2;
+                obj3d.position.y = -30;
+                obj3d.position.z = l;
+                obj3d.updateMatrix();
                 // # Add background to the scene
                 this.scene.add(obj3d);
             });
-            /*
+
             // # load and place the front
             this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((front) => {
                 // # Change background dimension
