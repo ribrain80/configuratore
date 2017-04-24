@@ -99,7 +99,7 @@ export default class DividerHelper {
                 // # Add background to the scene
                 this.scene.add(obj3d);
             });
-
+            /*
             // # load and place the front
             this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((front) => {
                 // # Change background dimension
@@ -139,7 +139,7 @@ export default class DividerHelper {
                 // # Add background to the scene
                 this.scene.add(left);
             });
-            /*
+
             // # load and place the back
             this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','http://homestead.app/images/textures/02_Acero.jpg',dxCoords).then((obj3d) => {
                 // # Change background dimension
