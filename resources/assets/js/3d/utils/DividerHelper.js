@@ -38,6 +38,9 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
             }
 
+            obj3d.castShadow = true;
+            obj3d.receiveShadow = false;
+
             this.scene.add(obj3d);
         });
 

@@ -135,7 +135,7 @@ const store = new Vuex.Store({
          */
         remove3dDivider: function ({ commit,state }, dividerId) {
             state.dividerHelper.removeDivider(dividerId);
-            commit( "removeDivider", id );
+            commit( "removeDivider", dividerId );
         },
 
         /**
