@@ -1540,7 +1540,6 @@ export default {
          */
         backAdvice: function () {
             $( "#reset-advice-modal" ).modal();
-            return;
         },
 
         /**
@@ -1549,6 +1548,8 @@ export default {
          */
         back2Bridge: function () {
             
+            $( "#reset-advice-modal" ).modal( 'hide' );
+
             // # Take the user back
             this.$router.push({ path: '/split/stepponte' });
         },

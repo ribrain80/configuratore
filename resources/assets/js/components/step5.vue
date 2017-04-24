@@ -182,8 +182,8 @@ export default {
          * @return {[type]} [description]
          */
         backAdvice: function () {
+
             $( "#reset-advice-modal" ).modal();
-            return;
         },
 
         /**
@@ -192,6 +192,8 @@ export default {
          */
         back2Four: function () {
 
+            $( "#reset-advice-modal" ).modal( 'hide' );
+            
             // # Take the user back
             this.$router.push({ path: '/split/step4' });
         },
