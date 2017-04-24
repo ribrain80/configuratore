@@ -606,6 +606,8 @@ export default {
                     // # Set this object as the selected one
                     activeObj.trigger( "selected" );
 
+                    $( '#tab-container a[href="#dividers-tab"]' ).tab( 'show' );
+
                     // # Cache active object ID
                     let id = activeObj.get( "id" );
 
@@ -1412,7 +1414,7 @@ export default {
 
                     this.bringToFront();
 
-                    $( '#tab-container a[href="#colors"]' ).tab( 'show' );
+                    
 
                     if( !this.dirtystate ) {
                         this.setStroke( "#ffcc00" );
