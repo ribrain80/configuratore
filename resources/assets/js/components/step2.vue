@@ -118,7 +118,9 @@ export default {
      * @type {Object}
      */   
     data: function() {
-        return {}
+        return {
+          error_modal: $( "#error-modal" )
+        }
     },
 
     /**
@@ -129,7 +131,7 @@ export default {
 
          /**
          * Sets the drawer category, commit related store mutation
-         * @param {int} cat 
+         * @param {Number} cat 
          */
         setDrawerTypeCategory: function( cat ) {
             this.$store.commit( "setDrawerTypeCategory", cat );
@@ -137,7 +139,7 @@ export default {
 
         /**
          * Sets the type ( user choice )
-         * @param {int} type the drawer type chosen
+         * @param {Number} type the drawer type chosen
          */
         setType: function ( type ) {
 
@@ -202,8 +204,8 @@ export default {
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
-            $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) );
-            $( '#error-modal' ).modal();
+            this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) );
+            this.error_modal.modal();
 
             // # Error
             return false; 
