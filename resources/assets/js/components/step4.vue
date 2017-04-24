@@ -258,12 +258,15 @@
     
     <!-- Buttons row -->
     <div class="row top5">
-        <!--<div class="col-lg-3 col-md-3">
-            <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-block">{{ 'back' | translate }}</router-link>
-        </div>-->
+
+        <div class="col-lg-3 col-md-3 pull-right">
+            <router-link to="/split/stepponte" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+        </div>
+
         <div class="col-lg-3 col-md-3 pull-right">
             <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
+
     </div>
 
 </div>
@@ -309,7 +312,7 @@ export default {
              * Base snap threshold
              * @type {Number}
              */
-            snap: 10,
+            snap: 9,
 
             /**
              * Canvas width
@@ -1132,7 +1135,7 @@ export default {
 
             // # Snap to right
             if( ( options.target.getWidth() + options.target.getLeft() ) > ( this.canvasWidth - this.snap ) ) {
-                options.target.setLeft( this.canvasWidth - options.target.getWidth() - 1);
+                options.target.setLeft( this.canvasWidth - options.target.getWidth() - 1 );
             }
 
             // # Snap to bottom

@@ -8,7 +8,7 @@
 		<!-- Summary -->
         <div class="row top2">
     		<div class="checkbox col-lg-12 col-md-12 col-sm-12">
-    			<div class="col-lg-3 col-md-3 col-sm-3">
+    			<div class="col-lg-5 col-md-3 col-sm-3">
                     <label>{{ "step5.summary_label" | translate }}</label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -22,7 +22,7 @@
         <!-- Brochure -->
         <div class="row top2">
             <div class="checkbox col-lg-12 col-md-12 col-sm-12">
-                <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-lg-5 col-md-3 col-sm-3">
                     <label>Brochure</label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -35,16 +35,33 @@
 	
 		<!-- Email -->
 		<div class="row top2">
+
             <div class="checkbox col-lg-12 col-md-12 col-sm-12">
-                <div class="col-lg-5 col-md-3 col-sm-3">
-                    <div class="col-lg-3 no-padding-left lh-34"><label>{{  "step5.email_label" | translate }}</label></div>
-                    <div class="col-lg-8"><input type="text" name="email" class="form-control text-center" v-model="$store.state.pdf.email" /></div>
+                
+                <!-- Mail input -->
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                    <div class="col-lg-5 no-padding-left lh-34"><label>{{  "step5.email_label" | translate }}</label></div>
+                    <div class="col-lg-5">
+                        <input type="text" name="email" class="form-control text-center" v-model="$store.state.pdf.email" placeholder="Email" />
+                    </div>
                 </div>
+
+                <!-- Send button -->
                 <div class="col-lg-2 col-md-2 col-sm-2">
                     <button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
-                </div>
+                </div>   
+                           
             </div>
 		</div>
+
+        <div class="row top2">
+
+            <!-- Prev button -->
+            <div class="col-md-2 pull-left">
+                <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+            </div>  
+
+        </div>
 
     </div>
 
