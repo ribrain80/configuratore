@@ -174,16 +174,32 @@ export default {
      * @type {Object}
      */  
     data: function() { 
-        return {}
+
+        return {
+
+            /**
+             * Error modal selector caching
+             * @type {Object}
+             */
+            error_modal: $( "#error-modal" )
+        }
     },
 
     computed: {
 
+        /**
+         * [showSupportsAdvice description]
+         * @return {[type]} [description]
+         */
         showSupportsAdvice: function () {
             return   this.$store.state.drawertype == 4 || 
                    ( this.$store.state.drawertype != 4 && this.$store.state.bridge_orientation != "H" );
         },
 
+        /**
+         * [numSup description]
+         * @return {[type]} [description]
+         */
         numSup: function () {
 
             switch( this.$store.state.drawertype ) {
@@ -202,8 +218,12 @@ export default {
             }
         },
 
+        /**
+         * [dimensionAffected description]
+         * @return {[type]} [description]
+         */
         dimensionAffected: function () {
-            return this.$store.state.bridge_orientation == "H" ? "width" : "length";
+            return this.$store.state.bridge_orientation == "H" ? Vue.i18n.translate( "width" ) : Vue.i18n.translate( "length" );
         }
     },
 
@@ -214,27 +234,24 @@ export default {
     methods: {
 
         /**
-         * [setOrientation description]
-         * @param {[type]} val [description]
+         * Toggle orientation selected in the store ( V | H )
+         * @param {void}
          */
-        setOrientation: function (val) {
+        setOrientation: function ( val ) {
 
             // # on click: if orientation is the same toggle
-            val == this.$store.state.bridge_orientation ? 
-                   this.$store.commit( "setBridgeOrientation", "" ) : 
-                   this.$store.commit( "setBridgeOrientation", val );
+            this.$store.commit( "setBridgeOrientation", val == this.$store.state.bridge_orientation ? "" : val );
 
             // # Commit mutation and clear step data
             this.$store.commit( "clearBridgeData" );
             this.$store.commit( "computeDimensionsOnSupportsChanges", { op: "clear" } ); 
         },
 
-
         /**
-         * [resetData description]
-         * @return {[type]} [description]
+         * Resets all bridge related data
+         * @return {void}
          */
-        resetData: function() {
+        resetData: function () {
             this.$store.commit( "clearAllBridgeData" );
         },
 
@@ -243,9 +260,9 @@ export default {
          * @param  {[type]} bridge [description]
          * @return {[type]}        [description]
          */
-        selectBridgeType: function( bridge ) {
+        selectBridgeType: function ( bridge ) {
 
-            // # Manage unset
+            // # Manage unset ( click on the already selected choice )
             if( bridge.id == this.$store.state.bridge_ID ) {
 
                 // # Reset bridge id
@@ -255,7 +272,7 @@ export default {
                 return;
             }
 
-            // # Clean up
+            // # Clean up next choice
             this.$store.commit( "clearBridges" );
             
             // # Parse to float
@@ -272,11 +289,12 @@ export default {
                         if( this.$store.state.bridge_supportID == 2 && bridge.id == 480 ) {
                             
                             // # Show error modal 
-                            $( "#error-modal" )
+                            this.error_modal
                             .find('.modal-body')
                             .text( "Impossibile selezionare questo elemento, l'altezza totale risulta maggiore di quella disponibile" );
 
-                            $( '#error-modal' ).modal();
+                            this.error_modal.modal();
+
                             return false;
                         }
                     }  
@@ -344,9 +362,6 @@ export default {
                     // # Set support id
                     this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
-                    // # Orientation is the one of the bridge
-                   // bridge_support.orientation = this.$store.state.bridge_orientation;
-
                     
                     this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
 
@@ -370,9 +385,6 @@ export default {
                             
                             // # Set support id
                             this.$store.commit( "setBridgeSupportID", bridge_support.id );
-
-                            // # Orientation is the one of the bridge
-                           // bridge_support.orientation = this.$store.state.bridge_orientation;
 
                             // # Push 2 of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
@@ -401,9 +413,6 @@ export default {
                             // # Set support id
                             this.$store.commit( "setBridgeSupportID", bridge_support.id );
 
-                            // # Orientation is the one of the bridge
-                           // bridge_support.orientation = this.$store.state.bridge_orientation;
-
                             // # Push ONLY ONE  of the same type
                             this.$store.commit( "manageBridgeSupport", bridge_support );
                             this.$store.commit( "computeDimensionsOnSupportsChanges",  { op: "add" }  );
@@ -427,15 +436,15 @@ export default {
               ( this.$store.state.bridge_supportID == 0 || this.$store.state.bridge_ID == 0 ) ) {
 
                 // # Show error modal and move the user at the top of this step
-                $( "#error-modal" )
+                this.error_modal
                 .find('.modal-body')
                 .text( "I dati inseriti per il posizionamento dei ponti non sono completi" );
 
+                this.error_modal.modal();
+                
                 // # Step Bridge has errors
                 this.$store.commit( "setBridgecompleted", false );
 
-                $( '#error-modal' ).modal();
-                
                 // # No bridge selected
                 this.$store.commit( "hasBridge", false );
 
@@ -498,7 +507,8 @@ export default {
      * Window onload eq 4 Vue
      * @return {void}
      */    
-    mounted() {
+    mounted () {
+
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
 
         // # Dimensions info popovers

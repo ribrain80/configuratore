@@ -88,7 +88,7 @@ const  mutations = {
         }
 
         // # Set
-        state.dimensions.width = parseFloat( val );
+        state.dimensions.width = parseFloat( val ).toFixed( 1 );
         console.log( "width dimension changed to: " + val );
     },
 
@@ -112,7 +112,7 @@ const  mutations = {
         }
 
         // # Set
-        state.dimensions.length = parseFloat(val);
+        state.dimensions.length = parseFloat(val).toFixed( 1 );
         console.log( "length dimension changed to: " + val );
     },
 
@@ -135,7 +135,7 @@ const  mutations = {
         }
 
         // # Set
-        state.dimensions.shoulder_height = parseFloat( val );
+        state.dimensions.shoulder_height = parseFloat( val ).toFixed( 1 );
         console.log( "shoulder height dimension changed to: " + val );
     },
 
@@ -147,13 +147,13 @@ const  mutations = {
     setDefaultDimensions: function( state, val ) {
 
         // # Set Width
-        state.dimensions.width = state.dimensions.default_width;
+        state.dimensions.width = parseFloat( state.dimensions.default_width );
 
         // # Set Length
-        state.dimensions.length = state.dimensions.default_height;
+        state.dimensions.length = parseFloat( state.dimensions.default_height );
 
         // # Set Shoulder height
-        state.dimensions.shoulder_height = state.dimensions.default_shoulder_height;
+        state.dimensions.shoulder_height = parseFloat( state.dimensions.default_shoulder_height );
 
         console.log( "All dimensions has been reset" );
     },
