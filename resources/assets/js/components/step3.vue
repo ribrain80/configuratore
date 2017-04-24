@@ -421,10 +421,14 @@ export default {
             var available_width = $( "#animation" ).width();
 
             // # Ratio computed using max allowed rect width
-            var computed_ratio = ( available_width / this.config.rect_width_upper_limit );
+            var computed_ratio = parseFloat( available_width / this.config.rect_width_upper_limit ).toFixed( 2 );
+
+            console.log( "ratio computed" + computed_ratio  );
 
             // # Secure dimensions tuning
-            this.config.ratio = parseFloat( computed_ratio - ( computed_ratio / 2.5 ) );
+            this.config.ratio = parseFloat( computed_ratio - ( computed_ratio / 2.5 ) ).toFixed( 2 );
+
+            console.log( "config ratio adjusted" + this.config.ratio  );
         },
 
         /**
