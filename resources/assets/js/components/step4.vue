@@ -1408,16 +1408,26 @@ export default {
 
                 //this.selectedItem = oImg;
 
-                // # Push divider
-                this.$store.commit( "pushDivider", _divider );
 
-                this.$store.dispatch ( "add3dDivider", _divider) ;
 
                 // # Set ObjectWorking On
                 this.$store.commit( 'setobjectWorkingOn',{ type:'divider', id:_divider.id, 'obj':oImg } ); 
 
                 // # Final check
-                this.finalCollisionDetectionManagement();  
+                this.finalCollisionDetectionManagement();
+
+                // # Push divider
+                this.$store.commit( "pushDivider", _divider );
+
+                this.$store.dispatch ( "add3dDivider", _divider) ;
+                let payload = {
+                    id: _divider.id,
+                    x: _divider.x,
+                    y: _divider.y
+                };
+
+
+                this.$store.dispatch( 'update3dDividerPos', payload );
             };
 
             // # Clean data property
