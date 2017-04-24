@@ -1178,13 +1178,28 @@ export default {
             container: 'body'
         });
 
-        // # SHOULDER HEIGHT
-        $('#sh-popover').popover({ 
-            placement: 'auto right', 
-            content: $( ".selected_HA" ).clone( false ), 
-            html: true,
-            container: 'body'
-        });       
+        if( this.$store.state.is_lineabox ) {
+
+          // # SHOULDER HEIGHT popover ( lineabox )
+          $('#sh-popover').popover({ 
+              placement: 'auto right', 
+              content: $( ".selected_HA" ).clone( false ), 
+              html: true,
+              container: 'body'
+          });    
+
+        } else {
+
+          // # SHOULDER HEIGHT popover ( custom drawer )
+          $('#sh-popover').popover({ 
+              placement: 'auto right', 
+              content: $( "#sh-info-image" ).clone( false ), 
+              html: true,
+              container: 'body'
+          });            
+          
+        }
+      
     }
 }
 </script>

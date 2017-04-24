@@ -717,7 +717,7 @@ export default {
             // # Loop through the canvas objects
             var objs = this.canvas.getObjects().map( ( o )  => {
                 o.setStrokeWidth( 2 );
-                o.setStroke( "#222" );
+                o.setStroke( "#00b200" );
                 o.set( 'active', false );  
 
             }); 
@@ -740,13 +740,13 @@ export default {
 
                     case true:
                         o.setStrokeWidth( 2 );
-                        o.setStroke( "#222" );
+                        o.setStroke( "#00b200" );
                         o.set( 'active', false );
                     break;
 
                     case false:
                         o.setStrokeWidth( 2 );
-                        o.setStroke( "#00cc00" );
+                        o.setStroke( "#ffcc00" );
                         o.set( 'active', true );
                     break;
                 }
@@ -847,7 +847,7 @@ export default {
                 // # Reset standard stroke ( some object may be stuck in half opacity )
                 // # this is a "runtime" fix
                 activeObj.setStrokeWidth( 2 );
-                activeObj.setStroke( "#222" );
+                activeObj.setStroke( "#00b200" );
 
                 // # Loop through canvas objects
                 this.canvas.forEachObject( ( obj ) => {
@@ -924,7 +924,7 @@ export default {
                         console.log( "NO COLLISION" );
                         
                         // # Set standard stroke
-                        activeObj.setStroke( "#222" );
+                        activeObj.setStroke( "#00b200" );
                         activeObj.setStrokeWidth( 2 );
                         activeObj.dirtystate = false;
                         this.canvas.renderAll(); 
@@ -951,7 +951,7 @@ export default {
                         });
 
                         if( !actuallyCollides ) {
-                            obj.setStroke( "#222" );
+                            obj.setStroke( "#00b200" );
                             obj.setStrokeWidth( 2 );
                             obj.dirtystate = false;
                             this.canvas.renderAll();                             
@@ -1357,7 +1357,7 @@ export default {
 
                 // # borders off
                 oImg.hasBorders  = true;
-                oImg.setStroke( "#222" );
+                oImg.setStroke( "#00b200" );
                 oImg.setStrokeWidth( 2 );
 
                 // # Pixel precision
@@ -1407,7 +1407,7 @@ export default {
                     this.bringToFront();
 
                     if( !this.dirtystate ) {
-                        this.setStroke( "#00cc00" );
+                        this.setStroke( "#ffcc00" );
                         this.setStrokeWidth( 2 );
                     }
                 });
@@ -1417,7 +1417,7 @@ export default {
 
                     if( !this.dirtystate ) {
                         this.setStrokeWidth( 2 ); 
-                        this.setStroke( "#222" ); 
+                        this.setStroke( "#00b200" ); 
                     }
                 });
 
@@ -1585,7 +1585,7 @@ export default {
                     });
 
                     if( !actuallyCollides ) {
-                        obj.setStroke( "#222" );
+                        obj.setStroke( "#00b200" );
                         obj.setStrokeWidth( 2 );
                         obj.dirtystate = false;
                         this.canvas.renderAll();
