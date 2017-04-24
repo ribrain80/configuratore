@@ -802,7 +802,24 @@ img.rotate90 {
   }
 
 
+/***
+GALLERY REWRITE
+ */
 
 
+  .lg-actions .lg-prev:after {
+    content: "";
+  }
 
+  .lg-actions .lg-next:before {
+    content: "";
+  }
+
+  .lg-toogle-thumb {
+    display: none;
+  }
+
+  .lg-toolbar .lg-close:after {
+    content: "";
+  }
 }
