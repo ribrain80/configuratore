@@ -135,6 +135,20 @@ const store = new Vuex.Store({
          */
         remove3dDivider: function ({ commit,state }, dividerId) {
             state.dividerHelper.removeDivider(dividerId);
+            commit( "removeDivider", id );
+        },
+
+        /**
+         * Remove all divider from 3d scene
+         * @param commit
+         * @param state
+         */
+        remove3dAllDividers: function ( {commit,state} ) {
+            _.forEach(state.dividers_selected, (cur)=>{
+                state.dividerHelper.removeDivider(cur.id);
+                commit('clearDividers');
+            });
+
         },
 
         /**

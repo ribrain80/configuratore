@@ -758,7 +758,7 @@ export default {
                     this.allselected = false;
 
                     // # Clean up the store variable
-                    this.$store.commit( "clearDividers" );
+                    this.$store.dispatch ( "remove3dAllDividers" );
 
                 break;
 
@@ -781,7 +781,6 @@ export default {
                     var id = activeObj.get( 'id' );
 
                     // # Remove ID from selected dividers list
-                    this.$store.commit( "removeDivider", id );
                     this.$store.dispatch( "remove3dDivider", id);
 
                     // # Clean up pointers
