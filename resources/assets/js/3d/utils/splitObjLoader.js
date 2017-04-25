@@ -23,6 +23,7 @@ export default class SplitObjLoader {
             object.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material.map = texture;
+                    child.material.transparent = false;
                     child.castShadow=true;
                     child.receiveShadow=true;
                 }
@@ -58,6 +59,7 @@ export default class SplitObjLoader {
                     object.traverse( function ( child ) {
                         if ( child instanceof THREE.Mesh ) {
                             child.material.map = texture;
+                            child.material.transparent = false;
                             child.castShadow=true;
                             child.receiveShadow=true;
                         }
