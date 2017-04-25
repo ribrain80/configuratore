@@ -53,10 +53,10 @@ export default class DividerHelper {
      * @param name
      */
     removeDivider(name) {
-        let _objToRemove = this.scene.getObjectByName( name, true );
+        let _objToRemove = this.drawer.getObjectByName( name, true );
 
         if (_objToRemove) {
-            this.scene.remove( _objToRemove );
+            this.drawer.remove( _objToRemove );
         }
     }
 
@@ -67,7 +67,7 @@ export default class DividerHelper {
      * @param z
      */
     updateDividerPosition(name,x,z) {
-        let _obj = this.scene.getObjectByName( name, true );
+        let _obj = this.drawer.getObjectByName( name, true );
 
         let deltacorrection = -10;
 
@@ -91,7 +91,7 @@ export default class DividerHelper {
      */
     updateDividerTexture(name, textureImg) {
 
-        let _obj = this.scene.getObjectByName( name, true );
+        let _obj = this.drawer.getObjectByName( name, true );
         if (_obj) {
             this.objLoader.changeObjectTexture(_obj,textureImg);
         }
@@ -99,7 +99,7 @@ export default class DividerHelper {
     }
 
 
-    genDrawer(type,w,l) {
+    genDrawer(type,w,l,h) {
 
         if (!type) {
             return;
@@ -129,6 +129,40 @@ export default class DividerHelper {
             });
         } else {
             // # Here the lineabox Drawers
+            // # switch depending on h
+            let backgroundModel = false;
+            console.log("H in switch: ",h);
+            h = parseFloat(h);
+            switch (h) {
+                case 45.5:
+                    console.log("QUIIIII");
+                    // # SPONDA BASSA
+                    backgroundModel = '/images/3dmodels/lineabox/basso/' + type + '/background.obj';
+                    break;
+                case 72:
+                    // # SPONDA MEDIA
+                    backgroundModel = '/images/3dmodels/lineabox/medio/' + type + '/background.obj';
+                    break;
+                case 148.0:
+                    backgroundModel = '/images/3dmodels/lineabox/alto/' + type + '/background.obj';
+                    break;
+            }
+
+            if (backgroundModel) {
+                this.objLoader.loadModel("background",backgroundModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                    // # Change background dimension
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                    obj3d.updateMatrix();
+                    obj3d.position.x = w/2;
+                    obj3d.position.y = yDeltaCorrection;
+                    obj3d.position.z = l + zDeltaCorrection;
+                    obj3d.updateMatrix();
+                    // # Add background to the scene
+                    this.drawer.add(obj3d);
+                });
+            }
+
         }
     }
 

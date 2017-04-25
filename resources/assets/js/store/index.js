@@ -193,7 +193,7 @@ const store = new Vuex.Store({
 
         genDrawer: function ({ commit,state }, type) {
             console.log("genDrawer",type);
-            state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length);
+            state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
         },
 
 
