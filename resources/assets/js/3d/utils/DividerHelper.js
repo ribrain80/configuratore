@@ -128,6 +128,8 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
         } else {
+            // # Empiric z correction
+            zDeltaCorrection = -10;
             // # Here the lineabox Drawers
             // # switch depending on h
             let backgroundModel = false;
@@ -153,9 +155,11 @@ export default class DividerHelper {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                    console.log("BBOX MAX Y",Math.abs(bbox.max.y));
+                    let extraYCorrection = (type==2)?-60:0;
                     obj3d.updateMatrix();
-                    obj3d.position.x = w/2;
-                    obj3d.position.y = yDeltaCorrection;
+                    obj3d.position.x = 0;
+                    obj3d.position.y = Math.abs(bbox.max.y) + extraYCorrection;
                     obj3d.position.z = l + zDeltaCorrection;
                     obj3d.updateMatrix();
                     // # Add background to the scene
