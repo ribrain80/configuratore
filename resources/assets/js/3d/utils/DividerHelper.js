@@ -15,6 +15,8 @@ export default class DividerHelper {
         this.scene = scene;
         //Dividers Container
         this.objLoader = new SplitObjLoader(manager);
+        this.drawer = new THREE.Object3D();
+        this.scene.add(this.drawer);
     }
 
     /**
@@ -41,7 +43,7 @@ export default class DividerHelper {
             obj3d.castShadow = true;
             obj3d.receiveShadow = false;
 
-            this.scene.add(obj3d);
+            this.drawer.add(obj3d);
         });
 
     }
@@ -67,12 +69,14 @@ export default class DividerHelper {
     updateDividerPosition(name,x,z) {
         let _obj = this.scene.getObjectByName( name, true );
 
+        let deltacorrection = -10;
+
         if (_obj) {
 
             /*_obj.translateX (x - _obj.position.x);
             _obj.translateZ (z - _obj.position.z);*/
             _obj.position.x = x;
-            _obj.position.z = z;
+            _obj.position.z = z + deltacorrection;
 
         }
 
@@ -96,6 +100,7 @@ export default class DividerHelper {
 
 
     genDrawer(type,w,l) {
+        //let drawer = false;
         if (type ==4) {
 
 
@@ -106,9 +111,11 @@ export default class DividerHelper {
 
 
 
+
+
             // # start loading and placing the background
             // # ugly hack ... i dont know why i need a texture at the first init
-            /*
+
             this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
@@ -116,12 +123,12 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 obj3d.position.x = w/2;
                 obj3d.position.y = -30;
-                obj3d.position.z = l;
+                obj3d.position.z = l -21;
                 obj3d.updateMatrix();
                 // # Add background to the scene
-                this.scene.add(obj3d);
+                this.drawer.add(obj3d);
             });
-
+/*
             // # load and place the front
             this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((front) => {
                 // # Change background dimension
