@@ -1158,7 +1158,7 @@ export default {
         console.log( "Dimensions choice mounted" );
               
         // # Set component header title
-        this.$store.commit( "setComponentHeader", "step3.header-title" );
+        this.$store.commit( "setComponentHeader", this.$store.state.is_lineabox ? "step3.header-title.lineabox" : "step3.header-title-custom" );
 
         // # Init canvas
         this.initTwo();
