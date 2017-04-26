@@ -76,7 +76,6 @@ export default {
 
         var self = this;
 
-        console.log( self.$store.state.gallery_images );
 
         // # Lightgallery binding
         $( "#gallery-trigger" ).on( "click", function () {

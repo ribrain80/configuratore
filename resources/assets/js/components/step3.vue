@@ -1153,54 +1153,85 @@ export default {
      * @return {void}
      */
     mounted () { 
-
-        // # Log mount 
-        console.log( "Dimensions choice mounted" );
               
         // # Set component header title
-        this.$store.commit( "setComponentHeader", this.$store.state.is_lineabox ? "step3.header-title.lineabox" : "step3.header-title-custom" );
+        this.$store.commit( "setComponentHeader", 
+                            this.$store.state.is_lineabox ? "step3.header-title.lineabox" : "step3.header-title-custom" );
 
         // # Init canvas
         this.initTwo();
 
+        // # Lightgallery general settings
+        let lightgalleryOptions = {
+            download: false,
+            thumbnail: false,
+            dynamic: true,
+        };
+
         // # Dimensions info popovers
-        // # WIDTH
-        $('#width-popover').popover({ 
-            placement: 'auto right', 
-            content: $( "#width-info-image" ).clone( true ), 
-            html: true,
-            container: 'body'
-        });
+        // # WIDTH 
+        $( "#width-popover" ).on( "click", function () {
+            
+            // # General settings + image src
+            let widthGalleryOptions = lightgalleryOptions;
+            widthGalleryOptions.dynamicEl  = [ { src: $( "#width-info-image" ).attr( "src" ) } ];
+
+            // # Init
+            $( this ).lightGallery( widthGalleryOptions) ;
+        });        
 
         // # LENGTH
-        $('#length-popover').popover({ 
-            placement: 'auto right', 
-            content: $( "#length-info-image" ).clone( true ), 
-            html: true,
-            container: 'body'
+        $('#length-popover').on( "click", function () {
+
+          // # General settings + image src
+          let lengthGalleryOptions = lightgalleryOptions;
+          lengthGalleryOptions.dynamicEl = [ { src: $( "#length-info-image" ).attr( "src" ) } ];
+
+          // # Init
+          $( this ).lightGallery( lengthGalleryOptions ) ;
         });
 
         if( this.$store.state.is_lineabox ) {
 
           // # SHOULDER HEIGHT popover ( lineabox )
-          $('#sh-popover').popover({ 
+          /*$('#sh-popover').popover({ 
               placement: 'auto right', 
               content: $( ".selected_HA" ).clone( false ), 
               html: true,
               container: 'body'
-          });    
+          });*/
+
+          // # SHOULDER HEIGHT ( custom drawer )
+          $('#sh-popover').on( "click", function () {
+
+            // # General settings + image src
+            let shGalleryOptions = lightgalleryOptions;
+            shGalleryOptions.dynamicEl = [ { src: $( ".selected_HA" ).attr( "src" ) } ];
+
+            // # Init
+            $( this ).lightGallery( shGalleryOptions ) ;
+            
+          });                
 
         } else {
 
-          // # SHOULDER HEIGHT popover ( custom drawer )
-          $('#sh-popover').popover({ 
-              placement: 'auto right', 
-              content: $( "#sh-info-image" ).clone( false ), 
-              html: true,
-              container: 'body'
-          });            
+
+          // # SHOULDER HEIGHT ( custom drawer )
+          $('#sh-popover').on( "click", function () {
+
+            // # General settings + image src
+            let shGalleryOptions = lightgalleryOptions;
+            shGalleryOptions.dynamicEl = [ { src: $( "#sh-info-image" ).attr( "src" ) } ];
+
+            // # Init
+            $( this ).lightGallery( shGalleryOptions ) ;
+
+          });           
           
         }
+
+        // # Log mount 
+        console.log( "Dimensions choice mounted" );
       
     }
 }
