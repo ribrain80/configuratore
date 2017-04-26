@@ -78,7 +78,7 @@ export default class SplitLight {
 
 
 
-        let hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.4 );
+        let hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.3 );
         hemiLight.color.setHSL( 1, 1, 1 );
         hemiLight.groundColor.setHSL( 1, 1, 1);
         hemiLight.position.set( 0, 500, 0 );
