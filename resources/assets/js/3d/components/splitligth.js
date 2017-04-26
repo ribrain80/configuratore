@@ -77,6 +77,13 @@ export default class SplitLight {
         this.rearBottomLight.shadow.mapSize.height = Config.shadow.mapHeight;
 
 
+
+        let hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.4 );
+        hemiLight.color.setHSL( 1, 1, 1 );
+        hemiLight.groundColor.setHSL( 1, 1, 1);
+        hemiLight.position.set( 0, 500, 0 );
+        this.scene.add( hemiLight );
+
         this.scene.add(this.topLight);
         this.scene.add(this.rearTopLight);
         this.scene.add(this.bottomLight);
