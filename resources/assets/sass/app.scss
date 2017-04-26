@@ -33,11 +33,7 @@ body {
   font-size: 12px;
 }
 
-body, html {
-  height: 100%;
-}
-
-strong, .component-header {
+strong, .component-header, .ha-lineabox, .limit-helper {
   font-family: "FranklinGothicURW-Dem";
   font-weight: 500;
 }

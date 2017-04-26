@@ -4,7 +4,7 @@
 <div class="container-fluid" id="step3">
 
         <!-- Alerts: User Warning -->
-        <div class="row top1">
+        <div class="row top1" style="display:none;">
             <div class="col-lg-12">
                 <div class="alert alert-warning alert-dismissible fade in" >
                     <strong>{{ 'attenzione' | translate }}</strong> 
@@ -46,7 +46,7 @@
                         <div class="col-lg-2 input-mm">mm</div>
                       </div>
 
-                        <span class="help-block pull-right"><span :class="isWidthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_width_lower_limit}} </span> <span :class="isWidthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_width_upper_limit}}</span></span>
+                        <span class="help-block pull-right"><span :class="[ 'limit-helper', isWidthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_width_lower_limit}} </span> <span :class="[ 'limit-helper', isWidthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_width_upper_limit}}</span></span>
 
                     </div>
 
@@ -74,7 +74,7 @@
                       </div>
 
                       
-                      <span class="help-block pull-right"><span :class="isLengthUnderMin ? 'text-danger' : 'text-muted'">min {{ config.rect_length_lower_limit }}</span> <span :class="isLengthOverMax ? 'text-danger' : 'text-muted'">max {{ config.rect_length_upper_limit }}</span></span>
+                      <span class="help-block pull-right"><span :class="[ 'limit-helper', isLengthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_length_lower_limit }}</span> <span :class="[ 'limit-helper', isLengthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_length_upper_limit }}</span></span>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
@@ -100,7 +100,7 @@
                         <div class="col-lg-2 input-mm">mm</div>
                       </div>
 
-                      <span class="help-block pull-right"><span :class="isShoulderHeightUnderMin ? 'text-danger' : 'text-muted'">min {{ config.shoulder_height_lower_limit }}</span> <span :class="isShoulderHeightOverMax ? 'text-danger' : 'text-muted'">max {{ config.shoulder_height_upper_limit }}</span></span>
+                      <span class="help-block pull-right"><span :class="[ 'limit-helper', isShoulderHeightUnderMin ? 'text-danger' : 'text-muted']">min {{ config.shoulder_height_lower_limit }}</span> <span :class="[ 'limit-helper', isShoulderHeightOverMax ? 'text-danger' : 'text-muted']">max {{ config.shoulder_height_upper_limit }}</span></span>
 
                     </div>
 
@@ -134,9 +134,10 @@
                                           <img :src="'/images/others/step-3/HA_lineabox_'+option.dimension+'.png'" 
                                                :class="['img', 'img-responsive', 'HA_' + option.dimension, option.value == $store.state.dimensions.shoulder_height ? 'selected_HA' : '' ]"/>
                                       </div>
-                                      <div class="panel-footer text-center no-background ha-lineabox">{{option.dimension}}</div>
                                   </div>
+                                  <span :class="[ 'help-block', 'text-center', 'ha-lineabox',  option.value == $store.state.dimensions.shoulder_height ? 'text-success' : 'text-danger' ]">{{option.dimension}} mm</span>
                               </div>
+                              
                           </div>
                         </div>
 
@@ -153,16 +154,17 @@
 
         <div class="container-fluid">
           <div class="row top2">
-
+              
               <div class="col-lg-2 col-md-2 pull-left">
-                  <button class="btn btn-danger btn-block pull-right btn-reset" @click="reset">{{ 'reset' | translate }}</button>
+                  <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+              </div>
+              <div class="col-lg-2 col-md-2 pull-left">
+                  <button class="btn btn-danger btn-reset" @click="reset">{{ 'reset' | translate }}</button>
               </div>            
               <div class="col-lg-2 col-md-2 pull-right">
-                  <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+                  <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
               </div>
-              <div class="col-lg-2 col-md-2 pull-right">
-                  <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
-              </div>
+
           </div>
         </div>
 

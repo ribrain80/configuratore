@@ -89,14 +89,14 @@
     <!-- Navigation row -->
     <div class="row top5">
     
+        <!-- Prev button -->
+        <div class="col-md-2 pull-left">
+            <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+        </div>
+
         <!-- Next button -->
         <div class="col-md-2 pull-right">
-            <button class="btn btn-danger btn-block pull-right" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-        </div>
-        
-        <!-- Prev button -->
-        <div class="col-md-2 pull-right">
-            <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back btn-block">{{ 'back' | translate }}</router-link>
+            <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
     </div>
