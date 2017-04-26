@@ -88,7 +88,7 @@ const  mutations = {
         }
 
         // # Set
-        state.dimensions.width = parseFloat( val ).toFixed( 1 );
+        state.dimensions.width = val;
         console.log( "width dimension changed to: " + val );
     },
 
