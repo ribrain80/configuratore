@@ -13,16 +13,20 @@ export default class SplitObjLoader {
 
     changeObjectTexture( object, textureImg ) {
         let texture = new THREE.Texture();
+        let material = new THREE.MeshPhongMaterial(  );
+        // # Load img for texture only if required!
         if (textureImg) {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
                 texture.needsUpdate = true;
             } );
+            material = new THREE.MeshPhongMaterial( { map: texture } );
+            material.needsUpdate=true;
         }
         if (textureImg) {
             object.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
-                    child.material.map = texture;
+                    child.material = material;
                     child.material.transparent = false;
                     child.castShadow=true;
                     child.receiveShadow=true;
@@ -41,13 +45,15 @@ export default class SplitObjLoader {
      */
     loadModel(name,model,textureImg,coords) {
         let texture = new THREE.Texture();
-
+        let material = new THREE.MeshPhongMaterial(  );
         // # Load img for texture only if required!
         if (textureImg) {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
                 texture.needsUpdate = true;
             } );
+            material = new THREE.MeshPhongMaterial( { map: texture } );
+            material.needsUpdate=true;
         }
 
         //Load model then  add the texture and coords if required
@@ -58,7 +64,7 @@ export default class SplitObjLoader {
                 if (textureImg) {
                     object.traverse( function ( child ) {
                         if ( child instanceof THREE.Mesh ) {
-                            child.material.map = texture;
+                            child.material = material;
                             child.material.transparent = false;
                             child.castShadow=true;
                             child.receiveShadow=true;
