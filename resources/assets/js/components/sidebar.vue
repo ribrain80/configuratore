@@ -1,8 +1,8 @@
 <template>
-    <div class="col-md-1 col-lg-2 sidebar">
+    <div class="col-md-2 col-lg-2 sidebar">
         <div class="row">
             <div class="col-lg-12 logo orange sidebar-elem logo text-center">
-                <img src="/images/logos/salice.png" style="width: 50%; height: 50%;"/>
+                <img src="/images/logos/salice.png"/>
             </div>
         </div>
         <div class="row">

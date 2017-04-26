@@ -31,7 +31,8 @@ $font-family-base:        $font-family-sans-serif !default;
 body { 
   color: #666;
   font-size: 12px;
-  overflow: hidden;
+  // TO DO remmato temporaneamente per far vedere i bottoni di navigazione
+  //overflow: hidden;
 }
 
 strong, .component-header, .ha-lineabox, .limit-helper {
@@ -82,7 +83,7 @@ strong, .component-header, .ha-lineabox, .limit-helper {
 }
 
 #step1 > .row:first-of-type {
-  margin-right: -30px;
+  margin-right: -15px;
 }
 
 #step1-content > div:first-of-type {
@@ -543,9 +544,15 @@ html, body, .container-fluid, .wrapper {
   line-height: 1.8em;
 }
 
+.content {
+  padding: 0px;
+}
+.content .app-nav > .row {
+  margin: 0px;
+}
 .app-nav {
   height: 74px;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #424242;
 }
 
 .component-header {
@@ -590,8 +597,14 @@ html, body, .container-fluid, .wrapper {
     width: 100%;
 }
 
-.sidebar-elem {
-  min-height: 30px;
+.sidebar-elem img { 
+    transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    position: relative;
+    top: 20px;
 }
 
 .nuovaconf {
@@ -600,7 +613,7 @@ html, body, .container-fluid, .wrapper {
 }
 
 .logo {
-  padding: 10%;
+  height: 74px;
 }
 
 .router-links li.reached a{
