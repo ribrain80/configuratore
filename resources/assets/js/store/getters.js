@@ -21,6 +21,10 @@ const  getters = {
         return output;
     },
 
+    getLanguage: function( state ) {
+        return state.language;
+    },
+
     getSupportsAvailabe: function (state) {
         if (state.dimensions.shoulder_height && state.drawertype) {
             let output = [];

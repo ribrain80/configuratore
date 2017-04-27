@@ -55,6 +55,7 @@ export default {
          * @param newLanguage
          */
         changeLanguage: function (newLanguage) {
+
             console.log('ChangeLanguage to: '+newLanguage);
             this.$cookie.set('langCookie',newLanguage);
             this.$store.commit( "setLanguage", newLanguage );

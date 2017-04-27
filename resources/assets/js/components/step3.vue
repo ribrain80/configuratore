@@ -280,13 +280,21 @@ export default {
           // # Advice
           advice_accepted: false,
 
-          sh_dim: ""
-
         }
+    },
+
+    watch: {
+      language: function() {
+        this.updateDrawer();
+      }
     },
 
     computed: {
 
+        language: function() {
+          return this.$store.state.language;
+        },
+        
         /**
          * Computes actual max width depending on drawer type selected
          * @return {Number}
@@ -342,12 +350,6 @@ export default {
          */        
         isShoulderHeightUnderMin: function() {
             return this.$store.state.dimensions.shoulder_height < this.config.shoulder_height_lower_limit;
-        }
-    },
-
-    watch: {
-        sh_dim: function() {
-          console.log( "chamged" );
         }
     },
 
