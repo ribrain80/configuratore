@@ -216,7 +216,7 @@ const store = new Vuex.Store({
         genDrawer: function ({ commit,state }, type) {
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
             console.log("Added Drawer of type:",type);
-
+            type = -10;
             if (!state.bridge_supportID) {
                 return;
             }
@@ -247,7 +247,7 @@ const store = new Vuex.Store({
                         state.dividerHelper.addSupport("left",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
                         state.dividerHelper.addSupport("right",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
                     }
-
+                    break;
             }
 
         },
