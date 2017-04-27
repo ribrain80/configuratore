@@ -294,6 +294,8 @@ export default class DividerHelper {
                 });
             }
 
+            // Rimosso in attesa di modello !!!!!
+
             this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );

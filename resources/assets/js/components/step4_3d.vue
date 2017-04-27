@@ -69,16 +69,7 @@
                 // # DividerHelper Create ad set on the store
                 this.$store.commit('setDividerHelper',new DividerHelper(new THREE.LoadingManager(),this.$store.state.scene));
 
-
-
-
-
-
                 this.render();
-
-
-
-
 
             },
 

@@ -1187,6 +1187,8 @@ export default {
         // # Set component header title
         this.$store.commit( "setComponentHeader", 
                             this.$store.state.is_lineabox ? "step3.header-title-lineabox" : "step3.header-title-custom" );
+        this.$store.commit( "setCurrentStep", 3 );
+
 
         // # Init canvas
         this.initTwo();

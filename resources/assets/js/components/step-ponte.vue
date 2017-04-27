@@ -510,6 +510,7 @@ export default {
     mounted () {
 
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
+        this.$store.commit( "setCurrentStep", 'p' );
 
         // # Dimensions info popovers
         // # WIDTH

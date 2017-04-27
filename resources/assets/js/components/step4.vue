@@ -1696,6 +1696,7 @@ export default {
 
         console.log("Step4 mounted!");
         this.$store.commit( "setComponentHeader",  "step4.header-title" );
+        this.$store.commit( "setCurrentStep", 4 );
         this.initCanvas();
     }
 

@@ -192,8 +192,27 @@ const store = new Vuex.Store({
         },
 
         genDrawer: function ({ commit,state }, type) {
-            console.log("genDrawer",type);
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
+            console.log("Added Drawer of type:",type);
+
+            if (!state.bridge_supportID) {
+                return;
+            }
+
+            // # Handling supports
+            switch (type) {
+                case 2:
+                    //Lineabox 3 lati
+                    let h = (state.bridge_supportID==1)?45.5:90;
+                    state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                    console.log("Added front support!!")
+                    break;
+                case 3:
+                    //lineabox 2 lati
+                    // solo se ponte verticale
+
+            }
+
         },
 
 
@@ -592,6 +611,9 @@ const store = new Vuex.Store({
          * @type {Boolean}
          */
         fivecompleted: false,
+
+
+        currentStep: 1,
 
         gallery_images: []
 

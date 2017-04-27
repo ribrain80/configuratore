@@ -242,6 +242,7 @@ export default {
 
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step2.header-title" );
+        this.$store.commit( "setCurrentStep", 2 );
     }
 }
 </script>

@@ -783,6 +783,10 @@ const  mutations = {
 
     setGalleryImages: function( state, val ) {
         state.gallery_images = val;
+    },
+
+    setCurrentStep: function (state, val) {
+        state.currentStep = val;
     }
 
 

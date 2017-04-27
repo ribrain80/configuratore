@@ -73,6 +73,7 @@ export default {
 
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
+        this.$store.commit( "setCurrentStep", 1 );
 
         var self = this;
 

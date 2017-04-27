@@ -260,6 +260,7 @@ export default {
     mounted () { // # Window onload eq
         console.log( "Step5 mounted!" );
         this.$store.commit( "setComponentHeader", "step5.header-title" );
+        this.$store.commit( "setCurrentStep", 5 );
     }
 }
 
