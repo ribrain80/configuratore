@@ -140,7 +140,7 @@ export default class DividerHelper {
 
             // # start loading and placing the background
             // # ugly hack ... i dont know why i need a texture at the first init
-            this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
@@ -154,7 +154,7 @@ export default class DividerHelper {
             });
 
 
-            this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
@@ -168,7 +168,7 @@ export default class DividerHelper {
             });
 
 
-            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
@@ -181,7 +181,7 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
 
-            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
@@ -194,7 +194,7 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
 
-            this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
@@ -245,7 +245,7 @@ export default class DividerHelper {
             }
 
             if (backgroundModel) {
-                this.objLoader.loadModel("background",backgroundModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                this.objLoader.loadModel("background",backgroundModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
@@ -262,7 +262,7 @@ export default class DividerHelper {
             }
 
             if (dxModel) {
-                this.objLoader.loadModel("right",dxModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                this.objLoader.loadModel("right",dxModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
                    let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
                     obj3d.updateMatrix();
@@ -276,7 +276,7 @@ export default class DividerHelper {
             }
 
             if (sxModel) {
-                this.objLoader.loadModel("left",sxModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                this.objLoader.loadModel("left",sxModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
                     obj3d.updateMatrix();
@@ -292,7 +292,7 @@ export default class DividerHelper {
             }
 
             if (backModel) {
-                this.objLoader.loadModel("back",backModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                this.objLoader.loadModel("back",backModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
@@ -308,7 +308,7 @@ export default class DividerHelper {
 
             // Rimosso in attesa di modello !!!!!
 
-            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let zDeltaCorrection = -21;

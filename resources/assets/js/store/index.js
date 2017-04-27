@@ -207,6 +207,12 @@ const store = new Vuex.Store({
 
         },
 
+        changeBridgeSku: function ({ commit,state },payload) {
+            commit('changeBridgeSku',payload.sku);
+
+        },
+
+
         genDrawer: function ({ commit,state }, type) {
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
             console.log("Added Drawer of type:",type);
@@ -220,26 +226,26 @@ const store = new Vuex.Store({
                 case 1:
                 case 2:
                     //Lineabox 3/4 lati
-                    state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                    state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
                     console.log("Added front support!!")
                     break;
                 case 3:
                     //lineabox 2 lati
                     // solo se ponte verticale
                     if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
-                        state.dividerHelper.addSupport("back",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("back",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
                     }
                     break;
                 case 4:
 
                     // Cassetto generico
                     if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
-                        state.dividerHelper.addSupport("back",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("front",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("back",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
                     } else {
-                        state.dividerHelper.addSupport("left",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
-                        state.dividerHelper.addSupport("right",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("left",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("right",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
                     }
 
             }

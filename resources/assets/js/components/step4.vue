@@ -1108,7 +1108,11 @@ export default {
 
         _updateBridges: function (e) {
             $('.bridge_representation').css('background-image',"url("+e.target.src+")");
-            this.$store.commit('changeBridgeSku',e.target.dataset.sku);
+            let payload = {
+                sku: e.target.dataset.sku,
+                img: e.target.src
+            }
+            this.$store.dispatch('changeBridgeSku',payload);
         },
 
         _updateSupports: function (e) {
