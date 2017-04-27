@@ -1560,8 +1560,8 @@ export default {
             if( checkinObj.bordersStatus == "" ) {
 
                 // # Modal Error display
-                $( "#reset-advice-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step4.noborders-advice" ) );
-                $( "#reset-advice-modal" ).modal();  
+                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.noborders-advice" ) );
+                this.error_modal.modal();  
 
                 // # Step4 is completed, everything's ok
                 this.$store.commit( "setFourcompleted", false );
@@ -1577,8 +1577,8 @@ export default {
             if( !checkinObj.noCollision ) {
 
                 // # Modal Error display
-                $( "#reset-advice-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step4.collisions-advice" ) );
-                $( "#reset-advice-modal" ).modal();  
+                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.collisions-advice" ) );
+                this.error_modal.modal();  
 
                 // # Step4 is completed, everything's ok
                 this.$store.commit( "setFourcompleted", false );                
