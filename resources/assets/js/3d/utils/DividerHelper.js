@@ -13,7 +13,7 @@ export default class DividerHelper {
     constructor(manager,scene) {
         //Local copy of the scene
         this.scene = scene;
-        this.defaultMaterial = "/images/textures/02_Acero.jpg";
+        this.defaultMaterial = "/images/3dmodels/material/base.png";
         this.commonBackgroundObj = "/images/3dmodels/common/background.obj";
         this.commonFrontObj = "/images/3dmodels/common/front.obj";
         //Dividers Container
@@ -169,7 +169,7 @@ export default class DividerHelper {
             let elementH = 150; //bbox.max.y - bbox.min.y;
             let elementW = 660; //bbox.max.x - bbox.min.x;
             let extendedW = w + 4*elementZ;
-            let extendedH = h + 0.7*h;
+            let extendedH = h - yDeltaCorrection +50;
             let coeffH = extendedH / elementH;
             let coeffW = extendedW / elementW;
             obj3d.scale.set(coeffW,coeffH,1);
@@ -264,17 +264,17 @@ export default class DividerHelper {
             switch (h) {
                 case 45.5:
                     // # SPONDA BASSA
-                    sideModel = '/images/3dmodels/lineabox/basso/' + type + '/dx.obj';
-                    backModel = '/images/3dmodels/lineabox/basso/' + type + '/back.obj';
+                    sideModel = '/images/3dmodels/lineabox/sides/low.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/low.obj';
                     break;
                 case 72:
                     // # SPONDA MEDIA
-                    sideModel = '/images/3dmodels/lineabox/medio/' + type + '/dx.obj';
-                    backModel = '/images/3dmodels/lineabox/medio/' + type + '/back.obj';
+                    sideModel = '/images/3dmodels/lineabox/sides/medium.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/medium.obj';
                     break;
                 case 148.0:
-                    sideModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
+                    sideModel = '/images/3dmodels/lineabox/sides/high.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/high.obj';
                     break;
             }
 
