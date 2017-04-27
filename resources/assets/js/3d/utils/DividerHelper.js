@@ -133,6 +133,10 @@ export default class DividerHelper {
             return;
         }
 
+        h = parseFloat(h);
+        l = parseFloat(l);
+        w = parseFloat(w);
+
         //# Lineabox 3 and 4 sides behave in the same way
 
         type = (type==1)?2:type;
@@ -156,19 +160,30 @@ export default class DividerHelper {
         });
 
         // All drawer types share the same front Object
+        // Element width: 20
+        // Element base h:
         this.objLoader.loadModel("front",this.commonFrontObj,this.defaultMaterial).then((obj3d) => {
             // # Change background dimension
-            let bbox = new THREE.Box3().setFromObject( obj3d );
-            let extendedW = w + 100;
-            obj3d.scale.set(Math.abs(extendedW / (bbox.max.x - bbox.min.x)),1,1);
+            //let bbox = new THREE.Box3().setFromObject( obj3d );
+            let elementZ = 20;  //bbox.max.z - bbox.min.z;
+            let elementH = 150; //bbox.max.y - bbox.min.y;
+            let elementW = 660; //bbox.max.x - bbox.min.x;
+            let extendedW = w + 4*elementZ;
+            let extendedH = h + 0.7*h;
+            let coeffH = extendedH / elementH;
+            let coeffW = extendedW / elementW;
+            obj3d.scale.set(coeffW,coeffH,1);
             obj3d.updateMatrix();
             obj3d.position.x = w/2;
             obj3d.position.y = yDeltaCorrection;
-            obj3d.position.z = zDeltaCorrection - (bbox.max.z - bbox.min.z)/2 ;
+            obj3d.position.z = zDeltaCorrection - elementZ/2 ;
             obj3d.updateMatrix();
             // # Add background to the scene
             this.drawer.add(obj3d);
+
+            console.log("Drawer - added front element");
         });
+
 
 
 
@@ -187,6 +202,34 @@ export default class DividerHelper {
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
+
+            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = 0;
+                obj3d.position.y = yDeltaCorrection;
+                obj3d.position.z = l/2 ;
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+            this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = w;
+                obj3d.position.y = yDeltaCorrection;
+                obj3d.position.z = l/2 ;
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+
         } else {
             h = parseFloat(h);
             let backModel = false;
