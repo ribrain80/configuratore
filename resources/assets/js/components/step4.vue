@@ -1712,6 +1712,7 @@ export default {
         this.$store.commit( "setCurrentStep", 4 );
         this.initCanvas();
 
+<<<<<<< Updated upstream
         if( !this.$store.state.hint_viewed ) {
 
           // # General settings + image src
@@ -1726,6 +1727,21 @@ export default {
         }
 
         console.log("Step4 mounted!");
+=======
+        // ---------------------------------------------
+        // SET SIDEBAR ITEM ACTIVE - BEGIN
+        
+        let pos = 0;
+        let $pointer = $(".navigator .pointer-navigator"); 
+        let $nav = $(".navigator #nav").find("li");
+        let $active = $nav.find("a.router-link-active");
+        
+        pos = parseInt($active.parent("li").position().top);
+        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+        
+        // SET SIDEBAR ITEM ACTIVE - END 
+        // ---------------------------------------------
+>>>>>>> Stashed changes
     }
 
 }

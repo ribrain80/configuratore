@@ -578,6 +578,20 @@ export default {
             $( this ).lightGallery( bridgesGalleryOptions ) ;   
         });
 
+        // ---------------------------------------------
+        // SET SIDEBAR ITEM ACTIVE - BEGIN
+        
+        let pos = 0;
+        let $pointer = $(".navigator .pointer-navigator"); 
+        let $nav = $(".navigator #nav").find("li");
+        let $active = $nav.find("a.router-link-active");
+        
+        pos = parseInt($active.parent("li").position().top);
+        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+        
+        // SET SIDEBAR ITEM ACTIVE - END 
+        // ---------------------------------------------
+
         console.log( "Step ponte Mounted!" );
     }
 }

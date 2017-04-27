@@ -658,10 +658,6 @@ html, body, .container-fluid, .wrapper {
   display: none;
 }
 
-.router-links li {
-  text-align: center;
-}
-
 .submenu {
   cursor: pointer;
   background-color: #e2e2e2;
@@ -675,9 +671,100 @@ html, body, .container-fluid, .wrapper {
   white-space: nowrap;
 }
 
+// SIDEBAR PSEUDO-TIMELINE
+
+.router-links li {
+  text-align: left;
+  margin-left: 25px;
+}
+
+.navigator {
+  position: relative;
+}
+
+.navigator .pointer-navigator {
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 20px;
+  background-color: #f04f1a;
+  margin-top: 16px;
+  left: 17px;
+  z-index: 3;
+  transition: all .3s;
+}
+
+.navigator .pointer-navigator.reached {
+  background: #33ae73; 
+}
+
 .navigator #nav li {
   line-height: 30px;
 }
+
+.navigator #nav li:before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #aaaaaa;
+    border-radius: 18px;
+    position: absolute;
+    top: 12px;
+    left: -27px;
+    background: #eeeeee;
+    z-index: 2;
+    transition: all .2s
+}
+.navigator #nav li.current-step:before {
+  border: 2px solid #f04f1a;
+}
+
+.navigator #nav li.reached:before {
+  border: 2px solid #33ae73;
+}
+.navigator #nav li.reached:after {
+  border: 1px solid #33ae73;
+}
+.navigator #nav li.current-step.reached:before {
+  border: 2px solid #f04f1a;
+}
+.navigator #nav li.current-step.reached:after {
+  border: 1px solid #f04f1a;
+}
+
+.navigator #nav li:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    border: 1px solid #aaaaaa;
+    position: absolute;
+    top: 12px;
+    left: -18px;
+    z-index: 1;
+}
+
+.navigator #nav li:hover::before {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.navigator #nav li:last-child:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    border: 0;
+    background: #eeeeee;
+    position: absolute;
+    top: 12px;
+    left: -18px;
+    z-index: 1;
+}
+
+// SIDEBAR PSEUDO-TIMELINE
 
 .nuovaconf {
   line-height: 35px;

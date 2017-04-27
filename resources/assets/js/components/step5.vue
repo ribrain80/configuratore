@@ -261,6 +261,20 @@ export default {
         console.log( "Step5 mounted!" );
         this.$store.commit( "setComponentHeader", "step5.header-title" );
         this.$store.commit( "setCurrentStep", 5 );
+
+        // ---------------------------------------------
+        // SET SIDEBAR ITEM ACTIVE - BEGIN
+        
+        let pos = 0;
+        let $pointer = $(".navigator .pointer-navigator"); 
+        let $nav = $(".navigator #nav").find("li");
+        let $active = $nav.find("a.router-link-active");
+        
+        pos = parseInt($active.parent("li").position().top);
+        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+        
+        // SET SIDEBAR ITEM ACTIVE - END 
+        // ---------------------------------------------
     }
 }
 
