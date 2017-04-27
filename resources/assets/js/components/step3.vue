@@ -192,7 +192,11 @@ export default {
           // # Container element
           container: {},
 
+          // # sh lihtgallery object
           sh_gallery: {},
+
+          // # SH lineabox gallery trigger element
+          sh_gallery_element: $( '#sh-popover' ),
 
           // # Config vars
           config: {
@@ -674,7 +678,7 @@ export default {
             var self = this;
 
             // # Destroy previous gallery and binding
-            self.sh_gallery.data( "lightGallery" ).destroy( true );
+            $( '#sh-popover' ).data( "lightGallery" ).destroy( true );
             $( '#sh-popover' ).unbind( "click" );
 
             // # Reinitialize gallery
@@ -1221,9 +1225,10 @@ export default {
 
         });
 
+        // # SHOULDER HEIGHT
         if( this.$store.state.is_lineabox ) { // # Lineabox gallery
 
-          // # SHOULDER HEIGHT ( lineabox )
+          // # Binding lineabox
           $('#sh-popover').on( "click", function () {
 
             // # General settings + image src

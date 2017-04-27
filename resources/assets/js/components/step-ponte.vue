@@ -31,7 +31,7 @@
                     <div class="col-lg-4 col-lg-offset-1" v-show="$store.state.is_suitable_width_4hbridge">
 
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'H' ? 'image_selected' : '']" >
-                            <a class="i-icon" id="orientation-H-popover" rel="popover" data-content="">&nbsp;</a>
+                            <a class="i-icon" id="orientation-H-popover">&nbsp;</a>
                             <img :src="'/images/others/step-ponte/bridgeH.jpg'"
                                  class="img img-responsive  img-shadow"
                                  id="or-H" 
@@ -44,7 +44,7 @@
 
                     <div class="col-lg-4 col-lg-offset-1">
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'V' ? 'image_selected' : '']">
-                            <a class="i-icon" id="orientation-V-popover" rel="popover" data-content="">&nbsp;</a>
+                            <a class="i-icon" id="orientation-V-popover">&nbsp;</a>
                             <img :src="'/images/others/step-ponte/bridgeV.jpg'"
                                  class="img img-responsive  img-shadow"
                                  id="or-V" 
@@ -84,7 +84,7 @@
                 <div class="row top2">
                     <div class="col-lg-4 col-lg-offset-1" v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe" >
                         <figure :class="[ 'drawer-container', bridge_support.id == $store.state.bridge_supportID ? 'image_selected' : '']" >
-                            <a class="i-icon" id="supports-popover" rel="popover" data-content="">&nbsp;</a>
+                            <a class="i-icon supports-info">&nbsp;</a>
                             <img :src="'/images/others/step-ponte/s-'+((bridge_support.id==2)?'alto':'basso')+'.jpg'"
                                  class="img img-responsive  img-shadow"
                                  id="sup" 
@@ -116,7 +116,7 @@
                 <div class="row top2">
                     <div class="col-lg-4 col-lg-offset-1" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
                         <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
-                            <a class="i-icon" id="bridges-popover" rel="popover" data-content="">&nbsp;</a>
+                            <a class="i-icon bridges-info">&nbsp;</a>
                             <img :src="'/images/others/step-ponte/h-'+((bridge.id==48)?'alto':'basso')+'.jpg'"
                                  class="img img-responsive  img-shadow"
                                  :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
@@ -136,20 +136,19 @@
         </div>
 
         <!-- Next button -->
-        <div class="row top1">
+        <div class="row top2">
+    
+            <div class="col-lg-2 pull-left" >
+                <router-link to="/split/step3" class="btn btn-danger btn-back" tag="button">{{ 'back' | translate }}</router-link>
+            </div>
 
             <div class="col-lg-2 pull-left" >
-                <button class="btn btn-danger btn-reset " @click="resetData">{{ 'stepponte.reset' | translate }}</button>
+                <button class="btn btn-danger btn-reset" @click="resetData">{{ 'stepponte.reset' | translate }}</button>
             </div>        
 
             <div class="col-lg-2 pull-right" >
                 <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
             </div>  
-
-            <div class="col-lg-2 pull-right" >
-                <router-link to="/split/step3" class="btn btn-danger btn-back" tag="button">{{ 'back' | translate }}</router-link>
-            </div>
-
 
          </div>
 
@@ -181,7 +180,17 @@ export default {
              * Error modal selector caching
              * @type {Object}
              */
-            error_modal: $( "#error-modal" )
+            error_modal: $( "#error-modal" ),
+
+            config: {
+
+              // # Lightgallery common settings
+              lightgalleryOptions: {
+                  download: false,
+                  thumbnail: false,
+                  dynamic: true,
+              }
+            }
         }
     },
 
@@ -509,39 +518,63 @@ export default {
      */    
     mounted () {
 
+        // # Component header title and current step info
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
         this.$store.commit( "setCurrentStep", 'p' );
 
-        // # Dimensions info popovers
-        // # WIDTH
-        $( '#orientation-H-popover' ).popover({ 
-            placement: 'right', 
-            content: $( "#or-H" ).clone( true ), 
-            html: true,
-            container: 'body'
-        });
+        // # Scope workaround
+        var self = this;
 
-        // # Dimensions info popovers
-        // # WIDTH
-        $( '#orientation-V-popover' ).popover({ 
-            placement: 'right', 
-            content: $( "#or-V" ).clone( true ), 
-            html: true,
-            container: 'body'
-        });
+        // # Lightgallery info images
+        // # H orientation
+        $('#orientation-H-popover').on( "click", function () {
 
-        $( '#supports-popover' ).popover({ 
-            placement: 'right', 
-            content: $( "#sup" ).clone( true ), 
-            html: true,
-            container: 'body'
-        });
+            // # General settings + image src
+            let oriHGalleryOptions = self.config.lightgalleryOptions;
+            oriHGalleryOptions.dynamicEl = [ { src: $( "#or-H" ).attr( "src" ) } ];
 
-        $( '#bridges-popover' ).popover({ 
-            placement: 'right', 
-            content: $( "#bri" ).clone( true ), 
-            html: true,
-            container: 'body'
+            // # Init
+            $( this ).lightGallery( oriHGalleryOptions ) ;
+
+        });   
+
+        // # V orientation
+        $('#orientation-V-popover').on( "click", function () {
+
+            // # General settings + image src
+            let oriVGalleryOptions = self.config.lightgalleryOptions;
+            oriVGalleryOptions.dynamicEl = [ { src: $( "#or-V" ).attr( "src" ) } ];
+
+            // # Init
+            $( this ).lightGallery( oriVGalleryOptions ) ;
+        }); 
+
+        // # Supports
+        $( '.supports-info' ).on( "click", function ( event ) {
+
+            // # Get related image element
+            let related_image = $( event.target ).next();
+
+            // # General settings + image src
+            let supportsGalleryOptions = self.config.lightgalleryOptions;
+            supportsGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
+            
+            // # Init
+            $( this ).lightGallery( supportsGalleryOptions ) ;            
+        }); 
+
+        // # Bridges
+        $( '.bridges-info' ).on( "click", function ( event ) {
+
+            // # Get related image element
+            let related_image = $( event.target ).next();
+
+            // # General settings + image src
+            let bridgesGalleryOptions = self.config.lightgalleryOptions;
+            bridgesGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
+            
+            // # Init
+            $( this ).lightGallery( bridgesGalleryOptions ) ;   
         });
 
         console.log( "Step ponte Mounted!" );
