@@ -20,6 +20,26 @@
             </div>
         </div>
     </div>
+
+
+    <!-- User proceed advice Modal -->
+    <div class="modal fade" id="proceed-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
+                </div>
+                <div class="modal-body">{{ "step4.proceed-with-caution" | translate }}</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( 'cancel' ) }}</button>
+                    <button type="button" class="btn btn-danger" @click="proceed2Five()" data-dismiss="modal">{{ $t( "dont-mind-go" ) }}</button>
+                </div>
+            </div>
+        </div>
+    </div>    
     
     <!-- Divider deletion Modal -->
     <div class="modal fade" id="deletion-alert-modal" tabindex="-1" role="dialog" aria-labelledby="">
@@ -33,8 +53,8 @@
                 </div>
                 <div class="modal-body">Sei sicuro di voler cancellare il divisorio?</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-back" data-dismiss="modal">Annulla!</button>
-                    <button type="button" class="btn btn-danger" @click="deleteDivider()">Sono sicuro, eliminalo!</button>
+                    <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( "cancel" ) }}</button>
+                    <button type="button" class="btn btn-danger" @click="deleteDivider()" v-html="allselected ? $t( 'step4.deletion-message-multi' ) : $t( 'step4.deletion-message-single' )"></button>
                 </div>
             </div>
         </div>
@@ -1595,21 +1615,35 @@ export default {
                 return false;                    
             }
 
+            // # User advice, proceed and you'll loose any chance of changing thing in this step
+            // # Proceed advice display
+            $( "#proceed-advice-modal" ).modal();                             
+        }, 
+
+        /**
+         * Takes the user to the final step
+         * @return {void}
+         */
+        proceed2Five: function() {
+
+            // # Hide modal
+            this.error_modal.modal( 'hide');
+
             // # Deselect All ( SVG image should have no colored borders )
             this.deselectAll();
 
             // # Se canvas screenshot
-            this.$store.commit( 'setCanvasSvg',this.canvas.toSVG() );
+            this.$store.commit( 'setCanvasSvg', this.canvas.toSVG() );
 
             // # Set 3D screenshot
-            this.$store.commit( 'setDrawer3dImage',this.$store.state.renderer.threeRenderer.domElement.toDataURL( "image/png" ) );
+            this.$store.commit( 'setDrawer3dImage', this.$store.state.renderer.threeRenderer.domElement.toDataURL( "image/png" ) );
 
             // # Step4 is completed, everything's ok
             this.$store.commit( "setFourcompleted", true );
 
             // # Take the user to the next step
             this.$router.push({ path: '/split/step5' });
-        }, 
+        },
 
         /**
          * [backAdvice description]
