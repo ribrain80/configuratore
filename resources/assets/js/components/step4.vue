@@ -1112,7 +1112,7 @@ export default {
         },
 
         _updateSupports: function (e) {
-            this.$store.commit('changeSupportSku',e.target.dataset.sku);
+            this.$store.dispatch('update3dSupportTexture',e.target.dataset.sku);
         },
 
         /**

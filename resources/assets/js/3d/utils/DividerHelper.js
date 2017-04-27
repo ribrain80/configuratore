@@ -99,6 +99,18 @@ export default class DividerHelper {
 
     }
 
+
+    updateSupportsTexture(textureImg) {
+        let front = this.drawer.getObjectByName( 'SP_front', true );
+        let back = this.drawer.getObjectByName( 'SP_back', true );
+        let left = this.drawer.getObjectByName( 'SP_left', true );
+        let right = this.drawer.getObjectByName( 'SP_right', true );
+        if (front) {this.objLoader.changeObjectTexture(front,textureImg);}
+        if (back) {this.objLoader.changeObjectTexture(back,textureImg);}
+        if (left) {this.objLoader.changeObjectTexture(left,textureImg);}
+        if (right) {this.objLoader.changeObjectTexture(right,textureImg);}
+    }
+
     /**
      * Add a support on a side
      * Just wrap the objectLoader function
