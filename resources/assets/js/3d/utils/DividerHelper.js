@@ -13,7 +13,7 @@ export default class DividerHelper {
     constructor(manager,scene) {
         //Local copy of the scene
         this.scene = scene;
-        this.defaultMaterial = "/images/3dmodels/common/background.obj','/images/textures/02_Acero.jpg";
+        this.defaultMaterial = "/images/textures/02_Acero.jpg";
         this.commonBackgroundObj = "/images/3dmodels/common/background.obj";
         //Dividers Container
         this.objLoader = new SplitObjLoader(manager);
