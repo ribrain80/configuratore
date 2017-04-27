@@ -36,6 +36,72 @@ export default class SplitObjLoader {
 
     }
 
+
+    /**
+     * Add a support on a side
+     * @param side string values: left,right,back,front
+     * @param w width/lenght of the support
+     * @param w height of the support
+     * @param texture support material
+     */
+    addSupport(side,w,h,textureImg) {
+        let supportWidth = 6;
+        let supportNamePrefix= "SP_";
+        let baseGeometry = new THREE.BoxGeometry(w, h, supportWidth);
+        let texture = new THREE.Texture();
+        let material = new THREE.MeshPhongMaterial(  );
+        // # Load img for texture only if required!
+        if (textureImg) {
+            this.textureLoader.load(textureImg, (image) => {
+                texture.image = image;
+                texture.needsUpdate = true;
+            });
+            material = new THREE.MeshPhongMaterial({map: texture});
+            material.needsUpdate = true;
+        }
+        let support = new THREE.Mesh(baseGeometry, material);
+        support.name = supportNamePrefix+side;
+
+        //Gestione SIDE
+
+        switch (side) {
+            case "left":
+                support.rotateY(Math.PI/2);
+                support.updateMatrix();
+                support.position.x = supportWidth/2;
+                support.position.y = 0;
+                support.position.z = w/2;
+                support.updateMatrix();
+                break;
+            case "right":
+                support.rotateY(Math.PI/2);
+                support.updateMatrix();
+                support.position.x = w-supportWidth/2;
+                support.position.y = 0;
+                support.position.z = 0;
+                support.updateMatrix();
+                break;
+            case "front":
+                support.position.x = w/2;
+                support.position.y = 0;
+                support.position.z = 0;
+                support.updateMatrix();
+                break;
+            case "back":
+                support.position.x = 0;
+                support.position.y = 0;
+                support.position.z = w/2;
+                break;
+        }
+
+
+
+        return support;
+
+    }
+
+
+
     /**
      *
      * @param name name of the object

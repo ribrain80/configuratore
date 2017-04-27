@@ -24,6 +24,7 @@ export default class DividerHelper {
      * @param name
      * @param model
      * @param textureImg
+     * @param orr
      * @param coords
      */
     addDivider (name,model,textureImg,coords,orr) {
@@ -39,7 +40,6 @@ export default class DividerHelper {
                 obj3d.position.z=coords.z;
                 obj3d.updateMatrix();
             }
-
             obj3d.castShadow = true;
             obj3d.receiveShadow = false;
 
@@ -59,6 +59,7 @@ export default class DividerHelper {
             this.drawer.remove( _objToRemove );
         }
     }
+
 
     /**
      * Change a divider Position
@@ -96,6 +97,18 @@ export default class DividerHelper {
             this.objLoader.changeObjectTexture(_obj,textureImg);
         }
 
+    }
+
+    /**
+     * Add a support on a side
+     * Just wrap the objectLoader function
+     * @param side string values: left,right,back,front
+     * @param w width/lenght of the support
+     * @param w height of the support
+     * @param texture support material
+     */
+    addSupport(side,w,h,texture) {
+        this.scene.add(this.objLoader.addSupport(side,w,h,texture));
     }
 
 
@@ -190,6 +203,9 @@ export default class DividerHelper {
             // # Here the lineabox Drawers
             // # switch depending on h
             let backgroundModel = false;
+            let dxModel = false;
+            let sxModel = false;
+            let backModel = false;
             console.log("H in switch: ",h);
             h = parseFloat(h);
             switch (h) {
@@ -197,13 +213,22 @@ export default class DividerHelper {
                     console.log("QUIIIII");
                     // # SPONDA BASSA
                     backgroundModel = '/images/3dmodels/lineabox/basso/' + type + '/background.obj';
+                    dxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    sxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
                     break;
                 case 72:
                     // # SPONDA MEDIA
                     backgroundModel = '/images/3dmodels/lineabox/medio/' + type + '/background.obj';
+                    dxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    sxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
                     break;
                 case 148.0:
                     backgroundModel = '/images/3dmodels/lineabox/alto/' + type + '/background.obj';
+                    dxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    sxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
                     break;
             }
 
@@ -223,6 +248,67 @@ export default class DividerHelper {
                     this.drawer.add(obj3d);
                 });
             }
+
+            if (dxModel) {
+                this.objLoader.loadModel("right",dxModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                   let bbox = new THREE.Box3().setFromObject( obj3d );
+                    obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                    obj3d.updateMatrix();
+                    obj3d.position.x = w;
+                    obj3d.position.y = 0;
+                    obj3d.position.z = l/2 ;
+                    obj3d.updateMatrix();
+                    // # Add background to the scene
+                    this.drawer.add(obj3d);
+                });
+            }
+
+            if (sxModel) {
+                this.objLoader.loadModel("left",sxModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                    obj3d.updateMatrix();
+                    obj3d.position.x = 0;
+                    obj3d.position.y = 0;
+                    obj3d.position.z = l/2 ;
+                    obj3d.updateMatrix();
+                    obj3d.rotateY(Math.PI);
+                    obj3d.updateMatrix();
+                    // # Add background to the scene
+                    this.drawer.add(obj3d);
+                });
+            }
+
+            if (backModel) {
+                this.objLoader.loadModel("back",backModel,'http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                    // # Change background dimension
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                    obj3d.updateMatrix();
+                    obj3d.position.x = w/2;
+                    obj3d.position.y = 0;
+                    obj3d.position.z = l ;
+                    obj3d.updateMatrix();
+                    // # Add background to the scene
+                    this.drawer.add(obj3d);
+                });
+            }
+
+            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','http://homestead.app/images/textures/02_Acero.jpg').then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                let zDeltaCorrection = -21;
+                let yDeltaCorrection = -35;
+                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                obj3d.updateMatrix();
+                obj3d.position.x = w/2;
+                obj3d.position.y = yDeltaCorrection;
+                obj3d.position.z = zDeltaCorrection ;
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
 
         }
     }
