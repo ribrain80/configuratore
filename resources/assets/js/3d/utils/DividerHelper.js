@@ -215,7 +215,7 @@ export default class DividerHelper {
 
 
 
-        } else {
+        } else {/*
             // # Empiric z correction
             zDeltaCorrection = -10;
             // # Here the lineabox Drawers
@@ -312,7 +312,7 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 // # Add background to the scene
                 this.drawer.add(obj3d);
-            });
+            });*/
 
 
         }
