@@ -198,18 +198,33 @@ const store = new Vuex.Store({
             if (!state.bridge_supportID) {
                 return;
             }
-
+            let h = (state.bridge_supportID==1)?45.5:90;
             // # Handling supports
             switch (type) {
+                case 1:
                 case 2:
-                    //Lineabox 3 lati
-                    let h = (state.bridge_supportID==1)?45.5:90;
+                    //Lineabox 3/4 lati
                     state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
                     console.log("Added front support!!")
                     break;
                 case 3:
                     //lineabox 2 lati
                     // solo se ponte verticale
+                    if (state.bridge_orientation=="V") {
+                        state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("back",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                    }
+                    break;
+                case 4:
+
+                    // Cassetto generico
+                    if (state.bridge_orientation=="V") {
+                        state.dividerHelper.addSupport("front",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("back",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                    } else {
+                        state.dividerHelper.addSupport("left",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("right",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','http://homestead.app/images/textures/02_Acero.jpg');
+                    }
 
             }
 
