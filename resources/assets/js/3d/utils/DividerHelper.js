@@ -13,6 +13,8 @@ export default class DividerHelper {
     constructor(manager,scene) {
         //Local copy of the scene
         this.scene = scene;
+        this.defaultMaterial = "/images/3dmodels/common/background.obj','/images/textures/02_Acero.jpg";
+        this.commonBackgroundObj = "/images/3dmodels/common/background.obj";
         //Dividers Container
         this.objLoader = new SplitObjLoader(manager);
         this.drawer = new THREE.Object3D();
@@ -130,31 +132,35 @@ export default class DividerHelper {
             return;
         }
 
-        let zDeltaCorrection = -21;
+        // # This value correct the divider offset
+        let zDeltaCorrection = -12;
         let yDeltaCorrection = -35;
+
+        // All Drawer types share the same background Object
+        this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
+            // # Change background dimension
+            let bbox = new THREE.Box3().setFromObject( obj3d );
+            obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+            obj3d.updateMatrix();
+            obj3d.position.x = w/2;
+            obj3d.position.y = 0;
+            obj3d.position.z = l/2 + zDeltaCorrection;
+            obj3d.updateMatrix();
+            // # Add background to the scene
+            this.drawer.add(obj3d);
+        });
+
+
         //let drawer = false;
         if (type ==4) {
-            let backgroundCoords = {x:w/2,y:-30,z:l};
-            let sxCoords = {x:0,y:-30,z:l};
-            let dxCoords = {x:w,y:-30,z:l};
+
 
             // # start loading and placing the background
             // # ugly hack ... i dont know why i need a texture at the first init
-            this.objLoader.loadModel("background",'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
-                // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-                obj3d.updateMatrix();
-                obj3d.position.x = w/2;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l + zDeltaCorrection;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });
 
 
-            this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
+
+            /*this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
@@ -205,7 +211,7 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 // # Add background to the scene
                 this.drawer.add(obj3d);
-            });
+            });*/
 
 
 
@@ -244,22 +250,7 @@ export default class DividerHelper {
                     break;
             }
 
-            if (backgroundModel) {
-                this.objLoader.loadModel("background",backgroundModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
-                    // # Change background dimension
-                    let bbox = new THREE.Box3().setFromObject( obj3d );
-                    obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-                    console.log("BBOX MAX Y",Math.abs(bbox.max.y));
-                    let extraYCorrection = (type==2)?-60:0;
-                    obj3d.updateMatrix();
-                    obj3d.position.x = 0;
-                    obj3d.position.y = Math.abs(bbox.max.y) + extraYCorrection;
-                    obj3d.position.z = l + zDeltaCorrection;
-                    obj3d.updateMatrix();
-                    // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });
-            }
+
 
             if (dxModel) {
                 this.objLoader.loadModel("right",dxModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
