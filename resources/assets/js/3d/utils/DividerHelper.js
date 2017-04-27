@@ -15,6 +15,7 @@ export default class DividerHelper {
         this.scene = scene;
         this.defaultMaterial = "/images/textures/02_Acero.jpg";
         this.commonBackgroundObj = "/images/3dmodels/common/background.obj";
+        this.commonFrontObj = "/images/3dmodels/common/front.obj";
         //Dividers Container
         this.objLoader = new SplitObjLoader(manager);
         this.drawer = new THREE.Object3D();
@@ -145,6 +146,21 @@ export default class DividerHelper {
             obj3d.position.x = w/2;
             obj3d.position.y = 0;
             obj3d.position.z = l/2 + zDeltaCorrection;
+            obj3d.updateMatrix();
+            // # Add background to the scene
+            this.drawer.add(obj3d);
+        });
+
+        // All drawer types share the same front Object
+        this.objLoader.loadModel("front",this.commonFrontObj,this.defaultMaterial).then((obj3d) => {
+            // # Change background dimension
+            let bbox = new THREE.Box3().setFromObject( obj3d );
+            let extendedW = w + 100;
+            obj3d.scale.set(Math.abs(extendedW / (bbox.max.x - bbox.min.x)),1,1);
+            obj3d.updateMatrix();
+            obj3d.position.x = w/2;
+            obj3d.position.y = yDeltaCorrection;
+            obj3d.position.z = zDeltaCorrection - (bbox.max.z - bbox.min.z)/2 ;
             obj3d.updateMatrix();
             // # Add background to the scene
             this.drawer.add(obj3d);
