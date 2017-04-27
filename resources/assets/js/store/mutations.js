@@ -782,6 +782,10 @@ const  mutations = {
 
     setCurrentStep: function (state, val) {
         state.currentStep = val;
+    },
+
+    setHintViewed: function( state, val ) {
+        state.hint_viewed = val;
     }
 
 

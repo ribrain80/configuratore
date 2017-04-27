@@ -15,7 +15,7 @@
                 </div>
                 <div class="modal-body">{{ "resetadvice" | translate }}</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok!</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
                 </div>
             </div>
         </div>

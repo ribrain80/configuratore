@@ -355,7 +355,16 @@ export default {
              * @type {Object}
              */
             config: {
-                ratio: 1
+                
+                ratio: 1,
+
+                // # Lightgallery common settings
+                lightgalleryOptions: {
+                  download: false,
+                  thumbnail: false,
+                  dynamic: true,
+                  counter: false
+                }
             },
 
             /**
@@ -374,7 +383,7 @@ export default {
              * All dividers selected flag
              * @type {Boolean}
              */
-            allselected: false,
+            allselected: false
         }
     },
 
@@ -1698,10 +1707,25 @@ export default {
 
     mounted () { // # Window onload eq
 
-        console.log("Step4 mounted!");
+        
         this.$store.commit( "setComponentHeader",  "step4.header-title" );
         this.$store.commit( "setCurrentStep", 4 );
         this.initCanvas();
+
+        if( !this.$store.state.hint_viewed ) {
+
+          // # General settings + image src
+          let hintGalleryOptions = this.config.lightgalleryOptions;
+          hintGalleryOptions.dynamicEl = [ { src: "/images/others/istruzioni_gestione_divisorio.gif" } ];
+
+          // # Init
+          $( this ).lightGallery( hintGalleryOptions ) ;
+
+          this.$store.commit( "setHintViewed", true );
+
+        }
+
+        console.log("Step4 mounted!");
     }
 
 }

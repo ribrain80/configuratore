@@ -652,7 +652,13 @@ const store = new Vuex.Store({
 
         currentStep: 1,
 
-        gallery_images: []
+        gallery_images: [],
+
+        /**
+         * [hint_viewed description]
+         * @type {Boolean}
+         */
+        hint_viewed: false,
 
     },
 

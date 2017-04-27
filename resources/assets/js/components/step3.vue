@@ -249,6 +249,7 @@ export default {
                   download: false,
                   thumbnail: false,
                   dynamic: true,
+                  counter: false
               }
           },
 
