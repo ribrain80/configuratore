@@ -34,7 +34,7 @@
                   <div class="form-group">
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label">
-                      <a class="i-icon pull-left" id="width-popover" rel="popover" data-content="">&nbsp;</a> 
+                      <a class="i-icon pull-left" id="width-popover" >&nbsp;</a> 
                       <span class="pull-left"><strong>LA</strong> - {{ 'step3.drawer_width_label' | translate }}</span>
                     </label>
 
@@ -60,7 +60,7 @@
                   <div class="form-group">
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
-                      <a class="i-icon pull-left" id="length-popover" rel="popover" data-content="">&nbsp;</a> 
+                      <a class="i-icon pull-left" id="length-popover" >&nbsp;</a> 
                       <span class="pull-left"><strong>PS</strong> - {{ 'step3.drawer_length_label' | translate }}</span>
                     </label>
 
@@ -88,7 +88,7 @@
                   <div v-if="$store.state.is_lineabox === false" class="form-group">
 
                     <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
-                      <a class="i-icon pull-left" id="sh-popover" rel="popover">&nbsp;</a> 
+                      <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
                       <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                     </label>
 
@@ -117,7 +117,7 @@
 
                           <div class="col-lg-12">
                             <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
-                              <a class="i-icon pull-left" id="sh-popover" rel="popover" data-content="">&nbsp;</a> 
+                              <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
                               <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                             </label>
                           </div>
@@ -192,6 +192,8 @@ export default {
           // # Container element
           container: {},
 
+          sh_gallery: {},
+
           // # Config vars
           config: {
 
@@ -237,6 +239,13 @@ export default {
 
               // # Shapes top margin
               standard_top_margin: 2,
+
+              // # Lightgallery common settings
+              lightgalleryOptions: {
+                  download: false,
+                  thumbnail: false,
+                  dynamic: true,
+              }
           },
 
           // # Out of range flags
@@ -661,11 +670,24 @@ export default {
             this.$store.commit( "setShoulderHeight", val );
             this.updateDrawer();
 
-            // # Dynamically change popover content
-            let popover = $( '#sh-popover' ).data( 'bs.popover' );
-            let nuPopoverContent = $( event.target ).clone( false );
-            nuPopoverContent.removeClass( 'selected_HA' );
-            popover.options.content = nuPopoverContent;            
+            // # Scope workaorund
+            var self = this;
+
+            // # Destroy previous gallery and binding
+            self.sh_gallery.data( "lightGallery" ).destroy( true );
+            $( '#sh-popover' ).unbind( "click" );
+
+            // # Reinitialize gallery
+            $( '#sh-popover' ).on( "click", function () {
+
+              // # General settings + image src
+              let shGalleryOptions = self.config.lightgalleryOptions;
+              shGalleryOptions.dynamicEl = [ { src: $( event.target ).attr( "src" ) } ];
+
+              // # Init
+              self.sh_gallery = $( this ).lightGallery( shGalleryOptions ) ;
+              
+            });       
         }, 
 
         /**
@@ -1169,19 +1191,16 @@ export default {
         // # Init canvas
         this.initTwo();
 
-        // # Lightgallery general settings
-        let lightgalleryOptions = {
-            download: false,
-            thumbnail: false,
-            dynamic: true,
-        };
+        // # Scope workaround
+        var self = this;
 
-        // # Dimensions info popovers
+        // # Dimensions info Lightgalleries
+        
         // # WIDTH 
         $( "#width-popover" ).on( "click", function () {
             
             // # General settings + image src
-            let widthGalleryOptions = lightgalleryOptions;
+            let widthGalleryOptions = self.config.lightgalleryOptions;
             widthGalleryOptions.dynamicEl  = [ { src: $( "#width-info-image" ).attr( "src" ) } ];
 
             // # Init
@@ -1192,43 +1211,36 @@ export default {
         $('#length-popover').on( "click", function () {
 
           // # General settings + image src
-          let lengthGalleryOptions = lightgalleryOptions;
+          let lengthGalleryOptions = self.config.lightgalleryOptions;
           lengthGalleryOptions.dynamicEl = [ { src: $( "#length-info-image" ).attr( "src" ) } ];
 
           // # Init
           $( this ).lightGallery( lengthGalleryOptions ) ;
+
         });
 
-        if( this.$store.state.is_lineabox ) {
+        if( this.$store.state.is_lineabox ) { // # Lineabox gallery
 
-          // # SHOULDER HEIGHT popover ( lineabox )
-          /*$('#sh-popover').popover({ 
-              placement: 'auto right', 
-              content: $( ".selected_HA" ).clone( false ), 
-              html: true,
-              container: 'body'
-          });*/
-
-          // # SHOULDER HEIGHT ( custom drawer )
+          // # SHOULDER HEIGHT ( lineabox )
           $('#sh-popover').on( "click", function () {
 
             // # General settings + image src
-            let shGalleryOptions = lightgalleryOptions;
+            let shGalleryOptions = self.config.lightgalleryOptions;
             shGalleryOptions.dynamicEl = [ { src: $( ".selected_HA" ).attr( "src" ) } ];
 
             // # Init
-            $( this ).lightGallery( shGalleryOptions ) ;
+            self.sh_gallery = $( this ).lightGallery( shGalleryOptions ) ;
             
           });                
 
-        } else {
+        } else { // # Custom drawer gallery
 
 
           // # SHOULDER HEIGHT ( custom drawer )
           $('#sh-popover').on( "click", function () {
 
             // # General settings + image src
-            let shGalleryOptions = lightgalleryOptions;
+            let shGalleryOptions = self.config.lightgalleryOptions;
             shGalleryOptions.dynamicEl = [ { src: $( "#sh-info-image" ).attr( "src" ) } ];
 
             // # Init
