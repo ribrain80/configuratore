@@ -256,29 +256,6 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
 
-           /* this.objLoader.loadModel("right",'/images/3dmodels/legno/sx.obj',this.defaultMaterial).then((obj3d) => {
-                // # Change background dimension
-                //let bbox = new THREE.Box3().setFromObject( obj3d );
-                let elementL = 500; //(bbox.max.z - bbox.min.z);
-                let elementH = 120; //(bbox.max.y - bbox.min.y);
-                let elementZ = 18;  //(bbox.max.x - bbox.min.x);
-
-
-                let extendedH = h  - yDeltaCorrection;  // yDeltaCorrection è negativo
-                let coeffH = extendedH / elementH;
-                let coeffL = l / elementL;
-
-                obj3d.scale.set(1,coeffH,coeffL);
-                obj3d.updateMatrix();
-                obj3d.position.x = w + elementZ/2;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l/2 + zDeltaCorrection;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });*/
-
-
         } else {
             h = parseFloat(h);
             let backModel = false;
@@ -287,12 +264,12 @@ export default class DividerHelper {
             switch (h) {
                 case 45.5:
                     // # SPONDA BASSA
-                    sideModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    sideModel = '/images/3dmodels/lineabox/basso/' + type + '/dx.obj';
                     backModel = '/images/3dmodels/lineabox/basso/' + type + '/back.obj';
                     break;
                 case 72:
                     // # SPONDA MEDIA
-                    sideModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    sideModel = '/images/3dmodels/lineabox/medio/' + type + '/dx.obj';
                     backModel = '/images/3dmodels/lineabox/medio/' + type + '/back.obj';
                     break;
                 case 148.0:
@@ -304,7 +281,12 @@ export default class DividerHelper {
             this.objLoader.loadModel("back",backModel,this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                let elementW  =  bbox.max.x - bbox.min.x;
+                let elementZS = 15.6;
+                let extendedW = w + 2 * elementZS;  // 2 volte lo spessore della sponda
+                let coeffW = extendedW / elementW;
+
+                obj3d.scale.set(coeffW,1,1);
                 obj3d.updateMatrix();
                 obj3d.position.x = w/2;
                 obj3d.position.y = 0;
@@ -319,11 +301,13 @@ export default class DividerHelper {
             this.objLoader.loadModel("left",sideModel,this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
+                let elementZ = (bbox.max.x - bbox.min.x);
+
                 obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
-                obj3d.position.x = 0;
+                obj3d.position.x = -elementZ/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = l/2 ;
+                obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
@@ -334,13 +318,14 @@ export default class DividerHelper {
             this.objLoader.loadModel("right",sideModel,this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
+                let elementZ = (bbox.max.x - bbox.min.x);
+                console.log("ELEMENT Z RIGHT:",elementZ);
                 obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
-                obj3d.position.x = w;
+                obj3d.position.x = w + elementZ/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = l/2 ;
+                obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
-
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
