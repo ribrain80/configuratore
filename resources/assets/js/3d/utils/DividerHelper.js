@@ -191,9 +191,17 @@ export default class DividerHelper {
             // # DrawerType = 4 @todo: Calcolare H
             this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj',this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                let extendedW = w + 40;
-                obj3d.scale.set(Math.abs(extendedW / (bbox.max.x - bbox.min.x)),1,1);
+                //let bbox = new THREE.Box3().setFromObject( obj3d );
+
+                let elementZ = 20;  //bbox.max.z - bbox.min.z;
+                let elementH = 150; //bbox.max.y - bbox.min.y;
+                let elementW = 600; // (bbox.max.x - bbox.min.x)
+                let extendedW = w + 2 * elementZ;  // 2 volte lo spessore della sponda
+                let extendedH = h + elementZ - yDeltaCorrection;  // yDeltaCorrection è negativo 
+                let coeffW = extendedW / elementW;
+                let coeffH = extendedH / elementH;
+
+                obj3d.scale.set(coeffW,coeffH,1);
                 obj3d.updateMatrix();
                 obj3d.position.x = w/2;
                 obj3d.position.y = yDeltaCorrection;
