@@ -76,15 +76,9 @@ export default class DividerHelper {
         let deltacorrection = -10;
 
         if (_obj) {
-
-            /*_obj.translateX (x - _obj.position.x);
-            _obj.translateZ (z - _obj.position.z);*/
             _obj.position.x = x;
             _obj.position.z = z + deltacorrection;
-
         }
-
-
     }
 
     /**
