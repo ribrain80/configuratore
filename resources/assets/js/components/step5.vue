@@ -21,69 +21,69 @@
         </div>
     </div>
 
-	<!-- Container -->
-    <div class="row" >
+    <div id="step5-content" class="container-flex content-flex-scrollable content-flex-padding">
+    	<!-- Container -->
+        <div class="row" >
 
-		<!-- Summary -->
-        <div class="row top2">
-    		<div class="checkbox col-lg-12 col-md-12 col-sm-12">
-    			<div class="col-lg-5 col-md-3 col-sm-3">
-                    <label>{{ "step5.summary_label" | translate }}</label>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2">
-                    <button class="btn btn-danger" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
-                </div>
-    		</div>
-        </div>
-
-        <hr />
-
-        <!-- Brochure -->
-        <div class="row top2">
-            <div class="checkbox col-lg-12 col-md-12 col-sm-12">
-                <div class="col-lg-5 col-md-3 col-sm-3">
-                    <label>Brochure</label>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2">
-                    <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
-                </div>
+    		<!-- Summary -->
+            <div class="row top2">
+        		<div class="checkbox col-lg-12 col-md-12 col-sm-12">
+        			<div class="col-lg-5 col-md-3 col-sm-3">
+                        <label>{{ "step5.summary_label" | translate }}</label>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="btn btn-danger" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
+                    </div>
+        		</div>
             </div>
-        </div>
 
-        <hr />
-	
-		<!-- Email -->
-		<div class="row top2">
+            <hr />
 
-            <div class="checkbox col-lg-12 col-md-12 col-sm-12">
-                
-                <!-- Mail input -->
-                <div class="col-lg-5 col-md-5 col-sm-5">
-                    <div class="col-lg-5 no-padding-left lh-34"><label>{{  "step5.email_label" | translate }}</label></div>
-                    <div class="col-lg-5">
-                        <input type="text" name="email" class="form-control text-center" v-model="$store.state.pdf.email" placeholder="Email" />
+            <!-- Brochure -->
+            <div class="row top2">
+                <div class="checkbox col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-5 col-md-3 col-sm-3">
+                        <label>Brochure</label>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
                     </div>
                 </div>
-
-                <!-- Send button -->
-                <div class="col-lg-2 col-md-2 col-sm-2">
-                    <button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
-                </div>   
-                           
             </div>
-		</div>
 
-        <div class="row top2">
+            <hr />
+    	
+    		<!-- Email -->
+    		<div class="row top2">
 
-            <!-- Prev button -->
-            <div class="col-md-2 pull-left">
-                <button  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
-            </div>  
+                <div class="checkbox col-lg-12 col-md-12 col-sm-12">
+                    
+                    <!-- Mail input -->
+                    <div class="col-lg-5 col-md-5 col-sm-5">
+                        <div class="col-lg-5 no-padding-left lh-34"><label>{{  "step5.email_label" | translate }}</label></div>
+                        <div class="col-lg-5">
+                            <input type="text" name="email" class="form-control text-center" v-model="$store.state.pdf.email" placeholder="Email" />
+                        </div>
+                    </div>
+
+                    <!-- Send button -->
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
+                    </div>   
+                               
+                </div>
+    		</div>
 
         </div>
+    </div>
+    <div class="row actions-toolbar">
+
+        <!-- Prev button -->
+        <div class="col-md-2 pull-left">
+            <button  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
+        </div>  
 
     </div>
-
 </div>
 
 </template>

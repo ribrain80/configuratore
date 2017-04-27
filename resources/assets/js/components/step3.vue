@@ -1,7 +1,9 @@
 <template>
 
 <!-- Container -->
-<div class="container-fluid" id="step3">
+<div id="step3">
+
+      <div id="step3-content" class="container-flex content-flex-scrollable content-flex-padding">
 
         <!-- Alerts: User Warning -->
         <div class="row top1" style="display:none;">
@@ -25,7 +27,7 @@
         <div class="row">
           
           <!-- Left container "form" -->
-          <div class="col-lg-6">
+          <div class="col-lg-7">
               
               <!-- form group -->
               <div class="form-horizontal">
@@ -146,26 +148,23 @@
           </div>
           </div>
           <!-- Canvas container -->
-          <div class="col-lg-6 center-block" >
+          <div class="col-lg-5 center-block" >
               <div id="animation"></div>
           </div>
           
         </div>
-
-        <div class="container-fluid">
-          <div class="row top2">
-              
-              <div class="col-lg-2 col-md-2 pull-left">
-                  <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
-              </div>
-              <div class="col-lg-2 col-md-2 pull-left">
-                  <button class="btn btn-danger btn-reset" @click="reset">{{ 'reset' | translate }}</button>
-              </div>            
-              <div class="col-lg-2 col-md-2 pull-right">
-                  <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-              </div>
-
-          </div>
+       </div>
+       <div class="row actions-toolbar">
+            
+            <div class="col-lg-2 col-md-2 pull-left">
+                <router-link to="/split/step2" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
+            </div>
+            <div class="col-lg-2 col-md-2 pull-left">
+                <button class="btn btn-danger btn-reset" @click="reset">{{ 'reset' | translate }}</button>
+            </div>            
+            <div class="col-lg-2 col-md-2 pull-right">
+                <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+            </div>
         </div>
 
 

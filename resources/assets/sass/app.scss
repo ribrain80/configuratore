@@ -31,8 +31,7 @@ $font-family-base:        $font-family-sans-serif !default;
 body { 
   color: #666;
   font-size: 12px;
-  // TO DO remmato temporaneamente per far vedere i bottoni di navigazione
-  //overflow: hidden;
+  overflow: hidden;
 }
 
 strong, .component-header, .ha-lineabox, .limit-helper {
@@ -59,6 +58,9 @@ strong, .component-header, .ha-lineabox, .limit-helper {
   font-weight: 600;
 }
 
+.actions-toolbar {
+  padding: 12px 15px 0px 15px;
+}
 
 .caret {
   border: none!important;
@@ -86,10 +88,26 @@ strong, .component-header, .ha-lineabox, .limit-helper {
   margin-right: -15px;
 }
 
-#step1-content > div:first-of-type {
-  overflow: auto;
-  height: 100%;
-  min-height: 300px;
+.content-flex {
+  display: flex;
+  flex-direction: column;
+}
+.content-flex-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 80vh;
+}
+.content-flex-padding {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#step1-content {
+  padding-right: 0px;
+}
+
+#step1-content > div:first-of-type p {
+  padding-right: 15px;
 }
 
 #step1-description-image {
@@ -458,8 +476,27 @@ input {
 
 .drawer-container img {
   cursor:pointer;
+  
 }
-
+.drawer-container:before {
+  opacity: 0;
+  transition: all 1s;
+  transform: scale(1);
+}
+.drawer-container.image_selected:before {
+    content: "";
+    background-image: url(../../images/others/check.png);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    right: 60px;
+    background-position: top;
+    background-size: cover;
+    z-index: 3;
+    opacity: 1;  
+    transform: scale(1.8);
+}
 
 
 

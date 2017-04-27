@@ -6,13 +6,13 @@
     <div class="row">
         
         <!-- Full width -->
-        <div class="col-lg-6 col-md-6 col-sm-6" id="step1-content" >
+        <div class="col-lg-6 col-md-6 col-sm-6 content-flex" id="step1-content" >
 
             <!-- Text -->
-            <div v-html="$t( 'step1.product_description_text' )"></div>
+            <div class="content-flex-scrollable" v-html="$t( 'step1.product_description_text' )"></div>
 
             <!-- Next button -->
-            <div class="row">
+            <div class="row actions-toolbar">
                 <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
                     <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
                 </div>

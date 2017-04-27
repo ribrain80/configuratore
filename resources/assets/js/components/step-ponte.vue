@@ -1,8 +1,8 @@
 <template>
 
 <!-- Container -->
-<div class="container-fluid" id="step-ponte">  
-        
+<div id="step-ponte">  
+    <div id="step-ponte-content" class="container-flex content-flex-scrollable content-flex-padding">
         <!-- Alerts: User Warning -->
         <div class="row top1" >
             <div class="col-lg-12">
@@ -62,7 +62,7 @@
         <!-- Supports section -->
         <div class="row top2" >
 
-            <div v-show="$store.state.bridge_orientation.length">
+            <div class="container-fluid" v-show="$store.state.bridge_orientation.length">
                 
                 <div class="row top2">
                     <!-- Supports description -->
@@ -134,27 +134,25 @@
             </div>
 
         </div>
-
-        <!-- Next button -->
-        <div class="row top2">
-    
-            <div class="col-lg-2 pull-left" >
-                <router-link to="/split/step3" class="btn btn-danger btn-back" tag="button">{{ 'back' | translate }}</router-link>
-            </div>
-
-            <div class="col-lg-2 pull-left" >
-                <button class="btn btn-danger btn-reset" @click="resetData">{{ 'stepponte.reset' | translate }}</button>
-            </div>        
-
-            <div class="col-lg-2 pull-right" >
-                <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
-            </div>  
-
-         </div>
-
-        </div>
-        
     </div>
+    <!-- Next button -->
+    <div class="row actions-toolbar">
+
+        <div class="col-lg-2 pull-left" >
+            <router-link to="/split/step3" class="btn btn-danger btn-back" tag="button">{{ 'back' | translate }}</router-link>
+        </div>
+
+        <div class="col-lg-2 pull-left" >
+            <button class="btn btn-danger btn-reset" @click="resetData">{{ 'stepponte.reset' | translate }}</button>
+        </div>        
+
+        <div class="col-lg-2 pull-right" >
+            <button class="btn btn-danger" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+        </div>  
+
+    </div>
+        
+</div>
 </template>
 
 <script>

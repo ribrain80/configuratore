@@ -59,243 +59,245 @@
             </div>
         </div>
     </div>
+    
+    <div id="step4-content" class="container-flex content-flex-scrollable content-flex-padding">
+        <!-- Select All - trash bin row -->
+        <div class="row top1">
+            <div class="col-lg-5 col-md-5 pull-left" >
+                <button class="btn btn-split-small" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
+            </div>
 
-    <!-- Select All - trash bin row -->
-    <div class="row top1">
-        <div class="col-lg-5 col-md-5 pull-left" >
-            <button class="btn btn-split-small" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
+            <div class="col-lg-1 col-md-1" style="text-align: right">
+                <img src="/images/others/garbage.png"
+                     style="cursor:pointer;"
+                     @click="alertDividerDeletion()"
+                     v-show="allselected || $store.state.objectWorkingOn.type=='divider'"
+                />
+            </div>
         </div>
-
-        <div class="col-lg-1 col-md-1" style="text-align: right">
-            <img src="/images/others/garbage.png"
-                 style="cursor:pointer;"
-                 @click="alertDividerDeletion()"
-                 v-show="allselected || $store.state.objectWorkingOn.type=='divider'"
-            />
-        </div>
-    </div>
 
         <!-- Center content -->
-    <div class="row top1">
-        <div class="col-lg-6">
-            <div class="row top">
-                <div class="col-lg-12">
-                    <div class="dragdrop-area center-block" id="canvas-container">
-                        <canvas id="canvas" class="center-block"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="row top1">
-                <div class="col-lg-12">
-                    <div v-if="$store.state.has_bridge">
-                        
-                        <div class="col-lg-10 col-lg-offset-1">
-
-                            <!-- Bridges -->
-                            <div class="col-lg-5 bridge_representation" @click="selectBridge( $event );"></div>
-                            <div class="col-lg-2" style="line-height: 30px;">N. {{ $store.state.bridges_selected.length }}</div>
-                            <div class="col-lg-5">
-                                <div class="pull-left pointer">
-                                    <img src="/images/others/step-4/plus.png" width="23" height="23" class="" v-show="canAddBridges" @click="addBridge()"/>
-                                </div>
-                                <div class="pull-left pointer">
-                                    <img src="/images/others/step-4/minus.png" width="23" height="23" class="" v-show="$store.state.bridges_selected.length" @click="removeBridge()"/>
-                                </div>
-                            </div>
-                            <div class="col-lg-11 col-lg-offset-1">
-                                <span class="help-block">
-                                    Ponte {{ $store.state.bridge_orientation | translate }}
-                                </span>
-                            </div>
+        <div class="row top1">
+            <div class="col-lg-6">
+                <div class="row top">
+                    <div class="col-lg-12">
+                        <div class="dragdrop-area center-block" id="canvas-container">
+                            <canvas id="canvas" class="center-block"></canvas>
                         </div>
+                    </div>
+                </div>
+                <div class="row top1">
+                    <div class="col-lg-12">
+                        <div v-if="$store.state.has_bridge">
+                            
+                            <div class="col-lg-10 col-lg-offset-1">
 
+                                <!-- Bridges -->
+                                <div class="col-lg-5 bridge_representation" @click="selectBridge( $event );"></div>
+                                <div class="col-lg-2" style="line-height: 30px;">N. {{ $store.state.bridges_selected.length }}</div>
+                                <div class="col-lg-5">
+                                    <div class="pull-left pointer">
+                                        <img src="/images/others/step-4/plus.png" width="23" height="23" class="" v-show="canAddBridges" @click="addBridge()"/>
+                                    </div>
+                                    <div class="pull-left pointer">
+                                        <img src="/images/others/step-4/minus.png" width="23" height="23" class="" v-show="$store.state.bridges_selected.length" @click="removeBridge()"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-11 col-lg-offset-1">
+                                    <span class="help-block">
+                                        Ponte {{ $store.state.bridge_orientation | translate }}
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <step4_3d></step4_3d>
+            </div>
         </div>
-        <div class="col-lg-6">
-            <step4_3d></step4_3d>
-        </div>
-    </div>
 
-    <!-- tabs row -->
-    <div class="row top1">
-        <!-- Tabs: dividers and colors -->
-        <div class="col-lg-12">
+        <!-- tabs row -->
+        <div class="row top1">
+            <!-- Tabs: dividers and colors -->
+            <div class="col-lg-12">
 
-            <!-- Tab title ( Nav ) -->
-            <ul class="nav nav-tabs" role="tablist" id="tab-container">
-                <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
-                    <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
-                </li>
-                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">Finiture divisori</a></li>
-                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">Finiture ponti</a></li>
-                <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">Finiture cassetto</a></li>
-            </ul>
+                <!-- Tab title ( Nav ) -->
+                <ul class="nav nav-tabs" role="tablist" id="tab-container">
+                    <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
+                        <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
+                    </li>
+                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">Finiture divisori</a></li>
+                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">Finiture ponti</a></li>
+                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">Finiture cassetto</a></li>
+                </ul>
 
-            <!-- Tab contents -->
-            <div class="tab-content">
+                <!-- Tab contents -->
+                <div class="tab-content">
 
-                <!-- Dividers by cat -->
-                <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in availableDividerCategories">
+                    <!-- Dividers by cat -->
+                    <div role="tabpanel" :class="{active: !index}" :id="'elem'+cat" class="tab-pane fade in" v-for="(cat,index) in availableDividerCategories">
 
-                    <div class="row" style="margin-top: 22px">
+                        <div class="row" style="margin-top: 22px">
 
-                        <div class="col-lg-3 col-md-3"  v-for="(divider,dimension) in getDividerByCat(cat)">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    {{ dimension }}
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 center-block">
-                                            <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="height: 80px">
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 center-block">
-                                            <div class="top1 dragable-img-container">
-                                                <!-- Remove the inline style and use something more responsive -->
-                                                <img draggable="true"
-                                                     class="img canBeDragged center-block img-responsive "
-                                                     :src="divider.imageH"
-                                                     :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,true)"
-                                                     :data-width  = "divider.width-4"
-                                                     :data-height = "divider.length-4"
-                                                     :data-sku = "divider.sku"
-                                                     :data-rotate = "90"
-                                                     :data-key = "dimension"
-                                                     :data-cat = "cat"
-                                                     data-type = "divider"
-                                                     data-orientation = "H"
-                                                     v-show="enoughSpace(divider.width, divider.length )"
-                                                >
+                            <div class="col-lg-3 col-md-3"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        {{ dimension }}
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 center-block">
+                                                <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="height: 80px">
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 center-block">
-                                            <div class="top1 dragable-img-container">
-                                                <!-- Remove the inline style and use something more responsive -->
-                                                <img draggable="true"
-                                                     class="img canBeDragged center-block img-responsive"
-                                                     :src="divider.imageV"
-                                                     :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,false)"
-                                                     :data-width  = "divider.length-4"
-                                                     :data-height = "divider.width-4"
-                                                     :data-sku = "divider.sku"
-                                                     :data-rotate = "0"
-                                                     :data-key = "dimension"
-                                                     :data-cat = "cat"
-                                                     data-type = "divider"
-                                                     data-orientation = "V"
-                                                     v-show="enoughSpace(divider.width, divider.length )"
-                                                >
+                                            <div class="col-lg-4 col-md-4 center-block">
+                                                <div class="top1 dragable-img-container">
+                                                    <!-- Remove the inline style and use something more responsive -->
+                                                    <img draggable="true"
+                                                         class="img canBeDragged center-block img-responsive "
+                                                         :src="divider.imageH"
+                                                         :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,true)"
+                                                         :data-width  = "divider.width-4"
+                                                         :data-height = "divider.length-4"
+                                                         :data-sku = "divider.sku"
+                                                         :data-rotate = "90"
+                                                         :data-key = "dimension"
+                                                         :data-cat = "cat"
+                                                         data-type = "divider"
+                                                         data-orientation = "H"
+                                                         v-show="enoughSpace(divider.width, divider.length )"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 center-block">
+                                                <div class="top1 dragable-img-container">
+                                                    <!-- Remove the inline style and use something more responsive -->
+                                                    <img draggable="true"
+                                                         class="img canBeDragged center-block img-responsive"
+                                                         :src="divider.imageV"
+                                                         :data-defaultdivider= "getDefaultDividerImg(divider,cat,dimension,false)"
+                                                         :data-width  = "divider.length-4"
+                                                         :data-height = "divider.width-4"
+                                                         :data-sku = "divider.sku"
+                                                         :data-rotate = "0"
+                                                         :data-key = "dimension"
+                                                         :data-cat = "cat"
+                                                         data-type = "divider"
+                                                         data-orientation = "V"
+                                                         v-show="enoughSpace(divider.width, divider.length )"
+                                                    >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+
+                        </div>
 
                     </div>
 
-                </div>
 
+                    <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
+                        <div class="row top1">
+                            <div class="col-lg-12">
 
-                <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
-                    <div class="row top1">
-                        <div class="col-lg-12">
+                                <div class="row" >
+                                    <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                        <figure>
+                                            <img :src="variant.textureImg"
+                                                 :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                 class="img center-block img-responsive img-thumbnail"
+                                                 @click="_updateDividerSku( $event );"
+                                                 style="width: 100px;height: 100px"
+                                                 :data-sku="variant.sku"
+                                            >
+                                        </figure>
+                                    </div>
+                                    <div class="col-lg-12" v-if="$store.state.objectWorkingOn.type!='divider'">
+                                        <span class="nodividerselectedmessage"> Devi selezionare almeno un divider</span>
+                                    </div>
+                                </div>
 
-                            <div class="row" >
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" id="bridges-tab"  v-if="$store.state.has_bridge"  class="tab-pane fade in">
+                        <div class="row top1">
+                            <div class="col-lg-12">
+                                <div class="col-lg-12 col-md-12">
+                                    <h3>Finiture ponti</h3>
+                                </div>
+                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" >
                                     <figure>
                                         <img :src="variant.textureImg"
-                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                              class="img center-block img-responsive img-thumbnail"
-                                             @click="_updateDividerSku( $event );"
+                                             @click="_updateBridges( $event );"
                                              style="width: 100px;height: 100px"
                                              :data-sku="variant.sku"
                                         >
                                     </figure>
                                 </div>
-                                <div class="col-lg-12" v-if="$store.state.objectWorkingOn.type!='divider'">
-                                    <span class="nodividerselectedmessage"> Devi selezionare almeno un divider</span>
+                                <div class="col-lg-12 col-md-12">
+                                    <h3>Finiture supporti</h3>
+                                </div>
+                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants">
+                                    <figure>
+                                        <img :src="variant.texture"
+                                             class="img center-block img-responsive img-thumbnail"
+                                             @click="_updateSupports( $event ); "
+                                             style="width: 100px;height: 100px"
+                                             :data-sku="variant.sku"
+                                        >
+                                    </figure>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                    <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
+                        <div class="row top1">
+                            <div class="col-lg-4" id="background" @click='selectBorder( $event );' style="padding:0">
+                                <!-- Egdes -->
+                                    <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
+                                    </div>
+                                    <div :class="['edge', 'edge_left', 'pull-left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
-                <div role="tabpanel" id="bridges-tab"  v-if="$store.state.has_bridge"  class="tab-pane fade in">
-                    <div class="row top1">
-                        <div class="col-lg-12">
-                            <div class="col-lg-12 col-md-12">
-                                <h3>Finiture ponti</h3>
+                                    <div class="pull-left"></div>
+
+                                    <div :class="['edge', 'edge_right', 'pull-right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
+
+                                    <div :class="['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' ></div>
                             </div>
-                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" >
-                                <figure>
-                                    <img :src="variant.textureImg"
-                                         class="img center-block img-responsive img-thumbnail"
-                                         @click="_updateBridges( $event );"
-                                         style="width: 100px;height: 100px"
-                                         :data-sku="variant.sku"
-                                    >
-                                </figure>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <h3>Finiture supporti</h3>
-                            </div>
-                            <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants">
-                                <figure>
-                                    <img :src="variant.texture"
-                                         class="img center-block img-responsive img-thumbnail"
-                                         @click="_updateSupports( $event ); "
-                                         style="width: 100px;height: 100px"
-                                         :data-sku="variant.sku"
-                                    >
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
-                    <div class="row top1">
-                        <div class="col-lg-4" id="background" @click='selectBorder( $event );' style="padding:0">
-                            <!-- Egdes -->
-                                <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
+                            <div class="col-lg-8">
+                                <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                                    <figure>
+                                        <img :src="variant.textureImg"
+                                             class="img center-block img-responsive img-thumbnail"
+                                             @click="_updateBorder( $event );"
+                                             style="width: 100px;height: 100px"
+                                             :data-sku="variant.textureId"
+                                        >
+                                    </figure>
                                 </div>
-                                <div :class="['edge', 'edge_left', 'pull-left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
-
-                                <div class="pull-left"></div>
-
-                                <div :class="['edge', 'edge_right', 'pull-right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
-
-                                <div :class="['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' ></div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
-                                <figure>
-                                    <img :src="variant.textureImg"
-                                         class="img center-block img-responsive img-thumbnail"
-                                         @click="_updateBorder( $event );"
-                                         style="width: 100px;height: 100px"
-                                         :data-sku="variant.textureId"
-                                    >
-                                </figure>
-                            </div>
-                            <div class="col-lg-12 col-md-12"  v-if="$store.state.objectWorkingOn.type!='border'">
-                                DEVI SELEZIONARE UN LATO O IL FONDO
+                                <div class="col-lg-12 col-md-12"  v-if="$store.state.objectWorkingOn.type!='border'">
+                                    DEVI SELEZIONARE UN LATO O IL FONDO
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div> <!-- END tab content -->
+                </div> <!-- END tab content -->
 
+            </div>
         </div>
     </div>
     
     <!-- Buttons row -->
-    <div class="row top2">
+    <div class="row actions-toolbar">
 
         <div class="col-lg-2 col-md-2 pull-right">
             <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>

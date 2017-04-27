@@ -1,7 +1,7 @@
 <template>
 
 <!-- Container -->
-<div class="container-fluid" id="step2">
+<div id="step2">
     
     <!-- User reset advice Modal -->
     <div class="modal fade" id="reset-advice-modal" tabindex="-1" role="dialog" aria-labelledby="">
@@ -21,73 +21,75 @@
         </div>
     </div>
     
-    <!-- Information alert bootstrap alert plugin -->
-    <div class="row top1">
-
-        <!-- Alerts: User Warning -->
-        <div class="col-lg-12" v-show="$store.state.drawertype == 0">
-            <div class="alert alert-warning" role="alert" id="step2-alert-warning">
-                <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
-            </div>
-        </div>
-        
-    </div>
-
-    <div class="row top2">
-
-        <div v-for="( type,category ) in $store.state.drawerTypes">
-
-            <div class="col-lg-4" v-if="type.length == 1">
-
-                <!-- Drawer type -->
-                <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'image_selected' : '' ]" >
-                    <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'.jpg'"
-                         class="img img-responsive img-rounded center-block img-shadow"
-                         :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
-                         @click="setType( type[ 0 ].id )"
-                    />
-                </figure>
-
-            </div>
-                
-            <div class="col-lg-4 col-lg-offset-2" v-else>
-
-                <!-- Drawer category -->
-                <figure :class="[ 'drawer-container', 'text-center', ( 1 == $store.state.drawer_type_category ) ? 'image_selected' : '' ]">
-                    <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
-                    <img :src="'/images/drawers/'+category.toLowerCase()+'.jpg'"
-                         class="img img-responsive img-rounded center-block img-shadow img-desaturate"
-                         @click="setDrawerTypeCategory( 1 )"
-                    />
-                </figure>
-
-            </div>
-        </div>
-
-    </div>
+    <div id="step2-content" class="container-flex content-flex-scrollable content-flex-padding">
     
-    <transition name="fade">
-      <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
+      <!-- Information alert bootstrap alert plugin -->
+      <div class="row top1">
 
-          <div class="col-lg-4" v-for="ctype in type">
+          <!-- Alerts: User Warning -->
+          <div class="col-lg-12" v-show="$store.state.drawertype == 0">
+              <div class="alert alert-warning" role="alert" id="step2-alert-warning">
+                  <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
+              </div>
+          </div>
+          
+      </div>
 
-              <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
-                  <figcaption> {{ ctype.description | translate}} </figcaption>
-                  <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.jpg'"
-                       class="img img-responsive center-block img-shadow "
-                       :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
-                       @click="setType( ctype.id )"
-                  />
-              </figure>
+      <div class="row top2">
 
+          <div v-for="( type,category ) in $store.state.drawerTypes">
+
+              <div class="col-lg-4" v-if="type.length == 1">
+
+                  <!-- Drawer type -->
+                  <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'image_selected' : '' ]" >
+                      <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
+                      <img :src="'/images/drawers/'+category.toLowerCase()+'.jpg'"
+                           class="img img-responsive img-rounded center-block img-shadow"
+                           :class="{ 'img-desaturate': ( type[ 0 ].id != $store.state.drawertype ) }"
+                           @click="setType( type[ 0 ].id )"
+                      />
+                  </figure>
+
+              </div>
+                  
+              <div class="col-lg-4 col-lg-offset-2" v-else>
+
+                  <!-- Drawer category -->
+                  <figure :class="[ 'drawer-container', 'text-center', ( 1 == $store.state.drawer_type_category ) ? 'image_selected' : '' ]">
+                      <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
+                      <img :src="'/images/drawers/'+category.toLowerCase()+'.jpg'"
+                           class="img img-responsive img-rounded center-block img-shadow img-desaturate"
+                           @click="setDrawerTypeCategory( 1 )"
+                      />
+                  </figure>
+
+              </div>
           </div>
 
       </div>
-    </transition>
+      
+      <transition name="fade">
+        <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
 
+            <div class="col-lg-4" v-for="ctype in type">
+
+                <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
+                    <figcaption> {{ ctype.description | translate}} </figcaption>
+                    <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.jpg'"
+                         class="img img-responsive center-block img-shadow "
+                         :class="{ 'img-desaturate': ( ctype.id != $store.state.drawertype ) }"
+                         @click="setType( ctype.id )"
+                    />
+                </figure>
+
+            </div>
+
+        </div>
+      </transition>
+    </div>
     <!-- Navigation row -->
-    <div class="row top5">
+    <div class="row actions-toolbar">
     
         <!-- Prev button -->
         <div class="col-md-2 pull-left">
