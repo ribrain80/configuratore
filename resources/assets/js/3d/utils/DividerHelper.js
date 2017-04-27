@@ -193,11 +193,12 @@ export default class DividerHelper {
                 // # Change background dimension
                 //let bbox = new THREE.Box3().setFromObject( obj3d );
 
-                let elementZ = 20;  //bbox.max.z - bbox.min.z;
+                let elementZS = 20;  //bbox.max.z - bbox.min.z della sponda laterale
+                let elementZ = 18;  //bbox.max.z - bbox.min.z della sponda laterale
                 let elementH = 150; //bbox.max.y - bbox.min.y;
                 let elementW = 600; // (bbox.max.x - bbox.min.x)
-                let extendedW = w + 2 * elementZ;  // 2 volte lo spessore della sponda
-                let extendedH = h + elementZ - yDeltaCorrection;  // yDeltaCorrection è negativo 
+                let extendedW = w + 2 * elementZS;  // 2 volte lo spessore della sponda
+                let extendedH = h + elementZ - yDeltaCorrection;  // yDeltaCorrection è negativo
                 let coeffW = extendedW / elementW;
                 let coeffH = extendedH / elementH;
 
@@ -211,31 +212,71 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
 
-            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj',this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                let elementL = 500; //(bbox.max.z - bbox.min.z);
+                let elementH = 120; //(bbox.max.y - bbox.min.y);
+                let elementZ = 18;  //(bbox.max.x - bbox.min.x);
+
+
+                let extendedH = h - 8  - yDeltaCorrection;  // yDeltaCorrection è negativo il secondo termine è empirico
+                let coeffH = extendedH / (bbox.max.y - bbox.min.y);
+                let coeffL = l / elementL;
+
+                obj3d.scale.set(1,coeffH,coeffL);
                 obj3d.updateMatrix();
-                obj3d.position.x = 0;
+                obj3d.position.x = -elementZ/2;
                 obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l/2 ;
+                obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
 
-            this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
+            this.objLoader.loadModel("right",'/images/3dmodels/legno/sx.obj',this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                let elementL = 500; //(bbox.max.z - bbox.min.z);
+                let elementH = 120; //(bbox.max.y - bbox.min.y);
+                let elementZ = 18;  //(bbox.max.x - bbox.min.x);
+
+
+                let extendedH = h - 8  - yDeltaCorrection;  // yDeltaCorrection è negativo il secondo termine è empirico
+                let coeffH = extendedH / (bbox.max.y - bbox.min.y);
+                let coeffL = l / elementL;
+
+                obj3d.scale.set(1,coeffH,coeffL);
                 obj3d.updateMatrix();
-                obj3d.position.x = w;
+                obj3d.position.x = w + elementZ/2;
                 obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l/2 ;
+                obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
+
+           /* this.objLoader.loadModel("right",'/images/3dmodels/legno/sx.obj',this.defaultMaterial).then((obj3d) => {
+                // # Change background dimension
+                //let bbox = new THREE.Box3().setFromObject( obj3d );
+                let elementL = 500; //(bbox.max.z - bbox.min.z);
+                let elementH = 120; //(bbox.max.y - bbox.min.y);
+                let elementZ = 18;  //(bbox.max.x - bbox.min.x);
+
+
+                let extendedH = h  - yDeltaCorrection;  // yDeltaCorrection è negativo
+                let coeffH = extendedH / elementH;
+                let coeffL = l / elementL;
+
+                obj3d.scale.set(1,coeffH,coeffL);
+                obj3d.updateMatrix();
+                obj3d.position.x = w + elementZ/2;
+                obj3d.position.y = yDeltaCorrection;
+                obj3d.position.z = l/2 + zDeltaCorrection;
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });*/
 
 
         } else {
