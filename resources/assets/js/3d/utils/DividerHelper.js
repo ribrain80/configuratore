@@ -44,7 +44,7 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
             }
             obj3d.castShadow = true;
-            obj3d.receiveShadow = false;
+            obj3d.receiveShadow = true;
 
             this.drawer.add(obj3d);
         });
@@ -155,6 +155,9 @@ export default class DividerHelper {
             obj3d.position.y = 0;
             obj3d.position.z = l/2 + zDeltaCorrection;
             obj3d.updateMatrix();
+            // # Shadow
+            obj3d.castShadow = true;
+            obj3d.receiveShadow = true;
             // # Add background to the scene
             this.drawer.add(obj3d);
         });
@@ -178,14 +181,14 @@ export default class DividerHelper {
             obj3d.position.y = yDeltaCorrection;
             obj3d.position.z = zDeltaCorrection - elementZ/2 ;
             obj3d.updateMatrix();
+            // # Shadow
+            obj3d.castShadow = true;
+            obj3d.receiveShadow = true;
             // # Add background to the scene
             this.drawer.add(obj3d);
 
             console.log("Drawer - added front element");
         });
-
-
-
 
         if (type == 4) {
             // # DrawerType = 4 @todo: Calcolare H
@@ -208,6 +211,9 @@ export default class DividerHelper {
                 obj3d.position.y = yDeltaCorrection;
                 obj3d.position.z = l -2;   // Correction for model error
                 obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
@@ -230,6 +236,9 @@ export default class DividerHelper {
                 obj3d.position.y = yDeltaCorrection;
                 obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
@@ -252,6 +261,9 @@ export default class DividerHelper {
                 obj3d.position.y = yDeltaCorrection;
                 obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
@@ -294,6 +306,9 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
@@ -311,6 +326,9 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
@@ -326,183 +344,12 @@ export default class DividerHelper {
                 obj3d.position.y = 0;
                 obj3d.position.z = l/2 + zDeltaCorrection;
                 obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
                 // # Add background to the scene
                 this.drawer.add(obj3d);
             });
-
-
-
-
-        }
-
-
-
-
-
-        //let drawer = false;
-        if (type ==4) {
-
-
-            // # start loading and placing the background
-            // # ugly hack ... i dont know why i need a texture at the first init
-
-
-
-            /*this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
-                // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
-                obj3d.updateMatrix();
-                obj3d.position.x = w/2;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l ;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });
-
-
-            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
-                // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
-                obj3d.updateMatrix();
-                obj3d.position.x = w/2;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = zDeltaCorrection ;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });
-
-            this.objLoader.loadModel("left",'/images/3dmodels/legno/sx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
-                // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-                obj3d.updateMatrix();
-                obj3d.position.x = 0;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l/2 ;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });
-
-            this.objLoader.loadModel("right",'/images/3dmodels/legno/dx.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
-                // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-                obj3d.updateMatrix();
-                obj3d.position.x = w;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = l/2 ;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });*/
-
-
-
-        } else {/*
-            // # Empiric z correction
-            zDeltaCorrection = -10;
-            // # Here the lineabox Drawers
-            // # switch depending on h
-            let backgroundModel = false;
-            let dxModel = false;
-            let sxModel = false;
-            let backModel = false;
-            console.log("H in switch: ",h);
-            h = parseFloat(h);
-            switch (h) {
-                case 45.5:
-                    console.log("QUIIIII");
-                    // # SPONDA BASSA
-                    backgroundModel = '/images/3dmodels/lineabox/basso/' + type + '/background.obj';
-                    dxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    sxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
-                    break;
-                case 72:
-                    // # SPONDA MEDIA
-                    backgroundModel = '/images/3dmodels/lineabox/medio/' + type + '/background.obj';
-                    dxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    sxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
-                    break;
-                case 148.0:
-                    backgroundModel = '/images/3dmodels/lineabox/alto/' + type + '/background.obj';
-                    dxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    sxModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
-                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
-                    break;
-            }
-
-
-
-            if (dxModel) {
-                this.objLoader.loadModel("right",dxModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
-                   let bbox = new THREE.Box3().setFromObject( obj3d );
-                    obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-                    obj3d.updateMatrix();
-                    obj3d.position.x = w;
-                    obj3d.position.y = 0;
-                    obj3d.position.z = l/2 ;
-                    obj3d.updateMatrix();
-                    // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });
-            }
-
-            if (sxModel) {
-                this.objLoader.loadModel("left",sxModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
-                    let bbox = new THREE.Box3().setFromObject( obj3d );
-                    obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-                    obj3d.updateMatrix();
-                    obj3d.position.x = 0;
-                    obj3d.position.y = 0;
-                    obj3d.position.z = l/2 ;
-                    obj3d.updateMatrix();
-                    obj3d.rotateY(Math.PI);
-                    obj3d.updateMatrix();
-                    // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });
-            }
-
-            if (backModel) {
-                this.objLoader.loadModel("back",backModel,'/images/textures/02_Acero.jpg').then((obj3d) => {
-                    // # Change background dimension
-                    let bbox = new THREE.Box3().setFromObject( obj3d );
-                    obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
-                    obj3d.updateMatrix();
-                    obj3d.position.x = w/2;
-                    obj3d.position.y = 0;
-                    obj3d.position.z = l ;
-                    obj3d.updateMatrix();
-                    // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });
-            }
-
-            // Rimosso in attesa di modello !!!!!
-
-            this.objLoader.loadModel("front",'/images/3dmodels/legno/front.obj','/images/textures/02_Acero.jpg').then((obj3d) => {
-                // # Change background dimension
-                let bbox = new THREE.Box3().setFromObject( obj3d );
-                let zDeltaCorrection = -21;
-                let yDeltaCorrection = -35;
-                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
-                obj3d.updateMatrix();
-                obj3d.position.x = w/2;
-                obj3d.position.y = yDeltaCorrection;
-                obj3d.position.z = zDeltaCorrection ;
-                obj3d.updateMatrix();
-                // # Add background to the scene
-                this.drawer.add(obj3d);
-            });*/
-
-
         }
     }
 
