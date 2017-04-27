@@ -133,6 +133,10 @@ export default class DividerHelper {
             return;
         }
 
+        //# Lineabox 3 and 4 sides behave in the same way
+
+        type = (type==1)?2:type;
+
         // # This value correct the divider offset
         let zDeltaCorrection = -12;
         let yDeltaCorrection = -35;
@@ -165,6 +169,97 @@ export default class DividerHelper {
             // # Add background to the scene
             this.drawer.add(obj3d);
         });
+
+
+
+        if (type == 4) {
+            // # DrawerType = 4 @todo: Calcolare H
+            this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj',this.defaultMaterial).then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                let extendedW = w + 40;
+                obj3d.scale.set(Math.abs(extendedW / (bbox.max.x - bbox.min.x)),1,1);
+                obj3d.updateMatrix();
+                obj3d.position.x = w/2;
+                obj3d.position.y = yDeltaCorrection;
+                obj3d.position.z = l -2;   // Correction for model error
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+        } else {
+            h = parseFloat(h);
+            let backModel = false;
+            let sideModel = false;
+            let sxModel = false;
+            switch (h) {
+                case 45.5:
+                    // # SPONDA BASSA
+                    sideModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    backModel = '/images/3dmodels/lineabox/basso/' + type + '/back.obj';
+                    break;
+                case 72:
+                    // # SPONDA MEDIA
+                    sideModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    backModel = '/images/3dmodels/lineabox/medio/' + type + '/back.obj';
+                    break;
+                case 148.0:
+                    sideModel = '/images/3dmodels/lineabox/alto/' + type + '/dx.obj';
+                    backModel = '/images/3dmodels/lineabox/alto/' + type + '/back.obj';
+                    break;
+            }
+
+            this.objLoader.loadModel("back",backModel,this.defaultMaterial).then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,1);
+                obj3d.updateMatrix();
+                obj3d.position.x = w/2;
+                obj3d.position.y = 0;
+                obj3d.position.z = l ;
+                obj3d.updateMatrix();
+                obj3d.rotateY(Math.PI);
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+            this.objLoader.loadModel("left",sideModel,this.defaultMaterial).then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = 0;
+                obj3d.position.y = 0;
+                obj3d.position.z = l/2 ;
+                obj3d.updateMatrix();
+                obj3d.rotateY(Math.PI);
+                obj3d.updateMatrix();
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+            this.objLoader.loadModel("right",sideModel,this.defaultMaterial).then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = w;
+                obj3d.position.y = 0;
+                obj3d.position.z = l/2 ;
+                obj3d.updateMatrix();
+
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+
+
+
+        }
+
+
+
 
 
         //let drawer = false;
