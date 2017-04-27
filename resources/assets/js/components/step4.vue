@@ -1659,7 +1659,11 @@ export default {
          */
         back2Bridge: function () {
             
+            // # Hide back advice modal
             $( "#reset-advice-modal" ).modal( 'hide' );
+
+            // # Clear all dividers ( 3d )
+            this.$store.dispatch( "remove3dAllDividers" );
 
             // # Take the user back
             this.$router.push({ path: '/split/stepponte' });
