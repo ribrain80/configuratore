@@ -739,13 +739,8 @@ const  mutations = {
 
     changeSupportSku: function (state,payload) {
         console.log("Changing support sku");
-        let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[456]:state.supportTypes[898];
-        let supportsByCategoryItems = supportsByCategory['items'];
-        let itemToPutIn = supportsByCategoryItems.filter((item)=> {
-            return (item.sku==payload);
-        });
         state.bridge_supports_selected = state.bridge_supports_selected.map((item) => {
-            return itemToPutIn[0];
+            return payload;
         });
     },
 

@@ -191,6 +191,22 @@ const store = new Vuex.Store({
             );
         },
 
+
+        update3dSupportTexture: function ({ commit,state }, sku) {
+            let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[455]:state.supportTypes[900];
+            let supportsByCategoryItems = supportsByCategory['items'];
+            let itemToPutIn = supportsByCategoryItems.filter((item)=> {
+                return (item.sku==sku);
+            });
+            let newObj = itemToPutIn[0];
+
+            state.dividerHelper.updateSupportsTexture(newObj.texture);
+
+            // # Change into the store
+            commit('changeSupportSku',newObj);
+
+        },
+
         genDrawer: function ({ commit,state }, type) {
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
             console.log("Added Drawer of type:",type);
