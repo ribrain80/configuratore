@@ -204,23 +204,121 @@
                     <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
                         <div class="row top1">
                             <div class="col-lg-12">
-
-                                <div class="row" >
-                                    <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getDividerVariants" v-if="$store.state.objectWorkingOn.type=='divider'">
-                                        <figure>
-                                            <img :src="variant.textureImg"
-                                                 :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
-                                                 class="img center-block img-responsive img-thumbnail"
-                                                 @click="_updateDividerSku( $event );"
-                                                 style="width: 100px;height: 100px"
-                                                 :data-sku="variant.sku"
-                                            >
-                                        </figure>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sx-4">
+                                        <h3 class="divider_tab_group_level_1">Velvet</h3>
+                                        <div class="row divider_tab_group_level_2">
+                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                                <h4>Fullcolor</h4>
+                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsVelvetFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                    <figure>
+                                                        <img :src="variant.textureImg"
+                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                             class="img center-block img-responsive img-thumbnail"
+                                                             @click="_updateDividerSku( $event );"
+                                                             style="width: 100px;height: 100px"
+                                                             :data-sku="variant.sku"
+                                                        >
+                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divider_tab_group_level_2">
+                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                                <h4>Dark Core</h4>
+                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsVelvetDark" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                    <figure>
+                                                        <img :src="variant.textureImg"
+                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                             class="img center-block img-responsive img-thumbnail"
+                                                             @click="_updateDividerSku( $event );"
+                                                             style="width: 100px;height: 100px"
+                                                             :data-sku="variant.sku"
+                                                        >
+                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-12" v-if="$store.state.objectWorkingOn.type!='divider'">
-                                        <span class="nodividerselectedmessage"> Devi selezionare almeno un divider</span>
+                                    <div class="col-lg-4 col-md-4 col-sx-4">
+                                        <h3 class="divider_tab_group_level_1">Legno</h3>
+                                        <div class="row divider_tab_group_level_2">
+                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                                <h4>Fullcolor</h4>
+                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                    <figure>
+                                                        <img :src="variant.textureImg"
+                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                             class="img center-block img-responsive img-thumbnail"
+                                                             @click="_updateDividerSku( $event );"
+                                                             style="width: 100px;height: 100px"
+                                                             :data-sku="variant.sku"
+                                                        >
+                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divider_tab_group_level_2">
+                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                                <h4>Dark Core</h4>
+                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsLegnoDark" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                    <figure>
+                                                        <img :src="variant.textureImg"
+                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                             class="img center-block img-responsive img-thumbnail"
+                                                             @click="_updateDividerSku( $event );"
+                                                             style="width: 100px;height: 100px"
+                                                             :data-sku="variant.sku"
+                                                        >
+                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sx-4">
+                                        <h3 class="divider_tab_group_level_1">Spazzolato</h3>
+                                        <div class="row divider_tab_group_level_2">
+                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                                <h4>Fullcolor</h4>
+                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                    <figure>
+                                                        <img :src="variant.textureImg"
+                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                             class="img center-block img-responsive img-thumbnail"
+                                                             @click="_updateDividerSku( $event );"
+                                                             style="width: 100px;height: 100px"
+                                                             :data-sku="variant.sku"
+                                                        >
+                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divider_tab_group_level_2">
+                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                                <h4>Dark Core</h4>
+                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsInoxDark" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                    <figure>
+                                                        <img :src="variant.textureImg"
+                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
+                                                             class="img center-block img-responsive img-thumbnail"
+                                                             @click="_updateDividerSku( $event );"
+                                                             style="width: 100px;height: 100px"
+                                                             :data-sku="variant.sku"
+                                                        >
+                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -1708,7 +1806,11 @@ export default {
             });
 
             return out;
-        }
+        },
+
+
+
+
 
     },
 

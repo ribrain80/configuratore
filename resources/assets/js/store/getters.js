@@ -116,6 +116,42 @@ const  getters = {
         return [];
     },
 
+    getDividerVariantsVelvetFull: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Neutro";
+        });
+    },
+
+    getDividerVariantsVelvetDark: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Neutro";
+        });
+    },
+
+    getDividerVariantsLegnoFull: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Legno";
+        });
+    },
+
+    getDividerVariantsLegnoDark: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Legno";
+        });
+    },
+
+    getDividerVariantsInoxFull: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Spazzolata (inox)";
+        });
+    },
+
+    getDividerVariantsInoxDark: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Spazzolata (inox)";
+        });
+    },
+
 
 
     /**
