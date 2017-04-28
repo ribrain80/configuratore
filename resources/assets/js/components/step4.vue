@@ -330,20 +330,110 @@
                                 <div class="col-lg-12 col-md-12">
                                     <h3>Finiture ponti</h3>
                                 </div>
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getBridgesVariants" >
-                                    <figure>
-                                        <img :src="variant.textureImg"
-                                             class="img center-block img-responsive img-thumbnail"
-                                             @click="_updateBridges( $event );"
-                                             style="width: 100px;height: 100px"
-                                             :data-sku="variant.sku"
-                                        >
-                                    </figure>
+
+                                <div class="col-lg-4 col-md-4">
+                                    <h3> Velvet</h3>
+                                    <div class="row">
+                                        <h4>Fullcolor</h4>
+                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsVelvetFull" >
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>{{ variant.color}}</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h4>Dark core</h4>
+                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsVelvetDark" >
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>{{ variant.color}}</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <h3> Legno</h3>
+                                    <div class="row">
+                                        <h4>Fullcolor</h4>
+                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>{{ variant.color}}</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h4>Dark core</h4>
+                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsLegnoDark" >
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>{{ variant.color}}</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <h3> Spazzolato</h3>
+                                    <div class="row">
+                                        <h4>Fullcolor</h4>
+                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>{{ variant.color}}</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h4>Dark core</h4>
+                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsInoxDark" >
+                                            <figure>
+                                                <img :src="variant.textureImg"
+                                                     class="img center-block img-responsive img-thumbnail"
+                                                     @click="_updateBridges( $event );"
+                                                     style="width: 100px;height: 100px"
+                                                     :data-sku="variant.sku"
+                                                >
+                                                <figcaption>{{ variant.color}}</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
                                 <div class="col-lg-12 col-md-12">
                                     <h3>Finiture supporti</h3>
                                 </div>
-                                <div class="col-lg-1 col-md-1" v-for="variant in $store.getters.getSupportsVariants">
+                                <div class="col-lg-2 col-md-2"></div>
+                                <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getSupportsVariants">
                                     <figure>
                                         <img :src="variant.texture"
                                              class="img center-block img-responsive img-thumbnail"
