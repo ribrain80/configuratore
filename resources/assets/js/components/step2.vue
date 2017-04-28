@@ -21,7 +21,7 @@
         </div>
     </div>
     
-    <div id="step2-content" class="container-flex content-flex-scrollable content-flex-padding">
+    <div id="step2-content" class="content-flex content-flex-scrollable content-flex-padding">
     
       <!-- Information alert bootstrap alert plugin -->
       <div class="row top1">
@@ -39,7 +39,7 @@
 
           <div v-for="( type,category ) in $store.state.drawerTypes">
 
-              <div class="col-lg-4" v-if="type.length == 1">
+              <div class="col-lg-4 col-md-4 col-sm-4" v-if="type.length == 1">
 
                   <!-- Drawer type -->
                   <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'image_selected' : '' ]" >
@@ -53,7 +53,7 @@
 
               </div>
                   
-              <div class="col-lg-4 col-lg-offset-2" v-else>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" v-else>
 
                   <!-- Drawer category -->
                   <figure :class="[ 'drawer-container', 'text-center', ( 1 == $store.state.drawer_type_category ) ? 'image_selected' : '' ]">
@@ -72,7 +72,7 @@
       <transition name="fade">
         <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
 
-            <div class="col-lg-4" v-for="ctype in type">
+            <div class="col-lg-4 col-md-4 col-sm-4" v-for="ctype in type">
 
                 <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
                     <figcaption> {{ ctype.description | translate}} </figcaption>

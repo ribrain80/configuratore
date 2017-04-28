@@ -60,7 +60,7 @@
         </div>
     </div>
     
-    <div id="step4-content" class="container-flex content-flex-scrollable content-flex-padding">
+    <div id="step4-content" class="content-flex content-flex-scrollable content-flex-padding">
         <!-- Select All - trash bin row -->
         <div class="row top1">
             <div class="col-lg-5 col-md-5 pull-left" >

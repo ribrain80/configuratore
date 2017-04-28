@@ -3,7 +3,7 @@
 <!-- Container -->
 <div id="step-ponte">  
 
-    <div id="step-ponte-content" class="container-flex content-flex-scrollable content-flex-padding">
+    <div id="step-ponte-content" class="content-flex content-flex-scrollable content-flex-padding">
         
         <!-- Orientation section -->
         <div class="row top2" >

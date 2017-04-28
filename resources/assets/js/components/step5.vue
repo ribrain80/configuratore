@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div id="step5-content" class="container-flex content-flex-scrollable content-flex-padding">
+    <div id="step5-content" class="content-flex content-flex-scrollable content-flex-padding">
     	<!-- Container -->
         <div class="row" >
 

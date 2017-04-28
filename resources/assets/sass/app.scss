@@ -59,6 +59,20 @@ strong, .component-header, .ha-lineabox, .limit-helper {
 }
 
 .actions-toolbar {
+  position: absolute;
+  bottom: 84px;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px 10px #fff;
+  z-index: 10;
   padding: 12px 15px 0px 15px;
 }
 
@@ -77,21 +91,55 @@ strong, .component-header, .ha-lineabox, .limit-helper {
 }
 
 #step1 > .row:first-of-type {
+  display: flex;
   margin-right: -15px;
+}
+#step1 .actions-toolbar {
+  max-width: 95%;
+}
+
+.content.flexer {
+  height: 100%;  
+}
+
+.app-nav + div {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 74px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  height: 100%;
+  flex-direction: column;
 }
 
 .content-flex {
-  display: flex;
   flex-direction: column;
 }
 .content-flex-scrollable {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 80vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 128px;
+  padding: 0 16px;
+  overflow: auto;
 }
 .content-flex-padding {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+#step1-content, 
+#step2-content, 
+#step3-content,
+#step-ponte-content,
+#step4-content,
+#step5-content{
+  overflow-x: hidden;
 }
 
 #step1-content {
@@ -646,14 +694,8 @@ html, body, .container-fluid, .wrapper {
   height: 74px;
 }
 
-.router-links li.reached a{
-  color:green;
-  font-weight: 700;
-}
-
-.router-links li.reached a:hover {
-  color:green;
-  font-weight: 700;
+.router-links li.reached a, .router-links li.reached a:hover {
+  color:#aaa ;
 }
 
 .router-links li a{
@@ -663,16 +705,6 @@ html, body, .container-fluid, .wrapper {
 
 .router-links li a:hover {
   color:#aaa ;
-}
-
-.router-link-active {
-  color:#f04f1a !important;
-  font-weight: 700;
-}
-
-.router-link-active:hover {
-  color:#f04f1a !important;
-  font-weight: 700;
 }
 
 
@@ -713,16 +745,16 @@ html, body, .container-fluid, .wrapper {
 }
 
 .navigator .pointer-navigator {
-  display: block;
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 20px;
-  background-color: #f04f1a;
-  margin-top: 16px;
-  left: 17px;
-  z-index: 3;
-  transition: all .3s;
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 17px;
+    background-color: #f04f1a;
+    margin-top: 12px;
+    left: 15px;
+    z-index: 3;
+    transition: all .2s;
 }
 
 .navigator .pointer-navigator.reached {
@@ -736,16 +768,19 @@ html, body, .container-fluid, .wrapper {
 .navigator #nav li:before {
     content: "";
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border: 2px solid #aaaaaa;
     border-radius: 18px;
     position: absolute;
-    top: 12px;
-    left: -27px;
+    top: 8px;
+    left: -29px;
     background: #eeeeee;
     z-index: 2;
-    transition: all .2s
+    transition: all .2s;
+}
+.navigator #nav li.current-step {
+  color: #555;
 }
 .navigator #nav li.current-step:before {
   border: 2px solid #f04f1a;
@@ -776,9 +811,8 @@ html, body, .container-fluid, .wrapper {
     z-index: 1;
 }
 
-.navigator #nav li:hover::before {
+.navigator #nav li:hover::before, .navigator #nav li.current-step::before{
   transform: scale(1.1);
-  cursor: pointer;
 }
 
 .navigator #nav li:last-child:after {
@@ -949,7 +983,7 @@ img.rotate90 {
     cursor: default;
   }
 
-  // SIZE
+  // SIZE - Begin
 
   .content-size {
     display: flex;
@@ -1013,18 +1047,15 @@ img.rotate90 {
     margin-top: 20px;
     border-radius: 0;
   }
-
-
   .text-success {
     color: #33ae73 !important;
   }
-
   .text-danger {
       color: #f04f1a !important;
   }
 
+  // SIZE - Finish
 
-  // SIZE
 
 /***
 GALLERY REWRITE

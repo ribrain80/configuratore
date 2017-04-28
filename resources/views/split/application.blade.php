@@ -54,7 +54,7 @@
 
         <div class="row wrapper">
             <sidebar></sidebar>
-            <div class="col-md-10 col-lg-10 content ">
+            <div class="col-md-10 col-lg-10 content flexer">
                 <appnavbar></appnavbar>
                 <transition name="fade">
                     <router-view></router-view>

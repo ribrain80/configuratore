@@ -100,6 +100,16 @@
         mounted() {
 
             let $nav = $(".navigator #nav").find("li");
+            $(window).on("resize",function() {
+                let pos = 0;
+                let $pointer = $(".navigator .pointer-navigator");
+                let $active = $nav.find("a.router-link-active");
+                let $parentActive = $active.parent("li");
+               
+                pos = parseInt($parentActive.position().top);
+                $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+            });
+
             $nav.on("mouseenter mouseleave click",function(e) {
                 let pos = 0;
                 let $pointer = $(".navigator .pointer-navigator");
@@ -111,13 +121,11 @@
                 pos = parseInt($(this).position().top);
 
                 if(isReached) $pointer.addClass("reached");
-                if(isCurrStepReached) $pointer.removeClass("reached");
-                
+                if(isCurrStepReached) $pointer.removeClass("reached");                
                 if(e.type === "mouseleave") {
                     pos = parseInt($parentActive.position().top);
                     $pointer.removeClass("reached");   
                 } 
-                
                 if(isReached)
                     $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
                 

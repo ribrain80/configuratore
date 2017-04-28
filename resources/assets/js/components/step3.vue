@@ -3,7 +3,7 @@
 <!-- Container -->
 <div id="step3">
 
-      <div id="step3-content" class="container-flex content-flex-scrollable content-flex-padding">
+      <div id="step3-content" class="content-flex content-flex-scrollable content-flex-padding">
 
         <!-- Alerts: User Warning -->
         <div class="row top1" style="display:none;">
