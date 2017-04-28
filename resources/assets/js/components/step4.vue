@@ -236,7 +236,7 @@
                                                              style="width: 100px;height: 100px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -273,7 +273,7 @@
                                                              style="width: 100px;height: 100px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -310,7 +310,7 @@
                                                              style="width: 100px;height: 100px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -357,7 +357,7 @@
                                                      style="width: 100px;height: 100px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}}</figcaption>
+                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -388,7 +388,7 @@
                                                      style="width: 100px;height: 100px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}}</figcaption>
+                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -419,7 +419,7 @@
                                                      style="width: 100px;height: 100px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}}</figcaption>
+                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -492,7 +492,7 @@
             <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 
-        <div class="col-lg-2 col-md-2 pull-right">
+        <div class="col-lg-2 col-md-2 pull-left">
             <button to="/split/stepponte"  @click="backAdvice()" class="btn btn-danger btn-back">{{ 'back' | translate }}</button>
         </div>
 
