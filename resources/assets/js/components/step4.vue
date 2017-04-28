@@ -1667,6 +1667,9 @@ export default {
             // # Clear all dividers ( 3d )
             this.$store.dispatch( "remove3dAllDividers" );
 
+            // # Clear all borders
+            this.$store.commit( "clearDrawerBorders" );
+
             // # Take the user back
             this.$router.push({ path: '/split/stepponte' });
         },
