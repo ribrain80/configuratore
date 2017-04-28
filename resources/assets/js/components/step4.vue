@@ -945,7 +945,7 @@ export default {
             // # Loop through the canvas objects
             var objs = this.canvas.getObjects().map( ( o )  => {
                 o.setStrokeWidth( 2 );
-                o.setStroke( "#00b200" );
+                o.setStroke( "#cccccc" );
                 o.set( 'active', false );  
 
             }); 
@@ -968,7 +968,7 @@ export default {
 
                     case true:
                         o.setStrokeWidth( 2 );
-                        o.setStroke( "#00b200" );
+                        o.setStroke( "#cccccc" );
                         o.set( 'active', false );
                     break;
 
@@ -1152,7 +1152,7 @@ export default {
                         console.log( "NO COLLISION" );
                         
                         // # Set standard stroke
-                        activeObj.setStroke( "#00b200" );
+                        activeObj.setStroke( "#cccccc" );
                         activeObj.setStrokeWidth( 2 );
                         activeObj.dirtystate = false;
                         this.canvas.renderAll(); 
@@ -1179,7 +1179,7 @@ export default {
                         });
 
                         if( !actuallyCollides ) {
-                            obj.setStroke( "#00b200" );
+                            obj.setStroke( "#cccccc" );
                             obj.setStrokeWidth( 2 );
                             obj.dirtystate = false;
                             this.canvas.renderAll();                             
@@ -1589,7 +1589,7 @@ export default {
 
                 // # borders off
                 oImg.hasBorders  = true;
-                oImg.setStroke( "#00b200" );
+                oImg.setStroke( "#cccccc" );
                 oImg.setStrokeWidth( 2 );
 
                 // # Pixel precision
@@ -1651,7 +1651,7 @@ export default {
 
                     if( !this.dirtystate ) {
                         this.setStrokeWidth( 2 ); 
-                        this.setStroke( "#00b200" ); 
+                        this.setStroke( "#cccccc" ); 
                     }
                 });
 
