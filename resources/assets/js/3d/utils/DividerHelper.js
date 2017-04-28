@@ -266,21 +266,21 @@ export default class DividerHelper {
             h = parseFloat(h);
             let backModel = false;
             let sideModel = false;
-            let sxModel = false;
+            let _backPath = (type==3)?"plain":"withsupport";
             switch (h) {
                 case 45.5:
                     // # SPONDA BASSA
                     sideModel = '/images/3dmodels/lineabox/sides/low.obj';
-                    backModel = '/images/3dmodels/lineabox/backs/low.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'/low.obj';
                     break;
                 case 72:
                     // # SPONDA MEDIA
                     sideModel = '/images/3dmodels/lineabox/sides/medium.obj';
-                    backModel = '/images/3dmodels/lineabox/backs/medium.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'medium.obj';
                     break;
                 case 148.0:
                     sideModel = '/images/3dmodels/lineabox/sides/high.obj';
-                    backModel = '/images/3dmodels/lineabox/backs/high.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'high.obj';
                     break;
             }
 
