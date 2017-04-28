@@ -36,41 +36,38 @@ elixir(function(mix) {
     mix.copy('./resources/images', 'public/images');
     mix.copy('./resources/pdf/brochure.pdf', 'public/pdf/brochure.pdf');
     mix.copy( paths.pace + 'themes/orange/**', 'public/css');
-    mix.copy( paths.lightgallery + 'css/lightgallery.min.css', 'public/css');
+    mix.copy( paths.lightgallery + 'css/lightgallery.css', 'public/css');
     mix.copy( paths.lightgallery + 'img/**', 'public/img');
     mix.copy( paths.lightgallery + 'fonts/**', 'public/fonts');
-    mix.copy( paths.material + 'css/**', 'public/css');
-    mix.copy( paths.material + 'js/**', 'public/js');
     mix.copy( paths.fabric + 'fabric.js', 'public/js/lib/fabric');
 
 
     // Salice Fonts
     mix.copy('./resources/assets/salicefonts/**', 'public/salicefonts' );
 
-
-
     //Compile scss and build vendor.js
     mix.sass("app.scss", 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
-            paths.jquery + "jquery.min.js",
+            paths.jquery + "jquery.js",
             paths.two + "two.js",
-            paths.pace + "pace.min.js",
-            paths.lightgallery + "js/lightgallery.min.js",
-            paths.lightgallerythumb + "lg-thumbnail.min.js",
+            paths.pace + "pace.js",
+            paths.lightgallery + "js/lightgallery.js",
+            paths.lightgallerythumb + "lg-thumbnail.js",
         ], 'public/js/vendor.js', './');
 
     //Join css and scripts
     mix.styles([
         'public/css/pace-theme-big-counter.css',
-        'public/css/lightgallery.min.css',
+        'public/css/lightgallery.css',
         'public/css/app.css'
     ], 'public/css/split.css', './');
+
+    // Combine vendor and app js
     mix.scripts(['public/js/vendor.js','public/js/app.js'],'public/js/split.js','./');
 
     //Versiong files
 
-    //mix.version('public/css/split.css');
     mix.version(['public/css/split.css', 'public/js/split.js']);
 
 });
