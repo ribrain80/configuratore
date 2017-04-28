@@ -1085,10 +1085,48 @@ GALLERY REWRITE
 
 
 
-  .pace .pace-progress:after {
+  .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace.pace-inactive .pace-progress {
+  display: none;
+}
+
+.pace .pace-progress {
+  position: fixed;
+  z-index: 2000;
+  top: 20%;
+  right: 0;
+  left: 40%;
+  bottom:0;
+  height: 5rem;
+  width: 5rem;
+
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  -ms-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.pace .pace-progress:after {
+  display: block;
+  position: absolute;
+  top: 20%;
+  right: 0;
+  left: 40%;
+  bottom:0;  content: attr(data-progress-text);
     font-family: "FranklinGothicURW-Boo", sans-serif;
-
-  }
+    font-size: 15rem;
+    opacity: 1!important;
+  font-weight: 100;
+  line-height: 1;
+  text-align: center;
+  color: rgba(240, 79, 26, 1 );
+}
 
 }
