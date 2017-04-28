@@ -84,6 +84,43 @@ const  getters = {
         return [];
     },
 
+    getBridgesVariantsVelvetFull: function (state,getters) {
+        return getters.getBridgesVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Neutro";
+        });
+    },
+
+    getBridgesVariantsVelvetDark: function (state,getters) {
+        return getters.getBridgesVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Neutro";
+        });
+    },
+
+    getBridgesVariantsLegnoFull: function (state,getters) {
+        return getters.getBridgesVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Legno";
+        });
+    },
+
+    getBridgesVariantsLegnoDark: function (state,getters) {
+        return getters.getBridgesVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Legno";
+        });
+    },
+
+    getBridgesVariantsInoxFull: function (state,getters) {
+        return getters.getBridgesVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Spazzolata (inox)";
+        });
+    },
+
+    getBridgesVariantsInoxDark: function (state,getters) {
+        return getters.getBridgesVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Spazzolata (inox)";
+        });
+    },
+
+
 
 
     /**
@@ -114,6 +151,44 @@ const  getters = {
 
         // Default return empty array
         return [];
+    },
+
+    getDividerVariantsVelvetFull: function (state,getters) {
+        console.log("IN VELVET GETTER:",getters.getDividerVariants);
+        return getters.getDividerVariants.filter((cur)=> {
+            console.log(cur.border,cur.texture);
+            return cur.border=="Fullcolor" && cur.texture=="Neutro";
+        });
+    },
+
+    getDividerVariantsVelvetDark: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Neutro";
+        });
+    },
+
+    getDividerVariantsLegnoFull: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Legno";
+        });
+    },
+
+    getDividerVariantsLegnoDark: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Legno";
+        });
+    },
+
+    getDividerVariantsInoxFull: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Fullcolor" && cur.texture=="Spazzolata (inox)";
+        });
+    },
+
+    getDividerVariantsInoxDark: function (state,getters) {
+        return getters.getDividerVariants.filter((cur)=> {
+            return cur.border=="Dark core" && cur.texture=="Spazzolata (inox)";
+        });
     },
 
 
