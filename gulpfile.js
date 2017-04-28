@@ -35,7 +35,7 @@ elixir(function(mix) {
     mix.copy('./resources/assets/css/pdf.css', 'public/css' );
     mix.copy('./resources/images', 'public/images');
     mix.copy('./resources/pdf/brochure.pdf', 'public/pdf/brochure.pdf');
-    mix.copy( paths.pace + 'themes/black/**', 'public/css');
+    mix.copy( paths.pace + 'themes/orange/**', 'public/css');
     mix.copy( paths.lightgallery + 'css/lightgallery.min.css', 'public/css');
     mix.copy( paths.lightgallery + 'img/**', 'public/img');
     mix.copy( paths.lightgallery + 'fonts/**', 'public/fonts');
@@ -62,15 +62,15 @@ elixir(function(mix) {
 
     //Join css and scripts
     mix.styles([
-        'public/css/pace-theme-loading-bar.css',
+        'public/css/pace-theme-big-counter.css',
         'public/css/lightgallery.min.css',
         'public/css/app.css'
     ], 'public/css/split.css', './');
     mix.scripts(['public/js/vendor.js','public/js/app.js'],'public/js/split.js','./');
 
     //Versiong files
-
+/*
     mix.version('public/css/split.css');
     mix.version(['public/css/split.css', 'public/js/split.js']);
-
+*/
 });
