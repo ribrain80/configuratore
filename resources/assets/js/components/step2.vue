@@ -136,6 +136,7 @@ export default {
          * @param {Number} cat 
          */
         setDrawerTypeCategory: function( cat ) {
+            this.$store.commit( "setDrawerType", 0 );
             this.$store.commit( "setDrawerTypeCategory", cat );
         },
 
