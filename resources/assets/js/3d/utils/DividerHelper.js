@@ -276,11 +276,11 @@ export default class DividerHelper {
                 case 72:
                     // # SPONDA MEDIA
                     sideModel = '/images/3dmodels/lineabox/sides/medium.obj';
-                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'medium.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'/medium.obj';
                     break;
                 case 148.0:
                     sideModel = '/images/3dmodels/lineabox/sides/high.obj';
-                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'high.obj';
+                    backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'/high.obj';
                     break;
             }
 
