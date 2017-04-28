@@ -93,7 +93,7 @@
                             <div class="col-lg-10 col-lg-offset-1">
 
                                 <!-- Bridges -->
-                                <div class="col-lg-5 bridge_representation" @click="selectBridge( $event );"></div>
+                                <div :class="['col-lg-5', 'bridge_representation', $store.state.objectWorkingOn.type == 'bridge' ? 'edge_selected' : '']" @click="selectBridge( $event );"></div>
                                 <div class="col-lg-2" style="line-height: 30px;">N. {{ $store.state.bridges_selected.length }}</div>
                                 <div class="col-lg-5">
                                     <div class="pull-left pointer">
@@ -1764,6 +1764,9 @@ export default {
 
             // # Clear all dividers ( 3d )
             this.$store.dispatch( "remove3dAllDividers" );
+
+            // # Clear all borders
+            this.$store.commit( "clearDrawerBorders" );
 
             // # Take the user back
             this.$router.push({ path: '/split/stepponte' });

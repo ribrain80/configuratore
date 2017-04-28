@@ -21,9 +21,7 @@
         </div>
 
         <!-- Info image -->
-        <div class="col-lg-6 col-md-6 col-sm-6 no-padding" id="step1-description-image">
-            <!--<img src="/images/others/foto-home.png" id="step1-description-image" class="img img-responsive w-100">-->
-        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 no-padding" id="step1-description-image"></div>
 
     </div>
 
@@ -75,8 +73,8 @@ export default {
         this.$store.commit( "setComponentHeader", "step1.header-title" );
         this.$store.commit( "setCurrentStep", 1 );
 
+        // # Scope workaround
         var self = this;
-
 
         // # Lightgallery binding
         $( "#gallery-trigger" ).on( "click", function () {
@@ -114,13 +112,16 @@ export default {
                  */
                 dynamic: true,
 
+                /**
+                 * Gallery elements
+                 * @type {Array}
+                 */
                 dynamicEl: self.$store.state.gallery_images
             })
 
         });
 
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
+        // # SET SIDEBAR ITEM ACTIVE - BEGIN
         
         let pos = 0;
         let $pointer = $(".navigator .pointer-navigator"); 
@@ -130,11 +131,7 @@ export default {
         pos = parseInt($active.parent("li").position().top);
         $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
         
-        // SET SIDEBAR ITEM ACTIVE - END 
-        // ---------------------------------------------
-        
-        
-        //$( "#step1-description-image" ).height( $( "#step1-content" ).height() );
+        // # SET SIDEBAR ITEM ACTIVE - END 
 
         // # Log mount 
         console.log( "Welcome/info page mounted" );

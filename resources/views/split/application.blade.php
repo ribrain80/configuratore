@@ -15,42 +15,43 @@
     
     <div id="cover"></div>
 
-    <!-- New configration alert Modal -->
-    <div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header alert-danger">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
-                </div>
-                <div class="modal-body">Se clicchi su continua i dati inseriti andranno persi.</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-back" data-dismiss="modal">Annulla!</button>
-                    <button type="button" class="btn btn-danger" onclick="window.location = location.protocol+'//'+location.host+'/split/step1'">Continua</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Generic error Modal -->
-    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header alert-danger">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Attenzione</h4>
-                </div>
-                <div class="modal-body"  id="generic-alert-message">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Application Container -->
     <div class="container-fluid" id="app">
+
+        <!-- New configration alert Modal -->
+        <div class="modal fade" id="new-conf-modal" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header alert-danger">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@{{ $t( 'attenzione' ) }}</h4>
+                    </div>
+                    <div class="modal-body">@{{ $t( 'data-loose-advice' ) }}</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-back" data-dismiss="modal">@{{ $t( 'cancel' ) }}</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location = location.protocol+'//'+location.host+'/split/step1'">@{{ $t( "dont-mind-go" ) }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generic error Modal -->
+        <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header alert-danger">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@{{ $t( 'attenzione' ) }}</h4>
+                    </div>
+                    <div class="modal-body"  id="generic-alert-message">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
         <div class="row wrapper">
             <sidebar></sidebar>
             <div class="col-md-10 col-lg-10 content ">
@@ -60,6 +61,8 @@
                 </transition>
             </div>
         </div>
+
+
     </div>
 
     <!-- Js Scripts -->
