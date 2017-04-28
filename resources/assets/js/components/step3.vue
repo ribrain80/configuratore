@@ -27,7 +27,7 @@
         <div class="row">
           
           <!-- Left container "form" -->
-          <div class="col-lg-7">
+          <div class="col-lg-6 col-md-6 col-sm-6">
               
               <!-- form group -->
               <div class="form-horizontal">
@@ -35,53 +35,62 @@
                   <!-- Width -->
                   <div class="form-group">
 
-                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label">
-                      <a class="i-icon pull-left" id="width-popover" >&nbsp;</a> 
-                      <span class="pull-left"><strong>LA</strong> - {{ 'step3.drawer_width_label' | translate }}</span>
-                    </label>
+                    <!-- LA Begin -->
 
-                    <div :class="['col-lg-5', 'col-md-5' ]">
-
-                      <div class="row">
-                        <div class="col-lg-10"><input type="text" :class="[ 'form-control', 'text-right', width_OOR ? 'text-danger' : 'text-success']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
-                        </div>
-                        <div class="col-lg-2 input-mm">mm</div>
+                    <div class="content-size">
+                      <div class="col-lg-8 col-md-8 col-sm-9">
+                        <label class="col-lg-12 col-md-12 col-sm-12 control-label">
+                          <a class="i-icon pull-left" id="width-popover" >&nbsp;</a>
+                           <span class="pull-left"><strong>LA</strong> - {{ 'step3.drawer_width_label' | translate }}</span>
+                        </label>
                       </div>
-
-                        <span class="help-block pull-right"><span :class="[ 'limit-helper', isWidthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_width_lower_limit}} </span> <span :class="[ 'limit-helper', isWidthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_width_upper_limit}}</span></span>
-
+                      <div class="col-lg-4 col-md-4 col-sm-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12" :class="[ width_OOR ? 'text-danger' : 'text-success' ]">
+                          <input type="text" :class="[ 'form-control', 'text-right' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isWidthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_width_lower_limit}} </span> <span :class="[ 'limit-helper', isWidthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_width_upper_limit}}</span></span>
+                        </div>
+                        
+                      </div>
                     </div>
 
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 container-size-image pull-left">
                       <img src="/images/others/step-3/LA_lineabox_3_lati.png" class="img-responsive img-rounded" id="width-info-image"/>
                     </div>
+
+                    <!-- LA Finish -->
 
                   </div>
 
                   <!-- Length -->
                   <div class="form-group">
 
-                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
-                      <a class="i-icon pull-left" id="length-popover" >&nbsp;</a> 
-                      <span class="pull-left"><strong>PS</strong> - {{ 'step3.drawer_length_label' | translate }}</span>
-                    </label>
+                    <!-- PS Begin -->
 
-                    <div :class="['col-lg-5', 'col-md-5']">
-
-
-                      <div class="row">
-                        <div class="col-lg-10"><input type="text" :class="[ 'form-control', 'text-right', length_OOR ? 'text-danger' : 'text-success']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
-                        </div>
-                        <div class="col-lg-2 input-mm">mm</div>
+                    <div class="content-size">
+                      <div class="col-lg-8 col-md-8 col-sm-9">
+                        <label class="col-lg-12 col-md-12 col-sm-12 control-label">
+                          <a class="i-icon pull-left" id="length-popover" >&nbsp;</a> 
+                          <span class="pull-left"><strong>PS</strong> - {{ 'step3.drawer_length_label' | translate }}</span>
+                        </label>
                       </div>
-
-                      
-                      <span class="help-block pull-right"><span :class="[ 'limit-helper', isLengthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_length_lower_limit }}</span> <span :class="[ 'limit-helper', isLengthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_length_upper_limit }}</span></span>
+                      <div class="col-lg-4 col-md-4 col-sm-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12" :class="[ length_OOR ? 'text-danger' : 'text-success' ]">
+                          <input type="text" :class="[ 'form-control', 'text-right' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isLengthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_length_lower_limit }}</span> <span :class="[ 'limit-helper', isLengthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_length_upper_limit }}</span></span>
+                        </div>
+                        
+                      </div>
                     </div>
 
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 container-size-image pull-left">
                       <img src="/images/others/step-3/PS_lineabox_3_lati.png" class="img-responsive img-rounded" id="length-info-image"/>
-                    </div>   
+                    </div>  
+
+                    <!-- PS Finish -->
 
                   </div>
                     
@@ -89,58 +98,59 @@
                   <!-- Custom drawer -->
                   <div v-if="$store.state.is_lineabox === false" class="form-group">
 
-                    <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
-                      <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
-                      <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
-                    </label>
+                    
+                    <!-- HA Begin -->
 
-                    <div :class="['col-lg-5', 'col-md-5']">
-                      
-                      <div class="row">
-                        <div class="col-lg-10"><input type="text" :class="[ 'form-control', 'text-right', shoulder_height_OOR ? 'text-danger' : 'text-success']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
-                        </div>
-                        <div class="col-lg-2 input-mm">mm</div>
+                    <div class="content-size">
+                      <div class="col-lg-8 col-md-8 col-sm-9">
+                        <label class="col-lg-12 col-md-12 col-sm-12 control-label">
+                          <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
+                          <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                        </label>
                       </div>
-
-                      <span class="help-block pull-right"><span :class="[ 'limit-helper', isShoulderHeightUnderMin ? 'text-danger' : 'text-muted']">min {{ config.shoulder_height_lower_limit }}</span> <span :class="[ 'limit-helper', isShoulderHeightOverMax ? 'text-danger' : 'text-muted']">max {{ config.shoulder_height_upper_limit }}</span></span>
-
+                      <div class="col-lg-4 col-md-4 col-sm-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12" :class="[ shoulder_height_OOR ? 'text-danger' : 'text-success' ]">
+                          <input type="text" :class="[ 'form-control', 'text-right' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isShoulderHeightUnderMin ? 'text-danger' : 'text-muted']">min {{ config.shoulder_height_lower_limit }}</span> <span :class="[ 'limit-helper', isShoulderHeightOverMax ? 'text-danger' : 'text-muted']">max {{ config.shoulder_height_upper_limit }}</span></span>
+                        </div>
+                        
+                      </div>
                     </div>
 
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 pull-left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 container-size-image pull-left">
                       <img src="/images/others/step-3/HA_cassetto_generico.png" class="img-responsive img-rounded" id="sh-info-image"/>
                     </div>  
+
+                    <!-- HA Finish -->
 
                   </div>
                   
                   <!-- Lineabox drawer -->
                   <div class="form-group" v-else>
 
-                      <div class="row">
-
-                          <div class="col-lg-12">
-                            <label class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 control-label pull-left">
+                      <div class="content-size-panel">
+                          <div class="col-lg-12 col-md-12 col-sm-12">
+                            <label class="col-lg-12 col-md-12 col-sm-12 control-label pull-left">
                               <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
                               <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                             </label>
                           </div>
-                      </div>
-
-                      <div class="row top1">
-                        <div class="col-lg-12">
-                          <div v-for="option in config.lineabox_shoulders_height">
-                              <div class="col-lg-4">
-                                  <div :class="[ 'panel panel-default', option.value == $store.state.dimensions.shoulder_height ? 'border-selected' : 'border-deselected' ]">
-                                      <div class="panel-body" @focus.once="resetAdvice()" 
-                                           @click="setShoulderHeight( $event, option.value )" 
-                                           @blur="isSuitableHeightForBridge">
-                                          <img :src="'/images/others/step-3/HA_lineabox_'+option.dimension+'.png'" 
-                                               :class="['img', 'img-responsive', 'HA_' + option.dimension, option.value == $store.state.dimensions.shoulder_height ? 'selected_HA' : '' ]"/>
-                                      </div>
-                                  </div>
-                                  <span :class="[ 'help-block', 'text-center', 'ha-lineabox',  option.value == $store.state.dimensions.shoulder_height ? 'text-success' : 'text-danger' ]">{{option.dimension}} mm</span>
-                              </div>
-                              
-                          </div>
+                          <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div v-for="option in config.lineabox_shoulders_height">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div :class="[ 'panel panel-default', option.value == $store.state.dimensions.shoulder_height ? 'border-selected' : 'border-deselected' ]">
+                                        <div class="panel-body" @focus.once="resetAdvice()" 
+                                             @click="setShoulderHeight( $event, option.value )" 
+                                             @blur="isSuitableHeightForBridge">
+                                            <img :src="'/images/others/step-3/HA_lineabox_'+option.dimension+'.png'" 
+                                                 :class="['img', 'img-responsive', 'HA_' + option.dimension, option.value == $store.state.dimensions.shoulder_height ? 'selected_HA' : '' ]"/>
+                                        </div>
+                                    </div>
+                                    <span :class="[ 'help-block', 'text-center', 'ha-lineabox',  option.value == $store.state.dimensions.shoulder_height ? 'text-success' : 'text-danger' ]">{{option.dimension}} mm</span>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -148,7 +158,7 @@
           </div>
           </div>
           <!-- Canvas container -->
-          <div class="col-lg-5 center-block" >
+          <div class="col-lg-6 col-md-6 col-sm-6 center-block" >
               <div id="animation"></div>
           </div>
           

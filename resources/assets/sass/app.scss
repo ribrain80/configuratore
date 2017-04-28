@@ -71,14 +71,6 @@ strong, .component-header, .ha-lineabox, .limit-helper {
   background-size: 10px 10px;
 }
 
-.text-success {
-    color: #3c763d!important;
-}
-
-.text-danger {
-    color: #a94442!important;
-}
-
 .menu-arrow {
     font-size: .9em;
     margin-top: 1px;
@@ -281,6 +273,7 @@ canvas {
     color: #f04f1a !important;
     font-weight: bold;
 }
+
 input {
   border-left: 0px!important;
   border-top: 0px!important;
@@ -956,6 +949,82 @@ img.rotate90 {
     cursor: default;
   }
 
+  // SIZE
+
+  .content-size {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  .content-size > div:first-of-type {
+    padding-right: 0;
+    margin-right: 0;
+  }
+  .content-size > div:last-of-type {
+    padding-left: 0;
+    margin-left: 0;
+    position: relative;
+  }
+  .content-size > div:last-of-type > div:first-of-type {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .content-size input {
+    height: 36px;
+    border-bottom: 1px solid #f04f1a;
+    padding-right: 25px;
+  }
+
+  .content-size > div:last-of-type > div:first-of-type::after {
+      content: 'mm';
+      position: absolute;
+      right: 15px;
+      top: 1px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      line-height: 33px;
+      margin-left: -30px;
+      color: #f04f1a;
+      font-weight: bold;
+  }
+  .content-size > div:last-of-type > div.text-success:first-of-type::after {
+      color: #008000;
+  }
+  .content-size .text-success input {
+      color: #008000;
+      border-bottom: 1px solid #008000;
+  }
+  .content-size > div:last-of-type > div.text-danger:first-of-type::after {
+      color: #f04f1a;
+  }
+  .content-size .text-danger input {
+      color: #f04f1a;
+      border-bottom: 1px solid #008000;
+  }
+  .content-size .help-block {
+      white-space: nowrap;
+  }
+  .container-size-image {
+     max-width: 50%;
+  }
+  .content-size-panel .panel {
+    margin-top: 20px;
+    border-radius: 0;
+  }
+
+
+  .text-success {
+    color: #33ae73 !important;
+  }
+
+  .text-danger {
+      color: #f04f1a !important;
+  }
+
+
+  // SIZE
 
 /***
 GALLERY REWRITE
