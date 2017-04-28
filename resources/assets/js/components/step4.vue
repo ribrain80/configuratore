@@ -469,7 +469,7 @@
                                              style="width: 100px;height: 100px"
                                              :data-sku="variant.textureId"
                                         >
-                                        <figcaption>{{ variant.name }}</figcaption>
+                                        <figcaption>{{ variant.textureName }}</figcaption>
                                     </figure>
                                 </div>
                                 <div class="col-lg-12 col-md-12"  v-if="$store.state.objectWorkingOn.type!='border'">
