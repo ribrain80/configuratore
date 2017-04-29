@@ -47,10 +47,8 @@ export default class SplitObjLoader {
     addSupport(side,w,l,h,textureImg) {
         w = parseFloat(w);
         h = parseFloat(h);
-        let yDeltaCorrection = 20;
-        if (h==90) {
-            yDeltaCorrection = 40;
-        }
+        let yDeltaCorrection = (h==90)?40:20;
+        
         let zDeltaCorrection = -12;
         let hDeltaCorrection = 8;
 
