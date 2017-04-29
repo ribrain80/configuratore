@@ -1,3 +1,13 @@
+<style scoped>
+    /** Setto localmente tutti gli a con cursor default e risetto a pointer solo per quelli reached e per la gallery*/
+    a {
+        cursor: default;
+    }
+    .reached a, #gallery-trigger {
+        cursor: pointer;
+    }
+
+</style>
 <template>
     <div class="col-md-2 col-lg-2 sidebar">
         <div class="row">
@@ -15,37 +25,37 @@
                 <span class="pointer-navigator"></span>
                 <ul class="nav hidden-xs router-links" id="nav">
                     <li :class="[this.$store.state.currentStep == 1 ? 'current-step' : '', this.$store.state.onecompleted ? 'reached' : '']">
-                        <router-link to="/split/step1" >
+                        <router-link :to="this.$store.state.onecompleted ? '/split/step1' : ''" >
                             <span >{{ "step1.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="[this.$store.state.currentStep == 2 ? 'current-step' : '', this.$store.state.twocompleted ? 'reached' : '']">
-                        <router-link to="/split/step2">
+                        <router-link :to="this.$store.state.twocompleted ? '/split/step2' : ''">
                             <span >{{ "step2.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="[this.$store.state.currentStep == 3 ? 'current-step' : '',this.$store.state.threecompleted ? 'reached' : '']">
-                        <router-link to="/split/step3">
+                        <router-link :to="this.$store.state.threecompleted ? '/split/step3' : ''">
                             <span >{{ "step3.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="[this.$store.state.currentStep == 'p' ? 'current-step' : '',this.$store.state.bridgecompleted ? 'reached' : '']">
-                        <router-link to="/split/stepponte">
+                        <router-link :to="this.$store.state.bridgecompleted ? '/split/stepponte' : ''">
                             <span >{{ "stepponte.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="[this.$store.state.currentStep == 4 ? 'current-step' : '',this.$store.state.fourcompleted ? 'reached' : '']">
-                        <router-link to="/split/step4">
+                        <router-link :to="this.$store.state.fourcompleted ? '/split/step4' : ''">
                             <span >{{ "step4.header-title" | translate }}</span>
                         </router-link>
                     </li>
                     
                     <li :class="[this.$store.state.currentStep == 5 ? 'current-step' : '',this.$store.state.fivecompleted ? 'reached' : '']">
-                        <router-link to="/split/step5">
+                        <router-link :to="this.$store.state.fivecompleted ? '/split/step5' : ''">
                             <span >{{ "step5.header-title" | translate }}</span>
                         </router-link>
                     </li>
