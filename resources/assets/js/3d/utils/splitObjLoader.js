@@ -44,10 +44,16 @@ export default class SplitObjLoader {
      * @param w height of the support
      * @param texture support material
      */
-    addSupport(side,w,h,textureImg) {
+    addSupport(side,w,l,h,textureImg) {
+        w = parseFloat(w);
+        h = parseFloat(h);
+        let yDeltaCorrection = 20;
+        let zDeltaCorrection = -12;
+        let hDeltaCorrection = 8;
+
         let supportWidth = 6;
         let supportNamePrefix= "SP_";
-        let baseGeometry = new THREE.BoxGeometry(w, h, supportWidth);
+        let baseGeometry = new THREE.BoxGeometry(w, (h + hDeltaCorrection), supportWidth);
         let texture = new THREE.Texture();
         let material = new THREE.MeshPhongMaterial(  );
         // # Load img for texture only if required!
@@ -64,33 +70,34 @@ export default class SplitObjLoader {
 
         //Gestione SIDE
 
+
         switch (side) {
             case "left":
                 support.rotateY(Math.PI/2);
                 support.updateMatrix();
                 support.position.x = supportWidth/2;
-                support.position.y = 0;
-                support.position.z = w/2;
+                support.position.y = yDeltaCorrection;
+                support.position.z = w/2 + zDeltaCorrection;
                 support.updateMatrix();
                 break;
             case "right":
                 support.rotateY(Math.PI/2);
                 support.updateMatrix();
-                support.position.x = w-supportWidth/2;
-                support.position.y = 0;
-                support.position.z = 0;
+                support.position.x = l-supportWidth/2;
+                support.position.y = yDeltaCorrection;
+                support.position.z = w/2 + zDeltaCorrection;
                 support.updateMatrix();
                 break;
             case "front":
                 support.position.x = w/2;
-                support.position.y = 0;
-                support.position.z = 0;
+                support.position.y =  yDeltaCorrection;
+                support.position.z = zDeltaCorrection;
                 support.updateMatrix();
                 break;
             case "back":
-                support.position.x = 0;
-                support.position.y = 0;
-                support.position.z = w/2;
+                support.position.x = w/2;
+                support.position.y = yDeltaCorrection;
+                support.position.z = l + zDeltaCorrection;
                 break;
         }
 

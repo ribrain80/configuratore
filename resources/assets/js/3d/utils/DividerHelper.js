@@ -116,8 +116,8 @@ export default class DividerHelper {
      * @param w height of the support
      * @param texture support material
      */
-    addSupport(side,w,h,texture) {
-        this.scene.add(this.objLoader.addSupport(side,w,h,texture));
+    addSupport(side,w,l,h,texture) {
+        this.scene.add(this.objLoader.addSupport(side,w,l,h,this.defaultMaterial));
     }
 
 

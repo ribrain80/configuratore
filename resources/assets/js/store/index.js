@@ -163,6 +163,26 @@ const store = new Vuex.Store({
             let x = (params.x / ratio) ;
             let y = (params.y / ratio) ;
 
+            // # Calc correction if supports are present
+            // # Check if there are supports
+            if ( state.bridge_supportID ) {
+                let ns = state.bridge_supports_selected.length;
+                let xCorrection = 0;
+                let yCorrection = 0;
+                let supportWidth = 6;
+                if (state.bridge_orientation=="V") {
+                    // Handle vertical bridge supports
+                    yCorrection = supportWidth;
+                } else {
+                    // Handle horizzontal bridge supports
+                    xCorrection = supportWidth;
+                }
+                x += xCorrection;
+                y += yCorrection;
+
+            }
+
+
             state.dividerHelper.updateDividerPosition(params.id,x, y);
         },
 
@@ -216,7 +236,7 @@ const store = new Vuex.Store({
         genDrawer: function ({ commit,state }, type) {
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
             console.log("Added Drawer of type:",type);
-            type = -10;
+            //type = -10;
             if (!state.bridge_supportID) {
                 return;
             }
@@ -225,27 +245,29 @@ const store = new Vuex.Store({
             switch (type) {
                 case 1:
                 case 2:
-                    //Lineabox 3/4 lati
-                    state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
-                    console.log("Added front support!!")
+                    // # Lineabox 3/4 lati
+                    // # Only if bridge is vertical
+                    if (state.bridge_orientation=="V") {
+                        state.dividerHelper.addSupport("front", state.dimensions.width, state.dimensions.length, h);
+                    }
                     break;
                 case 3:
                     //lineabox 2 lati
                     // solo se ponte verticale
-                    if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
-                        state.dividerHelper.addSupport("back",type,state.dimensions.width,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
+                   if (state.bridge_orientation=="V") {
+                        state.dividerHelper.addSupport("front",state.dimensions.width, state.dimensions.length, h);
+                        state.dividerHelper.addSupport("back",state.dimensions.width, state.dimensions.length, h);
                     }
                     break;
                 case 4:
 
                     // Cassetto generico
                     if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
-                        state.dividerHelper.addSupport("back",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("front",state.dimensions.width, state.dimensions.length, h);
+                        state.dividerHelper.addSupport("back",state.dimensions.width, state.dimensions.length, h);
                     } else {
-                        state.dividerHelper.addSupport("left",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
-                        state.dividerHelper.addSupport("right",type,state.dimensions.length,h,'/images/3dmodels/legno/background.obj','/images/textures/02_Acero.jpg');
+                        state.dividerHelper.addSupport("left",state.dimensions.length, state.dimensions.width, h);
+                        state.dividerHelper.addSupport("right",state.dimensions.length, state.dimensions.width, h);
                     }
                     break;
             }
