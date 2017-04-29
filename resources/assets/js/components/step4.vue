@@ -1,3 +1,9 @@
+<style scoped>
+    .tab-pane {
+        text-align: center;
+    }
+</style>
+
 <template>
 
 <div class="container-fluid">
@@ -202,7 +208,7 @@
 
 
                     <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
-                        <div class="row top1">
+                        <div class="row top1 ">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sx-4">
@@ -326,7 +332,7 @@
 
                     <div role="tabpanel" id="bridges-tab"  v-if="$store.state.has_bridge"  class="tab-pane fade in">
                         <div class="row top1">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 ">
                                 <div class="col-lg-12 col-md-12">
                                     <h3>Finiture ponti</h3>
                                 </div>
