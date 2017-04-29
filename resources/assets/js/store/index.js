@@ -172,7 +172,7 @@ const store = new Vuex.Store({
                 let supportWidth = 6;
                 if (state.bridge_orientation=="V") {
                     // Handle vertical bridge supports
-                    yCorrection = supportWidth;
+                    yCorrection = supportWidth/2;
                 } else {
                     // Handle horizzontal bridge supports
                     xCorrection = supportWidth;
