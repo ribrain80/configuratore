@@ -240,7 +240,7 @@ const store = new Vuex.Store({
             if (!state.bridge_supportID) {
                 return;
             }
-            let h = (state.bridge_supportID==1)?45.5:90.0;
+            let h = (state.bridge_supportID==1)?45.5:90;
             let supportTexture = false;
             if (state.bridge_supports_selected[0]) {
                 let tmp=state.bridge_supports_selected[0];

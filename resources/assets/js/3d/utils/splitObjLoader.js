@@ -48,6 +48,9 @@ export default class SplitObjLoader {
         w = parseFloat(w);
         h = parseFloat(h);
         let yDeltaCorrection = 20;
+        if (h==90) {
+            yDeltaCorrection = 40;
+        }
         let zDeltaCorrection = -12;
         let hDeltaCorrection = 8;
 
