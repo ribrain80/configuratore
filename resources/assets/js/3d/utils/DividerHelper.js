@@ -102,6 +102,7 @@ export default class DividerHelper {
         let back = this.drawer.getObjectByName( 'SP_back', true );
         let left = this.drawer.getObjectByName( 'SP_left', true );
         let right = this.drawer.getObjectByName( 'SP_right', true );
+        console.log(front,back,left,right);
         if (front) {this.objLoader.changeObjectTexture(front,textureImg);}
         if (back) {this.objLoader.changeObjectTexture(back,textureImg);}
         if (left) {this.objLoader.changeObjectTexture(left,textureImg);}
@@ -117,7 +118,8 @@ export default class DividerHelper {
      * @param texture support material
      */
     addSupport(side,w,l,h,texture) {
-        this.scene.add(this.objLoader.addSupport(side,w,l,h,this.defaultMaterial));
+        let support  = this.objLoader.addSupport(side,w,l,h,texture);
+        this.drawer.add(support);
     }
 
 

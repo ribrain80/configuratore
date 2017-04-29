@@ -67,6 +67,7 @@ export default class SplitObjLoader {
         }
         let support = new THREE.Mesh(baseGeometry, material);
         support.name = supportNamePrefix+side;
+        console.log("NOME SUPPORTO INSERITO :",support.name);
 
         //Gestione SIDE
 

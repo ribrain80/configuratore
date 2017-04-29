@@ -240,7 +240,12 @@ const store = new Vuex.Store({
             if (!state.bridge_supportID) {
                 return;
             }
-            let h = (state.bridge_supportID==1)?45.5:90;
+            let h = (state.bridge_supportID==1)?45.5:90.0;
+            let supportTexture = false;
+            if (state.bridge_supports_selected[0]) {
+                let tmp=state.bridge_supports_selected[0];
+                supportTexture = tmp.texture;
+            }
             // # Handling supports
             switch (type) {
                 case 1:
@@ -248,26 +253,26 @@ const store = new Vuex.Store({
                     // # Lineabox 3/4 lati
                     // # Only if bridge is vertical
                     if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front", state.dimensions.width, state.dimensions.length, h);
+                        state.dividerHelper.addSupport("front", state.dimensions.width, state.dimensions.length, h, supportTexture);
                     }
                     break;
                 case 3:
                     //lineabox 2 lati
                     // solo se ponte verticale
                    if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front",state.dimensions.width, state.dimensions.length, h);
-                        state.dividerHelper.addSupport("back",state.dimensions.width, state.dimensions.length, h);
+                        state.dividerHelper.addSupport("front",state.dimensions.width, state.dimensions.length, h, supportTexture);
+                        state.dividerHelper.addSupport("back",state.dimensions.width, state.dimensions.length, h, supportTexture);
                     }
                     break;
                 case 4:
 
                     // Cassetto generico
                     if (state.bridge_orientation=="V") {
-                        state.dividerHelper.addSupport("front",state.dimensions.width, state.dimensions.length, h);
-                        state.dividerHelper.addSupport("back",state.dimensions.width, state.dimensions.length, h);
+                        state.dividerHelper.addSupport("front",state.dimensions.width, state.dimensions.length, h, supportTexture);
+                        state.dividerHelper.addSupport("back",state.dimensions.width, state.dimensions.length, h, supportTexture);
                     } else {
-                        state.dividerHelper.addSupport("left",state.dimensions.length, state.dimensions.width, h);
-                        state.dividerHelper.addSupport("right",state.dimensions.length, state.dimensions.width, h);
+                        state.dividerHelper.addSupport("left",state.dimensions.length, state.dimensions.width, h, supportTexture);
+                        state.dividerHelper.addSupport("right",state.dimensions.length, state.dimensions.width, h, supportTexture);
                     }
                     break;
             }
