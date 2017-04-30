@@ -1586,8 +1586,8 @@ export default {
                 console.log( "image height" + _imgH );
 
                 // # Set image position
-                oImg.setLeft( e.layerX );
-                oImg.setTop( e.layerY );
+                oImg.setLeft( e.offsetX );
+                oImg.setTop( e.offsetY );
 
                 // # Set background color
                 oImg.setBackgroundColor( '#ededed' );    //Set a light gray background
