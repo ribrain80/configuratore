@@ -27,6 +27,14 @@ window.VueCookie = require('vue-cookie');
  */
 Vue.use( VueCookie );
 
+/**
+ * Require touch events shims
+ * @type {_exposeIosHtml5DragDropShim}
+ */
+window.iosDragDropShim = require('drag-drop-webkit-mobile');
+
+iosDragDropShim ({simulateAnchorClick: false, enableEnterLeave: true, holdToDrag: 300, requireExplicitDraggable: false });
+
 // # Common utils
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt( 0 ).toUpperCase() + this.slice( 1 );

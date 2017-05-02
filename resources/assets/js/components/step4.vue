@@ -778,15 +778,33 @@ export default {
             this.canvas.on( ['object:moving'],  ( options ) => {
                 this.handleMoving( options );
             });
+            /*this.canvas.on( ['touch:drag'],  ( options ) => {
+               console.log("TOUCH DRAG PARAMS:",options);
+            });*/
 
-            console.log( "touch supported: " +  fabric.isTouchSupported );
+            this.canvas.on({
+                'touch:gesture': function () {
+                    console.log("touch:gesture");
+                },
+                'touch:drag': function () {
+                    console.log("touch:drag");
+                },
+                'touch:orientation': function () {
+                    console.log("touch:orientation");
+                },
+                'touch:shake': function () {
+                    console.log("touch:shake");
+                },
+                'touch:longpress': function () {
+                    console.log("touch:longpress");
+                },
+                'touchstart': function () {
+                    console.log("START");
+                }
+            });
 
-            /*if( fabric.isTouchSupported ) {
-                document.addEventListener("touchstart", this.touchHandler, true);
-                document.addEventListener("touchmove", this.touchHandler, true);
-                document.addEventListener("touchend", this.touchHandler, true);
-                document.addEventListener("touchcancel", this.touchHandler, true); 
-            }*/
+
+
 
             // # Last chance 
             // # FIX ME
@@ -1354,6 +1372,7 @@ export default {
          */
         handleMoving: function ( options ) {
 
+            console.log("HANDLE MOVING OPTIONS:", options );
             // # Set element Coords
             options.target.setCoords();
 
