@@ -722,14 +722,6 @@ export default {
          */
         checkChoice: function() {
 
-            /*let choice = this.$store.state.dimensions.width;
-            choice = +( choice.toString().replace( /,/,'.' ) );
-            console.log( choice );
-            console.log( typeof choice );
-
-            this.$store.commit( "setWidth", choice );
-            */
-
             // # NaN management :: width
             if( isNaN( this.$store.state.dimensions.width ) ) {
               this.$store.commit( "setWidth", this.$store.state.dimensions.default_width );

@@ -6,6 +6,12 @@
 require('./bootstrap');
 
 /**
+ * Load numeral plugin
+ * @type {Numeral}
+ */
+window.numeral = require('numeral');
+
+/**
  * Load Vue for data-bind
  * @type {Vue}
  */
