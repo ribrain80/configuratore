@@ -34,6 +34,14 @@ body {
   overflow: hidden;
 }
 
+.alert-danger {
+    background-color: #EF4F1A;
+    border-color: #EF4F1A;
+    color: #fff;
+    font-weight: 300;
+    font-family: "FranklinGothicURW";
+}
+
 .step3-label-short, .input-step3 {
   font-size: 1.5em!important; 
 }
@@ -66,7 +74,6 @@ strong, .component-header, .ha-lineabox, .bridge-counter {
 .modal-title {
   font-size: 1.3em;
   font-family: 'FranklinGothicURW-Dem';
-  font-weight: 600;
 }
 
 .actions-toolbar {
@@ -272,6 +279,7 @@ canvas {
   border: 1px solid #f04f1a!important;
   transition: all .2s;
   outline: 0;
+
 }
 .btn:focus {
   outline: 0;
@@ -279,6 +287,7 @@ canvas {
 }
 
 .btn:hover {
+
     transform:scale(1.1,1.1);
     -webkit-transform:scale(1.1,1.1);
     -moz-transform:scale(1.1,1.1);
