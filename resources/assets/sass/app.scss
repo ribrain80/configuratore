@@ -38,7 +38,7 @@ body {
   font-size: 1.5em!important; 
 }
 
-strong, .component-header, .ha-lineabox {
+strong, .component-header, .ha-lineabox, .bridge-counter {
   font-family: "FranklinGothicURW-Dem";
   font-weight: 500;
 }
@@ -383,6 +383,10 @@ input {
 }
 .btn-danger-small-text {
   font-size: 1em!important;  
+}
+
+.bridge-counter {
+  font-size: 1em;
 }
 
 .no-padding-left {
