@@ -24,16 +24,18 @@
     <div id="step2-content" class="content-flex content-flex-scrollable content-flex-padding">
     
       <!-- Information alert bootstrap alert plugin -->
-      <div class="row top1">
+      <!--<div class="row top1">
+    
 
-          <!-- Alerts: User Warning -->
-          <div class="col-lg-12" v-show="$store.state.drawertype == 0">
-              <div class="alert alert-warning" role="alert" id="step2-alert-warning">
-                  <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
-              </div>
-          </div>
+          <transition name="fade">
+            <div class="col-lg-12" v-if="$store.state.drawertype == 0">
+                <div class="alert alert-warning" role="alert">
+                    <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
+                </div>
+            </div>
+          </transition>
           
-      </div>
+      </div>-->
 
       <div class="row top2">
 
@@ -72,7 +74,7 @@
           </div>
 
       </div>
-      
+
       <transition name="fade">
         <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
 
@@ -144,6 +146,13 @@ export default {
         setDrawerTypeCategory: function( cat ) {
             this.$store.commit( "setDrawerType", 0 );
             this.$store.commit( "setDrawerTypeCategory", cat );
+
+            // Successfully scroll back to top
+            /*$( "html, body" ).animate( { scrollTop: $( "#lineabox-types").offset().top + 200 }, 1000 );
+
+            console.log("Offset:" + $( "#lineabox-types").offset().top + 100 );
+
+            return false;*/
         },
 
         /**

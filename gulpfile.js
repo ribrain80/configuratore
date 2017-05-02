@@ -58,7 +58,7 @@ elixir(function(mix) {
 
     //Join css and scripts
     mix.styles([
-        'public/css/pace-theme-big-counter.css',
+        'public/css/pace-theme-loading-bar.css',
         'public/css/lightgallery.css',
         'public/css/app.css'
     ], 'public/css/split.css', './');

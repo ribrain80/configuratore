@@ -24,7 +24,7 @@
           </div>
         </div>
         
-        <div class="row">
+        <div class="row top2">
           
           <!-- Left container "form" -->
           <div class="col-lg-6 col-md-6 col-sm-6">
@@ -41,15 +41,15 @@
                       <div class="col-lg-8 col-md-8 col-sm-9">
                         <label class="col-lg-12 col-md-12 col-sm-12 control-label">
                           <a class="i-icon pull-left" id="width-popover" >&nbsp;</a>
-                           <span class="pull-left"><strong>LA</strong> - {{ 'step3.drawer_width_label' | translate }}</span>
+                           <span class="pull-left"><span class="step3-label-short"><strong>LA</strong></span> - {{ 'step3.drawer_width_label' | translate }}</span>
                         </label>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-3">
                         <div class="col-lg-12 col-md-12 col-sm-12" :class="[ width_OOR ? 'text-danger' : 'text-success' ]">
-                          <input type="text" :class="[ 'form-control', 'text-right' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
+                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isWidthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_width_lower_limit}} </span> <span :class="[ 'limit-helper', isWidthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_width_upper_limit}}</span></span>
+                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isWidthUnderMin ? 'text-danger' : 'text-muted']">min <strong>{{ config.rect_width_lower_limit}}</strong></span> <span :class="[ 'limit-helper', isWidthOverMax ? 'text-danger' : 'text-muted']">max <strong>{{ config.rect_width_upper_limit}}</strong></span></span>
                         </div>
                         
                       </div>
@@ -72,15 +72,15 @@
                       <div class="col-lg-8 col-md-8 col-sm-9">
                         <label class="col-lg-12 col-md-12 col-sm-12 control-label">
                           <a class="i-icon pull-left" id="length-popover" >&nbsp;</a> 
-                          <span class="pull-left"><strong>PS</strong> - {{ 'step3.drawer_length_label' | translate }}</span>
+                          <span class="pull-left"><span class="step3-label-short"><strong>PS</strong></span> - {{ 'step3.drawer_length_label' | translate }}</span>
                         </label>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-3">
                         <div class="col-lg-12 col-md-12 col-sm-12" :class="[ length_OOR ? 'text-danger' : 'text-success' ]">
-                          <input type="text" :class="[ 'form-control', 'text-right' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
+                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isLengthUnderMin ? 'text-danger' : 'text-muted']">min {{ config.rect_length_lower_limit }}</span> <span :class="[ 'limit-helper', isLengthOverMax ? 'text-danger' : 'text-muted']">max {{ config.rect_length_upper_limit }}</span></span>
+                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isLengthUnderMin ? 'text-danger' : 'text-muted']">min <strong>{{ config.rect_length_lower_limit }}</strong></span> <span :class="[ 'limit-helper', isLengthOverMax ? 'text-danger' : 'text-muted']">max <strong>{{ config.rect_length_upper_limit }}</strong></span></span>
                         </div>
                         
                       </div>
@@ -105,15 +105,15 @@
                       <div class="col-lg-8 col-md-8 col-sm-9">
                         <label class="col-lg-12 col-md-12 col-sm-12 control-label">
                           <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
-                          <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                          <span class="pull-left"><span class="step3-label-short"><strong>HA</strong></span> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                         </label>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-3">
                         <div class="col-lg-12 col-md-12 col-sm-12" :class="[ shoulder_height_OOR ? 'text-danger' : 'text-success' ]">
-                          <input type="text" :class="[ 'form-control', 'text-right' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
+                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isShoulderHeightUnderMin ? 'text-danger' : 'text-muted']">min {{ config.shoulder_height_lower_limit }}</span> <span :class="[ 'limit-helper', isShoulderHeightOverMax ? 'text-danger' : 'text-muted']">max {{ config.shoulder_height_upper_limit }}</span></span>
+                          <span class="help-block pull-right"><span :class="[ 'limit-helper', isShoulderHeightUnderMin ? 'text-danger' : 'text-muted']">min <strong>{{ config.shoulder_height_lower_limit }}</strong></span> <span :class="[ 'limit-helper', isShoulderHeightOverMax ? 'text-danger' : 'text-muted']">max <strong>{{ config.shoulder_height_upper_limit }}</strong></span></span>
                         </div>
                         
                       </div>
@@ -134,7 +134,7 @@
                           <div class="col-lg-12 col-md-12 col-sm-12">
                             <label class="col-lg-12 col-md-12 col-sm-12 control-label pull-left">
                               <a class="i-icon pull-left" id="sh-popover">&nbsp;</a> 
-                              <span class="pull-left"><strong>HA</strong> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
+                              <span class="pull-left"><span class="step3-label-short"><strong>HA</strong></span> - {{ 'step3.drawer_edge_height_label' | translate }}</span>
                             </label>
                           </div>
                           <div class="col-lg-12 col-md-12 col-sm-12">

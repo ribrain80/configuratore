@@ -11,7 +11,7 @@
             <div class="row">
                 <!-- Orientation description -->
                 <div class="col-lg-12 text-center">
-                    <span class="help-block">{{ 'stepponte.orientation_description' | translate }}</span>
+                    <span class="help-block step-ponte-desc">{{ 'stepponte.orientation_description' | translate }}</span>
                 </div>
 
             </div>
@@ -70,7 +70,7 @@
                 <div class="row top2">
                     <!-- Supports description -->
                     <div class="col-lg-12 text-center">
-                        <span class="help-block">{{ 'stepponte.supports_description' | translate }}</span>
+                        <span class="help-block step-ponte-desc">{{ 'stepponte.supports_description' | translate }}</span>
                     </div> 
                 </div>
                 
@@ -118,7 +118,7 @@
                 <div class="row top2">
                     <!-- Bridges description -->
                     <div class="col-lg-12 text-center">
-                        <span class="help-block">{{ "stepponte.bridge_description" | translate }}</span>
+                        <span class="help-block step-ponte-desc">{{ "stepponte.bridge_description" | translate }}</span>
                     </div> 
                 </div>
 
