@@ -21,6 +21,7 @@
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.10",
     "lodash": "^4.16.2",
+    "numeral": "^2.0.6",
     "standard": "^6.0.8",
     "standard-loader": "^3.0.0",
     "three": "^0.84.0",
