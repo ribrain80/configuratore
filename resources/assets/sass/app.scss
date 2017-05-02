@@ -72,7 +72,7 @@ strong, .component-header, .ha-lineabox, .bridge-counter {
 .actions-toolbar {
   position: absolute;
   bottom: 84px;
-  /*left: 0;*/
+  left: 0;
   right: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -239,7 +239,7 @@ canvas {
 }
 
 #step2 figcaption {
-  font-size: 1.5em;
+  font-size: 1.5em!important;
   margin-bottom: 20px;
 }
 
@@ -961,7 +961,7 @@ html, body, .container-fluid, .wrapper {
   box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
 }
 .img-desaturate {
-  opacity: 0.40;
+  /*opacity: 0.40;*/
 }
 
 .spacer {
