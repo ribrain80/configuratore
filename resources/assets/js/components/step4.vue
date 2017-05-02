@@ -972,8 +972,14 @@ export default {
          */
         selectAll: function() {
 
+            let objs = this.canvas.getObjects();
+
+            if( objs.length == 0 ) {
+                return;
+            }
+            
             // # Loop through the canvas objects
-            var objs = this.canvas.getObjects().map( ( o )  => {
+            objs.map( ( o )  => {
 
                 switch( this.allselected ) {
 
