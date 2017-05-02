@@ -70,7 +70,7 @@
         <!-- Select All - trash bin row -->
         <div class="row top1">
             <div class="col-lg-5 col-md-5 pull-left" >
-                <button class="btn btn-split-small" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
+                <button class="btn btn-danger btn-danger-small-text" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
             </div>
 
             <div class="col-lg-1 col-md-1" style="text-align: right">
@@ -102,12 +102,15 @@
                                 <div :class="['col-lg-5', 'bridge_representation', $store.state.objectWorkingOn.type == 'bridge' ? 'edge_selected' : '']" @click="selectBridge( $event );"></div>
                                 <div class="col-lg-2" style="line-height: 30px;">N. {{ $store.state.bridges_selected.length }}</div>
                                 <div class="col-lg-5">
+
+                                    <div class="pull-left pointer marginR2">
+                                        <img src="/images/others/step-4/minus.png" width="23" height="23" class="" v-show="$store.state.bridges_selected.length" @click="removeBridge()"/>
+                                    </div>
+
                                     <div class="pull-left pointer">
                                         <img src="/images/others/step-4/plus.png" width="23" height="23" class="" v-show="canAddBridges" @click="addBridge()"/>
                                     </div>
-                                    <div class="pull-left pointer">
-                                        <img src="/images/others/step-4/minus.png" width="23" height="23" class="" v-show="$store.state.bridges_selected.length" @click="removeBridge()"/>
-                                    </div>
+
                                 </div>
                                 <div class="col-lg-11 col-lg-offset-1">
                                     <span class="help-block">
@@ -953,7 +956,7 @@ export default {
             // # Loop through the canvas objects
             var objs = this.canvas.getObjects().map( ( o )  => {
                 o.setStrokeWidth( 2 );
-                o.setStroke( "#cccccc" );
+                o.setStroke( "#222222" );
                 o.set( 'active', false );  
 
             }); 
@@ -976,7 +979,7 @@ export default {
 
                     case true:
                         o.setStrokeWidth( 2 );
-                        o.setStroke( "#cccccc" );
+                        o.setStroke( "#222222" );
                         o.set( 'active', false );
                     break;
 
@@ -1160,7 +1163,7 @@ export default {
                         console.log( "NO COLLISION" );
                         
                         // # Set standard stroke
-                        activeObj.setStroke( "#cccccc" );
+                        activeObj.setStroke( "#222222" );
                         activeObj.setStrokeWidth( 2 );
                         activeObj.dirtystate = false;
                         this.canvas.renderAll(); 
@@ -1187,7 +1190,7 @@ export default {
                         });
 
                         if( !actuallyCollides ) {
-                            obj.setStroke( "#cccccc" );
+                            obj.setStroke( "#222222" );
                             obj.setStrokeWidth( 2 );
                             obj.dirtystate = false;
                             this.canvas.renderAll();                             
@@ -1597,7 +1600,7 @@ export default {
 
                 // # borders off
                 oImg.hasBorders  = true;
-                oImg.setStroke( "#cccccc" );
+                oImg.setStroke( "#222222" );
                 oImg.setStrokeWidth( 2 );
 
                 // # Pixel precision
@@ -1659,7 +1662,7 @@ export default {
 
                     if( !this.dirtystate ) {
                         this.setStrokeWidth( 2 ); 
-                        this.setStroke( "#cccccc" ); 
+                        this.setStroke( "#222222" ); 
                     }
                 });
 
