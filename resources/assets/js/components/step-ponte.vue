@@ -17,7 +17,7 @@
             </div>
             
             <!-- Orientation choice -->
-            <div class="row top2">
+            <div class="row top1">
 
                 <div class="col-lg-12">
 
@@ -84,7 +84,7 @@
                 </div>
 
                 <!-- Support choice -->
-                <div class="row top2">
+                <div class="row top1">
 
                     <div class="col-lg-1"></div>
                         <div v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe">
@@ -111,7 +111,7 @@
         </div>
 
         <!-- Bridges section -->
-        <div class="row top2" >       
+        <div class="row top1" >       
             
             <div v-show="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
                 

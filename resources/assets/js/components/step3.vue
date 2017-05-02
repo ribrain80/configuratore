@@ -214,6 +214,7 @@ export default {
               line_stroke: '#222222',
               text_stroke: '#222222',
               font_size: 12,
+              text_font_size: 12,
               font_family: 'FranklinGothicURW-Boo',
               font_weight: 300,
               measure_label: "mm",
@@ -251,7 +252,7 @@ export default {
               ratio: 3,
 
               // # Shapes top margin
-              standard_top_margin: 2,
+              standard_top_margin: 100,
 
               // # Lightgallery common settings
               lightgalleryOptions: {
@@ -380,6 +381,9 @@ export default {
 
             // # Container init
             this.container = document.getElementById( 'animation' );
+
+            // # Set base top margin for the draw
+            this.config.standard_top_margin = $( "#width-info-image" ).offset().top - 15; 
 
             // # TWO Instance, autostart means we do not have to reupdate the canvas each time there
             // # is an update on a shape/path/text
@@ -856,7 +860,7 @@ export default {
                                                     y, 
                                                     this.config.font_weight );
             // # Text settings
-            this.shoulder_text.size = this.config.font_size;
+            this.shoulder_text.size = this.config.text_font_size;
             this.shoulder_text.stroke = this.config.text_stroke;
             this.shoulder_text.family = this.config.font_family;
             this.shoulder_text.weight = this.config.font_weight;
@@ -1005,7 +1009,7 @@ export default {
                                                   this.config.font_weight );
 
             // # Text settings
-            this.drawer_text.size = this.config.font_size;
+            this.drawer_text.size = this.config.text_font_size;
             this.drawer_text.stroke = this.config.text_stroke;
             this.drawer_text.family = this.config.font_family;
             this.drawer_text.weight = this.config.font_weight;
@@ -1030,6 +1034,10 @@ export default {
 
             // # Remove to redraw
             this.two.clear();
+
+            // # Responsive label ( text ) font size
+            this.config.text_font_size = Math.floor( ( ( 12 * this.$store.state.dimensions.width ) / 800 ) * 0.65 );
+            this.config.text_font_size = this.config.text_font_size < 12 ? 12 : this.config.text_font_size;
 
             // # Drawer
             this.makeRect( this.mm2Pixel( this.$store.state.dimensions.width ) / 2, 
