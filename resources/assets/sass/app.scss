@@ -229,12 +229,13 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
-    border: 1px solid #666;
+    border: 1px solid #999;
     margin: 0 auto;
 }  
 
 .lg-close {
   background: url( "/images/gallery/x-galleria.png" ) no-repeat!important;
+  margin-top: 30px;
 }
 
 #step2 figcaption {
