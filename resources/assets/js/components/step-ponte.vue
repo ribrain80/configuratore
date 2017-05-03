@@ -28,7 +28,7 @@
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'H' ? 'image_selected' : '']" >
                             <a class="i-icon" id="orientation-H-popover">&nbsp;</a>
                             <div class="drawer-container-image">
-                                <img :src="'/images/others/step-ponte/bridgeH.jpg'"
+                                <img :src="'/images/others/step-ponte/ponte_orizzontale.jpg'"
                                      class="img img-responsive  img-shadow"
                                      id="or-H" 
                                      :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
@@ -46,7 +46,7 @@
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'V' ? 'image_selected' : '']">
                             <a class="i-icon" id="orientation-V-popover">&nbsp;</a>
                             <div class="drawer-container-image">
-                                <img :src="'/images/others/step-ponte/bridgeV.jpg'"
+                                <img :src="'/images/others/step-ponte/ponte_verticale.jpg'"
                                      class="img img-responsive  img-shadow"
                                      id="or-V" 
                                      :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
@@ -97,7 +97,7 @@
                                     <figure :class="[ 'drawer-container', bridge_support.id == $store.state.bridge_supportID ? 'image_selected' : '']" >
                                         <a class="i-icon supports-info">&nbsp;</a>
                                         <div class="drawer-container-image">
-                                            <img :src="'/images/others/step-ponte/s-'+((bridge_support.id==2)?'alto':'basso')+'.jpg'"
+                                            <img :src="'/images/others/step-ponte/ponte_altezza-'+((bridge_support.id==2)?'alta':'bassa')+'.jpg'"
                                                  class="img img-responsive  img-shadow"
                                                  id="sup" 
                                                  :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
@@ -137,7 +137,7 @@
                             <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
                                 <a class="i-icon bridges-info">&nbsp;</a>
                                 <div class="drawer-container-image">
-                                    <img :src="'/images/others/step-ponte/h-'+((bridge.id==48)?'alto':'basso')+'.jpg'"
+                                    <img :src="'/images/others/step-ponte/ponte_'+((bridge.id==48)?'alto':'basso')+'.jpg'"
                                          class="img img-responsive  img-shadow"
                                          :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
                                          id="bri"
