@@ -158,8 +158,8 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-lg-12 col-md-12 center-block">
-                                                <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width:50%; height: 50%;"/>
+                                            <div class="col-lg-12 col-md-12 center-block imgcont">
+                                                <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" />
                                             </div>
 
                                         </div>
