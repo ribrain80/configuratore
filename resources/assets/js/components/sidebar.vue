@@ -157,7 +157,7 @@
             });
 
             $nav.on("mouseenter mouseleave click",
-                debounce(
+               
                 function(e) {
                 let pos = 0;
                 let $pointer = $(".navigator .pointer-navigator");
@@ -178,7 +178,7 @@
                     $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
                 
                 e.stopPropagation();
-            },250)
+            }
 
             );
 
