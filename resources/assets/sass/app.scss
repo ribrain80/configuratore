@@ -827,10 +827,12 @@ html, body, .container-fluid, .wrapper {
     left: 35px;
     z-index: 3;
     transition: all .2s;
+    cursor:pointer;
 }
 
 .navigator .pointer-navigator.reached {
   background: #33ae73; 
+  cursor:pointer;
 }
 
 .navigator #nav {

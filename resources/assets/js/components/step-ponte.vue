@@ -21,12 +21,12 @@
 
                 <div class="col-lg-12">
 
-                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1" v-show="$store.state.is_suitable_width_4hbridge"></div>
 
                     <div class="col-lg-4" v-show="$store.state.is_suitable_width_4hbridge">
 
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'H' ? 'image_selected' : '']" >
-                            <a class="i-icon" id="orientation-H-popover">&nbsp;</a>
+                            <a class="i-icon" id="orientation-H-popover" @click="showORIInfo( $event, 'H' )">&nbsp;</a>
                             <div class="drawer-container-image">
                                 <img :src="'/images/others/step-ponte/ponte_orizzontale.jpg'"
                                      class="img img-responsive  img-shadow"
@@ -44,7 +44,7 @@
                     <div class="col-lg-4">
 
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'V' ? 'image_selected' : '']">
-                            <a class="i-icon" id="orientation-V-popover">&nbsp;</a>
+                            <a class="i-icon" id="orientation-V-popover" @click="showORIInfo( $event, 'V' )">&nbsp;</a>
                             <div class="drawer-container-image">
                                 <img :src="'/images/others/step-ponte/ponte_verticale.jpg'"
                                      class="img img-responsive  img-shadow"
@@ -91,11 +91,11 @@
                     <!-- Support choice -->
                     <div class="row top1">
 
-                        <div class="col-lg-1"></div>
                             <div v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe">
+                                <div class="col-lg-1"></div>
                                 <div class="col-lg-4">
                                     <figure :class="[ 'drawer-container', bridge_support.id == $store.state.bridge_supportID ? 'image_selected' : '']" >
-                                        <a class="i-icon supports-info">&nbsp;</a>
+                                        <a class="i-icon supports-info" @click="showSupportsInfo( $event )">&nbsp;</a>
                                         <div class="drawer-container-image">
                                             <img :src="'/images/others/step-ponte/ponte_altezza-'+((bridge_support.id==2)?'alta':'bassa')+'.jpg'"
                                                  class="img img-responsive  img-shadow"
@@ -107,7 +107,6 @@
                                         <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
                                     </figure>
                                 </div>
-                                <div class="col-lg-1"></div>
                             </div>
                     </div>
 
@@ -133,22 +132,25 @@
 
                     <!-- Bridges choice -->
                     <div class="row top2">
-                        <div class="col-lg-4 col-lg-offset-1" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
-                            <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
-                                <a class="i-icon bridges-info">&nbsp;</a>
-                                <div class="drawer-container-image">
-                                    <img :src="'/images/others/step-ponte/ponte_'+((bridge.id==48)?'alto':'basso')+'.jpg'"
-                                         class="img img-responsive  img-shadow"
-                                         :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
-                                         id="bri"
-                                         @click="selectBridgeType( bridge )"
-                                         :data-width="bridge.width"
-                                         :data-depth="bridge.depth"
-                                    />
-                                </div>
-                                <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> H: {{ bridge.depth }} mm </figcaption>
-                            </figure>
+                        <div v-for="( bridge, index ) in $store.getters.getBridgesAvailabe">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-4" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
+                                <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
+                                    <a class="i-icon bridges-info" @click="showBridgeInfo( $event )">&nbsp;</a>
+                                    <div class="drawer-container-image">
+                                        <img :src="'/images/others/step-ponte/ponte_'+((bridge.id==48)?'alto':'basso')+'.jpg'"
+                                             class="img img-responsive  img-shadow"
+                                             :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
+                                             id="bri"
+                                             @click="selectBridgeType( bridge )"
+                                             :data-width="bridge.width"
+                                             :data-depth="bridge.depth"
+                                        />
+                                    </div>
+                                    <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> H: {{ bridge.depth }} mm </figcaption>
+                                </figure>
 
+                            </div>
                         </div>
                     </div>
 
@@ -491,6 +493,65 @@ export default {
             this.$router.push( { path: '/split/step4' } );
 
             return true;
+        },
+
+        showBridgeInfo: function( event ) {
+
+            try {
+                $( event.target ).data( "lightGallery" ).destroy( true );
+                // $( this ).unbind( "click" );
+            } catch( e ) {
+                // Do nothing
+            }
+
+
+            // # Get related image element
+            let related_image = $( event.target ).next().find( "img" );
+
+            // # General settings + image src
+            let bridgesGalleryOptions = this.config.lightgalleryOptions;
+            bridgesGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
+            
+            // # Init
+            $( event.target ).lightGallery( bridgesGalleryOptions ) ;   
+        },
+
+        showSupportsInfo: function( event ) {
+
+            try {
+                $( event.target ).data( "lightGallery" ).destroy( true );
+                // $( this ).unbind( "click" );
+            } catch( e ) {
+                // Do nothing
+            }
+
+            // # Get related image element
+            let related_image = $( event.target ).next().find( "img" );
+
+            // # General settings + image src
+            let supportsGalleryOptions = this.config.lightgalleryOptions;
+            supportsGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
+            
+            // # Init
+            $( event.target ).lightGallery( supportsGalleryOptions ) ;   
+
+        },
+
+        showORIInfo: function ( event, ori ) {
+
+            try {
+                $( event.target ).data( "lightGallery" ).destroy( true );
+                // $( this ).unbind( "click" );
+            } catch( e ) {
+                // Do nothing
+            }
+
+            // # General settings + image src
+            let oriHGalleryOptions = this.config.lightgalleryOptions;
+            oriHGalleryOptions.dynamicEl = [ { src: $( "#or-" + ori ).attr( "src" ) } ];
+
+            // # Init
+            $( event.target ).lightGallery( oriHGalleryOptions ) ;
         }
     },
 
@@ -542,61 +603,6 @@ export default {
         // # Component header title and current step info
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
         this.$store.commit( "setCurrentStep", 'p' );
-
-        // # Scope workaround
-        var self = this;
-
-        // # Lightgallery info images
-        // # H orientation
-        $('#orientation-H-popover').on( "click", function () {
-
-            // # General settings + image src
-            let oriHGalleryOptions = self.config.lightgalleryOptions;
-            oriHGalleryOptions.dynamicEl = [ { src: $( "#or-H" ).attr( "src" ) } ];
-
-            // # Init
-            $( this ).lightGallery( oriHGalleryOptions ) ;
-
-        });   
-
-        // # V orientation
-        $('#orientation-V-popover').on( "click", function () {
-
-            // # General settings + image src
-            let oriVGalleryOptions = self.config.lightgalleryOptions;
-            oriVGalleryOptions.dynamicEl = [ { src: $( "#or-V" ).attr( "src" ) } ];
-
-            // # Init
-            $( this ).lightGallery( oriVGalleryOptions ) ;
-        }); 
-
-        // # Supports
-        $( '.supports-info' ).on( "click", function ( event ) {
-
-            // # Get related image element
-            let related_image = $( event.target ).next().find( "img" );
-
-            // # General settings + image src
-            let supportsGalleryOptions = self.config.lightgalleryOptions;
-            supportsGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
-            
-            // # Init
-            $( this ).lightGallery( supportsGalleryOptions ) ;            
-        }); 
-
-        // # Bridges
-        $( '.bridges-info' ).on( "click", function ( event ) {
-
-            // # Get related image element
-            let related_image = $( event.target ).next().find( "img" );
-
-            // # General settings + image src
-            let bridgesGalleryOptions = self.config.lightgalleryOptions;
-            bridgesGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
-            
-            // # Init
-            $( this ).lightGallery( bridgesGalleryOptions ) ;   
-        });
 
         // ---------------------------------------------
         // SET SIDEBAR ITEM ACTIVE - BEGIN
