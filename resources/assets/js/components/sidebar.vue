@@ -72,6 +72,19 @@
 </template>
 
 <script>
+
+    function debounce(fn, delay) {
+        let timer = null;
+        return function () {
+            let context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn.apply(context, args);
+            }, delay);
+        };
+    }
+
+
     /**
      * Vue object managing bridge / bridge support choice
      * @type {Vue}
@@ -120,7 +133,9 @@
                 $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
             });
 
-            $nav.on("mouseenter mouseleave click",function(e) {
+            $nav.on("mouseenter mouseleave click",
+                debounce(
+                function(e) {
                 let pos = 0;
                 let $pointer = $(".navigator .pointer-navigator");
                 let $active = $nav.find("a.router-link-active");
@@ -140,7 +155,9 @@
                     $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
                 
                 e.stopPropagation();
-            });
+            },250)
+
+            );
 
         }
     }
