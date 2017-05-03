@@ -75,7 +75,7 @@
 
       </div>
 
-      <transition name="fade">
+      <transition v-on:enter="slideFadeIn" v-on:leave="fadeSlideOut">
         <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
 
             <div class="col-lg-4 col-md-4 col-sm-4" v-for="ctype in type">
@@ -227,7 +227,46 @@ export default {
 
             // # Error
             return false; 
+        },
+
+
+        /***
+         * TRANSITIONS
+         */
+        slideFadeIn(el, done) {
+            $(el).animate({
+                opacity:1
+            }, {
+                queue: false,
+                duration: 1000,
+                complete: function() {
+
+                    let pos = el.offsetTop;
+                    console.log("FADE IN DONE POS: ", pos);
+
+                    $( "#step2-content" ).animate( { scrollTop: pos }, 1000 );
+                    // # callback fine transizione
+                    done;
+                }
+            });
+        },
+        fadeSlideOut(el, done) {
+            $(el).animate({
+                opacity:0
+            }, {
+                queue: false,
+                duration: 1000,
+                complete: function() {
+                    console.log("FADE OUT DONE");
+                    $( "#step2-content" ).animate( { scrollTop: 0 }, 1000 );
+                    done;
+                }
+            });
         }
+
+
+
+
     },
 
     /**
