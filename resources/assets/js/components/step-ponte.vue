@@ -77,11 +77,15 @@
                     
                     <div class="row top2">
                         <!-- Alerts: User Advice -->
-                        <div class="col-lg-12" v-show="showSupportsAdvice">
-                            <div class='alert alert-warning' role="alert">
-                                <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
+
+                        <transition name="fade">
+                            <div class="col-lg-12" v-if="showSupportsAdvice">
+                                <div class='alert alert-warning' role="alert">
+                                    <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
+                                </div>
                             </div>
-                        </div>
+                        </transition>
+                        
                     </div>
 
                     <!-- Support choice -->

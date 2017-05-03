@@ -158,10 +158,14 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-lg-4 col-md-4 center-block">
-                                                <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="height: 80px">
+                                            <div class="col-lg-12 col-md-12 center-block">
+                                                <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" style="width:50%; height: 50%;"/>
                                             </div>
-                                            <div class="col-lg-4 col-md-4 center-block">
+
+                                        </div>
+                                        <div class="row top2">
+                                        
+                                            <div class="col-lg-4 col-md-4 pull-left">
                                                 <div class="top1 dragable-img-container">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
@@ -180,7 +184,7 @@
                                                     >
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-4 center-block">
+                                            <div class="col-lg-4 col-md-4 pull-right">
                                                 <div class="top1 dragable-img-container">
                                                     <!-- Remove the inline style and use something more responsive -->
                                                     <img draggable="true"
@@ -200,6 +204,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -433,11 +439,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
                                 <div class="col-lg-12 col-md-12">
                                     <h3>Finiture supporti</h3>
                                 </div>

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text_font_size"
+			],
+			[
 				"dyn",
 				"dynamicEl"
 			],
@@ -510,22 +514,33 @@
 			[
 				"check",
 				"checkChoice"
-			],
-			[
-				"va",
-				"validateEmail"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "resources/assets/js/components/step1.vue",
+			"file": "resources/assets/sass/app.scss",
 			"settings":
 			{
-<<<<<<< Updated upstream
-				"buffer_size": 3566,
+				"buffer_size": 30735,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 2551,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/sidebar.vue",
+			"settings":
+			{
+				"buffer_size": 6043,
 				"line_ending": "Windows"
 			}
 		},
@@ -538,196 +553,53 @@
 			}
 		},
 		{
-			"file": "gulpfile.js",
+			"file": "resources/assets/js/components/step1.vue",
 			"settings":
 			{
-				"buffer_size": 2693,
-=======
-				"buffer_size": 3710,
-				"encoding": "UTF-8",
+				"buffer_size": 3566,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "gulpfile.js",
-			"settings":
-			{
-				"buffer_size": 2692,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/assets/js/app.js",
-			"settings":
-			{
-				"buffer_size": 3225,
->>>>>>> Stashed changes
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-<<<<<<< Updated upstream
-			"file": "resources/assets/js/app.js",
-			"settings":
-			{
-				"buffer_size": 3137,
-=======
-			"file": "resources/assets/js/components/step-ponte.vue",
-			"settings":
-			{
-				"buffer_size": 21839,
->>>>>>> Stashed changes
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-<<<<<<< Updated upstream
-			"file": "resources/assets/js/components/step-ponte.vue",
-			"settings":
-			{
-				"buffer_size": 22418,
-=======
-			"file": "resources/assets/js/components/step3.vue",
-			"settings":
-			{
-				"buffer_size": 49343,
->>>>>>> Stashed changes
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-<<<<<<< Updated upstream
-			"file": "resources/assets/js/store/translations.js",
-			"settings":
-			{
-				"buffer_size": 12851,
-=======
-			"file": "resources/assets/js/components/languageselector.vue",
-			"settings":
-			{
-				"buffer_size": 2254,
->>>>>>> Stashed changes
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-<<<<<<< Updated upstream
-			"file": "resources/assets/js/components/step3.vue",
-			"settings":
-			{
-				"buffer_size": 50430,
-=======
-			"file": "resources/assets/js/store/getters.js",
-			"settings":
-			{
-				"buffer_size": 5984,
->>>>>>> Stashed changes
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-<<<<<<< Updated upstream
-			"file": "resources/assets/js/components/languageselector.vue",
-			"settings":
-			{
-				"buffer_size": 2254,
-=======
-			"file": "resources/assets/js/components/step4.vue",
-			"settings":
-			{
-				"buffer_size": 68745,
->>>>>>> Stashed changes
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-<<<<<<< Updated upstream
-			"file": "resources/assets/js/store/getters.js",
-			"settings":
-			{
-				"buffer_size": 8639,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step4.vue",
-			"settings":
-			{
-				"buffer_size": 84544,
-				"encoding": "UTF-8",
-=======
 			"file": "resources/assets/js/components/step2.vue",
 			"settings":
 			{
-				"buffer_size": 8922,
+				"buffer_size": 9821,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/assets/js/components/appnavbar.vue",
+			"file": "resources/assets/js/components/step4.vue",
 			"settings":
 			{
-				"buffer_size": 1174,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/sidebar.vue",
-			"settings":
-			{
-				"buffer_size": 5088,
->>>>>>> Stashed changes
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/store/mutations.js",
-			"settings":
-			{
-				"buffer_size": 20865,
-<<<<<<< Updated upstream
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/store/index.js",
-			"settings":
-			{
-				"buffer_size": 17942,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-=======
+				"buffer_size": 84772,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/assets/js/store/index.js",
+			"file": "resources/assets/js/components/step4_3d.vue",
 			"settings":
 			{
-				"buffer_size": 17942,
-				"encoding": "UTF-8",
+				"buffer_size": 2975,
 				"line_ending": "Windows"
->>>>>>> Stashed changes
 			}
 		},
 		{
-			"file": "resources/assets/sass/app.scss",
+			"file": "resources/assets/js/components/step3.vue",
 			"settings":
 			{
-<<<<<<< Updated upstream
-				"buffer_size": 20935,
+				"buffer_size": 50928,
 				"encoding": "UTF-8",
-=======
-				"buffer_size": 17137,
->>>>>>> Stashed changes
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step-ponte.vue",
+			"settings":
+			{
+				"buffer_size": 22870,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -794,75 +666,45 @@
 	"expanded_folders":
 	[
 		"/C/Users/brambillari/Code/configuratore",
-		"/C/Users/brambillari/Code/configuratore/database",
 		"/C/Users/brambillari/Code/configuratore/database/seeds",
-		"/C/Users/brambillari/Code/configuratore/resources/assets",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store",
-		"/C/Users/brambillari/Code/configuratore/resources/data",
-		"/C/Users/brambillari/Code/configuratore/resources/images",
-		"/C/Users/brambillari/Code/configuratore/storage",
 		"/C/Users/brambillari/Code/configuratore/storage/logs",
 		"/C/Users/brambillari/Code/configuratore/vendor",
-		"/C/Users/brambillari/Code/configuratore/vendor/bower_components",
-		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/PACE",
 		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/PACE/themes",
 		"/C/Users/brambillari/Code/configuratore/vendor/bower_components/PACE/themes/orange"
 	],
 	"file_history":
 	[
-<<<<<<< Updated upstream
-		"/C/Users/brambillari/Code/configuratore/node_modules/express/lib/application.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/sidebar.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/appnavbar.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/translations.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step-ponte.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/languageselector.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/getters.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step1.vue",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/application.blade.php",
-		"/C/Users/brambillari/Code/configuratore/resources/data/supports.csv",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
-=======
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/translations.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
+		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/app.js",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step-ponte.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/languageselector.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/getters.js",
-		"/C/Users/brambillari/Code/configuratore/resources/views/split/application.blade.php",
-		"/C/Users/brambillari/Code/configuratore/resources/data/supports.csv",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step3.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
->>>>>>> Stashed changes
-		"/C/Users/brambillari/.homestead/Homestead.yaml",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step4.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/sidebar.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step2.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/mutations.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/index.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/sass/app.scss",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/getters.js",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/languageselector.vue",
+		"/C/Users/brambillari/Code/configuratore/resources/assets/js/store/translations.js",
+		"/C/Users/brambillari/Code/configuratore/node_modules/express/lib/application.js",
+		"/C/Users/brambillari/Code/configuratore/resources/data/supports.csv",
+		"/C/Users/brambillari/.homestead/Homestead.yaml",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step5.vue",
 		"/C/Users/brambillari/Code/configuratore/database/seeds/SupportsSeeder.php",
-<<<<<<< Updated upstream
-=======
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/sidebar.vue",
->>>>>>> Stashed changes
 		"/C/Users/brambillari/Code/configuratore/.env",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/step1.vue",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/sass/app.scss",
 		"/C/Users/brambillari/Code/configuratore/routes/web.php",
 		"/C/Users/brambillari/Code/configuratore/app/Http/Controllers/ApiController.php",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/utils/DividerHelper.js",
 		"/C/Users/brambillari/Code/configuratore/storage/logs/laravel-2017-04-21.log",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/js/3d/utils/splitObjLoader.js",
 		"/C/Users/brambillari/Code/configuratore/node_modules/array-union/index.js",
-		"/C/Users/brambillari/Code/configuratore/gulpfile.js",
 		"/C/Users/brambillari/Code/configuratore/public/css/lightgallery.min.css",
 		"/C/Users/brambillari/Code/configuratore/public/fonts/lg.woff",
 		"/C/Users/brambillari/Code/configuratore/public/fonts/lg.eot",
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/app.js",
-<<<<<<< Updated upstream
-=======
-		"/C/Users/brambillari/Code/configuratore/resources/assets/js/components/appnavbar.vue",
->>>>>>> Stashed changes
 		"/C/Users/brambillari/Code/configuratore/vendor/phpunit/phpunit-mock-objects/tests/_fixture/AnInterface.php",
 		"/C/Users/brambillari/Code/configuratore/database/seeds/DrawertypesTableSeeder.php",
 		"/C/Users/brambillari/Code/configuratore/node_modules/fabric/dist/fabric.js",
@@ -982,6 +824,45 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectAll",
+			"selectAall",
+			"i-icon",
+			"danger",
+			"tab-container",
+			"bridge",
+			"bridge-counter",
+			"fran",
+			"family",
+			"#cccccc",
+			"selected",
+			"selectall",
+			"step4_3d_container",
+			"canvas",
+			"transitio",
+			"i-icon",
+			"text_font_size",
+			"makeshoulderLa",
+			"makeshoulderL",
+			"mekeshoulder",
+			"makeDrawerLabel",
+			"updatedr",
+			"font_size",
+			"standard_top_margin",
+			"image_se",
+			".nuovaconf",
+			"content-size",
+			"content",
+			"ha-li",
+			"-->",
+			"html",
+			"lineabox-types",
+			"setDrawerTypeCategory",
+			";\n",
+			".navigator #nav {",
+			"pace",
+			"rgb",
+			"step2-alert-warning",
+			"alert-warning",
 			"#00b200",
 			"remove3d",
 			"selectbri",
@@ -990,52 +871,6 @@
 			"selectBridge",
 			"dimensionAffected",
 			"setDrawerTypeCategory",
-			"checkChoice",
-			"updatedr",
-			"numeral",
-			"clearDividers",
-			"dispatch",
-			"back2Bridge",
-			"proceed2Five",
-			"watch",
-			"shoulder_text",
-			"changeLanguage",
-			"getSupportsAvailabe",
-			"this.$store.getters",
-			"getters",
-			"watch",
-			"lightgalleryOptions",
-			"hint_viewed",
-			"backAdvice",
-			"product",
-			"setShoulderHeight",
-			"sh_gallery",
-			"sh-lineabox-info",
-			"sh_gallery_element",
-			"sh_gallery",
-			"sh-popover",
-			"sh-popo",
-			"data",
-			"bridges-popover",
-			"supports-info",
-			" rel=\"popover\" data-content=\"\"",
-			"supports-popover",
-			"lightgalleryOptions",
-			"popov",
-			"step3.header-title.lineabox",
-			"sh_gallery",
-			"setshoulder",
-			"sh_gallery",
-			"setShoulderHeight",
-			"selected_HA",
-			" data-content=\"\"",
-			"rel=\"popover\"",
-			"sh-popover",
-			"self.lightgalleryOptions",
-			"setShoulder",
-			"lightgalleryOptions",
-			"setShoulder",
-			"popover",
 			"checkChoice",
 			"updatedr",
 			"numeral",
@@ -1116,58 +951,7 @@
 			"ratio",
 			"num_sup",
 			"showSupportsAdvice",
-			"898",
-			"456",
-			"clearAll",
-			"clearAllData",
-			"clear",
-			"setwidth",
-			"89.8",
-			"89.5",
-			"89",
-			"default",
-			"hasBridge",
-			"actual_lineabox_shoulder_height_MID",
-			"isSuitableForHBridge",
-			"has",
-			"setShoulderHeight",
-			"setShoulder",
-			"setShoul",
-			"selected_HA",
-			"popover",
-			"sh-popover",
-			"setShoulderHeight",
-			"selected_HA",
-			"selcted_H",
-			"45",
-			"45.6",
-			"89.8",
-			"89.5",
-			"handledrop",
-			"handlefrop",
-			"this.select",
-			"deselectAll",
-			"selectB",
-			"objectworki",
-			"selectedI",
-			"selectedItem",
-			"workin",
-			"popover",
-			"modal-body",
-			"asd-keeplogic",
-<<<<<<< Updated upstream
-			"../fonts"
-=======
-			"../fonts",
-			"light",
-			"two",
-			"animation",
-			"handleDragEnd",
-			"dragend",
-			"handleDrop",
-			"handledrag",
-			"handleDragOver"
->>>>>>> Stashed changes
+			"898"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1175,10 +959,8 @@
 		"regex": false,
 		"replace_history":
 		[
-<<<<<<< Updated upstream
+			"#222222",
 			"#cccccc",
-=======
->>>>>>> Stashed changes
 			"",
 			"self.config.lightgalleryOptions",
 			"#00b200",
@@ -1236,37 +1018,24 @@
 	"groups":
 	[
 		{
-<<<<<<< Updated upstream
-			"selected": 12,
-=======
-			"selected": 4,
->>>>>>> Stashed changes
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "resources/assets/js/components/step1.vue",
+					"file": "resources/assets/sass/app.scss",
 					"semi_transient": false,
 					"settings":
 					{
-<<<<<<< Updated upstream
-						"buffer_size": 3566,
-=======
-						"buffer_size": 3710,
->>>>>>> Stashed changes
+						"buffer_size": 30735,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-<<<<<<< Updated upstream
-								302,
-								343
-=======
-								2700,
-								2700
->>>>>>> Stashed changes
+								8320,
+								8320
 							]
 						],
 						"settings":
@@ -1276,28 +1045,12 @@
 							{
 								"close":
 								{
-<<<<<<< Updated upstream
-=======
-									"1":
-									[
-										2915,
-										2916
-									]
->>>>>>> Stashed changes
 								},
 								"icon":
 								{
 								},
 								"open":
 								{
-<<<<<<< Updated upstream
-=======
-									"1":
-									[
-										2003,
-										2004
-									]
->>>>>>> Stashed changes
 								},
 								"unmatched":
 								{
@@ -1305,457 +1058,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-<<<<<<< Updated upstream
-=======
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-<<<<<<< Updated upstream
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-=======
-								"bh_unmatched_content"
->>>>>>> Stashed changes
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 0.0,
-=======
-						"translation.y": 2110.0,
->>>>>>> Stashed changes
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-<<<<<<< Updated upstream
-					"file": "resources/views/split/application.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2995,
-=======
-					"file": "gulpfile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2692,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< Updated upstream
-								2132,
-								2132
-=======
-								0,
-								0
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-<<<<<<< Updated upstream
-									"1":
-									[
-										2131,
-										2132
-									]
-=======
->>>>>>> Stashed changes
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-<<<<<<< Updated upstream
-									"1":
-									[
-										2108,
-										2109
-									]
-=======
->>>>>>> Stashed changes
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-<<<<<<< Updated upstream
-=======
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-<<<<<<< Updated upstream
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-=======
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
->>>>>>> Stashed changes
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 780.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-=======
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
->>>>>>> Stashed changes
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-<<<<<<< Updated upstream
-					"file": "gulpfile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2693,
-=======
-					"file": "resources/assets/js/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3225,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< Updated upstream
-								2689,
-								2689
-=======
-								193,
-								200
-							],
-							[
-								212,
-								219
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										2690,
-										2691
-=======
-										219,
-										220
->>>>>>> Stashed changes
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-=======
-										"Packages/BracketHighlighter/icons/single_quote.png",
->>>>>>> Stashed changes
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										1011,
-										1012
-=======
-										211,
-										212
->>>>>>> Stashed changes
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-<<<<<<< Updated upstream
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-=======
->>>>>>> Stashed changes
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1766,390 +1078,68 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-<<<<<<< Updated upstream
-								"bh_default_content"
-=======
-								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
->>>>>>> Stashed changes
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 660.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-=======
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
->>>>>>> Stashed changes
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-<<<<<<< Updated upstream
-					"file": "resources/assets/js/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3137,
-=======
-					"file": "resources/assets/js/components/step-ponte.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21839,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-<<<<<<< Updated upstream
-								220
-=======
-								0
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-<<<<<<< Updated upstream
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-=======
->>>>>>> Stashed changes
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-<<<<<<< Updated upstream
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-=======
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
->>>>>>> Stashed changes
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-<<<<<<< Updated upstream
-=======
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
->>>>>>> Stashed changes
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-<<<<<<< Updated upstream
-=======
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
->>>>>>> Stashed changes
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-<<<<<<< Updated upstream
-								"bh_unmatched_content",
-=======
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 300.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/assets/js/components/step3.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49343,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								28085,
-								28085
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										29607,
-										29608
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										28084,
-										28085
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
->>>>>>> Stashed changes
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-<<<<<<< Updated upstream
-=======
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
-								"bh_square_content",
->>>>>>> Stashed changes
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-<<<<<<< Updated upstream
-								"bh_default_content"
-=======
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
->>>>>>> Stashed changes
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 0.0,
+						"translation.y": 6658.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/assets/js/components/step-ponte.vue",
+					"buffer": 1,
+					"file": "gulpfile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 22418,
-=======
-						"translation.y": 14422.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "resources/assets/js/components/languageselector.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2254,
->>>>>>> Stashed changes
+						"buffer_size": 2551,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-<<<<<<< Updated upstream
-								9327,
-								9333
-=======
-								1807,
-								1807
->>>>>>> Stashed changes
+								0,
+								0
 							]
 						],
 						"settings":
@@ -2159,41 +1149,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										9333,
-										9334
-=======
-										1994,
-										1995
->>>>>>> Stashed changes
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										"Packages/BracketHighlighter/icons/double_quote.png",
-=======
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
->>>>>>> Stashed changes
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										9326,
-										9327
-									]
-=======
-										1805,
-										1806
-									]
 								},
 								"unmatched":
 								{
@@ -2201,372 +1162,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 698.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "resources/assets/js/store/getters.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5984,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								897,
-								908
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
->>>>>>> Stashed changes
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										17,
-										18
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-<<<<<<< Updated upstream
-=======
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-<<<<<<< Updated upstream
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-=======
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
->>>>>>> Stashed changes
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 4358.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "resources/assets/js/store/translations.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12851,
-=======
-						"translation.y": 300.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "resources/assets/js/components/step4.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 68745,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< Updated upstream
-								6894,
-								6894
-=======
-								65344,
-								65344
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										6894,
-										6895
-=======
-										65511,
-										65512
->>>>>>> Stashed changes
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										"Packages/BracketHighlighter/icons/double_quote.png",
-=======
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
->>>>>>> Stashed changes
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										6857,
-										6858
-=======
-										65191,
-										65192
->>>>>>> Stashed changes
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-<<<<<<< Updated upstream
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-=======
->>>>>>> Stashed changes
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2577,699 +1182,172 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-<<<<<<< Updated upstream
-								"bh_default_content"
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 1527.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "resources/assets/js/components/step3.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50430,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								28085,
-								28085
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										29607,
-										29608
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										28084,
-										28085
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-=======
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-<<<<<<< Updated upstream
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-=======
-								"bh_unmatched_content"
->>>>>>> Stashed changes
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
 						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 14422.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "resources/assets/js/components/languageselector.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2254,
-=======
-						"translation.y": 33238.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "resources/assets/js/components/step2.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8922,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< Updated upstream
-								1807,
-								1807
-=======
-								851,
-								851
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										1994,
-										1995
-=======
-										851,
-										852
->>>>>>> Stashed changes
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										1805,
-										1806
-=======
-										836,
-										837
->>>>>>> Stashed changes
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 698.0,
-=======
-						"translation.y": 0.0,
->>>>>>> Stashed changes
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-<<<<<<< Updated upstream
-					"buffer": 8,
-					"file": "resources/assets/js/store/getters.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8639,
-=======
-					"buffer": 9,
-					"file": "resources/assets/js/components/appnavbar.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1174,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< Updated upstream
-								897,
-								908
-=======
-								668,
-								668
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										17,
-										18
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 300.0,
-=======
-						"translation.y": 0.0,
->>>>>>> Stashed changes
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-<<<<<<< Updated upstream
-					"buffer": 9,
-					"file": "resources/assets/js/components/step4.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 84544,
-=======
-					"buffer": 10,
-					"file": "resources/assets/js/components/sidebar.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5088,
->>>>>>> Stashed changes
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< Updated upstream
-								74882,
-								74889
-=======
-								2568,
-								2568
->>>>>>> Stashed changes
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										74997,
-										74998
-=======
-										2655,
-										2656
->>>>>>> Stashed changes
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-=======
-										"Packages/BracketHighlighter/icons/square_bracket.png",
->>>>>>> Stashed changes
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-<<<<<<< Updated upstream
-										74870,
-										74871
-=======
-										2549,
-										2550
->>>>>>> Stashed changes
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-<<<<<<< Updated upstream
-=======
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-<<<<<<< Updated upstream
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-=======
-								"bh_unmatched_content"
->>>>>>> Stashed changes
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 33158.0,
-=======
-						"translation.y": 120.0,
->>>>>>> Stashed changes
+						"translation.y": 840.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-<<<<<<< Updated upstream
-					"buffer": 10,
-=======
-					"buffer": 11,
->>>>>>> Stashed changes
-					"file": "resources/assets/js/store/mutations.js",
+					"buffer": 2,
+					"file": "resources/assets/js/components/sidebar.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20865,
+						"buffer_size": 6043,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-<<<<<<< Updated upstream
-								11261,
-								11279
-=======
-								20825,
-								20825
->>>>>>> Stashed changes
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/views/split/application.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2995,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -3281,28 +1359,25 @@
 								{
 									"1":
 									[
-										20830,
-										20831
+										14,
+										15
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"Packages/BracketHighlighter/icons/angle_bracket.png",
 										"brackethighlighter.default"
 									]
 								},
 								"open":
 								{
-<<<<<<< Updated upstream
-=======
 									"1":
 									[
-										20791,
-										20792
+										0,
+										1
 									]
->>>>>>> Stashed changes
 								},
 								"unmatched":
 								{
@@ -3310,157 +1385,192 @@
 							},
 							"bracket_highlighter.regions":
 							[
-<<<<<<< Updated upstream
-=======
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-<<<<<<< Updated upstream
 								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-=======
-								"bh_unmatched_content"
->>>>>>> Stashed changes
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-<<<<<<< Updated upstream
-						"translation.y": 7738.0,
-=======
-						"translation.y": 15018.0,
->>>>>>> Stashed changes
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
 					"type": "text"
 				},
 				{
-<<<<<<< Updated upstream
-					"buffer": 11,
-=======
-					"buffer": 12,
->>>>>>> Stashed changes
-					"file": "resources/assets/js/store/index.js",
+					"buffer": 4,
+					"file": "resources/assets/js/components/step1.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17942,
+						"buffer_size": 3566,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-<<<<<<< Updated upstream
-								15091,
-								14972
-=======
-								4789,
-								4802
->>>>>>> Stashed changes
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2040.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/assets/js/components/step2.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2218,
+								2228
 							]
 						],
 						"settings":
@@ -3472,24 +1582,15 @@
 								{
 									"1":
 									[
-<<<<<<< Updated upstream
-										15089,
-										15090
-=======
-										4802,
-										4803
->>>>>>> Stashed changes
+										2228,
+										2229
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-<<<<<<< Updated upstream
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-=======
 										"Packages/BracketHighlighter/icons/single_quote.png",
->>>>>>> Stashed changes
 										"brackethighlighter.default"
 									]
 								},
@@ -3497,13 +1598,8 @@
 								{
 									"1":
 									[
-<<<<<<< Updated upstream
-										14989,
-										14990
-=======
-										4788,
-										4789
->>>>>>> Stashed changes
+										2213,
+										2214
 									]
 								},
 								"unmatched":
@@ -3512,156 +1608,445 @@
 							},
 							"bracket_highlighter.regions":
 							[
-<<<<<<< Updated upstream
-=======
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
->>>>>>> Stashed changes
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-<<<<<<< Updated upstream
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-=======
->>>>>>> Stashed changes
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-<<<<<<< Updated upstream
 								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-=======
-								"bh_unmatched_content"
->>>>>>> Stashed changes
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-<<<<<<< Updated upstream
-						"translation.y": 10348.0,
-=======
-						"translation.y": 4168.0,
->>>>>>> Stashed changes
+						"translation.x": 0.0,
+						"translation.y": 598.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-<<<<<<< Updated upstream
-					"buffer": 12,
-=======
-					"buffer": 13,
->>>>>>> Stashed changes
-					"file": "resources/assets/sass/app.scss",
+					"buffer": 6,
+					"file": "resources/assets/js/components/step4.vue",
 					"semi_transient": false,
 					"settings":
 					{
-<<<<<<< Updated upstream
-						"buffer_size": 20935,
-=======
-						"buffer_size": 17137,
->>>>>>> Stashed changes
+						"buffer_size": 84772,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20358,
-								20358
+								48697,
+								48697
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										49429,
+										49430
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										48557,
+										48558
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 19978.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "resources/assets/js/components/step4_3d.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								128,
+								146
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										146,
+										147
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										127,
+										128
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 120.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "resources/assets/js/components/step3.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 50928,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								41087,
+								41087
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										42572,
+										42573
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										40642,
+										40643
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 20818.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "resources/assets/js/components/step-ponte.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5711,
+								5711
 							]
 						],
 						"settings":
@@ -3684,46 +2069,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -3734,26 +2089,51 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 22114.0,
+						"translation.y": 1437.0,
 						"zoom_level": 1.0
 					},
-<<<<<<< Updated upstream
-					"stack_index": 0,
-=======
-					"stack_index": 13,
->>>>>>> Stashed changes
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -3808,57 +2188,60 @@
 		"selected_items":
 		[
 			[
-<<<<<<< Updated upstream
-				"app.scss",
-				"resources\\assets\\sass\\app.scss"
-			],
-			[
 				"gulp",
 				"gulpfile.js"
 			],
 			[
-				"step4",
-				"resources\\assets\\js\\components\\step4.vue"
-			],
-			[
-				"application",
-				"resources\\views\\split\\application.blade.php"
-=======
-				"app.js",
-				"resources\\assets\\js\\app.js"
-			],
-			[
-				"gulpfile",
-				"gulpfile.js"
-			],
-			[
-				"",
+				"step1",
 				"resources\\assets\\js\\components\\step1.vue"
 			],
 			[
-				"stepp",
-				"resources\\assets\\js\\components\\step-ponte.vue"
+				"applica",
+				"resources\\views\\split\\application.blade.php"
 			],
 			[
-				"languagesele",
-				"resources\\assets\\js\\components\\languageselector.vue"
+				"sidebar",
+				"resources\\assets\\js\\components\\sidebar.vue"
 			],
 			[
-				"getters",
-				"resources\\assets\\js\\store\\getters.js"
->>>>>>> Stashed changes
+				"step3d",
+				"resources\\assets\\js\\components\\step4_3d.vue"
+			],
+			[
+				"step4",
+				"resources\\assets\\js\\components\\step4.vue"
 			],
 			[
 				"step2",
 				"resources\\assets\\js\\components\\step2.vue"
 			],
 			[
-				"step4",
-				"resources\\assets\\js\\components\\step4.vue"
+				"step-po",
+				"resources\\assets\\js\\components\\step-ponte.vue"
 			],
 			[
 				"step3",
 				"resources\\assets\\js\\components\\step3.vue"
+			],
+			[
+				"app.sc",
+				"resources\\assets\\sass\\app.scss"
+			],
+			[
+				"app.js",
+				"resources\\assets\\js\\app.js"
+			],
+			[
+				"appnav",
+				"resources\\assets\\js\\components\\appnavbar.vue"
+			],
+			[
+				"app.scss",
+				"resources\\assets\\sass\\app.scss"
+			],
+			[
+				"application",
+				"resources\\views\\split\\application.blade.php"
 			],
 			[
 				"mutations",
@@ -3869,10 +2252,6 @@
 				"resources\\assets\\js\\store\\translations.js"
 			],
 			[
-				"app.js",
-				"resources\\assets\\js\\app.js"
-			],
-			[
 				"gulpfile",
 				"gulpfile.js"
 			],
@@ -3891,14 +2270,6 @@
 			[
 				"getters",
 				"resources\\assets\\js\\store\\getters.js"
-			],
-			[
-				"step2",
-				"resources\\assets\\js\\components\\step2.vue"
-			],
-			[
-				"step3",
-				"resources\\assets\\js\\components\\step3.vue"
 			],
 			[
 				"language",
@@ -3917,10 +2288,6 @@
 				"resources\\assets\\js\\components\\step1.vue"
 			],
 			[
-				"appnav",
-				"resources\\assets\\js\\components\\appnavbar.vue"
-			],
-			[
 				"side",
 				"resources\\assets\\js\\components\\sidebar.vue"
 			],
@@ -3929,25 +2296,10 @@
 				"resources\\assets\\js\\components\\sidebar.vue"
 			],
 			[
-				"applica",
-				"resources\\views\\split\\application.blade.php"
-			],
-			[
-				"step1",
-				"resources\\assets\\js\\components\\step1.vue"
-			],
-			[
 				"step5",
 				"resources\\assets\\js\\components\\step5.vue"
 			],
 			[
-<<<<<<< Updated upstream
-=======
-				"translation",
-				"resources\\assets\\js\\store\\translations.js"
-			],
-			[
->>>>>>> Stashed changes
 				"seeder",
 				"database\\seeds\\SupportsSeeder.php"
 			],
@@ -4008,10 +2360,6 @@
 				"resources\\assets\\js\\components\\languageselector.vue"
 			],
 			[
-				"app.sc",
-				"resources\\assets\\sass\\app.scss"
-			],
-			[
 				"package",
 				"package.json"
 			],
@@ -4038,10 +2386,6 @@
 			[
 				"index.js",
 				"node_modules\\array-union\\index.js"
-			],
-			[
-				"sidebar",
-				"resources\\assets\\js\\components\\sidebar.vue"
 			],
 			[
 				"boostrap.scss",

@@ -94,8 +94,12 @@ strong, .component-header, .ha-lineabox, .bridge-counter {
   padding: 12px 15px 0px 15px;
 }
 
-.tab-container {
+#tab-container {
   font-size: 1.2em!important;
+}
+
+#tab-container .active {
+  color: #33ae73!important;
 }
 
 .caret {
@@ -212,8 +216,8 @@ figure:hover {
 }
 
 .border-selected {
-  border: 1px solid green;
-  color: green;
+  border: 1px solid #33ae73;
+  color: #33ae73;
 }
 
 .no-background {
@@ -491,7 +495,7 @@ input {
 }
 
 .ok {
-  color: green;  
+  color: #33ae73;  
 }
 
 .has_error {
@@ -619,7 +623,7 @@ input {
   top:88px;
 }
 #box3 {
-  background-color:green;
+  background-color:#33ae73;
   top:176px;
 }
 .box a {
@@ -729,7 +733,7 @@ html, body, .container-fluid, .wrapper {
 
 .green {
   background-color: #eee ;
-  border-color: darkgreen !important;
+  border-color: dark#33ae73 !important;
 }
 
 .sidebar {
@@ -1084,6 +1088,13 @@ img.rotate90 {
     padding-right: 25px;
   }
 
+.panel-default > .panel-heading {
+    color: #333333;
+    text-align: right;
+    background-color: #fff!important;
+    border: none!important;
+}
+
   .content-size > div:last-of-type > div:first-of-type::after {
       content: 'mm';
       position: absolute;
@@ -1098,18 +1109,18 @@ img.rotate90 {
       font-weight: bold;
   }
   .content-size > div:last-of-type > div.text-success:first-of-type::after {
-      color: #008000;
+      color: #33ae73;
   }
   .content-size .text-success input {
-      color: #008000;
-      border-bottom: 1px solid #008000;
+      color: #33ae73;
+      border-bottom: 1px solid #33ae73;
   }
   .content-size > div:last-of-type > div.text-danger:first-of-type::after {
       color: #f04f1a;
   }
   .content-size .text-danger input {
       color: #f04f1a;
-      border-bottom: 1px solid #008000;
+      border-bottom: 1px solid #f04f1a;
   }
   .content-size .help-block {
       white-space: nowrap;
