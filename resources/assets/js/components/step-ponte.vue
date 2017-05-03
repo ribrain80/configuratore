@@ -574,7 +574,7 @@ export default {
         $( '.supports-info' ).on( "click", function ( event ) {
 
             // # Get related image element
-            let related_image = $( event.target ).next();
+            let related_image = $( event.target ).next().find( "img" );
 
             // # General settings + image src
             let supportsGalleryOptions = self.config.lightgalleryOptions;
@@ -588,7 +588,7 @@ export default {
         $( '.bridges-info' ).on( "click", function ( event ) {
 
             // # Get related image element
-            let related_image = $( event.target ).next();
+            let related_image = $( event.target ).next().find( "img" );
 
             // # General settings + image src
             let bridgesGalleryOptions = self.config.lightgalleryOptions;
