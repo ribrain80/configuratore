@@ -457,7 +457,7 @@
                                     <figure>
                                         <img :src="variant.texture"
                                              class="img center-block img-responsive img-thumbnail"
-                                             :class="variant.selected?'selected':''"
+                                             :class="variant.selected?'support_selected':''"
                                              @click="_updateSupports( $event ); "
                                              style="width: 120px;height: 80px"
                                              :data-sku="variant.sku"

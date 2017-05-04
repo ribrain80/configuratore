@@ -337,6 +337,16 @@ canvas {
   color: #fff!important;
 }
 
+.btn-abs {
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+}
+
+.support-selected {
+  border: 1px solid #EF4F1A!important;
+}
+
 .img-responsive{width: 100%;}
 
 .btn-back:hover {

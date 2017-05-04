@@ -13,8 +13,8 @@
 
             <!-- Next button -->
             <div class="row actions-toolbar">
-                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
-                    <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <button class="btn btn-danger btn-abs" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
                 </div>
             </div>
 

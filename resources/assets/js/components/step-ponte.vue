@@ -21,7 +21,7 @@
 
                 <div class="col-lg-12">
 
-                    <div class="col-lg-1" v-show="$store.state.is_suitable_width_4hbridge"></div>
+                    <div class="col-lg-2" v-show="$store.state.is_suitable_width_4hbridge"></div>
 
                     <div class="col-lg-4" v-show="$store.state.is_suitable_width_4hbridge">
 
@@ -39,7 +39,7 @@
                         </figure>
                     </div>
                     
-                    <div class="col-lg-1"></div>
+                    <div :class="[ $store.state.is_suitable_width_4hbridge ? 'col-lg-1' : 'col-lg-2' ]"></div>
 
                     <div class="col-lg-4">
 
@@ -90,8 +90,8 @@
 
                     <!-- Support choice -->
                     <div class="row top1">
-
-                            <div v-for="( bridge_support, index ) in $store.getters.getSupportsAvailabe">
+                            <div class="col-lg-1"></div>
+                            <div v-for="( bridge_support, index, k ) in $store.getters.getSupportsAvailabe">
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-4">
                                     <figure :class="[ 'drawer-container', bridge_support.id == $store.state.bridge_supportID ? 'image_selected' : '']" >
@@ -132,7 +132,8 @@
 
                     <!-- Bridges choice -->
                     <div class="row top2">
-
+                        
+                        <div class="col-lg-1"></div>
                         <div v-for="( bridge, index ) in $store.getters.getBridgesAvailabe">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-4" >

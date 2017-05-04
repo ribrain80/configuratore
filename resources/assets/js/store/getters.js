@@ -64,7 +64,7 @@ const  getters = {
                 let selected = false;
                 if (state.bridge_supports_selected.length) {
                     let firstSelectedSupportSku = state.bridge_supports_selected[0];
-                    if (cur.sku==firstSelectedSupportSku) {
+                    if (cur.sku==firstSelectedSupportSku.sku) {
                         selected = true;
                     }
                 }
