@@ -238,13 +238,13 @@ export default {
                 opacity:1
             }, {
                 queue: false,
-                duration: 1000,
+                duration: 500,
                 complete: function() {
 
                     let pos = el.offsetTop;
                     console.log("FADE IN DONE POS: ", pos);
 
-                    $( "#step2-content" ).animate( { scrollTop: pos }, 1000 );
+                    $( "#step2-content" ).animate( { scrollTop: pos }, 500 );
                     // # callback fine transizione
                     done;
                 }
@@ -255,10 +255,10 @@ export default {
                 opacity:0
             }, {
                 queue: false,
-                duration: 1000,
+                duration: 500,
                 complete: function() {
                     console.log("FADE OUT DONE");
-                    $( "#step2-content" ).animate( { scrollTop: 0 }, 1000 );
+                    $( "#step2-content" ).animate( { scrollTop: 0 }, 500 );
                     done;
                 }
             });
