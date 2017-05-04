@@ -143,9 +143,9 @@
                     <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
                         <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
                     </li>
-                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">Finiture divisori</a></li>
-                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">Finiture ponti</a></li>
-                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">Finiture cassetto</a></li>
+                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">{{ $t( "step4.dividers_textures") }}</a></li>
+                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">{{ $t( "step4.bridges_textures") }}</a></li>
+                    <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#edges-tab">{{ $t( "step4.drawer_textures") }}</a></li>
                 </ul>
 
                 <!-- Tab contents -->
@@ -222,7 +222,7 @@
 
 
                     <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
-                        <div class="row top1 ">
+                        <div class="row top1" v-if="$store.state.objectWorkingOn.type!='divider'">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sx-4">
@@ -620,6 +620,19 @@ export default {
      * @type {Object}
      */
     computed: {
+
+        isDividerSelected: function() {
+
+            if( null != this.$store.state.objectWorkingOn || undefined == this.$store.state.objectWorkingOn ) {
+                return false;
+            }
+
+            if( this.$store.state.objectWorkingOn.type != "divider" ) {
+                return false;
+            }
+
+            return true;
+        },
 
 
         /**
