@@ -211,8 +211,8 @@ export default {
           config: {
 
               // # General settings
-              line_stroke: '#222222',
-              text_stroke: '#222222',
+              line_stroke: '#666666',
+              text_stroke: '#666666',
               font_size: 12,
               text_font_size: 12,
               font_family: 'FranklinGothicURW-Boo',
