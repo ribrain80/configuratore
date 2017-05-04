@@ -344,7 +344,7 @@
                         </div>
                         <div class="row top1" v-else="$store.state.objectWorkingOn.type!='divider'">
                             <div class="col-lg-12">
-                                TODO: Messaggio devi scegliere un divisorio translated
+                                {{ $t( "step4.nodividerchosen" ) }}
                             </div>
                         </div>
                     </div>
