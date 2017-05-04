@@ -18,7 +18,7 @@ const  getters = {
         }
         console.log("OUTPUT in getter: ",output);
         // # Default output: empty array
-        return output;
+        return output.reverse();
     },
 
     getLanguage: function( state ) {
