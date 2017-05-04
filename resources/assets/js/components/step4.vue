@@ -83,7 +83,7 @@
             </div>
 
             <div class="col-lg-2 col-md-2 pull-right">
-                <a class="btn btn-danger pdf-help" href="/pdf/help.pdf">Tutorial pdf</a>
+                <a class="btn btn-danger pdf-help" target="_blank" href="/pdf/help.pdf">Tutorial pdf</a>
             </div>
         </div>
 
