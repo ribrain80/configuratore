@@ -67,18 +67,23 @@
     </div>
     
     <div id="step4-content" class="content-flex content-flex-scrollable content-flex-padding">
+
         <!-- Select All - trash bin row -->
         <div class="row top1">
             <div class="col-lg-5 col-md-5 pull-left" >
                 <button class="btn btn-danger btn-danger-small-text" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
             </div>
 
-            <div class="col-lg-1 col-md-1" style="text-align: right">
+            <div class="col-lg-2 col-md-2" style="text-align: right">
                 <img src="/images/others/garbage.png"
                      style="cursor:pointer;"
                      @click="alertDividerDeletion()"
                      v-show="allselected || $store.state.objectWorkingOn.type=='divider'"
                 />
+            </div>
+
+            <div class="col-lg-2 col-md-2 pull-right">
+                <a class="btn btn-danger pdf-help" href="/pdf/help.pdf">Tutorial pdf</a>
             </div>
         </div>
 
@@ -1969,13 +1974,13 @@ export default {
         if( !this.$store.state.hint_viewed ) {
 
           // # General settings + image src
-          let hintGalleryOptions = this.config.lightgalleryOptions;
+         /* let hintGalleryOptions = this.config.lightgalleryOptions;
           hintGalleryOptions.dynamicEl = [ { src: "/images/others/istruzioni_gestione_divisorio.gif" } ];
 
           // # Init
           $( this ).lightGallery( hintGalleryOptions ) ;
 
-          this.$store.commit( "setHintViewed", true );
+          this.$store.commit( "setHintViewed", true );*/
 
         }
 
