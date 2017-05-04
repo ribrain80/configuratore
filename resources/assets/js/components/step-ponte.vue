@@ -64,8 +64,8 @@
         
         <!-- Supports section -->
         <div class="row top2" >
-            
-            <transition name="fade">
+
+            <transition v-on:enter="slideFadeIn" v-on:leave="fadeSlideOut">
                 <div class="container-fluid" v-if="$store.state.bridge_orientation.length">
                     
                     <div class="row top2">
@@ -117,10 +117,10 @@
         </div>
 
         <!-- Bridges section -->
-        <div class="row top1" >       
-            
+        <div class="row top1" >
 
-            <transition name="fade">
+
+            <transition v-on:enter="slideFadeIn" v-on:leave="fadeSlideOut">
                 <div v-if="$store.state.bridge_orientation.length && $store.state.bridge_supportID != 0 ">
                     
                     <div class="row top2">
@@ -151,7 +151,7 @@
                                 </figure>
 
                             </div>
-                        
+
                     </div>
 
                 </div>
@@ -264,6 +264,41 @@ export default {
      * @type {Object}
      */
     methods: {
+
+        /***
+         * TRANSITIONS
+         */
+        slideFadeIn(el, done) {
+            $(el).animate({
+                opacity:1
+            }, {
+                queue: false,
+                duration: 1000,
+                complete: function() {
+
+                    let pos = el.offsetTop;
+                    console.log("FADE IN DONE POS: ", pos);
+
+                    $( "#step-ponte-content" ).animate( { scrollTop: pos }, 1000 );
+                    // # callback fine transizione
+                    done;
+                }
+            });
+        },
+
+        fadeSlideOut(el, done) {
+            $(el).animate({
+                opacity:0
+            }, {
+                queue: false,
+                duration: 1000,
+                complete: function() {
+                    console.log("FADE OUT DONE");
+                    $( "#step-ponte-content" ).animate( { scrollTop: 0 }, 1000 );
+                    done;
+                }
+            });
+        },
 
         /**
          * Toggle orientation selected in the store ( V | H )
