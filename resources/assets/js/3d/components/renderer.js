@@ -43,6 +43,8 @@ export default class Renderer {
     updateSize() {
         console.log("UPDATE RENDERER SIZE!!");
         this.threeRenderer.setSize(this.container.offsetWidth, this.container.offsetHeight, true);
+        this.container.firstChild.style.border = "none";
+        this.container.firstChild.style.border = "1px solid #999";
     }
 
     render(scene, camera) {
