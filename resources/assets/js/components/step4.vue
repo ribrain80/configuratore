@@ -236,7 +236,7 @@
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
-                                                             style="width: 100px;height: 100px"
+                                                             style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ variant.color }}</figcaption>
@@ -253,7 +253,7 @@
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
-                                                             style="width: 100px;height: 100px"
+                                                             style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ variant.color }} - Bordo nero</figcaption>
@@ -273,7 +273,7 @@
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
-                                                             style="width: 100px;height: 100px"
+                                                             style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ variant.color }}</figcaption>
@@ -290,7 +290,7 @@
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
-                                                             style="width: 100px;height: 100px"
+                                                             style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ variant.color }} - Bordo nero</figcaption>
@@ -310,7 +310,7 @@
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
-                                                             style="width: 100px;height: 100px"
+                                                             style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ variant.color }}</figcaption>
@@ -327,7 +327,7 @@
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
-                                                             style="width: 100px;height: 100px"
+                                                             style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ variant.color }} - Bordo nero</figcaption>
@@ -365,7 +365,7 @@
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
-                                                     style="width: 100px;height: 100px"
+                                                     style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ variant.color}}</figcaption>
@@ -379,7 +379,7 @@
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
-                                                     style="width: 100px;height: 100px"
+                                                     style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ variant.color}} - Bordo nero </figcaption>
@@ -396,7 +396,7 @@
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
-                                                     style="width: 100px;height: 100px"
+                                                     style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ variant.color}}</figcaption>
@@ -410,7 +410,7 @@
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
-                                                     style="width: 100px;height: 100px"
+                                                     style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ variant.color}} - Bordo nero </figcaption>
@@ -427,7 +427,7 @@
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
-                                                     style="width: 100px;height: 100px"
+                                                     style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ variant.color}}</figcaption>
@@ -441,7 +441,7 @@
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
-                                                     style="width: 100px;height: 100px"
+                                                     style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ variant.color}} - Bordo nero </figcaption>
@@ -458,7 +458,7 @@
                                         <img :src="variant.texture"
                                              class="img center-block img-responsive img-thumbnail"
                                              @click="_updateSupports( $event ); "
-                                             style="width: 100px;height: 100px"
+                                             style="width: 120px;height: 80px"
                                              :data-sku="variant.sku"
                                         >
                                     </figure>
@@ -487,7 +487,7 @@
                                         <img :src="variant.textureImg"
                                              class="img center-block img-responsive img-thumbnail"
                                              @click="_updateBorder( $event );"
-                                             style="width: 100px;height: 100px"
+                                             style="width: 120px;height: 80px"
                                              :data-sku="variant.textureId"
                                         >
                                         <figcaption>{{ variant.textureName }}</figcaption>
