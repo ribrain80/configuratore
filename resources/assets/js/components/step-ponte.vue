@@ -132,7 +132,7 @@
 
                     <!-- Bridges choice -->
                     <div class="row top2">
-                        <div v-for="( bridge, index ) in $store.getters.getBridgesAvailabe">
+
                             <div class="col-lg-1"></div>
                             <div class="col-lg-4" v-for="( bridge, index ) in $store.getters.getBridgesAvailabe" >
                                 <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
@@ -151,7 +151,7 @@
                                 </figure>
 
                             </div>
-                        </div>
+                        
                     </div>
 
                 </div>
