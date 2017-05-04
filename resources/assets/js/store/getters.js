@@ -60,7 +60,20 @@ const  getters = {
         let output = [];
         if ( state.bridge_supportID ) {
             let supportsByCategory = (state.bridge_supportID==1)?state.supportTypes[455]:state.supportTypes[900];
-            output = supportsByCategory['items'];
+            let itemsWithSelected = (supportsByCategory['items']).map((cur) => {
+                let selected = false;
+                if (state.bridge_supports_selected.length) {
+                    let firstSelectedSupportSku = state.bridge_supports_selected[0];
+                    if (cur.sku==firstSelectedSupportSku) {
+                        selected = true;
+                    }
+                }
+                cur.selected = selected;
+
+                return cur;
+            });
+
+            output = itemsWithSelected;
         }
         return output;
     },
