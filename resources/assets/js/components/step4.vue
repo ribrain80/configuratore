@@ -467,7 +467,8 @@
                         </div>
                     </div>
                     <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
-                        <div class="row top1">
+
+                        <div class="col-lg-12 top1">
                             <div class="col-lg-4" id="background" @click='selectBorder( $event );' style="padding:0">
                                 <!-- Egdes -->
                                     <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
@@ -497,6 +498,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div> <!-- END tab content -->
