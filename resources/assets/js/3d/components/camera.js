@@ -25,4 +25,9 @@ export default class Camera {
         // Always call updateProjectionMatrix on camera change
         this.threeCamera.updateProjectionMatrix();
     }
+
+    chanegPosition (x,y,z) {
+        let  xyz = new THREE.Vector3(x, y, z);
+        this.threeCamera.lookAt(xyz);
+    }
 }

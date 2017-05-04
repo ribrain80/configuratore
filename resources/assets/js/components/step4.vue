@@ -222,7 +222,7 @@
 
 
                     <div role="tabpanel" id="dividers-tab"  class="tab-pane fade in">
-                        <div class="row top1" v-if="$store.state.objectWorkingOn.type!='divider'">
+                        <div class="row top1" v-if="$store.state.objectWorkingOn.type=='divider'">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sx-4">
@@ -340,6 +340,11 @@
 
 
 
+                            </div>
+                        </div>
+                        <div class="row top1" v-else="$store.state.objectWorkingOn.type!='divider'">
+                            <div class="col-lg-12">
+                                TODO: Messaggio devi scegliere un divisorio translated
                             </div>
                         </div>
                     </div>

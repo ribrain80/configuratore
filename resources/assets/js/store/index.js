@@ -235,6 +235,7 @@ const store = new Vuex.Store({
 
         genDrawer: function ({ commit,state }, type) {
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
+            state.camera.chanegPosition(type,-state.dimensions.width/2,0,-state.dimensions.length/2);
             console.log("Added Drawer of type:",type);
             //type = -10;
             if (!state.bridge_supportID) {

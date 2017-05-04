@@ -28,7 +28,7 @@ export default {
         far: 20000,
         aspect: 1,
         posX: 300,
-        posY: 500,
+        posY: 1200,
         posZ: 500
     },
     controls: {
