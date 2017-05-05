@@ -701,22 +701,35 @@ export default {
         },
 
         touchHandler: function ( event ) {
-            var touch = event.changedTouches[0];
+            var touches = event.changedTouches,
+                first = touches[0],
+                type = "";
+            switch (event.type) {
+                case "touchstart":
+                    type = "mousedown";
+                    break;
+                case "touchmove":
+                    type = "mousemove";
+                    break;
+                case "touchend":
+                    type = "mouseup";
+                    break;
+                default:
+                    return;
+            }
+
+            //initMouseEvent(type, canBubble, cancelable, view, clickCount,
+            //           screenX, screenY, clientX, clientY, ctrlKey,
+            //           altKey, shiftKey, metaKey, button, relatedTarget);
 
             var simulatedEvent = document.createEvent("MouseEvent");
-                simulatedEvent.initMouseEvent({
-                touchstart: "mousedown",
-                touchmove: "mousemove",
-                touchend: "mouseup"
-            }[event.type], true, true, window, 1,
-                touch.screenX, touch.screenY,
-                touch.clientX, touch.clientY, false,
-                false, false, false, 0, null);
+            simulatedEvent.initMouseEvent(type, true, true, window, 1,
+                first.screenX, first.screenY,
+                first.clientX, first.clientY, false,
+                false, false, false, 0 /*left*/, null);
 
-            touch.target.dispatchEvent(simulatedEvent);
-            if (event.target.id == 'draggable_item' ) {
-                event.preventDefault();
-            }
+            first.target.dispatchEvent(simulatedEvent);
+            event.preventDefault();
         },
 
         /**
@@ -782,13 +795,13 @@ export default {
                console.log("TOUCH DRAG PARAMS:",options);
             });*/
 
+
+
             this.canvas.on({
                 'touch:gesture': function () {
                     console.log("touch:gesture");
                 },
-                'touch:drag': function () {
-                    console.log("touch:drag");
-                },
+
                 'touch:orientation': function () {
                     console.log("touch:orientation");
                 },
@@ -829,7 +842,7 @@ export default {
              * @param  {[type]} (                         e             [description]
              * @return {[type]}                           [description]
              */
-            fabric.util.addListener( this.canvas.upperCanvasEl, 'click', ( e ) => {
+            fabric.util.addListener( this.canvas.upperCanvasEl, ['click','touchstart'], ( e ) => {
 
                 try {   
 
@@ -1681,6 +1694,17 @@ export default {
                         this.setStroke( "#cccccc" ); 
                     }
                 });
+
+                /*
+                * touch events !!!!
+                * */
+                oImg.on("touchstart", this.touchHandler, true);
+                oImg.on("touchmove", this.touchHandler, true);
+                oImg.on("touchend", this.touchHandler, true);
+                oImg.on("touchcancel", this.touchHandler, true);
+
+
+
 
                 oImg.set( 'active', true );
 
