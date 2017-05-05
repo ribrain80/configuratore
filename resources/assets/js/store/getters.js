@@ -1,5 +1,21 @@
 const  getters = {
 
+
+    bridgeSupportVerticalAlert: function (state) {
+        let out = false;
+        if (state.bridge_supportID) {
+            let supportH = (state.bridge_supportID==1)?45.5:90;
+            let _tooHDivider = state.dividers_selected.filter((cur)=>{
+                let curDividerH = parseFloat( cur.category ) / 10;
+                return supportH < curDividerH;
+            });
+            out = (_tooHDivider.length>0);
+        }
+
+        return out;
+    },
+
+
     getBridgesAvailabe: function (state) {
         let output = [];
         if (state.dimensions.shoulder_height && state.drawertype) {
