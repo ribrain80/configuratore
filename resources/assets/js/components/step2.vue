@@ -146,13 +146,6 @@ export default {
         setDrawerTypeCategory: function( cat ) {
             this.$store.commit( "setDrawerType", 0 );
             this.$store.commit( "setDrawerTypeCategory", cat );
-
-            // Successfully scroll back to top
-            /*$( "html, body" ).animate( { scrollTop: $( "#lineabox-types").offset().top + 200 }, 1000 );
-
-            console.log("Offset:" + $( "#lineabox-types").offset().top + 100 );
-
-            return false;*/
         },
 
         /**
@@ -222,51 +215,58 @@ export default {
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
-            this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step2.modal-warning" ) );
+            this.error_modal.find( ".modal-body" ).text( Vue.i18n.translate( "step2.modal-warning" ) );
             this.error_modal.modal();
 
             // # Error
             return false; 
         },
 
-
-        /***
-         * TRANSITIONS
+        /**
+         * Slide effect for transition
+         * @param  {Object}   el   [target el]
+         * @param  {Function} done [callback]
+         * @return {void}
          */
-        slideFadeIn(el, done) {
-            $(el).animate({
-                opacity:1
+        slideFadeIn ( el, done ) {
+
+            $( el ).animate({
+                opacity: 1
             }, {
                 queue: false,
                 duration: 500,
-                complete: function() {
+                complete: function () {
 
                     let pos = el.offsetTop;
-                    console.log("FADE IN DONE POS: ", pos);
-
                     $( "#step2-content" ).animate( { scrollTop: pos }, 500 );
+                    
                     // # callback fine transizione
                     done;
                 }
             });
         },
-        fadeSlideOut(el, done) {
-            $(el).animate({
-                opacity:0
+
+        /**
+         * Slide effect for transition
+         * @param  {Object}   el   [target el]
+         * @param  {Function} done [callback]
+         * @return {void}
+         */       
+        fadeSlideOut ( el, done ) {
+            $( el ).animate({
+                opacity: 0
             }, {
                 queue: false,
                 duration: 500,
                 complete: function() {
-                    console.log("FADE OUT DONE");
+
                     $( "#step2-content" ).animate( { scrollTop: 0 }, 500 );
+
+                    // # callback fine transizione
                     done;
                 }
             });
         }
-
-
-
-
     },
 
     /**
@@ -301,19 +301,15 @@ export default {
         this.$store.commit( "setComponentHeader", "step2.header-title" );
         this.$store.commit( "setCurrentStep", 2 );
 
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
+        // # Sidebar
         
         let pos = 0;
-        let $pointer = $(".navigator .pointer-navigator"); 
-        let $nav = $(".navigator #nav").find("li");
-        let $active = $nav.find("a.router-link-active");
+        let $pointer = $( ".navigator .pointer-navigator" ); 
+        let $nav = $( ".navigator #nav" ).find( "li" );
+        let $active = $nav.find( "a.router-link-active" );
         
-        pos = parseInt($active.parent("li").position().top);
-        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        
-        // SET SIDEBAR ITEM ACTIVE - END 
-        // ---------------------------------------------
+        pos = parseInt( $active.parent( "li" ).position().top );
+        $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
     }
 }
 </script>
