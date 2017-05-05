@@ -1,6 +1,5 @@
 const  getters = {
 
-
     bridgeSupportVerticalAlert: function (state) {
         let out = false;
         if (state.bridge_supportID) {

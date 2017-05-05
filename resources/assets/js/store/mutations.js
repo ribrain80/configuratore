@@ -619,6 +619,18 @@ const  mutations = {
         });
     },
 
+
+    updateAllDividerSku: function (state,payload) {
+        state.dividers_selected = state.dividers_selected.map( ( cur ) => {
+            //Modify only if id are the same
+            if (cur.id==payload.id) {
+                cur.sku=payload.sku;
+            }
+            return cur;
+        });
+    },
+
+
     /**
      * Remove a divider depending on the dividerId
      * @param state

@@ -1382,10 +1382,19 @@ export default {
             img.crossOrigin = "Anonymous";
             img.onload = function () {
                 self.canvas.renderAll();
+            };
+
+
+            
+
+            if (this.allselected) {
+                this.$store.dispatch( "updateAllDividerTexture", event.target.dataset.sku );
+            } else {
+                this.$store.commit( "updateDividerSku", payload );
+                this.$store.dispatch( "update3dDividerTexture", payload );
             }
 
-            this.$store.commit( "updateDividerSku", payload );
-            this.$store.dispatch( "update3dDividerTexture", payload );
+
         },
 
         _updateBorder:function (e) {

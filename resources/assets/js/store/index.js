@@ -287,17 +287,36 @@ const store = new Vuex.Store({
          * @param commit
          * @param texture texture to apply
          */
-        updateAll3dDividerTexture: function ( { commit }, texture ) {
+        updateAllDividerTexture: function ( { commit,state }, sku ) {
+            let _model = state.dividerTypesPlain[sku];
+            let texture = _model.baseTexture;
+            _.forEach(state.dividers_selected, (cur)=>{
+                // # Recupero lo sku da mettere
+                let divsByCat = state.dividerTypes.dividers[cur.category];
+                let divsBySubCat = divsByCat[cur.subCategory];
+                let _items = divsBySubCat['items'];
 
+                let _obj = _items.filter((cur)=>{
+                    return cur.baseTexture==texture;
+                })[0];
+                let payload = {
+                    id: cur.id,
+                    sku: _obj.sku
+                };
+                commit( "updateDividerSku", payload );
+
+                state.dividerHelper.updateDividerTexture(
+                    cur.id,
+                    texture
+                );
+
+
+               /* state.dividerHelper.removeDivider(cur.id);
+                commit('clearDividers');*/
+            });
         },
 
-        /**
-         * Remove all 3d divider from the scene
-         * @param commit
-         */
-        removeAll3dDividers: function ( { commit }) {
 
-        }
     },
     
     /**
