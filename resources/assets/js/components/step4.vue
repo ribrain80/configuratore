@@ -1363,10 +1363,6 @@ export default {
 
             console.log( payload );
 
-            /*this.selectedItem.set({
-                url: event.target.src
-            });*/
-
             let objectWorkingOn = this.$store.state.objectWorkingOn;
             objectWorkingOn.obj.set({
                 url: event.target.src
@@ -1385,9 +1381,38 @@ export default {
             };
 
 
-            
 
+            let _texture = event.target.dataset.img;
             if (this.allselected) {
+                //Change all canvas object texture
+                this.canvas.forEachObject( ( obj ) => {
+                    if( undefined == obj.type || obj.type != "divider" ) {
+                        console.log( "no type or wrong type" );
+                        return;
+                    }
+
+                    let divsByCat = this.$store.state.dividerTypes.dividers[obj.category];
+                    let divsBySubCat = divsByCat[obj.subCategory];
+                    let _items = divsBySubCat['items'];
+
+                    let _obj = _items.filter((cur)=>{
+                        console.log(cur.baseTexture,_texture)
+                        return cur.baseTexture==_texture;
+                    })[0];
+                    if (!_obj) {return;}
+                    console.log("OBJ Orr:",_obj.orrientation);
+                    let textureToApply = (_obj.orrientation=="V")?_obj.textureV:_obj.textureH;
+                    console.log("texture to apply");
+                    let img = obj.getElement();
+                    img.src = _texture;
+                    img.crossOrigin = "Anonymous";
+                    img.onload = function () {
+                        console.log("STO NELLA ONLOAD");
+                        self.canvas.renderAll();
+                    };
+
+                });
+
                 this.$store.dispatch( "updateAllDividerTexture", event.target.dataset.sku );
             } else {
                 this.$store.commit( "updateDividerSku", payload );
@@ -1668,6 +1693,9 @@ export default {
                 oImg.setHeight( _imgH );
                 console.log( "image width" + _imgW );
                 console.log( "image height" + _imgH );
+
+                oImg.category = _divider.category;
+                oImg.subCategory = _divider.subCategory;
 
 
                 let posX = (e.offsetX)?e.offsetX:e.layerX;
