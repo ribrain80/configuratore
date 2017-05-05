@@ -12,6 +12,7 @@ export default class SplitObjLoader {
 
 
     changeObjectTexture( object, textureImg ) {
+        console.log("Texture IMG on CHANGE:",textureImg);
         let texture = new THREE.Texture();
         let material = new THREE.MeshPhongMaterial(  );
         // # Load img for texture only if required!
