@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 container-size-image pull-left">
-                      <img src="/images/others/step-3/LA_lineabox_3_lati.png" class="img-responsive img-rounded" id="width-info-image"/>
+                      <img :src="getInfoImageByDrawerType( 'LA' )" class="img-responsive img-rounded" id="width-info-image"/>
                     </div>
 
                     <!-- LA Finish -->
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 container-size-image pull-left">
-                      <img src="/images/others/step-3/PS_lineabox_3_lati.png" class="img-responsive img-rounded" id="length-info-image"/>
+                      <img :src="getInfoImageByDrawerType( 'PS' )" class="img-responsive img-rounded" id="length-info-image"/>
                     </div>  
 
                     <!-- PS Finish -->
@@ -301,6 +301,10 @@ export default {
 
     computed: {
 
+        /**
+         * [language description]
+         * @return {[type]} [description]
+         */
         language: function() {
           return this.$store.state.language;
         },
@@ -1165,7 +1169,20 @@ export default {
             this.$store.commit( "setBridgecompleted", true );
             this.$store.commit( "isSuitableHeightForBridge", false );
             this.$router.push( { path: '/split/step4' } );
-        },        
+        },      
+
+        /**
+         * [getInfoImageByDrawerType description]
+         * @param  {[type]} dimension [description]
+         * @return {[type]}           [description]
+         */
+        getInfoImageByDrawerType: function ( dimension ) {
+
+          let image_base_path = "/images/others/step-3/";
+          
+          return image_base_path + dimension + "_" + this.$store.state.drawertype + ".png";
+        },    
+          
     },
 
     /**
