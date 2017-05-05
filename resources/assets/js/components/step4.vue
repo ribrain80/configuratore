@@ -544,6 +544,8 @@
 
 import Divider from '../entity/divider';
 
+
+
 /**
  * Vue object managing bridge / bridge support choice
  * @type {Vue}
@@ -1650,15 +1652,21 @@ export default {
 
             imgObj.onload = () => {
 
+
+
                 var oImg = new fabric.Image( imgObj );
                 oImg.setWidth( _imgW );
                 oImg.setHeight( _imgH );
                 console.log( "image width" + _imgW );
                 console.log( "image height" + _imgH );
 
+
+                let posX = (e.offsetX)?e.offsetX:e.layerX;
+                let posY = (e.offsetY)?e.offsetY:e.layerY;
+
                 // # Set image position
-                oImg.setLeft( e.layerX );
-                oImg.setTop( e.layerY );
+                oImg.setLeft( posX );
+                oImg.setTop( posY );
 
                 // # Set background color
                 oImg.setBackgroundColor( '#ededed' );    //Set a light gray background

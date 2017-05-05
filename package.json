@@ -12,6 +12,7 @@
     "bootstrap-material-design": "^0.5.10",
     "bootstrap-sass": "^3.3.7",
     "bower": "^1.8.0",
+    "drag-drop-webkit-mobile": "^1.4.1",
     "es6-promise": "^4.1.0",
     "fabric": "^1.7.7",
     "findup": "^0.1.5",

@@ -48,7 +48,11 @@ window.paceOptions  = {
     restartOnPushState: false,
     restartOnRequestAfter: false,
     startOnPageLoad: false
-} 
+};
+
+window.iosDragDropShim = require('drag-drop-webkit-mobile');
+
+iosDragDropShim ({simulateAnchorClick: false, enableEnterLeave: true, holdToDrag: 300, requireExplicitDraggable: false });
 
 // # Import needed packages
 import Vue        from 'vue'
