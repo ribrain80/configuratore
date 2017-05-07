@@ -69,12 +69,12 @@
     <div id="step4-content" class="content-flex content-flex-scrollable content-flex-padding">
 
         <!-- Select All - trash bin row -->
-        <div class="row top1">
-            <div class="col-lg-5 col-md-5 pull-left" >
+        <div class="row top2">
+            <div class="col-lg-5 col-md-5 col-sm-5 pull-left" >
                 <button class="btn btn-danger btn-danger-small-text" @click="selectAll()" v-html="allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')">{{ 'step4.select_all' | translate }}</button>
             </div>
 
-            <div class="col-lg-2 col-md-2" style="text-align: right">
+            <div class="col-lg-2 col-md-2 col-sm-2 container-garbage">
                 <img src="/images/others/garbage.png"
                      style="cursor:pointer;"
                      @click="alertDividerDeletion()"
@@ -82,23 +82,23 @@
                 />
             </div>
 
-            <div class="col-lg-2 col-md-2 pull-right">
+            <div class="col-lg-2 col-md-5 col-sm-5 container-button-pdf-help pull-right">
                 <a class="btn btn-danger pdf-help" target="_blank" href="/pdf/help.pdf">Tutorial pdf</a>
             </div>
         </div>
 
         <!-- Center content -->
         <div class="row top1">
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="row top">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="dragdrop-area center-block" id="canvas-container">
                             <canvas id="canvas" class="center-block"></canvas>
                         </div>
                     </div>
                 </div>
                 <div class="row top1">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
                         <div v-if="$store.state.has_bridge">
                             
                             <div class="col-lg-10 col-lg-offset-1">
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <step4_3d></step4_3d>
             </div>
         </div>

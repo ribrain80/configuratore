@@ -142,6 +142,9 @@ strong, .component-header, .ha-lineabox, .bridge-counter {
   flex-direction: column;
 }
 
+.content-flex > .row:not(.actions-toolbar) {
+  margin-bottom: 20px;
+}
 .content-flex {
   flex-direction: column;
 }
@@ -795,12 +798,17 @@ html, body, .container-fluid, .wrapper {
 }
 
 .router-links li a {
+  display: block;
   color:#999;
   font-size: 1.1em;
+  padding-bottom: 15px;
 }
 
 .router-links li a:hover span {
     color:#676666;
+}
+.router-links li:last-of-type::after{
+  display: none !important;
 }
 
 
@@ -834,7 +842,6 @@ html, body, .container-fluid, .wrapper {
 .router-links li {
   text-align: left;
   margin-left: 25px;
-  padding-bottom: 15px;
 }
 
 .navigator {
@@ -849,7 +856,7 @@ html, body, .container-fluid, .wrapper {
     border-radius: 17px;
     background-color: #f04f1a;
     margin-top: 12px;
-    left: 35px;
+    left: 15px;
     z-index: 3;
     transition: all .2s;
     cursor:pointer;
@@ -862,7 +869,7 @@ html, body, .container-fluid, .wrapper {
 
 .navigator #nav {
   margin-top: 40px;
-  margin-left: 20px;
+  //margin-left: 20px;
 }
 
 .navigator #nav li {
@@ -948,6 +955,7 @@ html, body, .container-fluid, .wrapper {
   cursor: pointer;
   font-weight: 300;
 }
+
 
 @media (min-width: 992px) {
   /*.sidebar {
@@ -1068,7 +1076,7 @@ img.rotate90 {
   .nav > li > a {
     position: relative;
     display: block;
-    padding: 4px 4px;
+    padding: 8px 4px;
   }
 
   .nav-tabs > li > a{
@@ -1194,9 +1202,7 @@ GALLERY REWRITE
 
   .lg-toolbar .lg-close:after {
     content: "";
-  }
-
-
+  } 
 
   .pace {
   -webkit-pointer-events: none;
@@ -1395,4 +1401,66 @@ GALLERY REWRITE
 .pace.pace-inactive {
   display: none;
 }
+}
+
+@media (max-width: 1024px){
+  .navigator #nav {
+    margin-left: 0px !important;
+  }
+  .navigator #nav li {
+    line-height: 20px !important;
+  }
+  .nav > li > a {
+    padding: 5px 10px !important;
+  }
+  .pointer-navigator {
+    display: none !important;
+  }
+  .router-links li {
+      margin-left: 0px !important;
+  }
+  .router-links li:before {
+    display: none !important;
+  }
+  .router-links li:after {
+    display: none !important;
+  }
+  #step-ponte-content figure.drawer-container {
+    width:50%;
+    margin: auto;
+  }
+}
+@media (max-width: 768px){
+  .navigator #nav {
+    margin-left: 0px !important;
+  }
+  .navigator #nav li {
+    line-height: 20px !important;
+    font-size: 11px !important;
+  }
+  .nav > li > a {
+    padding: 5px 10px !important;
+  }
+  .pointer-navigator {
+    display: none !important;
+  }
+  .router-links li {
+      margin-left: 0px !important;
+  }
+  .router-links li:before {
+    display: none !important;
+  }
+  .router-links li:after {
+    display: none !important;
+  }
+  #step-ponte-content figure.drawer-container {
+    width:50%;
+    margin: auto;
+  }
+}
+.container-garbage {
+  text-align: center;
+}
+.container-button-pdf-help{
+  text-align:right;
 }

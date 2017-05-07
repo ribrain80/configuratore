@@ -9,7 +9,7 @@
 
 </style>
 <template>
-    <div class="col-md-2 col-lg-2 sidebar">
+    <div class="col-sm-3 col-md-3 col-lg-2 sidebar">
         <div class="row">
             <div class="col-lg-12 logo orange sidebar-elem logo text-center">
                 <img src="/images/logos/salice.png"/>
@@ -159,24 +159,27 @@
             $nav.on("mouseenter mouseleave click",
                
                 function(e) {
-                let pos = 0;
-                let $pointer = $(".navigator .pointer-navigator");
-                let $active = $nav.find("a.router-link-active");
-                let $parentActive = $active.parent("li");
-                let isReached = $(this).hasClass("reached");
-                let isCurrStepReached = $(this).hasClass("current-step reached")
-                
-                pos = parseInt($(this).position().top);
+                    var $target = $(e.target);
+                    if($target.prop("tagName").toLowerCase() === "a" || 
+                       $target.prop("tagName").toLowerCase() === "span") {
+                        let pos = 0;
+                        let $pointer = $(".navigator .pointer-navigator");
+                        let $active = $nav.find("a.router-link-active");
+                        let $parentActive = $active.parent("li");
+                        let isReached = $(this).hasClass("reached");
+                        let isCurrStepReached = $(this).hasClass("current-step reached")
+                        
+                        pos = parseInt($(this).position().top);
 
-                if(isReached) $pointer.addClass("reached");
-                if(isCurrStepReached) $pointer.removeClass("reached");                
-                if(e.type === "mouseleave") {
-                    pos = parseInt($parentActive.position().top);
-                    $pointer.removeClass("reached");   
-                } 
-                if(isReached)
-                    $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-                
+                        if(isReached) $pointer.addClass("reached");
+                        if(isCurrStepReached) $pointer.removeClass("reached");                
+                        if(e.type === "mouseleave") {
+                            pos = parseInt($parentActive.position().top);
+                            $pointer.removeClass("reached");   
+                        } 
+                        if(isReached)
+                            $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+                    }
                 e.stopPropagation();
             }
 

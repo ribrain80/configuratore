@@ -27,7 +27,7 @@
         <div class="row top2">
           
           <!-- Left container "form" -->
-          <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="col-lg-6 col-md-7 col-sm-7">
               
               <!-- form group -->
               <div class="form-horizontal">
@@ -158,7 +158,7 @@
           </div>
           </div>
           <!-- Canvas container -->
-          <div class="col-lg-6 col-md-6 col-sm-6 center-block" >
+          <div class="col-lg-6 col-md-5 col-sm-5 center-block" >
               <div id="animation"></div>
           </div>
           

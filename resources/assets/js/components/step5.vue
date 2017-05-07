@@ -28,10 +28,10 @@
     		<!-- Summary -->
             <div class="row top2">
         		<div class="checkbox col-lg-12 col-md-12 col-sm-12">
-        			<div class="col-lg-5 col-md-3 col-sm-3">
+        			<div class="col-lg-5 col-md-2 col-sm-2">
                         <label>{{ "step5.summary_label" | translate }}</label>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="col-lg-2 col-md-10 col-sm-10">
                         <button class="btn btn-danger" @click="savedrawer( $event )">{{  "step5.download" | translate }}</button> 
                     </div>
         		</div>
@@ -42,10 +42,10 @@
             <!-- Brochure -->
             <div class="row top2">
                 <div class="checkbox col-lg-12 col-md-12 col-sm-12">
-                    <div class="col-lg-5 col-md-3 col-sm-3">
+                    <div class="col-lg-5 col-md-2 col-sm-2">
                         <label>Brochure</label>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="col-lg-2 col-md-10 col-sm-10">
                         <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
                     </div>
                 </div>
@@ -59,15 +59,15 @@
                 <div class="checkbox col-lg-12 col-md-12 col-sm-12">
                     
                     <!-- Mail input -->
-                    <div class="col-lg-5 col-md-5 col-sm-5">
-                        <div class="col-lg-5 no-padding-left lh-34"><label>{{  "step5.email_label" | translate }}</label></div>
-                        <div class="col-lg-5">
+                    <div class="col-lg-5 col-md-8 col-sm-8">
+                        <div class="col-lg-5 col-md-4 col-sm-4 no-padding-left lh-34"><label>{{  "step5.email_label" | translate }}</label></div>
+                        <div class="col-lg-5 col-md-8 col-sm-8">
                             <input type="text" name="email" class="form-control text-center" v-model="$store.state.pdf.email" placeholder="Email" />
                         </div>
                     </div>
 
                     <!-- Send button -->
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="col-lg-2 col-md-4 col-sm-4">
                         <button class="btn btn-danger" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
                     </div>   
                                

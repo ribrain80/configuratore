@@ -11,7 +11,16 @@
 			"file": "resources/assets/sass/app.scss",
 			"settings":
 			{
-				"buffer_size": 17763,
+				"buffer_size": 32656,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/split/application.blade.php",
+			"settings":
+			{
+				"buffer_size": 3003,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -20,33 +29,7 @@
 			"file": "resources/assets/js/components/sidebar.vue",
 			"settings":
 			{
-				"buffer_size": 5088,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step1.vue",
-			"settings":
-			{
-				"buffer_size": 3771,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/split/application.blade.php",
-			"settings":
-			{
-				"buffer_size": 2810,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step2.vue",
-			"settings":
-			{
-				"buffer_size": 9123,
+				"buffer_size": 7409,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -55,7 +38,7 @@
 			"file": "resources/assets/js/components/step3.vue",
 			"settings":
 			{
-				"buffer_size": 49639,
+				"buffer_size": 50753,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -64,15 +47,7 @@
 			"file": "resources/assets/js/components/step4.vue",
 			"settings":
 			{
-				"buffer_size": 69704,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/assets/js/components/step-ponte.vue",
-			"settings":
-			{
-				"buffer_size": 21880,
+				"buffer_size": 90168,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -81,7 +56,25 @@
 			"file": "resources/assets/js/components/step5.vue",
 			"settings":
 			{
-				"buffer_size": 9311,
+				"buffer_size": 9349,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step-ponte.vue",
+			"settings":
+			{
+				"buffer_size": 24630,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/step2.vue",
+			"settings":
+			{
+				"buffer_size": 10686,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -120,17 +113,17 @@
 	"expanded_folders":
 	[
 		"/C/Users/Niuma/Code/configuratore",
-		"/C/Users/Niuma/Code/configuratore/resources",
-		"/C/Users/Niuma/Code/configuratore/resources/assets/js",
-		"/C/Users/Niuma/Code/configuratore/resources/assets/js/3d",
-		"/C/Users/Niuma/Code/configuratore/resources/assets/js/3d/components",
-		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components",
-		"/C/Users/Niuma/Code/configuratore/resources/assets/js/store",
-		"/C/Users/Niuma/Code/configuratore/resources/images",
-		"/C/Users/Niuma/Code/configuratore/resources/images/others"
+		"/C/Users/Niuma/Code/configuratore/public"
 	],
 	"file_history":
 	[
+		"/C/Sviluppo/svn/PortaleRicambisti/IR/trunk/Domus.IR.IR_GestionePratiche/WebApp/Scripts/tablesorter/jquery.parser.datetime-it.js",
+		"/C/Users/Niuma/Code/configuratore/resources/views/split/application.blade.php",
+		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components/step5.vue",
+		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components/step-ponte.vue",
+		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components/step4.vue",
+		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components/step1.vue",
+		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components/step2.vue",
 		"/C/Windows/System32/drivers/etc/hosts",
 		"/C/Users/Niuma/Homestead/Homestead.yaml",
 		"/C/Users/Niuma/rsa.ppk",
@@ -153,6 +146,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"margin-bottom",
+			".router-links li",
+			"margin-bo",
+			"step4-content",
+			"content-scro",
+			"pointer",
+			"router-links",
+			"@media ",
+			"fade",
+			"reached",
+			"sidebar",
+			"md-4",
+			"container-flex",
+			"current-step",
+			"}\n",
+			"radius",
+			"panel",
+			"pan",
+			"panel-body",
 			"step1",
 			"-30",
 			"component-header",
@@ -179,7 +191,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -188,15 +200,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17763,
+						"buffer_size": 32656,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10594,
-								10594
+								19511,
+								19511
 							]
 						],
 						"settings":
@@ -206,87 +218,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7174.0,
+						"translation.y": 16119.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "resources/assets/js/components/sidebar.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5088,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4846,
-								4846
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1466.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "resources/assets/js/components/step1.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3771,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								809,
-								919
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "resources/views/split/application.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2810,
+						"buffer_size": 3003,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2251,
-								2251
+								2987,
+								2987
 							]
 						],
 						"settings":
@@ -296,57 +248,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
+						"translation.y": 677.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/assets/js/components/step2.vue",
+					"buffer": 2,
+					"file": "resources/assets/js/components/sidebar.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9123,
+						"buffer_size": 7409,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3433,
-								3433
+								7207,
+								7207
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5235.0,
+						"translation.y": 2402.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "resources/assets/js/components/step3.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 49639,
+						"buffer_size": 50753,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9422,
-								9422
+								9748,
+								9748
 							]
 						],
 						"settings":
@@ -356,107 +308,131 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2629.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "resources/assets/js/components/step4.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 69704,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16853,
-								16853
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2895.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "resources/assets/js/components/step-ponte.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21880,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6883,
-								6883
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1980.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "resources/assets/js/components/step5.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9311,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3369,
-								3369
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 900.0,
+						"translation.y": 1035.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"file": "resources/images/others/check.png",
-					"semi_transient": true,
+					"buffer": 4,
+					"file": "resources/assets/js/components/step4.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 90168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3490,
+								3490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1025.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 4,
-					"type": "image"
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/assets/js/components/step5.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2792,
+								2792
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "resources/assets/js/components/step-ponte.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2115.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "resources/assets/js/components/step2.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
 				}
 			]
 		}
