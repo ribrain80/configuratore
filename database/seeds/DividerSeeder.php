@@ -74,7 +74,7 @@ class DividerSeeder eXtends Seeder
         $out[] = '/images/dividers/textures';
         $out[] = $w . "X" . $l;
         $out[] = $orr;
-        $out[] = $c.'_'.$t.'.png';
+        $out[] = $c.'_'.$t.'.jpg';
         $tmpPath = implode(DIRECTORY_SEPARATOR,$out);
 
         $tmpPath= strtolower($tmpPath);
