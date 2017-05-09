@@ -688,8 +688,14 @@ export default {
             // # Scope workaorund
             var self = this;
 
-            // # Destroy previous gallery and binding
-            $( '#sh-popover' ).data( "lightGallery" ).destroy( true );
+            // # Destroy previous gallery 
+            try {
+              $( '#sh-popover' ).data( "lightGallery" ).destroy( true );
+            } catch ( e ) {
+              // Do nothing
+            }
+
+            // .. and binding
             $( '#sh-popover' ).unbind( "click" );
 
             // # Reinitialize gallery
@@ -1231,7 +1237,7 @@ export default {
               
         // # Set component header title
         this.$store.commit( "setComponentHeader", 
-                            this.$store.state.is_lineabox ? "step3.header-title-lineabox" : "step3.header-title-custom" );
+                            this.$store.state.is_lineabox ? "step3.header-title-Lineabox" : "step3.header-title-custom" );
         this.$store.commit( "setCurrentStep", 3 );
 
 

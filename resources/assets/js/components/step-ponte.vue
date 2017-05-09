@@ -28,7 +28,7 @@
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'H' ? 'image_selected' : '']" >
                             <a class="i-icon" id="orientation-H-popover" @click="showORIInfo( $event, 'H' )">&nbsp;</a>
                             <div class="drawer-container-image">
-                                <img :src="'/images/others/step-ponte/ponte_orizzontale.jpg'"
+                                <img :src="getOriImage( 'H' )" 
                                      class="img img-responsive  img-shadow"
                                      id="or-H" 
                                      :class="{ 'img-desaturate': ( 'H' != $store.state.bridge_orientation) }"
@@ -46,7 +46,7 @@
                         <figure :class="[ 'drawer-container', $store.state.bridge_orientation == 'V' ? 'image_selected' : '']">
                             <a class="i-icon" id="orientation-V-popover" @click="showORIInfo( $event, 'V' )">&nbsp;</a>
                             <div class="drawer-container-image">
-                                <img :src="'/images/others/step-ponte/ponte_verticale.jpg'"
+                                <img :src="getOriImage( 'V' )"
                                      class="img img-responsive  img-shadow"
                                      id="or-V" 
                                      :class="{ 'img-desaturate': ( 'V' != $store.state.bridge_orientation) }"
@@ -97,14 +97,14 @@
                                     <figure :class="[ 'drawer-container', bridge_support.id == $store.state.bridge_supportID ? 'image_selected' : '']" >
                                         <a class="i-icon supports-info" @click="showSupportsInfo( $event )">&nbsp;</a>
                                         <div class="drawer-container-image">
-                                            <img :src="'/images/others/step-ponte/ponte_altezza-'+((bridge_support.id==2)?'alta':'bassa')+'.jpg'"
+                                            <img :src="getSupportImage( bridge_support )"
                                                  class="img img-responsive  img-shadow"
                                                  id="sup" 
                                                  :class="{ 'img-desaturate': bridge_support.id != $store.state.bridge_supportID }"
                                                  @click="selectBridgeSupport( bridge_support )"
                                             />
                                         </div>
-                                        <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> H: {{ bridge_support.height }} mm </figcaption>
+                                        <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> {{ bridge_support.height }} mm {{ $t( "stepponte.from-drawer-bottom" )}}</figcaption>
                                     </figure>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                 <figure :class="[ 'drawer-container', bridge.id == $store.state.bridge_ID ? 'image_selected' : '']" >
                                     <a class="i-icon bridges-info" @click="showBridgeInfo( $event )">&nbsp;</a>
                                     <div class="drawer-container-image">
-                                        <img :src="'/images/others/step-ponte/ponte_'+((bridge.id==48)?'alto':'basso')+'.jpg'"
+                                        <img :src="getBridgeImage( bridge )"
                                              class="img img-responsive  img-shadow"
                                              :class="{ 'img-desaturate': bridge.id != $store.state.bridge_ID }"
                                              id="bri"
@@ -149,7 +149,7 @@
                                              :data-depth="bridge.depth"
                                         />
                                     </div>
-                                    <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> H: {{ bridge.depth }} mm </figcaption>
+                                    <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> {{ $t( "stepponte.bridge_elem_label" ) }} H {{ bridge.depth }} mm </figcaption>
                                 </figure>
 
                             </div>
@@ -267,6 +267,37 @@ export default {
      * @type {Object}
      */
     methods: {
+
+        
+        getOriImage: function ( ori ) {
+
+            let basepath = '/images/others/step-ponte/scelte-step-ponte/Orientamento_H-V/EP_' + ori + '_';
+            let path = basepath + this.$store.state.drawertype;
+
+            if( this.$store.state.drawertype == 4 ) {
+                return path + ".jpg";
+            }
+
+            path += "-" + parseInt( this.$store.state.dimensions.shoulder_height ) + ".jpg";
+            console.log( path );
+            return path;
+        },
+
+        getSupportImage: function ( obj ) {
+
+            let basepath = '/images/others/step-ponte/scelte-step-ponte/H-fondo/EP_' + this.$store.state.drawertype;
+            let path = basepath + '_hfo' + parseInt( obj.height ) + ".jpg";
+
+            return path;
+        },
+
+        getBridgeImage: function ( obj ) {
+
+            let basepath = '/images/others/step-ponte/scelte-step-ponte/H-ponte/EP_' + this.$store.state.drawertype;
+            let path = basepath + '_h' + parseInt( obj.depth ) + ".jpg";
+
+            return path;
+        },
 
         /***
          * TRANSITIONS

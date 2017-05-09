@@ -465,7 +465,7 @@ const store = new Vuex.Store({
              * Shoulder height
              * @type {Number}
              */
-            shoulder_height: 100,
+            shoulder_height: 72,
 
             /**
              * Drawer length
