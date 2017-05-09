@@ -117,6 +117,7 @@
 	],
 	"file_history":
 	[
+		"/C/publish/IR_GestionePratiche/Web.config",
 		"/C/Sviluppo/svn/PortaleRicambisti/IR/trunk/Domus.IR.IR_GestionePratiche/WebApp/Scripts/tablesorter/jquery.parser.datetime-it.js",
 		"/C/Users/Niuma/Code/configuratore/resources/views/split/application.blade.php",
 		"/C/Users/Niuma/Code/configuratore/resources/assets/js/components/step5.vue",
@@ -131,7 +132,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{

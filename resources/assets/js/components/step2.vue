@@ -100,12 +100,12 @@
     <div class="row actions-toolbar">
     
         <!-- Prev button -->
-        <div class="col-md-2 pull-left">
+        <div class="col-sm-4 col-md-3 col-lg-2">
             <router-link to="/split/step1" tag="button" class="btn btn-danger btn-back">{{ 'back' | translate }}</router-link>
         </div>
 
         <!-- Next button -->
-        <div class="col-md-2 pull-right">
+        <div class="col-sm-4 col-md-3 col-lg-2">
             <button class="btn btn-danger btn-block" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
         </div>
 

@@ -84,6 +84,121 @@ strong, .component-header, .ha-lineabox, .bridge-counter, #tab-container {
   font-family: 'FranklinGothicURW-Dem';
 }
 
+// -------------------------------------------
+// BEGIN STEP 1 Actions Toolbar Buttons
+#step1 .actions-toolbar > div:first-of-type {
+  position: absolute;
+  right: -20px;
+  top: 12px;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  #step1 .actions-toolbar > div:first-of-type {
+    right: -10px;
+  }
+}
+// -------------------------------------------
+// END STEP 1 Actions Toolbar Buttons
+
+
+// -------------------------------------------
+// BEGIN STEP 2 Actions Toolbar Buttons
+#step2 .actions-toolbar > div:first-of-type {
+  position:absolute;
+  left: 20px;
+  top: -25px;
+}
+#step2 .actions-toolbar > div:last-of-type {
+  position:absolute;
+  right: 0px;
+  top: -25px;
+}
+#step2 .actions-toolbar > div:last-of-type button {
+  position: absolute;
+  right: 30px;
+}
+// -------------------------------------------
+// END STEP 2 Actions Toolbar Buttons
+
+
+
+// -------------------------------------------
+// BEGIN STEP 3 Actions Toolbar Buttons
+#step3 .actions-toolbar > div:first-of-type {
+  position:absolute;
+  left: 20px;
+  top: -25px;
+}
+#step3 .actions-toolbar > div:nth-of-type(2) {
+  position:absolute;
+  left: 180px;
+  top: -25px;
+}
+#step3 .actions-toolbar > div:last-of-type {
+  position:absolute;
+  right: 0px;
+  top: -25px;
+}
+#step3 .actions-toolbar > div:last-of-type button {
+  position: absolute;
+  right: 30px;
+}
+// -------------------------------------------
+// END STEP 3 Actions Toolbar Buttons
+
+// -------------------------------------------
+// BEGIN STEP PONTE Actions Toolbar Buttons
+#step-ponte .actions-toolbar > div:first-of-type {
+  position:absolute;
+  left: 20px;
+  top: -25px;
+}
+#step-ponte .actions-toolbar > div:nth-of-type(2) {
+  position:absolute;
+  left: 180px;
+  top: -25px;
+}
+#step-ponte .actions-toolbar > div:last-of-type {
+  position:absolute;
+  right: 0px;
+  top: -25px;
+}
+#step-ponte .actions-toolbar > div:last-of-type button {
+  position: absolute;
+  right: 30px;
+}
+// -------------------------------------------
+// END STEP PONTE Actions Toolbar Buttons
+
+// -------------------------------------------
+// BEGIN STEP 4 Actions Toolbar Buttons
+#step4-content + .actions-toolbar > div:first-of-type {
+  position:absolute;
+  left: 20px;
+  top: -25px;
+}
+#step4-content + .actions-toolbar > div:last-of-type {
+  position:absolute;
+  right: 0px;
+  top: -25px;
+}
+#step4-content + .actions-toolbar > div:last-of-type button {
+  position: absolute;
+  right: 30px;
+}
+// -------------------------------------------
+// END STEP 4 Actions Toolbar Buttons
+
+// -------------------------------------------
+// BEGIN STEP 5 Actions Toolbar Buttons
+#step5 .actions-toolbar > div:first-of-type {
+  position:absolute;
+  left: 20px;
+  top: -25px;
+}
+// -------------------------------------------
+// END STEP 5 Actions Toolbar Buttons
+
+
 .actions-toolbar {
   position: absolute;
   bottom: 84px;
@@ -324,9 +439,9 @@ canvas {
 .btn-reset {
   background-color: #fcbb58!important;
   border: none!important;
-  -webkit-box-shadow: 3px 3px 8px 0px  #fcbb58 !important;
-  -moz-box-shadow: 3px 3px 8px 0px  #fcbb58 !important;
-  box-shadow: 3px 3px 8px 0px #fcbb58 !important;
+  -webkit-box-shadow: 3px 3px 9px 0px #222 !important;
+  -moz-box-shadow: 3px 3px 9px 0px #222 !important;
+  box-shadow: 3px 3px 9px 0px #222 !important;
 }
 
 .btn-reset:hover {
@@ -567,7 +682,7 @@ input {
 
 .nav .active {
   font-weight: bold;
-  background: #72bcd4;
+  //background: #72bcd4;
 }
 
 .nav .nav {
@@ -1077,7 +1192,7 @@ img.rotate90 {
   */
 
   .nav .active {
-    background: #f04f1a;
+    //background: #f04f1a;
   }
 
 
@@ -1466,8 +1581,22 @@ GALLERY REWRITE
     margin: auto;
   }
 }
+
+@media (max-width: 1200px){
+  #step-ponte-content figure.drawer-container {
+      width:50%;
+      margin: auto;
+    }
+}
+
+#step4-content > .row {
+  position: relative;
+}
+
 .container-garbage {
-  text-align: center;
+  position: absolute;
+  top: 5px;
+  left: 150px;
 }
 .container-button-pdf-help{
   text-align:right;
