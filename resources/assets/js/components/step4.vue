@@ -141,7 +141,7 @@
                 <!-- Tab title ( Nav ) -->
                 <ul class="nav nav-tabs" role="tablist" id="tab-container">
                     <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
-                        <a data-toggle="tab" role="tab" :href="genHref(cat)">Elem h-{{ cat }}</a>
+                        <a data-toggle="tab" role="tab" :href="genHref(cat)">Contenitori H {{ cat }}</a>
                     </li>
                     <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">{{ $t( "step4.dividers_textures") }}</a></li>
                     <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">{{ $t( "step4.bridges_textures") }}</a></li>
