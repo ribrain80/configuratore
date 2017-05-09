@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 nuovaconf sidebar-elem">
-                <a data-toggle="modal" data-target="#new-conf-modal">{{ "menu.newconf" | translate }}</a>
+                <a data-toggle="modal" data-target="#new-conf-modal"><strong>{{ "menu.newconf" | translate }}</strong></a>
             </div>
         </div>
         <div class="row">

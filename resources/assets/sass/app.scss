@@ -34,6 +34,10 @@ body {
   overflow: hidden;
 }
 
+.limit-helper {
+  font-size: 1.3em!important;
+}
+
 .alert-danger {
     background-color: #EF4F1A;
     border-color: #EF4F1A;
@@ -42,8 +46,12 @@ body {
     font-family: "FranklinGothicURW";
 }
 
-.step3-label-short, .input-step3 {
+.step3-label-short {
   font-size: 1.5em!important; 
+}
+
+.input-step3 {
+  font-size: 1.7em!important; 
 }
 
 strong, .component-header, .ha-lineabox, .bridge-counter {
@@ -738,10 +746,10 @@ html, body, .container-fluid, .wrapper {
 }
 
 .component-header {
-  height: 35px;
-  line-height: 35px;
-  font-size: 1.3em;
-  color: #666;
+    height: 35px;
+    line-height: 38px;
+    font-size: 1.5em;
+    color: #666;
 }
 
 .pushdown {
@@ -952,7 +960,7 @@ html, body, .container-fluid, .wrapper {
   color: #666;
   text-decoration: none;
   font-size: 1.1em;
-  cursor: pointer;
+  cursor: pointer!important;
   font-weight: 300;
 }
 

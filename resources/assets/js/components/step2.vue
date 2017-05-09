@@ -81,7 +81,7 @@
             <div class="col-lg-4 col-md-4 col-sm-4" v-for="ctype in type">
 
                 <figure class="drawer-container text-center" :class="{ 'image_selected' : ( ctype.id == $store.state.drawertype ) }">
-                    <figcaption> {{ ctype.description | translate}} </figcaption>
+                    <figcaption> {{ ctype.description | translate }} </figcaption>
                     <div class="drawer-container-image">
                       <img :src="'/images/drawers/' + category.toLowerCase() + '-' + ctype.id + '.jpg'"
                            class="img img-responsive center-block img-shadow "
