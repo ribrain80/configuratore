@@ -35,7 +35,7 @@
                                      @click="setOrientation('H')"
                                 />
                             </div>
-                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'orizzontale' | translate}} </figcaption>
+                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-H' | translate}} </figcaption>
                         </figure>
                     </div>
                     
@@ -53,7 +53,7 @@
                                      @click="setOrientation('V')"
                                 />
                             </div>
-                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'verticale' | translate}} </figcaption>
+                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-V' | translate}} </figcaption>
                         </figure>
                     </div>
 

@@ -43,7 +43,7 @@
             <div class="row top2">
                 <div class="checkbox col-lg-12 col-md-12 col-sm-12">
                     <div class="col-lg-5 col-md-2 col-sm-2">
-                        <label>Brochure</label>
+                        <label>{{ $t( "step5.brochure" ) }}</label>
                     </div>
                     <div class="col-lg-2 col-md-10 col-sm-10">
                         <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
