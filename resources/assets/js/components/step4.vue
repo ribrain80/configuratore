@@ -495,7 +495,7 @@
                                     <div :class="['edge', 'edge_right', 'pull-right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
                                     <div :class="['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' >
-                                        {{ $t( "back" ) }}
+                                        {{ $t( "rear" ) }}
                                     </div>
                             </div>
                             <div class="col-lg-8">
