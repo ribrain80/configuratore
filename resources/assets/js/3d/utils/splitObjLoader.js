@@ -19,9 +19,13 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(4 ,4);
+                
                 texture.needsUpdate = true;
             } );
-            material = new THREE.MeshPhongMaterial( { map: texture } );
+            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.75, wrapAround: true, side: THREE.DoubleSide} );
             material.needsUpdate=true;
         }
         if (textureImg) {
@@ -62,9 +66,12 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load(textureImg, (image) => {
                 texture.image = image;
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(4 ,4);
                 texture.needsUpdate = true;
             });
-            material = new THREE.MeshPhongMaterial({map: texture});
+            material = new THREE.MeshPhongMaterial({map: texture, overdraw: 0.75});
             material.needsUpdate = true;
         }
         let support = new THREE.Mesh(baseGeometry, material);
@@ -127,9 +134,16 @@ export default class SplitObjLoader {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
                 texture.needsUpdate = true;
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(4 ,4);
             } );
-            material = new THREE.MeshPhongMaterial( { map: texture } );
+            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.75, wrapAround: true, side: THREE.DoubleSide} );
             material.needsUpdate=true;
+
+
+
+
         }
 
         //Load model then  add the texture and coords if required
