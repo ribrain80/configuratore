@@ -118,7 +118,7 @@ export default {
                 // # Check email length
                 if( this.$store.state.pdf.email.length === 0 ) {
 
-                	$( "#error-modal" ).find( '.modal-body' ).text( "è necessario indicare un indirizzo email per la spedizione" );
+                	$( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.no-mail" ) );
 	                $( '#error-modal' ).modal();
 
 	                // # Step has errors
@@ -130,7 +130,7 @@ export default {
                 // # Check email validity
                 if( !this.validateEmail_() ) {
 
-                	$( "#error-modal" ).find( '.modal-body' ).text( "l'email indicata non è valida" );
+                	$( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.invalid-mail" ) );
 	                $( '#error-modal' ).modal();
 
 	                // # Step has errors
@@ -168,11 +168,13 @@ export default {
                     if ( event.target.id != 'email' ) {
                         window.open( response.data.pdfpath, '_blank' );
 					} else {
-                        alert( "Email inviata!" );
+                        $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.mail-sent" ) );
+                        $( '#error-modal' ).modal();
 					}
 
                 }, response => {
-                    alert( "Si è verificato un errore!" );
+                    $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.error-occurred" ) );
+                    $( '#error-modal' ).modal();
                 });
             });
         },
