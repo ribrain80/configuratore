@@ -19,8 +19,8 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
-                texture.wrapS = THREE.RepeatWrapping;
-                texture.wrapT = THREE.RepeatWrapping;
+                
+                texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
                 texture.repeat.set(2 ,2);
                 
                 texture.needsUpdate = true;
@@ -66,8 +66,8 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load(textureImg, (image) => {
                 texture.image = image;
-                texture.wrapS = THREE.RepeatWrapping;
-                texture.wrapT = THREE.RepeatWrapping;
+                
+                texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
                 texture.repeat.set(2 ,2);
                 texture.needsUpdate = true;
             });
@@ -134,8 +134,8 @@ export default class SplitObjLoader {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
                 texture.needsUpdate = true;
-                texture.wrapS = THREE.RepeatWrapping;
-                texture.wrapT = THREE.RepeatWrapping;
+                
+                texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
                 texture.repeat.set(2 ,2);
             } );
             material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide} );
