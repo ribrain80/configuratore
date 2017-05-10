@@ -21,11 +21,11 @@ export default class SplitObjLoader {
                 texture.image = image;
                 texture.wrapS = THREE.RepeatWrapping;
                 texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(4 ,4);
+                texture.repeat.set(2 ,2);
                 
                 texture.needsUpdate = true;
             } );
-            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.75, wrapAround: true, side: THREE.DoubleSide} );
+            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide} );
             material.needsUpdate=true;
         }
         if (textureImg) {
@@ -68,7 +68,7 @@ export default class SplitObjLoader {
                 texture.image = image;
                 texture.wrapS = THREE.RepeatWrapping;
                 texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(4 ,4);
+                texture.repeat.set(2 ,2);
                 texture.needsUpdate = true;
             });
             material = new THREE.MeshPhongMaterial({map: texture, overdraw: 0.75});
@@ -136,9 +136,9 @@ export default class SplitObjLoader {
                 texture.needsUpdate = true;
                 texture.wrapS = THREE.RepeatWrapping;
                 texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(4 ,4);
+                texture.repeat.set(2 ,2);
             } );
-            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.75, wrapAround: true, side: THREE.DoubleSide} );
+            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide} );
             material.needsUpdate=true;
 
 
