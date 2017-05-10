@@ -36,9 +36,9 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ $t( 'advice' ) }}</h4>
                 </div>
-                <div class="modal-body">{{ "step4.proceed-with-caution" | translate }}</div>
+                <div class="modal-body" v-html="$t( 'step4.proceed-with-caution' )"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( 'cancel' ) }}</button>
                     <button type="button" class="btn btn-danger" @click="proceed2Five()" data-dismiss="modal">{{ $t( "dont-mind-go" ) }}</button>
@@ -825,8 +825,13 @@ export default {
             // # Set DOM dimensions
             canvas_container.width( this.canvasWidth ).height( this.canvasHeight );
 
+            // # CHECK ME
+            $( "#step4_3d_container" ).css( "min-height", "400px" );
+
             // # 3D container should have the same height as the 2D one
             $( "#step4_3d_container" ).height( this.canvasHeight );
+
+            // # UPDATE size
             this.$store.state.renderer.updateSize();
             this.$store.state.camera.updateSize(this.$store.state.renderer.threeRenderer);
 
