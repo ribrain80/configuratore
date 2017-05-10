@@ -636,6 +636,12 @@ export default {
 
         next( vm => {
 
+            if( from.path == "/split/step4" && vm.$store.state.is_suitable_height_4bridge == false ) {
+                 console.log( "in guard" );
+                 vm.$router.push({ path: '/split/step3' });
+                 return;
+            }
+
             // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
