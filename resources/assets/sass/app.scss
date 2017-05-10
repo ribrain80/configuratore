@@ -1611,3 +1611,48 @@ GALLERY REWRITE
 .container-button-pdf-help{
   text-align:right;
 }
+
+#step4-content .tab-pane .panel {
+  position: relative;
+  height: 200px;
+}
+
+#step4-content .tab-pane .panel .imgcont img {
+    position: absolute;
+    left: 35px;
+    top: -10px;
+    border: 0;
+}
+
+#step4-content .tab-pane .panel .panel-body .row.top2 .pull-right {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+
+#step4-content .tab-pane .panel .panel-body .row .pull-left img {
+    position: absolute;
+    left: 50px;
+    bottom: 15px;
+}
+
+#dividers-tab figure {
+  position: relative;
+}
+
+#dividers-tab a.bridges-info {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+}
+
+#edges-tab figure {
+  position: relative;
+}
+
+#edges-tab a.bridges-info {
+  position: absolute;
+  top: -5px;
+  right: 0px;
+}
+    

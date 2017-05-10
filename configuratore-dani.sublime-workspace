@@ -11,7 +11,7 @@
 			"file": "resources/assets/sass/app.scss",
 			"settings":
 			{
-				"buffer_size": 32656,
+				"buffer_size": 35720,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -29,7 +29,7 @@
 			"file": "resources/assets/js/components/sidebar.vue",
 			"settings":
 			{
-				"buffer_size": 7409,
+				"buffer_size": 7426,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -38,7 +38,7 @@
 			"file": "resources/assets/js/components/step3.vue",
 			"settings":
 			{
-				"buffer_size": 50753,
+				"buffer_size": 50863,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -47,7 +47,7 @@
 			"file": "resources/assets/js/components/step4.vue",
 			"settings":
 			{
-				"buffer_size": 90168,
+				"buffer_size": 90175,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -56,7 +56,7 @@
 			"file": "resources/assets/js/components/step5.vue",
 			"settings":
 			{
-				"buffer_size": 9349,
+				"buffer_size": 9373,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -65,7 +65,7 @@
 			"file": "resources/assets/js/components/step-ponte.vue",
 			"settings":
 			{
-				"buffer_size": 24630,
+				"buffer_size": 25594,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -74,7 +74,7 @@
 			"file": "resources/assets/js/components/step2.vue",
 			"settings":
 			{
-				"buffer_size": 10686,
+				"buffer_size": 10702,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -132,7 +132,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -147,6 +147,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"active",
+			"media",
+			"begin",
+			"BEGIN",
 			"margin-bottom",
 			".router-links li",
 			"margin-bo",
@@ -201,15 +205,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32656,
+						"buffer_size": 35720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								19511,
-								19511
+								35653,
+								35653
 							]
 						],
 						"settings":
@@ -219,7 +223,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 16119.0,
+						"translation.y": 23844.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -252,7 +256,7 @@
 						"translation.y": 677.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -261,15 +265,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7409,
+						"buffer_size": 7426,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7207,
-								7207
+								0,
+								0
 							]
 						],
 						"settings":
@@ -282,7 +286,7 @@
 						"translation.y": 2402.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -291,15 +295,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 50753,
+						"buffer_size": 50863,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9748,
-								9748
+								0,
+								0
 							]
 						],
 						"settings":
@@ -312,7 +316,7 @@
 						"translation.y": 1035.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -321,15 +325,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 90168,
+						"buffer_size": 90175,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3490,
-								3490
+								1736,
+								1736
 							]
 						],
 						"settings":
@@ -339,7 +343,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1025.0,
+						"translation.y": 125.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -351,15 +355,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9349,
+						"buffer_size": 9373,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2792,
-								2792
+								3502,
+								3502
 							]
 						],
 						"settings":
@@ -369,10 +373,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 675.0,
+						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -381,7 +385,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 24630,
+						"buffer_size": 25594,
 						"regions":
 						{
 						},
@@ -399,10 +403,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2115.0,
+						"translation.y": 1395.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -411,15 +415,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10686,
+						"buffer_size": 10702,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								4480,
+								4506
 							]
 						],
 						"settings":
@@ -429,10 +433,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1170.0,
+						"translation.y": 1305.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
