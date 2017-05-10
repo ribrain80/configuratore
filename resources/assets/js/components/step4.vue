@@ -486,6 +486,7 @@
                             <div class="col-lg-4" id="background" @click='selectBorder( $event );' style="padding:0">
                                 <!-- Egdes -->
                                     <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
+                                        {{ $t( "front" ) }}
                                     </div>
                                     <div :class="['edge', 'edge_left', 'pull-left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
@@ -493,7 +494,9 @@
 
                                     <div :class="['edge', 'edge_right', 'pull-right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
-                                    <div :class="['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' ></div>
+                                    <div :class="['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' >
+                                        {{ $t( "back" ) }}
+                                    </div>
                             </div>
                             <div class="col-lg-8">
                                 <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
@@ -508,7 +511,7 @@
                                         <figcaption>{{ variant.textureName }}</figcaption>
                                     </figure>
                                 </div>
-                                <div class="col-lg-12 col-md-12" class="noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
+                                <div class="col-lg-12 col-md-12 noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
                                     {{ $t( "step4.choose_a_side" ) }}
                                 </div>
                             </div>

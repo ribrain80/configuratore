@@ -34,7 +34,7 @@ body {
   overflow: hidden;
 }
 
-#noside-chosen {
+.noside-chosen {
   font-size: 1.3em!important;
 }
 
@@ -575,8 +575,11 @@ input {
 
 .edge {
   border: 1px solid #ddd; 
-  background-color: #efefef; 
+  background-color: #999; 
   cursor:pointer;
+  color: #fff;
+  text-align: center;
+  font-size: 1.3em!important;
 }
 
 .form-control {
@@ -589,7 +592,10 @@ input {
 
 .edge_front, .edge_back{
   height: 40px;
+  line-height: 40px;
   width: 200px;
+  font-family: "FranklinGothicURW-Dem";
+  font-weight: 500;
 }
 .edge_left, .edge_right{
   width: 25px;
