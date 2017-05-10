@@ -83,7 +83,7 @@ export default {
         "step4.dividers_textures": "Finiture contenitori",
         "step4.bridges_textures": "Finiture elementi ponte",
         "step4.drawer_textures": "Finiture del cassetto",   
-        "step4.nodividerchosen": "Devi prima scegliere un divisorio",  
+        "step4.nodividerchosen": "Selezionare un contenitore per visualizzare le finiture disponibili",  
         "step4.choose_a_side": "Per visualizzare le finiture disponibili, selezionare una parte del cassetto (frontale, sponde, retro e fondo)",
         "step5.summary_label": "Riepilogo configurazione",
         "step5.email_label": "Indirizzo email",

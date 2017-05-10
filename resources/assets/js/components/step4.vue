@@ -349,7 +349,7 @@
                             </div>
                         </div>
                         <div class="row top1" v-else="$store.state.objectWorkingOn.type!='divider'">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 noside-chosen">
                                 {{ $t( "step4.nodividerchosen" ) }}
                             </div>
                         </div>
@@ -508,7 +508,7 @@
                                         <figcaption>{{ variant.textureName }}</figcaption>
                                     </figure>
                                 </div>
-                                <div class="col-lg-12 col-md-12" id="noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
+                                <div class="col-lg-12 col-md-12" class="noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
                                     {{ $t( "step4.choose_a_side" ) }}
                                 </div>
                             </div>
