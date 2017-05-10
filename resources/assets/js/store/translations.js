@@ -49,7 +49,7 @@ export default {
         "stepponte.orientation_title": "Orientamento Ponti",
         "stepponte.reset": "Reset",
         "stepponte.bridge_support": 'Supporti Ponte',
-        "stepponte.supports_advice": "La selezione del ponte per il tipo di cassetto / orientamento del ponte specificato implica la necessità di inserire di supporti ponte aggiuntivi, {num_sup} nel caso specifico. Inoltre la {dimension} interna disponibile sarà ridotta di {mm} mm.",
+        "stepponte.supports_advice": "La selezione dell’elemento ponte per il tipo di cassetto / orientamento del ponte specificato richiede l’inserimento di supporti ponte aggiuntivi: {num_sup} nel caso specifico. Inoltre la {dimension} interna disponibile sarà ridotta di {mm} mm.",
         "horizontal": "Orizzontale",
         "vertical": "Verticale",
         "stepponte.supports_description": "A che distanza dal fondo del cassetto desideri inserire gli elementi ponte?",
