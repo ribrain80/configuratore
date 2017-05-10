@@ -539,7 +539,7 @@ export default {
                 // # Show error modal and move the user at the top of this step
                 this.error_modal
                 .find('.modal-body')
-                .text( "I dati inseriti per il posizionamento dei ponti non sono completi" );
+                .text(  Vue.i18n.translate( "stepponte.incomplete_data" ) );
 
                 this.error_modal.modal();
                 

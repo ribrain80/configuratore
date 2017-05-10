@@ -30,7 +30,6 @@ elixir(function(mix) {
     //Build Application logic
     mix.webpack('app.js');
 
-
     //Copy resurces
     mix.copy('./resources/assets/css/pdf.css', 'public/css' );
     mix.copy('./resources/images', 'public/images');
@@ -41,7 +40,6 @@ elixir(function(mix) {
     mix.copy( paths.lightgallery + 'img/**', 'public/img');
     mix.copy( paths.lightgallery + 'fonts/**', 'public/fonts');
     mix.copy( paths.fabric + 'fabric.js', 'public/js/lib/fabric');
-
 
     // Salice Fonts
     mix.copy('./resources/assets/salicefonts/**', 'public/salicefonts' );

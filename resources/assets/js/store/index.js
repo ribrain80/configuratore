@@ -489,7 +489,7 @@ const store = new Vuex.Store({
              * Default Shoulder height
              * @type {Number}
              */
-            default_shoulder_height: 100,
+            default_shoulder_height: 72,
 
             /**
              * Actual width subtracted by the extra supports added for a bridge

@@ -508,8 +508,8 @@
                                         <figcaption>{{ variant.textureName }}</figcaption>
                                     </figure>
                                 </div>
-                                <div class="col-lg-12 col-md-12"  v-if="$store.state.objectWorkingOn.type!='border'">
-                                    DEVI SELEZIONARE UN LATO O IL FONDO
+                                <div class="col-lg-12 col-md-12" id="noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
+                                    {{ $t( "step4.choose_a_side" ) }}
                                 </div>
                             </div>
                         </div>
