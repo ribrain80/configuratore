@@ -116,7 +116,7 @@ export default class DividerHelper {
 
             obj3d.position.y= _h;
             obj3d.position.z= (count * this.bridgeWidth) + this.bridgeWidth/2;
-            obj3d.position.x= w/2 - 12;
+            obj3d.position.x= w/2 ;
 
 
             obj3d.updateMatrix();
