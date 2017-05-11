@@ -68,7 +68,7 @@
 
                     <!-- Send button -->
                     <div class="col-lg-3 col-md-4 col-sm-4">
-                        <button class="btn btn-danger btn-lg" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
+                        <button class="btn btn-danger btn-email" id="email" @click="savedrawer( $event )">{{ "step5.email_send" | translate }}</button>
                     </div>   
                                
                 </div>
