@@ -223,8 +223,8 @@ export default {
     computed: {
 
         /**
-         * [showSupportsAdvice description]
-         * @return {[type]} [description]
+         * Determines if the supports advice must be shown
+         * @return {Boolean}
          */
         showSupportsAdvice: function () {
             return   this.$store.state.drawertype == 4 || 
@@ -232,20 +232,21 @@ export default {
         },
 
         /**
-         * [numSup description]
-         * @return {[type]} [description]
+         * Computes the supports number required
+         * @return {Number}
          */
         numSup: function () {
 
+            // # Depends on drawer type selected
             switch( this.$store.state.drawertype ) {
 
-                case 4:
+                case 4:// # Custom drawer
                     return 2;
                 
-                case 3:
+                case 3: // # 2 sides
                     return this.$store.state.bridge_orientation == "H" ? 0 : 2;
 
-                case 2: 
+                case 2: // # 3/4 sides
                 case 1:
 
                     return this.$store.state.bridge_orientation == "V" ? 1 : 0;
@@ -254,8 +255,8 @@ export default {
         },
 
         /**
-         * [dimensionAffected description]
-         * @return {[type]} [description]
+         * Returns the affected dimension ( affected by the support insertion )
+         * @return {String}
          */
         dimensionAffected: function () {
             return this.$store.state.bridge_orientation == "H" ? Vue.i18n.translate( "width" ) : Vue.i18n.translate( "length" );
@@ -307,13 +308,13 @@ export default {
                 opacity:1
             }, {
                 queue: false,
-                duration: 500,
+                duration: 400,
                 complete: function() {
 
                     let pos = el.offsetTop;
                     console.log("FADE IN DONE POS: ", pos);
 
-                    $( "#step-ponte-content" ).animate( { scrollTop: pos }, 500 );
+                    $( "#step-ponte-content" ).animate( { scrollTop: pos }, 400 );
                     // # callback fine transizione
                     done;
                 }
@@ -325,10 +326,10 @@ export default {
                 opacity:0
             }, {
                 queue: false,
-                duration: 500,
+                duration: 400,
                 complete: function() {
                     console.log("FADE OUT DONE");
-                    $( "#step-ponte-content" ).animate( { scrollTop: 0 }, 500 );
+                    $( "#step-ponte-content" ).animate( { scrollTop: 0 }, 400 );
                     done;
                 }
             });
@@ -363,6 +364,8 @@ export default {
          */
         selectBridgeType: function ( bridge ) {
 
+            console.log( "BRIDGE", bridge );
+
             // # Manage unset ( click on the already selected choice )
             if( bridge.id == this.$store.state.bridge_ID ) {
 
@@ -387,11 +390,11 @@ export default {
                     if( shoulder_height_float >= 116 && shoulder_height_float < 138.5 ) {
 
                         // # TODO bridgeID won't be 1 or 2
-                        if( this.$store.state.bridge_supportID == 2 && bridge.id == 480 ) {
+                        if( this.$store.state.bridge_supportID == 2 && bridge.id == 48 ) {
                             
                             // # Show error modal 
                             this.error_modal
-                            .find('.modal-body')
+                            .find( '.modal-body' )
                             .text( "Impossibile selezionare questo elemento, l'altezza totale risulta maggiore di quella disponibile" );
 
                             this.error_modal.modal();

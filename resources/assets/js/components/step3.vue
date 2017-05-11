@@ -772,7 +772,7 @@ export default {
          * @return {void}
          */
         drawRectInfoAndText: function ( rectObj ) {
-          
+
             // # Width line ( drawer )
             this.makeRectWidthInfoLine( rectObj.left, rectObj.bottom + 20, rectObj.right, rectObj.bottom + 20 );
 
@@ -1236,8 +1236,9 @@ export default {
         // # Set component header title
         this.$store.commit( "setComponentHeader", 
                             this.$store.state.is_lineabox ? "step3.header-title-Lineabox" : "step3.header-title-custom" );
-        this.$store.commit( "setCurrentStep", 3 );
 
+        // # Set current step
+        this.$store.commit( "setCurrentStep", 3 );
 
         // # Init canvas
         this.initTwo();
@@ -1302,23 +1303,17 @@ export default {
           
         }
 
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
-        
+        // # Sidebar
         let pos = 0;
-        let $pointer = $(".navigator .pointer-navigator"); 
-        let $nav = $(".navigator #nav").find("li");
-        let $active = $nav.find("a.router-link-active");
+        let $pointer = $( ".navigator .pointer-navigator" ); 
+        let $nav = $( ".navigator #nav" ).find( "li" );
+        let $active = $nav.find( "a.router-link-active" );
         
-        pos = parseInt($active.parent("li").position().top);
-        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        
-        // SET SIDEBAR ITEM ACTIVE - END 
-        // ---------------------------------------------
+        pos = parseInt( $active.parent( "li" ).position().top );
+        $pointer.removeAttr( "style" ).attr( "style","transform: translateY(" + pos.toString() + "px)" );
         
         // # Log mount 
         console.log( "Dimensions choice mounted" );
-      
     }
 }
 </script>
