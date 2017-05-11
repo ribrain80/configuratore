@@ -207,9 +207,6 @@ export default {
           // # sh lihtgallery object
           sh_gallery: {},
 
-          // # SH lineabox gallery trigger element
-          sh_gallery_element: $( '#sh-popover' ),
-
           // # Config vars
           config: {
 
@@ -412,7 +409,7 @@ export default {
 
             // # TWO Instance, autostart means we do not have to reupdate the canvas each time there
             // # is an update on a shape/path/text
-            this.two = new Two( { autostart: true, width: $( "#animation" ).width() - 40 } ).appendTo( this.container );
+            this.two = new Two( { autostart: true, width: $( "#animation" ).width() - 20 } ).appendTo( this.container );
 
             // # Drawer
             this.makeRect( this.mm2Pixel( this.$store.state.dimensions.width ) / 2, 
@@ -712,8 +709,8 @@ export default {
         }, 
 
         /**
-         * [clearAllData description]
-         * @return {[type]} [description]
+         * Clears all next steps data ( commits mutations )
+         * @return {void}
          */
         clearAllData: function() {
           this.$store.commit( "clearAllBridgeData" );
@@ -775,6 +772,7 @@ export default {
          * @return {void}
          */
         drawRectInfoAndText: function ( rectObj ) {
+          
             // # Width line ( drawer )
             this.makeRectWidthInfoLine( rectObj.left, rectObj.bottom + 20, rectObj.right, rectObj.bottom + 20 );
 

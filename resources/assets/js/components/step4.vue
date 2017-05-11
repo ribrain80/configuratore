@@ -1664,7 +1664,6 @@ export default {
          */
         handleDrop: function ( e ) {
 
-            console.log( "dropped")
             // # this / e.target is current target element.
             if (e.stopPropagation) {
                 e.stopPropagation(); // stops the browser from redirecting.
@@ -1673,10 +1672,6 @@ export default {
             if( e.preventDefault ) {
                 e.preventDefault();
             }
-
-            console.log( "imageW: ", parseInt( this.draggingDivider.dataset.width ) );
-            console.log( "imageW before Ceil: ", parseInt( this.draggingDivider.dataset.width ) * this.config.ratio );
-            console.log( "imageW after Ceil: ", Math.ceil( parseInt( this.draggingDivider.dataset.width ) * this.config.ratio ) );
 
             // # Caching img dataset
             var _imgW   = Math.ceil( parseInt( this.draggingDivider.dataset.width ) * this.config.ratio );
@@ -1796,10 +1791,6 @@ export default {
 
                 this.allselected = false;
 
-                //this.selectedItem = oImg;
-
-
-
                 // # Set ObjectWorking On
                 this.$store.commit( 'setobjectWorkingOn',{ type:'divider', id:_divider.id, 'obj':oImg } ); 
 
@@ -1816,8 +1807,14 @@ export default {
                     y: _divider.y
                 };
 
-
                 this.$store.dispatch( 'update3dDividerPos', payload );
+
+                let vertical_alert = this.$store.getters.bridgeSupportVerticalAlert;
+                if ( vertical_alert ) {
+                    // # Modal Error display
+                    this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.vertical-space-advice" ) );
+                    this.error_modal.modal();                      
+                }
             };
 
             // # Clean data property
