@@ -14,6 +14,7 @@ export default class DividerHelper {
         //Local copy of the scene
         this.scene = scene;
         this.defaultMaterial = "/images/3dmodels/material/base.png";
+        this.currentBridgesMaterial = "/images/3dmodels/material/base.png";
         this.commonBackgroundObj = "/images/3dmodels/common/background.obj";
         this.commonFrontObj = "/images/3dmodels/common/front.obj";
         this.bridge600x255 = "/images/3dmodels/bridges/255x600.obj";
@@ -25,7 +26,9 @@ export default class DividerHelper {
         //Dividers Container
         this.objLoader = new SplitObjLoader(manager);
         this.drawer = new THREE.Object3D();
+        this.bridges = new THREE.Object3D();
         this.scene.add(this.drawer);
+        this.scene.add(this.bridges);
     }
 
     /**
@@ -36,29 +39,26 @@ export default class DividerHelper {
      * @param orr
      * @param texture
      */
-    addBridge ( w, bh, sh, orr, texture) {
+    addBridgeV ( w, bh, sh) {
 
         // # Obj selection
         let _model = '';
         let _h = (sh)?45.5:90;
         let _scalefactor = 1;
         w = parseFloat(w);
-        texture = '/images/textures/08_Radica.jpg';
         if (w>600) {
-            if (bh==1) {_model=this.bridge1200x255;}
-            if (bh==2) {_model=this.bridge1200x48;}
-            _scalefactor = Math.abs(w / 1200 );
+            if (bh==25.5) {_model=this.bridge1200x255;}
+            if (bh==48) {_model=this.bridge1200x48;}
+            _scalefactor = Math.abs( w / 1200 );
         } else {
-            if (bh==1) {_model=this.bridge600x255;}
-            if (bh==2) {_model=this.bridge600x48;}
-            _scalefactor = Math.abs(w / 600 );
+            if (bh==25.5) {_model=this.bridge600x255;}
+            if (bh==48) {_model=this.bridge600x48;}
+            _scalefactor = Math.abs( w / 600 );
         }
         let _name = "TMP-BR-NAME"; // @todo: trovare una logica semplice
 
-        this.objLoader.loadModel(_name,_model,texture).then((obj3d) => {
+        this.objLoader.loadModel(_name,_model,this.currentBridgesMaterial).then((obj3d) => {
 
-            let bbox = new THREE.Box3().setFromObject( obj3d );
-            console.log(bbox);
             obj3d.scale.set(1,1,_scalefactor);
             obj3d.updateMatrix();
 
@@ -72,8 +72,21 @@ export default class DividerHelper {
 
             obj3d.updateMatrix();
 
-            this.drawer.add(obj3d);
+            this.bridges.add(obj3d);
         });
+    }
+
+    updateBridgesTexture(textureImg) {
+
+        // Update di currentBridgeMaterial
+        this.currentBridgesMaterial = textureImg;
+
+        // Apply all
+
+        _.forEach(this.bridges.children, (cur) => {
+            this.objLoader.changeObjectTexture(cur,textureImg);
+        });
+
 
     }
 
