@@ -132,7 +132,7 @@ class SplitDrawerController extends Controller
                 $message->to($dest)
                     ->subject('Il suo cassetto!')
                     ->attachData(file_get_contents(route('split.export.topdf',['id'=>$drawerId,'brochure'=>0,'lang'=>$language])),"cassetto.pdf")
-                    ->attach(resource_path('/pdf/brochure.pdf'))
+                    //->attach(resource_path('/pdf/brochure.pdf'))
                 ;
             });
         }
