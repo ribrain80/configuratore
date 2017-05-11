@@ -234,13 +234,13 @@ export default {
                 opacity: 1
             }, {
                 queue: false,
-                duration: 500,
+                duration: 400,
                 complete: function () {
 
                     let pos = el.offsetTop;
-                    $( "#step2-content" ).animate( { scrollTop: pos }, 500 );
+                    $( "#step2-content" ).animate( { scrollTop: pos }, 400 );
                     
-                    // # callback fine transizione
+                    // # callback end transition
                     done;
                 }
             });
@@ -253,16 +253,17 @@ export default {
          * @return {void}
          */       
         fadeSlideOut ( el, done ) {
+
             $( el ).animate({
                 opacity: 0
             }, {
                 queue: false,
-                duration: 500,
+                duration: 400,
                 complete: function() {
 
-                    $( "#step2-content" ).animate( { scrollTop: 0 }, 500 );
+                    $( "#step2-content" ).animate( { scrollTop: 0 }, 400 );
 
-                    // # callback fine transizione
+                    // # callback end transition
                     done;
                 }
             });
@@ -294,15 +295,11 @@ export default {
      */    
     mounted () {
 
-        // # Log mount 
-        console.log( "Step2 Mounted!" );
-
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step2.header-title" );
         this.$store.commit( "setCurrentStep", 2 );
 
         // # Sidebar
-        
         let pos = 0;
         let $pointer = $( ".navigator .pointer-navigator" ); 
         let $nav = $( ".navigator #nav" ).find( "li" );
@@ -310,6 +307,9 @@ export default {
         
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
+
+        // # Log mount 
+        console.log( "Step2 Mounted!" );
     }
 }
 </script>

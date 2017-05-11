@@ -121,17 +121,14 @@ export default {
 
         });
 
-        // # SET SIDEBAR ITEM ACTIVE - BEGIN
-        
+        // # Sidebar
         let pos = 0;
-        let $pointer = $(".navigator .pointer-navigator"); 
-        let $nav = $(".navigator #nav").find("li");
-        let $active = $nav.find("a.router-link-active");
+        let $pointer = $( ".navigator .pointer-navigator" ); 
+        let $nav = $( ".navigator #nav" ).find( "li" );
+        let $active = $nav.find( "a.router-link-active" );
         
-        pos = parseInt($active.parent("li").position().top);
-        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        
-        // # SET SIDEBAR ITEM ACTIVE - END 
+        pos = parseInt( $active.parent( "li" ).position().top );
+        $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
 
         // # Log mount 
         console.log( "Welcome/info page mounted" );
