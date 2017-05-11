@@ -57,7 +57,7 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
                 </div>
-                <div class="modal-body">Sei sicuro di voler cancellare il divisorio?</div>
+                <div class="modal-body">{{ $t( "step4.deletion-advice" ) }}</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( "cancel" ) }}</button>
                     <button type="button" class="btn btn-danger" @click="deleteDivider()" v-html="allselected ? $t( 'step4.deletion-message-multi' ) : $t( 'step4.deletion-message-single' )"></button>
