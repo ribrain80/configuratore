@@ -396,7 +396,7 @@ canvas {
   max-width: 100%;
 }
 
-.i-icon:hover {
+.i-icon:hover, .lens-icon:hover {
   text-decoration:none;
 }
 
@@ -508,6 +508,21 @@ canvas {
   text-decoration:none;
   margin-right: 3%;
   margin-top: 6px;
+}
+
+.lg-image {
+  border: 1px solid #333!important;
+}
+
+.lens-icon {
+  background: url( "/images/others/step-4/info.png" ) no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor:pointer;
+  text-decoration:none;
+  margin-right: 3%;
+  margin-top: 6px; 
 }
 
 .input-mm {

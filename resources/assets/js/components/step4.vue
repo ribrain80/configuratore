@@ -232,13 +232,15 @@
                                                 <h4>Fullcolor</h4>
                                                 <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsVelvetFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
-                                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
                                                              @click="_updateDividerSku( $event );"
                                                              style="width: 120px;height: 80px"
-                                                             :data-sku="variant.sku"
+                                                             :data-sku="variant.sku" 
+                                                             :alt="variant.color" 
+                                                             :title="variant.color" 
                                                         >
                                                         <figcaption>{{ variant.color }}</figcaption>
                                                     </figure>
@@ -250,7 +252,7 @@
                                                 <h4>Dark Core</h4>
                                                 <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsVelvetDark" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
-                                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
@@ -271,7 +273,7 @@
                                                 <h4>Fullcolor</h4>
                                                 <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
-                                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
@@ -289,7 +291,7 @@
                                                 <h4>Dark Core</h4>
                                                 <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsLegnoDark" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
-                                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
@@ -310,7 +312,7 @@
                                                 <h4>Fullcolor</h4>
                                                 <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
-                                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
@@ -328,7 +330,7 @@
                                                 <h4>Dark Core</h4>
                                                 <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsInoxDark" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
-                                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
                                                              :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
                                                              class="img center-block img-responsive img-thumbnail"
@@ -368,7 +370,7 @@
                                         <h4>Fullcolor</h4>
                                         <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsVelvetFull" >
                                             <figure>
-                                                <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
@@ -383,7 +385,7 @@
                                         <h4>Dark core</h4>
                                         <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsVelvetDark" >
                                             <figure>
-                                                <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
@@ -401,7 +403,7 @@
                                         <h4>Fullcolor</h4>
                                         <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
                                             <figure>
-                                                <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
@@ -416,7 +418,7 @@
                                         <h4>Dark core</h4>
                                         <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsLegnoDark" >
                                             <figure>
-                                                <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
@@ -434,7 +436,7 @@
                                         <h4>Fullcolor</h4>
                                         <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
                                             <figure>
-                                                <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
@@ -449,7 +451,7 @@
                                         <h4>Dark core</h4>
                                         <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsInoxDark" >
                                             <figure>
-                                                <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
                                                      @click="_updateBridges( $event );"
@@ -467,7 +469,7 @@
                                 <div class="col-lg-2 col-md-2"></div>
                                 <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getSupportsVariants">
                                     <figure>
-                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                         <img :src="variant.texture"
                                              class="img center-block img-responsive img-thumbnail"
                                              :class="variant.selected?'support_selected':''"
@@ -501,7 +503,7 @@
                             <div class="col-lg-8">
                                 <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
                                     <figure>
-                                        <a class="i-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
+                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                         <img :src="variant.textureImg"
                                              class="img center-block img-responsive img-thumbnail"
                                              @click="_updateBorder( $event );"
@@ -618,7 +620,8 @@ export default {
                   download: false,
                   thumbnail: false,
                   dynamic: true,
-                  counter: false
+                  counter: false,
+                  getCaptionFromTitleOrAlt: true
                 }
             },
 
@@ -753,7 +756,10 @@ export default {
 
             // # General settings + image src
             let bridgesGalleryOptions = this.config.lightgalleryOptions;
-            bridgesGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
+            bridgesGalleryOptions.dynamicEl = [ { 
+                src: related_image.attr( "src" )
+                // subHtml: "TEST"//related_image.attr( "alt" )
+            } ];
 
             // # Init
             $( event.target ).lightGallery( bridgesGalleryOptions ) ;
