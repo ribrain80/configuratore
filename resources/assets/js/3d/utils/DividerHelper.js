@@ -39,13 +39,17 @@ export default class DividerHelper {
      * @param orr
      * @param texture
      */
-    addBridgeV ( w, bh, sh) {
+    addBridgeV ( w, bh, sh, count) {
+
+
 
         // # Obj selection
         let _model = '';
-        let _h = (sh)?45.5:90;
+        let _h = (sh==1)?45.5:90;
         let _scalefactor = 1;
         w = parseFloat(w);
+
+
         if (w>600) {
             if (bh==25.5) {_model=this.bridge1200x255;}
             if (bh==48) {_model=this.bridge1200x48;}
@@ -55,7 +59,7 @@ export default class DividerHelper {
             if (bh==48) {_model=this.bridge600x48;}
             _scalefactor = Math.abs( w / 600 );
         }
-        let _name = "TMP-BR-NAME"; // @todo: trovare una logica semplice
+        let _name = "BRIDGE"; // # info: Il nome in questo caso non serve a niente visto che i ponti si comportano come gruppo!
 
         this.objLoader.loadModel(_name,_model,this.currentBridgesMaterial).then((obj3d) => {
 
@@ -67,13 +71,21 @@ export default class DividerHelper {
 
             obj3d.position.y= _h;
             obj3d.position.z= w/2;
-            obj3d.position.x= this.bridgeWidth/2;
+            obj3d.position.x= (count * this.bridgeWidth) + this.bridgeWidth/2;
 
 
             obj3d.updateMatrix();
 
             this.bridges.add(obj3d);
         });
+    }
+
+
+    removeBridge() {
+        let allBridges = this.bridges.children;
+        if (allBridges.length) {
+            this.bridges.remove(allBridges[(allBridges.length-1)]);
+        }
     }
 
     updateBridgesTexture(textureImg) {

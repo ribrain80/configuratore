@@ -233,6 +233,18 @@ const store = new Vuex.Store({
 
         },
 
+        add3DBridge: function ({ commit,state }) {
+            if (state.bridge_orientation=="V") {
+                state.dividerHelper.addBridgeV(state.dimensions.length,state.bridge_ID,state.bridge_supportID,state.bridges_selected.length-1);
+            } else {
+                // # todo
+            }
+        },
+
+        remove3DBridge: function ({ commit,state }) {
+            state.dividerHelper.removeBridge();
+        },
+
 
         genDrawer: function ({ commit,state }, type) {
 
@@ -242,7 +254,7 @@ const store = new Vuex.Store({
             //Gestione iniziale ponte !!!
             if (state.has_bridge) {
                 if (state.bridge_orientation=="V") {
-                    state.dividerHelper.addBridgeV(state.dimensions.length,state.bridge_ID,state.bridge_supportID);
+                    state.dividerHelper.addBridgeV(state.dimensions.length,state.bridge_ID,state.bridge_supportID,0);
                 } else {
                     // # todo
                 }

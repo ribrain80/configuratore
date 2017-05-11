@@ -1856,6 +1856,7 @@ export default {
          */
         addBridge: function() {
             this.$store.commit( "addBridge" );
+            this.$store.dispatch( "add3DBridge" );
         },
 
 
@@ -1869,6 +1870,8 @@ export default {
 
             if( this.$store.state.bridges_selected.length > 1 ) {
                 this.$store.commit( "removeBridge" );
+                this.$store.dispatch( "remove3DBridge" );
+
             } else {
                 this.clearBridges();
             }  
