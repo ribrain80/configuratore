@@ -237,7 +237,7 @@ const store = new Vuex.Store({
             if (state.bridge_orientation=="V") {
                 state.dividerHelper.addBridgeV(state.dimensions.length,state.bridge_ID,state.bridge_supportID,state.bridges_selected.length-1);
             } else {
-                // # todo
+                state.dividerHelper.addBridgeH(state.dimensions.width,state.bridge_ID,state.bridge_supportID,state.bridges_selected.length-1);
             }
         },
 
@@ -256,7 +256,7 @@ const store = new Vuex.Store({
                 if (state.bridge_orientation=="V") {
                     state.dividerHelper.addBridgeV(state.dimensions.length,state.bridge_ID,state.bridge_supportID,0);
                 } else {
-                    // # todo
+                    state.dividerHelper.addBridgeH(state.dimensions.width,state.bridge_ID,state.bridge_supportID,0);
                 }
             }
 

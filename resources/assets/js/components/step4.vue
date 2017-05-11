@@ -687,6 +687,11 @@ export default {
          */
         canAddBridges: function () {
             let availableSpace = ( this.$store.state.bridge_orientation == 'V' ) ? this.real_height : this.real_width;
+            console.log("FREE SPACE:", availableSpace);
+            console.log("BRIDGES SPACE:", this.bridgesArea);
+            console.log("BRIDGES W:", this.tighterBridgeWidth);
+
+
             return availableSpace >= ( this.bridgesArea + this.tighterBridgeWidth )
         },
 
