@@ -70,7 +70,7 @@ export default class DividerHelper {
             obj3d.receiveShadow = true;
 
             obj3d.position.y= _h;
-            obj3d.position.z= w/2;
+            obj3d.position.z= w/2 - 12;
             obj3d.position.x= (count * this.bridgeWidth) + this.bridgeWidth/2;
 
 
@@ -256,7 +256,7 @@ export default class DividerHelper {
             obj3d.updateMatrix();
             obj3d.position.x = w/2;
             obj3d.position.y = yDeltaCorrection;
-            obj3d.position.z = zDeltaCorrection  ;
+            obj3d.position.z = zDeltaCorrection - elementZ ;
             obj3d.updateMatrix();
             // # Shadow
             obj3d.castShadow = true;
