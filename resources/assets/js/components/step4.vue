@@ -686,8 +686,14 @@ export default {
          * @return {Boolean}
          */
         canAddBridges: function () {
-            let availableSpace = ( this.$store.state.bridge_orientation == 'V' ) ? this.real_height : this.real_width;
-            return availableSpace >= ( this.bridgesArea + this.tighterBridgeWidth )
+            let availableSpace = ( this.$store.state.bridge_orientation == 'H' ) ? this.real_height : this.real_width;
+            let busySpace = this.$store.state.bridges_selected.length * this.tighterBridgeWidth;
+            console.log("FREE SPACE:", availableSpace);
+            console.log("BRIDGES SPACE:", this.bridgesArea);
+            console.log("BRIDGES W:", this.tighterBridgeWidth);
+
+
+            return availableSpace >= ( busySpace + this.tighterBridgeWidth )
         },
 
         /**
@@ -695,17 +701,7 @@ export default {
          * @return {Number}
          */
         tighterBridgeWidth: function () {
-
-            // # No bridge selected management
-            if ( !this.$store.state.bridges_selected.length ) {
-                return 0;
-            }
-
-            return this.$store.state.bridges_selected.reduce(
-                function ( min, elem ) {
-                    return ( min > elem.width ) ? elem.width : min;
-                }
-                , 0 );
+            return 107;
         },
 
         /**

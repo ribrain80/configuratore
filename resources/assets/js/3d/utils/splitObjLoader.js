@@ -11,7 +11,13 @@ export default class SplitObjLoader {
     }
 
 
-    changeObjectTexture( object, textureImg ) {
+    changeObjectTexture( object, textureImg, transparent ) {
+        let t = false;
+        let opacity = 1;
+        if (transparent) {
+            opacity=0.6;
+            t = true;
+        }
         console.log("Texture IMG on CHANGE:",textureImg);
         let texture = new THREE.Texture();
         let material = new THREE.MeshPhongMaterial(  );
@@ -25,14 +31,14 @@ export default class SplitObjLoader {
                 
                 texture.needsUpdate = true;
             } );
-            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide} );
+            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide, transparent: t, opacity: opacity} );
             material.needsUpdate=true;
         }
         if (textureImg) {
             object.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = material;
-                    child.material.transparent = false;
+                    //child.material.transparent = false;
                     child.castShadow=true;
                     child.receiveShadow=true;
                 }
@@ -126,7 +132,13 @@ export default class SplitObjLoader {
      * @param textureImg img texture url
      * @param coords 3dObject coords
      */
-    loadModel(name,model,textureImg,coords) {
+    loadModel(name,model,textureImg,coords,transparent) {
+        let t = false;
+        let opacity = 1;
+        if (transparent) {
+            opacity=0.6;
+            t = true;
+        }
         let texture = new THREE.Texture();
         let material = new THREE.MeshPhongMaterial(  );
         // # Load img for texture only if required!
@@ -138,7 +150,7 @@ export default class SplitObjLoader {
                 texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
                 texture.repeat.set(2 ,2);
             } );
-            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide} );
+            material = new THREE.MeshPhongMaterial( { map: texture , overdraw: 0.5,  side: THREE.DoubleSide, transparent: t, opacity: opacity} );
             material.needsUpdate=true;
 
 
@@ -155,7 +167,7 @@ export default class SplitObjLoader {
                     object.traverse( function ( child ) {
                         if ( child instanceof THREE.Mesh ) {
                             child.material = material;
-                            child.material.transparent = false;
+                           // child.material.transparent = false;
                             child.castShadow=true;
                             child.receiveShadow=true;
                         }
