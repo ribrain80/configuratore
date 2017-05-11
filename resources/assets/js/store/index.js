@@ -234,6 +234,7 @@ const store = new Vuex.Store({
 
 
         genDrawer: function ({ commit,state }, type) {
+
             state.dividerHelper.genDrawer(type,state.dimensions.width,state.dimensions.length,state.dimensions.shoulder_height);
             state.camera.chanegPosition(type,-state.dimensions.width/2,0,-state.dimensions.length/2);
             console.log("Added Drawer of type:",type);
@@ -241,6 +242,7 @@ const store = new Vuex.Store({
             if (!state.bridge_supportID) {
                 return;
             }
+            state.dividerHelper.addBridge(state.dimensions.length,1,state.bridge_supportID);
             let h = (state.bridge_supportID==1)?45.5:90;
             let supportTexture = false;
             if (state.bridge_supports_selected[0]) {

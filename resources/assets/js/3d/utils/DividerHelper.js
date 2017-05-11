@@ -16,11 +16,67 @@ export default class DividerHelper {
         this.defaultMaterial = "/images/3dmodels/material/base.png";
         this.commonBackgroundObj = "/images/3dmodels/common/background.obj";
         this.commonFrontObj = "/images/3dmodels/common/front.obj";
+        this.bridge600x255 = "/images/3dmodels/bridges/255x600.obj";
+        this.bridge600x48 = "/images/3dmodels/bridges/48x600.obj";
+        this.bridge1200x255 = "/images/3dmodels/bridges/255x1200.obj";
+        this.bridge1200x48 = "/images/3dmodels/bridges/48x1200.ob";
+        this.bridgeWidth = 107;
+
         //Dividers Container
         this.objLoader = new SplitObjLoader(manager);
         this.drawer = new THREE.Object3D();
         this.scene.add(this.drawer);
     }
+
+    /**
+     *
+     * @param w
+     * @param bh
+     * @param sh
+     * @param orr
+     * @param texture
+     */
+    addBridge ( w, bh, sh, orr, texture) {
+
+        // # Obj selection
+        let _model = '';
+        let _h = (sh)?45.5:90;
+        let _scalefactor = 1;
+        w = parseFloat(w);
+        texture = '/images/textures/08_Radica.jpg';
+        if (w>600) {
+            if (bh==1) {_model=this.bridge1200x255;}
+            if (bh==2) {_model=this.bridge1200x48;}
+            _scalefactor = Math.abs(w / 1200 );
+        } else {
+            if (bh==1) {_model=this.bridge600x255;}
+            if (bh==2) {_model=this.bridge600x48;}
+            _scalefactor = Math.abs(w / 600 );
+        }
+        let _name = "TMP-BR-NAME"; // @todo: trovare una logica semplice
+
+        this.objLoader.loadModel(_name,_model,texture).then((obj3d) => {
+
+            let bbox = new THREE.Box3().setFromObject( obj3d );
+            console.log(bbox);
+            obj3d.scale.set(1,1,_scalefactor);
+            obj3d.updateMatrix();
+
+            obj3d.castShadow = true;
+            obj3d.receiveShadow = true;
+
+            obj3d.position.y= _h;
+            obj3d.position.z= w/2;
+            obj3d.position.x= this.bridgeWidth/2;
+
+
+            obj3d.updateMatrix();
+
+            this.drawer.add(obj3d);
+        });
+
+    }
+
 
     /**
      * Add an obj to the scene
