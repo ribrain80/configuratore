@@ -1105,8 +1105,8 @@ html, body, .container-fluid, .wrapper {
 }
 
 
-@media (min-width: 992px) {
-  /*.sidebar {
+//@media (min-width: 992px) {
+/*.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -1114,7 +1114,7 @@ html, body, .container-fluid, .wrapper {
     z-index: 1000;
     display: block;
   }*/
-
+// ---------------
 
 /**
  * Css Animation
@@ -1236,6 +1236,7 @@ img.rotate90 {
   .nav-tabs > li > a{
     color: #f04f1a !important;
     border: medium none;
+    font-size: 11px;
   }
   .nav-tabs > li > a:hover{
     color: #f04f1a !important;
@@ -1555,7 +1556,7 @@ GALLERY REWRITE
 .pace.pace-inactive {
   display: none;
 }
-}
+//}
 
 @media (max-width: 1024px){
   .navigator #nav {
@@ -1677,3 +1678,10 @@ GALLERY REWRITE
   right: 0px;
 }
     
+#dividers-tab > .row > div > div.row > div[class^='col-'] {
+  border-right: 1px solid #dddddd;  
+}
+
+#dividers-tab > .row > div > div.row > div[class^='col-']:last-of-type {
+  border-right: 0px;  
+}

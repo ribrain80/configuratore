@@ -136,7 +136,7 @@
         <!-- tabs row -->
         <div class="row top1">
             <!-- Tabs: dividers and colors -->
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-md-12 col-sm-12">
 
                 <!-- Tab title ( Nav ) -->
                 <ul class="nav nav-tabs" role="tablist" id="tab-container">
@@ -156,14 +156,14 @@
 
                         <div class="row" style="margin-top: 22px">
 
-                            <div class="col-lg-3 col-md-3"  v-for="(divider,dimension) in getDividerByCat(cat)">
+                            <div class="col-lg-3 col-md-3 col-sm-4"  v-for="(divider,dimension) in getDividerByCat(cat)">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         {{ dimension }}
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-lg-12 col-md-12 center-block imgcont">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 center-block imgcont">
                                                 <img :src="divider.image3d" class="img center-block img-responsive img-thumbnail" />
                                             </div>
 
@@ -225,12 +225,12 @@
                         <div class="row top1" v-if="$store.state.objectWorkingOn.type=='divider'">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sx-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
                                         <h3 class="divider_tab_group_level_1">Velvet</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sx-12">
                                                 <h4>Fullcolor</h4>
-                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsVelvetFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsVelvetFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -248,9 +248,9 @@
                                             </div>
                                         </div>
                                         <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Dark Core</h4>
-                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsVelvetDark" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsVelvetDark" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -266,12 +266,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sx-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
                                         <h3 class="divider_tab_group_level_1">Legno</h3>
                                         <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Fullcolor</h4>
-                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -287,9 +287,9 @@
                                             </div>
                                         </div>
                                         <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Dark Core</h4>
-                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsLegnoDark" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsLegnoDark" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -305,12 +305,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sx-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
                                         <h3 class="divider_tab_group_level_1">Spazzolato</h3>
                                         <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Fullcolor</h4>
-                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -326,9 +326,9 @@
                                             </div>
                                         </div>
                                         <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sx-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Dark Core</h4>
-                                                <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getDividerVariantsInoxDark" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsInoxDark" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -351,7 +351,7 @@
                             </div>
                         </div>
                         <div class="row top1" v-else="$store.state.objectWorkingOn.type!='divider'">
-                            <div class="col-lg-12 noside-chosen">
+                            <div class="col-lg-12 col-md-12 col-sm-12 noside-chosen">
                                 {{ $t( "step4.nodividerchosen" ) }}
                             </div>
                         </div>
@@ -359,16 +359,16 @@
 
                     <div role="tabpanel" id="bridges-tab"  v-if="$store.state.has_bridge"  class="tab-pane fade in">
                         <div class="row top1">
-                            <div class="col-lg-12 ">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="col-lg-12 col-md-12">
                                     <h3>Finiture ponti</h3>
                                 </div>
 
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
                                     <h3> Velvet</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
-                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsVelvetFull" >
+                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsVelvetFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -383,7 +383,7 @@
                                     </div>
                                     <div class="row">
                                         <h4>Dark core</h4>
-                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsVelvetDark" >
+                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsVelvetDark" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -397,11 +397,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
                                     <h3> Legno</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
-                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
+                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -416,7 +416,7 @@
                                     </div>
                                     <div class="row">
                                         <h4>Dark core</h4>
-                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsLegnoDark" >
+                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsLegnoDark" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -430,11 +430,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
                                     <h3> Spazzolato</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
-                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
+                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -449,7 +449,7 @@
                                     </div>
                                     <div class="row">
                                         <h4>Dark core</h4>
-                                        <div class="col-lg-6 col-md-6" v-for="variant in $store.getters.getBridgesVariantsInoxDark" >
+                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsInoxDark" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -463,7 +463,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <h3>Finiture supporti</h3>
                                 </div>
                                 <div class="col-lg-2 col-md-2"></div>
@@ -484,7 +484,7 @@
                     </div>
                     <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
 
-                        <div class="col-lg-12 top1">
+                        <div class="col-lg-12 col-md-12 col-sm-12 top1">
                             <div class="col-lg-4" id="background" @click='selectBorder( $event );' style="padding:0">
                                 <!-- Egdes -->
                                     <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
@@ -500,8 +500,8 @@
                                         {{ $t( "rear" ) }}
                                     </div>
                             </div>
-                            <div class="col-lg-8">
-                                <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                            <div class="col-lg-8 col-md-12 col-sm-12">
+                                <div class="col-lg-2 col-md-2 col-sm-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
                                     <figure>
                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                         <img :src="variant.textureImg"
@@ -513,7 +513,7 @@
                                         <figcaption>{{ variant.textureName }}</figcaption>
                                     </figure>
                                 </div>
-                                <div class="col-lg-12 col-md-12 noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
+                                <div class="col-lg-12 col-md-12 col-sm-12 noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
                                     {{ $t( "step4.choose_a_side" ) }}
                                 </div>
                             </div>
