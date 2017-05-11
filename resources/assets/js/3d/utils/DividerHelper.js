@@ -53,17 +53,17 @@ export default class DividerHelper {
         if (w>600) {
             if (bh==25.5) {_model=this.bridge1200x255;}
             if (bh==48) {_model=this.bridge1200x48;}
-            _scalefactor = Math.abs( w / 1200 );
         } else {
             if (bh==25.5) {_model=this.bridge600x255;}
             if (bh==48) {_model=this.bridge600x48;}
-            _scalefactor = Math.abs( w / 600 );
         }
         let _name = "BRIDGE"; // # info: Il nome in questo caso non serve a niente visto che i ponti si comportano come gruppo!
 
         this.objLoader.loadModel(_name,_model,this.currentBridgesMaterial).then((obj3d) => {
-
-            obj3d.scale.set(1,1,_scalefactor);
+            let bbox = new THREE.Box3().setFromObject( obj3d );
+            let _zCoeff = w / (bbox.max.z - bbox.min.z);
+            let _wCoeff = this.bridgeWidth / (bbox.max.x - bbox.min.x);
+            obj3d.scale.set(1,1,_zCoeff);
             obj3d.updateMatrix();
 
             obj3d.castShadow = true;
@@ -256,7 +256,7 @@ export default class DividerHelper {
             obj3d.updateMatrix();
             obj3d.position.x = w/2;
             obj3d.position.y = yDeltaCorrection;
-            obj3d.position.z = zDeltaCorrection - elementZ/2 ;
+            obj3d.position.z = zDeltaCorrection  ;
             obj3d.updateMatrix();
             // # Shadow
             obj3d.castShadow = true;

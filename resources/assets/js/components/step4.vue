@@ -1867,11 +1867,10 @@ export default {
          * @return {[type]} [description]
          */
         removeBridge: function() {
+            this.$store.dispatch( "remove3DBridge" );
 
             if( this.$store.state.bridges_selected.length > 1 ) {
                 this.$store.commit( "removeBridge" );
-                this.$store.dispatch( "remove3DBridge" );
-
             } else {
                 this.clearBridges();
             }  
