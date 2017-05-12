@@ -20,7 +20,7 @@ export default class DividerHelper {
         this.bridge600x255 = "/images/3dmodels/bridges/255x600.obj";
         this.bridge600x48 = "/images/3dmodels/bridges/48x600.obj";
         this.bridge1200x255 = "/images/3dmodels/bridges/255x1200.obj";
-        this.bridge1200x48 = "/images/3dmodels/bridges/48x1200.ob";
+        this.bridge1200x48 = "/images/3dmodels/bridges/48x1200.obj";
         this.bridgeWidth = 107;
 
         //Dividers Container
@@ -100,6 +100,8 @@ export default class DividerHelper {
             if (bh==48) {_model=this.bridge600x48;}
         }
         let _name = "BRIDGE"; // # info: Il nome in questo caso non serve a niente visto che i ponti si comportano come gruppo!
+
+        console.log("MODELLO BRIDGE:",_model);
 
         this.objLoader.loadModel(_name,_model,this.currentBridgesMaterial,false,true).then((obj3d) => {
             let bbox = new THREE.Box3().setFromObject( obj3d );
