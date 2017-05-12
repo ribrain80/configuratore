@@ -221,7 +221,7 @@ export default {
 
               // # Rect related info
               rect_stroke: '#999999',
-              rect_linewidth: 7,
+              rect_linewidth: 5,
               rect_width_upper_limit: 1800,
               rect_length_upper_limit: 900,
               rect_width_lower_limit: 102,
@@ -230,7 +230,7 @@ export default {
 
               // # Shoulder settings
               shoulder_stroke: '#999999',
-              shoulder_linewidth: 7,
+              shoulder_linewidth: 5,
               shoulder_text: "step3.shoulder_label",
               shoulder_height_upper_limit: 250,
               shoulder_height_lower_limit: 45.5,
