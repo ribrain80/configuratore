@@ -1284,10 +1284,12 @@ img.rotate90 {
   }
 
 .panel-default > .panel-heading {
-    color: #333333;
+    color: #666;
     text-align: left;
     background-color: #fff!important;
     border: none!important;
+    font-family: "FranklinGothicURW-Dem";
+    font-weight: 500;
 }
 
   .content-size > div:last-of-type > div:first-of-type::after {
