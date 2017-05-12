@@ -15,7 +15,7 @@
             case 'divider':
                 $l = $obj->length;
                 $d = $obj->depth;
-                $texture = $obj->texture;
+                $texture = $obj->color . " " . $obj->texture;
                 $img_src = asset($obj->image3d);
 
                 break;
@@ -27,7 +27,7 @@
                     $img_src = asset("/images/bridges/3D/".$obj->depth."_short.png");
                     $sku = $obj->sku_short;
                 }
-                $texture = $obj->texture;
+                $texture = $obj->color . " " . $obj->texture;
 
                 break;
             case 'support':
