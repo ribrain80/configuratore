@@ -225,13 +225,15 @@ export default {
 
         getPresentationPathByLanguage: function () {
             let base_name = "/pdf/Split_Presentazione/Split_Emotion_Ed02_05-2017_";
-            base_name +=  this.$cookie.get( 'langCookie' ) + ".pdf";
+            let cookieLang = ( null == this.$cookie.get( 'langCookie' ) ) ? "it" :  this.$cookie.get( 'langCookie' );
+            base_name +=  cookieLang + ".pdf";
             return base_name;
         },
 
         getTechSummaryPathByLanguage: function () {
             let base_name = "/pdf/Split_prospetto-tecnico/Split_Ed01_05-2017_";
-            base_name +=  this.$cookie.get( 'langCookie' ) + ".pdf";
+            let cookieLang = ( null == this.$cookie.get( 'langCookie' ) ) ? "it" :  this.$cookie.get( 'langCookie' );
+            base_name +=  cookieLang + ".pdf";
             return base_name;
         }
 
