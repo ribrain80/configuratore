@@ -52,8 +52,8 @@ p {
 
 #box2d {
     margin-top: 0;
-    min-height: 300px;
-    height: 300px;
+    min-height: 200pt;
+    height: 200pt;
 
 }
 
@@ -61,14 +61,14 @@ p {
     margin-top: 0;
     min-height: 100px;
     height: 100px;
-    border: 0.75pt solid #000;
+    border: 0.75pt solid #666;
 }
 
 #box3d {
     margin-top: 0;
     min-height: 620px;
     height: 620px;
-    border: 1pt solid #000;
+    border: 0.75pt solid #666;
 }
 
 .boxelem h3 {
@@ -80,7 +80,7 @@ p {
 
 .boxelem p {
     width: 100%;
-    border-bottom: 1pt solid #000000;
+    border-bottom: 0.75pt solid #666;
 }
 
 .boxelem {
@@ -113,6 +113,10 @@ p {
     height: 40px;
 }
 
+#secondhead th {
+    min-height: 10px;
+    height: 10px;
+}
 
 
 .headertable td {
@@ -120,8 +124,8 @@ p {
     text-transform: capitalize;
     font-weight: bold;
     color: #000000;
-    min-height: 50px;
-    height: 50px;
+    min-height: 10px;
+    height: 10px;
 }
 
 

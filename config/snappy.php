@@ -8,11 +8,11 @@ return array(
         'binary'  => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
         'timeout' => false,
         'options' => [
-            'margin-top'    => 52,
+            'margin-top'    => 71,
             'margin-right'  => 0,
             'margin-bottom' => 0,
             'margin-left'   => 0,
-            'header-spacing'=> 1,
+            'header-spacing'=> 0,
             'page-size'=>'A4'
         ],
         'env'     => array(),

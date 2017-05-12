@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 20px">
+        <div class="row" style="margin-top: 0">
             @foreach($dividers['first'] as $divider)
                 @include('split.pdf.partials.elementblock',['element'=>$divider])
             @endforeach

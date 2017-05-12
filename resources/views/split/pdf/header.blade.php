@@ -22,7 +22,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <table class="headertable table table-condensed table-bordered">
+                <table class="headertable table table-bordered">
                     <thead>
                     <tr>
                         <th>{!! trans( 'pdf.header_type' ) !!} </th>
@@ -34,6 +34,7 @@
                     </thead>
                     <tbody>
                     <tr>
+
                         <td>{{ $model->drawertype->description }}</td>
                         <td id="spondatd">
                             {{ $model->sponda_left ? \App\Models\Texture::where('id',$model->sponda_left)->get()->first()->name:'n.d.' }}
@@ -50,7 +51,7 @@
         </div>
     <div class="row">
         <div class="col-lg-12">
-            <table class="headertable table table-condensed table-bordered">
+            <table id ="secondhead" class="headertable table table-bordered" >
                 <thead>
                 <tr>
                     <th>Larghezza Interna Cassetto (mm) </th>
