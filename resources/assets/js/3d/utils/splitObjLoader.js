@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import Config from '../config';
 
 export default class SplitObjLoader {
     constructor(manager) {
@@ -25,6 +26,7 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
+                texture.anisotropy= Config.maxAnisotropy;
                 
                 texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
                 texture.repeat.set(2 ,2);
@@ -72,7 +74,7 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load(textureImg, (image) => {
                 texture.image = image;
-                
+                texture.anisotropy= Config.maxAnisotropy;
                 texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
                 texture.repeat.set(2 ,2);
                 texture.needsUpdate = true;
@@ -145,6 +147,7 @@ export default class SplitObjLoader {
         if (textureImg) {
             this.textureLoader.load( textureImg,  ( image ) => {
                 texture.image = image;
+                texture.anisotropy= Config.maxAnisotropy;
                 texture.needsUpdate = true;
                 
                 texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
