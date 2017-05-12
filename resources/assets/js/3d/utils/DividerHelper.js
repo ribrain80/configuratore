@@ -421,14 +421,17 @@ export default class DividerHelper {
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementW  =  bbox.max.x - bbox.min.x;
                 let elementZS = 15.6;
-                let extendedW = w + 2 * elementZS;  // 2 volte lo spessore della sponda
+                let backCorrection = (type==3)?(elementZS-4):(2 * elementZS);
+                let extendedW = w + backCorrection ;  // 2 volte lo spessore della sponda
                 let coeffW = extendedW / elementW;
+
+                let zcorrection = (h==45.5)?-5:5;
 
                 obj3d.scale.set(coeffW,1,1);
                 obj3d.updateMatrix();
                 obj3d.position.x = w/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = l -5;
+                obj3d.position.z = l - zcorrection;
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
@@ -444,11 +447,11 @@ export default class DividerHelper {
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementZ = (bbox.max.x - bbox.min.x);
 
-                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.scale.set(1,1,Math.abs((l +15) / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
                 obj3d.position.x = -elementZ/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = l/2 + zDeltaCorrection;
+                obj3d.position.z = l/2 + zDeltaCorrection + 5;
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
@@ -464,11 +467,11 @@ export default class DividerHelper {
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementZ = (bbox.max.x - bbox.min.x);
                 console.log("ELEMENT Z RIGHT:",elementZ);
-                obj3d.scale.set(1,1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.scale.set(1,1,Math.abs((l+15) / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
                 obj3d.position.x = w + elementZ/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = l/2 + zDeltaCorrection;
+                obj3d.position.z = l/2 + zDeltaCorrection +5;
                 obj3d.updateMatrix();
                 // # Shadow
                 obj3d.castShadow = true;
