@@ -34,6 +34,8 @@
                 $l = $obj->pivot->length;
                 $d = $obj->height;
                 $texture = $obj->color;
+                $_itmp = "/images/supports/asso/supporto_ponte_". (($obj->height==455)?"basso":"alto").".png";
+                $img_src = asset($_itmp);
                 break;
 
             default:
@@ -43,11 +45,8 @@
         ?>
                 <h3>{{ $element['label'] }}</h3>
                 <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
-                    @if ($element['type']=='divider' || $element['type']=='bridge')
                     <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 5px auto;display: block">
-                    @else
-                    &nbsp;
-                        @endif
+                    
                 </div>
                 <p><b>NR</b> {{ $element['count'] }}</p>
                 <p><b>CODICE</b>  {{ $sku }}</p>
