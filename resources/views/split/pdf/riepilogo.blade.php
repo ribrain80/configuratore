@@ -47,7 +47,7 @@
             <div class="col-xs-12">
                 &nbsp;
                 <div id="box3d">
-                    &nbsp;
+                    <img src="{!! $model->png !!}"/>
                 </div>
             </div>
         </div>
