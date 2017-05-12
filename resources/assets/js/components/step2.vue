@@ -96,6 +96,7 @@
         </div>
       </transition>
     </div>
+
     <!-- Navigation row -->
     <div class="row actions-toolbar">
     
@@ -308,8 +309,6 @@ export default {
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
 
-        // # Log mount 
-        console.log( "Step2 Mounted!" );
     }
 }
 </script>

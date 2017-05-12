@@ -46,7 +46,7 @@
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-3">
                         <div class="col-lg-12 col-md-12 col-sm-12" :class="[ width_OOR ? 'text-danger' : 'text-success' ]">
-                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer" @blur="isSuitableForHBridge" autocomplete="off" />
+                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.width" @keyup="updateDrawer( $event )" @blur="isSuitableForHBridge" autocomplete="off" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                           <span class="help-block pull-right"><span :class="[ 'limit-helper', isWidthUnderMin ? 'text-danger' : 'text-muted']">min <strong>{{ config.rect_width_lower_limit}}</strong></span> <span :class="[ 'limit-helper', isWidthOverMax ? 'text-danger' : 'text-muted']">max <strong>{{ config.rect_width_upper_limit}}</strong></span></span>
@@ -77,7 +77,7 @@
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-3">
                         <div class="col-lg-12 col-md-12 col-sm-12" :class="[ length_OOR ? 'text-danger' : 'text-success' ]">
-                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer" autocomplete="off" />
+                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3']" @focus.once="resetAdvice()" v-model="$store.state.dimensions.length" @keyup="updateDrawer( $event )" autocomplete="off" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                           <span class="help-block pull-right"><span :class="[ 'limit-helper', isLengthUnderMin ? 'text-danger' : 'text-muted']">min <strong>{{ config.rect_length_lower_limit }}</strong></span> <span :class="[ 'limit-helper', isLengthOverMax ? 'text-danger' : 'text-muted']">max <strong>{{ config.rect_length_upper_limit }}</strong></span></span>
@@ -110,7 +110,7 @@
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-3">
                         <div class="col-lg-12 col-md-12 col-sm-12" :class="[ shoulder_height_OOR ? 'text-danger' : 'text-success' ]">
-                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer" @blur="isSuitableHeightForBridge" autocomplete="off" />
+                          <input type="text" :class="[ 'form-control', 'text-right', 'input-step3' ]" @focus.once="resetAdvice()" v-model="$store.state.dimensions.shoulder_height" @keyup="updateDrawer( $event )" @blur="isSuitableHeightForBridge" autocomplete="off" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                           <span class="help-block pull-right"><span :class="[ 'limit-helper', isShoulderHeightUnderMin ? 'text-danger' : 'text-muted']">min <strong>{{ config.shoulder_height_lower_limit }}</strong></span> <span :class="[ 'limit-helper', isShoulderHeightOverMax ? 'text-danger' : 'text-muted']">max <strong>{{ config.shoulder_height_upper_limit }}</strong></span></span>
@@ -307,7 +307,8 @@ export default {
       language: function () {
 
         // # Update Drawer on language change
-        this.updateDrawer();
+        // # true prevent the next steps data to be cleaned up
+        this.updateDrawer( {}, true );
       }
     },
 
@@ -663,12 +664,12 @@ export default {
         },
 
         /**
-         * Resets dimensions to defautl values
+         * Resets dimensions to default values
          * @return {void}
          */
         reset: function () {
           this.$store.commit( "setDefaultDimensions" );
-          this.updateDrawer();
+          this.updateDrawer( {} );
         },
 
         /**
@@ -680,7 +681,7 @@ export default {
 
             // # Commit mutation and update draw
             this.$store.commit( "setShoulderHeight", val );
-            this.updateDrawer();
+            this.updateDrawer( {} );
 
             // # Scope workaorund
             var self = this;
@@ -1064,17 +1065,21 @@ export default {
 
         /**
          * Updates Drawer related objects on each dimension data change
+         * @param {Boolean} [drawnOnly]
          * @return {void}
          */
-        updateDrawer: function() {
+        updateDrawer: function( event, drawnOnly = false ) {
 
             // # Dimensions check
             if( ! this.checkChoice() ) {
                 return false;
             }
 
-            // # Clean up data
-            this.clearAllData();
+            // # Let this cleanUp happen just in some cases
+            if( false == drawnOnly ) {
+                // # Clean up data
+                this.clearAllData();
+            }
 
             // # Clean up if any previous error stills
             this.width_OOR = false; this.length_OOR = false; this.shoulder_height_OOR = false;
@@ -1311,9 +1316,6 @@ export default {
         
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style","transform: translateY(" + pos.toString() + "px)" );
-        
-        // # Log mount 
-        console.log( "Dimensions choice mounted" );
     }
 }
 </script>
