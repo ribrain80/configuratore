@@ -428,7 +428,7 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 obj3d.position.x = w/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = l ;
+                obj3d.position.z = l -5;
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
