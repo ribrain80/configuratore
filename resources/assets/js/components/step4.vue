@@ -186,7 +186,8 @@
                                                          data-type = "divider"
                                                          data-orientation = "H"
                                                          v-show="enoughSpace(divider.width, divider.length )"
-                                                    >
+                                                         :width="divider.width" 
+                                                         :height="divider.length">
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 pull-right">
@@ -204,7 +205,9 @@
                                                          :data-cat = "cat"
                                                          data-type = "divider"
                                                          data-orientation = "V"
-                                                         v-show="enoughSpace(divider.width, divider.length )"
+                                                         v-show="enoughSpace(divider.width, divider.length )" 
+                                                         :width="divider.width" 
+                                                         :height="divider.length"
                                                     >
                                                 </div>
                                             </div>
