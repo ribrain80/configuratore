@@ -21,10 +21,7 @@ const  getters = {
         let output = [];
         if (state.dimensions.shoulder_height && state.drawertype) {
             let shoulder_height_float = parseFloat( state.dimensions.shoulder_height );
-            console.log("shoulder_height_float in getter",shoulder_height_float);
             _.forOwn(state.bridgeTypes, (value, key) => {
-                console.log("KEY in getter",key);
-                console.log("H in getter",value.height);
                 if ((key <= 25.5) && shoulder_height_float >= 72) {
                     output.push(value);
                 }
@@ -33,7 +30,6 @@ const  getters = {
                 }
             });
         }
-        console.log("OUTPUT in getter: ",output);
         // # Default output: empty array
         return output.reverse();
     },
@@ -184,9 +180,7 @@ const  getters = {
     },
 
     getDividerVariantsVelvetFull: function (state,getters) {
-        console.log("IN VELVET GETTER:",getters.getDividerVariants);
         return getters.getDividerVariants.filter((cur)=> {
-            console.log(cur.border,cur.texture);
             return cur.border=="Fullcolor" && cur.texture=="Neutro";
         });
     },

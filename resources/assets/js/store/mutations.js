@@ -540,7 +540,6 @@ const  mutations = {
 
     setDividerTypesPlain: function ( state, val ) {
         state.dividerTypesPlain = val;
-        console.log( "divider Types  Plain downloaded" );
     },
 
     /**
@@ -561,7 +560,6 @@ const  mutations = {
      */
     setComponentHeader : function ( state, val )  {
         state.currentComponentHeader = val;
-        console.log("header changed to " + val );
     },
 
     /**
@@ -573,7 +571,6 @@ const  mutations = {
      */
     setobjectWorkingOn: function ( state, val ) {
         state.objectWorkingOn = val;
-        console.log( "Object working on changed" );
     },
 
     /**
@@ -582,10 +579,6 @@ const  mutations = {
      * @param payload
      */
     updateDividerPosition: function (state,payload) {
-        console.log("Updating position");
-        console.log("Divider id. " + payload.id);
-        console.log("new x:",payload.x);
-        console.log("new y:",payload.y);
 
         //Change the state.dividers_selected with a new one with the selected divider having coords changed
         state.dividers_selected = state.dividers_selected.map((cur) => {
@@ -605,9 +598,6 @@ const  mutations = {
      * @return {[type]}         [description]
      */
     updateDividerSku: function (state,payload) {
-        console.log("Updating divider sku");
-        console.log('Divider id :' , payload.id);
-        console.log('New sku: ' , payload.sku);
 
         //Change the state.dividers_selected with a new one with the selected divider having sku changed
         state.dividers_selected = state.dividers_selected.map( ( cur ) => {
@@ -711,7 +701,6 @@ const  mutations = {
      */
     manageBridge: function (state, obj) {
 
-        console.log("pushing in bridge");
         state.bridges_selected.push(obj);
     },
 
@@ -723,7 +712,6 @@ const  mutations = {
      * @return
      */
     clearBridges: function (state) {
-        console.log("Bridges cleanUp");
         state.bridges_selected = [];
     },
 
@@ -746,11 +734,9 @@ const  mutations = {
         state.dimensions.delta_width = 0;
         state.dimensions.delta_length = 0;
 
-        console.log("has bridge changed to: " + state.has_bridge);
     },
 
     changeSupportSku: function (state,payload) {
-        console.log("Changing support sku");
         state.bridge_supports_selected = state.bridge_supports_selected.map((item) => {
             return payload;
         });

@@ -688,10 +688,6 @@ export default {
         canAddBridges: function () {
             let availableSpace = ( this.$store.state.bridge_orientation == 'H' ) ? this.real_height : this.real_width;
             let busySpace = this.$store.state.bridges_selected.length * this.tighterBridgeWidth;
-            console.log("FREE SPACE:", availableSpace);
-            console.log("BRIDGES SPACE:", this.bridgesArea);
-            console.log("BRIDGES W:", this.tighterBridgeWidth);
-
 
             return availableSpace >= ( busySpace + this.tighterBridgeWidth )
         },
@@ -1381,23 +1377,19 @@ export default {
             this.$store.commit('setobjectWorkingOn', objectWorkingOn );
 
 
+            let _texture = event.target.dataset.img;
             var self = this;
-            // var img = this.selectedItem.getElement();
-            var img = this.$store.state.objectWorkingOn.obj.getElement();
+            let img = this.$store.state.objectWorkingOn.obj.getElement();
             img.src = event.target.dataset.img;
             img.crossOrigin = "Anonymous";
-            img.onload = function () {
-                self.canvas.renderAll();
-            };
+            img.onload = () => {this.canvas.renderAll();};
 
 
-
-            let _texture = event.target.dataset.img;
             if (this.allselected) {
                 //Change all canvas object texture
                 this.canvas.forEachObject( ( obj ) => {
+                    let lookin4 = _texture.replace(/^.*[\\\/]/, '');
                     if( undefined == obj.type || obj.type != "divider" ) {
-                        console.log( "no type or wrong type" );
                         return;
                     }
 
@@ -1406,18 +1398,21 @@ export default {
                     let _items = divsBySubCat['items'];
 
                     let _obj = _items.filter((cur)=>{
-                        console.log(cur.baseTexture,_texture)
-                        return cur.baseTexture==_texture;
+                        let testTexture = cur.baseTexture.replace(/^.*[\\\/]/, '');
+
+                        return lookin4 == testTexture.replace('.jpg','.png');
                     })[0];
+
+
+
                     if (!_obj) {return;}
-                    console.log("OBJ Orr:",_obj.orrientation);
                     let textureToApply = (_obj.orrientation=="V")?_obj.textureV:_obj.textureH;
-                    console.log("texture to apply");
                     let img = obj.getElement();
-                    img.src = _texture;
+                    img.src = textureToApply;
                     img.crossOrigin = "Anonymous";
+
+
                     img.onload = function () {
-                        console.log("STO NELLA ONLOAD");
                         self.canvas.renderAll();
                     };
 
@@ -1691,14 +1686,13 @@ export default {
 
             imgObj.onload = () => {
 
-                var oImg = new fabric.Image( imgObj );
+                let oImg = new fabric.Image( imgObj );
                 oImg.setWidth( _imgW );
                 oImg.setHeight( _imgH );
-                console.log( "image width" + _imgW );
-                console.log( "image height" + _imgH );
 
                 oImg.category = _divider.category;
                 oImg.subCategory = _divider.subCategory;
+
 
                 let posX = (e.offsetX)?e.offsetX:e.layerX;
                 let posY = (e.offsetY)?e.offsetY:e.layerY;
