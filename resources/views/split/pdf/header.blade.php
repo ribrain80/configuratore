@@ -22,7 +22,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <table class="headertable">
+                <table class="headertable table table-condensed table-bordered">
                     <thead>
                     <tr>
                         <th>{!! trans( 'pdf.header_type' ) !!} </th>
@@ -35,9 +35,10 @@
                     <tbody>
                     <tr>
                         <td>{{ $model->drawertype->description }}</td>
-                        <td>
-                            sx: {{ $model->sponda_left ? \App\Models\Texture::where('id',$model->sponda_left)->get()->first()->name:'n.d.' }} <br>
-                            dx: {{ $model->sponda_right ? \App\Models\Texture::where('id',$model->sponda_right)->get()->first()->name:'n.d.' }}
+                        <td id="spondatd">
+                            {{ $model->sponda_left ? \App\Models\Texture::where('id',$model->sponda_left)->get()->first()->name:'n.d.' }}
+                             /
+                            {{ $model->sponda_right ? \App\Models\Texture::where('id',$model->sponda_right)->get()->first()->name:'n.d.' }}
                         </td>
                         <td>{{ $model->sponda_back ? \App\Models\Texture::where('id',$model->sponda_back)->get()->first()->name:'n.d.' }}</td>
                         <td>{{ $model->background ? \App\Models\Texture::where('id',$model->background)->get()->first()->name:'n.d.' }}</td>
@@ -47,6 +48,28 @@
                 </table>
             </div>
         </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="headertable table table-condensed table-bordered">
+                <thead>
+                <tr>
+                    <th>Larghezza Interna Cassetto (mm) </th>
+                    <th>Profondità Interna Cassetto (mm) </th>
+                    <th>Altezza Interna Cassetto (mm) </th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $model->width }}</td>
+                        <td>{{ $model->length }}</td>
+                        <td>{{ $model->depth }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 </div>
 

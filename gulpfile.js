@@ -31,7 +31,7 @@ elixir(function(mix) {
     mix.webpack('app.js');
 
     //Copy resurces
-    mix.copy('./resources/assets/css/pdf.css', 'public/css' );
+    mix.sass("pdf.scss", 'public/css/' );
     mix.copy('./resources/images', 'public/images');
     mix.copy('./resources/pdf/brochure.pdf', 'public/pdf/brochure.pdf');
     mix.copy('./resources/pdf/help.pdf', 'public/pdf/help.pdf');
