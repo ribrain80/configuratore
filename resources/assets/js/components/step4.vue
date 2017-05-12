@@ -469,8 +469,8 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <h3>Finiture supporti</h3>
                                 </div>
-                                <div class="col-lg-2 col-md-2"></div>
-                                <div class="col-lg-2 col-md-2" v-for="variant in $store.getters.getSupportsVariants">
+                                <div class="col-lg-2 col-md-2 col-sm-4"></div>
+                                <div class="col-lg-2 col-md-2 col-sm-4" v-for="variant in $store.getters.getSupportsVariants">
                                     <figure>
                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                         <img :src="variant.texture"
@@ -504,7 +504,7 @@
                                     </div>
                             </div>
                             <div class="col-lg-8 col-md-12 col-sm-12">
-                                <div class="col-lg-2 col-md-2 col-sm-4" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
+                                <div class="col-lg-2 col-md-2 col-sm-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
                                     <figure>
                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                         <img :src="variant.textureImg"

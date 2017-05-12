@@ -1661,9 +1661,6 @@ GALLERY REWRITE
     max-height: 40px;
 }
 
-#dividers-tab figure {
-  position: relative;
-}
 
 /*
 #dividers-tab a.bridges-info {
@@ -1672,7 +1669,7 @@ GALLERY REWRITE
   right: 10px;
 }*/
 
-#edges-tab figure {
+#dividers-tab figure, #edges-tab figure, #bridges-tab figure {
   position: relative;
 }
 
@@ -1691,3 +1688,9 @@ GALLERY REWRITE
 #dividers-tab > .row > div > div.row > div[class^='col-']:last-of-type {
   border-right: 0px;  
 }
+
+#step4-content .lens-icon{
+  right:10px;
+}
+
+
