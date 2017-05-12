@@ -1671,7 +1671,15 @@ GALLERY REWRITE
 
 #dividers-tab figure, #edges-tab figure, #bridges-tab figure {
   position: relative;
+  width: 100px;
 }
+@media (max-width: 992px) {
+  #dividers-tab figure, #edges-tab figure, #bridges-tab figure {
+    width: 90px;
+  }
+}
+
+
 
 /*
 #edges-tab a.bridges-info {
@@ -1693,10 +1701,6 @@ GALLERY REWRITE
   right:0px;
 }
 
-@media(max-width:992px){
-  #bridges-tab figure {
-    width: 100px;
-  }
-}
+
 
 
