@@ -221,7 +221,7 @@ strong, .component-header, .ha-lineabox, .bridge-counter, #tab-container {
   padding: 12px 15px 0px 15px;
 }
 
-#tab-container {
+#tab-container a {
   font-size: 1.2em!important;
 }
 
@@ -1662,21 +1662,24 @@ GALLERY REWRITE
   position: relative;
 }
 
+/*
 #dividers-tab a.bridges-info {
   position: absolute;
   top: -5px;
   right: 10px;
-}
+}*/
 
 #edges-tab figure {
   position: relative;
 }
 
+/*
 #edges-tab a.bridges-info {
   position: absolute;
   top: -5px;
   right: 0px;
 }
+*/
     
 #dividers-tab > .row > div > div.row > div[class^='col-'] {
   border-right: 1px solid #dddddd;  

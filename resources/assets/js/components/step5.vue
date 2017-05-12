@@ -46,10 +46,24 @@
                         <label>{{ $t( "step5.brochure" ) }}</label>
                     </div>
                     <div class="col-lg-9 col-md-8 col-sm-8">
-                        <a class="btn btn-danger" href="/pdf/brochure.pdf" target="_blank">{{ "step5.download" | translate }}</a>
+                        <a class="btn btn-danger" :href="getPresentationPathByLanguage()" target="_blank">{{ "step5.download" | translate }}</a>
                     </div>
                 </div>
             </div>
+
+            <hr />
+
+            <!-- Tech prospect -->
+            <div class="row top2">
+                <div class="checkbox col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-4">
+                        <label>{{ $t( "step5.tech-summary" ) }}</label>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8">
+                        <a class="btn btn-danger" :href="getTechSummaryPathByLanguage()" target="_blank">{{ "step5.download" | translate }}</a>
+                    </div>
+                </div>
+            </div>            
 
             <hr />
     	
@@ -208,6 +222,18 @@ export default {
             var pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return pattern.test( this.$store.state.pdf.email );
         },
+
+        getPresentationPathByLanguage: function () {
+            let base_name = "/pdf/Split_Presentazione/Split_Emotion_Ed02_05-2017_";
+            base_name +=  this.$cookie.get( 'langCookie' ) + ".pdf";
+            return base_name;
+        },
+
+        getTechSummaryPathByLanguage: function () {
+            let base_name = "/pdf/Split_prospetto-tecnico/Split_Ed01_05-2017_";
+            base_name +=  this.$cookie.get( 'langCookie' ) + ".pdf";
+            return base_name;
+        }
 
     },
 

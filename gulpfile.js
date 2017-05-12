@@ -33,7 +33,7 @@ elixir(function(mix) {
     //Copy resurces
     mix.sass("pdf.scss", 'public/css/' );
     mix.copy('./resources/images', 'public/images');
-    mix.copy('./resources/pdf/brochure.pdf', 'public/pdf/brochure.pdf');
+    mix.copy('./resources/pdf/**', 'public/pdf');
     mix.copy('./resources/pdf/help.pdf', 'public/pdf/help.pdf');
     mix.copy( paths.pace + 'themes/orange/**', 'public/css');
     mix.copy( paths.lightgallery + 'css/lightgallery.css', 'public/css');
