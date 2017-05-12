@@ -1,5 +1,22 @@
 
+@import url("//hello.myfonts.net/count/3358c9");
+@font-face {font-family: 'FranklinGothicURW-Boo';src: url('/salicefonts/webfonts/3358C9_0_0.eot');src: url('/salicefonts/webfonts/3358C9_0_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_0_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_0_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_0_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-BooIta';src: url('/salicefonts/webfonts/3358C9_1_0.eot');src: url('/salicefonts/webfonts/3358C9_1_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_1_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_1_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_1_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-Dem';src: url('/salicefonts/webfonts/3358C9_2_0.eot');src: url('/salicefonts/webfonts/3358C9_2_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_2_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_2_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_2_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-DemIta';src: url('/salicefonts/webfonts/3358C9_3_0.eot');src: url('/salicefonts/webfonts/3358C9_3_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_3_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_3_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_3_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-Hea';src: url('/salicefonts/webfonts/3358C9_4_0.eot');src: url('/salicefonts/webfonts/3358C9_4_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_4_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_4_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_4_0.ttf') format('truetype');}
+@font-face {font-family: 'FranklinGothicURW-HeaIta';src: url('/salicefonts/webfonts/3358C9_5_0.eot');src: url('/salicefonts/webfonts/3358C9_5_0.eot?#iefix') format('embedded-opentype'),url('/salicefonts/webfonts/3358C9_5_0.woff2') format('woff2'),url('/salicefonts/webfonts/3358C9_5_0.woff') format('woff'),url('/salicefonts/webfonts/3358C9_5_0.ttf') format('truetype');}
 
+
+/* Setting bootstrap sass variables */
+$font-family-sans-serif:  "FranklinGothicURW-Boo", "Helvetica", "Arial", sans-serif !default;
+$font-family-serif:       "Georgia", "FranklinGothicURW-Boo", "Times", serif !default;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   "Menlo", "Monaco", "Consolas", "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
+
+@import "../../../vendor/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 
 /**RESETS*/
 body {
@@ -35,9 +52,9 @@ p {
 
 #box2d {
     margin-top: 0;
-    min-height: 500px;
-    height: 500px;
-    border: 0.75pt solid #000;
+    min-height: 300px;
+    height: 300px;
+
 }
 
 #box_dimension {
@@ -82,6 +99,7 @@ p {
 .headertable {
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 1px;
     margin-left: 0;
     margin-right: 0;
     border: 0.25pt solid #666;
@@ -115,6 +133,10 @@ p {
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
     border-color: #666;
     border-width: 0.5pt;
+}
+
+.table-condensed > thead > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > tfoot > tr > td {
+    padding: 0
 }
 
 
