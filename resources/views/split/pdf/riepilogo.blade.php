@@ -41,6 +41,7 @@
     @foreach($dividers['pages'] as $page)
         @include('split.pdf.partials.elementPage',['page'=>$page])
     @endforeach
+
     <div class="container-fluid keeptogether" id="last">
         <div class="row">
             <div class="col-xs-12">
