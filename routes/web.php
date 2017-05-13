@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('startapp');
 });
 
 Route::group(['prefix' => 'm50'], function () { 
@@ -65,6 +65,13 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('fabric',['uses'=>function () {
         return view('fabric');
     }]);
+
+    Route::get('step1', [
+        'as' => 'startapp',
+        'uses' => function () {
+            return response()->view('split.application');
+        }
+    ] );
 
 
 
