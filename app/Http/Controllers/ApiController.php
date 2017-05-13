@@ -13,13 +13,15 @@ use Cache;
 class ApiController extends Controller
 {
 
+    const CACHETIME = 0;
+
     /**
      * Return a json with all drawer types grouped by category.
      * @return \Illuminate\Http\JsonResponse
      */
     public function actionDrawersType() {
 
-        $cached = Cache::remember("actionDrawersType", 3 ,function () {
+        $cached = Cache::rememberForever("actionDrawersType" ,function () {
             $grouped = [];
             // loop through all drawertypes and group them by category
             foreach (Drawertype::all(['id','description','category'])->sortBy(['category' => 'desc' ]) as $type) {
@@ -29,10 +31,10 @@ class ApiController extends Controller
             foreach ( $grouped as $k=>$v) {
                 $out[$k] = array_reverse($v);
             }
-            return $out;
+            return json_encode($out);
         });
 
-        return response()->json($cached);
+        return response()->make($cached);
     }
 
 
@@ -42,7 +44,7 @@ class ApiController extends Controller
      */
     public function actionDividers() {
 
-        $cached = Cache::remember('actionDividers',3,function () {
+        $cached = Cache::rememberForever('actionDividers',function () {
             $grouped = [];
             // loop through all dividers and group them by depth
             foreach ( Divider::all( ['id','sku','width','length','depth','imageH','imageV','color','border','texture','description','textureH','textureV','image3d','textureImg','model3d','baseTexture'] ) as $curDivider ) {
@@ -56,26 +58,26 @@ class ApiController extends Controller
                 $grouped[$curDivider['depth']][$curSecondaryKey]['sku']=$curDivider['sku'];
             }
 
-            return ['dividersCategories'=>array_keys($grouped),'dividers'=>$grouped];
+            return json_encode(['dividersCategories'=>array_keys($grouped),'dividers'=>$grouped]);
         });
 
 
         //Extract the dividers depth (Array keys) and build an array to transform in json
-        return response()->json($cached);
+        return response()->make($cached);
     }
 
 
     public function actionPlainDividers() {
 
-        $cached = Cache::remember('actionPlainDividers',3,function () {
+        $cached = Cache::rememberForever('actionPlainDividers',function () {
             $out = [];
             foreach (Divider::all()->groupBy('sku') as $sku => $cur) {
                 $out[$sku]=$cur[0];
             }
-            return $out;
+            return json_encode($out);
         });
 
-        return response()->json($cached);
+        return response()->make($cached);
     }
 
 
@@ -85,7 +87,7 @@ class ApiController extends Controller
      */
     public function actionSupports() {
 
-        $cached = Cache::remember('actionSupports',3,function () {
+        $cached = Cache::rememberForever('actionSupports',function () {
             $grouped = [];
             foreach (Support::all() as $curSupport) {
                 $key = "" . $curSupport['height'];
@@ -94,10 +96,10 @@ class ApiController extends Controller
                 $grouped[$key]['id'] = ($curSupport['height']==455?1:2);
 
             }
-            return $grouped;
+            return json_encode($grouped);
         });
 
-        return response()->json($cached);
+        return response()->make($cached);
     }
 
     /**
@@ -106,7 +108,7 @@ class ApiController extends Controller
      */
     public function actionBridges() {
 
-        $cached = Cache::remember('actionBridges',3,function () {
+        $cached = Cache::rememberForever('actionBridges',function () {
             $grouped = [];
 
             foreach (Bridge::all(['id','sku','sku_short','width','depth','image','color','border','texture','description','textureImg'])->sortBy('depth') as $curBridge) {
@@ -118,18 +120,18 @@ class ApiController extends Controller
 
                 $grouped[$key]['items'][] = $curBridge;
             }
-            return $grouped;
+            return json_encode($grouped);
         });
 
 
 
-        return response()->json($cached);
+        return response()->make($cached);
     }
 
 
     public function actionEdgesFinitures() {
 
-        $cached = Cache::remember('actionEdgesFinitures',3,function () {
+        $cached = Cache::rememberForever('actionEdgesFinitures',function () {
             $output = [];
             foreach (Drawertypestexture::all() as $curRel ) {
                 $cur['textureId'] = $curRel->texture;
@@ -152,17 +154,17 @@ class ApiController extends Controller
                     $output[$curRel->drawertypes]['background'][]=$cur;
                 }
             }
-            return $output;
+            return json_encode($output);
         });
 
 
         //Logic here
-        return response()->json($cached);
+        return response()->make($cached);
     }
 
     public function actionGalleryImages() {
 
-        $cached = Cache::remember('actionGalleryImages',3,function () {
+        $cached = Cache::rememberForever('actionGalleryImages',function () {
             $container = [];
             $iterator = new \DirectoryIterator(  "./images/gallery/images"  );
             foreach( $iterator as $item ) {
@@ -174,10 +176,10 @@ class ApiController extends Controller
                     $container[] = $tmp;
                 }
             }
-            return $container;
+            return json_encode($container);
         });
 
-        return response()->json( $cached );
+        return response()->make( $cached );
 
     }
 
