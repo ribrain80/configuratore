@@ -35,7 +35,7 @@ export default {
                 {label:'Français ',code:'fr',short:'Fra'},
                 {label:'Português ',code:'pt',short:'Por'},
                 {label:'Deutsch ',code:'de',short:'Deu'},
-                {label:'中国',code:'zh',short:'中国'},
+                //{label:'中国',code:'zh',short:'中国'},
             ]
 
         }

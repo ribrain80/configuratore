@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-
+    
+    <!-- Viewport meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset( 'images/salice.ico' ) }}">   
+     
     <!-- App Css -->
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/split.css') }}">
 
@@ -13,6 +17,7 @@
 </head>
 <body>
     
+    <!-- PACE.js cover -->
     <div id="cover"></div>
 
     <!-- Application Container -->
