@@ -126,13 +126,12 @@ class SplitDrawerController extends Controller
             $drawerId = $drawer->id;
             $brochure = $data['pdf']['brochure'];
             $language = $data['language'];
-
+            app()->setLocale($language);
             Mail::send('split.mail.mail', [], function($message) use ($dest,$drawerId,$brochure,$language)
             {
                 $message->to($dest)
-                    ->subject('Il suo cassetto!')
+                    ->subject(trans('mail.subject'))
                     ->attachData(file_get_contents(route('split.export.topdf',['id'=>$drawerId,'brochure'=>0,'lang'=>$language])),"cassetto.pdf")
-                    //->attach(resource_path('/pdf/brochure.pdf'))
                 ;
             });
         }
