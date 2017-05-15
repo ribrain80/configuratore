@@ -38,4 +38,7 @@ return [
     "Caffelatte"=>'Caffelatte',
     "Bianco_Perla"=>'Perlweiß',
 
+    "Legno" => "Holz",
+    "Spazzolata_(inox)" => "Gebürstet",
+    "Neutro" => "Velvet",
 ];

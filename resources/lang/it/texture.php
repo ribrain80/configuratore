@@ -38,4 +38,8 @@ return [
     "Sabbia"=>'Sabbia',
     "Caffelatte"=>'Caffelatte',
     "Bianco_Perla"=>'Bianco Perla',
+
+    "Legno" => "Legno",
+    "Spazzolata_(inox)" => "Spazzolato",
+    "Neutro" => "Velvet",
 ];

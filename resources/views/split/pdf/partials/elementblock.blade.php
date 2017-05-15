@@ -15,7 +15,7 @@
             case 'divider':
                 $l = $obj->length;
                 $d = $obj->depth;
-                $texture = trans('texture.'.trim(str_replace(' ','_',$obj->color))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->texture)));
+                $texture = $obj->border ." " . trans('texture.'.trim(str_replace(' ','_',$obj->texture))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->color)));
                 $img_src = asset($obj->image3d);
 
                 break;
@@ -27,7 +27,7 @@
                     $img_src = asset("/images/bridges/3D/".$obj->depth."_short.png");
                     $sku = $obj->sku_short;
                 }
-                $texture = trans('texture.'.trim(str_replace(' ','_',$obj->color))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->texture)));
+                $texture = $obj->border ." " . trans('texture.'.trim(str_replace(' ','_',$obj->texture))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->color)));
 
                 break;
             case 'support':

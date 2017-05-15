@@ -38,5 +38,7 @@ return [
     "Caffelatte"=>'Café con leche',
     "Bianco_Perla"=>'Bianco Perla',
 
-
+    "Legno" => "Madera",
+    "Spazzolata_(inox)" => "Cepillado",
+    "Neutro" => "Velvet",
 ];

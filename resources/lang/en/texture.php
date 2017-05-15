@@ -37,4 +37,8 @@ return [
     "Sabbia"=>'Sand',
     "Caffelatte"=>'Caffe Latte',
     "Bianco_Perla"=>'Bianco Perla',   //ASSENTE
+
+    "Legno" => "Woodgrain effect",
+    "Spazzolata_(inox)" => "Brushed",
+    "Neutro" => "Velvet",
 ];
