@@ -15,5 +15,5 @@ return [
     'finish'=>'FINITURA',
     'label_contenitore'=>'CONTENITORE',
     'label_elemento_ponte'=>'ELEMENTO PONTE',
-    'label_supporto'=>'SUPPORTO'
+    'label_supporto'=>'SUPPORTO',
 ];

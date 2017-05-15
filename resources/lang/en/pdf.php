@@ -20,5 +20,5 @@ return [
     'finish'=>'COLOUR/TEXTURE',
     'label_contenitore'=>'STORAGE COMPARTMENT',
     'label_elemento_ponte'=>'BRIDGE UNIT',
-    'label_supporto'=>'SUPPORTO'                //ASSENTE
+    'label_supporto'=>'SUPPORTO',                //ASSENTE
 ];
