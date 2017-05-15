@@ -43,30 +43,30 @@
                 $d=0;
         }
         ?>
-                <h3>{{ $element['label'] }}</h3>
+                <h3>@lang('pdf.label_'.strtolower(str_replace(' ','_',trim($element['label']))))</h3>
                 <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
                     <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 5px auto;display: block">
                     
                 </div>
-                <p><b>NR</b> {{ $element['count'] }}</p>
-                <p><b>CODICE</b>  {{ $sku }}</p>
-                <p><b>DIMENSIONI (mm)</b>
+                <p><b>@lang('pdf.nr')</b> {{ $element['count'] }}</p>
+                <p><b>@lang('pdf.code')</b>  {{ $sku }}</p>
+                <p><b>@lang('pdf.dimensions') (mm)</b>
                         @if ($w):
                                 <span> {{ $w }}</span> &times;
                         @endif
                         <span class="{{ $element['type'] }}"> {{ $l }}</span> &times;
                         <span> {{ $d }}</span>
 
-                <p><b>FINITURA</b> {{ $texture }}</p>
+                <p><b>@lang('pdf.finish')</b> {{ $texture }}</p>
         @else
                 <h3>&nbsp;</h3>
         <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
                 &nbsp;
         </div>
-                <p><b>NR</b></p>
-                <p><b>CODICE</b></p>
-                <p><b>DIMENSIONI (mm)</b></p>
-                <p><b>FINITURA</b> </p>
+                <p><b>@lang('pdf.nr')</b></p>
+                <p><b>@lang('pdf.code')</b></p>
+                <p><b>@lang('pdf.dimensions') (mm)</b></p>
+                <p><b>@lang('pdf.finish')</b> </p>
         @endif
 
 

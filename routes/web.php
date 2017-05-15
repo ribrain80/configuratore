@@ -56,7 +56,7 @@ Route::group(['prefix' => 'split'], function () {
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     //EXPORT TO PDF
     Route::get('topdf/debug/{drawer}',['as'=>'split.export.topdf.debug','uses'=>'ExportController@actionDebug']);
-    Route::get('topdf/header/{drawer}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
+    Route::get('topdf/header/{drawer}/{lang?}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
     Route::get('topdf/{id}/{brochure?}/{lang?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
 
     Route::get('gallery-images', ['as'=>'split.api.gallery-images','uses'=>'ApiController@actionGalleryImages']);

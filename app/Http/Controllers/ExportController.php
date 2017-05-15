@@ -44,7 +44,7 @@ class ExportController extends Controller
         //Get a Pdf builder instance
         $drawerPdf = App::make('snappy.pdf.wrapper');
         //Set the route for the default page header 
-        $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id]));
+        $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id,'lang'=>$language]));
 
         //Load a view into the Pdf Builder
         $drawerPdf->loadView('split.pdf.riepilogo', ['model'=>$model,'dividers'=>$elements]);
@@ -79,7 +79,8 @@ class ExportController extends Controller
      * @param $drawer
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function actionHeader($drawer) {
+    public function actionHeader($drawer,$lang='it') {
+        app()->setLocale($lang);
         $model = App\Models\Drawer::with(['drawertype','edgecolor'])->findOrFail($drawer);
         return view('split.pdf.header',['model'=>$model]);
     }

@@ -26,10 +26,10 @@
                     <thead>
                     <tr>
                         <th>{!! trans( 'pdf.header_type' ) !!} </th>
-                        <th>FINITURA<br/>SPONDE</th>
-                        <th>FINITURA<br/>RETRO</th>
-                        <th>FINITURA<br/>FONDO</th>
-                        <th>FINITURA<br/>FRONTALE</th>
+                        <th>{!! trans( 'pdf.header_edges' ) !!}</th>
+                        <th>{!! trans( 'pdf.header_back' ) !!}</th>
+                        <th>{!! trans( 'pdf.header_background' ) !!}</th>
+                        <th>{!! trans( 'pdf.header_front' ) !!}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,9 +54,9 @@
             <table id ="secondhead" class="headertable table table-bordered" >
                 <thead>
                 <tr>
-                    <th>Larghezza Interna Cassetto (mm) </th>
-                    <th>Profondità Interna Cassetto (mm) </th>
-                    <th>Altezza Interna Cassetto (mm) </th>
+                    <th>@lang('pdf.header_internalWidth') (mm) </th>
+                    <th>@lang('pdf.header_internalDepth') (mm) </th>
+                    <th>@lang('pdf.header_internalHeight') (mm) </th>
 
 
                 </tr>
