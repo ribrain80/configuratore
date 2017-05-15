@@ -141,7 +141,7 @@
                 <!-- Tab title ( Nav ) -->
                 <ul class="nav nav-tabs" role="tablist" id="tab-container">
                     <li :class="{active: !index}" role="presentation" v-for="(cat,index) in availableDividerCategories">
-                        <a data-toggle="tab" role="tab" :href="genHref(cat)">Contenitori H {{ parseFloat( cat / 10 ).toFixed( 1 ) }} mm</a>
+                        <a data-toggle="tab" role="tab" :href="genHref(cat)">{{ $t('step4.containers') }} H {{ parseFloat( cat / 10 ).toFixed( 1 ) }} mm</a>
                     </li>
                     <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#dividers-tab">{{ $t( "step4.dividers_textures") }}</a></li>
                     <li role="presentation" class="pull-right"><a data-toggle="tab" role="tab" href="#bridges-tab" v-if="$store.state.has_bridge">{{ $t( "step4.bridges_textures") }}</a></li>
@@ -245,7 +245,7 @@
                                                              :alt="variant.color" 
                                                              :title="variant.color" 
                                                         >
-                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -263,7 +263,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }} - Bordo nero</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -284,7 +284,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -302,7 +302,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }} - Bordo nero</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -323,7 +323,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }}</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -341,7 +341,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }} - Bordo nero</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -380,7 +380,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}}</figcaption>
+                                                <figcaption>{{ $t(variant.color) }}</figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -395,7 +395,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>
+                                                <figcaption>{{ $t(variant.color) }} - Bordo nero </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -413,7 +413,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}}</figcaption>
+                                                <figcaption>{{ $t(variant.color) }}</figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -428,7 +428,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>
+                                                <figcaption>{{ $t(variant.color) }} - Bordo nero </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -446,7 +446,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}}</figcaption>
+                                                <figcaption>{{ $t(variant.color) }}</figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -461,7 +461,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>
+                                                <figcaption>{{ $t(variant.color) }} - Bordo nero </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -513,7 +513,7 @@
                                              style="width: 120px;height: 80px"
                                              :data-sku="variant.textureId"
                                         >
-                                        <figcaption>{{ variant.textureName }}</figcaption>
+                                        <figcaption>{{ $t(variant.textureName) }}</figcaption>
                                     </figure>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 noside-chosen" v-if="$store.state.objectWorkingOn.type!='border'">
