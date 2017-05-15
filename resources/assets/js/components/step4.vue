@@ -270,7 +270,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <h3 class="divider_tab_group_level_1">Legno</h3>
+                                        <h3 class="divider_tab_group_level_1">{{ $t('Legno') }}</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Fullcolor</h4>
@@ -309,7 +309,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <h3 class="divider_tab_group_level_1">Spazzolato</h3>
+                                        <h3 class="divider_tab_group_level_1">{{ $t( 'Spazzolata (inox)' ) }}</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Fullcolor</h4>
@@ -401,7 +401,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h3> Legno</h3>
+                                    <h3> {{ $t('Legno') }}</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
                                         <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
@@ -434,7 +434,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h3> Spazzolato</h3>
+                                    <h3> {{ $t( 'Spazzolata (inox)' ) }}</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
                                         <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
