@@ -1,7 +1,7 @@
 <?php
 return [
     'Bianco'=>'Blanco',
-    'Titanio'=>'Titanio',
+    'Titanio'=>'Titânio',
     'Champagne'=>'Champán',
     'Inox'=>'Inox',
     'Abete'=>'Abeto',
@@ -33,4 +33,10 @@ return [
     'Testa_di_moro'=>'Marrón oscuro',
     'Lino_chiaro'=>'Lino claro',
     'Lino_scuro'=>'Lino oscuro',
+
+    "Sabbia"=>'Areia',
+    "Caffelatte"=>'Café com Leite',
+    "Bianco_Perla"=>'Branco Perla',
+
+   
 ];

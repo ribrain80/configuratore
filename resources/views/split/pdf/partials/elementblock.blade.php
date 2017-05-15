@@ -15,7 +15,7 @@
             case 'divider':
                 $l = $obj->length;
                 $d = $obj->depth;
-                $texture = $obj->color . " " . $obj->texture;
+                $texture = trans('texture.'.trim(str_replace(' ','_',$obj->color))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->texture)));
                 $img_src = asset($obj->image3d);
 
                 break;
@@ -27,13 +27,13 @@
                     $img_src = asset("/images/bridges/3D/".$obj->depth."_short.png");
                     $sku = $obj->sku_short;
                 }
-                $texture = $obj->color . " " . $obj->texture;
+                $texture = trans('texture.'.trim(str_replace(' ','_',$obj->color))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->texture)));
 
                 break;
             case 'support':
                 $l = $obj->pivot->length;
                 $d = $obj->height;
-                $texture = $obj->color;
+                $texture = trans('texture.'.trim(str_replace(' ','_',$obj->color)));
                 $_itmp = "/images/supports/asso/supporto_ponte_". (($obj->height==455)?"basso":"alto").".png";
                 $img_src = asset($_itmp);
                 break;

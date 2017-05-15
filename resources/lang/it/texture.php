@@ -33,4 +33,9 @@ return [
     'Testa_di_moro'=>'Testa di moro',
     'Lino_chiaro'=>'Lino chiaro',
     'Lino_scuro'=>'Lino scuro',
+    "Nero","Dark core","Legno",
+
+    "Sabbia"=>'Sabbia',
+    "Caffelatte"=>'Caffelatte',
+    "Bianco_Perla"=>'Bianco Perla',
 ];

@@ -33,4 +33,10 @@ return [
     'Testa_di_moro'=>'Tête de maure',
     'Lino_chiaro'=>'Lin clair',
     'Lino_scuro'=>'Lin foncé',
+
+    "Sabbia"=>'Sable',
+    "Caffelatte"=>'Café au lait',
+    "Bianco_Perla"=>'Blanc perlé',
+
+
 ];

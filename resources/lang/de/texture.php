@@ -33,4 +33,9 @@ return [
     'Testa_di_moro'=>'Dunkelbraun',
     'Lino_chiaro'=>'Hellflachs',
     'Lino_scuro'=>'Dunkelflachs',
+
+    "Sabbia"=>'Sand',
+    "Caffelatte"=>'Caffelatte',
+    "Bianco_Perla"=>'Perlweiß',
+
 ];

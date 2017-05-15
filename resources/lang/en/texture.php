@@ -34,4 +34,7 @@ return [
     'Lino_chiaro'=>'Light flax',
     'Lino_scuro'=>'Dark flax',
 
+    "Sabbia"=>'Sand',
+    "Caffelatte"=>'Caffe Latte',
+    "Bianco_Perla"=>'Bianco Perla',   //ASSENTE
 ];

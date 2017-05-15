@@ -34,4 +34,9 @@ return [
     'Lino_chiaro'=>'Lino claro',
     'Lino_scuro'=>'Lino oscuro',
 
+    "Sabbia"=>'Arenoso',
+    "Caffelatte"=>'Café con leche',
+    "Bianco_Perla"=>'Bianco Perla',
+
+
 ];
