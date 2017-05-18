@@ -536,7 +536,6 @@
 			"settings":
 			{
 				"buffer_size": 10625,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -544,7 +543,7 @@
 			"file": "resources/assets/js/components/languageselector.vue",
 			"settings":
 			{
-				"buffer_size": 2254,
+				"buffer_size": 2256,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -571,19 +570,16 @@
 			"file": "resources/assets/sass/app.scss",
 			"settings":
 			{
-				"buffer_size": 37334,
+				"buffer_size": 37511,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<style scoped>\n    .tab-pane {\n        text-align: center;\n    }\n</style>\n\n<template>\n\n<div class=\"container-fluid\">\n\n    <!-- User reset advice Modal -->\n    <div class=\"modal fade\" id=\"reset-advice-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"\">\n        <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header alert-danger\">\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                    <h4 class=\"modal-title\" id=\"myModalLabel\">{{ $t( 'attenzione' ) }}</h4>\n                </div>\n                <div class=\"modal-body\">{{ \"step5.resetadvice\" | translate }}</div>\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-back\" data-dismiss=\"modal\">{{ $t( 'cancel' ) }}</button>\n                    <button type=\"button\" class=\"btn btn-danger\" @click=\"back2Bridge()\">{{ $t( \"dont-mind-go\" ) }}</button>\n                </div>\n            </div>\n        </div>\n    </div>\n\n\n    <!-- User proceed advice Modal -->\n    <div class=\"modal fade\" id=\"proceed-advice-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"\">\n        <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header alert-danger\">\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                    <h4 class=\"modal-title\" id=\"myModalLabel\">{{ $t( 'advice' ) }}</h4>\n                </div>\n                <div class=\"modal-body\" v-html=\"$t( 'step4.proceed-with-caution' )\"></div>\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-back\" data-dismiss=\"modal\">{{ $t( 'cancel' ) }}</button>\n                    <button type=\"button\" class=\"btn btn-danger\" @click=\"proceed2Five()\" data-dismiss=\"modal\">{{ $t( \"dont-mind-go\" ) }}</button>\n                </div>\n            </div>\n        </div>\n    </div>    \n    \n    <!-- Divider deletion Modal -->\n    <div class=\"modal fade\" id=\"deletion-alert-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"\">\n        <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header alert-danger\">\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                    <h4 class=\"modal-title\" id=\"myModalLabel\">{{ $t( 'attenzione' ) }}</h4>\n                </div>\n                <div class=\"modal-body\">{{ $t( \"step4.deletion-advice\" ) }}</div>\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-back\" data-dismiss=\"modal\">{{ $t( \"cancel\" ) }}</button>\n                    <button type=\"button\" class=\"btn btn-danger\" @click=\"deleteDivider()\" v-html=\"allselected ? $t( 'step4.deletion-message-multi' ) : $t( 'step4.deletion-message-single' )\"></button>\n                </div>\n            </div>\n        </div>\n    </div>\n    \n    <div id=\"step4-content\" class=\"content-flex content-flex-scrollable content-flex-padding\">\n\n        <!-- Select All - trash bin row -->\n        <div class=\"row top2\">\n            <div class=\"col-lg-5 col-md-5 col-sm-5 pull-left\" >\n                <button class=\"btn btn-danger btn-danger-small-text\" @click=\"selectAll()\" v-html=\"allselected ? $t( 'step4.deselect_all' ) : $t( 'step4.select_all')\">{{ 'step4.select_all' | translate }}</button>\n            </div>\n\n            <div class=\"col-lg-2 col-md-2 col-sm-2 container-garbage\">\n                <img src=\"/images/others/garbage.png\"\n                     style=\"cursor:pointer;\"\n                     @click=\"alertDividerDeletion()\"\n                     v-show=\"allselected || $store.state.objectWorkingOn.type=='divider'\"\n                />\n            </div>\n\n            <div class=\"col-lg-2 col-md-5 col-sm-5 container-button-pdf-help pull-right\">\n                <a class=\"btn btn-danger pdf-help\" target=\"_blank\" href=\"/pdf/help.pdf\">Tutorial pdf</a>\n            </div>\n        </div>\n\n        <!-- Center content -->\n        <div class=\"row top1\">\n            <div class=\"col-sm-6 col-md-6 col-lg-6\">\n                <div class=\"row top\">\n                    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n                        <div class=\"dragdrop-area center-block\" id=\"canvas-container\">\n                            <canvas id=\"canvas\" class=\"center-block\"></canvas>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"row top1\">\n                    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n                        <div v-if=\"$store.state.has_bridge\">\n                            \n                            <div class=\"col-lg-10 col-lg-offset-1\">\n\n                                <!-- Bridges -->\n                                <div :class=\"['col-lg-5', 'bridge_representation', $store.state.objectWorkingOn.type == 'bridge' ? 'edge_selected' : '']\" @click=\"selectBridge( $event );\"></div>\n                                <div class=\"col-lg-2 bridge-counter\" style=\"line-height: 30px;\">N° {{ $store.state.bridges_selected.length }}</div>\n                                <div class=\"col-lg-5\">\n\n                                    <div class=\"pull-left pointer marginR2\">\n                                        <img src=\"/images/others/step-4/minus.png\" width=\"23\" height=\"23\" class=\"\" v-show=\"$store.state.bridges_selected.length\" @click=\"removeBridge()\"/>\n                                    </div>\n\n                                    <div class=\"pull-left pointer\">\n                                        <img src=\"/images/others/step-4/plus.png\" width=\"23\" height=\"23\" class=\"\" v-show=\"canAddBridges\" @click=\"addBridge()\"/>\n                                    </div>\n\n                                </div>\n                                <div class=\"col-lg-11 col-lg-offset-1\">\n                                    <span class=\"help-block\">\n                                        Ponte {{ $store.state.bridge_orientation | translate }}\n                                    </span>\n                                </div>\n                            </div>\n\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-sm-6 col-md-6 col-lg-6\">\n                <step4_3d></step4_3d>\n            </div>\n        </div>\n\n        <!-- tabs row -->\n        <div class=\"row top1\">\n            <!-- Tabs: dividers and colors -->\n            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n\n                <!-- Tab title ( Nav ) -->\n                <ul class=\"nav nav-tabs\" role=\"tablist\" id=\"tab-container\">\n                    <li :class=\"{active: !index}\" role=\"presentation\" v-for=\"(cat,index) in availableDividerCategories\">\n                        <a data-toggle=\"tab\" role=\"tab\" :href=\"genHref(cat)\">{{ $t( \"step4.containers\" ) }} H {{ parseFloat( cat / 10 ).toFixed( 1 ) }} mm</a>\n                    </li>\n                    <li role=\"presentation\" class=\"pull-right\"><a data-toggle=\"tab\" role=\"tab\" href=\"#dividers-tab\">{{ $t( \"step4.dividers_textures\") }}</a></li>\n                    <li role=\"presentation\" class=\"pull-right\"><a data-toggle=\"tab\" role=\"tab\" href=\"#bridges-tab\" v-if=\"$store.state.has_bridge\">{{ $t( \"step4.bridges_textures\") }}</a></li>\n                    <li role=\"presentation\" class=\"pull-right\"><a data-toggle=\"tab\" role=\"tab\" href=\"#edges-tab\">{{ $t( \"step4.drawer_textures\") }}</a></li>\n                </ul>\n\n                <!-- Tab contents -->\n                <div class=\"tab-content\">\n\n                    <!-- Dividers by cat -->\n                    <div role=\"tabpanel\" :class=\"{active: !index}\" :id=\"'elem'+cat\" class=\"tab-pane fade in\" v-for=\"(cat,index) in availableDividerCategories\">\n\n                        <div class=\"row\" style=\"margin-top: 22px\">\n\n                            <div class=\"col-lg-3 col-md-3 col-sm-4\"  v-for=\"(divider,dimension) in getDividerByCat(cat)\">\n                                <div class=\"panel panel-default\">\n                                    <div class=\"panel-heading\">\n                                        {{ dimension }}\n                                    </div>\n                                    <div class=\"panel-body\">\n                                        <div class=\"row\">\n                                            <div class=\"col-lg-12 col-md-12 col-sm-12 center-block imgcont\">\n                                                <img :src=\"divider.image3d\" class=\"img center-block img-responsive img-thumbnail\" />\n                                            </div>\n\n                                        </div>\n                                        <div class=\"row top2\">\n                                        \n                                            <div class=\"col-lg-4 col-md-4 pull-left\">\n                                                <div class=\"top1 dragable-img-container\">\n                                                    <!-- Remove the inline style and use something more responsive -->\n                                                    <img draggable=\"true\"\n                                                         class=\"img canBeDragged center-block img-responsive \"\n                                                         :src=\"divider.imageH\"\n                                                         :data-defaultdivider= \"getDefaultDividerImg(divider,cat,dimension,true)\"\n                                                         :data-width  = \"divider.width-4\"\n                                                         :data-height = \"divider.length-4\"\n                                                         :data-sku = \"divider.sku\"\n                                                         :data-rotate = \"90\"\n                                                         :data-key = \"dimension\"\n                                                         :data-cat = \"cat\"\n                                                         data-type = \"divider\"\n                                                         data-orientation = \"H\"\n                                                         v-show=\"enoughSpace(divider.width, divider.length )\"\n                                                         :width=\"divider.width\" \n                                                         :height=\"divider.length\">\n                                                </div>\n                                            </div>\n                                            <div class=\"col-lg-4 col-md-4 pull-right\">\n                                                <div class=\"top1 dragable-img-container\">\n                                                    <!-- Remove the inline style and use something more responsive -->\n                                                    <img draggable=\"true\"\n                                                         class=\"img canBeDragged center-block img-responsive\"\n                                                         :src=\"divider.imageV\"\n                                                         :data-defaultdivider= \"getDefaultDividerImg(divider,cat,dimension,false)\"\n                                                         :data-width  = \"divider.length-4\"\n                                                         :data-height = \"divider.width-4\"\n                                                         :data-sku = \"divider.sku\"\n                                                         :data-rotate = \"0\"\n                                                         :data-key = \"dimension\"\n                                                         :data-cat = \"cat\"\n                                                         data-type = \"divider\"\n                                                         data-orientation = \"V\"\n                                                         v-show=\"enoughSpace(divider.width, divider.length )\" \n                                                         :width=\"divider.width\" \n                                                         :height=\"divider.length\"\n                                                    >\n                                                </div>\n                                            </div>\n                                        </div>\n\n\n                                    </div>\n                                </div>\n                            </div>\n\n\n                        </div>\n\n                    </div>\n\n\n                    <div role=\"tabpanel\" id=\"dividers-tab\"  class=\"tab-pane fade in\">\n                        <div class=\"row top1\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                            <div class=\"col-lg-12\">\n                                <div class=\"row\">\n                                    <div class=\"col-lg-4 col-md-4 col-sm-4\">\n                                        <h3 class=\"divider_tab_group_level_1\">Velvet</h3>\n                                        <div class=\"row divider_tab_group_level_2\">\n                                            <div class=\"col-lg-12 col-md-12 col-sx-12\">\n                                                <h4>Fullcolor</h4>\n                                                <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getDividerVariantsVelvetFull\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                                                    <figure>\n                                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                        <img :src=\"variant.textureImg\"\n                                                             :data-img=\"($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV\"\n                                                             class=\"img center-block img-responsive img-thumbnail\"\n                                                             @click=\"_updateDividerSku( $event );\"\n                                                             style=\"width: 120px;height: 80px\"\n                                                             :data-sku=\"variant.sku\" \n                                                             :alt=\"variant.color\" \n                                                             :title=\"variant.color\" \n                                                        >\n                                                        <figcaption>{{ variant.color }}</figcaption>\n                                                    </figure>\n                                                </div>\n                                            </div>\n                                        </div>\n                                        <div class=\"row divider_tab_group_level_2\">\n                                            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                                <h4>Dark Core</h4>\n                                                <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getDividerVariantsVelvetDark\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                                                    <figure>\n                                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                        <img :src=\"variant.textureImg\"\n                                                             :data-img=\"($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV\"\n                                                             class=\"img center-block img-responsive img-thumbnail\"\n                                                             @click=\"_updateDividerSku( $event );\"\n                                                             style=\"width: 120px;height: 80px\"\n                                                             :data-sku=\"variant.sku\"\n                                                        >\n                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>\n                                                    </figure>\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </div>\n                                    <div class=\"col-lg-4 col-md-4 col-sm-4\">\n                                        <h3 class=\"divider_tab_group_level_1\">Legno</h3>\n                                        <div class=\"row divider_tab_group_level_2\">\n                                            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                                <h4>Fullcolor</h4>\n                                                <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getDividerVariantsLegnoFull\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                                                    <figure>\n                                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                        <img :src=\"variant.textureImg\"\n                                                             :data-img=\"($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV\"\n                                                             class=\"img center-block img-responsive img-thumbnail\"\n                                                             @click=\"_updateDividerSku( $event );\"\n                                                             style=\"width: 120px;height: 80px\"\n                                                             :data-sku=\"variant.sku\"\n                                                        >\n                                                        <figcaption>{{ variant.color }}</figcaption>\n                                                    </figure>\n                                                </div>\n                                            </div>\n                                        </div>\n                                        <div class=\"row divider_tab_group_level_2\">\n                                            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                                <h4>Dark Core</h4>\n                                                <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getDividerVariantsLegnoDark\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                                                    <figure>\n                                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                        <img :src=\"variant.textureImg\"\n                                                             :data-img=\"($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV\"\n                                                             class=\"img center-block img-responsive img-thumbnail\"\n                                                             @click=\"_updateDividerSku( $event );\"\n                                                             style=\"width: 120px;height: 80px\"\n                                                             :data-sku=\"variant.sku\"\n                                                        >\n                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>\n                                                    </figure>\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </div>\n                                    <div class=\"col-lg-4 col-md-4 col-sm-4\">\n                                        <h3 class=\"divider_tab_group_level_1\">Spazzolato</h3>\n                                        <div class=\"row divider_tab_group_level_2\">\n                                            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                                <h4>Fullcolor</h4>\n                                                <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getDividerVariantsInoxFull\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                                                    <figure>\n                                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                        <img :src=\"variant.textureImg\"\n                                                             :data-img=\"($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV\"\n                                                             class=\"img center-block img-responsive img-thumbnail\"\n                                                             @click=\"_updateDividerSku( $event );\"\n                                                             style=\"width: 120px;height: 80px\"\n                                                             :data-sku=\"variant.sku\"\n                                                        >\n                                                        <figcaption>{{ variant.color }}</figcaption>\n                                                    </figure>\n                                                </div>\n                                            </div>\n                                        </div>\n                                        <div class=\"row divider_tab_group_level_2\">\n                                            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                                <h4>Dark Core</h4>\n                                                <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getDividerVariantsInoxDark\" v-if=\"$store.state.objectWorkingOn.type=='divider'\">\n                                                    <figure>\n                                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                        <img :src=\"variant.textureImg\"\n                                                             :data-img=\"($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV\"\n                                                             class=\"img center-block img-responsive img-thumbnail\"\n                                                             @click=\"_updateDividerSku( $event );\"\n                                                             style=\"width: 120px;height: 80px\"\n                                                             :data-sku=\"variant.sku\"\n                                                        >\n                                                        <figcaption>{{ variant.color }} - Bordo nero</figcaption>\n                                                    </figure>\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>\n\n\n\n                            </div>\n                        </div>\n                        <div class=\"row top1\" v-else=\"$store.state.objectWorkingOn.type!='divider'\">\n                            <div class=\"col-lg-12 col-md-12 col-sm-12 noside-chosen\">\n                                {{ $t( \"step4.nodividerchosen\" ) }}\n                            </div>\n                        </div>\n                    </div>\n\n                    <div role=\"tabpanel\" id=\"bridges-tab\"  v-if=\"$store.state.has_bridge\"  class=\"tab-pane fade in\">\n                        <div class=\"row top1\">\n                            <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                <div class=\"col-lg-12 col-md-12\">\n                                    <h3>Finiture ponti</h3>\n                                </div>\n\n                                <div class=\"col-lg-4 col-md-4 col-sm-4\">\n                                    <h3> Velvet</h3>\n                                    <div class=\"row\">\n                                        <h4>Fullcolor</h4>\n                                        <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getBridgesVariantsVelvetFull\" >\n                                            <figure>\n                                                <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                <img :src=\"variant.textureImg\"\n                                                     class=\"img center-block img-responsive img-thumbnail\"\n                                                     @click=\"_updateBridges( $event );\"\n                                                     style=\"width: 120px;height: 80px\"\n                                                     :data-sku=\"variant.sku\"\n                                                >\n                                                <figcaption>{{ variant.color}}</figcaption>\n                                            </figure>\n                                        </div>\n                                    </div>\n                                    <div class=\"row\">\n                                        <h4>Dark core</h4>\n                                        <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getBridgesVariantsVelvetDark\" >\n                                            <figure>\n                                                <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                <img :src=\"variant.textureImg\"\n                                                     class=\"img center-block img-responsive img-thumbnail\"\n                                                     @click=\"_updateBridges( $event );\"\n                                                     style=\"width: 120px;height: 80px\"\n                                                     :data-sku=\"variant.sku\"\n                                                >\n                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>\n                                            </figure>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"col-lg-4 col-md-4 col-sm-4\">\n                                    <h3> Legno</h3>\n                                    <div class=\"row\">\n                                        <h4>Fullcolor</h4>\n                                        <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getBridgesVariantsLegnoFull\" >\n                                            <figure>\n                                                <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                <img :src=\"variant.textureImg\"\n                                                     class=\"img center-block img-responsive img-thumbnail\"\n                                                     @click=\"_updateBridges( $event );\"\n                                                     style=\"width: 120px;height: 80px\"\n                                                     :data-sku=\"variant.sku\"\n                                                >\n                                                <figcaption>{{ variant.color}}</figcaption>\n                                            </figure>\n                                        </div>\n                                    </div>\n                                    <div class=\"row\">\n                                        <h4>Dark core</h4>\n                                        <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getBridgesVariantsLegnoDark\" >\n                                            <figure>\n                                                <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                <img :src=\"variant.textureImg\"\n                                                     class=\"img center-block img-responsive img-thumbnail\"\n                                                     @click=\"_updateBridges( $event );\"\n                                                     style=\"width: 120px;height: 80px\"\n                                                     :data-sku=\"variant.sku\"\n                                                >\n                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>\n                                            </figure>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"col-lg-4 col-md-4 col-sm-4\">\n                                    <h3> Spazzolato</h3>\n                                    <div class=\"row\">\n                                        <h4>Fullcolor</h4>\n                                        <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getBridgesVariantsInoxFull\" >\n                                            <figure>\n                                                <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                <img :src=\"variant.textureImg\"\n                                                     class=\"img center-block img-responsive img-thumbnail\"\n                                                     @click=\"_updateBridges( $event );\"\n                                                     style=\"width: 120px;height: 80px\"\n                                                     :data-sku=\"variant.sku\"\n                                                >\n                                                <figcaption>{{ variant.color}}</figcaption>\n                                            </figure>\n                                        </div>\n                                    </div>\n                                    <div class=\"row\">\n                                        <h4>Dark core</h4>\n                                        <div class=\"col-lg-6 col-md-6 col-sm-6\" v-for=\"variant in $store.getters.getBridgesVariantsInoxDark\" >\n                                            <figure>\n                                                <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                                <img :src=\"variant.textureImg\"\n                                                     class=\"img center-block img-responsive img-thumbnail\"\n                                                     @click=\"_updateBridges( $event );\"\n                                                     style=\"width: 120px;height: 80px\"\n                                                     :data-sku=\"variant.sku\"\n                                                >\n                                                <figcaption>{{ variant.color}} - Bordo nero </figcaption>\n                                            </figure>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"col-lg-12 col-md-12 col-sm-12\">\n                                    <h3>Finiture supporti</h3>\n                                </div>\n                                <div class=\"col-lg-2 col-md-2\"></div>\n                                <div class=\"col-lg-2 col-md-2\" v-for=\"variant in $store.getters.getSupportsVariants\">\n                                    <figure>\n                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                        <img :src=\"variant.texture\"\n                                             class=\"img center-block img-responsive img-thumbnail\"\n                                             :class=\"variant.selected?'support_selected':''\"\n                                             @click=\"_updateSupports( $event ); \"\n                                             style=\"width: 120px;height: 80px\"\n                                             :data-sku=\"variant.sku\"\n                                        >\n                                    </figure>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div role=\"tabpanel\" id=\"edges-tab\"  class=\"tab-pane fade in\">\n\n                        <div class=\"col-lg-12 col-md-12 col-sm-12 top1\">\n                            <div class=\"col-lg-4\" id=\"background\" @click='selectBorder( $event );' style=\"padding:0\">\n                                <!-- Egdes -->\n                                    <div :class=\"['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]\" id=\"front\" @click='selectBorder( $event );' >\n                                        {{ $t( \"front\" ) }}\n                                    </div>\n                                    <div :class=\"['edge', 'edge_left', 'pull-left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]\" id=\"left\" @click='selectBorder( $event );' style=\"min-height: 100px\"></div>\n\n                                    <div class=\"pull-left\"></div>\n\n                                    <div :class=\"['edge', 'edge_right', 'pull-right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]\" id=\"right\" @click='selectBorder( $event );' style=\"min-height: 100px\"></div>\n\n                                    <div :class=\"['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]\" id=\"back\" @click='selectBorder( $event );' >\n                                        {{ $t( \"rear\" ) }}\n                                    </div>\n                            </div>\n                            <div class=\"col-lg-8 col-md-12 col-sm-12\">\n                                <div class=\"col-lg-2 col-md-2 col-sm-4\" v-for=\"variant in $store.getters.getBorderVariants\" v-if=\"$store.state.objectWorkingOn.type=='border'\">\n                                    <figure>\n                                        <a class=\"lens-icon bridges-info\" @click=\"showTextureInfo( $event )\">&nbsp;</a>\n                                        <img :src=\"variant.textureImg\"\n                                             class=\"img center-block img-responsive img-thumbnail\"\n                                             @click=\"_updateBorder( $event );\"\n                                             style=\"width: 120px;height: 80px\"\n                                             :data-sku=\"variant.textureId\"\n                                        >\n                                        <figcaption>{{ variant.textureName }}</figcaption>\n                                    </figure>\n                                </div>\n                                <div class=\"col-lg-12 col-md-12 col-sm-12 noside-chosen\" v-if=\"$store.state.objectWorkingOn.type!='border'\">\n                                    {{ $t( \"step4.choose_a_side\" ) }}\n                                </div>\n                            </div>\n                        </div>\n\n                    </div>\n\n                </div> <!-- END tab content -->\n\n            </div>\n        </div>\n    </div>\n    \n    <!-- Buttons row -->\n    <div class=\"row actions-toolbar\">\n\n        <div class=\"col-lg-2 col-md-2 pull-left\">\n            <button to=\"/split/stepponte\"  @click=\"backAdvice()\" class=\"btn btn-danger btn-back\">{{ 'back' | translate }}</button>\n        </div>\n\n        <div class=\"col-lg-2 col-md-2 pull-right\">\n            <button class=\"btn btn-danger btn-block\" @click.stop.prevent=\"check\">{{ 'avanti' | translate }}</button>\n        </div>\n\n\n\n    </div>\n\n</div>\n</template>\n\n<script>\n\nimport Divider from '../entity/divider';\n\n\n\n/**\n * Vue object managing bridge / bridge support choice\n * @type {Vue}\n */\nexport default {\n\n    /**\n     * Object data\n     * @type {Object}\n     */\n    data: function() { \n\n        return {    \n\n            /**\n             * Error modal selector caching\n             * @type {[type]}\n             */\n            error_modal: $( \"#error-modal\" ),\n\n            /**\n             * Fabric Canvas object\n             * @type {Object}\n             */\n            canvas: {},\n\n            /**\n             * Dividers list ( from DB )\n             * @type {Array}\n             */\n            images: [],\n\n            /**\n             * Currently dragged divider\n             * @type {Object}\n             */\n            draggingDivider: {},\n\n            /**\n             * Base snap threshold\n             * @type {Number}\n             */\n            snap: 9,\n\n            /**\n             * Canvas width\n             * @type {Number}\n             */\n            canvasWidth: 0,\n\n            /**\n             * Canvas Height\n             * @type {Number}\n             */\n            canvasHeight: 0,\n\n            /**\n             * Computed dimensions ratio\n             * @type {Object}\n             */\n            config: {\n                \n                ratio: 1,\n\n                // # Lightgallery common settings\n                lightgalleryOptions: {\n                  download: false,\n                  thumbnail: false,\n                  dynamic: true,\n                  counter: false,\n                  getCaptionFromTitleOrAlt: true\n                }\n            },\n\n            /**\n             * Currently selected item\n             * @type {Object}\n             */\n            selectedItem: {},\n\n            /**\n             * bridge hex color\n             * @type {String}\n             */\n            bridge_hex: '',\n\n            /**\n             * All dividers selected flag\n             * @type {Boolean}\n             */\n            allselected: false\n        }\n    },\n\n    /**\n     * Computed properties and data\n     * @type {Object}\n     */\n    computed: {\n\n        isDividerSelected: function() {\n\n            if( null != this.$store.state.objectWorkingOn || undefined == this.$store.state.objectWorkingOn ) {\n                return false;\n            }\n\n            if( this.$store.state.objectWorkingOn.type != \"divider\" ) {\n                return false;\n            }\n\n            return true;\n        },\n\n\n        /**\n         * Returns available dividers category based on shpulder height set\n         * @return {Array}\n         */\n        availableDividerCategories: function () {\n\n            // # Get max value - value is in mm, category id in decimillimeters\n            let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;\n\n            // # Filter array\n            return this.$store.state.dividerTypes.dividersCategories.filter( function ( category ) {\n                    return max >= parseInt(category);\n                }\n            );\n        },\n\n        /**\n         * Checks if the user can add more bridges.\n         * @return {Boolean}\n         */\n        canAddBridges: function () {\n            let availableSpace = ( this.$store.state.bridge_orientation == 'H' ) ? this.real_height : this.real_width;\n            let busySpace = this.$store.state.bridges_selected.length * this.tighterBridgeWidth;\n\n            return availableSpace >= ( busySpace + this.tighterBridgeWidth )\n        },\n\n        /**\n         * Returns the tighter bridge width\n         * @return {Number}\n         */\n        tighterBridgeWidth: function () {\n            return 107;\n        },\n\n        /**\n         * Actual area covered by bridges\n         * @return {Number} [description]\n         */\n        bridgesArea: function () {\n            return this.$store.state.bridges_selected.reduce( function ( accumulatore, elem ) {\n                return accumulatore + elem.width;\n            }, 0 );\n        },\n\n        /**\n         * Actual available width ( supports computed )\n         * @return {number}\n         */\n        real_width: function () {\n            return parseFloat( this.$store.state.dimensions.width ) + parseInt( this.$store.state.dimensions.delta_width );\n        },\n\n        /**\n         * Actual available length ( supports computed )\n         * @return {number}\n         */\n        real_height: function() {\n            return parseFloat( this.$store.state.dimensions.length ) + parseInt( this.$store.state.dimensions.delta_length );\n        }\n    },\n\n    /**\n     * Instance Methods\n     * @type {Object}\n     */\n    methods: {\n\n        showTextureInfo: function( event ) {\n\n            try {\n                $( event.target ).data( \"lightGallery\" ).destroy( true );\n                // $( this ).unbind( \"click\" );\n            } catch( e ) {\n                // Do nothing\n            }\n\n\n            // # Get related image element\n            let related_image = $( event.target ).next();\n\n            // # General settings + image src\n            let bridgesGalleryOptions = this.config.lightgalleryOptions;\n            bridgesGalleryOptions.dynamicEl = [ { \n                src: related_image.attr( \"src\" )\n                // subHtml: \"TEST\"//related_image.attr( \"alt\" )\n            } ];\n\n            // # Init\n            $( event.target ).lightGallery( bridgesGalleryOptions ) ;\n        },\n\n\n        /**\n         *  Return the first item in list texture depending on parameters\n         */\n        getDefaultDividerImg: function(divider,cat,dimension,horizontal) {\n             let _dividerCategoryObj = this.$store.state.dividerTypes.dividers[cat];\n             let _dividerDimension = _dividerCategoryObj[dimension];\n             let _obj = _dividerDimension.items[0];\n             return (horizontal)? _obj.textureH : _obj.textureV;\n        },\n\n        touchHandler: function ( event ) {\n            var touch = event.changedTouches[0];\n\n            var simulatedEvent = document.createEvent(\"MouseEvent\");\n                simulatedEvent.initMouseEvent({\n                touchstart: \"mousedown\",\n                touchmove: \"mousemove\",\n                touchend: \"mouseup\"\n            }[event.type], true, true, window, 1,\n                touch.screenX, touch.screenY,\n                touch.clientX, touch.clientY, false,\n                false, false, false, 0, null);\n\n            touch.target.dispatchEvent(simulatedEvent);\n            if (event.target.id == 'draggable_item' ) {\n                event.preventDefault();\n            }\n        },\n\n        /**\n         * [initCanvas description]\n         * @return {[type]} [description]\n         */\n        initCanvas: function() {\n\n            // # Cache selector\n            let canvas_container = $( \"#canvas-container\" );\n\n            // # Draggable images selection\n            this.images = document.querySelectorAll( \".canBeDragged\" );\n\n            // # Add drag handler to all the images\n            [].forEach.call( this.images, ( img ) => {\n                img.addEventListener( 'dragstart', this.handleDragStart, false);\n                img.addEventListener( 'touchstart', this.handleDragStart, false);\n                img.addEventListener( 'dragend', this.handleDragEnd, false);\n                img.addEventListener( 'touchend', this.handleDragEnd, false);\n            });        \n\n            let original_container_width = Math.floor( canvas_container.width() );\n            console.log( \"Canvas container Width: \", original_container_width );\n            console.log( \"canvas_container.width() * 0.8: \", original_container_width * 0.8 );\n            console.log( \"canvas_container.width() FLOOR \", Math.floor( canvas_container.width() * 0.8 ) );\n            \n            // # Compute available width\n            this.canvasWidth = Math.floor( original_container_width * 0.8 );\n            console.log( \"Canvas width: \" + this.canvasWidth );\n\n            // # Compute ratio\n            this.ratioComputer();\n\n            // # Compute height based on ration computed\n            this.canvasHeight = parseInt( this.real_height * this.config.ratio );\n            console.log( \"Canvas height: \" + this.canvasHeight );\n\n            // # Set DOM dimensions\n            canvas_container.width( this.canvasWidth ).height( this.canvasHeight );\n\n            // # CHECK ME\n            $( \"#step4_3d_container\" ).css( \"min-height\", \"400px\" );\n\n            // # 3D container should have the same height as the 2D one\n            $( \"#step4_3d_container\" ).height( this.canvasHeight );\n\n            // # UPDATE size\n            this.$store.state.renderer.updateSize();\n            this.$store.state.camera.updateSize(this.$store.state.renderer.threeRenderer);\n\n            // # Initialize canvas\n            this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );\n\n            // # No selection on this canvas\n            this.canvas.selection = false;\n\n            /**\n             * Handle object moving inside the canvas\n             * @param  {[type]} ['object:moving'] [description]\n             * @param  {[type]} (options          [description]\n             * @return {[type]}                   [description]\n             */\n            this.canvas.on( ['object:moving'],  ( options ) => {\n                this.handleMoving( options );\n            });\n\n            console.log( \"touch supported: \" +  fabric.isTouchSupported );\n\n            /*if( fabric.isTouchSupported ) {\n                document.addEventListener(\"touchstart\", this.touchHandler, true);\n                document.addEventListener(\"touchmove\", this.touchHandler, true);\n                document.addEventListener(\"touchend\", this.touchHandler, true);\n                document.addEventListener(\"touchcancel\", this.touchHandler, true); \n            }*/\n\n            // # Last chance \n            // # FIX ME\n            this.canvas.on( \"mouse:up\", () => {\n                this.finalCollisionDetectionManagement();\n            });\n\n            /**\n             * Handle Object added inside the canvas\n             * @param  {[type]} ['object:added'] [description]\n             * @param  {[type]} (options         [description]\n             * @return {[type]}                  [description]\n             */\n            this.canvas.on( ['object:added'], (options) => {\n                this.handleMoving( options );\n            });  \n\n            /**\n             * Canvas on click listener\n             * @param  {[type]} this.canvas.upperCanvasEl [description]\n             * @param  {[type]} 'click'                   [description]\n             * @param  {[type]} (                         e             [description]\n             * @return {[type]}                           [description]\n             */\n            fabric.util.addListener( this.canvas.upperCanvasEl, 'click', ( e ) => {\n\n                try {   \n\n                    // # Active object caching\n                    var activeObj = this.canvas.getActiveObject();\n\n                    // # Avoid null pbjects\n                    if( null == activeObj ) {\n                        return;\n                    }\n\n                    console.log( \"Active object after click\", activeObj );\n                    console.log( \"Active object type\", activeObj.get( 'type' ) );\n\n                    // # Avoid canvas trying to remove itself\n                    if( activeObj.get( \"type\" ) != \"divider\" ) {\n                        return;\n                    }\n\n                    // # Set this object as the selected one\n                    activeObj.trigger( \"selected\" );\n\n                    $( '#tab-container a[href=\"#dividers-tab\"]' ).tab( 'show' );\n\n                    // # Cache active object ID\n                    let id = activeObj.get( \"id\" );\n\n                    // # Updating this.selectedItem and $store.objectWorkingOn\n                    // TODO: selectedItem deve diventare una property di $store.objectWorkingOn\n                    //this.selectedItem = this.canvas.getActiveObject();\n                    this.$store.commit( \"setobjectWorkingOn\", { type: \"divider\", id: id, obj: activeObj } );\n\n                } catch( ignoreMe ) {\n\n                    // # Log error and ignore it\n                    console.log( ignoreMe );\n                } finally {\n\n                    // # Stop event propagation and prevent default\n                    // # mandatory cause otherwise the event is passed to the canvas itself\n                    e.preventDefault();\n                    e.stopPropagation();\n\n                    // # Render all\n                    this.canvas.renderAll();\n\n                    // # return false is also needed\n                    return false;\n                }\n\n            });\n\n\n            /**\n             * Canvas click listener remover\n             * @param  {Object} e \n             */\n            fabric.util.removeListener( this.canvas.upperCanvasEl, 'click', function( e ) {} );    \n\n            // # Get the container element\n            let canvasContainer = document.getElementById( 'canvas-container' );\n\n            // # Scope fix\n            let self = this;\n\n            // # Container listeners\n            canvasContainer.addEventListener( 'dragenter', self.handleDragEnter, false );\n            canvasContainer.addEventListener( 'dragover',  self.handleDragOver, false );\n            canvasContainer.addEventListener( 'dragleave', self.handleDragLeave, false );\n            canvasContainer.addEventListener( 'drop',      self.handleDrop, false ); \n\n            // # Force rendering\n            this.canvas.renderAll();\n            this.$store.dispatch('genDrawer',this.$store.state.drawertype);\n        },\n\n        /**\n         * Computes the available canvas area ( area free from dividers )\n         * \n         * @return {Number}\n         */\n        availableSpace: function() {\n\n            // # Stay solid and evaluate the nearest ( floor ) integer\n            let initial_area = Math.floor( this.real_height * this.real_width );\n            return this.$store.state.dividers_selected.reduce( ( occupied_area, cur ) => {\n                return initial_area -= cur.area;\n            }, initial_area);\n        },\n\n        /**\n         * Tells if there is enough space for the divider to be placed\n         * \n         * @param  {Number} divider_width \n         * @param  {Number} divider_length\n         * @return {Number}\n         */\n        enoughSpace: function( divider_width, divider_length ) {\n            var avs = this.availableSpace();\n            return avs > parseFloat( divider_width * divider_length );\n        },\n\n        /**\n         * Shows an alert to the user before a divider deletion\n         * @return {null}\n         */\n        alertDividerDeletion: function() {\n\n            console.log( this.allselected );\n            if( this.allselected ) {\n                console.log( \"ALL\");\n                $( \"#deletion-alert-modal\" ).find( \".modal-body\" ).text( Vue.i18n.translate( \"step4.delete_all_advice\" ) );\n                $( \"#deletion-alert-modal\" ).modal();\n                return;\n            }\n\n            // # Cache the active Object\n            var activeObj = this.canvas.getActiveObject();\n            if( null != activeObj && activeObj.get( 'type' ) == \"divider\" ) {\n                console.log( \"ONE\");\n                $( \"#deletion-alert-modal\" ).find( \".modal-body\" ).text( Vue.i18n.translate( \"step4.delete_single_advice\" ) );\n                $( \"#deletion-alert-modal\" ).modal();\n                return;\n            }\n\n            return;\n\n        },\n\n\n        /**\n         * Select all dividers logic\n         * @return {void}\n         */\n        deselectAll:function() {\n\n            console.log( \"deselecting  all dividers\" );\n            \n            // # Loop through the canvas objects\n            var objs = this.canvas.getObjects().map( ( o )  => {\n                o.setStrokeWidth( 2 );\n                o.setStroke( \"#222222\" );\n                o.set( 'active', false );  \n\n            }); \n\n            this.canvas.discardActiveObject()\n            this.canvas.renderAll();\n            this.allselected = false;           \n        },\n\n        /**\n         * Select all dividers logic\n         * @return {void}\n         */\n        selectAll: function() {\n\n            let objs = this.canvas.getObjects();\n\n            if( objs.length == 0 ) {\n                return;\n            }\n            \n            // # Loop through the canvas objects\n            objs.map( ( o )  => {\n\n                switch( this.allselected ) {\n\n                    case true:\n                        o.setStrokeWidth( 2 );\n                        o.setStroke( \"#222222\" );\n                        o.set( 'active', false );\n                    break;\n\n                    case false:\n                        o.setStrokeWidth( 2 );\n                        o.setStroke( \"#ffcc00\" );\n                        o.set( 'active', true );\n                    break;\n                }\n\n            });\n\n            // # Set flag\n            this.allselected = !this.allselected;\n\n            // # Refresh canvas\n            this.canvas.renderAll();\n        },\n\n        /**\n         * Divider deletion logic\n         * @return {[type]} [description]\n         */\n        deleteDivider: function() {\n\n            console.log( \"allselected: \" + this.allselected );\n\n            switch( this.allselected ) {\n                \n                case true:\n\n                    // # All selected to be removed, clean up the canvas\n                    this.canvas.discardActiveObject();\n                    this.canvas.clear();\n                    this.canvas.renderAll();\n                    this.allselected = false;\n\n                    // # Clean up the store variable\n                    this.$store.dispatch ( \"remove3dAllDividers\" );\n\n                break;\n\n                case false:\n\n                    // # Cache active object\n                    var activeObj = this.canvas.getActiveObject();\n\n                    // # Avoid null pbjects\n                    if( null == activeObj || undefined == activeObj ) {\n                        return;\n                    }\n\n                    // # Avoid canvas trying to remove itself\n                    if( activeObj.get( 'type' ) != \"divider\" ) {\n                        return;\n                    }\n\n                    // # Cache active object ID\n                    var id = activeObj.get( 'id' );\n\n                    // # Remove ID from selected dividers list\n                    this.$store.dispatch( \"remove3dDivider\", id);\n\n                    // # Clean up pointers\n                    this.canvas.discardActiveObject();\n\n                    // # Actually remove object from canvas\n                    this.canvas.remove( activeObj );\n\n                    // # Refresh canvas\n                    this.canvas.renderAll(); \n                                   \n                break;\n            }\n\n            // # Related events\n            $( \"#deletion-alert-modal\" ).modal( 'hide' );\n            $( '#tab-container a:first' ).tab( 'show' );\n\n        },\n\n        /**\n         * This is the last place to manage the dividers collisions\n         * @return {void}\n         */\n        finalCollisionDetectionManagement: function () {\n\n            // # Cache active object\n            var activeObj = this.canvas.getActiveObject();\n                \n            // # No selected Item, return\n            if( null == activeObj ) {\n                return;\n            }\n\n            // # No type defined, return\n            if( undefined == activeObj.type ) {\n                return;\n            }\n\n            // # Only for dividers\n            if( activeObj.type == \"divider\" ) {\n\n                // # Reset standard stroke ( some object may be stuck in half opacity )\n                // # this is a \"runtime\" fix\n                activeObj.setStrokeWidth( 2 );\n                activeObj.setStroke( \"#222\" );\n\n                // # Loop through canvas objects\n                this.canvas.forEachObject( ( obj ) => {\n\n                    // # Set element Coords\n                    activeObj.setCoords();\n\n                    // # Do nothing if the object checked against is itself\n                    if ( obj === activeObj ) {\n                        console.log( \"same\" );\n                        return;\n                    }\n\n                    // # Check type\n                    if( undefined == obj.type || obj.type != \"divider\" ) {\n                        console.log( \"no type or wrong type\" );\n                        return;\n                    }\n\n                    // # Log intersection\n                    console.log( \"intersect \" + activeObj.intersectsWithObject(obj) );\n\n                    // # If objects intersect\n                    if ( activeObj.intersectsWithObject( obj ) ) { \n\n                        // # Intersections init\n                        let intersectLeft = null, intersectTop = null, intersectWidth = null;\n                        let intersectHeight = null, intersectSize = null;\n                        let targetLeft = activeObj.getLeft();\n                        let targetRight = targetLeft + activeObj.getWidth();\n                        let targetTop = activeObj.getTop();\n                        let targetBottom = targetTop + activeObj.getHeight();\n                        let objectLeft = obj.getLeft();\n                        let objectRight = objectLeft + obj.getWidth();\n                        let objectTop = obj.getTop();\n                        let objectBottom = objectTop + obj.getHeight();            \n\n                        // Find intersect information for X axis\n                        if( targetLeft >= objectLeft && targetLeft <= objectRight ) {\n                            intersectLeft = targetLeft;\n                            intersectWidth = obj.getWidth() - ( intersectLeft - objectLeft );\n\n                        } else if( objectLeft >= targetLeft && objectLeft <= targetRight ) {\n                            intersectLeft = objectLeft;\n                            intersectWidth = activeObj.getWidth() - ( intersectLeft - targetLeft );\n                        }\n\n                        // # Find intersect information for Y axis\n                        if( targetTop >= objectTop && targetTop <= objectBottom ) {\n                            intersectTop = targetTop;\n                            intersectHeight = obj.getHeight() - ( intersectTop - objectTop );\n\n                        } else if( objectTop >= targetTop && objectTop <= targetBottom ) {\n                            intersectTop = objectTop;\n                            intersectHeight = activeObj.getHeight() - ( intersectTop - targetTop );\n                        }  \n                  \n                        // # Find intersect size (this will be 0 if objects are touching but not overlapping)\n                        if( intersectWidth > 0 && intersectHeight >  0 ) {\n                            console.log( \"intersect area!\" );\n                            intersectSize = intersectWidth * intersectHeight;\n                        }                                    \n\n                        if( intersectSize != null ) {\n                            console.log( \"Intersect size \" + intersectSize );\n                            activeObj.setStroke( \"#ff0000\" );\n                            activeObj.setStrokeWidth( 2 );\n                            activeObj.dirtystate = true;\n                            this.canvas.renderAll();\n                            return;\n                        }\n\n                        // # No collision\n                        console.log( \"NO COLLISION\" );\n                        \n                        // # Set standard stroke\n                        activeObj.setStroke( \"#222222\" );\n                        activeObj.setStrokeWidth( 2 );\n                        activeObj.dirtystate = false;\n                        this.canvas.renderAll(); \n                    }     \n                }); \n\n                this.canvas.forEachObject( ( obj ) => {\n\n                    if( obj.dirtystate ) {\n\n                        let actuallyCollides = false;\n\n                        this.canvas.forEachObject( ( otherObj ) => {\n\n                            if( obj == otherObj ) {\n                                return;\n                            }\n\n                            if( obj.intersectsWithObject( otherObj ) ) {\n                                actuallyCollides = true;\n                                return;\n                            }\n\n                        });\n\n                        if( !actuallyCollides ) {\n                            obj.setStroke( \"#222222\" );\n                            obj.setStrokeWidth( 2 );\n                            obj.dirtystate = false;\n                            this.canvas.renderAll();                             \n                        }\n                    }\n                });              \n            }\n        },\n\n        /**\n         * Computes the correct ratio based on container width\n         * manages also long and thin drawers\n         * @return {void}\n         */\n        ratioComputer: function() {\n\n            console.log( \"RW:\" + this.real_width );\n            console.log( \"RH:\" + this.real_height );\n\n            // # Dimension ratio tells us if we are in the case that height > width\n            let dimensions_ratio = parseFloat( this.real_width / this.real_height ).toFixed( 2 );\n            console.log( \"dimensions_ratio: \" + dimensions_ratio );\n\n            // # Container available width\n            let available_width = this.canvasWidth;\n            console.log( \"AW\" + available_width );\n\n            // # Ratio computed using max allowed rect width\n            this.config.ratio = parseFloat( available_width / this.real_width );\n            console.log( \"RATIO: \" + this.config.ratio );\n\n            // # height > width\n            if( dimensions_ratio < 1 ) {\n\n               console.log( \"H > W\" );\n               \n               // # Initial height computed based on available width\n               let computed_height = parseFloat( this.real_height * this.config.ratio ).toFixed( 2 );\n               console.log( \"Initial CH: \" + computed_height );\n\n               // # let's say that we want to set a threshold\n               // # this will prevent the scale change when \n               // # H / W dfference is little\n               // # Reduce the computed height to a dimension max = available width \n               // # so that the resulting shape won't be to tall\n               while( computed_height >= available_width ) {\n\n                    // # Reduce ratio at each iteration\n                    this.config.ratio = parseFloat( ( this.config.ratio / 100 ) * 90 );\n                    console.log( \"RATIO in iteration: \" + this.config.ratio );\n                    \n                    // # Newly computed canvas dimension are smaller and smaller\n                    computed_height  = parseFloat( this.real_height * this.config.ratio ).toFixed( 2 );\n                    this.canvasWidth = parseFloat( this.real_width * this.config.ratio ).toFixed( 2 );\n\n                    console.log( \"CW Changed in iteration: \" +  this.canvasWidth );\n                    console.log( \"CH Changed in iteration:\"  +  computed_height );\n               }\n            }   \n\n            // # Commit ratio ( useful for 3d )\n            this.$store.commit( \"setStep42DRatio\", this.config.ratio );\n\n            console.log( \"Final RATIO: \" + this.config.ratio );\n        },  \n\n        selectBorder: function( event ) {\n\n            // # deselect All dividers\n            this.deselectAll();\n\n            let _selectedBorder = event.target;\n\n            this.$store.commit( 'setobjectWorkingOn', { type:'border', id:_selectedBorder.id,obj:_selectedBorder } );\n\n            console.log( this.$store.state.objectWorkingOn );\n\n            $( '#tab-container a[href=\"#colors\"]' ).tab( 'show' );\n        },  \n\n        selectBridge: function( event ) {\n\n            // # deselect All dividers\n            this.deselectAll();\n            // this.selectedItem = { type: \"bridge\", id: this.$store.state.bridges_selected[ 0 ].id };\n            this.$store.commit('setobjectWorkingOn',{type:'bridge',id:this.$store.state.bridge_ID,'obj':null});\n\n            $( '#tab-container a[href=\"#bridges-tab\"]' ).tab( 'show' );\n        },\n\n\n        _updateDividerSku: function ( event ) {\n\n            console.log( event );\n\n            let payload = {\n                id: this.$store.state.objectWorkingOn.id,\n                sku: event.target.dataset.sku\n            };\n\n            console.log( payload );\n\n            let objectWorkingOn = this.$store.state.objectWorkingOn;\n            objectWorkingOn.obj.set({\n                url: event.target.src\n            });\n\n            this.$store.commit('setobjectWorkingOn', objectWorkingOn );\n\n\n            let _texture = event.target.dataset.img;\n            var self = this;\n            let img = this.$store.state.objectWorkingOn.obj.getElement();\n            img.src = event.target.dataset.img;\n            img.crossOrigin = \"Anonymous\";\n            img.onload = () => {this.canvas.renderAll();};\n\n\n            if (this.allselected) {\n                //Change all canvas object texture\n                this.canvas.forEachObject( ( obj ) => {\n                    let lookin4 = _texture.replace(/^.*[\\\\\\/]/, '');\n                    if( undefined == obj.type || obj.type != \"divider\" ) {\n                        return;\n                    }\n\n                    let divsByCat = this.$store.state.dividerTypes.dividers[obj.category];\n                    let divsBySubCat = divsByCat[obj.subCategory];\n                    let _items = divsBySubCat['items'];\n\n                    let _obj = _items.filter((cur)=>{\n                        let testTexture = cur.baseTexture.replace(/^.*[\\\\\\/]/, '');\n\n                        return lookin4 == testTexture.replace('.jpg','.png');\n                    })[0];\n\n\n\n                    if (!_obj) {return;}\n                    let textureToApply = (_obj.orrientation==\"V\")?_obj.textureV:_obj.textureH;\n                    let img = obj.getElement();\n                    img.src = textureToApply;\n                    img.crossOrigin = \"Anonymous\";\n\n\n                    img.onload = function () {\n                        self.canvas.renderAll();\n                    };\n\n                });\n\n                this.$store.dispatch( \"updateAllDividerTexture\", event.target.dataset.sku );\n            } else {\n                this.$store.commit( \"updateDividerSku\", payload );\n                this.$store.dispatch( \"update3dDividerTexture\", payload );\n            }\n\n\n        },\n\n        _updateBorder:function (e) {\n\n            let payload = {\n                id:this.$store.state.objectWorkingOn.id,\n                image:e.target.src,\n                dbId: e.target.dataset.sku  //This is a fake sku => just the db id!!!!\n            };\n\n\n            this.$store.state.objectWorkingOn.obj.style.backgroundImage = \"url(\"+e.target.src+\")\";\n            if (this.$store.state.objectWorkingOn.id=='background') {\n                document.getElementById('canvas-container').style.backgroundImage = \"url(\"+e.target.src+\")\";\n            }\n\n            this.$store.commit('setDrawerBorder',payload);\n            this.$store.dispatch( 'update3dDrawerPartTexture', payload);\n        },\n\n\n        _updateBridges: function (e) {\n            $('.bridge_representation').css('background-image',\"url(\"+e.target.src+\")\");\n            let payload = {\n                sku: e.target.dataset.sku,\n                img: e.target.src\n            }\n            this.$store.dispatch('changeBridgeSku',payload);\n        },\n\n        _updateSupports: function (e) {\n            this.$store.dispatch('update3dSupportTexture',e.target.dataset.sku);\n        },\n\n        /**\n         * [handleMoving description]\n         * @param  {[type]} options [description]\n         * @return {[type]}         [description]\n         */\n        handleMoving: function ( options ) {\n\n            // # Set element Coords\n            options.target.setCoords();\n\n            // # Collision mnagement\n            this._preventCollision(options);\n\n            // # get the new coords\n            let coords = options.target.getCenterPoint();\n            let payload = {\n                id: options.target.id,\n                x: coords.x,\n                y: coords.y\n            };\n\n            this.$store.commit( 'updateDividerPosition', payload );\n            this.$store.dispatch( 'update3dDividerPos', payload );\n        },\n\n        _preventCollision: function ( options ) {\n\n            console.log( \"get starting point coords\" );\n            options.target.setCoords();\n            var starting_point= options.target.calcCoords().bl;\n\n            // # lock container\n            // # Don't allow objects off the canvas\n            \n            // # Snap to left\n            if( options.target.getLeft() < this.snap ) {\n                options.target.setLeft( 0 );\n            }\n\n            // # Snap to top\n            if( options.target.getTop() < this.snap ) {\n                options.target.setTop( 0 );\n            }\n\n            // # Snap to right\n            if( ( options.target.getWidth() + options.target.getLeft() ) > ( this.canvasWidth - this.snap ) ) {\n                options.target.setLeft( this.canvasWidth - options.target.getWidth() - 1 );\n            }\n\n            // # Snap to bottom\n            if(  ( options.target.getHeight() + options.target.getTop() ) > ( this.canvasHeight - this.snap) ) {\n                options.target.setTop( this.canvasHeight - options.target.getHeight());\n            }\n\n            // Loop through objects\n            this.canvas.forEachObject( ( obj ) => {\n\n                // # Do nothing if the object checked against is itself\n                if ( obj === options.target ) return;\n\n                // # Set element Coords\n                options.target.setCoords();\n\n                // # This snaps objects to each other horizontally\n\n                // If bottom points are on same Y axis\n                if(Math.abs((options.target.getTop() + options.target.getHeight()) - (obj.getTop() + obj.getHeight())) < this.snap) {\n                    // this.snap target BL to object BR\n                    if(Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {\n                        options.target.setLeft(obj.getLeft() + obj.getWidth());\n                        options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());\n                    }\n\n                    // this.snap target BR to object BL\n                    if(Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {\n                        options.target.setLeft(obj.getLeft() - options.target.getWidth());\n                        options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());\n                    }\n                }\n\n                // If top points are on same Y axis\n                if(Math.abs(options.target.getTop() - obj.getTop()) < this.snap) {\n                    // this.snap target TL to object TR\n                    if(Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {\n                        options.target.setLeft(obj.getLeft() + obj.getWidth());\n                        options.target.setTop(obj.getTop());\n                    }\n\n                    // this.snap target TR to object TL\n                    if(Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {\n                        options.target.setLeft(obj.getLeft() - options.target.getWidth());\n                        options.target.setTop(obj.getTop());\n                    }\n                }\n\n                // this.snap objects to each other vertically\n\n                // If right points are on same X axis\n                if(Math.abs((options.target.getLeft() + options.target.getWidth()) - (obj.getLeft() + obj.getWidth())) < this.snap) {\n                    // this.snap target TR to object BR\n                    if(Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {\n                        options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());\n                        options.target.setTop(obj.getTop() + obj.getHeight());\n                    }\n\n                    // this.snap target BR to object TR\n                    if(Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {\n                        options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());\n                        options.target.setTop(obj.getTop() - options.target.getHeight());\n                    }\n                }\n\n                // If left points are on same X axis\n                if(Math.abs(options.target.getLeft() - obj.getLeft()) < this.snap) {\n                    // this.snap target TL to object BL\n                    if(Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {\n                        options.target.setLeft(obj.getLeft());\n                        options.target.setTop(obj.getTop() + obj.getHeight());\n                    }\n\n                    // this.snap target BL to object TL\n                    if(Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {\n                        options.target.setLeft(obj.getLeft());\n                        options.target.setTop(obj.getTop() - options.target.getHeight());\n                    }\n                }\n\n                // options.target.setOpacity( options.target.intersectsWithObject( obj ) ? 0.5 : 1 );\n\n                options.target.setCoords();                \n            });\n        },\n\n        /**\n         * [handleDragStart description]\n         * @param  {[type]} e [description]\n         * @return {[type]}   [description]\n         */\n        handleDragStart: function( e ) {\n            console.log( \"drag start\" );\n            this.draggingDivider = e.target;\n        },\n\n        /**\n         * [handleDragEnd description]\n         * @param  {[type]} e [description]\n         * @return {[type]}   [description]\n         */\n        handleDragEnd: function( e ) {\n            console.log( \"drag end\" );\n        },        \n\n        /**\n         * [handleDragEnter description]\n         * @param  {[type]} e [description]\n         * @return {[type]}   [description]\n         */\n        handleDragEnter: function ( e ) {\n            console.log( \"enter\" );\n            //e.target.classList.add( 'over' );\n        },\n\n        /**\n         * [handleDragLeave description]\n         * @param  {[type]} e [description]\n         * @return {[type]}   [description]\n         */\n        handleDragLeave: function ( e ) {\n            //e.target.classList.remove( 'over' ); // this / e.target is previous target element.\n        },\n\n        /**\n         * [handleDragOver description]\n         * @param  {[type]} e [description]\n         * @return {[type]}   [description]\n         */\n        handleDragOver: function ( e ) {\n\n            console.log( \"drag over\" );\n            if (e.preventDefault) {\n                e.preventDefault(); // Necessary. Allows us to drop.\n            }\n\n            e.dataTransfer.dropEffect = 'copy'; // See the section on the DataTransfer object.\n            // NOTE: comment above refers to the article (see top) - natchiketa\n\n            return false;\n        },\n\n        /**\n         * [handleDrop description]\n         * @param  {[type]} e [description]\n         * @return {[type]}   [description]\n         */\n        handleDrop: function ( e ) {\n\n            // # this / e.target is current target element.\n            if (e.stopPropagation) {\n                e.stopPropagation(); // stops the browser from redirecting.\n            }\n\n            if( e.preventDefault ) {\n                e.preventDefault();\n            }\n\n            // # Caching img dataset\n            var _imgW   = Math.ceil( parseInt( this.draggingDivider.dataset.width ) * this.config.ratio );\n            var _imgH   = Math.ceil( parseInt( this.draggingDivider.dataset.height ) * this.config.ratio );\n            var _imgID  = this.draggingDivider.dataset.key + \"_\" + this.draggingDivider.dataset.cat + \"_\" + Date.now();\n            let _imgOr  = this.draggingDivider.dataset.orientation;\n\n             var _divider = new Divider(\n                 this.draggingDivider.dataset.cat,\n                 this.draggingDivider.dataset.key,\n                 +this.draggingDivider.dataset.width,\n                 +this.draggingDivider.dataset.height,\n                 _imgW,\n                 _imgH,\n                 this.draggingDivider.dataset.orientation,\n                 this.draggingDivider.src\n             );\n             \n            var imgObj = new Image();\n            imgObj.src = this.draggingDivider.dataset.defaultdivider;\n\n            imgObj.onload = () => {\n\n                let oImg = new fabric.Image( imgObj );\n                oImg.setWidth( _imgW );\n                oImg.setHeight( _imgH );\n\n                oImg.category = _divider.category;\n                oImg.subCategory = _divider.subCategory;\n\n\n                let posX = (e.offsetX)?e.offsetX:e.layerX;\n                let posY = (e.offsetY)?e.offsetY:e.layerY;\n\n                // # Set image position\n                oImg.setLeft( posX );\n                oImg.setTop( posY );\n\n                // # Set background color\n                oImg.setBackgroundColor( '#ededed' );    //Set a light gray background\n                \n                // # Set controls off\n                oImg.hasControls = false;\n\n                // # borders off\n                oImg.hasBorders  = true;\n                oImg.setStroke( \"#222222\" );\n                oImg.setStrokeWidth( 2 );\n\n                // # Pixel precision\n                oImg.perPixelTargetFind = true;\n                oImg.dirtystate = false;\n\n                // # Change origin point to corner top left\n                oImg.originX = \"left\";\n                oImg.originY = \"top\";\n\n                // # Image has been dropped\n                oImg.dropped = true;\n                \n                // # Set ID unique\n                oImg.id =_divider.id;\n\n                // # Set object type\n                oImg.type = \"divider\";\n\n                // # Set orientation\n                oImg.orientation = _imgOr;\n\n                // # Add image to canvas\n                this.canvas.add( oImg ); \n\n                // # Coords\n                var coords = oImg.calcCoords().bl;\n                var centerCoords = oImg.getCenterPoint();\n\n                _divider.x = coords.x;\n                _divider.y = coords.y;\n\n                var self = this;\n                oImg.on('selected', function() {\n\n                    // self.allselected = false;\n                    var objs = self.canvas.getObjects().map( ( o )  => {\n\n                        if( o == this ) {\n                            console.log( \"SAME OBJ\" );\n                            return;\n                        }\n\n                        o.trigger( 'deselected' );\n                    });\n\n                    this.bringToFront();\n\n                    \n\n                    if( !this.dirtystate ) {\n                        this.setStroke( \"#ffcc00\" );\n                        this.setStrokeWidth( 2 );\n                    }\n                });\n\n                oImg.on( 'deselected', function() {\n                    self.allselected = false;\n\n                    if( !this.dirtystate ) {\n                        this.setStrokeWidth( 2 ); \n                        this.setStroke( \"#222222\" ); \n                    }\n                });\n\n                oImg.set( 'active', true );\n\n                this.canvas.setActiveObject( oImg );\n\n                this.allselected = false;\n\n                // # Set ObjectWorking On\n                this.$store.commit( 'setobjectWorkingOn',{ type:'divider', id:_divider.id, 'obj':oImg } ); \n\n                // # Final check\n                this.finalCollisionDetectionManagement();\n\n                // # Push divider\n                this.$store.commit( \"pushDivider\", _divider );\n\n                this.$store.dispatch ( \"add3dDivider\", _divider) ;\n                let payload = {\n                    id: _divider.id,\n                    x: _divider.x,\n                    y: _divider.y\n                };\n\n                this.$store.dispatch( 'update3dDividerPos', payload );\n\n                let vertical_alert = this.$store.getters.bridgeSupportVerticalAlert;\n                if ( vertical_alert ) {\n                    // # Modal Error display\n                    this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( \"step4.vertical-space-advice\" ) );\n                    this.error_modal.modal();                      \n                }\n            };\n\n            // # Clean data property\n            this.draggingDivider = {};\n\n            // # Return\n            return false;\n        },\n\n        /**\n         * [pushDivider description]\n         * @param  {[type]} divider [description]\n         * @return {[type]}         [description]\n         */\n        pushDivider: function ( divider ) {\n            this.$store.commit( \"manageDivider\", divider );\n        },\n\n        /**\n         * [genHref description]\n         * @param  {[type]} val [description]\n         * @return {[type]}     [description]\n         */\n        genHref: function ( val ) {\n            return \"#elem\" + val;\n        },\n\n        /**\n         * [getDividerByCat description]\n         * @param  {[type]} val [description]\n         * @return {[type]}     [description]\n         */\n        getDividerByCat: function( val ) {\n            return this.$store.state.dividerTypes.dividers[ val ];\n        },\n\n        /**\n         * [addBridge description]\n         */\n        addBridge: function() {\n            this.$store.commit( \"addBridge\" );\n            this.$store.dispatch( \"add3DBridge\" );\n        },\n\n\n\n\n        /**\n         * [removeBridge description]\n         * @return {[type]} [description]\n         */\n        removeBridge: function() {\n            this.$store.dispatch( \"remove3DBridge\" );\n\n            if( this.$store.state.bridges_selected.length > 1 ) {\n                this.$store.commit( \"removeBridge\" );\n            } else {\n                this.clearBridges();\n            }  \n        },\n\n        /**\n         * [clearBridges description]\n         * @return {[type]} [description]\n         */\n        clearBridges: function() {\n            this.$store.commit( \"clearAllBridgeData\" );\n        },\n\n        /**\n         * [check description]\n         * @return {[type]} [description]\n         */\n        check: function() {\n\n            // # No dividers selected check\n            if( this.$store.state.dividers_selected.length == 0  ) {\n\n                // # Modal Error display\n                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( \"step4.nodividers-advice\" ) );\n                this.error_modal.modal();  \n\n                // # Step4 is completed, everything's ok\n                this.$store.commit( \"setFourcompleted\", false );\n\n                // # Open related tab\n                $( '#tab-container a:first' ).tab( 'show' );\n                \n                // # No way\n                return false;    \n            }\n\n            // # Global check\n            let checkinObj = this.canGoToFive();\n\n            // # Not all borders have been set\n            if( checkinObj.bordersStatus == \"\" ) {\n\n                // # Modal Error display\n                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( \"step4.noborders-advice\" ) );\n                this.error_modal.modal();  \n\n                // # Step4 is completed, everything's ok\n                this.$store.commit( \"setFourcompleted\", false );\n\n                // # Open related tab\n                $( '#tab-container a[href=\"#edges-tab\"]' ).tab( 'show' );\n                \n                // # No way\n                return false;              \n            }\n\n            // # Some collisions in canvas are still there\n            if( !checkinObj.noCollision ) {\n\n                // # Modal Error display\n                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( \"step4.collisions-advice\" ) );\n                this.error_modal.modal();  \n\n                // # Step4 is completed, everything's ok\n                this.$store.commit( \"setFourcompleted\", false );                \n                \n                return false;                    \n            }\n\n            // # User advice, proceed and you'll loose any chance of changing thing in this step\n            // # Proceed advice display\n            $( \"#proceed-advice-modal\" ).modal();                             \n        }, \n\n        /**\n         * Takes the user to the final step\n         * @return {void}\n         */\n        proceed2Five: function() {\n\n            // # Hide modal\n            this.error_modal.modal( 'hide');\n\n            // # Deselect All ( SVG image should have no colored borders )\n            this.deselectAll();\n\n            // # Se canvas screenshot\n            this.$store.commit( 'setCanvasSvg', this.canvas.toSVG() );\n\n            // # Set 3D screenshot\n            this.$store.commit( 'setDrawer3dImage', this.$store.state.renderer.threeRenderer.domElement.toDataURL( \"image/png\" ) );\n\n            // # Step4 is completed, everything's ok\n            this.$store.commit( \"setFourcompleted\", true );\n\n            // # Take the user to the next step\n            this.$router.push({ path: '/split/step5' });\n        },\n\n        /**\n         * [backAdvice description]\n         * @return {[type]} [description]\n         */\n        backAdvice: function () {\n            $( \"#reset-advice-modal\" ).modal();\n        },\n\n        /**\n         * Takes the user back to step4 ( after an advice has been accepted )\n         * @return {void}\n         */\n        back2Bridge: function () {\n            \n            // # Hide back advice modal\n            $( \"#reset-advice-modal\" ).modal( 'hide' );\n\n            // # Clear all dividers ( 3d )\n            this.$store.dispatch( \"remove3dAllDividers\" );\n\n            // # Clear all borders\n            this.$store.commit( \"clearDrawerBorders\" );\n\n            // # Take the user back\n            this.$router.push({ path: '/split/stepponte' });\n        },\n\n        canGoToFive: function () {\n\n            let out = {};\n            out.bordersStatus = this.$store.state.borders.background &&\n                this.$store.state.borders.back &&\n                this.$store.state.borders.front &&\n                this.$store.state.borders.left &&\n                this.$store.state.borders.right;\n            out.noCollision = true;\n\n            this.canvas.forEachObject( ( obj ) => {\n\n                if( obj.dirtystate ) {\n\n                    let actuallyCollides = false;\n\n                    this.canvas.forEachObject( ( otherObj ) => {\n\n                        if( obj == otherObj ) {\n                            return;\n                        }\n\n                        if( obj.intersectsWithObject( otherObj ) ) {\n                            actuallyCollides = true;\n                            out.noCollision = false;\n                            return;\n                        }\n\n                    });\n\n                    if( !actuallyCollides ) {\n                        obj.dirtystate = false;\n                    }\n                }\n            });\n\n            return out;\n        },\n\n\n\n\n\n    },\n\n    /**\n     * Route guard: disallow route entering if previuos data has not been submitted\n     * \n     * @param  {string}   to   [description]\n     * @param  {string}   from [description]\n     * @param  {string}   next [description]\n     * @return {void} \n     */\n    beforeRouteEnter: (to, from, next) => {\n        \n        next( vm => {\n\n            // # is Step 1 completed ?\n            if( !vm.$store.state.onecompleted ) {\n                 vm.$router.push({ path: '/split/step1' });\n                 return;\n            }\n\n            // # is Step 2 completed ?\n            if( !vm.$store.state.twocompleted ) {\n                 vm.$router.push({ path: '/split/step2' });\n                 return;\n            }\n\n            // # is Step 3 completed ?\n            if( !vm.$store.state.threecompleted ) {\n                 vm.$router.push({ path: '/split/step3' });\n                 return;\n            }\n\n        })\n    },     \n\n    mounted () { // # Window onload eq\n\n        \n        this.$store.commit( \"setComponentHeader\",  \"step4.header-title\" );\n        this.$store.commit( \"setCurrentStep\", 4 );\n        this.initCanvas();\n\n        if( !this.$store.state.hint_viewed ) {\n\n          // # General settings + image src\n         /* let hintGalleryOptions = this.config.lightgalleryOptions;\n          hintGalleryOptions.dynamicEl = [ { src: \"/images/others/istruzioni_gestione_divisorio.gif\" } ];\n\n          // # Init\n          $( this ).lightGallery( hintGalleryOptions ) ;\n\n          this.$store.commit( \"setHintViewed\", true );*/\n\n        }\n\n        console.log(\"Step4 mounted!\");\n\n        // ---------------------------------------------\n        // SET SIDEBAR ITEM ACTIVE - BEGIN\n        \n        let pos = 0;\n        let $pointer = $(\".navigator .pointer-navigator\"); \n        let $nav = $(\".navigator #nav\").find(\"li\");\n        let $active = $nav.find(\"a.router-link-active\");\n        \n        pos = parseInt($active.parent(\"li\").position().top);\n        $pointer.removeAttr(\"style\").attr(\"style\",\"transform: translateY(\" + pos.toString() + \"px)\");\n    }\n\n}\n\n</script>\n",
 			"file": "resources/assets/js/components/step4.vue",
-			"file_size": 93011,
-			"file_write_time": 131390598638927738,
 			"settings":
 			{
-				"buffer_size": 90922,
+				"buffer_size": 90921,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -592,8 +588,16 @@
 			"file": "resources/assets/js/store/translations.js",
 			"settings":
 			{
-				"buffer_size": 16156,
+				"buffer_size": 49258,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/app.js",
+			"settings":
+			{
+				"buffer_size": 3411,
 				"line_ending": "Windows"
 			}
 		},
@@ -602,6 +606,23 @@
 			"settings":
 			{
 				"buffer_size": 10897,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 2570,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/split/application.blade.php",
+			"settings":
+			{
+				"buffer_size": 3168,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -681,11 +702,12 @@
 		"/C/Users/brambillari/Code/configuratore/resources/assets",
 		"/C/Users/brambillari/Code/configuratore/resources/assets/sass",
 		"/C/Users/brambillari/Code/configuratore/resources/images",
-		"/C/Users/brambillari/Code/configuratore/resources/images/dividers",
+		"/C/Users/brambillari/Code/configuratore/resources/images/3dmodels",
+		"/C/Users/brambillari/Code/configuratore/resources/images/3dmodels/common",
+		"/C/Users/brambillari/Code/configuratore/resources/images/3dmodels/legno",
 		"/C/Users/brambillari/Code/configuratore/resources/images/dividers/base",
 		"/C/Users/brambillari/Code/configuratore/resources/images/dividers/base/H",
 		"/C/Users/brambillari/Code/configuratore/resources/images/dividers/base/V",
-		"/C/Users/brambillari/Code/configuratore/resources/views",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/pdf",
 		"/C/Users/brambillari/Code/configuratore/resources/views/split/pdf/partials"
@@ -1041,7 +1063,7 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1160,7 +1182,7 @@
 						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1279,7 +1301,7 @@
 						"translation.y": 5580.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1288,15 +1310,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2254,
+						"buffer_size": 2256,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1880,
-								1909
+								1263,
+								1263
 							]
 						],
 						"settings":
@@ -1308,15 +1330,15 @@
 								{
 									"1":
 									[
-										1908,
-										1909
+										1310,
+										1311
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
+										"Packages/BracketHighlighter/icons/square_bracket.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -1324,8 +1346,8 @@
 								{
 									"1":
 									[
-										1897,
-										1898
+										891,
+										892
 									]
 								},
 								"unmatched":
@@ -1334,21 +1356,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1359,6 +1366,41 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -1368,37 +1410,17 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_regex_content"
 							],
 							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 780.0,
+						"translation.y": 480.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1517,7 +1539,7 @@
 						"translation.y": 4298.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1636,7 +1658,7 @@
 						"translation.y": 4620.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1645,15 +1667,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37334,
+						"buffer_size": 37511,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								24143,
-								24143
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1737,10 +1759,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 25518.0,
+						"translation.y": 1138.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1749,7 +1771,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 90922,
+						"buffer_size": 90921,
 						"regions":
 						{
 						},
@@ -1769,15 +1791,15 @@
 								{
 									"1":
 									[
-										7226,
-										7227
+										7255,
+										7256
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -1785,8 +1807,8 @@
 								{
 									"1":
 									[
-										7209,
-										7210
+										7217,
+										7218
 									]
 								},
 								"unmatched":
@@ -1795,46 +1817,41 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1845,11 +1862,16 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
 							"tab_size": 4,
@@ -1859,7 +1881,7 @@
 						"translation.y": 2578.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1868,15 +1890,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16156,
+						"buffer_size": 49258,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15358,
-								15368
+								7859,
+								7859
 							]
 						],
 						"settings":
@@ -1886,49 +1908,24 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										15368,
-										15369
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										15351,
-										15352
-									]
 								},
 								"unmatched":
 								{
+									"1":
+									[
+										8435,
+										8436
+									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1939,6 +1936,41 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -1948,41 +1980,125 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_regex_content"
 							],
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 3368.0,
+						"translation.x": 0.0,
+						"translation.y": 1320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "resources/assets/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3411,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2280.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "resources/assets/js/components/step5.vue",
 					"semi_transient": false,
 					"settings":
@@ -2094,14 +2210,235 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4260.0,
+						"translation.y": 4280.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2570,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "resources/views/split/application.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								664,
+								664
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3009,
+										3012
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/tag.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										627,
+										630
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
 					"file": "resources/assets/js/store/getters.js",
 					"semi_transient": false,
 					"settings":
@@ -2201,7 +2538,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -2255,6 +2592,26 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"language",
+				"resources\\assets\\js\\components\\languageselector.vue"
+			],
+			[
+				"app.js",
+				"resources\\assets\\js\\app.js"
+			],
+			[
+				"applica",
+				"resources\\views\\split\\application.blade.php"
+			],
+			[
+				"gulpf",
+				"gulpfile.js"
+			],
+			[
+				"g",
+				"gulpfile.js"
+			],
 			[
 				"step",
 				"resources\\assets\\js\\components\\step5.vue"
@@ -2332,10 +2689,6 @@
 				"gulpfile.js"
 			],
 			[
-				"applica",
-				"resources\\views\\split\\application.blade.php"
-			],
-			[
 				"step3d",
 				"resources\\assets\\js\\components\\step4_3d.vue"
 			],
@@ -2346,10 +2699,6 @@
 			[
 				"app.sc",
 				"resources\\assets\\sass\\app.scss"
-			],
-			[
-				"app.js",
-				"resources\\assets\\js\\app.js"
 			],
 			[
 				"appnav",
@@ -2369,10 +2718,6 @@
 			],
 			[
 				"languagesele",
-				"resources\\assets\\js\\components\\languageselector.vue"
-			],
-			[
-				"language",
 				"resources\\assets\\js\\components\\languageselector.vue"
 			],
 			[
@@ -2546,10 +2891,6 @@
 			[
 				"bootstra",
 				"resources\\assets\\js\\bootstrap.js"
-			],
-			[
-				"gulpf",
-				"gulpfile.js"
 			],
 			[
 				"step2.js",
