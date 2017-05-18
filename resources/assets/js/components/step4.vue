@@ -263,7 +263,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ $t(variant.color) }} - Bordo nero</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -302,7 +302,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ $t(variant.color) }} - Bordo nero</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -341,7 +341,7 @@
                                                              style="width: 120px;height: 80px"
                                                              :data-sku="variant.sku"
                                                         >
-                                                        <figcaption>{{ $t(variant.color) }} - Bordo nero</figcaption>
+                                                        <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -395,7 +395,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ $t(variant.color) }} - Bordo nero </figcaption>
+                                                <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }} </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -428,7 +428,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ $t(variant.color) }} - Bordo nero </figcaption>
+                                                <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }} </figcaption>
                                             </figure>
                                         </div>
                                     </div>
@@ -461,7 +461,7 @@
                                                      style="width: 120px;height: 80px"
                                                      :data-sku="variant.sku"
                                                 >
-                                                <figcaption>{{ $t(variant.color) }} - Bordo nero </figcaption>
+                                                <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }} </figcaption>
                                             </figure>
                                         </div>
                                     </div>

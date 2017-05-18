@@ -144,8 +144,8 @@ export default {
 
         "Legno" : "Legno",
         "Spazzolata (inox)" : "Spazzolato",
-        "Neutro" : "Velvet"
-
+        "Neutro" : "Velvet",
+        "step4.blackborder":"Bordo nero"
     },
     en:{
         "menu.newconf" : "New Configuration",
@@ -177,6 +177,8 @@ export default {
         "step2.title":"Type of drawer",
         "Cassetto":"Drawer",
         'Lineabox 4 lati':'Lineabox 4-sided',
+        'Lineabox 3 lati':'Lineabox 3-sided',
+        'Lineabox 2 lati':'Lineabox 2-sided',
         "avanti": "Forward",
         "attenzione":"Warning!",
         "advice": "NOTICE",
@@ -288,7 +290,8 @@ export default {
         "Spazzolata (inox)" : "Brushed",
         "Neutro" : "Velvet",
 
-        "step4.containers":"Storage Compartment"
+        "step4.containers":"Storage Compartment",
+        "step4.blackborder":"With black edge"
     },
     de:{
         "menu.newconf" : "Neue Konfiguration",
@@ -320,6 +323,8 @@ export default {
         "step2.title":"Typs der Schublade",
         "Cassetto":"Schublade",
         'Lineabox 4 lati':'Lineabox 4-teilig',
+        'Lineabox 3 lati':'Lineabox 3-teilig',
+        'Lineabox 2 lati':'Lineabox 2-teilig',
         "avanti": "Weiter",
         "attenzione":"Warnung! ",
         "advice": "MELDUNG",
@@ -428,7 +433,8 @@ export default {
         "Legno" : "Holz",
         "Spazzolata (inox)" : "Gebürstet",
         "Neutro" : "Velvet",
-        "step4.containers":"Ablagefach"
+        "step4.containers":"Ablagefach",
+        "step4.blackborder":"Schwarze Kante"
     },
     fr:{
         "menu.newconf" : "Nouvelle Configuration",
@@ -460,6 +466,8 @@ export default {
         "step2.title":"Type de tiroir",
         "Cassetto":"Tiroir",
         'Lineabox 4 lati':'Lineabox à 4 côtés',
+        'Lineabox 3 lati':'Lineabox à 3 côtés',
+        'Lineabox 2 lati':'Lineabox à 2 côtés',
         "avanti": "Suivant",
         "attenzione":"Attention! ",
         "advice": "AVIS",
@@ -568,7 +576,8 @@ export default {
         "Legno"  : "Bois",
         "Spazzolata (inox)"  : "Brossé",
         "Neutro"  : "Velvet",
-        "step4.containers":'Bac De Rangement'
+        "step4.containers":'Bac De Rangement',
+        "step4.blackborder":"Avec bord noir"
     },
     es:{
         "menu.newconf" : "Nueva Configuración",
@@ -600,6 +609,8 @@ export default {
         "step2.title":"Tipo de cajón",
         "Cassetto":"Cajón",
         'Lineabox 4 lati':'Lineabox 4 lados',
+        'Lineabox 3 lati':'Lineabox 3 lados',
+        'Lineabox 2 lati':'Lineabox 2 lados',
         "avanti": "Avanzar",
         "attenzione":"Atención! ",
         "advice": "AVISO",
@@ -709,6 +720,7 @@ export default {
         "Spazzolata (inox)"  : "Cepillado",
         "Neutro"  : "Velvet",
         "step4.containers":"Contenedor",
+        "step4.blackborder":"Borde negro"
     },
     pt:{
         "menu.newconf" : "Nova Configuração",
@@ -740,6 +752,8 @@ export default {
         "step2.title":"Tipo de gaveta",
         "Cassetto":"Gaveta",
         'Lineabox 4 lati':'Lineabox 4 lados',
+        'Lineabox 4 lati':'Lineabox 3 lados',
+        'Lineabox 4 lati':'Lineabox 2 lados',
         "avanti": "Continue",
         "attenzione":"Cuidado! ",
         "advice": "AVISO",
@@ -850,7 +864,8 @@ export default {
         "Legno"  : "Madeira",
         "Spazzolata (inox)"  : "Escovado",
         "Neutro"  : "Velvet",
-        "step4.containers":"Recipiente"
+        "step4.containers":"Recipiente",
+        "step4.blackborder":"Borda preta"
     }    
 };
 

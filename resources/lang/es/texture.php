@@ -36,7 +36,7 @@ return [
 
     "Sabbia"=>'Arenoso',
     "Caffelatte"=>'Café con leche',
-    "Bianco_Perla"=>'Bianco Perla',
+    "Bianco_Perla"=>'Blanco Perla',
 
     "Legno" => "Madera",
     "Spazzolata_(inox)" => "Cepillado",
