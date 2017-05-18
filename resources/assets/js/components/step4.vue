@@ -364,7 +364,7 @@
                         <div class="row top1">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="col-lg-12 col-md-12">
-                                    <h3>Finiture ponti</h3>
+                                    <h3>{{ $t("step4.bridges_textures") }}</h3>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-sm-4">
