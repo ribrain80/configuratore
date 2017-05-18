@@ -159,6 +159,8 @@ export default {
         "V": "vertical",
         "width": "width",
         "length": "length",
+        "front": "front",
+        "rear": "back panel",
         "resetadvice": "The change of this selection will cause the cancellation of data entries in the following steps",    
         "step1.header-title": "Information",
         "step2.header-title": "Selection of drawer type",  
