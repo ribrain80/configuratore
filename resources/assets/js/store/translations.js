@@ -284,7 +284,7 @@ export default {
 
         "Sabbia":'Sand',
         "Caffelatte":'Caffe Latte',
-        "Bianco Perla":'Bianco Perla',   //ASSENTE
+        "Bianco Perla":'Pearl',   //ASSENTE
 
         "Legno" : "Woodgrain effect",
         "Spazzolata (inox)" : "Brushed",
@@ -715,7 +715,7 @@ export default {
         'Lino scuro' :'Lino oscuro',
         "Sabbia" :'Arenoso',
         "Caffelatte" :'Café con leche',
-        "Bianco Perla" :'Bianco Perla',
+        "Bianco Perla" :'Blanco Perla',
         "Legno"  : "Madera",
         "Spazzolata (inox)"  : "Cepillado",
         "Neutro"  : "Velvet",
