@@ -18,16 +18,15 @@ set( 'ssh_multiplexing', true );
 // # Define a server conf for the milestone2
 server('mile2', 'splitconf.tk', 443)
     ->user('riccardo')
-    ->password('riccardosfelab')    // Not a great idea but usefull (dont use for production)
     ->stage('mile2')
-    ->set('branch', 'master2')
+    ->set('branch', 'master')
     ->set('deploy_path', "/var/www/mile2");
 
 server('production', 'split.salice.com', 443)
     ->user('giuseppe')
    // ->password('riccardosfelab')    // Not a great idea but usefull (dont use for production)
     ->stage('production')
-    ->set('branch', 'master2')
+    ->set('branch', 'master')
     ->set('deploy_path', "/var/www/split.salice.com");
 
 // # Set the repository
