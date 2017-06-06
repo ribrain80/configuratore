@@ -35,7 +35,7 @@
                                      @click="setOrientation('H')"
                                 />
                             </div>
-                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-H' | translate}} </figcaption>
+                            <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-H' | translate}} </figcaption>
                         </figure>
                     </div>
                     
@@ -53,7 +53,7 @@
                                      @click="setOrientation('V')"
                                 />
                             </div>
-                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-V' | translate}} </figcaption>
+                            <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-V' | translate}} </figcaption>
                         </figure>
                     </div>
 
@@ -104,7 +104,7 @@
                                                  @click="selectBridgeSupport( bridge_support )"
                                             />
                                         </div>
-                                        <figcaption :class="[ 'text-center', 'top2', bridge_support.id == $store.state.bridge_supportID ? 'text-success' : 'text-danger']"> {{ bridge_support.height }} mm {{ $t( "stepponte.from-drawer-bottom" )}}</figcaption>
+                                        <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', bridge_support.id == $store.state.bridge_supportID ? 'text-success' : 'text-danger']"> {{ bridge_support.height }} mm {{ $t( "stepponte.from-drawer-bottom" )}}</figcaption>
                                     </figure>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                              :data-depth="bridge.depth"
                                         />
                                     </div>
-                                    <figcaption :class="[ 'text-center', 'top2', bridge.id == $store.state.bridge_ID ? 'text-success' : 'text-danger']"> {{ $t( "stepponte.bridge_elem_label" ) }} H {{ bridge.depth }} mm </figcaption>
+                                    <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', bridge.id == $store.state.bridge_ID ? 'text-success' : 'text-danger']"> {{ $t( "stepponte.bridge_elem_label" ) }} H {{ bridge.depth }} mm </figcaption>
                                 </figure>
 
                             </div>
