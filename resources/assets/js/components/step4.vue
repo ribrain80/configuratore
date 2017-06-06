@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="col-lg-11 col-lg-offset-1">
                                     <span class="help-block">
-                                        Ponte {{ $store.state.bridge_orientation | translate }}
+                                        {{ $t( "stepponte.bridge_elem_label") }} {{ $store.state.bridge_orientation | translate }}
                                     </span>
                                 </div>
                             </div>
