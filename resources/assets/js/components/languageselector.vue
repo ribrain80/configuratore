@@ -31,7 +31,7 @@ export default {
             languages:[
                 {label:'Italiano ',code:'it',short:'Ita'},
                 {label:'English ',code:'en',short:'Eng'},
-                {label:'Español ',code:'es',short:'Epa'},
+                {label:'Español ',code:'es',short:'Esp'},
                 {label:'Français ',code:'fr',short:'Fra'},
                 {label:'Português ',code:'pt',short:'Por'},
                 {label:'Deutsch ',code:'de',short:'Deu'},
@@ -61,7 +61,9 @@ export default {
             this.$store.commit( "setLanguage", newLanguage );
         }
     },
-    mounted() {
+
+    mounted () {
+        
         //Check if the choosed the language in other sessions
         let fromCookie = this.$cookie.get('langCookie');
         if (fromCookie) {
