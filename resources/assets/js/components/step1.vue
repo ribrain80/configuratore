@@ -21,7 +21,18 @@
         </div>
 
         <!-- Info image -->
-        <div class="col-lg-6 col-md-6 col-sm-6 no-padding" id="step1-description-image"></div>
+        <div class="col-lg-6 col-md-6 col-sm-6 no-padding" id="step1-description-image">
+            
+            <div id="step1-carousel" class="carousel slide">
+
+                <div class="carousel-inner" role="listbox">
+                    <div :class="['item', index == 0 ? 'active' : '']" v-for="( image, index ) in $store.state.gallery_images">
+                      <img class="img-responsive" :src="image.src" :alt="image.src">
+                    </div>  
+                </div>
+            </div>
+                      
+        </div>
 
     </div>
 
@@ -43,6 +54,31 @@ export default {
      */    
     data: function() { return {} },
 
+    watch: {
+
+      /**
+       * language watcher
+       * @return {void}
+       */
+      gallery_images: function () {
+
+        // # Update Drawer on language change
+        // # true prevent the next steps data to be cleaned up
+        this.carouselInit();
+      }
+    },  
+
+    computed: {
+
+        /**
+         * language "getter"
+         * @return {string}
+         */
+        gallery_images: function() {
+          return this.$store.state.gallery_images;
+        }
+    },
+
     /**
      * Object methods
      * @type {Object}
@@ -60,6 +96,62 @@ export default {
 
             // # Push me to the next step
         	this.$router.push( { path: "/split/step2" } );
+        },
+
+        carouselInit: function() {
+
+            $('.carousel').carousel({
+                interval: 3000,
+                wrap: true,
+                pause: null
+            });
+
+            //$('.carousel').carousel('cycle');  
+
+            // # Lightgallery binding
+            $( "#gallery-trigger" ).on( "click", function () {
+                
+                // # Init
+                $( this ).lightGallery({
+
+                    /**
+                     * Custom next arrow html
+                     * @type {String}
+                     */
+                    nextHtml: "<img src='/images/gallery/freccia-galleria-dx.png'>",
+
+                    /**
+                     * Custom prev arrow html
+                     * @type {String}
+                     */
+                    prevHtml: "<img src='/images/gallery/freccia-galleria-sx.png'>",
+
+                    /**
+                     * No donwload button
+                     * @type {Boolean}
+                     */
+                    download: false,
+
+                    /**
+                     * No toggle thumb button
+                     * @type {Boolean}
+                     */
+                    toogleThumb: true,
+
+                    /**
+                     * Dynamic images
+                     * @type {Boolean}
+                     */
+                    dynamic: true,
+
+                    /**
+                     * Gallery elements
+                     * @type {Array}
+                     */
+                    dynamicEl: self.$store.state.gallery_images
+                })
+
+            });                      
         }
     },
 
@@ -72,54 +164,6 @@ export default {
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
         this.$store.commit( "setCurrentStep", 1 );
-
-        // # Scope workaround
-        var self = this;
-
-        // # Lightgallery binding
-        $( "#gallery-trigger" ).on( "click", function () {
-            
-            // # Init
-            $( this ).lightGallery({
-
-                /**
-                 * Custom next arrow html
-                 * @type {String}
-                 */
-                nextHtml: "<img src='/images/gallery/freccia-galleria-dx.png'>",
-
-                /**
-                 * Custom prev arrow html
-                 * @type {String}
-                 */
-                prevHtml: "<img src='/images/gallery/freccia-galleria-sx.png'>",
-
-                /**
-                 * No donwload button
-                 * @type {Boolean}
-                 */
-                download: false,
-
-                /**
-                 * No toggle thumb button
-                 * @type {Boolean}
-                 */
-                toogleThumb: true,
-
-                /**
-                 * Dynamic images
-                 * @type {Boolean}
-                 */
-                dynamic: true,
-
-                /**
-                 * Gallery elements
-                 * @type {Array}
-                 */
-                dynamicEl: self.$store.state.gallery_images
-            })
-
-        });
 
         // # Sidebar
         let pos = 0;
