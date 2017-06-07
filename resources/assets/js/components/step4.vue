@@ -1087,7 +1087,7 @@ export default {
                        
                         o.set({
                             opacity: .5,
-                            backgroundColor : "#ededed",
+                            backgroundColor : "#ffcc00",
                             active: true
                         });                         
                     break;
@@ -1269,7 +1269,7 @@ export default {
                            
                             activeObj.set({
                                 opacity: .5,
-                                backgroundColor : "#ffcc00",
+                                backgroundColor : "#ff0000",
                             }); 
 
                             activeObj.dirtystate = true;
@@ -1773,7 +1773,7 @@ export default {
                
                 oImg.set({
                     opacity: .5,
-                    backgroundColor : "#ededed"
+                    backgroundColor : "#ffcc00"
                 });
 
                 // # Pixel precision
@@ -1830,7 +1830,7 @@ export default {
                     if( !this.dirtystate ) {
                         oImg.set({
                             opacity: .5,
-                            backgroundColor : "#ededed"
+                            backgroundColor : "#ffcc00"
                         });
                     }
                 });

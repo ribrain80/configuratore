@@ -606,8 +606,8 @@ input {
 }
 
 .edge_front, .edge_back{
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   width: 200px;
   font-family: "FranklinGothicURW-Dem";
   font-weight: 500;
@@ -615,6 +615,19 @@ input {
 .edge_left, .edge_right{
   width: 25px;
   height: 200px;
+}
+
+.edge_left {
+  margin-left: 3%;
+}
+
+.edge_right {
+  margin-right: 3%;
+}
+
+.edge_back {
+  width: 94%!important;
+  margin-left: 3%;
 }
 
 .top10 { margin-top: 10%; }
