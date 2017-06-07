@@ -6,12 +6,12 @@
     <div class="row">
         
         <!-- Full width -->
-        <div class="col-lg-6 col-md-6 col-sm-6 content-flex" id="step1-content" >
+        <div class="col-lg-6 col-md-6 col-sm-6 content-flex" id="step1-content">
 
             <!-- Text -->
             <div class="content-flex-scrollable" v-html="$t( 'step1.product_description_text' )"></div>
 
-            <!-- Next button -->
+            <!-- Next button row -->
             <div class="row actions-toolbar">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <button class="btn btn-danger btn-abs" @click.stop.prevent="check">{{ 'avanti' | translate }}</button>
@@ -23,13 +23,16 @@
         <!-- Info image -->
         <div class="col-lg-6 col-md-6 col-sm-6 no-padding" id="step1-description-image">
             
+            <!-- Right side automatic carousel -->
             <div id="step1-carousel" class="carousel slide">
 
                 <div class="carousel-inner" role="listbox">
+                    <!-- Items are taken from the server -->
                     <div :class="['item', index == 0 ? 'active' : '']" v-for="( image, index ) in $store.state.gallery_images">
                       <img class="img-responsive" :src="image.src" :alt="image.src">
                     </div>  
                 </div>
+
             </div>
                       
         </div>
@@ -54,28 +57,36 @@ export default {
      */    
     data: function() { return {} },
 
+    /**
+     * Component Data watchers
+     * @type {Object}
+     */
     watch: {
 
-      /**
-       * language watcher
-       * @return {void}
-       */
-      gallery_images: function () {
+        /**
+        * gallery_images watcher
+        * @return {void}
+        */
+        gallery_images: function () {
 
-        // # Update Drawer on language change
-        // # true prevent the next steps data to be cleaned up
-        this.carouselInit();
-      }
+            // # Once images are loaded and the mutation changes their stored value
+            // # init the carousel ( and bind the gallery onclick event at the same time )
+            this.carouselInit();
+        }
     },  
 
+    /**
+     * Computed properties
+     * @type {Object}
+     */
     computed: {
 
         /**
-         * language "getter"
+         * gallery_images "getter"
          * @return {string}
          */
         gallery_images: function() {
-          return this.$store.state.gallery_images;
+            return this.$store.state.gallery_images;
         }
     },
 
@@ -98,21 +109,38 @@ export default {
         	this.$router.push( { path: "/split/step2" } );
         },
 
+        /**
+         * Actually starts the right ide carousel and initilize the gallery
+         * @return {void}
+         */
         carouselInit: function() {
 
-            $('.carousel').carousel({
-                interval: 3000,
-                wrap: true,
-                pause: null
-            });
+            $( ".carousel" ).carousel( {
 
-            //$('.carousel').carousel('cycle');  
+                /**
+                 * time between slides
+                 * @type {Number}
+                 */
+                interval: 3000,
+
+                /**
+                 * cycle carousel
+                 * @type {Boolean}
+                 */
+                wrap: true,
+
+                /**
+                 * no pause on hover
+                 * @type {string|null}
+                 */
+                pause: null
+            } );
 
             // # Lightgallery binding
             $( "#gallery-trigger" ).on( "click", function () {
                 
                 // # Init
-                $( this ).lightGallery({
+                $( this ).lightGallery( {
 
                     /**
                      * Custom next arrow html
@@ -149,7 +177,8 @@ export default {
                      * @type {Array}
                      */
                     dynamicEl: self.$store.state.gallery_images
-                })
+
+                } );
 
             });                      
         }
@@ -176,5 +205,3 @@ export default {
     }
 }
 </script>
-
-
