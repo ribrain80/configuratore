@@ -1,9 +1,3 @@
-<style scoped>
-    .tab-pane {
-        text-align: center;
-    }
-</style>
-
 <template>
 
 <div class="container-fluid">
@@ -57,7 +51,7 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">{{ $t( 'attenzione' ) }}</h4>
                 </div>
-                <div class="modal-body">{{ $t( "step4.deletion-advice" ) }}</div>
+                <div class="modal-body" id="deletion-alert-message">{{ $t( "step4.deletion-advice" ) }}</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-back" data-dismiss="modal">{{ $t( "cancel" ) }}</button>
                     <button type="button" class="btn btn-danger" @click="deleteDivider()" v-html="allselected ? $t( 'step4.deletion-message-multi' ) : $t( 'step4.deletion-message-single' )"></button>
@@ -620,11 +614,12 @@ export default {
 
                 // # Lightgallery common settings
                 lightgalleryOptions: {
-                  download: false,
-                  thumbnail: false,
-                  dynamic: true,
-                  counter: false,
-                  getCaptionFromTitleOrAlt: true
+
+                    download: false,
+                    thumbnail: false,
+                    dynamic: true,
+                    counter: false,
+                    getCaptionFromTitleOrAlt: true
                 }
             },
 
@@ -654,6 +649,10 @@ export default {
      */
     computed: {
 
+        /**
+         * Check if the selected object ( if any ) is a divider
+         * @return {Boolean}
+         */
         isDividerSelected: function() {
 
             if( null != this.$store.state.objectWorkingOn || undefined == this.$store.state.objectWorkingOn ) {
@@ -674,7 +673,7 @@ export default {
          */
         availableDividerCategories: function () {
 
-            // # Get max value - value is in mm, category id in decimillimeters
+            // # Get max value - value is in mm, category is in decimillimeters
             let max = parseFloat( this.$store.state.dimensions.shoulder_height ) * 10;
 
             // # Filter array
@@ -689,6 +688,7 @@ export default {
          * @return {Boolean}
          */
         canAddBridges: function () {
+
             let availableSpace = ( this.$store.state.bridge_orientation == 'H' ) ? this.real_height : this.real_width;
             let busySpace = this.$store.state.bridges_selected.length * this.tighterBridgeWidth;
 
@@ -738,13 +738,14 @@ export default {
 
         showTextureInfo: function( event ) {
 
+            let target = $( event.target );
+
             try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
+                target.data( "lightGallery" ).destroy( true );
                 // $( this ).unbind( "click" );
             } catch( e ) {
                 // Do nothing
             }
-
 
             // # Get related image element
             let related_image = $( event.target ).next();
@@ -753,39 +754,45 @@ export default {
             let bridgesGalleryOptions = this.config.lightgalleryOptions;
             bridgesGalleryOptions.dynamicEl = [ { 
                 src: related_image.attr( "src" )
-                // subHtml: "TEST"//related_image.attr( "alt" )
             } ];
 
             // # Init
-            $( event.target ).lightGallery( bridgesGalleryOptions ) ;
+            target.lightGallery( bridgesGalleryOptions ) ;
         },
 
 
         /**
          *  Return the first item in list texture depending on parameters
          */
-        getDefaultDividerImg: function(divider,cat,dimension,horizontal) {
-             let _dividerCategoryObj = this.$store.state.dividerTypes.dividers[cat];
-             let _dividerDimension = _dividerCategoryObj[dimension];
-             let _obj = _dividerDimension.items[0];
-             return (horizontal)? _obj.textureH : _obj.textureV;
+        getDefaultDividerImg: function( divider, cat, dimension, horizontal ) {
+            let _dividerCategoryObj = this.$store.state.dividerTypes.dividers[ cat ];
+            let _dividerDimension = _dividerCategoryObj[ dimension ];
+            let _obj = _dividerDimension.items[ 0 ];
+            return ( horizontal ) ? _obj.textureH : _obj.textureV;
         },
 
+        /**
+         * [touchHandler description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         touchHandler: function ( event ) {
-            var touch = event.changedTouches[0];
 
-            var simulatedEvent = document.createEvent("MouseEvent");
-                simulatedEvent.initMouseEvent({
+            let touch = event.changedTouches[ 0 ];
+
+            let simulatedEvent = document.createEvent( "MouseEvent" );
+            simulatedEvent.initMouseEvent({
                 touchstart: "mousedown",
                 touchmove: "mousemove",
                 touchend: "mouseup"
-            }[event.type], true, true, window, 1,
+            }[ event.type ], true, true, window, 1,
                 touch.screenX, touch.screenY,
                 touch.clientX, touch.clientY, false,
                 false, false, false, 0, null);
 
-            touch.target.dispatchEvent(simulatedEvent);
-            if (event.target.id == 'draggable_item' ) {
+            touch.target.dispatchEvent( simulatedEvent );
+
+            if ( event.target.id == 'draggable_item' ) {
                 event.preventDefault();
             }
         },
@@ -857,15 +864,7 @@ export default {
 
             console.log( "touch supported: " +  fabric.isTouchSupported );
 
-            /*if( fabric.isTouchSupported ) {
-                document.addEventListener("touchstart", this.touchHandler, true);
-                document.addEventListener("touchmove", this.touchHandler, true);
-                document.addEventListener("touchend", this.touchHandler, true);
-                document.addEventListener("touchcancel", this.touchHandler, true); 
-            }*/
-
             // # Last chance 
-            // # FIX ME
             this.canvas.on( "mouse:up", () => {
                 this.finalCollisionDetectionManagement();
             });
@@ -892,7 +891,7 @@ export default {
                 try {   
 
                     // # Active object caching
-                    var activeObj = this.canvas.getActiveObject();
+                    let activeObj = this.canvas.getActiveObject();
 
                     // # Avoid null pbjects
                     if( null == activeObj ) {
@@ -961,7 +960,9 @@ export default {
 
             // # Force rendering
             this.canvas.renderAll();
-            this.$store.dispatch('genDrawer',this.$store.state.drawertype);
+
+            // # Dispatch
+            this.$store.dispatch( 'genDrawer', this.$store.state.drawertype );
         },
 
         /**
@@ -996,10 +997,9 @@ export default {
          */
         alertDividerDeletion: function() {
 
-            console.log( this.allselected );
             if( this.allselected ) {
                 console.log( "ALL");
-                $( "#deletion-alert-modal" ).find( ".modal-body" ).text( Vue.i18n.translate( "step4.delete_all_advice" ) );
+                $( "#deletion-alert-message" ).text( Vue.i18n.translate( "step4.delete_all_advice" ) );
                 $( "#deletion-alert-modal" ).modal();
                 return;
             }
@@ -1008,7 +1008,7 @@ export default {
             var activeObj = this.canvas.getActiveObject();
             if( null != activeObj && activeObj.get( 'type' ) == "divider" ) {
                 console.log( "ONE");
-                $( "#deletion-alert-modal" ).find( ".modal-body" ).text( Vue.i18n.translate( "step4.delete_single_advice" ) );
+                $( "#deletion-alert-message" ).text( Vue.i18n.translate( "step4.delete_single_advice" ) );
                 $( "#deletion-alert-modal" ).modal();
                 return;
             }
@@ -1041,7 +1041,7 @@ export default {
 
             }); 
 
-            this.canvas.discardActiveObject()
+            this.canvas.discardActiveObject();
             this.canvas.renderAll();
             this.allselected = false;           
         },
@@ -1144,7 +1144,7 @@ export default {
                     var id = activeObj.get( 'id' );
 
                     // # Remove ID from selected dividers list
-                    this.$store.dispatch( "remove3dDivider", id);
+                    this.$store.dispatch( "remove3dDivider", id );
 
                     // # Clean up pointers
                     this.canvas.discardActiveObject();
@@ -1171,15 +1171,10 @@ export default {
         finalCollisionDetectionManagement: function () {
 
             // # Cache active object
-            var activeObj = this.canvas.getActiveObject();
+            let activeObj = this.canvas.getActiveObject();
                 
-            // # No selected Item, return
-            if( null == activeObj ) {
-                return;
-            }
-
-            // # No type defined, return
-            if( undefined == activeObj.type ) {
+            // # No selected Item or No type defined, return
+            if( null == activeObj || undefined == activeObj.type ) {
                 return;
             }
 
@@ -1273,6 +1268,7 @@ export default {
                             }); 
 
                             activeObj.dirtystate = true;
+
                             this.canvas.renderAll();
                             return;
                         }
@@ -1292,6 +1288,7 @@ export default {
                             backgroundColor : "#ededed",
                             active: false
                         }); 
+
                         activeObj.dirtystate = false;
                         this.canvas.renderAll(); 
                     }     
@@ -1299,37 +1296,49 @@ export default {
 
                 this.canvas.forEachObject( ( obj ) => {
 
-                    if( obj.dirtystate ) {
-
-                        let actuallyCollides = false;
-
-                        this.canvas.forEachObject( ( otherObj ) => {
-
-                            if( obj == otherObj ) {
-                                return;
-                            }
-
-                            if( obj.intersectsWithObject( otherObj ) ) {
-                                actuallyCollides = true;
-                                return;
-                            }
-
-                        });
-
-                        if( !actuallyCollides ) {
-                            /*
-                            obj.setStroke( "#222222" );
-                            obj.setStrokeWidth( 2 );
-                            */
-                            obj.set({
-                                opacity: 1,
-                                backgroundColor : "#ededed",
-                                active: false
-                            }); 
-                            obj.dirtystate = false;
-                            this.canvas.renderAll();                             
-                        }
+                    // # object is in a clean situation
+                    if( !obj.dirtystate ) {
+                        return;
                     }
+
+                    // # Starting point
+                    let actuallyCollides = false;
+
+                    // # check this object against all the others
+                    this.canvas.forEachObject( ( otherObj ) => {
+
+                        // # Same, skip
+                        if( obj == otherObj ) {
+                            return;
+                        }
+
+                        // # Check actual collision state
+                        if( obj.intersectsWithObject( otherObj ) ) {
+
+                            // # Actually collides
+                            actuallyCollides = true;
+
+                            return;
+                        }
+
+                    });
+
+                    if( !actuallyCollides ) {
+                        /*
+                        obj.setStroke( "#222222" );
+                        obj.setStrokeWidth( 2 );
+                        */
+                        obj.set({
+                            opacity: 1,
+                            backgroundColor : "#ededed",
+                            active: false
+                        }); 
+
+                        obj.dirtystate = false;
+
+                        this.canvas.renderAll();                             
+                    }
+                    
                 });              
             }
         },
@@ -1391,6 +1400,11 @@ export default {
             console.log( "Final RATIO: " + this.config.ratio );
         },  
 
+        /**
+         * [selectBorder description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         selectBorder: function( event ) {
 
             // # deselect All dividers
@@ -1402,22 +1416,35 @@ export default {
 
             console.log( this.$store.state.objectWorkingOn );
 
+            // # Choose related tab
             $( '#tab-container a[href="#colors"]' ).tab( 'show' );
         },  
 
+        /**
+         * [selectBridge description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         selectBridge: function( event ) {
 
             // # deselect All dividers
             this.deselectAll();
+
             // this.selectedItem = { type: "bridge", id: this.$store.state.bridges_selected[ 0 ].id };
             this.$store.commit('setobjectWorkingOn',{type:'bridge',id:this.$store.state.bridge_ID,'obj':null});
 
+            // # Choose related tab
             $( '#tab-container a[href="#bridges-tab"]' ).tab( 'show' );
         },
 
-
+        /**
+         * [_updateDividerSku description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         _updateDividerSku: function ( event ) {
 
+            // # COMMENT THIS
             console.log( event );
 
             let payload = {
@@ -1432,20 +1459,21 @@ export default {
                 url: event.target.src
             });
 
-            this.$store.commit('setobjectWorkingOn', objectWorkingOn );
-
+            this.$store.commit( 'setobjectWorkingOn', objectWorkingOn );
 
             let _texture = event.target.dataset.img;
             var self = this;
             let img = this.$store.state.objectWorkingOn.obj.getElement();
             img.src = event.target.dataset.img;
             img.crossOrigin = "Anonymous";
-            img.onload = () => {this.canvas.renderAll();};
+            img.onload = () => { this.canvas.renderAll(); };
 
 
-            if (this.allselected) {
-                //Change all canvas object texture
+            if ( this.allselected ) {
+
+                // # Change all canvas object texture
                 this.canvas.forEachObject( ( obj ) => {
+
                     let lookin4 = _texture.replace(/^.*[\\\/]/, '');
                     if( undefined == obj.type || obj.type != "divider" ) {
                         return;
@@ -1455,20 +1483,18 @@ export default {
                     let divsBySubCat = divsByCat[obj.subCategory];
                     let _items = divsBySubCat['items'];
 
-                    let _obj = _items.filter((cur)=>{
-                        let testTexture = cur.baseTexture.replace(/^.*[\\\/]/, '');
-
-                        return lookin4 == testTexture.replace('.jpg','.png');
-                    })[0];
-
+                    let _obj = _items.filter( ( cur ) => {
+                        let testTexture = cur.baseTexture.replace( /^.*[\\\/]/, '' );
+                        return lookin4 == testTexture.replace( '.jpg','.png' );
+                    })[ 0 ];
 
 
                     if (!_obj) {return;}
+
                     let textureToApply = (_obj.orrientation=="V")?_obj.textureV:_obj.textureH;
                     let img = obj.getElement();
                     img.src = textureToApply;
                     img.crossOrigin = "Anonymous";
-
 
                     img.onload = function () {
                         self.canvas.renderAll();
@@ -1477,6 +1503,7 @@ export default {
                 });
 
                 this.$store.dispatch( "updateAllDividerTexture", event.target.dataset.sku );
+
             } else {
                 this.$store.commit( "updateDividerSku", payload );
                 this.$store.dispatch( "update3dDividerTexture", payload );
@@ -1485,14 +1512,19 @@ export default {
 
         },
 
+        /**
+         * [_updateBorder description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         _updateBorder:function (e) {
 
+            // # COMMENT THIS
             let payload = {
                 id:this.$store.state.objectWorkingOn.id,
                 image:e.target.src,
                 dbId: e.target.dataset.sku  //This is a fake sku => just the db id!!!!
             };
-
 
             this.$store.state.objectWorkingOn.obj.style.backgroundImage = "url("+e.target.src+")";
             if (this.$store.state.objectWorkingOn.id=='background') {
@@ -1503,8 +1535,15 @@ export default {
             this.$store.dispatch( 'update3dDrawerPartTexture', payload);
         },
 
-
+        /**
+         * [_updateBridges description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         _updateBridges: function (e) {
+
+            // # COMMENT THIS
+            
             $('.bridge_representation').css('background-image',"url("+e.target.src+")");
             let payload = {
                 sku: e.target.dataset.sku,
@@ -1513,7 +1552,14 @@ export default {
             this.$store.dispatch('changeBridgeSku',payload);
         },
 
+        /**
+         * [_updateSupports description]
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
         _updateSupports: function (e) {
+
+            // # COMMENT THIS
             this.$store.dispatch('update3dSupportTexture',e.target.dataset.sku);
         },
 
@@ -1525,10 +1571,10 @@ export default {
         handleMoving: function ( options ) {
 
             // # Set element Coords
-            options.target.setCoords();
+            // options.target.setCoords();
 
             // # Collision mnagement
-            this._preventCollision(options);
+            this._preventCollision( options );
 
             // # get the new coords
             let coords = options.target.getCenterPoint();
@@ -1545,8 +1591,10 @@ export default {
         _preventCollision: function ( options ) {
 
             console.log( "get starting point coords" );
+
+            // # Set element Coords
             options.target.setCoords();
-            var starting_point= options.target.calcCoords().bl;
+            var starting_point = options.target.calcCoords().bl;
 
             // # lock container
             // # Don't allow objects off the canvas
@@ -1583,7 +1631,7 @@ export default {
                 // # This snaps objects to each other horizontally
 
                 // If bottom points are on same Y axis
-                if(Math.abs((options.target.getTop() + options.target.getHeight()) - (obj.getTop() + obj.getHeight())) < this.snap) {
+                if( Math.abs((options.target.getTop() + options.target.getHeight()) - (obj.getTop() + obj.getHeight())) < this.snap ) {
                     // this.snap target BL to object BR
                     if(Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {
                         options.target.setLeft(obj.getLeft() + obj.getWidth());
@@ -1591,22 +1639,22 @@ export default {
                     }
 
                     // this.snap target BR to object BL
-                    if(Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {
+                    if( Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap ) {
                         options.target.setLeft(obj.getLeft() - options.target.getWidth());
                         options.target.setTop(obj.getTop() + obj.getHeight() - options.target.getHeight());
                     }
                 }
 
                 // If top points are on same Y axis
-                if(Math.abs(options.target.getTop() - obj.getTop()) < this.snap) {
+                if( Math.abs(options.target.getTop() - obj.getTop()) < this.snap ) {
                     // this.snap target TL to object TR
-                    if(Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap) {
+                    if( Math.abs(options.target.getLeft() - (obj.getLeft() + obj.getWidth())) < this.snap ) {
                         options.target.setLeft(obj.getLeft() + obj.getWidth());
                         options.target.setTop(obj.getTop());
                     }
 
                     // this.snap target TR to object TL
-                    if(Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap) {
+                    if( Math.abs((options.target.getLeft() + options.target.getWidth()) - obj.getLeft()) < this.snap ) {
                         options.target.setLeft(obj.getLeft() - options.target.getWidth());
                         options.target.setTop(obj.getTop());
                     }
@@ -1615,30 +1663,30 @@ export default {
                 // this.snap objects to each other vertically
 
                 // If right points are on same X axis
-                if(Math.abs((options.target.getLeft() + options.target.getWidth()) - (obj.getLeft() + obj.getWidth())) < this.snap) {
+                if( Math.abs((options.target.getLeft() + options.target.getWidth()) - (obj.getLeft() + obj.getWidth())) < this.snap ) {
                     // this.snap target TR to object BR
-                    if(Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {
+                    if( Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap ) {
                         options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());
                         options.target.setTop(obj.getTop() + obj.getHeight());
                     }
 
                     // this.snap target BR to object TR
-                    if(Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {
+                    if( Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap ) {
                         options.target.setLeft(obj.getLeft() + obj.getWidth() - options.target.getWidth());
                         options.target.setTop(obj.getTop() - options.target.getHeight());
                     }
                 }
 
                 // If left points are on same X axis
-                if(Math.abs(options.target.getLeft() - obj.getLeft()) < this.snap) {
+                if( Math.abs(options.target.getLeft() - obj.getLeft()) < this.snap ) {
                     // this.snap target TL to object BL
-                    if(Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap) {
+                    if( Math.abs(options.target.getTop() - (obj.getTop() + obj.getHeight())) < this.snap ) {
                         options.target.setLeft(obj.getLeft());
                         options.target.setTop(obj.getTop() + obj.getHeight());
                     }
 
                     // this.snap target BL to object TL
-                    if(Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap) {
+                    if( Math.abs((options.target.getTop() + options.target.getHeight()) - obj.getTop()) < this.snap ) {
                         options.target.setLeft(obj.getLeft());
                         options.target.setTop(obj.getTop() - options.target.getHeight());
                     }
@@ -1701,7 +1749,6 @@ export default {
             }
 
             e.dataTransfer.dropEffect = 'copy'; // See the section on the DataTransfer object.
-            // NOTE: comment above refers to the article (see top) - natchiketa
 
             return false;
         },
@@ -1751,7 +1798,6 @@ export default {
                 oImg.category = _divider.category;
                 oImg.subCategory = _divider.subCategory;
 
-
                 let posX = (e.offsetX)?e.offsetX:e.layerX;
                 let posY = (e.offsetY)?e.offsetY:e.layerY;
 
@@ -1764,6 +1810,7 @@ export default {
                 
                 // # Set controls off
                 oImg.hasControls = false;
+                oImg.hasBorders  = false;
 
                 // # borders off
                /* oImg.hasBorders  = true;
@@ -1879,7 +1926,7 @@ export default {
                 let vertical_alert = this.$store.getters.bridgeSupportVerticalAlert;
                 if ( vertical_alert ) {
                     // # Modal Error display
-                    this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.vertical-space-advice" ) );
+                    $( "#generic-alert-message" ).text( Vue.i18n.translate( "step4.vertical-space-advice" ) );
                     this.error_modal.modal();                      
                 }
             };
@@ -1926,14 +1973,12 @@ export default {
             this.$store.dispatch( "add3DBridge" );
         },
 
-
-
-
         /**
          * [removeBridge description]
          * @return {[type]} [description]
          */
         removeBridge: function() {
+
             this.$store.dispatch( "remove3DBridge" );
 
             if( this.$store.state.bridges_selected.length > 1 ) {
@@ -1961,7 +2006,7 @@ export default {
             if( this.$store.state.dividers_selected.length == 0  ) {
 
                 // # Modal Error display
-                this.error_modal.find( '.modal-body' ).text( Vue.i18n.translate( "step4.nodividers-advice" ) );
+                $( "#generic-alert-message" ).text( Vue.i18n.translate( "step4.nodividers-advice" ) );
                 this.error_modal.modal();  
 
                 // # Step4 is completed, everything's ok
@@ -2068,44 +2113,44 @@ export default {
 
             let out = {};
             out.bordersStatus = this.$store.state.borders.background &&
-                this.$store.state.borders.back &&
-                this.$store.state.borders.front &&
-                this.$store.state.borders.left &&
-                this.$store.state.borders.right;
+                                this.$store.state.borders.back &&
+                                this.$store.state.borders.front &&
+                                this.$store.state.borders.left &&
+                                this.$store.state.borders.right;
             out.noCollision = true;
 
             this.canvas.forEachObject( ( obj ) => {
 
-                if( obj.dirtystate ) {
-
-                    let actuallyCollides = false;
-
-                    this.canvas.forEachObject( ( otherObj ) => {
-
-                        if( obj == otherObj ) {
-                            return;
-                        }
-
-                        if( obj.intersectsWithObject( otherObj ) ) {
-                            actuallyCollides = true;
-                            out.noCollision = false;
-                            return;
-                        }
-
-                    });
-
-                    if( !actuallyCollides ) {
-                        obj.dirtystate = false;
-                    }
+                if( !obj.dirtystate ) {
+                    return;
                 }
+
+                let actuallyCollides = false;
+
+                this.canvas.forEachObject( ( otherObj ) => {
+
+                    if( obj == otherObj ) {
+                        return;
+                    }
+
+                    if( obj.intersectsWithObject( otherObj ) ) {
+
+                        actuallyCollides = true;
+                        out.noCollision = false;
+                        return;
+                    }
+
+                });
+
+                if( !actuallyCollides ) {
+
+                    obj.dirtystate = false;
+                }
+
             });
 
             return out;
         },
-
-
-
-
 
     },
 
@@ -2147,20 +2192,8 @@ export default {
         
         this.$store.commit( "setComponentHeader",  "step4.header-title" );
         this.$store.commit( "setCurrentStep", 4 );
+
         this.initCanvas();
-
-        if( !this.$store.state.hint_viewed ) {
-
-          // # General settings + image src
-         /* let hintGalleryOptions = this.config.lightgalleryOptions;
-          hintGalleryOptions.dynamicEl = [ { src: "/images/others/istruzioni_gestione_divisorio.gif" } ];
-
-          // # Init
-          $( this ).lightGallery( hintGalleryOptions ) ;
-
-          this.$store.commit( "setHintViewed", true );*/
-
-        }
 
         console.log("Step4 mounted!");
 
@@ -2168,14 +2201,13 @@ export default {
         // SET SIDEBAR ITEM ACTIVE - BEGIN
         
         let pos = 0;
-        let $pointer = $(".navigator .pointer-navigator"); 
-        let $nav = $(".navigator #nav").find("li");
-        let $active = $nav.find("a.router-link-active");
+        let $pointer = $( ".navigator .pointer-navigator" ); 
+        let $nav = $( ".navigator #nav" ).find( "li" );
+        let $active = $nav.find( "a.router-link-active" );
         
-        pos = parseInt($active.parent("li").position().top);
-        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+        pos = parseInt( $active.parent( "li" ).position().top );
+        $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
     }
 
 }
-
 </script>

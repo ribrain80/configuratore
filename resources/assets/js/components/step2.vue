@@ -21,21 +21,8 @@
         </div>
     </div>
     
+    <!-- Step2 Main content -->
     <div id="step2-content" class="content-flex content-flex-scrollable content-flex-padding">
-    
-      <!-- Information alert bootstrap alert plugin -->
-      <!--<div class="row top1">
-    
-
-          <transition name="fade">
-            <div class="col-lg-12" v-if="$store.state.drawertype == 0">
-                <div class="alert alert-warning" role="alert">
-                    <strong>{{ $t( 'attenzione' ) }}</strong> {{ $t( 'step2.warning' ) }}
-                </div>
-            </div>
-          </transition>
-          
-      </div>-->
 
       <div class="row top2">
 
@@ -43,7 +30,7 @@
 
               <div class="col-lg-4 col-md-4 col-sm-4" v-if="type.length == 1">
 
-                  <!-- Drawer type -->
+                  <!-- Drawer type no category -->
                   <figure :class="[ 'drawer-container', 'text-center', ( type[ 0 ].id == $store.state.drawertype ) ? 'image_selected' : '' ]" >
                       <figcaption> {{ type[ 0 ].description  | translate}} </figcaption>
                       <div class="drawer-container-image">
@@ -59,7 +46,7 @@
                   
               <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" v-else>
 
-                  <!-- Drawer category -->
+                  <!-- Drawer type with category -->
                   <figure :class="[ 'drawer-container', 'text-center', ( 1 == $store.state.drawer_type_category ) ? 'image_selected' : '' ]">
                       <figcaption> {{ type[ 0 ].category  | translate}} </figcaption>
                       <div class="drawer-container-image">
@@ -76,6 +63,7 @@
       </div>
 
       <transition v-on:enter="slideFadeIn" v-on:leave="fadeSlideOut">
+
         <div class="row top5" v-for="( type,category ) in $store.state.drawerTypes" v-if="type.length > 1" v-show="$store.state.drawer_type_category == 1">
 
             <div class="col-lg-4 col-md-4 col-sm-4" v-for="ctype in type">
@@ -130,7 +118,7 @@ export default {
      */   
     data: function() {
         return {
-          error_modal: $( "#error-modal" )
+          error_modal:  $( "#error-modal" )
         }
     },
 
@@ -216,7 +204,7 @@ export default {
             this.$store.commit( "setTwocompleted", false );
 
             // # Modal Error display
-            this.error_modal.find( ".modal-body" ).text( Vue.i18n.translate( "step2.modal-warning" ) );
+            $( "#generic-alert-message" ).text( Vue.i18n.translate( "step2.modal-warning" ) );
             this.error_modal.modal();
 
             // # Error

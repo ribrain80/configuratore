@@ -48,7 +48,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">@{{ $t( 'attenzione' ) }}</h4>
                     </div>
-                    <div class="modal-body"  id="generic-alert-message">
+                    <div class="modal-body" id="generic-alert-message">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>

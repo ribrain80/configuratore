@@ -269,6 +269,10 @@ strong, .component-header, .ha-lineabox, .bridge-counter, #tab-container {
   flex-direction: column;
 }
 
+#step4-content .tab-pane {
+  text-align: center;
+}
+
 .content-flex > .row:not(.actions-toolbar) {
   margin-bottom: 20px;
 }

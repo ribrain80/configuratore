@@ -196,100 +196,100 @@ export default {
      */
     data: function() { 
 
-      return {
+        return {
 
-          // # Error modal selector caching
-          error_modal: $( "#error-modal" ),
+            // # Error modal selector caching
+            error_modal: $( "#error-modal" ),
 
-          // # Container element
-          container: {},
+            // # Container element
+            container: {},
 
-          // # sh lihtgallery object
-          sh_gallery: {},
+            // # sh lihtgallery object
+            sh_gallery: {},
 
-          // # Config vars
-          config: {
+            // # Config vars
+            config: {
 
-              // # General settings
-              line_stroke: '#666666',
-              text_stroke: '#666666',
-              font_size: 12,
-              text_font_size: 12,
-              font_family: 'FranklinGothicURW-Boo',
-              font_weight: 300,
-              measure_label: "mm",
+                // # General settings
+                line_stroke: '#666666',
+                text_stroke: '#666666',
+                font_size: 12,
+                text_font_size: 12,
+                font_family: 'FranklinGothicURW-Boo',
+                font_weight: 300,
+                measure_label: "mm",
 
-              // # Rect related info
-              rect_stroke: '#999999',
-              rect_linewidth: 5,
-              rect_width_upper_limit: 1800,
-              rect_length_upper_limit: 900,
-              rect_width_lower_limit: 102,
-              rect_length_lower_limit: 240,
-              drawer_text: "Cassetto",
+                // # Rect related info
+                rect_stroke: '#999999',
+                rect_linewidth: 5,
+                rect_width_upper_limit: 1800,
+                rect_length_upper_limit: 900,
+                rect_width_lower_limit: 102,
+                rect_length_lower_limit: 240,
+                drawer_text: "Cassetto",
 
-              // # Shoulder settings
-              shoulder_stroke: '#999999',
-              shoulder_linewidth: 5,
-              shoulder_text: "step3.shoulder_label",
-              shoulder_height_upper_limit: 250,
-              shoulder_height_lower_limit: 45.5,
+                // # Shoulder settings
+                shoulder_stroke: '#999999',
+                shoulder_linewidth: 5,
+                shoulder_text: "step3.shoulder_label",
+                shoulder_height_upper_limit: 250,
+                shoulder_height_lower_limit: 45.5,
 
-              // # Lineabox shoulder fixed measures ( height ) 
-              lineabox_shoulders_height: [
+                // # Lineabox shoulder fixed measures ( height ) 
+                lineabox_shoulders_height: [
                   { dimension: "77",  value: this.$store.state.dimensions.actual_lineabox_shoulder_height_LOW, selected: true },
                   { dimension: "104", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID, selected: false },
                   { dimension: "180", value: this.$store.state.dimensions.actual_lineabox_shoulder_height_HIGH, selected: false }
-              ],
+                ],
 
-              // # Bridge related limits
-              max_suitable_width_4_Hbridge: 1200,
+                // # Bridge related limits
+                max_suitable_width_4_Hbridge: 1200,
 
-              // # Base scale factor
-              base_scale_factor: 10,
+                // # Base scale factor
+                base_scale_factor: 10,
 
-              // # Pixel Multiplier
-              ratio: 1,
+                // # Pixel Multiplier
+                ratio: 1,
 
-              // # Shapes top margin
-              standard_top_margin: 100,
+                // # Shapes top margin
+                standard_top_margin: 100,
 
-              // # Lightgallery common settings
-              lightgalleryOptions: {
+                // # Lightgallery common settings
+                lightgalleryOptions: {
 
                   download: false,
                   thumbnail: false,
                   dynamic: true,
                   counter: false
-              }
-          },
+                }
+            },
 
-          // # Out of range flags
-          width_OOR: false,
-          length_OOR: false,
-          shoulder_height_OOR: false, 
+            // # Out of range flags
+            width_OOR: false,
+            length_OOR: false,
+            shoulder_height_OOR: false, 
 
-          // # Two instance
-          two: {},
+            // # Two instance
+            two: {},
 
-          // # Rect objects
-          rect: {},
-          hor_line_rect: {},
-          hor_text_rect: "",
-          vert_text_rect: {},
-          vert_line_rect: {},
-          drawer_text: {},
+            // # Rect objects
+            rect: {},
+            hor_line_rect: {},
+            hor_text_rect: "",
+            vert_text_rect: {},
+            vert_line_rect: {},
+            drawer_text: {},
 
-          // # Shoulder objects
-          shoulder: {},
-          hor_line_shoulder: {},
-          hor_text_shoulder: "",
-          vert_text_shoulder: {},
-          vert_line_shoulder: {},
-          shoulder_text: {},
+            // # Shoulder objects
+            shoulder: {},
+            hor_line_shoulder: {},
+            hor_text_shoulder: "",
+            vert_text_shoulder: {},
+            vert_line_shoulder: {},
+            shoulder_text: {},
 
-          // # Advice
-          advice_accepted: false,
+            // # Advice
+            advice_accepted: false,
 
         }
     },
@@ -300,16 +300,16 @@ export default {
      */
     watch: {
 
-      /**
-       * language watcher
-       * @return {void}
-       */
-      language: function () {
+        /**
+        * language watcher
+        * @return {void}
+        */
+        language: function () {
 
-        // # Update Drawer on language change
-        // # true prevent the next steps data to be cleaned up
-        this.updateDrawer( {}, true );
-      }
+            // # Update Drawer on language change
+            // # true prevent the next steps data to be cleaned up
+            this.updateDrawer( {}, true );
+        }
     },
 
     /**
@@ -323,7 +323,7 @@ export default {
          * @return {string}
          */
         language: function() {
-          return this.$store.state.language;
+            return this.$store.state.language;
         },
         
         /**
@@ -331,9 +331,9 @@ export default {
          * @return {Number}
          */
         getMaxWidth4BridgeByDrawerType: function () {
-          return !this.$store.state.is_lineabox 
-                 ? this.config.max_suitable_width_4_Hbridge 
-                 : parseFloat( this.config.max_suitable_width_4_Hbridge ) - 12;
+            return !this.$store.state.is_lineabox 
+                ? this.config.max_suitable_width_4_Hbridge 
+                : parseFloat( this.config.max_suitable_width_4_Hbridge ) - 12;
         },
 
         /**
@@ -510,9 +510,8 @@ export default {
                 if( !this.isWidthOverMax ) {
 
                     // # Show modal alert
-                    this.error_modal
-                    .find( '.modal-body' )
-                    .text( Vue.i18n.translate( "step3.modal.too_large", { max: this.getMaxWidth4BridgeByDrawerType } ) );
+                    $( "#generic-alert-message" ).text( Vue.i18n.translate( "step3.modal.too_large", 
+                        { max: this.getMaxWidth4BridgeByDrawerType } ) );
 
                     this.error_modal.modal();  
                 }               
@@ -546,25 +545,25 @@ export default {
 
             // # Drawer type check
             // # If is a custom drawer
-            if( this.$store.state.drawertype == 4 ) {
+            if( 4 == this.$store.state.drawertype ) {
 
                 // # Under 72 mm bridge is not allowed
                 if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_MID ) {
 
-                    this.error_modal
-                    .find( '.modal-body' )
-                    .text( Vue.i18n.translate('step3.modal.not_enougth_high', 
+                    $( "#generic-alert-message" ).text( Vue.i18n.translate( 'step3.modal.not_enougth_high', 
                          { min: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID }) );
 
                     this.error_modal.modal();
 
                     // # Bridge won't be available
                     this.$store.commit( "isSuitableHeightForBridge", false );
+
                     return false;
                 }
 
                 // # Bridge will be available
                 this.$store.commit( "isSuitableHeightForBridge", true );
+
                 return true;
             }
 
@@ -572,15 +571,14 @@ export default {
             // # Under 45.5 mm bridge is not allowed
             if( this.$store.state.dimensions.shoulder_height < this.$store.state.dimensions.actual_lineabox_shoulder_height_MID ) {
 
-                this.error_modal
-                .find( '.modal-body' )
-                .text( Vue.i18n.translate('step3.modal.not_enougth_high', 
+                $( "#generic-alert-message" ).text( Vue.i18n.translate('step3.modal.not_enougth_high', 
                      { min: this.$store.state.dimensions.actual_lineabox_shoulder_height_MID } ) );
 
                 this.error_modal.modal();
                 
                 // # Bridge won't be available
                 this.$store.commit( "isSuitableHeightForBridge", false );
+
                 return false;
             }
 
@@ -651,7 +649,7 @@ export default {
               if( !this.advice_accepted && ( this.$store.state.bridgecompleted || this.$store.state.fourcompleted ) ) {
                   
                   // # Show modal alert
-                  this.error_modal.find('.modal-body').text( Vue.i18n.translate("resetadvice") );
+                  $( "#generic-alert-message" ).text( Vue.i18n.translate( "resetadvice" ) );
                   this.error_modal.modal();
 
                   // # no more till this step will be reloaded
@@ -668,8 +666,8 @@ export default {
          * @return {void}
          */
         reset: function () {
-          this.$store.commit( "setDefaultDimensions" );
-          this.updateDrawer( {} );
+            this.$store.commit( "setDefaultDimensions" );
+            this.updateDrawer( {} );
         },
 
         /**
@@ -688,12 +686,12 @@ export default {
 
             // # Destroy previous gallery 
             try {
-              $( '#sh-popover' ).data( "lightGallery" ).destroy( true );
+                $( '#sh-popover' ).data( "lightGallery" ).destroy( true );
             } catch ( e ) {
               // Do nothing
             }
 
-            // .. and binding
+            // # .. and binding
             $( '#sh-popover' ).unbind( "click" );
 
             // # Reinitialize gallery
@@ -714,9 +712,9 @@ export default {
          * @return {void}
          */
         clearAllData: function() {
-          this.$store.commit( "clearAllBridgeData" );
-          this.$store.commit( "clearDividers" );
-          this.$store.commit( "clearDrawerBorders" );
+            this.$store.commit( "clearAllBridgeData" );
+            this.$store.commit( "clearDividers" );
+            this.$store.commit( "clearDrawerBorders" );
         },
 
         /**
@@ -1167,6 +1165,7 @@ export default {
                     // # bridge is allowed, go to the bridge step
                     this.$store.commit( "isSuitableHeightForBridge", true );
                     this.$router.push( { path: '/split/stepponte' } );
+
                     return true;
                 }
 
@@ -1174,6 +1173,7 @@ export default {
                 this.$store.commit( "setBridgecompleted", true );
                 this.$store.commit( "isSuitableHeightForBridge", false );
                 this.$router.push( { path: '/split/step4' } );
+
                 return true;
             }
 
@@ -1183,6 +1183,7 @@ export default {
                 // # bridge is allowed, go to the bridge step
                 this.$store.commit( "isSuitableHeightForBridge", true );
                 this.$router.push( { path: '/split/stepponte' } );
+
                 return false;
             }
             
@@ -1198,10 +1199,7 @@ export default {
          * @return {[type]}           [description]
          */
         getInfoImageByDrawerType: function ( dimension ) {
-
-          let image_base_path = "/images/others/step-3/";
-          
-          return image_base_path + dimension + "_" + this.$store.state.drawertype + ".png";
+            return "/images/others/step-3/" + dimension + "_" + this.$store.state.drawertype + ".png";
         },    
 
     },
@@ -1220,14 +1218,14 @@ export default {
 
             // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
-                 vm.$router.push({ path: '/split/step1' });
-                 return;
+                vm.$router.push({ path: '/split/step1' });
+                return;
             }
 
             // # is Step 2 completed ?
             if( !vm.$store.state.twocompleted ) {
-                 vm.$router.push({ path: '/split/step2' });
-                 return;
+                vm.$router.push({ path: '/split/step2' });
+                return;
             }
         })
     },  
