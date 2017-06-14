@@ -499,9 +499,14 @@ canvas {
       margin-top: 3%;
 }
 
-
 #background {
   cursor: pointer;
+  width: 84%;
+  height: 200px;
+  cursor: pointer;
+  background-color: #ededed;
+  float: left;
+  line-height: 200px;
 }
 
 .i-icon {
@@ -600,6 +605,8 @@ input {
   color: #fff;
   text-align: center;
   font-size: 1.3em!important;
+  font-family: "FranklinGothicURW-Dem";
+  font-weight: 500;
 }
 
 .form-control {
@@ -618,21 +625,24 @@ input {
   font-weight: 500;
 }
 .edge_left, .edge_right{
-  width: 25px;
   height: 200px;
 }
 
 .edge_left {
-  margin-left: 3%;
+    margin-left: 3%;
+    width: 5%;
+    float: left;
 }
 
 .edge_right {
-  margin-right: 3%;
+    width: 5%;
+    float: left;
 }
 
 .edge_back {
-  width: 94%!important;
-  margin-left: 3%;
+    width: 94% !important;
+    margin-left: 3%;
+    clear: left;
 }
 
 .top10 { margin-top: 10%; }

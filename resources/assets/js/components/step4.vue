@@ -111,7 +111,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-lg-11 col-lg-offset-1">
+                                <div class="col-lg-12 no-padding-left">
                                     <span class="help-block">
                                         {{ $t( "stepponte.bridge_elem_label") }} {{ $store.state.bridge_orientation | translate }}
                                     </span>
@@ -482,20 +482,25 @@
                     <div role="tabpanel" id="edges-tab"  class="tab-pane fade in">
 
                         <div class="col-lg-12 col-md-12 col-sm-12 top1">
-                            <div class="col-lg-4" id="background" @click='selectBorder( $event );' style="padding:0">
-                                <!-- Egdes -->
-                                    <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
-                                        {{ $t( "step4.edges_top" ) }}
-                                    </div>
-                                    <div :class="['edge', 'edge_left', 'pull-left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
-                                    <div class="pull-left"></div>
+                            <div class="col-lg-4">
+                                
+                                    <!-- Egdes -->
+                                <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
+                                    {{ $t( "step4.edges_top" ) }}
+                                </div>
+                                <div :class="['edge', 'edge_left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
+                                
+                                <div id="background" @click='selectBorder( $event );' :class="['edge', 'text-center', ($store.state.objectWorkingOn.id=='background') ? 'edge_selected' : '' ]">
+                                    {{ $t( "step4.edges_floor" ) }}
+                                </div>
 
-                                    <div :class="['edge', 'edge_right', 'pull-right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
+                                <div :class="['edge', 'edge_right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
-                                    <div :class="['edge', 'edge_back', 'text-center', 'pull-left', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' >
-                                        {{ $t( "step4.edges_bottom" ) }}
-                                    </div>
+                                <div :class="['edge', 'edge_back', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' >
+                                    {{ $t( "step4.edges_bottom" ) }}
+                                </div>
+                                
                             </div>
                             <div class="col-lg-8 col-md-12 col-sm-12">
                                 <div class="col-lg-2 col-md-2 col-sm-2" v-for="variant in $store.getters.getBorderVariants" v-if="$store.state.objectWorkingOn.type=='border'">
