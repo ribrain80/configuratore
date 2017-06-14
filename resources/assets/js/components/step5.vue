@@ -188,7 +188,12 @@ export default {
                         this.error_modal.modal();
 					}
 
+                    Pace.stop();
+
                 }, response => {
+
+                    Pace.stop();
+                    
                     $( "#generic-alert-message" ).text( Vue.i18n.translate( "step5.error-occurred" ) );
                     this.error_modal.modal();
                 });

@@ -72,11 +72,13 @@ const store = new Vuex.Store({
                         commit( 'setDividerTypesPlain', responseDividersPlain.data );
                         commit( 'setGalleryImages', responseGalleryImages.data );
 
-                        // # Trigger start
+                        // # Trigger stop
                         Pace.stop();
                     },
                     () => { 
                         // # Fail
+                        // # Trigger stop
+                        Pace.stop();
                         context.push( { path: '/split/500' } );
                     }  
                 );

@@ -81,7 +81,7 @@
                         <transition name="fade">
                             <div class="col-lg-12" v-if="showSupportsAdvice">
                                 <div class='alert alert-warning' role="alert">
-                                    <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
+                                    <strong>{{ 'attenzione' | translate }}</strong> <span v-html="$t('stepponte.supports_advice', { pdf_link: pdfLink, num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })"></span>
                                 </div>
                             </div>
                         </transition>
@@ -252,6 +252,18 @@ export default {
                     return this.$store.state.bridge_orientation == "V" ? 1 : 0;
 
             }
+        },
+
+        /**
+         * [pdfLink description]
+         * @return {[type]} [description]
+         */
+        pdfLink: function () {
+            
+            let base_name = "/pdf/Split_prospetto-tecnico/Split_Ed01_05-2017_";
+            let cookieLang = ( null == this.$cookie.get( 'langCookie' ) ) ? "it" :  this.$cookie.get( 'langCookie' );
+            base_name +=  cookieLang + ".pdf";
+            return base_name;
         },
 
         /**
