@@ -115,6 +115,9 @@ export default {
          */
         carouselInit: function() {
 
+            // # Scope fix
+            let self = this;
+
             $( ".carousel" ).carousel( {
 
                 /**
