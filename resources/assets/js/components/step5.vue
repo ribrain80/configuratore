@@ -304,7 +304,7 @@ export default {
         
         pos = parseInt($active.parent("li").position().top);
         $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        -----------------------------------------
+
     }
 }
 </script>
