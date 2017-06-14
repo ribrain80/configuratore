@@ -7,7 +7,6 @@ import getters      from './getters'
 import translations from './translations'
 import fakeScene    from '../3d/dummy/dummyScene'
 
-
 // # Ie11 polyfill workarounds
 require('es6-promise').polyfill();
 
@@ -366,10 +365,22 @@ const store = new Vuex.Store({
          */
         scene: new fakeScene(),
 
+        /**
+         * [renderer description]
+         * @type {Boolean}
+         */
         renderer : false,
 
+        /**
+         * [camera description]
+         * @type {Boolean}
+         */
         camera : false,
 
+        /**
+         * [dividerHelper description]
+         * @type {Boolean}
+         */
         dividerHelper : false,
 
         /**
@@ -378,16 +389,24 @@ const store = new Vuex.Store({
          */
         objectWorkingOn: {
 
+            /**
+             * [type description]
+             * @type {Boolean}
+             */
             type: false,
+
+            /**
+             * [id description]
+             * @type {Boolean}
+             */
             id: false,
+
+            /**
+             * [obj description]
+             * @type {Object}
+             */
             obj: {}
         },
-
-        /**
-         * Canvas onload flag
-         * @type {Boolean}
-         */
-        canvasReady: false,
 
         /**
          * Canvas svg representation
@@ -434,10 +453,24 @@ const store = new Vuex.Store({
          * @type {Array}
          */
         dividerTypes: {
+
+            /**
+             * [dividersCategories description]
+             * @type {Array}
+             */
             dividersCategories: [],
+
+            /**
+             * [dividers description]
+             * @type {Array}
+             */
             dividers: []
         },
 
+        /**
+         * [dividerTypesPlain description]
+         * @type {Object}
+         */
         dividerTypesPlain: {},
 
         /**
@@ -581,11 +614,6 @@ const store = new Vuex.Store({
         bridge_supportID: 0,
 
         /**
-         * Orientation of the bridgeSupport
-         */
-        bridge_support_orientation: false,
-
-        /**
          * Bridge unique support ID
          * @type {Number}
          */
@@ -614,35 +642,31 @@ const store = new Vuex.Store({
          * @type {Object}
          */
         borders: {
+
+            /**
+             * [top description]
+             * @type {String}
+             */
             top: "",
+
+            /**
+             * [left description]
+             * @type {String}
+             */
             left: "",
+
+            /**
+             * [bottom description]
+             * @type {String}
+             */
             bottom: "",
+
+            /**
+             * [right description]
+             * @type {String}
+             */
             right: "",
         },
-
-        /**
-         * Drawer border top data
-         * @type {Object}
-         */
-        drawer_border_top: { hex: '', selected: false },
-
-        /**
-         * Drawer border left data
-         * @type {Object}
-         */
-        drawer_border_left: { hex: '', selected: false },
-
-        /**
-         * Drawer border right data
-         * @type {Object}
-         */
-        drawer_border_right: { hex: '', selected: false },
-
-        /**
-         * Drawer border bottom data
-         * @type {Object}
-         */
-        drawer_border_bottom: { hex: '', selected: false },
 
         /**
          * ratio computed for drawer representation in step4
@@ -723,9 +747,16 @@ const store = new Vuex.Store({
          */
         fivecompleted: false,
 
-
+        /**
+         * [currentStep description]
+         * @type {Number}
+         */
         currentStep: 1,
 
+        /**
+         * [gallery_images description]
+         * @type {Array}
+         */
         gallery_images: [],
 
         /**

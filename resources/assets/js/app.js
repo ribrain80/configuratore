@@ -3,13 +3,7 @@
  * First we load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource.
  */
-require('./bootstrap');
-
-/**
- * Load numeral plugin
- * @type {Numeral}
- */
-window.numeral = require('numeral');
+require( './bootstrap' );
 
 /**
  * Load Vue for data-bind
@@ -39,10 +33,13 @@ String.prototype.capitalizeFirstLetter = function() {
 };
 
 // # Pace.js tracker options init
+// # we want to use Pace in a very custom way
+// # we'll track only some ajax calls, and we do not want
+// # any automatic tracking
 window.paceOptions  = {
 
-    ajax: true,
-    eventLag: true,
+    ajax: false,
+    eventLag: false,
     document: false,
     element: false,
     restartOnPushState: false,
@@ -50,15 +47,14 @@ window.paceOptions  = {
     startOnPageLoad: false
 };
 
-window.iosDragDropShim = require('drag-drop-webkit-mobile');
-
+// # Ios d&d shim
+window.iosDragDropShim = require( 'drag-drop-webkit-mobile' );
 iosDragDropShim ({simulateAnchorClick: false, enableEnterLeave: true, holdToDrag: 300, requireExplicitDraggable: false });
 
 // # Import needed packages
 import Vue        from 'vue'
 import router     from './router'
 import store      from './store'
-//import { fabric }   from 'fabric'
 
 // # Load others components
 const languageselector = Vue.component( 'languageselector', require('./components/languageselector.vue' ) );
@@ -142,5 +138,3 @@ const App = new Vue({
     }
  
 }).$mount( '#app' ); // # Mount component  ( element with id = app )
-
-

@@ -1030,23 +1030,35 @@ export default {
         deselectAll:function() {
 
             console.log( "deselecting  all dividers" );
+
+            // # Retrieve canvas objs
+            let objs = this.canvas.getObjects();
             
             // # Loop through the canvas objects
-            var objs = this.canvas.getObjects().map( ( o )  => {
+            objs.map( ( o )  => {
 
-                /*o.setStrokeWidth( 2 );
-                o.setStroke( "#222222" );
-                o.set( 'active', false );
-                */
                 o.set({
                     opacity: 1,
                     backgroundColor : "#ededed",
                     active: false
-                });  
+                }); 
+
+                console.log( "dirtystate" );
+                console.log( o.dirtystate );
+
+                if( o.dirtystate ) {
+                    o.set({
+                        opacity: .5,
+                        backgroundColor : "#ff0000"
+                    });
+                }
 
             }); 
 
+            // # Discard active one
             this.canvas.discardActiveObject();
+
+            // # Refresh
             this.canvas.renderAll();
             this.allselected = false;           
         },
@@ -1057,6 +1069,7 @@ export default {
          */
         selectAll: function() {
 
+            // # Retrieve canvas objs
             let objs = this.canvas.getObjects();
 
             if( objs.length == 0 ) {
@@ -1064,47 +1077,33 @@ export default {
             }
             
             // # Loop through the canvas objects
-            objs.map( ( o )  => {
+            //objs.map( ( o )  => {
 
-                switch( this.allselected ) {
+            switch( this.allselected ) {
 
-                    case true:
+                case true:
+                    // # all sellected => deselect
+                    this.deselectAll();                         
+                break;
 
-                    /*
-                        o.setStrokeWidth( 2 );
-                        o.setStroke( "#222222" );
-                        o.set( 'active', false );
+                case false:
 
-                        */
-                        o.set({
-                            opacity: 1,
-                            backgroundColor : "#ededed",
-                            active: false
-                        });    
-
-                    break;
-
-                    case false:
-                        /*o.setStrokeWidth( 2 );
-                        o.setStroke( "#ffcc00" );
-                        o.set( 'active', true );
-                        */
-                       
+                    // # Loop and select each one
+                    objs.map( ( o )  => {
                         o.set({
                             opacity: .5,
                             backgroundColor : "#ffcc00",
                             active: true
-                        });                         
-                    break;
-                }
+                        });  
+                    });  
 
-            });
+                    // # Set flag
+                    this.allselected = true;  
 
-            // # Set flag
-            this.allselected = !this.allselected;
-
-            // # Refresh canvas
-            this.canvas.renderAll();
+                    // # Refresh canvas
+                    this.canvas.renderAll();                   
+                break;
+            }
         },
 
         /**
