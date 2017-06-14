@@ -115,7 +115,9 @@ export default {
      * @type {Object}
      */
     data: function() { 
-        return {}
+        return { 
+            error_modal:  $( "#error-modal" ) 
+        }
     },
 
     methods: {
@@ -132,8 +134,8 @@ export default {
                 // # Check email length
                 if( this.$store.state.pdf.email.length === 0 ) {
 
-                	$( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.no-mail" ) );
-	                $( '#error-modal' ).modal();
+                	$( "#generic-alert-message" ).text( Vue.i18n.translate( "step5.no-mail" ) );
+	                this.error_modal.modal();
 
 	                // # Step has errors
 	                this.$store.commit( "setFivecompleted", false );
@@ -144,8 +146,8 @@ export default {
                 // # Check email validity
                 if( !this.validateEmail_() ) {
 
-                	$( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.invalid-mail" ) );
-	                $( '#error-modal' ).modal();
+                	$( "#generic-alert-message" ).text( Vue.i18n.translate( "step5.invalid-mail" ) );
+	                this.error_modal.modal();
 
 	                // # Step has errors
 	                this.$store.commit( "setFivecompleted", false );   
@@ -182,13 +184,13 @@ export default {
                     if ( event.target.id != 'email' ) {
                         window.open( response.data.pdfpath, '_blank' );
 					} else {
-                        $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.mail-sent" ) );
-                        $( '#error-modal' ).modal();
+                        $( "#generic-alert-message" ).text( Vue.i18n.translate( "step5.mail-sent" ) );
+                        this.error_modal.modal();
 					}
 
                 }, response => {
-                    $( "#error-modal" ).find( '.modal-body' ).text( Vue.i18n.translate( "step5.error-occurred" ) );
-                    $( '#error-modal' ).modal();
+                    $( "#generic-alert-message" ).text( Vue.i18n.translate( "step5.error-occurred" ) );
+                    this.error_modal.modal();
                 });
             });
         },
@@ -198,7 +200,6 @@ export default {
          * @return {[type]} [description]
          */
         backAdvice: function () {
-
             $( "#reset-advice-modal" ).modal();
         },
 
@@ -284,17 +285,18 @@ export default {
     },    
 
     /**
-     * [mounted description]
-     * @return {[type]} [description]
+     * Window onload eq
+     * @return {void} 
      */
-    mounted () { // # Window onload eq
+    mounted () {
+
         console.log( "Step5 mounted!" );
+
+        // # Set component header title
         this.$store.commit( "setComponentHeader", "step5.header-title" );
         this.$store.commit( "setCurrentStep", 5 );
 
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
-        
+        // # Sidebar
         let pos = 0;
         let $pointer = $(".navigator .pointer-navigator"); 
         let $nav = $(".navigator #nav").find("li");
@@ -302,10 +304,7 @@ export default {
         
         pos = parseInt($active.parent("li").position().top);
         $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        
-        // SET SIDEBAR ITEM ACTIVE - END 
-        // ---------------------------------------------
+        -----------------------------------------
     }
 }
-
 </script>
