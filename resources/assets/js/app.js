@@ -39,12 +39,12 @@ String.prototype.capitalizeFirstLetter = function() {
 window.paceOptions  = {
 
     ajax: false,
-    eventLag: false,
-    document: false,
-    element: false,
-    restartOnPushState: false,
-    restartOnRequestAfter: false,
-    startOnPageLoad: false
+    // eventLag: true,
+    // document: true,
+    element: true,
+    restartOnPushState: true,
+    restartOnRequestAfter: true,
+    startOnPageLoad: true
 };
 
 // # Ios d&d shim
@@ -118,7 +118,7 @@ const App = new Vue({
 
         // # Log mount
         console.log( "Application mounted" );
-
+        
         // # Pace "overlay" in and out
         // # IN
         Pace.on( "start", function () {
@@ -129,9 +129,6 @@ const App = new Vue({
         Pace.on( "done", function () {
             $( "#cover").fadeOut( 800 );
         });
-
-        // # Trigger start
-        Pace.start();
 
         //Get all init values from Api
         this.$store.dispatch( 'initApp', this.$router );

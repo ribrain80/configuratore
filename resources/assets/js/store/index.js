@@ -43,50 +43,52 @@ const store = new Vuex.Store({
          * @param context
          */
         initApp: function ( { commit }, context ) {
+            
+            Pace.start( paceOptions );
 
-            // # Let Pace track loading
-            Pace.track( function () {
-                
-                let promises = [
-                    Axios.get( '/split/drawerstypes' ),
-                    Axios.get( '/split/bridges' ),
-                    Axios.get( '/split/supports' ),
-                    Axios.get( '/split/dividers'),
-                    Axios.get( '/split/edgestextures'),
-                    Axios.get( '/split/dividersplain'),
-                    Axios.get( '/split/gallery-images' ),
-                ];
+            // # Retrieve resources from the server
+            let promises = [
 
-                // # Resolve all promises. If any of them fail push into the router '/split/500'
-                // # Actually loads alla resources needed in the application bootstrap phase
-                Promise.all( promises ).then(
+                Axios.get( '/split/drawerstypes' ),
+                Axios.get( '/split/bridges' ),
+                Axios.get( '/split/supports' ),
+                Axios.get( '/split/dividers'),
+                Axios.get( '/split/edgestextures'),
+                Axios.get( '/split/dividersplain'),
+                Axios.get( '/split/gallery-images' ),
+            ];
 
-                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
+            // # Resolve all promises. If any of them fail push into the router '/split/500'
+            // # Actually loads alla resources needed in the application bootstrap phase
+            Promise.all( promises ).then(
 
-                        // # Success
-                        commit( 'setDrawersTypes', responseTypes.data );
-                        commit( 'setBridgesTypes', responseBridges.data );
-                        commit( 'setSupportsTypes',responseSupports.data );
-                        commit( 'setDividerTypes', responseDividers.data );
-                        commit( 'setTextureTypes', responseTextures.data );
-                        commit( 'setDividerTypesPlain', responseDividersPlain.data );
-                        commit( 'setGalleryImages', responseGalleryImages.data );
+                ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
 
-                        // # Trigger stop
-                        Pace.stop();
-                    },
-                    () => { 
-                        // # Fail
-                        // # Trigger stop
-                        Pace.stop();
-                        context.push( { path: '/split/500' } );
-                    }  
-                );
-            });
+                    // # Success
+                    commit( 'setDrawersTypes', responseTypes.data );
+                    commit( 'setBridgesTypes', responseBridges.data );
+                    commit( 'setSupportsTypes',responseSupports.data );
+                    commit( 'setDividerTypes', responseDividers.data );
+                    commit( 'setTextureTypes', responseTextures.data );
+                    commit( 'setDividerTypesPlain', responseDividersPlain.data );
+                    commit( 'setGalleryImages', responseGalleryImages.data );
+
+                    Pace.stop();
+                },
+                () => { 
+                    // # Fail
+                    Pace.stop();
+                    context.push( { path: '/split/500' } );
+                }  
+            );
+
+            return Promise.resolve();
         },
 
         /**
          * Add a divider to the 3d scene
+         * TODO Usa le Promise https://stackoverflow.com/questions/40165766/returning-promises-from-vuex-actions
+         * TODO nel chiamante prendi il valore di ritorno della promise e fai qualcosa
          *
          * params structure:
          * params.id : Divider id
@@ -99,7 +101,8 @@ const store = new Vuex.Store({
          * @param commit
          * @param params
          */
-        add3dDivider: function ( { commit,state }, divider ) {
+        add3dDivider: function ( { commit, state }, divider ) {
+            
             //Check if action is allowed !!
             if (state.dividerHelper) {
                 console.log("DIVIDER OBJ", divider);
@@ -760,12 +763,6 @@ const store = new Vuex.Store({
          * @type {Array}
          */
         gallery_images: [],
-
-        /**
-         * [hint_viewed description]
-         * @type {Boolean}
-         */
-        hint_viewed: false,
 
     },
 

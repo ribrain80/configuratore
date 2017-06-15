@@ -2190,10 +2190,12 @@ export default {
 
         })
     },     
-
+    created () {
+      Pace.start( paceOptions );
+    },
     mounted () { // # Window onload eq
 
-        
+
         this.$store.commit( "setComponentHeader",  "step4.header-title" );
         this.$store.commit( "setCurrentStep", 4 );
 
@@ -2211,6 +2213,8 @@ export default {
         
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
+
+        Pace.stop();
     }
 
 }

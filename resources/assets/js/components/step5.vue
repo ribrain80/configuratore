@@ -288,13 +288,17 @@ export default {
             }            
         })
     },    
-
+    created () {
+      Pace.start( paceOptions );
+    },
     /**
      * Window onload eq
      * @return {void} 
      */
     mounted () {
 
+        Pace.start( paceOptions );
+        
         console.log( "Step5 mounted!" );
 
         // # Set component header title
@@ -309,6 +313,7 @@ export default {
         
         pos = parseInt($active.parent("li").position().top);
         $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
+        Pace.stop();
 
     }
 }

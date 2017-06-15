@@ -1228,14 +1228,18 @@ export default {
                 return;
             }
         })
-    },  
+    }, 
+
+    created () {
+      Pace.start( paceOptions );
+    },
 
     /**
      * Window onload eq 4 Vue
      * @return {void}
      */
     mounted () { 
-              
+        
         // # Set component header title
         this.$store.commit( "setComponentHeader", 
                             this.$store.state.is_lineabox ? "step3.header-title-Lineabox" : "step3.header-title-custom" );
@@ -1314,6 +1318,8 @@ export default {
         
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style","transform: translateY(" + pos.toString() + "px)" );
+
+        Pace.stop();
     }
 }
 </script>

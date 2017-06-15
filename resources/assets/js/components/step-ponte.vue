@@ -686,12 +686,15 @@ export default {
 
         })
     },     
-
+    created () {
+      Pace.start( paceOptions );
+    },
     /**
      * Window onload eq 4 Vue
      * @return {void}
      */    
     mounted () {
+
 
         // # Component header title and current step info
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
@@ -705,6 +708,9 @@ export default {
         
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
+
+        Pace.stop();
+
 
     }
 }

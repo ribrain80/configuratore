@@ -278,6 +278,10 @@ export default {
         });
     }, 
 
+    created () {
+      Pace.start( paceOptions );
+    },
+
     /**
      * Window onload eq 4 Vue
      * @return {void}
@@ -296,6 +300,8 @@ export default {
         
         pos = parseInt( $active.parent( "li" ).position().top );
         $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
+
+        Pace.stop();
 
     }
 }

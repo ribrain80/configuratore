@@ -115,10 +115,8 @@ export default {
          */
         carouselInit: function() {
 
-            // # Scope fix
-            let self = this;
-
-            $( ".carousel" ).carousel( {
+            // # Left side carousel init
+            $( ".carousel" ).carousel({
 
                 /**
                  * time between slides
@@ -137,13 +135,13 @@ export default {
                  * @type {string|null}
                  */
                 pause: null
-            } );
+            });
 
             // # Lightgallery binding
-            $( "#gallery-trigger" ).on( "click", function () {
+            $( "#gallery-trigger" ).on( "click", ( event ) => {
                 
                 // # Init
-                $( this ).lightGallery( {
+                $( event.currentTarget ).lightGallery( {
 
                     /**
                      * Custom next arrow html
@@ -179,7 +177,7 @@ export default {
                      * Gallery elements
                      * @type {Array}
                      */
-                    dynamicEl: self.$store.state.gallery_images
+                    dynamicEl: this.$store.state.gallery_images
 
                 } );
 
