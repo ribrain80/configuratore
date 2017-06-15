@@ -745,15 +745,15 @@ export default {
 
             let target = $( event.target );
 
-            try {
+            /*try {
                 target.data( "lightGallery" ).destroy( true );
                 // $( this ).unbind( "click" );
             } catch( e ) {
                 // Do nothing
-            }
+            }*/
 
             // # Get related image element
-            let related_image = $( event.target ).next();
+            let related_image = target.next();
 
             // # General settings + image src
             let bridgesGalleryOptions = this.config.lightgalleryOptions;

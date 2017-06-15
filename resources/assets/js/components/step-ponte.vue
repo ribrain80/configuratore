@@ -207,6 +207,16 @@ export default {
              */
             error_modal: $( "#error-modal" ),
 
+            /**
+             * [i_gallery description]
+             * @type {Object}
+             */
+            i_gallery: {},
+
+            /**
+             * [config description]
+             * @type {Object}
+             */
             config: {
 
               // # Lightgallery common settings
@@ -579,15 +589,12 @@ export default {
             return true;
         },
 
+        /**
+         * [showBridgeInfo description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         showBridgeInfo: function( event ) {
-
-            try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
-                // $( this ).unbind( "click" );
-            } catch( e ) {
-                // Do nothing
-            }
-
 
             // # Get related image element
             let related_image = $( event.target ).next().find( "img" );
@@ -597,17 +604,15 @@ export default {
             bridgesGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
             
             // # Init
-            $( event.target ).lightGallery( bridgesGalleryOptions ) ;   
+            this.i_gallery = $( event.target ).lightGallery( bridgesGalleryOptions ) ;   
         },
 
+        /**
+         * [showSupportsInfo description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         showSupportsInfo: function( event ) {
-
-            try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
-                // $( this ).unbind( "click" );
-            } catch( e ) {
-                // Do nothing
-            }
 
             // # Get related image element
             let related_image = $( event.target ).next().find( "img" );
@@ -617,25 +622,23 @@ export default {
             supportsGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
             
             // # Init
-            $( event.target ).lightGallery( supportsGalleryOptions ) ;   
-
+            this.i_gallery = $( event.target ).lightGallery( supportsGalleryOptions ) ;   
         },
 
+        /**
+         * [showORIInfo description]
+         * @param  {[type]} event [description]
+         * @param  {[type]} ori   [description]
+         * @return {[type]}       [description]
+         */
         showORIInfo: function ( event, ori ) {
 
-            try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
-                // $( this ).unbind( "click" );
-            } catch( e ) {
-                // Do nothing
-            }
-
             // # General settings + image src
-            let oriHGalleryOptions = this.config.lightgalleryOptions;
-            oriHGalleryOptions.dynamicEl = [ { src: $( "#or-" + ori ).attr( "src" ) } ];
+            let oriGalleryOptions = this.config.lightgalleryOptions;
+            oriGalleryOptions.dynamicEl = [ { src: $( "#or-" + ori ).attr( "src" ) } ];
 
             // # Init
-            $( event.target ).lightGallery( oriHGalleryOptions ) ;
+            this.i_gallery = $( event.target ).lightGallery( oriGalleryOptions ) ;
         }
     },
 
@@ -694,21 +697,15 @@ export default {
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
         this.$store.commit( "setCurrentStep", 'p' );
 
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
-        
+        // # Sidebar
         let pos = 0;
-        let $pointer = $(".navigator .pointer-navigator"); 
-        let $nav = $(".navigator #nav").find("li");
-        let $active = $nav.find("a.router-link-active");
+        let $pointer = $( ".navigator .pointer-navigator" ); 
+        let $nav = $( ".navigator #nav" ).find( "li" );
+        let $active = $nav.find( "a.router-link-active" );
         
-        pos = parseInt($active.parent("li").position().top);
-        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        
-        // SET SIDEBAR ITEM ACTIVE - END 
-        // ---------------------------------------------
+        pos = parseInt( $active.parent( "li" ).position().top );
+        $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
 
-        console.log( "Step ponte Mounted!" );
     }
 }
 </script>
