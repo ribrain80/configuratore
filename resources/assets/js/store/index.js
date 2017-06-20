@@ -44,45 +44,51 @@ const store = new Vuex.Store({
          */
         initApp: function ( { commit }, context ) {
             
-            Pace.start( paceOptions );
+            Pace.track( function() {
+                
+                $( "#cover" ).show();
 
-            // # Retrieve resources from the server
-            let promises = [
+                // # Retrieve resources from the server
+                let promises = [
 
-                Axios.get( '/split/drawerstypes' ),
-                Axios.get( '/split/bridges' ),
-                Axios.get( '/split/supports' ),
-                Axios.get( '/split/dividers'),
-                Axios.get( '/split/edgestextures'),
-                Axios.get( '/split/dividersplain'),
-                Axios.get( '/split/gallery-images' ),
-            ];
+                    Axios.get( '/split/drawerstypes' ),
+                    Axios.get( '/split/bridges' ),
+                    Axios.get( '/split/supports' ),
+                    Axios.get( '/split/dividers'),
+                    Axios.get( '/split/edgestextures'),
+                    Axios.get( '/split/dividersplain'),
+                    Axios.get( '/split/gallery-images' ),
+                ];
 
-            // # Resolve all promises. If any of them fail push into the router '/split/500'
-            // # Actually loads alla resources needed in the application bootstrap phase
-            Promise.all( promises ).then(
+                // # Resolve all promises. If any of them fail push into the router '/split/500'
+                // # Actually loads alla resources needed in the application bootstrap phase
+                Promise.all( promises ).then(
 
-                ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
+                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
 
-                    // # Success
-                    commit( 'setDrawersTypes', responseTypes.data );
-                    commit( 'setBridgesTypes', responseBridges.data );
-                    commit( 'setSupportsTypes',responseSupports.data );
-                    commit( 'setDividerTypes', responseDividers.data );
-                    commit( 'setTextureTypes', responseTextures.data );
-                    commit( 'setDividerTypesPlain', responseDividersPlain.data );
-                    commit( 'setGalleryImages', responseGalleryImages.data );
+                        // # Success
+                        commit( 'setDrawersTypes', responseTypes.data );
+                        commit( 'setBridgesTypes', responseBridges.data );
+                        commit( 'setSupportsTypes',responseSupports.data );
+                        commit( 'setDividerTypes', responseDividers.data );
+                        commit( 'setTextureTypes', responseTextures.data );
+                        commit( 'setDividerTypesPlain', responseDividersPlain.data );
+                        commit( 'setGalleryImages', responseGalleryImages.data );
 
-                    Pace.stop();
-                },
-                () => { 
-                    // # Fail
-                    Pace.stop();
-                    context.push( { path: '/split/500' } );
-                }  
-            );
+                    },
+                    () => { 
+                        
+                        // # Fail
+                        Pace.stop();
+                        context.push( { path: '/split/500' } );
+                    }  
+                );
 
-            return Promise.resolve();
+                return Promise.resolve();
+
+            });
+
+            
         },
 
         /**
