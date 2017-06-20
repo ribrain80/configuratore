@@ -186,6 +186,27 @@ export default {
     },
 
     /**
+     * Route guard: disallow route entering if previuos data has not been submitted
+     * 
+     * @param  {string}   to   [description]
+     * @param  {string}   from [description]
+     * @param  {string}   next [description]
+     * @return {void} 
+     */
+    beforeRouteEnter: ( to, from, next ) => {
+ 
+        next( vm => {
+
+            // # is Step 1 completed ?
+            if( vm.$store.state.onecompleted ) {
+                // # reinit carousel
+                vm.carouselInit();
+                return;
+            }
+        })
+    },     
+
+    /**
      * Window onload eq 4 Vue
      * @return {void}
      */
@@ -194,6 +215,7 @@ export default {
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
         this.$store.commit( "setCurrentStep", 1 );
+
 
         // # Sidebar
         let pos = 0;
