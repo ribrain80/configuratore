@@ -10,7 +10,7 @@
 </style>
 <template>
     <div class="col-sm-3 col-md-3 col-lg-2 sidebar">
-        <div class="row">
+        <div class="row logocontainer">
             <div class="col-lg-12 logo orange sidebar-elem logo text-center">
                 <img src="/images/logos/salice.png"/>
             </div>

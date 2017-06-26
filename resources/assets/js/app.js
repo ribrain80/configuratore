@@ -70,6 +70,8 @@ const step4 = Vue.component( 'step4', require('./components/step4.vue' ));
 const step4_3d = Vue.component( 'step4_3d', require('./components/step4_3d.vue' ));
 const step5 = Vue.component( 'step5', require('./components/step5.vue' ));
 const error = Vue.component( 'error', require('./components/500.vue' ));
+const smartphone = Vue.component( 'smartphone', require('./components/smartphone.vue' ));
+
 
 // # Create and mount root instance.
 // # Make sure to inject the router.
@@ -101,7 +103,8 @@ const App = new Vue({
 		stepponte,
 		step4,
 		step5,
-		error
+		error,
+        smartphone
 	},
 
 	/**

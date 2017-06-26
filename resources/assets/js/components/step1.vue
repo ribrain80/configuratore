@@ -1,8 +1,9 @@
 <template>
 
+
 <!-- Container -->
 <div class="container-fluid" id="step1">
-    
+
     <div class="row">
         
         <!-- Full width -->
@@ -204,7 +205,13 @@ export default {
                 return;
             }
         })
-    },     
+    }, 
+
+    created () {
+        if( isPhone == 1 ) {
+            window.location = '/split/smartphone';
+        }
+    }, 
 
     /**
      * Window onload eq 4 Vue

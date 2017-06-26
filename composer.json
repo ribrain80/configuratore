@@ -11,6 +11,7 @@
         "barryvdh/laravel-snappy": "^0.3.3",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "jenssegers/agent": "^2.5",
         "krlove/eloquent-model-generator": "^1.2",
         "laravel/framework": "5.3.*",
         "lynx39/lara-pdf-merger": "dev-master",

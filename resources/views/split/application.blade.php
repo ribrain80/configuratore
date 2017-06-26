@@ -13,6 +13,7 @@
 
     <!-- Laravl csrf token -->
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
+    <script>window.isPhone = {{ $isPhone }};</script>
 
 </head>
 <body>

@@ -73,8 +73,9 @@ Route::group(['prefix' => 'split'], function () {
         }
     ] );
 
-
-
+    Route::get('smartphone', function() {
+         return response()->view('split.smartphone');
+    });
 
 
     Route::get('/{catchall?}', function () {
