@@ -1,20 +1,29 @@
 <template>
+
+    <!-- Langiage selector dropdown -->
     <ul class="nav navbar-nav navbar-right">
+
         <li class="dropdown">
+
+            <!-- Short names hooks -->
             <a href="#" class="dropdown-toggle lang-text" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">{{ getShort() }} <span class="glyphicon glyphicon-menu-down menu-arrow"></span></a>
-
+            
+            <!-- Actual names and binding -->
             <ul class="dropdown-menu">
                 <li v-for="language in languages">
                     <a :class="{ active: (language.code==activeLanguage) }" href="#_"
-                       @click="changeLanguage(language.code)"> {{ language.label }} </a>
+                       @click="changeLanguage( language.code )"> {{ language.label }} </a>
                 </li>
             </ul>
         </li>
+
     </ul>
+    
 </template>
 
 <script>
+
 /**
  * Vue object managing bridge / bridge support choice
  * @type {Vue}
@@ -28,27 +37,35 @@ export default {
     data: function() { 
 
         return {
-            languages:[
-                {label:'Italiano ',code:'it',short:'Ita'},
-                {label:'English ',code:'en',short:'Eng'},
-                {label:'Español ',code:'es',short:'Esp'},
-                {label:'Français ',code:'fr',short:'Fra'},
-                {label:'Português ',code:'pt',short:'Por'},
-                {label:'Deutsch ',code:'de',short:'Deu'},
-                {label:'中国',code:'zh',short:'中国'},
+
+            /**
+             * Availabel loclizations
+             * @type {Array}
+             */
+            languages: [
+
+                { label:'Italiano ', code:'it', short:'Ita' },
+                { label:'English ',  code:'en', short:'Eng' },
+                { label:'Español ',  code:'es', short:'Esp' },
+                { label:'Français ', code:'fr', short:'Fra' },
+                { label:'Português ',code:'pt', short:'Por' },
+                { label:'Deutsch ',  code:'de', short:'Deu' },
+                { label:'中国',      code:'zh', short:'中国' },
             ]
 
         }
     },
 
     methods: {
+
         /**
          *  Return short language label
          */
         getShort: function () {
-            let langObj = this.languages.filter((lang)=> {return lang.code==this.$store.state.language;});
-            return langObj[0].short.toUpperCase();
+            let langObj = this.languages.filter( ( lang ) => { return lang.code == this.$store.state.language; } );
+            return langObj[ 0 ].short.toUpperCase();
         },
+
         /**
          * Change Gui Language
          * After language choice set the cookie for persistence
@@ -56,9 +73,13 @@ export default {
          */
         changeLanguage: function (newLanguage) {
 
-            console.log('ChangeLanguage to: '+newLanguage);
-            this.$cookie.set('langCookie',newLanguage);
+            console.log( 'Changing Language to: ' + newLanguage );
+            this.$cookie.set( 'langCookie', newLanguage );
             this.$store.commit( "setLanguage", newLanguage );
+
+            // # Title and Meta dynamic translation
+            document.title = Vue.i18n.translate( "split.page.title" );
+            $( "meta[name=description]" ).attr( "content", Vue.i18n.translate( "split.meta.description" ) );    
         }
     },
 
@@ -71,5 +92,4 @@ export default {
         }
     }
 }
-
 </script>

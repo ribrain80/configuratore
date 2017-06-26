@@ -219,10 +219,15 @@ export default {
      */
     mounted () {
 
+        // # Title dynamic translation
+        document.title = Vue.i18n.translate( "split.page.title" );
+
+        // # Meta dynamic translation
+        $( "meta[name=description]" ).attr( "content", Vue.i18n.translate( "split.meta.description" ) );
+
         // # Set component header title
         this.$store.commit( "setComponentHeader", "step1.header-title" );
         this.$store.commit( "setCurrentStep", 1 );
-
 
         // # Sidebar
         let pos = 0;

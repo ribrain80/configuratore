@@ -1,5 +1,7 @@
 export default {
     it: {
+        "split.page.title": "Salice | Configuratore Split",
+        "split.meta.description": "Configuratore Split cassetti Salice",
         "menu.newconf": "Nuova Configurazione",
         "menu.gallery": "Gallery",
         "back": "Indietro",
@@ -149,6 +151,8 @@ export default {
         "step4.blackborder": "Bordo nero"
     },
     en: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "New Configuration",
         "menu.gallery": "Gallery",
         "back": "Back",
@@ -299,6 +303,8 @@ export default {
         "step4.blackborder": "With black edge"
     },
     de: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Neue Konfiguration",
         "menu.gallery": "Gallery",
         "back": "Zurück",
@@ -444,6 +450,8 @@ export default {
         "step4.blackborder": "Schwarze Kante"
     },
     fr: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Nouvelle Configuration",
         "menu.gallery": "Gallerie",
         "back": "Retour",
@@ -589,6 +597,8 @@ export default {
         "step4.blackborder": "Avec bord noir"
     },
     es: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Nueva Configuración",
         "menu.gallery": "Galería",
         "back": "Atrás",
@@ -734,6 +744,8 @@ export default {
         "step4.blackborder": "Borde negro"
     },
     pt: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Nova Configuração",
         "menu.gallery": "Galeria",
         "back": "Volte",
@@ -881,6 +893,8 @@ export default {
         "step4.blackborder": "Borda preta"
     },
     zh: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "新建配置",
         "menu.gallery": "图库",
         "back": "后退",

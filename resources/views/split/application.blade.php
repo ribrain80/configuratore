@@ -3,7 +3,13 @@
 <head>
     
     <!-- Viewport meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    
+    <!-- Title -->
+    <title>Salice | Configuratore Split"</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Configuratore Split cassetti Salice" />
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset( 'images/salice.ico' ) }}">   

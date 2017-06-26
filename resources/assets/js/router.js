@@ -13,7 +13,6 @@ const stepponte = ( resolve ) => require(['./components/step-ponte.vue'], resolv
 const step4 = ( resolve ) => require(['./components/step4.vue'], resolve);
 const step5 = ( resolve ) => require(['./components/step5.vue'], resolve);
 const error = ( resolve ) => require(['./components/500.vue'], resolve);
-const smartphone = ( resolve ) => require(['./components/smartphone.vue'], resolve);
 
 // # Route definitions
 export default new VueRouter({
@@ -56,11 +55,7 @@ export default new VueRouter({
 		{ 
 			path: '/split/500', 
 			component: error
-		},	
-		/*{
-			path: '/split/smartphone',
-			component: smartphone
-		},*/
+		},
 
 	]
 });
