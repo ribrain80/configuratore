@@ -21,7 +21,15 @@ use App;
  */
 class ExportController extends Controller
 {
+
+    /**
+     * TODO Comment
+     */
     const FIRST_PAGE_ITEMS_NUMBER = 4;
+
+    /**
+     * TODO Comment
+     */
     const OTHER_PAGES_ITEMS_NUMBER = 6;
     
     /**
@@ -31,45 +39,47 @@ class ExportController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionRiepilogo($id,$brochure=false,$language='it') {
-        //Set application locale from the request param language
+    public function actionRiepilogo( $id, $brochure = false, $language = 'it' ) {
+
+        // # Set application locale from the request param language
         app()->setLocale($language);
         
-        //Load the Drawer from db, if throw an exception if the drawer dont exist
+        // # Load the Drawer from db, if throw an exception if the drawer dont exist
         $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
         
-        //Handle all kind of dividers,bridges and supports
-        $elements = $this->handleElements($model->drawerdividers,$model->drawerbridges,$model->drawersupports);
+        // # Handle all kind of dividers,bridges and supports
+        $elements = $this->handleElements( $model->drawerdividers, $model->drawerbridges,$model->drawersupports );
 
-        //Get a Pdf builder instance
-        $drawerPdf = App::make('snappy.pdf.wrapper');
-        //Set the route for the default page header 
-        $drawerPdf->setOption('header-html',route('split.pdf.header',['drawer'=>$id,'lang'=>$language]));
+        // # Get a Pdf builder instance
+        $drawerPdf = App::make( 'snappy.pdf.wrapper' );
 
-        //Load a view into the Pdf Builder
-        $drawerPdf->loadView('split.pdf.riepilogo', ['model'=>$model,'dividers'=>$elements]);
+        // # Set the route for the default page header 
+        $drawerPdf->setOption( 'header-html', route( 'split.pdf.header', [ 'drawer' => $id, 'lang' => $language] ) );
+
+        // # Load a view into the Pdf Builder
+        $drawerPdf->loadView( 'split.pdf.riepilogo', [ 'model' => $model, 'dividers' => $elements ] );
         
-        //If the request parameter brochure is false just return the pdf
+        // # If the request parameter brochure is false just return the pdf
         if (!$brochure) {
             return $drawerPdf->inline();
         }
         
-        //Otherwise get an Instance of PdfManage for concat brochure and generated pdf
+        // # Otherwise get an Instance of PdfManage for concat brochure and generated pdf
         $pdf = new PdfManage();
         
-        //Add the bruchure to the resulting pdf
-        $pdf->addPDF(resource_path('pdf/brochure.pdf' ));
+        // # Add the bruchure to the resulting pdf
+        $pdf->addPDF( resource_path('pdf/brochure.pdf' ) );
         
-        //Get an unique temp file for save the drawer pdf
-        $temp = tempnam(sys_get_temp_dir(), 'drawer_'.$id);
+        // # Get an unique temp file for save the drawer pdf
+        $temp = tempnam( sys_get_temp_dir(), 'drawer_' . $id );
         
-        //Save the generated pdf in a temp file
-        $drawerPdf->save($temp,true);
+        // # Save the generated pdf in a temp file
+        $drawerPdf->save( $temp, true );
         
-        //Add the saved drawer pdf to the result
-        $pdf->addPDF($temp);
+        // # Add the saved drawer pdf to the result
+        $pdf->addPDF( $temp );
         
-        //Merge brochure and drawer pdf then return
+        // # Merge brochure and drawer pdf then return
         $pdf->merge();
     }
 
@@ -79,10 +89,12 @@ class ExportController extends Controller
      * @param $drawer
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function actionHeader($drawer,$lang='it') {
-        app()->setLocale($lang);
-        $model = App\Models\Drawer::with(['drawertype','edgecolor'])->findOrFail($drawer);
-        return view('split.pdf.header',['model'=>$model]);
+    public function actionHeader( $drawer, $lang = 'it' ) {
+
+        app()->setLocale( $lang );
+        $model = App\Models\Drawer::with( [ 'drawertype', 'edgecolor' ] )->findOrFail( $drawer );
+
+        return view( 'split.pdf.header', [ 'model' => $model ] );
     }
 
 
@@ -95,9 +107,11 @@ class ExportController extends Controller
      * @return array
      */
     protected function handleElements(Collection $dividers, Collection $bridges, Collection $supports) {
+        
+
         $allElements = [];
 
-        //Handle dividers, group by sku then build
+        // # Handle dividers, group by sku then build
         foreach ($dividers->groupBy('sku') as $sku=>$curDividerGroup) {
             $tmp['type'] = "divider";
             $tmp['label'] = "Contenitore";
@@ -126,10 +140,10 @@ class ExportController extends Controller
             $allElements[]=$tmp;
         }
 
-
+        //  TODO Comment
         $first = [];
         $pages = [];
-        $cont=0;
+        $cont = 0;
         foreach ($allElements as $elem) {
             if ($cont < self::FIRST_PAGE_ITEMS_NUMBER) {
                 $first[]=$elem;
@@ -158,22 +172,15 @@ class ExportController extends Controller
 
 
 
-    public function actionDebug($id) {
-        //Set application locale from the request param language
+    public function actionDebug( $id ) {
 
-        //Load the Drawer from db, if throw an exception if the drawer dont exist
+        // # Load the Drawer from db, if throw an exception if the drawer dont exist
         $model = App\Models\Drawer::with(['drawertype','edgecolor','drawerbridges','drawerdividers'])->findOrFail($id);
 
-        //Handle all kind of dividers,bridges and supports
+        // # Handle all kind of dividers,bridges and supports
         $elements = $this->handleElements($model->drawerdividers,$model->drawerbridges,$model->drawersupports);
 
-
         return view('split.pdf.riepilogo', ['model'=>$model,'dividers'=>$elements]);
-
-
-
     }
-
-
 
 }

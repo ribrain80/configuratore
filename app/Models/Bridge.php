@@ -18,7 +18,7 @@ class Bridge extends Model
     /**
      * @var array
      */
-    protected $fillable = ['width', 'lenght', 'height', 'created_at', 'updated_at'];
+    protected $fillable = [ 'width', 'lenght', 'height', 'created_at', 'updated_at '];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -26,6 +26,6 @@ class Bridge extends Model
     public function drawerbridges()
     {
         return $this->belongsToMany('App\Models\Drawer', 'drawerbridge','bridge','drawer')
-            ->withPivot(['orientation','length']);
+            ->withPivot( ['orientation','length'] );
     }
 }

@@ -18,6 +18,11 @@
             margin: 0  auto;
             display: block
         }
+
+        h3, b {
+            font-weight: 500!important;
+            font-family: "FranklinGothicURW-Dem", sans-serif!important;
+        }
     </style>
 </head>
 <body>

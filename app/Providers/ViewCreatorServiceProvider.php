@@ -5,6 +5,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
+/**
+ * ViewCreator provider
+ * @see App\Http\ViewCreators\DeviceDetectorCreator
+ */
 class ViewCreatorServiceProvider extends ServiceProvider
 {
     /**
@@ -25,8 +29,5 @@ class ViewCreatorServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        //
-    }
+    public function register() { }
 }

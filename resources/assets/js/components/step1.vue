@@ -207,6 +207,10 @@ export default {
         })
     }, 
 
+    /**
+     * Component creation hook
+     * @return {void}
+     */
     created () {
         if( isPhone == 1 ) {
             window.location = '/split/smartphone';

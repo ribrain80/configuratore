@@ -11,42 +11,15 @@
 |
 */
 
-
-
-Route::get('/', function () {
-    return redirect()->route('startapp');
+// # Root route
+Route::get( '/', function () {
+    return redirect()->route( 'startapp' );
 });
 
-Route::group(['prefix' => 'm50'], function () { 
+// # Split route
+Route::group( [ 'prefix' => 'split' ], function () {
 
-	Route::get('step1', function () {
-	    return view('m50.step1');
-	});
-
-	Route::get('step2', function () {
-	    return view('m50.step2');
-	});
-
-	Route::get('step3', function () {
-	    return view('m50.step3');
-	});
-
-	Route::get('step4', function () {
-	    return view('m50.step4');
-	});
-
-	Route::get('step5', function () {
-	    return view('m50.step5');
-	});
-
-	Route::get('step6', function () {
-	    return view('m50.step6');
-	});
-});
-
-Route::group(['prefix' => 'split'], function () {
-
-    //API
+    // # API
     Route::get('drawerstypes',['as'=>'split.api.drawerstypes','uses'=>'ApiController@actionDrawersType']);
     Route::get('dividers',['as'=>'split.api.dividers','uses'=>'ApiController@actionDividers']);
     Route::get('dividersplain',['as'=>'split.api.dividersplain','uses'=>'ApiController@actionPlainDividers']);
@@ -54,32 +27,30 @@ Route::group(['prefix' => 'split'], function () {
     Route::get('supports',['as'=>'split.api.bridges','uses'=>'ApiController@actionSupports']);
     Route::get('edgestextures',['as'=>'split.api.edgesTextures','uses'=>'ApiController@actionEdgesFinitures']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
-    //EXPORT TO PDF
+    Route::get('gallery-images', ['as'=>'split.api.gallery-images','uses'=>'ApiController@actionGalleryImages']);
+
+    // # EXPORT TO PDF
     Route::get('topdf/debug/{drawer}',['as'=>'split.export.topdf.debug','uses'=>'ExportController@actionDebug']);
     Route::get('topdf/header/{drawer}/{lang?}',['as'=>'split.pdf.header','uses'=>'ExportController@actionHeader']);
     Route::get('topdf/{id}/{brochure?}/{lang?}',['as'=>'split.export.topdf','uses'=>'ExportController@actionRiepilogo']);
 
-    Route::get('gallery-images', ['as'=>'split.api.gallery-images','uses'=>'ApiController@actionGalleryImages']);
-
-    //FABRIC
-    Route::get('fabric',['uses'=>function () {
-        return view('fabric');
-    }]);
-
-    Route::get('step1', [
+    // # Startapp route
+    Route::get( 'step1', [
         'as' => 'startapp',
         'uses' => function () {
             return response()->view('split.application');
         }
     ] );
 
-    Route::get('smartphone', function() {
+    // # Smartphone route
+    Route::get( 'smartphone', function() {
          return response()->view('split.smartphone');
     });
 
-
-    Route::get('/{catchall?}', function () {
+    // # Vue routing hook
+    Route::get( '/{catchall?}', function () {
         return response()->view('split.application');
-    })->where('catchall', '(.*)');
+    })->where( 'catchall', '(.*)' );
+    
 });
 

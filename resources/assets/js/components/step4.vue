@@ -852,7 +852,7 @@ export default {
             this.$store.state.camera.updateSize(this.$store.state.renderer.threeRenderer);
 
             // # Initialize canvas
-            this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight } );
+            this.canvas = new fabric.Canvas( 'canvas', { width: this.canvasWidth, height: this.canvasHeight, renderOnAddRemove: false } );
 
             // # No selection on this canvas
             this.canvas.selection = false;
@@ -1796,6 +1796,7 @@ export default {
             imgObj.onload = () => {
 
                 let oImg = new fabric.Image( imgObj );
+
                 oImg.setWidth( _imgW );
                 oImg.setHeight( _imgH );
 
@@ -1808,20 +1809,13 @@ export default {
                 // # Set image position
                 oImg.setLeft( posX );
                 oImg.setTop( posY );
-
-                // # Set background color
-                // oImg.setBackgroundColor( '#ededed' );    //Set a light gray background
                 
                 // # Set controls off
                 oImg.hasControls = false;
                 oImg.hasBorders  = false;
-
-                // # borders off
-               /* oImg.hasBorders  = true;
-                oImg.setStroke( "#222222" );
-                oImg.setStrokeWidth( 2 );
-                */
-               
+                oImg.hasRotatingPoint = false;
+                
+                // # Selected opacity
                 oImg.set({
                     opacity: .5,
                     backgroundColor : "#ffcc00"
@@ -1853,12 +1847,12 @@ export default {
                 // # Coords
                 var coords = oImg.calcCoords().bl;
                 var centerCoords = oImg.getCenterPoint();
-
                 _divider.x = coords.x;
                 _divider.y = coords.y;
 
                 var self = this;
-                oImg.on('selected', function() {
+
+                oImg.on( 'selected', function() {
 
                     // self.allselected = false;
                     var objs = self.canvas.getObjects().map( ( o )  => {
@@ -1873,12 +1867,8 @@ export default {
 
                     this.bringToFront();
 
-                    /*if( !this.dirtystate ) {
-                        this.setStroke( "#ffcc00" );
-                        this.setStrokeWidth( 2 );
-                    }*/
-
                     if( !this.dirtystate ) {
+
                         oImg.set({
                             opacity: .5,
                             backgroundColor : "#ffcc00"
@@ -1887,14 +1877,10 @@ export default {
                 });
 
                 oImg.on( 'deselected', function() {
+
                     self.allselected = false;
 
-                    /*if( !this.dirtystate ) {
-                        this.setStrokeWidth( 2 ); 
-                        this.setStroke( "#222222" ); 
-                   }*/
-
-                   if( !this.dirtystate ) {
+                    if( !this.dirtystate ) {
                         oImg.set({
                             opacity: 1,
                             backgroundColor : "#ededed"
@@ -1903,10 +1889,11 @@ export default {
 
                 });
 
+                // # This bacome the active object
                 oImg.set( 'active', true );
-
                 this.canvas.setActiveObject( oImg );
 
+                // # selectAll flag set to false
                 this.allselected = false;
 
                 // # Set ObjectWorking On
@@ -1918,15 +1905,17 @@ export default {
                 // # Push divider
                 this.$store.commit( "pushDivider", _divider );
 
-                this.$store.dispatch ( "add3dDivider", _divider) ;
+                this.$store.dispatch ( "add3dDivider", _divider ) ;
                 let payload = {
                     id: _divider.id,
                     x: _divider.x,
                     y: _divider.y
                 };
 
+                // # Dispatch to 3D component
                 this.$store.dispatch( 'update3dDividerPos', payload );
 
+                // # Check vertical heights and bridges
                 let vertical_alert = this.$store.getters.bridgeSupportVerticalAlert;
                 if ( vertical_alert ) {
                     // # Modal Error display

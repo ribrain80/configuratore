@@ -19,7 +19,7 @@
         </li>
 
     </ul>
-    
+
 </template>
 
 <script>
@@ -56,6 +56,10 @@ export default {
         }
     },
 
+    /**
+     * Object methods
+     * @type {Object}
+     */
     methods: {
 
         /**
@@ -74,6 +78,8 @@ export default {
         changeLanguage: function (newLanguage) {
 
             console.log( 'Changing Language to: ' + newLanguage );
+
+            // # Set cookie an commit
             this.$cookie.set( 'langCookie', newLanguage );
             this.$store.commit( "setLanguage", newLanguage );
 
@@ -83,9 +89,13 @@ export default {
         }
     },
 
+    /**
+     * Window onload eq 4 Vue
+     * @return {void}
+     */
     mounted () {
         
-        //Check if the choosed the language in other sessions
+        // # Check if the choosed the language in other sessions
         let fromCookie = this.$cookie.get('langCookie');
         if (fromCookie) {
             this.$store.commit( "setLanguage", fromCookie );

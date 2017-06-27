@@ -7,6 +7,9 @@ use App\Repositories\UserRepository;
 use Jenssegers\Agent\Agent;
 use Log;
 
+/**
+ * Detects the user's device is a phone or not
+ */
 class DeviceDetectorCreator
 {
 
