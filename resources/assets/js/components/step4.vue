@@ -1370,7 +1370,8 @@ export default {
 
                     let _obj = _items.filter( ( cur ) => {
                         let testTexture = cur.baseTexture.replace( /^.*[\\\/]/, '' );
-                        return lookin4 == testTexture.replace( '.jpg','.png' );
+                        return testTexture;
+                        //return lookin4 == testTexture.replace( '.jpg','.jpg' );
                     })[ 0 ];
 
 
