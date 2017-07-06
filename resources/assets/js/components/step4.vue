@@ -222,53 +222,12 @@
                         <div class="row top1" v-if="$store.state.objectWorkingOn.type=='divider'">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <h3 class="divider_tab_group_level_1">Velvet</h3>
-                                        <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sx-12">
-                                                <h4>Fullcolor</h4>
-                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsVelvetFull" v-if="$store.state.objectWorkingOn.type=='divider'">
-                                                    <figure>
-                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                        <img :src="variant.textureImg"
-                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
-                                                             class="img center-block img-responsive img-thumbnail"
-                                                             @click="_updateDividerSku( $event );"
-                                                             style="width: 120px;height: 80px"
-                                                             :data-sku="variant.sku" 
-                                                             :alt="variant.color" 
-                                                             :title="variant.color" 
-                                                        >
-                                                        <figcaption>{{ $t(variant.color) }}</figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h4>Dark Core</h4>
-                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsVelvetDark" v-if="$store.state.objectWorkingOn.type=='divider'">
-                                                    <figure>
-                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                        <img :src="variant.textureImg"
-                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
-                                                             class="img center-block img-responsive img-thumbnail"
-                                                             @click="_updateDividerSku( $event );"
-                                                             style="width: 120px;height: 80px"
-                                                             :data-sku="variant.sku"
-                                                        >
-                                                        <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }}</figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <h3 class="divider_tab_group_level_1">{{ $t('Legno') }}</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Fullcolor</h4>
-                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -283,31 +242,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h4>Dark Core</h4>
-                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsLegnoDark" v-if="$store.state.objectWorkingOn.type=='divider'">
-                                                    <figure>
-                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                        <img :src="variant.textureImg"
-                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
-                                                             class="img center-block img-responsive img-thumbnail"
-                                                             @click="_updateDividerSku( $event );"
-                                                             style="width: 120px;height: 80px"
-                                                             :data-sku="variant.sku"
-                                                        >
-                                                        <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }}</figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <h3 class="divider_tab_group_level_1">{{ $t( 'Spazzolata (inox)' ) }}</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h4>Fullcolor</h4>
-                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
+                                                <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                         <img :src="variant.textureImg"
@@ -318,24 +260,6 @@
                                                              :data-sku="variant.sku"
                                                         >
                                                         <figcaption>{{ $t(variant.color) }}</figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row divider_tab_group_level_2">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h4>Dark Core</h4>
-                                                <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getDividerVariantsInoxDark" v-if="$store.state.objectWorkingOn.type=='divider'">
-                                                    <figure>
-                                                        <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                        <img :src="variant.textureImg"
-                                                             :data-img="($store.state.objectWorkingOn.obj.orientation=='H')?variant.textureH:variant.textureV"
-                                                             class="img center-block img-responsive img-thumbnail"
-                                                             @click="_updateDividerSku( $event );"
-                                                             style="width: 120px;height: 80px"
-                                                             :data-sku="variant.sku"
-                                                        >
-                                                        <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }}</figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -378,21 +302,7 @@
                                             </figure>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <h4>Dark core</h4>
-                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsVelvetDark" >
-                                            <figure>
-                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                <img :src="variant.textureImg"
-                                                     class="img center-block img-responsive img-thumbnail"
-                                                     @click="_updateBridges( $event );"
-                                                     style="width: 120px;height: 80px"
-                                                     :data-sku="variant.sku"
-                                                >
-                                                <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }} </figcaption>
-                                            </figure>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <h3> {{ $t('Legno') }}</h3>
@@ -411,21 +321,7 @@
                                             </figure>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <h4>Dark core</h4>
-                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsLegnoDark" >
-                                            <figure>
-                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                <img :src="variant.textureImg"
-                                                     class="img center-block img-responsive img-thumbnail"
-                                                     @click="_updateBridges( $event );"
-                                                     style="width: 120px;height: 80px"
-                                                     :data-sku="variant.sku"
-                                                >
-                                                <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }} </figcaption>
-                                            </figure>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <h3> {{ $t( 'Spazzolata (inox)' ) }}</h3>
@@ -441,21 +337,6 @@
                                                      :data-sku="variant.sku"
                                                 >
                                                 <figcaption>{{ $t(variant.color) }}</figcaption>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <h4>Dark core</h4>
-                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsInoxDark" >
-                                            <figure>
-                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                <img :src="variant.textureImg"
-                                                     class="img center-block img-responsive img-thumbnail"
-                                                     @click="_updateBridges( $event );"
-                                                     style="width: 120px;height: 80px"
-                                                     :data-sku="variant.sku"
-                                                >
-                                                <figcaption>{{ $t(variant.color) }} - {{ $t('step4.blackborder') }} </figcaption>
                                             </figure>
                                         </div>
                                     </div>
