@@ -29,7 +29,7 @@
 
                 <div class="carousel-inner" role="listbox">
                     <!-- Items are taken from the server -->
-                    <div :class="['item', index == 0 ? 'active' : '']" v-for="( image, index ) in $store.state.gallery_images">
+                    <div :class="['item', index == 0 ? 'active' : '']" v-for="( image, index ) in $store.state.carousel_images">
                       <img class="img-responsive" :src="image.src" :alt="image.src">
                     </div>  
                 </div>
@@ -68,7 +68,7 @@ export default {
         * gallery_images watcher
         * @return {void}
         */
-        gallery_images: function () {
+        carousel_images: function () {
 
             // # Once images are loaded and the mutation changes their stored value
             // # init the carousel ( and bind the gallery onclick event at the same time )
@@ -86,8 +86,8 @@ export default {
          * gallery_images "getter"
          * @return {string}
          */
-        gallery_images: function() {
-            return this.$store.state.gallery_images;
+        carousel_images: function() {
+            return this.$store.state.carousel_images;
         }
     },
 

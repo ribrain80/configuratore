@@ -265,4 +265,42 @@ class ApiController extends Controller {
 
     }
 
+    /**
+     * Retrieve all carousel images from the server
+     * @return Response
+     */
+    public function actionCarouselImages() {
+
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionCarouselImages', function () {
+
+            // # Conatiner init
+            $container = [];
+
+            // # Directory iterator
+            $iterator = new \DirectoryIterator(  "./images/carousel"  );
+
+            // # Loop through files and dir
+            foreach( $iterator as $item ) {
+
+                // # Avoid dirs
+                if( is_dir( $item ) ) {
+                    continue;
+                }
+
+                // # Get pathname
+                $path = ltrim( $item->getPathname(), "." );
+                $tmp[ 'src' ] =  $path;
+                $tmp[ 'thumb' ] = $path;
+                $container[] = $tmp;
+            }
+
+            // # toJson
+            return json_encode($container);
+        });
+
+        return response()->make( $cached );
+
+    }    
+
 }

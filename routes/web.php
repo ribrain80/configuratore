@@ -28,6 +28,8 @@ Route::group( [ 'prefix' => 'split' ], function () {
     Route::get('edgestextures',['as'=>'split.api.edgesTextures','uses'=>'ApiController@actionEdgesFinitures']);
     Route::post('savedrawer',['as'=>'split.api.savedrawer','uses'=>'SplitDrawerController@actionSave']);
     Route::get('gallery-images', ['as'=>'split.api.gallery-images','uses'=>'ApiController@actionGalleryImages']);
+    Route::get('carousel-images', ['as'=>'split.api.carousel-images','uses'=>'ApiController@actionCarouselImages']);
+    
 
     // # EXPORT TO PDF
     Route::get('topdf/debug/{drawer}',['as'=>'split.export.topdf.debug','uses'=>'ExportController@actionDebug']);

@@ -148,7 +148,10 @@ export default {
         "Legno": "Legno",
         "Spazzolata (inox)": "Spazzolato",
         "Neutro": "Velvet",
-        "step4.blackborder": "Bordo nero"
+        "step4.blackborder": "Bordo nero",
+
+        "smartphone.title": "Accesso tramite smartphone",
+        "smartphone.message": "il configuratore è ottimizzato per desktop, notebook e tablet, ma non supporta gli smartphone"
     },
     en: {
         "split.page.title": "TODO",
@@ -300,7 +303,11 @@ export default {
         "Neutro": "Velvet",
 
         "step4.containers": "Storage Compartment",
-        "step4.blackborder": "With black edge"
+        "step4.blackborder": "With black edge",
+
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"
     },
     de: {
         "split.page.title": "TODO",
@@ -447,7 +454,10 @@ export default {
         "Spazzolata (inox)": "Gebürstet",
         "Neutro": "Velvet",
         "step4.containers": "Ablagefach",
-        "step4.blackborder": "Schwarze Kante"
+        "step4.blackborder": "Schwarze Kante",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"
     },
     fr: {
         "split.page.title": "TODO",
@@ -594,7 +604,10 @@ export default {
         "Spazzolata (inox)": "Brossé",
         "Neutro": "Velvet",
         "step4.containers": 'Bac De Rangement',
-        "step4.blackborder": "Avec bord noir"
+        "step4.blackborder": "Avec bord noir",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     },
     es: {
         "split.page.title": "TODO",
@@ -741,7 +754,10 @@ export default {
         "Spazzolata (inox)": "Cepillado",
         "Neutro": "Velvet",
         "step4.containers": "Contenedor",
-        "step4.blackborder": "Borde negro"
+        "step4.blackborder": "Borde negro",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     },
     pt: {
         "split.page.title": "TODO",
@@ -890,7 +906,10 @@ export default {
         "Spazzolata (inox)": "Escovado",
         "Neutro": "Velvet",
         "step4.containers": "Recipiente",
-        "step4.blackborder": "Borda preta"
+        "step4.blackborder": "Borda preta",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     },
     zh: {
         "split.page.title": "TODO",
@@ -1043,7 +1062,10 @@ export default {
         "Legno": "木纹",
         "Spazzolata (inox)": "拉丝",
         "Neutro": "Velvet",
-        "step4.blackborder": "裁切边缘为黑色"
+        "step4.blackborder": "裁切边缘为黑色",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     }
 
 };

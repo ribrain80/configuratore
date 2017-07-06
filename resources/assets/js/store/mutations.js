@@ -773,6 +773,10 @@ const  mutations = {
         state.gallery_images = val;
     },
 
+    setCarouselImages: function ( state, val ) {
+        state.carousel_images = val;
+    },
+
     setCurrentStep: function (state, val) {
         state.currentStep = val;
     },

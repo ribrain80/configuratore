@@ -58,13 +58,15 @@ const store = new Vuex.Store({
                     Axios.get( '/split/edgestextures'),
                     Axios.get( '/split/dividersplain'),
                     Axios.get( '/split/gallery-images' ),
+                    Axios.get( '/split/carousel-images' ),
                 ];
 
                 // # Resolve all promises. If any of them fail push into the router '/split/500'
                 // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
+                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, 
+                        responseTextures, responseDividersPlain, responseGalleryImages, responseCarouselImages ] ) => {
 
                         // # Success
                         commit( 'setDrawersTypes', responseTypes.data );
@@ -74,6 +76,7 @@ const store = new Vuex.Store({
                         commit( 'setTextureTypes', responseTextures.data );
                         commit( 'setDividerTypesPlain', responseDividersPlain.data );
                         commit( 'setGalleryImages', responseGalleryImages.data );
+                        commit( 'setCarouselImages', responseCarouselImages.data );
 
                     },
                     () => { 
@@ -769,6 +772,12 @@ const store = new Vuex.Store({
          * @type {Array}
          */
         gallery_images: [],
+
+        /**
+         * [carousel_images description]
+         * @type {Array}
+         */
+        carousel_images: []
 
     },
 
