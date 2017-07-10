@@ -742,11 +742,6 @@ const  mutations = {
         });
     },
 
-    setCanvasReady: function (state) {
-        console.log("SETTING CANVAS READY");
-        state.canvasReady=true;
-    },
-
     setCanvasSvg: function(state,svg) {
         state.canvasSvg=svg;
     },
@@ -778,15 +773,13 @@ const  mutations = {
         state.gallery_images = val;
     },
 
+    setCarouselImages: function ( state, val ) {
+        state.carousel_images = val;
+    },
+
     setCurrentStep: function (state, val) {
         state.currentStep = val;
     },
-
-    setHintViewed: function( state, val ) {
-        state.hint_viewed = val;
-    }
-
-
 
 };
 

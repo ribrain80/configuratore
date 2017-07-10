@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Bridge;
@@ -10,10 +9,10 @@ use App\Models\Support;
 use Log;
 use Cache;
 
-class ApiController extends Controller
-{
-
-    const CACHETIME = 0;
+/**
+ * TODO comment
+ */
+class ApiController extends Controller {
 
     /**
      * Return a json with all drawer types grouped by category.
@@ -21,20 +20,29 @@ class ApiController extends Controller
      */
     public function actionDrawersType() {
 
-        $cached = Cache::rememberForever("actionDrawersType" ,function () {
-            $grouped = [];
-            // loop through all drawertypes and group them by category
-            foreach (Drawertype::all(['id','description','category'])->sortBy(['category' => 'desc' ]) as $type) {
-                $grouped[$type['category']][]=$type;
-            }
+        // # Cache result forever
+        $cached = Cache::rememberForever( "actionDrawersType", function () {
+
+            // # Container init
             $out = [];
-            foreach ( $grouped as $k=>$v) {
-                $out[$k] = array_reverse($v);
+
+            // # Getting results grouped and ordered 
+            $collection = Drawertype::all( [ "id", "description", "category" ] )
+                          ->groupBy( "category" )
+                          ->sortBy( ["category" => "desc" ] )
+                          ->toArray();
+            
+            // # Revert values
+            foreach ( $collection as $k => $v ) {
+                $out[ $k ] = array_reverse( $v );
             }
-            return json_encode($out);
+
+            // # toJson
+            return json_encode( $out );
+
         });
 
-        return response()->make($cached);
+        return response()->make( $cached );
     }
 
 
@@ -44,10 +52,16 @@ class ApiController extends Controller
      */
     public function actionDividers() {
 
-        $cached = Cache::rememberForever('actionDividers',function () {
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionDividers', function () {
+            
+            // # Container init
             $grouped = [];
+
             // loop through all dividers and group them by depth
             foreach ( Divider::all( ['id','sku','width','length','depth','imageH','imageV','color','border','texture','description','textureH','textureV','image3d','textureImg','model3d','baseTexture'] ) as $curDivider ) {
+
+                // # TODO COMMENT
                 $curSecondaryKey = $curDivider['width'].'X'.$curDivider['length'];
                 $grouped[$curDivider['depth']][$curSecondaryKey]['items'][]=$curDivider;
                 $grouped[$curDivider['depth']][$curSecondaryKey]['imageH']=$curDivider['imageH'];
@@ -58,22 +72,36 @@ class ApiController extends Controller
                 $grouped[$curDivider['depth']][$curSecondaryKey]['sku']=$curDivider['sku'];
             }
 
-            return json_encode(['dividersCategories'=>array_keys($grouped),'dividers'=>$grouped]);
+            // # toJson
+            return json_encode( [ 'dividersCategories' => array_keys( $grouped ), 'dividers'=>$grouped ] );
         });
 
 
-        //Extract the dividers depth (Array keys) and build an array to transform in json
-        return response()->make($cached);
+        // # Extract the dividers depth (Array keys) and build an array to transform in json
+        return response()->make( $cached );
     }
 
-
+    /**
+     * TODO COMMENT
+     * @return [type] [description]
+     */
     public function actionPlainDividers() {
 
-        $cached = Cache::rememberForever('actionPlainDividers',function () {
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionPlainDividers', function () {
+
+            // # Container init
             $out = [];
-            foreach (Divider::all()->groupBy('sku') as $sku => $cur) {
-                $out[$sku]=$cur[0];
+
+            // # Get all dividers grouped by sku
+            $collection = Divider::all()->groupBy( 'sku' );
+
+            // # Loop through all dividers 
+            foreach ( $collection as $sku => $cur ) {
+                $out[ $sku ] = $cur[ 0 ];
             }
+
+            // # toJson
             return json_encode($out);
         });
 
@@ -87,15 +115,26 @@ class ApiController extends Controller
      */
     public function actionSupports() {
 
-        $cached = Cache::rememberForever('actionSupports',function () {
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionSupports', function () {
+
+            // # Container init
             $grouped = [];
-            foreach (Support::all() as $curSupport) {
-                $key = "" . $curSupport['height'];
-                $grouped[$key]['items'][] = $curSupport;
-                $grouped[$key]['height'] = (double)($curSupport['height']/10);
-                $grouped[$key]['id'] = ($curSupport['height']==455?1:2);
+
+            // # Get all supports
+            $collection = Support::all();
+
+            // # Loop through all supports 
+            foreach ( $collection as $curSupport ) {
+
+                $key = "" . $curSupport[ 'height' ];
+                $grouped[ $key ][ 'items' ][] = $curSupport;
+                $grouped[ $key ][ 'height' ] = ( double ) ( $curSupport['height'] / 10 );
+                $grouped[ $key ][ 'id' ] = ( $curSupport['height'] == 455 ? 1 : 2 );
 
             }
+
+            // # toJson
             return json_encode($grouped);
         });
 
@@ -108,79 +147,160 @@ class ApiController extends Controller
      */
     public function actionBridges() {
 
-        $cached = Cache::rememberForever('actionBridges',function () {
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionBridges', function () {
+
+            // # Container init
             $grouped = [];
 
-            foreach (Bridge::all(['id','sku','sku_short','width','depth','image','color','border','texture','description','textureImg'])->sortBy('depth') as $curBridge) {
-                $key = "".$curBridge['depth'];
-                $grouped[$key]['image'] = $curBridge['image'];
-                $grouped[$key]['depth'] = $curBridge['depth'];
-                $grouped[$key]['id'] = $curBridge['depth'];
-                $grouped[$key]['width'] = $curBridge['width'];
+            // # Get all bridges
+            $collection = Bridge::all( [ 'id', 'sku', 'sku_short', 'width', 'depth', 'image', 
+                                        'color', 'border', 'texture', 'description','textureImg'] )
+                                ->sortBy( 'depth' );
 
-                $grouped[$key]['items'][] = $curBridge;
+            // # Loop through all bridges
+            foreach ( $collection as $curBridge) {
+
+                $key = "".$curBridge['depth'];
+                $grouped[ $key ][ 'image' ] = $curBridge['image'];
+                $grouped[ $key ][ 'depth' ] = $curBridge['depth'];
+                $grouped[ $key ][ 'id' ] = $curBridge['depth'];
+                $grouped[ $key ][ 'width' ] = $curBridge['width'];
+
+                $grouped[ $key ][ 'items' ][] = $curBridge;
             }
+
+            // # toJson
             return json_encode($grouped);
         });
-
-
 
         return response()->make($cached);
     }
 
 
+    /**
+     * TODO COMMENT
+     * @return [type] [description]
+     */
     public function actionEdgesFinitures() {
 
-        $cached = Cache::rememberForever('actionEdgesFinitures',function () {
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionEdgesFinitures', function () {
+
+            // # Container init
             $output = [];
-            foreach (Drawertypestexture::all() as $curRel ) {
-                $cur['textureId'] = $curRel->texture;
-                $cur['textureImg'] = $curRel->rTexture()->first()->image;
-                $cur['textureName'] = $curRel->rTexture()->first()->name;
+
+            // # Get all bridges
+            $collection = Drawertypestexture::all();
+
+            foreach ( $collection as $curRel ) {
+
+                $cur[ 'textureId' ]   = $curRel->texture;
+                $cur[ 'textureImg' ]  = $curRel->rTexture()->first()->image;
+                $cur[ 'textureName' ] = $curRel->rTexture()->first()->name;
 
                 if ($curRel->left) {
                     $output[$curRel->drawertypes]['left'][]=$cur;
                 }
+
                 if ($curRel->right) {
                     $output[$curRel->drawertypes]['right'][]=$cur;
                 }
+
                 if ($curRel->front) {
                     $output[$curRel->drawertypes]['front'][]=$cur;
                 }
+
                 if ($curRel->back) {
                     $output[$curRel->drawertypes]['back'][]=$cur;
                 }
+
                 if ($curRel->background) {
                     $output[$curRel->drawertypes]['background'][]=$cur;
                 }
             }
+
+            // # toJson
             return json_encode($output);
         });
 
-
-        //Logic here
         return response()->make($cached);
     }
 
+    /**
+     * Retrieve all galleries images from the server
+     * @return Response
+     */
     public function actionGalleryImages() {
 
-        $cached = Cache::rememberForever('actionGalleryImages',function () {
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionGalleryImages', function () {
+
+            // # Conatiner init
             $container = [];
+
+            // # Directory iterator
             $iterator = new \DirectoryIterator(  "./images/gallery/images"  );
+
+            // # Loop through files and dir
             foreach( $iterator as $item ) {
 
-                if( !is_dir( $item) ) {
-                    $path = ltrim( $item->getPathname(), "." );
-                    $tmp['src']=  $path;
-                    $tmp['thumb'] = $path;
-                    $container[] = $tmp;
+                // # Avoid dirs
+                if( is_dir( $item ) ) {
+                    continue;
                 }
+
+                // # Get pathname
+                $path = ltrim( $item->getPathname(), "." );
+                $tmp[ 'src' ] =  $path;
+                $tmp[ 'thumb' ] = $path;
+                $container[] = $tmp;
             }
+
+            // # toJson
             return json_encode($container);
         });
 
         return response()->make( $cached );
 
     }
+
+    /**
+     * Retrieve all carousel images from the server
+     * @return Response
+     */
+    public function actionCarouselImages() {
+
+        // # Cache result forever
+        $cached = Cache::rememberForever( 'actionCarouselImages', function () {
+
+            // # Conatiner init
+            $container = [];
+
+            // # Directory iterator
+            $iterator = new \DirectoryIterator(  "./images/carousel"  );
+
+            // # Loop through files and dir
+            foreach( $iterator as $item ) {
+
+                // # Avoid dirs
+                if( is_dir( $item ) ) {
+                    continue;
+                }
+
+                // # Get pathname
+                $path = ltrim( $item->getPathname(), "." );
+                $tmp[ 'src' ] =  $path;
+                $tmp[ 'thumb' ] = $path;
+                $container[] = $tmp;
+            }
+
+            // # toJson
+            return json_encode($container);
+        });
+
+        return response()->make( $cached );
+
+    }    
 
 }

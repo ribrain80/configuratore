@@ -1,5 +1,7 @@
 export default {
     it: {
+        "split.page.title": "Salice | Configuratore Split",
+        "split.meta.description": "Configuratore Split cassetti Salice",
         "menu.newconf": "Nuova Configurazione",
         "menu.gallery": "Gallery",
         "back": "Indietro",
@@ -52,7 +54,7 @@ export default {
         "stepponte.orientation_title": "Orientamento Ponti",
         "stepponte.reset": "Reset",
         "stepponte.bridge_support": 'Supporti Ponte',
-        "stepponte.supports_advice": "La selezione dell’elemento ponte per il tipo di cassetto / orientamento del ponte specificato richiede l’inserimento di supporti ponte aggiuntivi: {num_sup} nel caso specifico. Inoltre la {dimension} interna disponibile sarà ridotta di {mm} mm.",
+        "stepponte.supports_advice": "La selezione dell’elemento ponte per il tipo di cassetto / orientamento del ponte specificato richiede l’inserimento di <a href='{pdf_link}' target='blank'>supporti ponte aggiuntivi</a>: {num_sup} nel caso specifico. Inoltre la {dimension} interna disponibile sarà ridotta di {mm} mm.",
         "horizontal": "Orizzontale",
         "vertical": "Verticale",
         "stepponte.supports_description": "A che distanza dal fondo del cassetto desideri inserire gli elementi ponte?",
@@ -77,6 +79,7 @@ export default {
         "step4.edges_bottom": "retro",
         "step4.edges_left": "sinistra",
         "step4.edges_right": "destra",
+        "step4.edges_floor": "fondo",
         "step4.noborders-advice": "Per completare la configurazione è necessario selezionare le finiture del cassetto",
         "step4.nodividers-advice": "Per completare la configurazione è necessario selezionare almeno un contenitore",
         "step4.collisions-advice": "Alcuni contenitori non sono posizionati in modo corretto. <br /> È necessario riposizionarli per proseguire.",
@@ -145,9 +148,14 @@ export default {
         "Legno": "Legno",
         "Spazzolata (inox)": "Spazzolato",
         "Neutro": "Velvet",
-        "step4.blackborder": "Bordo nero"
+        "step4.blackborder": "Bordo nero",
+
+        "smartphone.title": "Accesso tramite smartphone",
+        "smartphone.message": "il configuratore è ottimizzato per desktop, notebook e tablet, ma non supporta gli smartphone"
     },
     en: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "New Configuration",
         "menu.gallery": "Gallery",
         "back": "Back",
@@ -202,7 +210,7 @@ export default {
         "stepponte.orientation_title": "Orientation of bridging units",
         "stepponte.reset": "Reset",
         "stepponte.bridge_support": 'Profile to hold bridging units',
-        "stepponte.supports_advice": "The selection of the bridging unit for drawer type / specified orientation of bridging unit requires the insertion of additional profiles to support the bridging unit: {num_sup} in this specific case. Consequently, the internal {dimensionwill be reduced by {mm} mm.",
+        "stepponte.supports_advice": "The selection of the bridging unit for drawer type / specified orientation of bridging unit requires the insertion of additional profiles to support the bridging unit: {num_sup} in this specific case. Consequently, the internal {dimension} will be reduced by {mm} mm.",
         "horizontal": "Horizontal",
         "vertical": "Vertical",
         "stepponte.supports_description": "At what height from the drawer bottom do you wish to insert the bridging units ?",
@@ -218,6 +226,7 @@ export default {
         "step4.title": "Handling of the inserted storage compartments",
         "step4.select_all": "Select all",
         "step4.deselect_all": "Deselect all",
+        "step4.vertical-space-advice": "Inserting the storage compartment might limit the bridging unit sliding",        
         "step5.title": "Download configuration",
         "step4.upper_label": "Handling of extra units",
         "step4.delete_all_advice": "Are you sure you want to delete all dividers?",
@@ -226,6 +235,7 @@ export default {
         "step4.edges_bottom": "back panel",
         "step4.edges_left": "left",
         "step4.edges_right": "right",
+        "step4.edges_floor": "floor",
         "step4.noborders-advice": "To complete the configuration it is necessary to select the finishes of the drawer",
         "step4.nodividers-advice": "To complete the configuration it is necessary to select at least one storage compartment",
         "step4.collisions-advice": "Some storage compartments are not correctly positioned. It is necessary to reposition them to continue.",
@@ -293,9 +303,15 @@ export default {
         "Neutro": "Velvet",
 
         "step4.containers": "Storage Compartment",
-        "step4.blackborder": "With black edge"
+        "step4.blackborder": "With black edge",
+
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"
     },
     de: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Neue Konfiguration",
         "menu.gallery": "Gallery",
         "back": "Zurück",
@@ -364,6 +380,7 @@ export default {
         "step4.title": "Anwendung der eingesetzten Einsatzboxen",
         "step4.select_all": "Wählen Sie alle",
         "step4.deselect_all": "Löschen Sie alle",
+        "step4.vertical-space-advice": "Das Einsetzen des Einsatzbox könnte die Verschiebung des Brückenelementes begrenzen",          
         "step5.title": "Konfiguration herunterladen",
         "step4.upper_label": "Anwendung Sonderelemente",
         "step4.delete_all_advice": "Möchten Sie tatsächlich alle Trennelemente löschen?",
@@ -372,6 +389,7 @@ export default {
         "step4.edges_bottom": "Rückwand",
         "step4.edges_left": "Linksa",
         "step4.edges_right": "Rechts",
+        "step4.edges_floor": "TODO",
         "step4.noborders-advice": "Um die Konfiguration zu vervollständigen, müssen die Farbausführungen der Schublade ausgewählt werden",
         "step4.nodividers-advice": "Um die Konfiguration zu vervollständigen, muß mindestens ein Einsatzbox ausgewählt werden",
         "step4.collisions-advice": "Einige Einsatzboxen sind falsch positioniert.<br />Sie müssen neu positioniert, um weiterzugehen",
@@ -436,9 +454,14 @@ export default {
         "Spazzolata (inox)": "Gebürstet",
         "Neutro": "Velvet",
         "step4.containers": "Ablagefach",
-        "step4.blackborder": "Schwarze Kante"
+        "step4.blackborder": "Schwarze Kante",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"
     },
     fr: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Nouvelle Configuration",
         "menu.gallery": "Gallerie",
         "back": "Retour",
@@ -507,6 +530,7 @@ export default {
         "step4.title": "Gestions bacs de rangement installés",
         "step4.select_all": "Sélectionnez toous",
         "step4.deselect_all": "Annulez tous",
+        "step4.vertical-space-advice": "L’insertion du bac de rangement pourrait limiter le glissement du bac transversal",          
         "step5.title": "Télécharger configuration",
         "step4.upper_label": "Gestion éléments supplémentaires",
         "step4.delete_all_advice": "Etes vous sûr de vouloir éliminer tous les séparateurs internes?",
@@ -515,6 +539,7 @@ export default {
         "step4.edges_bottom": "panneau arrière",
         "step4.edges_left": "gauche",
         "step4.edges_right": "droite",
+        "step4.edges_floor": "TODO",
         "step4.noborders-advice": "Pour compléter la configuration il faut sélectionner les finitions du tiroir",
         "step4.nodividers-advice": "Pour compléter la configuration il faut sélectionner aumoins un bac de rangement",
         "step4.collisions-advice": "La position de quelques bacs de rangement n'est pas correcte.<br />Il faut les repositionner pour continuer",
@@ -579,9 +604,14 @@ export default {
         "Spazzolata (inox)": "Brossé",
         "Neutro": "Velvet",
         "step4.containers": 'Bac De Rangement',
-        "step4.blackborder": "Avec bord noir"
+        "step4.blackborder": "Avec bord noir",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     },
     es: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Nueva Configuración",
         "menu.gallery": "Galería",
         "back": "Atrás",
@@ -650,6 +680,7 @@ export default {
         "step4.title": "Gestión contenedores insertados",
         "step4.select_all": "Seleccionar todos",
         "step4.deselect_all": "Deseleccionar todos",
+        "step4.vertical-space-advice": "La inserción del contenedor podría limitar el deslizamiento del puente",       
         "step5.title": "Descargar configuración",
         "step4.upper_label": "Gestión elementos extra",
         "step4.delete_all_advice": "¿Seguro que quieres eliminar todos los separadores?",
@@ -658,6 +689,7 @@ export default {
         "step4.edges_bottom": "parte posterior",
         "step4.edges_left": "izquierda",
         "step4.edges_right": "derecha",
+        "step4.edges_floor": "TODO",
         "step4.noborders-advice": "Para completar la configuración es necesario seleccionar los acabados del cajón",
         "step4.nodividers-advice": "Para completar la configuración es necesario seleccionar como mínimo un contenedor",
         "step4.collisions-advice": "Algunos contenedores no se han posicionado correctamente.<br />Es necesario posicionarlos de nuevo para continuar.",
@@ -722,9 +754,14 @@ export default {
         "Spazzolata (inox)": "Cepillado",
         "Neutro": "Velvet",
         "step4.containers": "Contenedor",
-        "step4.blackborder": "Borde negro"
+        "step4.blackborder": "Borde negro",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     },
     pt: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "Nova Configuração",
         "menu.gallery": "Galeria",
         "back": "Volte",
@@ -777,7 +814,7 @@ export default {
         "stepponte.orientation_title": "Orientação Pontes",
         "stepponte.reset": "Reset",
         "stepponte.bridge_support": 'Perfil suporte ponte',
-        "stepponte.supports_advice": "A escolha do elemento ponte pelo modelo da gaveta / a orientação da ponte especificada necessita a inclusão dos suportes pontes adicionais: {num_sup} no caso específico. Além disto a {dimensão} interna disponível será reduzida de {mm} mm.",
+        "stepponte.supports_advice": "A escolha do elemento ponte pelo modelo da gaveta / a orientação da ponte especificada necessita a inclusão dos suportes pontes adicionais: {num_sup} no caso específico. Além disto a {dimension} interna disponível será reduzida de {mm} mm.",
         "horizontal": "Horizontal",
         "vertical": "Vertical",
         "stepponte.supports_description": "A que distância do fundo da gaveta deseja colocar os elementos pontes?",
@@ -793,6 +830,7 @@ export default {
         "step4.title": "Gestão recipientes colocados",
         "step4.select_all": "Seleciona todos",
         "step4.deselect_all": "Desconsiderar todos",
+        "step4.vertical-space-advice": "A colocação do recipiente poderá limitar o deslizamento do elemento ponte",
         "step5.title": "Download configuração",
         "step4.upper_label": "Gestão elementos extras",
         "step4.delete_all_advice": "Tem certeza que deseja eliminar todos os divisores?",
@@ -801,6 +839,7 @@ export default {
         "step4.edges_bottom": "traseira",
         "step4.edges_left": "esquerda",
         "step4.edges_right": "direita",
+        "step4.edges_floor": "TODO",
         "step4.noborders-advice": "Para completar a configuração é necessário selecionar o acabamento da gaveta",
         "step4.nodividers-advice": "Para completar a configuração é necessário selecionar ao menos um recipiente",
         "step4.collisions-advice": "Alguns recipientes não estão posicionados corretamente.<br />É necessário reposiciona-los para prosseguir.",
@@ -867,9 +906,14 @@ export default {
         "Spazzolata (inox)": "Escovado",
         "Neutro": "Velvet",
         "step4.containers": "Recipiente",
-        "step4.blackborder": "Borda preta"
+        "step4.blackborder": "Borda preta",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     },
     zh: {
+        "split.page.title": "TODO",
+        "split.meta.description": "TODO",
         "menu.newconf": "新建配置",
         "menu.gallery": "图库",
         "back": "后退",
@@ -949,6 +993,7 @@ export default {
         "step4.edges_bottom": "背板",
         "step4.edges_left": "左侧板",
         "step4.edges_right": "右侧板",
+        "step4.edges_floor": "TODO",
         "step4.noborders-advice": "如需继续，请选择抽屉的表面颜色",
         "step4.nodividers-advice": "如需继续，请至少选择一个存储单元",
         "step4.collisions-advice": "存储单元没有摆放在正确位置，如需继续，请正确摆放存储单元",
@@ -1017,7 +1062,10 @@ export default {
         "Legno": "木纹",
         "Spazzolata (inox)": "拉丝",
         "Neutro": "Velvet",
-        "step4.blackborder": "裁切边缘为黑色"
+        "step4.blackborder": "裁切边缘为黑色",
+
+        "smartphone.title": "TODO",
+        "smartphone.message": "TODO"        
     }
 
 };

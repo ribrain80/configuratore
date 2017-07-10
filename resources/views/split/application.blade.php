@@ -3,7 +3,13 @@
 <head>
     
     <!-- Viewport meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    
+    <!-- Title -->
+    <title>Salice | Configuratore Split</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Configuratore Split cassetti Salice" />
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset( 'images/salice.ico' ) }}">   
@@ -13,6 +19,7 @@
 
     <!-- Laravl csrf token -->
     <script>window.Laravel = <?= json_encode(['csrfToken' => csrf_token()]); ?></script>
+    <script>window.isPhone = {{ $isPhone }};</script>
 
 </head>
 <body>
@@ -48,7 +55,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">@{{ $t( 'attenzione' ) }}</h4>
                     </div>
-                    <div class="modal-body"  id="generic-alert-message">
+                    <div class="modal-body" id="generic-alert-message">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Ok!</button>

@@ -35,7 +35,7 @@
                                      @click="setOrientation('H')"
                                 />
                             </div>
-                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-H' | translate}} </figcaption>
+                            <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', $store.state.bridge_orientation == 'H' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-H' | translate}} </figcaption>
                         </figure>
                     </div>
                     
@@ -53,7 +53,7 @@
                                      @click="setOrientation('V')"
                                 />
                             </div>
-                            <figcaption :class="[ 'text-center', 'top2', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-V' | translate}} </figcaption>
+                            <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', $store.state.bridge_orientation == 'V' ? 'text-success' : 'text-danger']"> {{ 'stepponte.ori-V' | translate}} </figcaption>
                         </figure>
                     </div>
 
@@ -81,7 +81,7 @@
                         <transition name="fade">
                             <div class="col-lg-12" v-if="showSupportsAdvice">
                                 <div class='alert alert-warning' role="alert">
-                                    <strong>{{ 'attenzione' | translate }}</strong> {{ $t('stepponte.supports_advice', { num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })  }}
+                                    <strong>{{ 'attenzione' | translate }}</strong> <span v-html="$t('stepponte.supports_advice', { pdf_link: pdfLink, num_sup: numSup, dimension: dimensionAffected, mm: 6 * numSup })"></span>
                                 </div>
                             </div>
                         </transition>
@@ -104,7 +104,7 @@
                                                  @click="selectBridgeSupport( bridge_support )"
                                             />
                                         </div>
-                                        <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> {{ bridge_support.height }} mm {{ $t( "stepponte.from-drawer-bottom" )}}</figcaption>
+                                        <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', bridge_support.id == $store.state.bridge_supportID ? 'text-success' : 'text-danger']"> {{ bridge_support.height }} mm {{ $t( "stepponte.from-drawer-bottom" )}}</figcaption>
                                     </figure>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                              :data-depth="bridge.depth"
                                         />
                                     </div>
-                                    <figcaption :class="[ 'text-center', 'top2', true ? 'text-success' : 'text-danger']"> {{ $t( "stepponte.bridge_elem_label" ) }} H {{ bridge.depth }} mm </figcaption>
+                                    <figcaption :class="[ 'text-uppercase', 'text-center', 'top2', bridge.id == $store.state.bridge_ID ? 'text-success' : 'text-danger']"> {{ $t( "stepponte.bridge_elem_label" ) }} H {{ bridge.depth }} mm </figcaption>
                                 </figure>
 
                             </div>
@@ -207,6 +207,16 @@ export default {
              */
             error_modal: $( "#error-modal" ),
 
+            /**
+             * [i_gallery description]
+             * @type {Object}
+             */
+            i_gallery: {},
+
+            /**
+             * [config description]
+             * @type {Object}
+             */
             config: {
 
               // # Lightgallery common settings
@@ -252,6 +262,18 @@ export default {
                     return this.$store.state.bridge_orientation == "V" ? 1 : 0;
 
             }
+        },
+
+        /**
+         * [pdfLink description]
+         * @return {[type]} [description]
+         */
+        pdfLink: function () {
+            
+            let base_name = "/pdf/Split_prospetto-tecnico/Split_Ed01_05-2017_";
+            let cookieLang = ( null == this.$cookie.get( 'langCookie' ) ) ? "it" :  this.$cookie.get( 'langCookie' );
+            base_name +=  cookieLang + ".pdf";
+            return base_name;
         },
 
         /**
@@ -567,15 +589,12 @@ export default {
             return true;
         },
 
+        /**
+         * [showBridgeInfo description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         showBridgeInfo: function( event ) {
-
-            try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
-                // $( this ).unbind( "click" );
-            } catch( e ) {
-                // Do nothing
-            }
-
 
             // # Get related image element
             let related_image = $( event.target ).next().find( "img" );
@@ -585,17 +604,15 @@ export default {
             bridgesGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
             
             // # Init
-            $( event.target ).lightGallery( bridgesGalleryOptions ) ;   
+            this.i_gallery = $( event.target ).lightGallery( bridgesGalleryOptions ) ;   
         },
 
+        /**
+         * [showSupportsInfo description]
+         * @param  {[type]} event [description]
+         * @return {[type]}       [description]
+         */
         showSupportsInfo: function( event ) {
-
-            try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
-                // $( this ).unbind( "click" );
-            } catch( e ) {
-                // Do nothing
-            }
 
             // # Get related image element
             let related_image = $( event.target ).next().find( "img" );
@@ -605,25 +622,23 @@ export default {
             supportsGalleryOptions.dynamicEl = [ { src: related_image.attr( "src" ) } ];
             
             // # Init
-            $( event.target ).lightGallery( supportsGalleryOptions ) ;   
-
+            this.i_gallery = $( event.target ).lightGallery( supportsGalleryOptions ) ;   
         },
 
+        /**
+         * [showORIInfo description]
+         * @param  {[type]} event [description]
+         * @param  {[type]} ori   [description]
+         * @return {[type]}       [description]
+         */
         showORIInfo: function ( event, ori ) {
 
-            try {
-                $( event.target ).data( "lightGallery" ).destroy( true );
-                // $( this ).unbind( "click" );
-            } catch( e ) {
-                // Do nothing
-            }
-
             // # General settings + image src
-            let oriHGalleryOptions = this.config.lightgalleryOptions;
-            oriHGalleryOptions.dynamicEl = [ { src: $( "#or-" + ori ).attr( "src" ) } ];
+            let oriGalleryOptions = this.config.lightgalleryOptions;
+            oriGalleryOptions.dynamicEl = [ { src: $( "#or-" + ori ).attr( "src" ) } ];
 
             // # Init
-            $( event.target ).lightGallery( oriHGalleryOptions ) ;
+            this.i_gallery = $( event.target ).lightGallery( oriGalleryOptions ) ;
         }
     },
 
@@ -671,32 +686,32 @@ export default {
 
         })
     },     
-
+    created () {
+      Pace.start( paceOptions );
+    },
     /**
      * Window onload eq 4 Vue
      * @return {void}
      */    
     mounted () {
 
+
         // # Component header title and current step info
         this.$store.commit( "setComponentHeader", "stepponte.header-title" );
         this.$store.commit( "setCurrentStep", 'p' );
 
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
-        
+        // # Sidebar
         let pos = 0;
-        let $pointer = $(".navigator .pointer-navigator"); 
-        let $nav = $(".navigator #nav").find("li");
-        let $active = $nav.find("a.router-link-active");
+        let $pointer = $( ".navigator .pointer-navigator" ); 
+        let $nav = $( ".navigator #nav" ).find( "li" );
+        let $active = $nav.find( "a.router-link-active" );
         
-        pos = parseInt($active.parent("li").position().top);
-        $pointer.removeAttr("style").attr("style","transform: translateY(" + pos.toString() + "px)");
-        
-        // SET SIDEBAR ITEM ACTIVE - END 
-        // ---------------------------------------------
+        pos = parseInt( $active.parent( "li" ).position().top );
+        $pointer.removeAttr( "style" ).attr( "style", "transform: translateY(" + pos.toString() + "px)" );
 
-        console.log( "Step ponte Mounted!" );
+        Pace.stop();
+
+
     }
 }
 </script>

@@ -7,7 +7,6 @@ import getters      from './getters'
 import translations from './translations'
 import fakeScene    from '../3d/dummy/dummyScene'
 
-
 // # Ie11 polyfill workarounds
 require('es6-promise').polyfill();
 
@@ -44,11 +43,14 @@ const store = new Vuex.Store({
          * @param context
          */
         initApp: function ( { commit }, context ) {
-
-            // # Let Pace track loading
-            Pace.track( function () {
+            
+            Pace.track( function() {
                 
+                $( "#cover" ).show();
+
+                // # Retrieve resources from the server
                 let promises = [
+
                     Axios.get( '/split/drawerstypes' ),
                     Axios.get( '/split/bridges' ),
                     Axios.get( '/split/supports' ),
@@ -56,13 +58,15 @@ const store = new Vuex.Store({
                     Axios.get( '/split/edgestextures'),
                     Axios.get( '/split/dividersplain'),
                     Axios.get( '/split/gallery-images' ),
+                    Axios.get( '/split/carousel-images' ),
                 ];
 
                 // # Resolve all promises. If any of them fail push into the router '/split/500'
                 // # Actually loads alla resources needed in the application bootstrap phase
                 Promise.all( promises ).then(
 
-                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, responseTextures, responseDividersPlain, responseGalleryImages ] ) => {
+                    ( [ responseTypes, responseBridges, responseSupports, responseDividers, 
+                        responseTextures, responseDividersPlain, responseGalleryImages, responseCarouselImages ] ) => {
 
                         // # Success
                         commit( 'setDrawersTypes', responseTypes.data );
@@ -72,20 +76,28 @@ const store = new Vuex.Store({
                         commit( 'setTextureTypes', responseTextures.data );
                         commit( 'setDividerTypesPlain', responseDividersPlain.data );
                         commit( 'setGalleryImages', responseGalleryImages.data );
+                        commit( 'setCarouselImages', responseCarouselImages.data );
 
-                        // # Trigger start
-                        Pace.stop();
                     },
                     () => { 
+                        
                         // # Fail
+                        Pace.stop();
                         context.push( { path: '/split/500' } );
                     }  
                 );
+
+                return Promise.resolve();
+
             });
+
+            
         },
 
         /**
          * Add a divider to the 3d scene
+         * TODO Usa le Promise https://stackoverflow.com/questions/40165766/returning-promises-from-vuex-actions
+         * TODO nel chiamante prendi il valore di ritorno della promise e fai qualcosa
          *
          * params structure:
          * params.id : Divider id
@@ -98,7 +110,8 @@ const store = new Vuex.Store({
          * @param commit
          * @param params
          */
-        add3dDivider: function ( { commit,state }, divider ) {
+        add3dDivider: function ( { commit, state }, divider ) {
+            
             //Check if action is allowed !!
             if (state.dividerHelper) {
                 console.log("DIVIDER OBJ", divider);
@@ -366,10 +379,22 @@ const store = new Vuex.Store({
          */
         scene: new fakeScene(),
 
+        /**
+         * [renderer description]
+         * @type {Boolean}
+         */
         renderer : false,
 
+        /**
+         * [camera description]
+         * @type {Boolean}
+         */
         camera : false,
 
+        /**
+         * [dividerHelper description]
+         * @type {Boolean}
+         */
         dividerHelper : false,
 
         /**
@@ -378,16 +403,24 @@ const store = new Vuex.Store({
          */
         objectWorkingOn: {
 
+            /**
+             * [type description]
+             * @type {Boolean}
+             */
             type: false,
+
+            /**
+             * [id description]
+             * @type {Boolean}
+             */
             id: false,
+
+            /**
+             * [obj description]
+             * @type {Object}
+             */
             obj: {}
         },
-
-        /**
-         * Canvas onload flag
-         * @type {Boolean}
-         */
-        canvasReady: false,
 
         /**
          * Canvas svg representation
@@ -434,10 +467,24 @@ const store = new Vuex.Store({
          * @type {Array}
          */
         dividerTypes: {
+
+            /**
+             * [dividersCategories description]
+             * @type {Array}
+             */
             dividersCategories: [],
+
+            /**
+             * [dividers description]
+             * @type {Array}
+             */
             dividers: []
         },
 
+        /**
+         * [dividerTypesPlain description]
+         * @type {Object}
+         */
         dividerTypesPlain: {},
 
         /**
@@ -581,11 +628,6 @@ const store = new Vuex.Store({
         bridge_supportID: 0,
 
         /**
-         * Orientation of the bridgeSupport
-         */
-        bridge_support_orientation: false,
-
-        /**
          * Bridge unique support ID
          * @type {Number}
          */
@@ -614,35 +656,31 @@ const store = new Vuex.Store({
          * @type {Object}
          */
         borders: {
+
+            /**
+             * [top description]
+             * @type {String}
+             */
             top: "",
+
+            /**
+             * [left description]
+             * @type {String}
+             */
             left: "",
+
+            /**
+             * [bottom description]
+             * @type {String}
+             */
             bottom: "",
+
+            /**
+             * [right description]
+             * @type {String}
+             */
             right: "",
         },
-
-        /**
-         * Drawer border top data
-         * @type {Object}
-         */
-        drawer_border_top: { hex: '', selected: false },
-
-        /**
-         * Drawer border left data
-         * @type {Object}
-         */
-        drawer_border_left: { hex: '', selected: false },
-
-        /**
-         * Drawer border right data
-         * @type {Object}
-         */
-        drawer_border_right: { hex: '', selected: false },
-
-        /**
-         * Drawer border bottom data
-         * @type {Object}
-         */
-        drawer_border_bottom: { hex: '', selected: false },
 
         /**
          * ratio computed for drawer representation in step4
@@ -723,16 +761,23 @@ const store = new Vuex.Store({
          */
         fivecompleted: false,
 
-
+        /**
+         * [currentStep description]
+         * @type {Number}
+         */
         currentStep: 1,
 
+        /**
+         * [gallery_images description]
+         * @type {Array}
+         */
         gallery_images: [],
 
         /**
-         * [hint_viewed description]
-         * @type {Boolean}
+         * [carousel_images description]
+         * @type {Array}
          */
-        hint_viewed: false,
+        carousel_images: []
 
     },
 

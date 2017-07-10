@@ -55,6 +55,7 @@ export default new VueRouter({
 		{ 
 			path: '/split/500', 
 			component: error
-		},		
+		},
+
 	]
 });

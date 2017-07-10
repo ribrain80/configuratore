@@ -174,9 +174,9 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ViewCreatorServiceProvider::class,
         Anouar\Fpdf\FpdfServiceProvider::class,
         LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
@@ -184,6 +184,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
     ],
 
     /*
@@ -237,6 +238,7 @@ return [
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 
 ];
