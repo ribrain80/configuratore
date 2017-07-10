@@ -27,7 +27,7 @@ server('production', 'split.salice.com', 443)
     ->user('giuseppe')
    // ->password('riccardosfelab')    // Not a great idea but usefull (dont use for production)
     ->stage('production')
-    ->set('branch', 'master2')
+    ->set('branch', 'master')
     ->set('deploy_path', "/var/www/split.salice.com");
 
 // # Set the repository
