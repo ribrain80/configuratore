@@ -210,7 +210,7 @@ export default {
         "stepponte.orientation_title": "Orientation of bridging units",
         "stepponte.reset": "Reset",
         "stepponte.bridge_support": 'Profile to hold bridging units',
-        "stepponte.supports_advice": "The selection of the bridging unit for drawer type / specified orientation of bridging unit requires the insertion of additional profiles to support the bridging unit: {num_sup} in this specific case. Consequently, the internal {dimension} will be reduced by {mm} mm.",
+        "stepponte.supports_advice": "The selection of the bridging unit for drawer type / specified orientation of bridging unit requires the insertion of <a href='{pdf_link}' target='blank'>additional profiles</a>  to support the bridging unit: {num_sup} in this specific case. Consequently, the internal {dimension} will be reduced by {mm} mm.",
         "horizontal": "Horizontal",
         "vertical": "Vertical",
         "stepponte.supports_description": "At what height from the drawer bottom do you wish to insert the bridging units ?",
