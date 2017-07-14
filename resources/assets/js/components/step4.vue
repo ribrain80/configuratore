@@ -285,30 +285,12 @@
                                     <h3>{{ $t("step4.bridges_textures") }}</h3>
                                 </div>
 
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h3> Velvet</h3>
-                                    <div class="row">
-                                        <h4>Fullcolor</h4>
-                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsVelvetFull" >
-                                            <figure>
-                                                <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
-                                                <img :src="variant.textureImg"
-                                                     class="img center-block img-responsive img-thumbnail"
-                                                     @click="_updateBridges( $event );"
-                                                     style="width: 120px;height: 80px"
-                                                     :data-sku="variant.sku"
-                                                >
-                                                <figcaption>{{ $t(variant.color) }}</figcaption>
-                                            </figure>
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
                                     <h3> {{ $t('Legno') }}</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
-                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
+                                        <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
@@ -323,11 +305,11 @@
                                     </div>
 
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
                                     <h3> {{ $t( 'Spazzolata (inox)' ) }}</h3>
                                     <div class="row">
                                         <h4>Fullcolor</h4>
-                                        <div class="col-lg-6 col-md-6 col-sm-6" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
+                                        <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"

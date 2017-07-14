@@ -272,7 +272,7 @@ export default {
             
             let base_name = "/pdf/Split_prospetto-tecnico/Split_Ed01_05-2017_";
             let cookieLang = ( null == this.$cookie.get( 'langCookie' ) ) ? "it" :  this.$cookie.get( 'langCookie' );
-            base_name +=  cookieLang + ".pdf";
+            base_name +=  this.$store.state.language + ".pdf";
             return base_name;
         },
 
