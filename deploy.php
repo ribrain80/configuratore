@@ -20,7 +20,7 @@ server('mile2', 'splitconf.tk', 443)
     ->user('riccardo')
     ->password('riccardosfelab')    // Not a great idea but usefull (dont use for production)
     ->stage('mile2')
-    ->set('branch', 'group_a')
+    ->set('branch', 'master')
     ->set('deploy_path', "/var/www/mile2");
 
 server('production', 'split.salice.com', 443)
