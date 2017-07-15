@@ -431,6 +431,11 @@ export default {
         return {    
 
             /**
+             * become true after the first vertical alert
+             */
+            verticalAlertShowed: false,
+
+            /**
              * Error modal selector caching
              * @type {[type]}
              */
@@ -603,6 +608,26 @@ export default {
      * @type {Object}
      */
     methods: {
+
+
+
+        verticalAlertChecker: function (divider) {
+            let out = false;
+            console.log(divider);
+            if (this.$store.state.bridge_supportID) {
+                let supportH = (this.$store.state.bridge_supportID==1)?45.5:90;
+                let dividerH = parseInt(divider.category)/10;
+                out = dividerH > supportH;
+               /* let _tooHDivider = state.dividers_selected.filter((cur)=>{
+                    let curDividerH = parseFloat( cur.category ) / 10;
+                    return supportH < curDividerH;
+                });
+                out = (_tooHDivider.length>0);*/
+
+            }
+
+            return out;
+        },
 
         showTextureInfo: function( event ) {
 
@@ -1780,8 +1805,12 @@ export default {
                 this.$store.dispatch( 'update3dDividerPos', payload );
 
                 // # Check vertical heights and bridges
-                let vertical_alert = this.$store.getters.bridgeSupportVerticalAlert;
-                if ( vertical_alert ) {
+               /* let vertical_alert = this.$store.getters.bridgeSupportVerticalAlert;
+                if ( vertical_alert && !this.verticalAlertShowed) {*/
+
+                if (this.verticalAlertChecker(_divider)) {
+
+                    this.verticalAlertShowed = true;
                     // # Modal Error display
                     $( "#generic-alert-message" ).text( Vue.i18n.translate( "step4.vertical-space-advice" ) );
                     this.error_modal.modal();                      
