@@ -610,10 +610,11 @@ export default {
     methods: {
 
 
-
+        /**
+         * Check if the divider is too high
+         */
         verticalAlertChecker: function (divider) {
             let out = false;
-            console.log(divider);
             if (this.$store.state.bridge_supportID) {
                 let supportH = (this.$store.state.bridge_supportID==1)?45.5:90;
                 let dividerH = parseInt(divider.category)/10;
