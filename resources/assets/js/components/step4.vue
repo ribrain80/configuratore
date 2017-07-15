@@ -1378,8 +1378,8 @@ export default {
 
                     let _obj = _items.filter( ( cur ) => {
                         let testTexture = cur.baseTexture.replace( /^.*[\\\/]/, '' );
-                        return testTexture;
-                        //return lookin4 == testTexture.replace( '.jpg','.jpg' );
+                        //return testTexture;
+                        return lookin4 == testTexture;
                     })[ 0 ];
 
 
@@ -1387,11 +1387,12 @@ export default {
 
                     let textureToApply = (_obj.orrientation=="V")?_obj.textureV:_obj.textureH;
                     let img = obj.getElement();
+                    console.log("TEXTURE CHE VOGLIO METTERE:",textureToApply);
                     img.src = textureToApply;
                     img.crossOrigin = "Anonymous";
 
-                    img.onload = function () {
-                        self.canvas.renderAll();
+                    img.onload =  () => {
+                        this.canvas.renderAll();
                     };
 
                 });
