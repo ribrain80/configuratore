@@ -268,7 +268,7 @@ export default class DividerHelper {
         type = (type==1)?2:type;
 
         // # This value correct the divider offset
-        let zDeltaCorrection = -14;
+        let zDeltaCorrection = -10;
         let yDeltaCorrection = -35;
 
         // All Drawer types share the same background Object
