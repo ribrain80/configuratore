@@ -1385,9 +1385,15 @@ export default {
 
                     if (!_obj) {return;}
 
-                    let textureToApply = (_obj.orrientation=="V")?_obj.textureV:_obj.textureH;
+                    console.log("INFO OBJ:",_obj,_obj.orrientation);
+
+
+
                     let img = obj.getElement();
-                    console.log("TEXTURE CHE VOGLIO METTERE:",textureToApply);
+
+
+                    let textureToApply = (img.src.indexOf("/h/")>0)?_obj.textureH:_obj.textureV;
+                    console.log("TEXTURE CHE VOGLIO METTERE:",textureToApply,img);
                     img.src = textureToApply;
                     img.crossOrigin = "Anonymous";
 
