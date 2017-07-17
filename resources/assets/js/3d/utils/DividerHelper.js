@@ -269,7 +269,7 @@ export default class DividerHelper {
 
         // # This value correct the divider offset
         let zDeltaCorrection = -12;
-        let yDeltaCorrection = -35;
+        let yDeltaCorrection = -34;
 
         // All Drawer types share the same background Object
         this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
@@ -427,7 +427,7 @@ export default class DividerHelper {
                 let extendedW = w + backCorrection ;  // 2 volte lo spessore della sponda
                 let coeffW = extendedW / elementW;
 
-                let zcorrection = (h==45.5)?4:5;
+                let zcorrection = (h==45.5)?3:5;
 
                 obj3d.scale.set(coeffW,1,1);
                 obj3d.updateMatrix();
