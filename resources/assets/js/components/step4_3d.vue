@@ -1,7 +1,22 @@
 <template>
     <div>
-        <div v-show="!this.canUseWebGl">LA TUA SCHEDA VIDEO NON SUPPORTA WEBGL ....</div>
-        <div id="step4_3d_container"></div>
+        <div v-if="!this.canUseWebGl">LA TUA SCHEDA VIDEO NON SUPPORTA WEBGL ....</div>
+        <div v-else>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="step4_3d_container"></div>
+                </div>
+                <div class="col-sm-12 center-block" style="text-align:center;margin-top:5px">
+                    <button class="btn-sm" @click="fakePan(40)" @mousedown="fakePan(40)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                    <button class="btn-sm" @click="fakePan(38)" @mousedown="fakePan(38)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                    
+                    <button class="btn-sm" @click="fakePan(39)" @mousedown="fakePan(39)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+                    <button class="btn-sm" @click="fakePan(37)" @mousedown="fakePan(37)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
 </template>
@@ -40,6 +55,14 @@
          * @type {Object}
          */
         methods: {
+
+            fakePan: function (direction) {
+                console.log("FAKE PAN!!!!!");
+                let fakeUp = new Event('fakepan');
+                fakeUp.keyCode = direction;
+                window.dispatchEvent( fakeUp );
+            },
+
             _init: function() {
 
                 console.log('Init 3d scene');

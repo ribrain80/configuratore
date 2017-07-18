@@ -791,6 +791,7 @@ module.exports = function(THREE) {
       document.removeEventListener( 'mouseup', onMouseUp, false );
 
       window.removeEventListener( 'keydown', onKeyDown, false );
+      window.removeEventListener( 'fakepan', onKeyDown, false );
 
     }
 
@@ -805,6 +806,7 @@ module.exports = function(THREE) {
     this.domElement.addEventListener( 'touchmove', touchmove, false );
 
     window.addEventListener( 'keydown', onKeyDown, false );
+    window.addEventListener( 'fakepan', onKeyDown, false );
 
     // force an update at start
     this.update();
