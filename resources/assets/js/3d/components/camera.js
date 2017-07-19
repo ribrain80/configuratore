@@ -19,8 +19,9 @@ export default class Camera {
     }
 
     updateSize(renderer) {
+        let dpr = window.devicePixelRatio?window.devicePixelRatio:1;
         // Multiply by dpr in case it is retina device
-        this.threeCamera.aspect = renderer.domElement.width * Config.dpr / renderer.domElement.height * Config.dpr;
+        this.threeCamera.aspect = renderer.domElement.width * dpr / renderer.domElement.height ;
 
         // Always call updateProjectionMatrix on camera change
         this.threeCamera.updateProjectionMatrix();
