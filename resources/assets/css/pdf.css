@@ -44,14 +44,14 @@ p {
     margin-top: 0;
     min-height: 500px;
     height: 500px;
-    border: 0.75pt solid #000;
+    border: 1pt solid #000;
 }
 
 #box_dimension {
     margin-top: 0;
     min-height: 100px;
     height: 100px;
-    border: 0.75pt solid #000;
+    border: 1pt solid #000;
 }
 
 #box3d {
@@ -91,7 +91,7 @@ p {
     margin-top: 20px;
     margin-left: 0;
     margin-right: 0;
-    border: 0.25pt solid #666;
+    border: 0.50pt solid #666;
 }
 
 .headertable th {
@@ -121,7 +121,7 @@ p {
 
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
     border-color: #666;
-    border-width: 0.5pt;
+    border-width: 1.25pt;
 }
 
 
