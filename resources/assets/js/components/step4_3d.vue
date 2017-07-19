@@ -7,11 +7,11 @@
                     <div id="step4_3d_container"></div>
                 </div>
                 <div class="col-sm-12 center-block" style="text-align:center;margin-top:5px">
-                    <button class="btn-sm btn-3d-control" @click="fakePan(40)"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
-                    <button class="btn-sm btn-3d-control" @click="fakePan(38)"><span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(40)" id="ctrlUp" @mouseup="mouseUp"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(38)" id="ctrlDown"  @mouseup="mouseUp"><span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
                     
-                    <button class="btn-sm btn-3d-control" @click="fakePan(39)"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-                    <button class="btn-sm btn-3d-control" @click="fakePan(37)"><span class="glyphicon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(39)" id="ctrlLeft" @mouseup="mouseUp"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(37)" id="ctrlRight" @mouseup="mouseUp"><span class="glyphicon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
                 </div>
             </div>
 
@@ -33,6 +33,8 @@
     import DividerHelper from '../3d/utils/DividerHelper';
     import Config   from '../3d/config';
     import * as THREE from 'three';
+
+    let interval = null;
     /**
      * Vue object managing info section / welcome page
      * @type {Vue}
@@ -46,7 +48,7 @@
         data: function() {
             return {
                 canUseWebGl:true,
-                container:{},
+                container:{}
             }
         },
 
@@ -57,10 +59,18 @@
         methods: {
 
             fakePan: function (direction) {
-                console.log("FAKE PAN!!!!!");
                 let fakeUp = new Event('fakepan');
                 fakeUp.keyCode = direction;
                 window.dispatchEvent( fakeUp );
+            },
+
+            mouseDown: function (direction) {
+                console.log("Eseguita mouse down direction:",direction)
+                interval = setInterval(this.fakePan(direction), 100);
+            },
+
+            mouseUp: function () {
+                clearInterval(interval);
             },
 
             _init: function() {
@@ -115,6 +125,37 @@
                 this.canUseWebGl= true;
                 this._init();
 
+
+                $("#ctrlUp").on('mousedown',()=>{
+                    interval= setInterval(() => {
+                        this.fakePan(40);
+                    }, 100);
+                });
+
+                $("#ctrlDown").on('mousedown',()=>{
+                    interval= setInterval(() => {
+                        this.fakePan(38);
+                    }, 100);
+                });
+
+                $("#ctrlLeft").on('mousedown',()=>{
+                    interval= setInterval(() => {
+                        this.fakePan(39);
+                    }, 100);
+                });
+
+                $("#ctrlRight").on('mousedown',()=>{
+                    interval= setInterval(() => {
+                        this.fakePan(37);
+                    }, 100);
+                });
+
+                $(document).mouseup(() => {
+                    if(interval) {
+                        clearInterval(interval);
+                        interval = null;
+                    }
+                });
 
             }
         }
