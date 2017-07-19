@@ -131,6 +131,9 @@ const store = new Vuex.Store({
                 } else {
                   /*  x = (divider.x / ratio) + (realH/2);
                     y = (divider.y / ratio) - (realW/2);*/
+
+                  y = (divider.y/ratio) - (divider.realHeight/2);
+                  x = (divider.x/ratio) + (divider.realWidth/2);
                 }
 
 
