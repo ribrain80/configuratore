@@ -185,6 +185,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
     ],
 
     /*

@@ -16,6 +16,57 @@ Route::get( '/', function () {
     return redirect()->route( 'startapp' );
 });
 
+
+
+
+Route::get('sitemap.xml', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
+    // by default cache is disabled
+    $sitemap->setCache('laravel.sitemap4', 60);
+
+    // check if there is cached sitemap and build new only if is not
+    if (!$sitemap->isCached())
+    {
+
+        $container = [];
+
+        // # Directory iterator
+        $iterator = new \DirectoryIterator(  "./images/gallery/images"  );
+
+        // # Loop through files and dir
+        foreach( $iterator as $item ) {
+
+            // # Avoid dirs
+            if( is_dir( $item ) ) {
+                continue;
+            }
+
+            // # Get pathname
+            $path = ltrim( $item->getPathname(), "." );
+            $tmp[ 'url'] = URL::to($path);
+            $tmp[ 'title' ] = "Composizioni salice";
+            $container[] = $tmp;
+        }
+
+
+        $lastModToday = \Carbon\Carbon::now()->format('y-m-d\Thh:ii:ss+02:00');
+        $sitemap->add(URL::to('/'), $lastModToday, '1.0', 'daily', $container);
+        $sitemap->add(URL::to('/split/step1'), $lastModToday, '0.9', 'monthly', $container);
+
+    }
+
+    // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+    return $sitemap->render('xml');
+
+});
+
+
+
+
 // # Split route
 Route::group( [ 'prefix' => 'split' ], function () {
 

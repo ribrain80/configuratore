@@ -1,2 +1,4 @@
-User-agent: *
+User-Agent: *
 Disallow:
+
+Sitemap: http://split.salice.com/sitemap.xml

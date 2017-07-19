@@ -16,6 +16,7 @@
         "laravel/framework": "5.3.*",
         "lynx39/lara-pdf-merger": "dev-master",
         "predis/predis": "^1.1",
+        "roumen/sitemap": "^2.6",
         "setasign/fpdi": "1.6.1",
         "setasign/fpdi-tcpdf": "^1.6",
         "simplesoftwareio/simple-qrcode": "^1.5",
