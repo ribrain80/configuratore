@@ -163,14 +163,16 @@ export default class DividerHelper {
     addDivider (name,model,textureImg,coords,orr) {
 
         this.objLoader.loadModel(name,model,textureImg).then((obj3d) => {
-            if (orr) {
-                obj3d.rotateY(Math.PI/2);
-                obj3d.updateMatrix();
-            }
+            let zCorrection = -12;
+
             if (coords) {
                 obj3d.position.x=coords.x;
                 obj3d.position.y=coords.y;
-                obj3d.position.z=coords.z;
+                obj3d.position.z=coords.z + zCorrection;
+                obj3d.updateMatrix();
+            }
+            if (orr) {
+                obj3d.rotateY(Math.PI/2);
                 obj3d.updateMatrix();
             }
             obj3d.castShadow = true;

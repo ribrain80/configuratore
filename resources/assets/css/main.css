@@ -72,3 +72,7 @@ code {
 p {
   margin-top: 8px;
 }
+
+#canvas-container {
+ background-size: cover;
+}

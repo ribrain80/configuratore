@@ -1700,8 +1700,8 @@ export default {
                 oImg.category = _divider.category;
                 oImg.subCategory = _divider.subCategory;
 
-                let posX = (e.offsetX)?e.offsetX:e.layerX;
-                let posY = (e.offsetY)?e.offsetY:e.layerY;
+                let posX = (e.clientX)?e.offsetX:e.layerX;
+                let posY = (e.clientY)?e.offsetY:e.layerY;
 
                 // # Set image position
                 oImg.setLeft( posX );
@@ -1739,7 +1739,10 @@ export default {
                 oImg.orientation = _imgOr;
 
                 // # Add image to canvas
-                this.canvas.add( oImg ); 
+                this.canvas.add( oImg );
+
+                let _fakeMove = new Event('object:moving',oImg);
+                window.dispatchEvent( _fakeMove );
 
                 // # Coords
                 var coords = oImg.calcCoords().bl;

@@ -114,15 +114,26 @@ const store = new Vuex.Store({
             
             //Check if action is allowed !!
             if (state.dividerHelper) {
-                console.log("DIVIDER OBJ", divider);
+                console.log("DIVIDER OBJ ADDED ON 3D:", divider);
                 let _model = state.dividerTypesPlain[divider.sku];
                 let ratio = state.step4_2D_ratio;
 
-                let realW = divider.realWidth + 4;
-                let realH = divider.realHeight + 4;
+                let realW = divider.realWidth ;
+                let realH = divider.realHeight ;
 
-                let x = (divider.x / ratio) - (realW/2);
-                let y = (divider.y / ratio) - (realH/2);
+                let x = 0;
+                let y = 0;
+
+                if (divider.orientation=="H") {
+                    console.log("QUI!!!!!!!!!!!!!!!!!!!!!!!!");
+                    x = (divider.x / ratio) + (realW/2);
+                    y = (divider.y / ratio) - (realH/2);
+                } else {
+                  /*  x = (divider.x / ratio) + (realH/2);
+                    y = (divider.y / ratio) - (realW/2);*/
+                }
+
+
 
                 let coords = {
                     x: x,
