@@ -304,7 +304,9 @@ export default {
 
         "smartphone.title": "Visualizzazione tramite smartphone non supportata",
 
-        "smartphone.message": "Il configuratore è ottimizzato per desktop, notebook e tablet, ma non supporta gli smartphone"
+        "smartphone.message": "Il configuratore è ottimizzato per desktop, notebook e tablet, ma non supporta gli smartphone",
+
+        "step4.supporti.label":"Finiture profilo supporto ponte"
 
     },
 
@@ -616,7 +618,9 @@ export default {
 
         "smartphone.title": "Access not compatible by smartphone",
 
-        "smartphone.message": "The configurator is optimised for desktop, notebook and tablet. Not compatible with smartphone."
+        "smartphone.message": "The configurator is optimised for desktop, notebook and tablet. Not compatible with smartphone.",
+
+        "step4.supporti.label":"Finishes of the profile to hold the bridging units"
 
     },
 
@@ -916,7 +920,9 @@ export default {
 
         "smartphone.title": "Zugang durch Smartphone nicht kompatibel",
 
-        "smartphone.message": "Der Konfigurator ist für Desktop, Notebook und Tablet optimiert. Nicht kompatibel mit Smartphone."
+        "smartphone.message": "Der Konfigurator ist für Desktop, Notebook und Tablet optimiert. Nicht kompatibel mit Smartphone.",
+
+        "step4.supporti.label":"Farbausführungen Brückträgerprofil"
 
     },
 
@@ -1216,7 +1222,9 @@ export default {
 
         "smartphone.title": "L’accès n’est pas compatible par Smartphone",
 
-        "smartphone.message": "Le configurateur est optimisé pour desktop, notebook et tablet. Il n’est pas compatible avec Smartphone."
+        "smartphone.message": "Le configurateur est optimisé pour desktop, notebook et tablet. Il n’est pas compatible avec Smartphone.",
+
+        "step4.supporti.label":"Finitions du profilé de positionnement des bacs de rangement transversaux"
 
     },
 
@@ -1516,7 +1524,9 @@ export default {
 
         "smartphone.title": "Acesso no apto para Smartphone",
 
-        "smartphone.message": "El configurador está optimizado para ordenador, notebook y tablet. No apto para Smartphone."
+        "smartphone.message": "El configurador está optimizado para ordenador, notebook y tablet. No apto para Smartphone.",
+
+        "step4.supporti.label":"Acabados perfil soporte puente"
 
     },
 
@@ -1820,7 +1830,9 @@ export default {
 
         "smartphone.title": "Acesso através de smartphone não é compatível",
 
-        "smartphone.message": "O configurador é otimizado para desktop, notebook e tablet. Não é compatível para smartphone."
+        "smartphone.message": "O configurador é otimizado para desktop, notebook e tablet. Não é compatível para smartphone.",
+
+        "step4.supporti.label":"Acabamentos perfil suporte ponte"
 
     },
 
@@ -2132,7 +2144,9 @@ export default {
 
         "smartphone.title": "不兼容于智能手机进入",
 
-        "smartphone.message": "此配置器基于桌面电脑、笔记本电脑及平板电脑优化。不兼容于智能手机。"
+        "smartphone.message": "此配置器基于桌面电脑、笔记本电脑及平板电脑优化。不兼容于智能手机。",
+
+        "step4.supporti.label":"搁架支撑轨表面颜色"
 
     }
 

@@ -324,7 +324,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <h3>Finiture supporti</h3>
+                                    <h3>{{ $t( 'step4.supporti.label' ) }}</h3>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2"></div>
                                 <div class="col-lg-2 col-md-2 col-sm-2" v-for="variant in $store.getters.getSupportsVariants">
