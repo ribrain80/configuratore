@@ -7,11 +7,11 @@
                     <div id="step4_3d_container"></div>
                 </div>
                 <div class="col-sm-12 center-block" style="text-align:center;margin-top:5px">
-                    <button class="btn-sm" @click="fakePan(40)" @mousedown="fakePan(40)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
-                    <button class="btn-sm" @click="fakePan(38)" @mousedown="fakePan(38)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(40)"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(38)"><span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
                     
-                    <button class="btn-sm" @click="fakePan(39)" @mousedown="fakePan(39)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-                    <button class="btn-sm" @click="fakePan(37)" @mousedown="fakePan(37)" style="cursor: pointer"><span class="glyphicon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(39)"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+                    <button class="btn-sm btn-3d-control" @click="fakePan(37)"><span class="glyphicon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
                 </div>
             </div>
 

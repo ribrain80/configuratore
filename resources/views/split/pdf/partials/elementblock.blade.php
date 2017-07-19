@@ -48,8 +48,8 @@
                     <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 5px auto;display: block">
                     
                 </div>
-                <p><b>@lang('pdf.nr')</b> {{ $element['count'] }}</p>
-                <p><b>@lang('pdf.code')</b>  {{ $sku }}</p>
+                <p><b>@lang('pdf.nr'):</b> {{ $element['count'] }}</p>
+                <p><b>@lang('pdf.code'):</b>  {{ $sku }}</p>
                 <p><b>@lang('pdf.dimensions') (mm)</b>
                         @if ($w):
                                 <span> {{ $w }}</span> &times;
@@ -57,16 +57,16 @@
                         <span class="{{ $element['type'] }}"> {{ $l }}</span> &times;
                         <span> {{ $d }}</span>
 
-                <p><b>@lang('pdf.finish')</b> {{ $texture }}</p>
+                <p><b>@lang('pdf.finish'):</b> {{ $texture }}</p>
         @else
                 <h3>&nbsp;</h3>
         <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
                 &nbsp;
         </div>
-                <p><b>@lang('pdf.nr')</b></p>
-                <p><b>@lang('pdf.code')</b></p>
+                <p><b>@lang('pdf.nr'):</b></p>
+                <p><b>@lang('pdf.code'):</b></p>
                 <p><b>@lang('pdf.dimensions') (mm)</b></p>
-                <p><b>@lang('pdf.finish')</b> </p>
+                <p><b>@lang('pdf.finish'):</b> </p>
         @endif
 
 
