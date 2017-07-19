@@ -53,7 +53,7 @@ Route::get('sitemap.xml', function(){
         }
 
 
-        $lastModToday = \Carbon\Carbon::now()->format('y-m-d\Thh:ii:ss+02:00');
+        $lastModToday = date('c',time());
         $sitemap->add(URL::to('/'), $lastModToday, '1.0', 'daily', $container);
         $sitemap->add(URL::to('/split/step1'), $lastModToday, '0.9', 'monthly', $container);
 
