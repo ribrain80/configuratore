@@ -306,7 +306,9 @@ export default {
 
         "smartphone.message": "Il configuratore è ottimizzato per desktop, notebook e tablet, ma non supporta gli smartphone",
 
-        "step4.supporti.label":"Finiture profilo supporto ponte"
+        "step4.supporti.label":"Finiture profilo supporto ponte",
+
+        "zh.fullcolor":""
 
     },
 
@@ -620,7 +622,9 @@ export default {
 
         "smartphone.message": "The configurator is optimised for desktop, notebook and tablet. Not compatible with smartphone.",
 
-        "step4.supporti.label":"Finishes of the profile to hold the bridging units"
+        "step4.supporti.label":"Finishes of the profile to hold the bridging units",
+
+        "zh.fullcolor":""
 
     },
 
@@ -922,7 +926,9 @@ export default {
 
         "smartphone.message": "Der Konfigurator ist für Desktop, Notebook und Tablet optimiert. Nicht kompatibel mit Smartphone.",
 
-        "step4.supporti.label":"Farbausführungen Brückträgerprofil"
+        "step4.supporti.label":"Farbausführungen Brückträgerprofil",
+
+        "zh.fullcolor":""
 
     },
 
@@ -1224,7 +1230,9 @@ export default {
 
         "smartphone.message": "Le configurateur est optimisé pour desktop, notebook et tablet. Il n’est pas compatible avec Smartphone.",
 
-        "step4.supporti.label":"Finitions du profilé de positionnement des bacs de rangement transversaux"
+        "step4.supporti.label":"Finitions du profilé de positionnement des bacs de rangement transversaux",
+
+        "zh.fullcolor":""
 
     },
 
@@ -1526,7 +1534,9 @@ export default {
 
         "smartphone.message": "El configurador está optimizado para ordenador, notebook y tablet. No apto para Smartphone.",
 
-        "step4.supporti.label":"Acabados perfil soporte puente"
+        "step4.supporti.label":"Acabados perfil soporte puente",
+
+        "zh.fullcolor":""
 
     },
 
@@ -1832,7 +1842,9 @@ export default {
 
         "smartphone.message": "O configurador é otimizado para desktop, notebook e tablet. Não é compatível para smartphone.",
 
-        "step4.supporti.label":"Acabamentos perfil suporte ponte"
+        "step4.supporti.label":"Acabamentos perfil suporte ponte",
+
+        "zh.fullcolor":""
 
     },
 
@@ -2146,7 +2158,9 @@ export default {
 
         "smartphone.message": "此配置器基于桌面电脑、笔记本电脑及平板电脑优化。不兼容于智能手机。",
 
-        "step4.supporti.label":"搁架支撑轨表面颜色"
+        "step4.supporti.label":"搁架支撑轨表面颜色",
+
+        "zh.fullcolor":"本色"
 
     }
 

@@ -226,7 +226,7 @@
                                         <h3 class="divider_tab_group_level_1">{{ $t('Legno') }}</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h4>Fullcolor</h4>
+                                                <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                                 <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getDividerVariantsLegnoFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
@@ -248,7 +248,7 @@
                                         <h3 class="divider_tab_group_level_1">{{ $t( 'Spazzolata (inox)' ) }}</h3>
                                         <div class="row divider_tab_group_level_2">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h4>Fullcolor</h4>
+                                                <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                                 <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getDividerVariantsInoxFull" v-if="$store.state.objectWorkingOn.type=='divider'">
                                                     <figure>
                                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
@@ -289,7 +289,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <h3> {{ $t('Legno') }}</h3>
                                     <div class="row">
-                                        <h4>Fullcolor</h4>
+                                        <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                         <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
@@ -308,7 +308,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <h3> {{ $t( 'Spazzolata (inox)' ) }}</h3>
                                     <div class="row">
-                                        <h4>Fullcolor</h4>
+                                        <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                         <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
                                             <figure>
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
