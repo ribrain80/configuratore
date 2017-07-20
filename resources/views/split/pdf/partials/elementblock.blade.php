@@ -53,7 +53,7 @@
                                 <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 0 auto;display: block;padding-top: 15px">
                             </td>
                             <td>
-                                <img src="{{$tex_src)}}" style="width: 60px;height: 100px; margin: 0 auto;display: block;float: right;border-left: 1pt solid black">
+                                <img src="{{$tex_src }}" style="width: 60px;height: 100px; margin: 0 auto;display: block;float: right;border: 1pt solid black">
                             </td>
                         </tr>
                     </table>
@@ -75,7 +75,7 @@
         <div style="width: 100%;border: 0.75pt solid black;">
             <table>
                 <tr>
-                    <td width="87%" style="width: 82%"> &nbsp;
+                    <td width="87%" style="width: 84%"> &nbsp;
                     </td>
                     <td width="60px" style="border-left: 1pt solid  black;height: 100px">
                     </td>
