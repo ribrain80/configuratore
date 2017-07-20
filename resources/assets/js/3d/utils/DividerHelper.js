@@ -298,7 +298,7 @@ export default class DividerHelper {
             obj3d.castShadow = true;
             obj3d.receiveShadow = true;
             // # Add background to the scene
-            this.drawer.add(obj3d);
+           // this.drawer.add(obj3d);
 
             console.log("Drawer - added front element");
         });
@@ -429,15 +429,16 @@ export default class DividerHelper {
             // All Drawer types share the same background Object
             this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
                 let wCorrection = 26;
+                let lCorrection = 1;
                 let eW = w + wCorrection;
-                let el = l + 10;
+                let el = l + lCorrection;
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 obj3d.scale.set(Math.abs(eW / (bbox.max.x - bbox.min.x)),1,Math.abs(el / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
                 obj3d.position.x = eW/2 - wCorrection/2;
                 obj3d.position.y = 0;
-                obj3d.position.z = el/2 + zDeltaCorrection;
+                obj3d.position.z = el/2 + zDeltaCorrection + lCorrection;
                 obj3d.updateMatrix();
                 // # Shadow
                 obj3d.castShadow = true;
@@ -471,7 +472,7 @@ export default class DividerHelper {
                 obj3d.castShadow = true;
                 obj3d.receiveShadow = true;
                 // # Add background to the scene
-               // this.drawer.add(obj3d);
+                this.drawer.add(obj3d);
             });
 
             this.objLoader.loadModel("left",sideModel,this.defaultMaterial).then((obj3d) => {
@@ -491,7 +492,7 @@ export default class DividerHelper {
                 obj3d.castShadow = true;
                 obj3d.receiveShadow = true;
                 // # Add background to the scene
-                this.drawer.add(obj3d);
+               // this.drawer.add(obj3d);
             });
 
             this.objLoader.loadModel("right",sideModel,this.defaultMaterial).then((obj3d) => {
@@ -509,7 +510,7 @@ export default class DividerHelper {
                 obj3d.castShadow = true;
                 obj3d.receiveShadow = true;
                 // # Add background to the scene
-                this.drawer.add(obj3d);
+                //this.drawer.add(obj3d);
             });
         }
     }
