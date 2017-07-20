@@ -14,7 +14,7 @@
             width: 50%;
             max-width: 50%;
             max-height: 80%;
-            border:1.25pt solid black;
+
             margin: 0  auto;
             display: block
         }

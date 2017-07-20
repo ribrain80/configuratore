@@ -1429,7 +1429,13 @@ export default {
 
             this.$store.state.objectWorkingOn.obj.style.backgroundImage = "url("+e.target.src+")";
             if (this.$store.state.objectWorkingOn.id=='background') {
-                document.getElementById('canvas-container').style.backgroundImage = "url("+e.target.src+")";
+                //document.getElementById('canvas-container').style.backgroundImage = "url("+e.target.src+")";
+                this.canvas.setBackgroundImage(e.target.src,()=>{
+
+                    this.canvas.backgroundImage.width = this.canvas.getWidth();
+                    this.canvas.backgroundImage.height = this.canvas.getHeight();
+                    this.canvas.renderAll();
+                },{backgroundImageStretch: true});
             }
 
             this.$store.commit('setDrawerBorder',payload);
