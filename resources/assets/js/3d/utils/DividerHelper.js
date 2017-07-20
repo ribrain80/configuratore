@@ -298,7 +298,7 @@ export default class DividerHelper {
             obj3d.castShadow = true;
             obj3d.receiveShadow = true;
             // # Add background to the scene
-           // this.drawer.add(obj3d);
+            this.drawer.add(obj3d);
 
             console.log("Drawer - added front element");
         });
@@ -414,7 +414,7 @@ export default class DividerHelper {
                 case 45.5:
                     // # SPONDA BASSA
                     sideModel = '/images/3dmodels/lineabox/sides/low.obj';
-                    sideModelDx = '/images/3dmodels/lineabox/sides/low.obj';
+                    sideModelDx = '/images/3dmodels/lineabox/sides/3lbassodx.obj';
                     sideModelSx = '/images/3dmodels/lineabox/sides/3lbassosx.obj';
                     backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'/low.obj';
                     break;
@@ -427,7 +427,7 @@ export default class DividerHelper {
                     break;
                 case 148.0:
                     sideModel = '/images/3dmodels/lineabox/sides/high.obj';
-                    sideModelDx = '/images/3dmodels/lineabox/sides/high.obj';
+                    sideModelDx = '/images/3dmodels/lineabox/sides/3laltodx.obj';
                     sideModelSx = '/images/3dmodels/lineabox/sides/3laltosx.obj';
                     backModel = '/images/3dmodels/lineabox/backs/'+_backPath+'/high.obj';
                     break;
@@ -487,7 +487,6 @@ export default class DividerHelper {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementZ = (bbox.max.x - bbox.min.x);
-                let sxCorrection = -100
 
                 obj3d.scale.set(1,1,Math.abs((l +15) / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
@@ -508,18 +507,21 @@ export default class DividerHelper {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementZ = (bbox.max.x - bbox.min.x);
-                console.log("ELEMENT Z RIGHT:",elementZ);
                 obj3d.scale.set(1,1,Math.abs((l+15) / (bbox.max.z - bbox.min.z)));
                 obj3d.updateMatrix();
-                obj3d.position.x = w + elementZ/2;
-                obj3d.position.y = 0;
-                obj3d.position.z = l/2 + zDeltaCorrection +5;
+                obj3d.position.x = w + bbox.min.x + elementZ;
+                obj3d.position.y = -bbox.min.y -33;
+                obj3d.position.z = -18.5;
                 obj3d.updateMatrix();
+
+                obj3d.rotateY(-Math.PI);
+                obj3d.updateMatrix();
+
                 // # Shadow
                 obj3d.castShadow = true;
                 obj3d.receiveShadow = true;
                 // # Add background to the scene
-                //this.drawer.add(obj3d);
+                this.drawer.add(obj3d);
             });
         }
     }
