@@ -17,7 +17,7 @@
                 $d = $obj->depth;
                 $texture = trans('texture.'.trim(str_replace(' ','_',$obj->texture))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->color)));
                 $img_src = asset($obj->image3d);
-
+                $tex_src = asset($obj->baseTexture);
                 break;
             case 'bridge':
                 $l = $obj->pivot->length;
@@ -28,7 +28,7 @@
                     $sku = $obj->sku_short;
                 }
                 $texture =  trans('texture.'.trim(str_replace(' ','_',$obj->texture))) . " " . trans('texture.'.trim(str_replace(' ','_',$obj->color)));
-
+                $tex_src = asset($obj->textureImg);
                 break;
             case 'support':
                 $l = $obj->pivot->length;
@@ -36,6 +36,7 @@
                 $texture = trans('texture.'.trim(str_replace(' ','_',$obj->color)));
                 $_itmp = "/images/supports/asso/supporto_ponte_". (($obj->height==455)?"basso":"alto").".png";
                 $img_src = asset($_itmp);
+                $tex_src = asset($obj->texture);
                 break;
 
             default:
@@ -44,10 +45,21 @@
         }
         ?>
                 <h3>@lang('pdf.label_'.strtolower(str_replace(' ','_',trim($element['label']))))</h3>
-                <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
-                    <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 5px auto;display: block">
-                    
+                <div style="width: 100%;border: 0.75pt solid black;">
+
+                    <table>
+                        <tr>
+                            <td width="90%" style="width: 90%">
+                                <img src="{{$img_src}}" style="width: auto;height: 100px; margin: 0 auto;display: block;padding-top: 15px">
+                            </td>
+                            <td>
+                                <img src="{{$tex_src)}}" style="width: 60px;height: 100px; margin: 0 auto;display: block;float: right;border-left: 1pt solid black">
+                            </td>
+                        </tr>
+                    </table>
+
                 </div>
+
                 <p><b>@lang('pdf.nr'):</b> {{ $element['count'] }}</p>
                 <p><b>@lang('pdf.code'):</b>  {{ $sku }}</p>
                 <p><b>@lang('pdf.dimensions') (mm)</b>
@@ -60,8 +72,15 @@
                 <p><b>@lang('pdf.finish'):</b> {{ $texture }}</p>
         @else
                 <h3>&nbsp;</h3>
-        <div class="imgContainer" style="width: 100%; height: 110px;border: 0.75pt solid black;">
-                &nbsp;
+        <div style="width: 100%;border: 0.75pt solid black;">
+            <table>
+                <tr>
+                    <td width="87%" style="width: 82%"> &nbsp;
+                    </td>
+                    <td width="60px" style="border-left: 1pt solid  black;height: 100px">
+                    </td>
+                </tr>
+            </table>
         </div>
                 <p><b>@lang('pdf.nr'):</b></p>
                 <p><b>@lang('pdf.code'):</b></p>
