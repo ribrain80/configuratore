@@ -273,22 +273,7 @@ export default class DividerHelper {
         let zDeltaCorrection = -10;
         let yDeltaCorrection = -35;
 
-        // All Drawer types share the same background Object
-        this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
-            // # Change background dimension
-            let bbox = new THREE.Box3().setFromObject( obj3d );
-            obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
-            obj3d.updateMatrix();
-            obj3d.position.x = w/2;
-            obj3d.position.y = 0;
-            obj3d.position.z = l/2 + zDeltaCorrection;
-            obj3d.updateMatrix();
-            // # Shadow
-            obj3d.castShadow = true;
-            obj3d.receiveShadow = true;
-            // # Add background to the scene
-            this.drawer.add(obj3d);
-        });
+
 
         // All drawer types share the same front Object
         // Element width: 20
@@ -319,6 +304,26 @@ export default class DividerHelper {
         });
 
         if (type == 4) {
+
+
+            // All Drawer types share the same background Object
+            this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(Math.abs(w / (bbox.max.x - bbox.min.x)),1,Math.abs(l / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = w/2;
+                obj3d.position.y = 0;
+                obj3d.position.z = l/2 + zDeltaCorrection;
+                obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+
             // # DrawerType = 4 @todo: Calcolare H
             this.objLoader.loadModel("back",'/images/3dmodels/legno/back.obj',this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
@@ -420,6 +425,29 @@ export default class DividerHelper {
                     break;
             }
 
+
+            // All Drawer types share the same background Object
+            this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
+                let wCorrection = 26;
+                let eW = w + wCorrection;
+                let el = l + 10;
+                // # Change background dimension
+                let bbox = new THREE.Box3().setFromObject( obj3d );
+                obj3d.scale.set(Math.abs(eW / (bbox.max.x - bbox.min.x)),1,Math.abs(el / (bbox.max.z - bbox.min.z)));
+                obj3d.updateMatrix();
+                obj3d.position.x = eW/2 - wCorrection/2;
+                obj3d.position.y = 0;
+                obj3d.position.z = el/2 + zDeltaCorrection;
+                obj3d.updateMatrix();
+                // # Shadow
+                obj3d.castShadow = true;
+                obj3d.receiveShadow = true;
+                // # Add background to the scene
+                this.drawer.add(obj3d);
+            });
+
+
+
             this.objLoader.loadModel("back",backModel,this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
@@ -443,7 +471,7 @@ export default class DividerHelper {
                 obj3d.castShadow = true;
                 obj3d.receiveShadow = true;
                 // # Add background to the scene
-                this.drawer.add(obj3d);
+               // this.drawer.add(obj3d);
             });
 
             this.objLoader.loadModel("left",sideModel,this.defaultMaterial).then((obj3d) => {
