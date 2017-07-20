@@ -466,7 +466,7 @@ export default class DividerHelper {
                 let extendedW = w + backCorrection ;  // 2 volte lo spessore della sponda
                 let coeffW = extendedW / elementW;
 
-                let zcorrection = (h==45.5)?3:3;
+                let zcorrection = (h==45.5)?3:4;
 
                 obj3d.scale.set(coeffW,1,1);
                 obj3d.updateMatrix();
@@ -492,7 +492,7 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 obj3d.position.x = 0 + bbox.max.x - elementZ;
                 obj3d.position.y = -bbox.min.y -33;
-                obj3d.position.z = -18.5;
+                obj3d.position.z = -10;
                 obj3d.updateMatrix();
                 obj3d.rotateY(Math.PI);
                 obj3d.updateMatrix();
@@ -511,7 +511,7 @@ export default class DividerHelper {
                 obj3d.updateMatrix();
                 obj3d.position.x = w + bbox.min.x + elementZ;
                 obj3d.position.y = -bbox.min.y -33;
-                obj3d.position.z = -18.5;
+                obj3d.position.z = -10;
                 obj3d.updateMatrix();
 
                 obj3d.rotateY(-Math.PI);
