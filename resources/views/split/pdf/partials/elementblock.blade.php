@@ -62,8 +62,8 @@
 
                 <p><b>@lang('pdf.nr'):</b> {{ $element['count'] }}</p>
                 <p><b>@lang('pdf.code'):</b>  {{ $sku }}</p>
-                <p><b>@lang('pdf.dimensions') (mm)</b>
-                        @if ($w):
+                <p><b>@lang('pdf.dimensions') (mm):</b>
+                        @if ($w)
                                 <span> {{ $w }}</span> &times;
                         @endif
                         <span class="{{ $element['type'] }}"> {{ $l }}</span> &times;
@@ -84,7 +84,7 @@
         </div>
                 <p><b>@lang('pdf.nr'):</b></p>
                 <p><b>@lang('pdf.code'):</b></p>
-                <p><b>@lang('pdf.dimensions') (mm)</b></p>
+                <p><b>@lang('pdf.dimensions') (mm):</b></p>
                 <p><b>@lang('pdf.finish'):</b> </p>
         @endif
 

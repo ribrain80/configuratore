@@ -1746,3 +1746,14 @@ GALLERY REWRITE
 .btn-3d-control:hover {
   background-color: #D73601 !important;
 }
+
+/**
+ * Fix long tap su ios
+ */
+
+
+
+#ctrlUp, #ctrlDown, #ctrlLeft, #ctrlRight {
+  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+}
