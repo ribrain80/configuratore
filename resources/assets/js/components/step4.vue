@@ -1706,8 +1706,11 @@ export default {
                 oImg.category = _divider.category;
                 oImg.subCategory = _divider.subCategory;
 
-                let posX = (e.clientX)?e.offsetX:e.layerX;
-                let posY = (e.clientY)?e.offsetY:e.layerY;
+                /*let posX = (e.clientX)?e.offsetX:e.layerX;
+                let posY = (e.clientY)?e.offsetY:e.layerY;*/
+
+                let posX = e.layerX;
+                let posY = e.layerY;
 
                 // # Set image position
                 oImg.setLeft( posX );
