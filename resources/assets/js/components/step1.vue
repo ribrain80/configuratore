@@ -198,12 +198,17 @@ export default {
  
         next( vm => {
 
+            if( vm.$store.state.fourreached ) {
+                vm.$store.dispatch( "clearStep4Reached" );
+            }
+
             // # is Step 1 completed ?
             if( vm.$store.state.onecompleted ) {
                 // # reinit carousel
                 vm.carouselInit();
-                return;
-            }
+            } 
+
+            return;     
         })
     }, 
 

@@ -496,6 +496,19 @@ const  mutations = {
     },
 
     /**
+     * fourreached setter
+     * 
+     * @method setFourreached
+     * @param {Object} state
+     * @param {Boolean} val
+     * @return 
+     */
+    setFourreached: function ( state, val ) {
+        state.fourreached = val;
+        console.log( "fourreached changed to: " + val );
+    },
+
+    /**
      * drawerTypes setter
      * 
      * @param {Object} state

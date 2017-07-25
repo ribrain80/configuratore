@@ -163,7 +163,7 @@ export default {
 
             // # Clean up following steps already inserted data, eventually
             this.$store.commit( "clearAllBridgeData" ); 
-            this.$store.commit( "clearDividers" );
+            this.$store.dispatch( "remove3dAllDividers" );  
             this.$store.commit( "clearDrawerBorders" );
             this.$store.commit( "setDefaultDimensions" );
 
@@ -275,6 +275,11 @@ export default {
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push( { path: '/split/step1' } );
             }
+
+            if( vm.$store.state.fourreached ) {
+                vm.$store.dispatch( "clearStep4Reached" );
+            }
+                        
         });
     }, 
 

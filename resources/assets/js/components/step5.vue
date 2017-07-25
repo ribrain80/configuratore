@@ -287,10 +287,16 @@ export default {
                  return;
             }            
         })
-    },    
+    },   
+
+    /**
+     * [created description]
+     * @return {[type]} [description]
+     */
     created () {
       Pace.start( paceOptions );
     },
+
     /**
      * Window onload eq
      * @return {void} 

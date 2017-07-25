@@ -95,6 +95,30 @@ const store = new Vuex.Store({
         },
 
         /**
+         * Clean up all step4 related elements
+         * @param  {[type]} options.commit [description]
+         * @param  {[type]} options.state  [description]
+         * @param  {[type]} context        [description]
+         * @return {[type]}                [description]
+         */
+        clearStep4Reached: function( { commit, state }, context ) {
+
+            commit( "clearAllBridgeData" );
+
+            _.forEach( state.dividers_selected, ( cur ) => {
+                state.dividerHelper.removeDivider( cur.id );
+                commit( "clearDividers" );
+            });         
+
+            commit( "clearDrawerBorders" );
+
+            commit( "setFourcompleted", false );
+            commit( "setFivecompleted", false );
+            commit( "setFourreached", false );
+            
+        },
+
+        /**
          * Add a divider to the 3d scene
          * TODO Usa le Promise https://stackoverflow.com/questions/40165766/returning-promises-from-vuex-actions
          * TODO nel chiamante prendi il valore di ritorno della promise e fai qualcosa
@@ -774,6 +798,12 @@ const store = new Vuex.Store({
          * @type {Boolean}
          */
         fivecompleted: false,
+
+        /**
+         * fourreached flag
+         * @type {Boolean}
+         */
+        fourreached: false,
 
         /**
          * [currentStep description]

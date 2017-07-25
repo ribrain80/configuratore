@@ -2072,6 +2072,11 @@ export default {
         
         next( vm => {
 
+            if( from.path == "/split/step5" ) {
+                 vm.$router.push({ path: '/split/step2' });
+                 return;
+            }
+
             // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                  vm.$router.push({ path: '/split/step1' });
@@ -2091,22 +2096,21 @@ export default {
             }
 
         })
-    },     
+    },   
+
     created () {
       Pace.start( paceOptions );
     },
+
+
     mounted () { // # Window onload eq
 
-
+        // # Initial settings
+        this.$store.commit( "setFourreached",  true );
         this.$store.commit( "setComponentHeader",  "step4.header-title" );
         this.$store.commit( "setCurrentStep", 4 );
 
         this.initCanvas();
-
-        console.log("Step4 mounted!");
-
-        // ---------------------------------------------
-        // SET SIDEBAR ITEM ACTIVE - BEGIN
         
         let pos = 0;
         let $pointer = $( ".navigator .pointer-navigator" ); 

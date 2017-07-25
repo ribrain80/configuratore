@@ -713,7 +713,7 @@ export default {
          */
         clearAllData: function() {
             this.$store.commit( "clearAllBridgeData" );
-            this.$store.commit( "clearDividers" );
+            this.$store.dispatch( "remove3dAllDividers" );
             this.$store.commit( "clearDrawerBorders" );
         },
 
@@ -1216,6 +1216,10 @@ export default {
  
         next( vm => {
 
+            if( vm.$store.state.fourreached ) {
+                vm.$store.dispatch( "clearStep4Reached" );
+            }
+            
             // # is Step 1 completed ?
             if( !vm.$store.state.onecompleted ) {
                 vm.$router.push({ path: '/split/step1' });
@@ -1227,6 +1231,8 @@ export default {
                 vm.$router.push({ path: '/split/step2' });
                 return;
             }
+
+
         })
     }, 
 
