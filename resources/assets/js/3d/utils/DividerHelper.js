@@ -567,19 +567,19 @@ export default class DividerHelper {
 
 
 
-                this.objLoader.loadModel("left",sideModelSx,this.defaultMaterial).then((obj3d) => {
+                this.objLoader.loadModel("left",sideModelDx,this.defaultMaterial).then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementZ = (bbox.max.x - bbox.min.x);
 
-                    obj3d.scale.set(1,1,Math.abs((l +15) / (bbox.max.z - bbox.min.z)));
+                    obj3d.scale.set(1,1,Math.abs((l +30) / (bbox.max.z - bbox.min.z)));
                     obj3d.updateMatrix();
-                    obj3d.position.x = 0 + bbox.max.x - elementZ;
+                    obj3d.position.x =  +4 - elementZ;
                     obj3d.position.y = -bbox.min.y -33;
-                    obj3d.position.z = -10;
+                    obj3d.position.z = +l +2;
                     obj3d.updateMatrix();
-                    obj3d.rotateY(Math.PI);
-                    obj3d.updateMatrix();
+                   // obj3d.rotateY(Math.PI);
+                   // obj3d.updateMatrix();
                     // # Shadow
                     obj3d.castShadow = true;
                     obj3d.receiveShadow = true;
@@ -605,7 +605,7 @@ export default class DividerHelper {
                     obj3d.castShadow = true;
                     obj3d.receiveShadow = true;
                     // # Add background to the scene
-                    this.drawer.add(obj3d);
+                   // this.drawer.add(obj3d);
                 });
             }
 
