@@ -13,7 +13,7 @@ export default class Renderer {
 
         // # Set scene background color
         this.threeRenderer.setClearColor(Config.sceneClearColor);
-        this.threeRenderer.setPixelRatio(window.devicePixelRatio); // For retina
+        this.threeRenderer.setPixelRatio(window.devicePixelRatio?window.devicePixelRatio:1); // For retina
 
         // Appends canvas
 
@@ -42,6 +42,8 @@ export default class Renderer {
 
     updateSize() {
         console.log("UPDATE RENDERER SIZE!!");
+        let dpr = window.devicePixelRatio?window.devicePixelRatio:1;
+
         this.threeRenderer.setSize(this.container.offsetWidth, this.container.offsetHeight, true);
         this.container.firstChild.style.border = "none";
         this.container.firstChild.style.border = "1px solid #999";
