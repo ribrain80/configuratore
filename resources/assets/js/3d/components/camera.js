@@ -10,7 +10,7 @@ export default class Camera {
         let dpr = window.devicePixelRatio?window.devicePixelRatio:1;
 
         // Create and position a Perspective Camera
-        this.threeCamera = new THREE.PerspectiveCamera(Config.camera.fov,( width / height ) * dpr, Config.camera.near, Config.camera.far);
+        this.threeCamera = new THREE.PerspectiveCamera(Config.camera.fov,( width / height ), Config.camera.near, Config.camera.far);
         this.threeCamera.position.set(Config.camera.posX, Config.camera.posY, Config.camera.posZ);
 
         // Initial sizing
@@ -21,11 +21,11 @@ export default class Camera {
     }
 
     updateSize(renderer) {
-        
+
         let dpr = window.devicePixelRatio?window.devicePixelRatio:1;
 
         // Multiply by dpr in case it is retina device
-        this.threeCamera.aspect = ( renderer.domElement.width / renderer.domElement.height ) * dpr;
+        this.threeCamera.aspect = ( renderer.domElement.width / renderer.domElement.height );
 
         // Always call updateProjectionMatrix on camera change
         this.threeCamera.updateProjectionMatrix();
