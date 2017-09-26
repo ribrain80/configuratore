@@ -1750,9 +1750,6 @@ export default {
                 // # Add image to canvas
                 this.canvas.add( oImg );
 
-                let _fakeMove = new Event('object:moving',oImg);
-                window.dispatchEvent( _fakeMove );
-
                 // # Coords
                 var coords = oImg.calcCoords().bl;
                 var centerCoords = oImg.getCenterPoint();
