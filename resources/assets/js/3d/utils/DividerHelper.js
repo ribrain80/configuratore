@@ -436,7 +436,7 @@ export default class DividerHelper {
 
             // All Drawer types share the same background Object
             this.objLoader.loadModel("background",this.commonBackgroundObj,this.defaultMaterial).then((obj3d) => {
-                let wCorrection = 26;
+                let wCorrection = 25;
                 let lCorrection = 1;
                 let eW = w + wCorrection;
                 let el = l + lCorrection;
@@ -479,7 +479,8 @@ export default class DividerHelper {
 
                     let wC = 0;
                     if (h==148.0) {
-                        wC = -12.7
+                        console.log("ALTEZZA MASSIMA!");
+                        wC = -9
                     }
 
                     obj3d.scale.set(coeffW,1,1);
@@ -523,9 +524,10 @@ export default class DividerHelper {
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementZ = (bbox.max.x - bbox.min.x);
                     console.log("LINEABOX 2 LATI SPONDA SX");
+                    let xCorrection = (h==72)?0:-3.5;
                     obj3d.scale.set(1,1,Math.abs((l +15) / (bbox.max.z - bbox.min.z)));
                     obj3d.updateMatrix();
-                    obj3d.position.x = w + bbox.min.x + elementZ -3.5;
+                    obj3d.position.x = w + bbox.min.x + elementZ + xCorrection;
                     obj3d.position.y = -bbox.min.y -33;
                     obj3d.position.z = -20 + l/2;
                     obj3d.updateMatrix();
@@ -549,6 +551,8 @@ export default class DividerHelper {
                     let coeffW = extendedW / elementW;
 
                     let zcorrection = (h==45.5)?3:4;
+
+
 
                     obj3d.scale.set(coeffW,1,1);
                     obj3d.updateMatrix();

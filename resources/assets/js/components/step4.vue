@@ -337,6 +337,7 @@
                                              style="width: 120px;height: 80px"
                                              :data-sku="variant.sku"
                                         >
+                                        <figcaption>{{ $t(variant.color) }}</figcaption>
                                     </figure>
                                 </div>
                             </div>
