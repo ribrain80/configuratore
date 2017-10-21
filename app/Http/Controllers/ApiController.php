@@ -155,8 +155,10 @@ class ApiController extends Controller {
 
             // # Get all bridges
             $collection = Bridge::all( [ 'id', 'sku', 'sku_short', 'width', 'depth', 'image', 
-                                        'color', 'border', 'texture', 'description','textureImg'] )
-                                ->sortBy( 'depth' );
+                                        'color', 'border', 'texture', 'description','textureImg','ord'] )
+                                ->sortBy( 'ord' );
+
+
 
             // # Loop through all bridges
             foreach ( $collection as $curBridge) {

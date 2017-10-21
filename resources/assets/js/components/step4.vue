@@ -288,7 +288,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <h3> {{ $t('Legno') }}</h3>
-                                    <div class="row">
+                                    <div class="row" style="border-right: 1px solid #dddddd;">
                                         <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                         <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
                                             <figure>

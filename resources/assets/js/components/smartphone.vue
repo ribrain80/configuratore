@@ -2,12 +2,11 @@
     
     <!-- Container -->
     <div class="row" id="smartphone">
-        
-        <!-- Title -->
-        <div class="col-sm-12 text-center">
-            <h2 lang="it">{{ 'smartphone.title' | translate }}</h2>
-        </div>
 
+        <!-- Drawer type choice -->
+        <div class="col-sm-12 text-center" style="background: #424242;heigth:35px">
+            <img src="/images/logos/split.png" style="height: 27px;margin-top: 4px;margin-bottom: 4px">
+        </div>
         <!-- Drawer type choice -->
         <div class="col-sm-12 text-center">
             <div class="panel panel-default">
@@ -18,6 +17,8 @@
     </div>
     
 </template>
+
+
 
 <script>
 /**
@@ -47,12 +48,15 @@ export default {
     mounted () {
 
         // # Set component header title
-        this.$store.commit( "setComponentHeader", "Smartphone" );
+        this.$store.commit( "setComponentHeader", "" );
 
         // # hide sidebar
         $( ".sidebar .row" ).not( ".logocontainer" ).hide();
         $( ".sidebar" ).css( "backgroundColor", "#fff" );
         $( ".navbar-right, .split-header" ).hide();
+        $( ".app-nav + div").css('top','0px');
+        $( ".app-nav").hide();
+
 
         // # Log mount 
         console.log( "smartphone component mounted!" );
