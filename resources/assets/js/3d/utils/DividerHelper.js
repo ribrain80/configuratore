@@ -540,8 +540,50 @@ export default class DividerHelper {
                 });
             } else {
 
+                let d45_sponda_dx = "/images/3dmodels/45degree/spondadx.obj"
+                let d45_angolo_dx = "/images/3dmodels/45degree/angolodx.obj"
 
-                this.objLoader.loadModel("back",backModel,this.defaultMaterial).then((obj3d) => {
+               /* this.objLoader.loadModel("right",d45_sponda_dx,this.defaultMaterial).then((obj3d) => {
+                    // # Change background dimension
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    let elementZ = (bbox.max.x - bbox.min.x);
+                    obj3d.scale.set(1,1,Math.abs((l+32) / (bbox.max.z - bbox.min.z)));
+                    obj3d.updateMatrix();
+                    obj3d.position.x =  bbox.min.x/2 -6 + elementZ;
+                    obj3d.position.y = -bbox.min.y -33;
+                    obj3d.position.z = l + 2;
+                    obj3d.updateMatrix();
+
+
+
+                    // # Shadow
+                    obj3d.castShadow = true;
+                    obj3d.receiveShadow = true;
+                    // # Add background to the scene
+                    this.drawer.add(obj3d);
+                });*/
+
+
+                this.objLoader.loadModel("right",d45_angolo_dx,this.defaultMaterial).then((obj3d) => {
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    obj3d.updateMatrix();
+                    obj3d.position.x =  bbox.min.x/2-10;
+                    obj3d.position.y = -28;
+                    obj3d.position.z = l -7;
+                    obj3d.updateMatrix();
+                    // # Shadow
+                    obj3d.castShadow = true;
+                    obj3d.receiveShadow = true;
+                    // # Add background to the scene
+                    this.drawer.add(obj3d);
+                });
+
+
+
+
+
+
+               /* this.objLoader.loadModel("back",backModel,this.defaultMaterial).then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementW  =  bbox.max.x - bbox.min.x;
@@ -567,11 +609,11 @@ export default class DividerHelper {
                     obj3d.receiveShadow = true;
                     // # Add background to the scene
                     this.drawer.add(obj3d);
-                });
+                });*/
 
 
 
-                this.objLoader.loadModel("left",sideModelDx,this.defaultMaterial).then((obj3d) => {
+               /* this.objLoader.loadModel("left",sideModelDx,this.defaultMaterial).then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementZ = (bbox.max.x - bbox.min.x);
@@ -589,27 +631,9 @@ export default class DividerHelper {
                     obj3d.receiveShadow = true;
                     // # Add background to the scene
                     this.drawer.add(obj3d);
-                });
+                });*/
 
-                this.objLoader.loadModel("right",sideModelSx,this.defaultMaterial).then((obj3d) => {
-                    // # Change background dimension
-                    let bbox = new THREE.Box3().setFromObject( obj3d );
-                    let elementZ = (bbox.max.x - bbox.min.x);
-                    obj3d.scale.set(1,1,Math.abs((l+32) / (bbox.max.z - bbox.min.z)));
-                    obj3d.updateMatrix();
-                    obj3d.position.x =  bbox.min.x/2 -6 + elementZ;
-                    obj3d.position.y = -bbox.min.y -33;
-                    obj3d.position.z = l + 2;
-                    obj3d.updateMatrix();
-
-
-
-                    // # Shadow
-                    obj3d.castShadow = true;
-                    obj3d.receiveShadow = true;
-                    // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });
+                /**/
             }
 
 
