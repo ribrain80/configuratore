@@ -12,7 +12,7 @@ return [
     'nr'=>'NR',
     'code'=>'ARTIKELNUMMER',
     'dimensions'=>'ABMESSUNGEN',
-    'finish'=>'FARBE/TEXTUROBERFLÄCHE',
+    'finish'=>'Oberflächenstrukturen',
     'label_contenitore'=>'ABLAGEFACH',
     'label_elemento_ponte'=>'BRÜCKENELEMENT',
     'label_supporto'=>'SUPPORTO',       //ASSENTE

@@ -12,7 +12,7 @@ return [
     'nr'=>'数量',
     'code'=>'货号',
     'dimensions'=>'尺寸',
-    'finish'=>'表面',
+    'finish'=>'表面质感',
     'label_contenitore'=>'存储单元',
     'label_elemento_ponte'=>'搁架单元',
     'label_supporto'=>'搁架支撑轨',

@@ -12,7 +12,7 @@ return [
     'nr'=>'NR',
     'code'=>'CODE ARTICLE',
     'dimensions'=>'DIMENSIONS',
-    'finish'=>'COULEUR/TEXTURE',
+    'finish'=>'Finitions textures',
     'label_contenitore'=>'BAC DE RANGEMENT',
     'label_elemento_ponte'=>'BAC DE RANGEMENT TRANSVERSAUX',
     'label_supporto'=>'SUPPORTO',

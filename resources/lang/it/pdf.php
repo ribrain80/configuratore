@@ -12,7 +12,7 @@ return [
     'nr'=>'NR',
     'code'=>'CODICE',
     'dimensions'=>'DIMENSIONI',
-    'finish'=>'FINITURA',
+    'finish'=>'Finitura tattile',
     'label_contenitore'=>'CONTENITORE',
     'label_elemento_ponte'=>'ELEMENTO PONTE',
     'label_supporto'=>'SUPPORTO',

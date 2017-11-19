@@ -12,7 +12,7 @@ return [
     'nr'=>'NR',
     'code'=>'CÓDIGO',
     'dimensions'=>'DIMENSIONES',
-    'finish'=>'COLOR/ACABADO TÁCTIL',
+    'finish'=>'Acabados táctil',
     'label_contenitore'=>'CONTENEDOR',
     'label_elemento_ponte'=>'ELEMENTO PUENTE',
     'label_supporto'=>'SUPPORTO',

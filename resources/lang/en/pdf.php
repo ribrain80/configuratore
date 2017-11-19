@@ -17,7 +17,7 @@ return [
     'nr'=>'NR',
     'code'=>'PART NUMBER',
     'dimensions'=>'DIMENSIONS',
-    'finish'=>'COLOUR/TEXTURE',
+    'finish'=>'Texture finishes',
     'label_contenitore'=>'STORAGE COMPARTMENT',
     'label_elemento_ponte'=>'BRIDGE UNIT',
     'label_supporto'=>'SUPPORTO',                //ASSENTE

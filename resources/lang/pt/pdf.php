@@ -12,7 +12,7 @@ return [
     'nr'=>'NR',
     'code'=>'CÓDIGO',
     'dimensions'=>'DIMENSÕES',
-    'finish'=>'COR/ACABAMENTO TÁTIL',
+    'finish'=>'Acabamento tátil',
     'label_contenitore'=>'RECIPIENTE',
     'label_elemento_ponte'=>'ELEMENTO PONTE',
     'label_supporto'=>'SUPPORTO',
