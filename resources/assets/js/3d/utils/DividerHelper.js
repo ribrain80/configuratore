@@ -540,100 +540,158 @@ export default class DividerHelper {
                 });
             } else {
 
-                let d45_sponda_dx = "/images/3dmodels/45degree/spondadx.obj"
-                let d45_angolo_dx = "/images/3dmodels/45degree/angolodx.obj"
+                let d45_sponda_dx = "/images/3dmodels/45degree/h180/spondadx.obj";
+                let d45_sponda45_dx = "/images/3dmodels/45degree/h180/spondadx45.obj";
 
-               /* this.objLoader.loadModel("right",d45_sponda_dx,this.defaultMaterial).then((obj3d) => {
-                    // # Change background dimension
+                let d45_sponda_sx = "/images/3dmodels/45degree/h180/spondasx.obj";
+                let d45_sponda45_sx = "/images/3dmodels/45degree/h180/spondasx45.obj";
+
+                let d45_backdx = "/images/3dmodels/45degree/h180/backdx.obj";
+                let d45_backsx = "/images/3dmodels/45degree/h180/backsx.obj";
+                let d45_back = "/images/3dmodels/45degree/h180/back.obj";
+
+                let spondaRight= new THREE.Object3D();
+                spondaRight.name="right";
+
+                this.objLoader.loadModel("rightA",d45_sponda45_dx,this.defaultMaterial).then((obj3d) => {
                     let bbox = new THREE.Box3().setFromObject( obj3d );
-                    let elementZ = (bbox.max.x - bbox.min.x);
-                    obj3d.scale.set(1,1,Math.abs((l+32) / (bbox.max.z - bbox.min.z)));
+                    obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.x =  bbox.min.x/2 -6 + elementZ;
-                    obj3d.position.y = -bbox.min.y -33;
-                    obj3d.position.z = l + 2;
-                    obj3d.updateMatrix();
-
-
-
-                    // # Shadow
-                    obj3d.castShadow = true;
-                    obj3d.receiveShadow = true;
-                    // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });*/
-
-
-                this.objLoader.loadModel("right",d45_angolo_dx,this.defaultMaterial).then((obj3d) => {
-                    let bbox = new THREE.Box3().setFromObject( obj3d );
-                    obj3d.updateMatrix();
-                    obj3d.position.x =  bbox.min.x/2-10;
-                    obj3d.position.y = -28;
-                    obj3d.position.z = l -7;
+                    obj3d.position.z = l - 24;
                     obj3d.updateMatrix();
                     // # Shadow
                     obj3d.castShadow = true;
                     obj3d.receiveShadow = true;
                     // # Add background to the scene
-                    this.drawer.add(obj3d);
+                    spondaRight.add(obj3d);
                 });
 
+                this.objLoader.loadModel("rightS",d45_sponda_dx,this.defaultMaterial).then((obj3d) => {
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    let elementL  =  bbox.max.z - bbox.min.z;
+                    //let extendedW = l -3 ;
+                    let coeffW = (l-10) / elementL;
+                    obj3d.scale.set(1,1,coeffW);
 
+                    obj3d.rotateY(Math.PI);
+                    obj3d.updateMatrix();
+                    obj3d.position.z = l -10;
+                    obj3d.updateMatrix();
+                    // # Shadow
+                    obj3d.castShadow = true;
+                    obj3d.receiveShadow = true;
+                    // # Add background to the scene
+                    spondaRight.add(obj3d);
+                });
 
+                this.drawer.add(spondaRight);
 
+                let spondaBack = new THREE.Object3D();
+                spondaBack.name="back";
 
-
-               /* this.objLoader.loadModel("back",backModel,this.defaultMaterial).then((obj3d) => {
+                this.objLoader.loadModel("backdx",d45_backdx,this.defaultMaterial).then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementW  =  bbox.max.x - bbox.min.x;
-                    let elementZS = 15.6;
-                    let backCorrection = (type==3)?(elementZS-4):(2 * elementZS);
-                    let extendedW = w + backCorrection ;  // 2 volte lo spessore della sponda
-                    let coeffW = extendedW / elementW;
 
-                    let zcorrection = (h==45.5)?3:4;
-
-
-
-                    obj3d.scale.set(coeffW,1,1);
+                    obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.x = w/2;
-                    obj3d.position.y = 0;
-                    obj3d.position.z = l - zcorrection;
+                    obj3d.position.z = l - 1;
+                    obj3d.position.x = -11;
+                   // obj3d.position.set(w/2 +elementW - ( spondaW/2) , -15, l);
+                    obj3d.updateMatrix();
+                    // # Shadow
+                    obj3d.castShadow = true;
+                    obj3d.receiveShadow = true;
+                    // # Add background to the scene
+                    spondaBack.add(obj3d);
+                });
+
+                this.objLoader.loadModel("backsx",d45_backsx,this.defaultMaterial).then((obj3d) => {
+                    // # Change background dimension
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    let elementW  =  bbox.max.x - bbox.min.x;
+
+                    obj3d.rotateY(Math.PI);
+                    obj3d.updateMatrix();
+                    obj3d.position.z = l - 1;
+                    obj3d.position.x = w + 12;
+                    // obj3d.position.set(w/2 +elementW - ( spondaW/2) , -15, l);
+                    obj3d.updateMatrix();
+                    // # Shadow
+                    obj3d.castShadow = true;
+                    obj3d.receiveShadow = true;
+                    // # Add background to the scene
+                    spondaBack.add(obj3d);
+                });
+
+                this.objLoader.loadModel("backmid",d45_back,this.defaultMaterial).then((obj3d) => {
+                    // # Change background dimension
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    let spondaW  =  bbox.max.x - bbox.min.x;
+                    let elementZS = 15.6;
+                    let extendedW = w - 10 ;
+                    let coeffW = extendedW / spondaW;
+                    obj3d.scale.set(coeffW,1,1);
                     obj3d.updateMatrix();
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
+                    obj3d.position.z = l - 1;
+                    obj3d.position.x = w/2;
+                    //obj3d.position.set(w/2 , -15, l);
+                    obj3d.updateMatrix();
                     // # Shadow
                     obj3d.castShadow = true;
                     obj3d.receiveShadow = true;
                     // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });*/
+                    spondaBack.add(obj3d);
+                });
+
+
+                this.drawer.add(spondaBack);
 
 
 
-               /* this.objLoader.loadModel("left",sideModelDx,this.defaultMaterial).then((obj3d) => {
-                    // # Change background dimension
+
+                let spondaLeft= new THREE.Object3D();
+                spondaLeft.name="left";
+
+                this.objLoader.loadModel("leftA",d45_sponda45_sx,this.defaultMaterial).then((obj3d) => {
                     let bbox = new THREE.Box3().setFromObject( obj3d );
-                    let elementZ = (bbox.max.x - bbox.min.x);
-
-                    obj3d.scale.set(1,1,Math.abs((l +32) / (bbox.max.z - bbox.min.z)));
+                    obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.x =  +4 - elementZ;
-                    obj3d.position.y = -bbox.min.y -33;
-                    obj3d.position.z = +l +2;
+                    obj3d.position.z = l - 24;
+                    obj3d.position.x = w;
                     obj3d.updateMatrix();
-                   // obj3d.rotateY(Math.PI);
-                   // obj3d.updateMatrix();
                     // # Shadow
                     obj3d.castShadow = true;
                     obj3d.receiveShadow = true;
                     // # Add background to the scene
-                    this.drawer.add(obj3d);
-                });*/
+                    spondaLeft.add(obj3d);
+                });
 
-                /**/
+                this.objLoader.loadModel("leftS",d45_sponda_sx,this.defaultMaterial).then((obj3d) => {
+                    let bbox = new THREE.Box3().setFromObject( obj3d );
+                    let elementL  =  bbox.max.z - bbox.min.z;
+                    //let extendedW = l -3 ;
+                    let coeffW = (l-10) / elementL;
+                    obj3d.scale.set(1,1,coeffW);
+
+                    obj3d.rotateY(Math.PI);
+                    obj3d.updateMatrix();
+                    obj3d.position.z = l -10;
+                    obj3d.position.x = w;
+                    obj3d.updateMatrix();
+                    // # Shadow
+                    obj3d.castShadow = true;
+                    obj3d.receiveShadow = true;
+                    // # Add background to the scene
+                    spondaLeft.add(obj3d);
+                });
+
+                this.drawer.add(spondaLeft);
+
+
             }
 
 
