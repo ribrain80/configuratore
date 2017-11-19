@@ -642,7 +642,7 @@ export default {
 
         "reset": "Reset",
 
-        "cancel": "Löschen",
+        "cancel": "Annulieren",
 
         "dont-mind-go": "Fahren Sie fort",
 
@@ -2012,7 +2012,7 @@ export default {
 
         "step4.edges_right": "右侧板",
 
-        "step4.edges_floor": "TODO",
+        "step4.edges_floor": "抽屉底板",
 
         "step4.noborders-advice": "如需继续，请选择抽屉的表面颜色",
 
