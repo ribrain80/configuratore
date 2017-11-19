@@ -61,7 +61,7 @@ export default class DividerHelper {
 
         this.objLoader.loadModel(_name,_model,this.currentBridgesMaterial,false,true).then((obj3d) => {
             let bbox = new THREE.Box3().setFromObject( obj3d );
-            let _zCoeff = w / (bbox.max.z - bbox.min.z);
+            let _zCoeff = (w+5) / (bbox.max.z - bbox.min.z);
             let _wCoeff = this.bridgeWidth / (bbox.max.x - bbox.min.x);
             obj3d.scale.set(1,1,_zCoeff);
             obj3d.updateMatrix();
@@ -105,7 +105,7 @@ export default class DividerHelper {
 
         this.objLoader.loadModel(_name,_model,this.currentBridgesMaterial,false,true).then((obj3d) => {
             let bbox = new THREE.Box3().setFromObject( obj3d );
-            let _zCoeff = w / (bbox.max.z - bbox.min.z);
+            let _zCoeff = (w+5) / (bbox.max.z - bbox.min.z);
             let _wCoeff = this.bridgeWidth / (bbox.max.x - bbox.min.x);
             obj3d.scale.set(1,1,_zCoeff);
             obj3d.updateMatrix();
@@ -557,7 +557,7 @@ export default class DividerHelper {
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.z = l - 24;
+                    obj3d.position.z = l - 22;
                     obj3d.updateMatrix();
                     // # Shadow
                     obj3d.castShadow = true;
@@ -575,7 +575,7 @@ export default class DividerHelper {
 
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.z = l -10;
+                    obj3d.position.z = l -20;
                     obj3d.updateMatrix();
                     // # Shadow
                     obj3d.castShadow = true;
@@ -660,7 +660,7 @@ export default class DividerHelper {
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.z = l - 24;
+                    obj3d.position.z = l - 22;
                     obj3d.position.x = w;
                     obj3d.updateMatrix();
                     // # Shadow
@@ -679,7 +679,7 @@ export default class DividerHelper {
 
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.z = l -10;
+                    obj3d.position.z = l -20;
                     obj3d.position.x = w;
                     obj3d.updateMatrix();
                     // # Shadow
