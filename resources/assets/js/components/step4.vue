@@ -291,7 +291,7 @@
                                     <div class="row" style="border-right: 1px solid #dddddd;">
                                         <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                         <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsLegnoFull" >
-                                            <figure>
+                                            <figure style="margin: 0 auto !important">
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
@@ -310,7 +310,7 @@
                                     <div class="row">
                                         <h4>Fullcolor {{ $t( 'zh.fullcolor' ) }}</h4>
                                         <div class="col-lg-4 col-md-4 col-sm-4" v-for="variant in $store.getters.getBridgesVariantsInoxFull" >
-                                            <figure>
+                                            <figure style="margin: 0 auto !important">
                                                 <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                                 <img :src="variant.textureImg"
                                                      class="img center-block img-responsive img-thumbnail"
@@ -324,11 +324,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <h3>{{ $t( 'step4.supporti.label' ) }}</h3>
+                                    <h3 style="margin-top: 8%">{{ $t( 'step4.supporti.label' ) }}</h3>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2"></div>
                                 <div class="col-lg-2 col-md-2 col-sm-2" v-for="variant in $store.getters.getSupportsVariants">
-                                    <figure>
+                                    <figure style="margin: 0 auto !important">
                                         <a class="lens-icon bridges-info" @click="showTextureInfo( $event )">&nbsp;</a>
                                         <img :src="variant.texture"
                                              class="img center-block img-responsive img-thumbnail"

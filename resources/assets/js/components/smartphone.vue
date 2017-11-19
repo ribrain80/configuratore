@@ -5,12 +5,12 @@
 
         <!-- Drawer type choice -->
         <div class="col-sm-12 text-center" style="background: #424242;heigth:35px">
-            <img src="/images/logos/split.png" style="height: 27px;margin-top: 4px;margin-bottom: 4px">
+            <img src="/images/logos/splitw.png" style="width: 45%;margin-top: 4px;margin-bottom: 4px">
         </div>
         <!-- Drawer type choice -->
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-12 text-center" style="margin-top: 10%">
             <div class="panel panel-default">
-                <div class="panel-body">{{ "smartphone.message" | translate }}</div>
+                <div class="panel-body" style="font-size:1.4em">{{ "smartphone.message" | translate }}</div>
             </div>
         </div>
 
