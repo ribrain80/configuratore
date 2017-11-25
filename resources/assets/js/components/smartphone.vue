@@ -5,7 +5,7 @@
 
         <!-- Drawer type choice -->
         <div class="col-sm-12 text-center" style="background: #424242;heigth:35px">
-            <img src="/images/logos/splitw.png" style="width: 45%;margin-top: 4px;margin-bottom: 4px">
+            <img src="/images/logos/splitw.png" style="width: 45%;margin-top: 24px;margin-bottom: 24px">
         </div>
         <!-- Drawer type choice -->
         <div class="col-sm-12 text-center" style="margin-top: 10%">

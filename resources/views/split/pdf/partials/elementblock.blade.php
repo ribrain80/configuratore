@@ -69,7 +69,7 @@
                         <span class="{{ $element['type'] }}"> {{ $l }}</span> &times;
                         <span> {{ $d }}</span>
 
-                <p><b>@lang('pdf.finish'):</b> {{ $texture }}</p>
+                <p><b style="text-transform: uppercase">@lang('pdf.finish'):</b> {{ $texture }}</p>
         @else
                 <h3>&nbsp;</h3>
         <div style="width: 100%;border: 0.75pt solid black;">
