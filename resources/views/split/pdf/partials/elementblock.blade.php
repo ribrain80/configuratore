@@ -85,7 +85,7 @@
                 <p><b>@lang('pdf.nr'):</b></p>
                 <p><b>@lang('pdf.code'):</b></p>
                 <p><b>@lang('pdf.dimensions') (mm):</b></p>
-                <p><b>@lang('pdf.finish'):</b> </p>
+                <p><b style="text-transform: uppercase">@lang('pdf.finish'):</b> </p>
         @endif
 
 
