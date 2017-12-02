@@ -540,15 +540,35 @@ export default class DividerHelper {
                 });
             } else {
 
-                let d45_sponda_dx = "/images/3dmodels/45degree/h180/spondadx.obj";
-                let d45_sponda45_dx = "/images/3dmodels/45degree/h180/spondadx45.obj";
+                let pathbyh = "alta";
 
-                let d45_sponda_sx = "/images/3dmodels/45degree/h180/spondasx.obj";
-                let d45_sponda45_sx = "/images/3dmodels/45degree/h180/spondasx45.obj";
+                switch (h) {
+                    case 45.5:
+                        // # SPONDA BASSA
+                        pathbyh = "bassa";
+                        break;
+                    case 72:
+                        // # SPONDA MEDIA
+                        pathbyh = "media";
+                        break;
+                    case 148.0:
+                        pathbyh = "alta";
+                        break;
+                }
 
-                let d45_backdx = "/images/3dmodels/45degree/h180/backdx.obj";
-                let d45_backsx = "/images/3dmodels/45degree/h180/backsx.obj";
-                let d45_back = "/images/3dmodels/45degree/h180/back.obj";
+                let d45_sponda_dx = "/images/3dmodels/45degree/"+pathbyh+"/spondadx.obj";
+                let d45_sponda45_dx = "/images/3dmodels/45degree/"+pathbyh+"/spondadx45.obj";
+
+                let d45_sponda_sx = "/images/3dmodels/45degree/"+pathbyh+"/spondasx.obj";
+                let d45_sponda45_sx = "/images/3dmodels/45degree/"+pathbyh+"/spondasx45.obj";
+
+                let d45_backdx = "/images/3dmodels/45degree/"+pathbyh+"/backdx.obj";
+                let d45_backsx = "/images/3dmodels/45degree/"+pathbyh+"/backsx.obj";
+                let d45_back = "/images/3dmodels/45degree/"+pathbyh+"/back.obj";
+
+
+
+
 
                 let spondaRight= new THREE.Object3D();
                 spondaRight.name="right";
@@ -636,7 +656,12 @@ export default class DividerHelper {
                     obj3d.updateMatrix();
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
-                    obj3d.position.z = l - 1;
+                    if (h==72) {
+                        obj3d.position.z = l + 3.7;
+                    } else {
+                        obj3d.position.z = l - 1;
+                    }
+
                     obj3d.position.x = w/2;
                     //obj3d.position.set(w/2 , -15, l);
                     obj3d.updateMatrix();
