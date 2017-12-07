@@ -635,7 +635,7 @@ export default class DividerHelper {
                     obj3d.rotateY(Math.PI);
                     obj3d.updateMatrix();
                     obj3d.position.z = l - 1;
-                    obj3d.position.x = w + 12;
+                    obj3d.position.x = w + 10.9;
                     // obj3d.position.set(w/2 +elementW - ( spondaW/2) , -15, l);
                     obj3d.updateMatrix();
                     // # Shadow
