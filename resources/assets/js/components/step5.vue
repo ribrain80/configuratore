@@ -182,7 +182,10 @@ export default {
                     self.$store.state.drawerId = response.data.id;
 
                     if ( event.target.id != 'email' ) {
-                        window.open( response.data.pdfpath, '_blank' );
+                        self.downloadPDF(response.data.pdfpath);
+
+
+                        //window.open( response.data.pdfpath, '_blank' );
 					} else {
                         $( "#generic-alert-message" ).text( Vue.i18n.translate( "step5.mail-sent" ) );
                         this.error_modal.modal();
@@ -198,6 +201,32 @@ export default {
                     this.error_modal.modal();
                 });
             });
+        },
+
+        downloadPDF: function (url) {
+
+            // # Let Pace track loading
+            Pace.start()
+                Axios.get(url, {responseType: "blob"})
+                    .then(function (response) {
+
+                        let blob = new Blob([response.data], {type: 'application/pdf'});
+                        if (navigator.msSaveBlob) {
+                            let filename = "drawer.pdf";
+                            navigator.msSaveBlob(blob, filename);
+                        }
+                        else {
+                            let link = document.createElement("a");
+                            link.href = URL.createObjectURL(blob);
+                            link.setAttribute('visibility', 'hidden');
+                            link.download = "drawer.pdf";
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        }
+                         setTimeout(function(){ Pace.stop(); }, 3000);
+                        
+                    });
         },
 
         /**
