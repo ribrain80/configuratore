@@ -353,13 +353,13 @@
                                 <div :class="['edge', 'edge_front', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='front') ? 'edge_selected' : '' ]" id="front" @click='selectBorder( $event );' >
                                     {{ $t( "step4.edges_top" ) }}
                                 </div>
-                                <div :class="['edge', 'edge_left', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
+                                <div :class="['edge', 'edge_left', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
                                 
                                 <div id="background" @click='selectBorder( $event );' :class="['edge', 'text-center', ($store.state.objectWorkingOn.id=='background') ? 'edge_selected' : '' ]">
                                     {{ $t( "step4.edges_floor" ) }}
                                 </div>
 
-                                <div :class="['edge', 'edge_right', ($store.state.objectWorkingOn.id=='right') ? 'edge_selected' : '' ]" id="right" @click='selectBorder( $event );' style="min-height: 100px"></div>
+                                <div :class="['edge', 'edge_right', ($store.state.objectWorkingOn.id=='left') ? 'edge_selected' : '' ]" id="left" @click='selectBorder( $event );' style="min-height: 100px"></div>
 
                                 <div :class="['edge', 'edge_back', 'text-center', 'w-100', ($store.state.objectWorkingOn.id=='back') ? 'edge_selected' : '' ]" id="back" @click='selectBorder( $event );' >
                                     {{ $t( "step4.edges_bottom" ) }}
