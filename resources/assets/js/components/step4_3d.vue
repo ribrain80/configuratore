@@ -59,7 +59,7 @@
         methods: {
 
             fakePan: function (direction) {
-                let fakeUp = new Event('fakepan');
+                let fakeUp = new CustomEvent('fakepan');
                 fakeUp.keyCode = direction;
                 window.dispatchEvent( fakeUp );
             },
@@ -119,6 +119,49 @@
          * @return {void}
          */
         mounted () {
+
+            try {
+                console.log("CHECK IF NEED CUSTOM EVENT POLYFILL");
+                var shim = new Event("toggle");
+                console.log("POLYFILL NOT ENABLED");
+            }
+            catch (error) {
+                console.log("THIS BROWSER  NEED CUSTOM EVENT POLYFILL");
+                var CustomEvent = function(event, params) {
+                    var evt, origPrevent;
+                    params = params || {
+                            bubbles: false,
+                            cancelable: false,
+                            detail: undefined
+                        };
+
+                    evt = document.createEvent("CustomEvent");
+                    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+                    evt.composed = params.composed;
+
+                    origPrevent = evt.preventDefault;
+                    evt.preventDefault = function () {
+                        origPrevent.call(this);
+                        try {
+                            Object.defineProperty(this, 'defaultPrevented', {
+                                get: function () {
+                                    return true;
+                                }
+                            });
+                        } catch(e) {
+                            this.defaultPrevented = true;
+                        }
+                    };
+                    return evt;
+                };
+
+                CustomEvent.prototype = window.Event.prototype;
+                window.Event = CustomEvent; // expose definition to window
+                window.CustomEvent = CustomEvent; // expose definition to window
+            }
+
+
+
             //Check if the browser support webgl
             this.canUseWebGl= Detector.webgl;
             if (Detector.webgl) {
