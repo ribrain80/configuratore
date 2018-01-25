@@ -353,7 +353,7 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
 
-            this.objLoader.loadModel("left",'/images/3dmodels/legno/side.obj',this.defaultMaterial).then((obj3d) => {
+            this.objLoader.loadModel("right",'/images/3dmodels/legno/side.obj',this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementL = 500; //(bbox.max.z - bbox.min.z);
@@ -378,7 +378,7 @@ export default class DividerHelper {
                 this.drawer.add(obj3d);
             });
 
-            this.objLoader.loadModel("right",'/images/3dmodels/legno/side.obj',this.defaultMaterial).then((obj3d) => {
+            this.objLoader.loadModel("left",'/images/3dmodels/legno/side.obj',this.defaultMaterial).then((obj3d) => {
                 // # Change background dimension
                 let bbox = new THREE.Box3().setFromObject( obj3d );
                 let elementL = 500; //(bbox.max.z - bbox.min.z);
@@ -499,7 +499,7 @@ export default class DividerHelper {
                 });
 
 
-                this.objLoader.loadModel("left",sideModel,this.defaultMaterial).then((obj3d) => {
+                this.objLoader.loadModel("right",sideModel,this.defaultMaterial).then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementZ = (bbox.max.x - bbox.min.x);
@@ -519,7 +519,7 @@ export default class DividerHelper {
                     this.drawer.add(obj3d);
                 });
 
-                this.objLoader.loadModel("right",sideModel,this.defaultMaterial).then((obj3d) => {
+                this.objLoader.loadModel("left",sideModel,this.defaultMaterial).then((obj3d) => {
                     // # Change background dimension
                     let bbox = new THREE.Box3().setFromObject( obj3d );
                     let elementZ = (bbox.max.x - bbox.min.x);
